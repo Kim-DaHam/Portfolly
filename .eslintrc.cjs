@@ -15,4 +15,13 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  settings: {
+		'import/resolver': {
+			alias: {
+				map: [
+					['@', './src']
+				]
+			}
+		}
+	}
 }

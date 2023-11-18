@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { firestore } from "./firebase-config";
+import { firestore } from "@/firebase-config";
 
 function App() {
 

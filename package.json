@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ts-node": "ts-node -r tsconfig-paths/register ./src/index.ts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
@@ -15,6 +16,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "firebase": "^10.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,6 +35,8 @@
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   }
