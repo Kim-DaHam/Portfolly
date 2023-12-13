@@ -1,12 +1,9 @@
 import { createPortal } from "react-dom";
 import { Group, Item, PopperContainer, Separator } from "./Popper.styled";
 import { useEffect } from "react";
+import { IComponentFactory } from "@/types";
 
 export type PopperType = 'HEADER' | 'PORTFOLIO_ITEM';
-
-interface IComponentFactory {
-    [key: string]: JSX.Element;
-  }
 
 const popperId = {
     'HEADER': 'header-menu',
