@@ -1,7 +1,9 @@
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
-import Preview from "@/components/preview/Preview";
 import { IntroContainer, Introduce } from "./Intro.styled";
+
+import Footer from "@/components/footer/Footer";
+import Header from "@/components/header/Header";
+import Preview from "@/components/preview/Preview";
+
 
 function Intro(){
     return(

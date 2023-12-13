@@ -1,5 +1,5 @@
+import { PortfolioItemContainer, Thumnail } from "@/components/portfolio/PortfolioItem.styled";
 import { Section } from "@/types/portfolio";
-import { PortfolioItemContainer, Thumnail } from "./PortfolioItem.styled";
 
 function PortfolioItem(props: {type: Section}){
     const type = props.type;

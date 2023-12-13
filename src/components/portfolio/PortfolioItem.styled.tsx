@@ -1,6 +1,7 @@
-import { Section } from '@/types/portfolio';
-import {styled} from 'styled-components';
+import { styled } from 'styled-components';
+
 import { portfolioItemSize as sizes } from '@/styles/token';
+import { Section } from '@/types/portfolio';
 
 export const PortfolioItemContainer = styled.div<{type: Section}>`
     width: 100%;

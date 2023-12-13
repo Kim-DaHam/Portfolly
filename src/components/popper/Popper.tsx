@@ -1,6 +1,8 @@
-import { createPortal } from "react-dom";
-import { Group, Item, PopperContainer, Separator } from "./Popper.styled";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
+
+import { Group, Item, PopperContainer, Separator } from "./Popper.styled";
+
 import { IComponentFactory } from "@/types";
 
 export type Popper = 'header' | 'portfolioItem';

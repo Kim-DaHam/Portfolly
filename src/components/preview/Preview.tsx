@@ -1,7 +1,10 @@
-import { Section } from "@/types/portfolio";
-import { FlexBox, PreviewContainer, PreviewRow, ViewMoreButton } from "./Preview.styled";
-import { sectionIntroduction as introduction} from '@/assets/data/phrase';
 import PortfolioItem from "../portfolio/PortfolioItem";
+
+import { FlexBox, PreviewContainer, PreviewRow, ViewMoreButton } from "./Preview.styled";
+
+import { sectionIntroduction as introduction} from '@/assets/data/phrase';
+import { Section } from "@/types/portfolio";
+
 
 const PreviewRowColumns = {
 	'Android/iOS': 3,

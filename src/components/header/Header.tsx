@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ROUTE_PATH } from "@/utils/path";
+import Popper from "../popper/Popper";
+import SearchBar from "../searchBar/SearchBar";
 
 import { ButtonWrapper, HeaderContainer, LogInButton, LogoWrapper, MenuButton, TrialVersionButton } from "@/components/header/Header.styled";
-import SearchBar from "../searchBar/SearchBar";
-import { useState } from "react";
-import Popper from "../popper/Popper";
+import { ROUTE_PATH } from "@/utils/path";
+
 
 function Header(){
     const [menuOpen, setMenuOpen] = useState(false);
