@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const PopperContainer = styled.div<{bottom: number, right: number}>`
+export const PopperContainer = styled.div<{top: number, right: number}>`
     width: 15rem;
     background-color: lightgray;
     border-radius: 16px;
@@ -10,8 +10,8 @@ export const PopperContainer = styled.div<{bottom: number, right: number}>`
     display: flex;
     flex-direction: column;
 
-    top: ${(props)=>props.bottom + 10}px;
-    right: ${(props)=>props.right}px;
+    top: ${(props) => props.top + 10}px;
+    right: ${(props) => document.documentElement.clientWidth - props.right}px;
 `;
 
 export const Separator = styled.div`

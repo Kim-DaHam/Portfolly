@@ -3,52 +3,33 @@ import { Group, Item, PopperContainer, Separator } from "./Popper.styled";
 import { useEffect } from "react";
 import { IComponentFactory } from "@/types";
 
-export type PopperType = 'HEADER' | 'PORTFOLIO_ITEM';
+export type Popper = 'header' | 'portfolioItem';
 
-const popperId = {
-    'HEADER': 'header-menu',
-    'PORTFOLIO_ITEM': 'portfolio-item-menu',
+const renderPopper = (type: Popper) => {
+    const ComponentFactory: IComponentFactory = {
+        header: (
+            <>
+            <Group>
+                <Item>MenuItem1</Item>
+                <Item>MenuItem2</Item>
+            </Group>
+            <Separator/>
+            <Group>
+                <Item>MenuItem3</Item>
+                <Item>MenuItem4</Item>
+            </Group>
+            </>
+        ),
+        portfolioItem: (
+            <></>
+        ),
+    }
+
+    return ComponentFactory[type];
 }
 
-function Popper(props: { type: PopperType }) {
-    const type = props.type;
-    const renderPopper = (type: PopperType) => {
-        const ComponentFactory: IComponentFactory = {
-            HEADER: (
-                <>
-                <Group>
-                    <Item>MenuItem1</Item>
-                    <Item>MenuItem2</Item>
-                </Group>
-                <Separator/>
-                <Group>
-                    <Item>MenuItem3</Item>
-                    <Item>MenuItem4</Item>
-                </Group>
-                </>
-            ),
-            PORTFOLIO_ITEM: (
-                <></>
-            ),
-        }
-
-        return ComponentFactory[type];
-    }
-
-    const findBottomCoordinates = (type: PopperType) => {
-        const div = document.getElementById(popperId[type])!;
-        const divBottom = div.getBoundingClientRect().bottom;
-        const absoluteBottom = window.pageYOffset + divBottom;
-        return absoluteBottom;
-    }
-
-    const findRightCoordinates = (type: PopperType) => {
-        const div = document.getElementById(popperId[type])!;
-        const divRight = div.getBoundingClientRect().right;
-        const fullWidth = document.documentElement.clientWidth;
-        const absoluteRight =  fullWidth - divRight;
-        return absoluteRight;
-    }
+function Popper(props: { type: Popper, right: number, bottom: number}) {
+    const { type, right, bottom } = props;
 
     useEffect(()=>{
         document.body.style.cssText = `
@@ -67,7 +48,7 @@ function Popper(props: { type: PopperType }) {
     },[]);
 
     return createPortal(
-        <PopperContainer bottom={findBottomCoordinates(type)} right={findRightCoordinates(type)}>
+        <PopperContainer top={bottom} right={right}>
             {renderPopper(type)}
         </PopperContainer>,
         document.getElementById('modal')!

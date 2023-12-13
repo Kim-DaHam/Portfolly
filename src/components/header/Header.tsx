@@ -9,7 +9,13 @@ import Popper from "../popper/Popper";
 
 function Header(){
     const [menuOpen, setMenuOpen] = useState(false);
+    const [menuButtonCoordinate, setMenuButtonCoordinate] = useState({
+        right: 0,
+        bottom: 0,
+    });
+
     const navigate = useNavigate();
+
     return(
         <HeaderContainer>
             <LogoWrapper onClick={()=>navigate(ROUTE_PATH.INTRO)}>
@@ -25,12 +31,21 @@ function Header(){
 
                 <MenuButton
                     id='header-menu'
-                    onClick = {()=>setMenuOpen((prev)=>!prev)}
+                    onClick = {(e)=> {
+                        const menuButton = e.target as HTMLElement;
+                        console.log(menuButton.getBoundingClientRect().bottom)
+                        setMenuButtonCoordinate((prev) => ({
+                            ...prev,
+                            right: menuButton.getBoundingClientRect().right,
+                            bottom: menuButton.getBoundingClientRect().bottom,
+                        }))
+                        setMenuOpen((prev)=>!prev)
+                    }}
                 >=</MenuButton>
             </ButtonWrapper>
 
             { menuOpen &&
-                <Popper type='HEADER'/>
+                <Popper type='header' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom}/>
             }
 
         </HeaderContainer>
