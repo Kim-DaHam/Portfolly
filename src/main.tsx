@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import App from '@/App.tsx'
-import GlobalStyle from '@/assets/styles/GlobalStyle'
+import GlobalStyle from '@/styles/GlobalStyle'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
