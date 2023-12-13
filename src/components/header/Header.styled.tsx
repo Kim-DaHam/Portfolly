@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div`
     padding: 0.3rem 2rem 0.3rem 2rem;
 
     position: fixed;
+    z-index: 999;
     top: 0;
 
     display: grid;

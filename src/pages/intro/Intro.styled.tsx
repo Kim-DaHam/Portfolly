@@ -1,6 +1,11 @@
 import { styled } from 'styled-components';
 
-export const IntroduceContainer = styled.div`
+export const IntroContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
+`;
+
+export const Introduce = styled.div`
     width: 100%;
     height: 100vh;
 
@@ -11,4 +16,3 @@ export const IntroduceContainer = styled.div`
 
     background-color: aliceblue;
 `;
-
