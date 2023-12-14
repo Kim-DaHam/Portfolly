@@ -1,4 +1,4 @@
-import { PortfolioItemContainer, Thumnail } from "@/components/portfolio/PortfolioItem.styled";
+import { PortfolioItemContainer, Thumnail } from "@/components/portfolio-item/PortfolioItem.styled";
 import { Section } from "@/types/portfolio";
 
 function PortfolioItem(props: {type: Section}){

@@ -1,4 +1,4 @@
-import PortfolioItem from "../portfolio/PortfolioItem";
+import PortfolioItem from "../portfolio-item/PortfolioItem";
 
 import { FlexBox, PreviewContainer, PreviewRow, ViewMoreButton } from "./Preview.styled";
 
