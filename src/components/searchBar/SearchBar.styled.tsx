@@ -4,6 +4,7 @@ export const SearchBarContainer = styled.div`
     width: 100%;
     height: 100%;
     padding: 0 10px 0 10px;
+		cursor: pointer;
 
     background-color: gray;
     border-radius: 16px;

@@ -14,14 +14,14 @@ export const HeaderContainer = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
 `;
 
-export const ButtonWrapper = styled.div`
+export const ButtonBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     gap: 0.9rem;
 `
 
-export const LogoWrapper = styled.div`
+export const LogoBox = styled.div`
     width: 3.1rem;
     height: 100%;
     background-color: black;
