@@ -15,22 +15,22 @@ const PreviewRowColumns = {
 }
 
 function Preview(props: {section: Section}){
-    const section = props.section;
-    return(
-        <PreviewContainer>
-            <FlexBox>
-                <h1>{section}</h1>
-                <p>
-                {introduction[section]}
-                </p>
-            </FlexBox>
+	const section = props.section;
+	return(
+		<PreviewContainer>
+			<FlexBox>
+					<h1>{section}</h1>
+					<p>
+					{introduction[section]}
+					</p>
+			</FlexBox>
 
-            <PreviewRow column={PreviewRowColumns[section]}>
-                <PortfolioItem type={section}/>
-                <ViewMoreButton/>
-            </PreviewRow>
-        </PreviewContainer>
-    )
+			<PreviewRow column={PreviewRowColumns[section]}>
+					<PortfolioItem type={section}/>
+					<ViewMoreButton/>
+			</PreviewRow>
+		</PreviewContainer>
+	)
 }
 
 export default Preview;

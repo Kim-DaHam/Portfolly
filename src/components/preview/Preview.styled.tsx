@@ -28,7 +28,6 @@ export const FlexBox = styled.div`
 export const PreviewRow = styled.div<{column: number}>`
     width: 100%;
     overflow: hidden;
-		position: relative;
 
     display: grid;
     grid-template-columns: repeat(${(props)=>props.column}, 1fr);
@@ -45,5 +44,5 @@ export const ViewMoreButton = styled.button`
 	width: 3rem;
 	height: 2rem;
 	position: absolute;
-	right: 0;
+	right: 3rem;
 `;

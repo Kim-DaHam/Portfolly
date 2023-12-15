@@ -3,7 +3,7 @@ import Slider, { Settings } from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { ArrowWrapper, NextArrow, PortfolioItemContainer, PrevArrow, SliderWrapper } from "@/components/portfolio-item/PortfolioItem.styled";
+import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/portfolio-item/PortfolioItem.styled";
 import { Section } from "@/types/portfolio";
 
 function PortfolioItem(props: {type: Section}){
@@ -52,27 +52,28 @@ function PortfolioItem(props: {type: Section}){
 	}
 
 	return(
-			<PortfolioItemContainer type={type}>
-				<SliderWrapper>
-					<Slider {...settings} ref={(element)=>{
-						if(element !== null){
-							setSlick(element);
-						}
-					}}>
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
-						{/* <SliderItem>
-
-						</SliderItem> */}
-					</Slider>
-				</SliderWrapper>
-
-				<ArrowWrapper>
+		<PortfolioItemContainer type={type}>
+			<SliderBox>
+				<ArrowBox>
 					<PrevArrow onClick={handlePrev} current={currentSlideIndex}/>
 					<NextArrow onClick={handleNext} current={currentSlideIndex} last={2}/>
-				</ArrowWrapper>
-			</PortfolioItemContainer>
+				</ArrowBox>
+
+				<Slider {...settings} ref={(element)=>{
+					if(element !== null){
+						setSlick(element);
+					}
+				}}>
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					{/* <SliderItem>
+
+					</SliderItem> */}
+				</Slider>
+			</SliderBox>
+
+		</PortfolioItemContainer>
 	)
 }
 

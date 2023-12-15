@@ -7,19 +7,30 @@ export const PortfolioItemContainer = styled.div<{type: Section}>`
 	width: 100%;
 	aspect-ratio: ${(props) => sizes[props.type].aspectRatio};
 
-	position: relative;
-	padding: 1.4em 1.5em 1.4em 1.5em;
+	position: 'relative';
 
 	background-color: lightgray;
 	border-radius: 1.8rem;
-	overflow: auto;
 	overflow: hidden;
+
+	& :hover {
+		& .slick-dots {
+			visibility: visible;
+		}
+
+		& button {
+			display: inline-block;
+		}
+	}
 `
 
-export const SliderWrapper = styled.div`
+export const SliderBox = styled.div`
 	width: 100%;
 	height: 100%;
+	cursor: pointer;
+	padding: 1.4em 1.5em 1.4em 1.5em;
 
+	position: relative;
 
 	& .slick-initialized {
 		width: 100%;
@@ -37,6 +48,10 @@ export const SliderWrapper = styled.div`
 		height: 100%;
 	}
 
+	& .slick-dots {
+		visibility: hidden;
+	}
+
 	& .slick-dots > li {
 		margin: 0;
 		cursor: default;
@@ -48,42 +63,41 @@ export const SliderWrapper = styled.div`
 `;
 
 export const SliderItem = styled.div`
-    width: 100%;
-    height: 100%;
-    border-radius: 1.8rem;
+	width: 100%;
+	height: 100%;
+	border-radius: 1.8rem;
 
-    overflow: hidden;
-    background-color: gray;
+	overflow: hidden;
+	background-color: gray;
 `;
 
-const Arrow = css`
-	width: 1rem;
-	height: 1rem;
-	position: relative;
-	z-index: 100;
-`;
-
-export const ArrowWrapper = styled.div`
+export const ArrowBox = styled.div`
 	width: 100%;
 	padding: 0 0.5rem 0 0.5rem;
 
 	position: absolute;
 	z-index: 100;
-	top: 0;
-	right: 0;
+	top: 49%;
+	left: 0;
 
 	display: flex;
 	justify-content: space-between;
-	top: 50%;
+	align-items: center;
+`;
+
+const Arrow = css`
+	cursor: pointer;
+	width: 1rem;
+	height: 1rem;
+	display: none;
 `;
 
 export const PrevArrow = styled.button<{current: number}>`
 	${Arrow}
-	background-color:red;
 	visibility: ${(props) => props.current === 0 ? 'hidden' : 'visible'}
 `;
 
 export const NextArrow = styled.button<{current: number, last:number}>`
-	${Arrow}
-	visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'}
+${Arrow}
+visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'}
 `;
