@@ -11,7 +11,8 @@ export const HeaderContainer = styled.div`
     top: 0;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 0.8fr 1fr;
+		justify-content: space-between;
 `;
 
 export const ButtonBox = styled.div`

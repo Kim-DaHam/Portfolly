@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import SearchModal from "../modal/SearchModal";
 import Popper from "../popper/Popper";
@@ -7,8 +7,6 @@ import SearchBar from "../searchBar/SearchBar";
 
 import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVersionButton } from "@/components/header/Header.styled";
 import { ROUTE_PATH } from "@/utils/path";
-
-
 
 function Header(){
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -19,6 +17,20 @@ function Header(){
 	const [searchBarOpen, setSearchBarOpen] = useState(false);
 
 	const navigate = useNavigate();
+	const location = useLocation();
+	const showSearchBar = (location.pathname !== '/' && '/login' && '/signup' );
+
+	const renderSearchBar = () => {
+		return(
+			<>
+				<SearchBar isClicked={searchBarOpen} onClick={() => setSearchBarOpen((prev)=>!prev)}/>
+
+				{ searchBarOpen &&
+					<SearchModal onClick={() => setSearchBarOpen((prev)=>!prev)}/>
+				}
+			</>
+		)
+	}
 
 	return(
 		<HeaderContainer>
@@ -26,10 +38,10 @@ function Header(){
 
 			</LogoBox>
 
-			<SearchBar isClicked={searchBarOpen} onClick={() => setSearchBarOpen((prev)=>!prev)}/>
-
-			{ searchBarOpen &&
-				<SearchModal onClick={() => setSearchBarOpen((prev)=>!prev)}/>
+			{ showSearchBar ?
+				renderSearchBar()
+				:
+				<div></div>
 			}
 
 			<ButtonBox>

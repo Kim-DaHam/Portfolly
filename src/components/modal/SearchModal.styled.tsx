@@ -5,7 +5,9 @@ export const ModalLayout = styled.div`
 	height: 100vh;
 
 	position: fixed;
-	z-index: 999;
+	z-index: 9999;
+	top: 0;
+	left: 0;
 	background-color: #0000007e;
 
 	display: flex;
