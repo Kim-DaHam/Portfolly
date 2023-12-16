@@ -10,7 +10,6 @@ export const MainLayout = styled.div`
 
 export const MainContainer = styled.div`
 	width: 100%;
-	height: 100%;
 	padding: 8rem 5rem 3rem 5rem;
 
 	background-color: #fff5f5;
@@ -127,10 +126,29 @@ const Arrow = css`
 
 export const PrevArrow = styled.button<{current: number}>`
 	${Arrow}
-	visibility: ${(props) => props.current === 7 ? 'hidden' : 'visible'}
+	visibility: ${(props) => props.current === 7 ? 'hidden' : 'visible'};
 `;
 
 export const NextArrow = styled.button<{current: number, last:number}>`
 	${Arrow}
-	visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'}
+	visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'};
+`;
+
+export const PortfolioSection = styled.section`
+	width: 100%;
+	height: 100%;
+
+	padding-top: 3rem;
+`;
+
+export const GridBox = styled.div<{column: number}>`
+	width: 100%;
+	height: 100%;
+
+	border: 1px solid red;
+
+	display: grid;
+	gap: 1.7rem;
+	grid-template-columns: repeat(${(props)=>props.column}, 1fr);
+
 `;

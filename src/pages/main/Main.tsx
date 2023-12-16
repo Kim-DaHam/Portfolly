@@ -1,10 +1,11 @@
 import { LegacyRef, useEffect, useRef, useState } from "react";
 import Slider, { Settings } from "react-slick";
 
-import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, MainContainer, MainLayout, NextArrow, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
+import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
 import SearchModal from "@/components/modal/SearchModal";
+import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
 
 
 function Main(){
@@ -110,11 +111,19 @@ function Main(){
 					</CategoryBox>
 				</CategorySection>
 
-				{/* <PortfolioSection>
-					<Grid>
-
-					</Grid>
-				</PortfolioSection> */}
+				<PortfolioSection>
+					<GridBox column={6}>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+						<PortfolioItem type='Android/iOS'/>
+					</GridBox>
+				</PortfolioSection>
 
 			</MainContainer>
 
