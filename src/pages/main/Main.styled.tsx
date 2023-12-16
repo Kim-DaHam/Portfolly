@@ -20,8 +20,19 @@ export const MainContainer = styled.div`
 
 export const TitleSection = styled.section`
 	width: 100%;
-	padding-top: 2rem;
-	font-size: 2.4rem;
+	height: 7rem;
+
+	display: flex;
+	gap: 2rem;
+	align-items: end;
 
 	border: 1px solid black;
+`;
+
+export const Title = styled.h1`
+	font-size: 3rem;
+`;
+
+export const Summary = styled.span`
+	font-size: 1.1rem;
 `;

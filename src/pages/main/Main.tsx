@@ -1,4 +1,4 @@
-import { MainContainer, MainLayout, TitleSection } from "./Main.styled";
+import { MainContainer, MainLayout, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
 
@@ -8,7 +8,8 @@ function Main(){
 				<Header/>
 				<MainContainer>
 					<TitleSection>
-						<h1>Title</h1>
+						<Title>Title</Title>
+						<Summary>간단한 설명 blabla</Summary>
 					</TitleSection>
 
 					{/* <CategorySection>
