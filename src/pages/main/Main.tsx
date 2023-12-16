@@ -1,11 +1,12 @@
 import { LegacyRef, useEffect, useRef, useState } from "react";
 import Slider, { Settings } from "react-slick";
 
-import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
+import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
 import SearchModal from "@/components/modal/SearchModal";
 import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
+import Profile from "@/components/profile/Profile";
 
 
 function Main(){
@@ -37,8 +38,6 @@ function Main(){
 			}
 		]
 	}
-
-	console.log(currentSlideIndex)
 
 	const handlePrev = ()=> {
 		if(beforeClicked) return;
@@ -113,15 +112,15 @@ function Main(){
 
 				<PortfolioSection>
 					<GridBox column={6}>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
-						<PortfolioItem type='Android/iOS'/>
+						<GridItem>
+							<PortfolioItem type='Android/iOS'/>
+							<Profile type='Portfolio'/>
+						</GridItem>
+
+						<GridItem>
+							<PortfolioItem type='Web'/>
+							<Profile type='Portfolio'/>
+						</GridItem>
 					</GridBox>
 				</PortfolioSection>
 

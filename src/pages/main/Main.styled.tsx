@@ -150,5 +150,22 @@ export const GridBox = styled.div<{column: number}>`
 	display: grid;
 	gap: 1.7rem;
 	grid-template-columns: repeat(${(props)=>props.column}, 1fr);
+`;
 
+export const GridItem = styled.div`
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+
+	position: relative;
+
+	display: grid;
+	grid-template-rows: 1fr 0.1fr;
+	row-gap: 1rem;
+
+	&:hover {
+		& .button-box {
+			display: flex;
+		}
+	}
 `;
