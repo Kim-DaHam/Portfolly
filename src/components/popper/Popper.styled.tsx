@@ -6,6 +6,7 @@ export const PopperContainer = styled.div<{top: number, right: number}>`
     border-radius: 16px;
 
     position: fixed;
+		z-index: 100;
 
     display: flex;
     flex-direction: column;
