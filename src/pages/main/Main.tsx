@@ -1,4 +1,4 @@
-import { MainLayout } from "./Main.styled";
+import { MainContainer, MainLayout, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
 
@@ -6,7 +6,23 @@ function Main(){
     return(
 			<MainLayout>
 				<Header/>
-				<h1>Main</h1>
+				<MainContainer>
+					<TitleSection>
+						<h1>Title</h1>
+					</TitleSection>
+
+					{/* <CategorySection>
+
+					</CategorySection>
+
+					<PortfolioSection>
+						<Grid>
+
+						</Grid>
+					</PortfolioSection> */}
+
+				</MainContainer>
+
 			</MainLayout>
     )
 }
