@@ -1,11 +1,18 @@
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-import { Group, Item, PopperContainer, Separator } from "./Popper.styled";
+import { Group, Item, PopperContainer, PopperLayout, Separator } from "./Popper.styled";
 
 import { IComponentFactory } from "@/types";
 
 export type Popper = 'header' | 'portfolioItem';
+
+interface PopperProps {
+	type: Popper;
+	right: number;
+	bottom: number;
+	closeMenu: Dispatch<SetStateAction<boolean>>;
+}
 
 const renderPopper = (type: Popper) => {
     const ComponentFactory: IComponentFactory = {
@@ -30,8 +37,7 @@ const renderPopper = (type: Popper) => {
     return ComponentFactory[type];
 }
 
-function Popper(props: { type: Popper, right: number, bottom: number}) {
-    const { type, right, bottom } = props;
+function Popper({ type, right, bottom, closeMenu}: PopperProps) {
 
     useEffect(()=>{
         document.body.style.cssText = `
@@ -50,10 +56,12 @@ function Popper(props: { type: Popper, right: number, bottom: number}) {
     },[]);
 
     return createPortal(
-        <PopperContainer top={bottom} right={right}>
-            {renderPopper(type)}
+			<PopperLayout onClick={()=>closeMenu((prev)=>!prev)}>
+        <PopperContainer top={bottom} right={right} onClick={(event)=> event.stopPropagation()}>
+					{renderPopper(type)}
         </PopperContainer>,
-        document.getElementById('modal')!
+			</PopperLayout>,
+			document.getElementById('modal')!
     )
 }
 

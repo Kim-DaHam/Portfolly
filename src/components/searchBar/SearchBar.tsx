@@ -1,10 +1,10 @@
-import { Dispatch, HTMLAttributes, useEffect, useState } from "react";
+import { Dispatch, HTMLAttributes, SetStateAction, useEffect, useState } from "react";
 
 import { SearchBarContainer, SearchInputArea, SearchLogo } from "./SearchBar.styled";
 
 interface SearchBarProps extends HTMLAttributes<HTMLDivElement> {
 	isClicked: boolean;
-	onInputChange?: Dispatch<React.SetStateAction<boolean>>;
+	onInputChange?: Dispatch<SetStateAction<boolean>>;
 }
 
 function SearchBar({ isClicked, onInputChange, ...attributes }: SearchBarProps){

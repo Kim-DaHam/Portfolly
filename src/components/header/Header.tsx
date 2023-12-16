@@ -20,6 +20,16 @@ function Header(){
 	const location = useLocation();
 	const showSearchBar = (location.pathname !== '/' && '/login' && '/signup' );
 
+	const openMenu = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const menuButton = event.target as HTMLElement;
+		setMenuButtonCoordinate((prev) => ({
+				...prev,
+				right: menuButton.getBoundingClientRect().right,
+				bottom: menuButton.getBoundingClientRect().bottom,
+		}))
+		setMenuOpen((prev)=>!prev)
+	}
+
 	const renderSearchBar = () => {
 		return(
 			<>
@@ -48,23 +58,11 @@ function Header(){
 
 				<TrialVersionButton>Start Trial Version</TrialVersionButton>
 
-				<MenuButton
-						id='header-menu'
-						onClick = {(e)=> {
-								const menuButton = e.target as HTMLElement;
-								console.log(menuButton.getBoundingClientRect().bottom)
-								setMenuButtonCoordinate((prev) => ({
-										...prev,
-										right: menuButton.getBoundingClientRect().right,
-										bottom: menuButton.getBoundingClientRect().bottom,
-								}))
-								setMenuOpen((prev)=>!prev)
-						}}
-				>=</MenuButton>
+				<MenuButton id='header-menu' onClick = {(event)=> openMenu(event)}>=</MenuButton>
 			</ButtonBox>
 
 			{ menuOpen &&
-					<Popper type='header' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom}/>
+					<Popper type='header' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} closeMenu={setMenuOpen}/>
 			}
 
 		</HeaderContainer>

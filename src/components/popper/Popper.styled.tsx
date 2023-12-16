@@ -1,5 +1,11 @@
 import { styled } from 'styled-components';
 
+export const PopperLayout = styled.div`
+	width: 100vw;
+	height: 100vh;
+	background-color: transparent;
+`;
+
 export const PopperContainer = styled.div<{top: number, right: number}>`
     width: 15rem;
     background-color: lightgray;
