@@ -3,6 +3,9 @@ import { css, styled } from 'styled-components';
 export const MainLayout = styled.div`
 	width: 100%;
 	height: 100%;
+
+	position: absolute;
+	z-index: 100;
 `;
 
 export const MainContainer = styled.div`
