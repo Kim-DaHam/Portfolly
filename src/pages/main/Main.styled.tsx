@@ -15,7 +15,7 @@ export const MainContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 5rem;
+	gap: 1.7rem;
 `;
 
 export const TitleSection = styled.section`
@@ -35,4 +35,33 @@ export const Title = styled.h1`
 
 export const Summary = styled.span`
 	font-size: 1.1rem;
+`;
+
+export const CategorySection = styled.section`
+	width: 100%;
+	height: 3rem;
+
+	border: 1px solid black;
+
+	display: flex;
+	gap: 2rem;
+`;
+
+export const FilterButton = styled.button`
+
+`;
+
+export const Divider = styled.div`
+	width: 1px;
+	height: inherit;
+
+	background-color: lightgray;
+`;
+
+export const CategoryBox = styled.div`
+	display: flex;
+	gap: 2rem;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
 `;

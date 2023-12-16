@@ -1,4 +1,4 @@
-import { MainContainer, MainLayout, Summary, Title, TitleSection } from "./Main.styled";
+import { CategoryBox, CategorySection, Divider, FilterButton, MainContainer, MainLayout, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
 
@@ -12,11 +12,20 @@ function Main(){
 						<Summary>간단한 설명 blabla</Summary>
 					</TitleSection>
 
-					{/* <CategorySection>
+					<CategorySection>
+						<FilterButton>
+							Filters
+						</FilterButton>
 
+						<Divider/>
+
+						<CategoryBox>
+							<div>category 1</div>
+							<div>category 2</div>
+						</CategoryBox>
 					</CategorySection>
 
-					<PortfolioSection>
+					{/* <PortfolioSection>
 						<Grid>
 
 						</Grid>
