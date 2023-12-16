@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 export const MainLayout = styled.div`
 	width: 100%;
@@ -59,9 +59,56 @@ export const Divider = styled.div`
 `;
 
 export const CategoryBox = styled.div`
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+
 	display: flex;
 	gap: 2rem;
 	justify-content: center;
 	align-items: center;
 	flex-grow: 1;
 `;
+
+export const ArrowBox = styled.div`
+	width: 100%;
+
+	position: absolute;
+	z-index: 100;
+	left: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+`;
+
+const Arrow = css`
+	cursor: pointer;
+	width: 1rem;
+	height: 1rem;
+`;
+
+export const PrevArrow = styled.button<{current: number}>`
+	${Arrow}
+	visibility: ${(props) => props.current === 0 ? 'hidden' : 'visible'}
+`;
+
+export const NextArrow = styled.button<{current: number, last:number}>`
+	${Arrow}
+	visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'}
+`;
+
+export const CategoryRow = styled.div`
+	width: 100%;
+
+	display: flex;
+	gap: 2rem;
+`;
+
+export const CategoryButton = styled.button`
+	width: 10rem;
+	height: 100%;
+
+	border-radius: 2rem;
+	background-color: lightgray;
+`

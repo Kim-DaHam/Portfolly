@@ -1,4 +1,4 @@
-import { CategoryBox, CategorySection, Divider, FilterButton, MainContainer, MainLayout, Summary, Title, TitleSection } from "./Main.styled";
+import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, MainContainer, MainLayout, NextArrow, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
 
@@ -20,8 +20,25 @@ function Main(){
 						<Divider/>
 
 						<CategoryBox>
-							<div>category 1</div>
-							<div>category 2</div>
+							<ArrowBox>
+								<PrevArrow current={1}>Prev</PrevArrow>
+								<NextArrow current={0} last={7}>Next</NextArrow>
+							</ArrowBox>
+
+							<CategoryRow>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+								<CategoryButton></CategoryButton>
+							</CategoryRow>
 						</CategoryBox>
 					</CategorySection>
 
