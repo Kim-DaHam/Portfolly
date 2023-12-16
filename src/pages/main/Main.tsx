@@ -1,8 +1,13 @@
+import { MainLayout } from "./Main.styled";
+
+import Header from "@/components/header/Header";
+
 function Main(){
     return(
-        <>
-        <h1>Main</h1>
-        </>
+			<MainLayout>
+				<Header/>
+				<h1>Main</h1>
+			</MainLayout>
     )
 }
 
