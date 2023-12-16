@@ -11,6 +11,11 @@ const GlobalStyle = createGlobalStyle`
 		z-index: 0;
 	}
 
+	body #modal {
+		position: absolute;
+		z-index: 999;
+	}
+
 	* {
 		margin: 0;
 		padding: 0;
