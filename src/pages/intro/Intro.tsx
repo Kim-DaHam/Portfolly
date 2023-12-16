@@ -1,4 +1,4 @@
-import { Dvider, IntroContainer, Introduce } from "./Intro.styled";
+import { Dvider, IntroLayout, Introduce } from "./Intro.styled";
 
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
@@ -8,7 +8,7 @@ import { wheelHandler } from "@/utils/wheelHandler";
 function Intro(){
 
 	return(
-		<IntroContainer ref={(element)=>{
+		<IntroLayout ref={(element)=>{
 			if(element !== null) {
 				element.addEventListener("wheel", (event:WheelEvent)=>{
 					wheelHandler(event, element)
@@ -36,7 +36,7 @@ function Intro(){
 
 				<Preview section='Video'/>
 				<Footer/>
-		</IntroContainer>
+		</IntroLayout>
 	)
 }
 

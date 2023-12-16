@@ -34,13 +34,13 @@ function Header(){
 
 	return(
 		<HeaderContainer>
-			<LogoBox onClick={()=>navigate(ROUTE_PATH.INTRO)}>
+			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}>
 
 			</LogoBox>
 			{ showSearchBar ?
 				renderSearchBar()
 				:
-				renderSearchBar()
+				<div></div>
 			}
 
 			<ButtonBox>

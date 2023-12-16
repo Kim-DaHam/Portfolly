@@ -1,9 +1,12 @@
 import { styled } from 'styled-components';
 
-export const IntroContainer = styled.div`
+export const IntroLayout = styled.div`
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	overflow-y: auto;
+
+	position: absolute;
+	z-index: 100;
 
 	&::-webkit-scrollbar {
 		display: none;

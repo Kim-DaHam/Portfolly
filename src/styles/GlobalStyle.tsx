@@ -7,12 +7,8 @@ const GlobalStyle = createGlobalStyle`
 		box-sizing: border-box;
 		overflow-x: hidden;
 
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-	}
-
-	body::-webkit-scrollbar {
-		display: none;
+		position: relative;
+		z-index: 0;
 	}
 
 	* {
