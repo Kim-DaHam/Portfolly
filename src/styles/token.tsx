@@ -33,5 +33,10 @@ export const buttonColor: ButtonColor = {
 		backgroundColor: '#f3f3f3',
 		hoverBackgroundColor: '#d0d0d0',
 		fontColor: '11111',
+	},
+	'Transparency': {
+		backgroundColor: 'transparent',
+		hoverBackgroundColor: 'transparent',
+		fontColor: '11111',
 	}
 }

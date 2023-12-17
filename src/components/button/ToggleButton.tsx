@@ -14,12 +14,12 @@ interface ToggleButtonProps {
 const renderToggleButton = (type: Toggle) => {
 	const ComponentFactory: IComponentFactory = {
 		Bookmark: (
-			<SquareButton color='Black' type="Icon">
+			<SquareButton color='Black'>
 				<FiBookmark/>
 			</SquareButton>
 		),
 		Like: (
-			<SquareButton color='White' type="Icon">
+			<SquareButton color='White'>
 				<FiHeart/>
 			</SquareButton>
 		),

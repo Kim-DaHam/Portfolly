@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-import { Group, Item, PopperContainer, PopperLayout, Separator } from "./Popper.styled";
+import { Group, Item, PopperContainer, PopperLayout, SectionGroup, Separator } from "./Popper.styled";
 
 import { IComponentFactory } from "@/types";
 
-export type Popper = 'header' | 'portfolioItem';
+export type Popper = 'header' | 'portfolioItem' | 'section';
 
 interface PopperProps {
 	type: Popper;
@@ -30,13 +30,20 @@ const renderPopper = (type: Popper) => {
             </>
         ),
         portfolioItem: (
-            <>
-						<Group>
-							<Item>MenuItem1</Item>
-							<Item>MenuItem2</Item>
-						</Group>
-						</>
+					<Group>
+						<Item>MenuItem1</Item>
+						<Item>MenuItem2</Item>
+					</Group>
         ),
+				section: (
+					<SectionGroup>
+						<Item>Android/iOS</Item>
+						<Item>Web</Item>
+						<Item>Illustration</Item>
+						<Item>Graphics</Item>
+						<Item>Video</Item>
+					</SectionGroup>
+				),
     }
 
     return ComponentFactory[type];

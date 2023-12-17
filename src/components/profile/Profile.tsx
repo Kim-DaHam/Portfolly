@@ -19,7 +19,7 @@ interface ProfileProps {
 }
 
 function Profile({type}: ProfileProps) {
-	const { menuOpen, menuButtonCoordinate, openMenu, closeMenu} = useOpenMenu();
+	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
 	const buttonBoxRef = useRef(null);
 
 	const renderProfile = (type: Profile) => {
@@ -39,7 +39,7 @@ function Profile({type}: ProfileProps) {
 					<ButtonBox className='button-box' ref={buttonBoxRef}>
 						<ToggleButton type='Bookmark'/>
 
-						<MoreButton onClick={openMenu} color='Gray' type="Icon">
+						<MoreButton onClick={openMenu} color='Gray'>
 							<FiMoreHorizontal/>
 						</MoreButton>
 					</ButtonBox>
