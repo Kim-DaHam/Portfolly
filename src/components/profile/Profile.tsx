@@ -39,7 +39,7 @@ function Profile({type}: ProfileProps) {
 					<ButtonBox className='button-box' ref={buttonBoxRef}>
 						<ToggleButton type='Bookmark'/>
 
-						<MoreButton onClick={openMenu} color='Gray' type="Icon">
+						<MoreButton onClick={openMenu} color='Gray'>
 							<FiMoreHorizontal/>
 						</MoreButton>
 					</ButtonBox>
