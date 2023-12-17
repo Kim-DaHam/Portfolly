@@ -11,7 +11,8 @@ export const HeaderContainer = styled.div`
     top: 0;
 
     display: grid;
-    grid-template-columns: 1fr 0.8fr 1fr;
+    grid-template-columns: 0.1fr 0.75fr 0.8fr 1fr;
+		column-gap: 1rem;
 		justify-content: space-between;
 `;
 
@@ -40,4 +41,18 @@ export const TrialVersionButton = styled.button`
 export const MenuButton = styled.button`
     padding: 0 1rem 0 1rem;
     padding: 0 1rem 0 1rem;
+`;
+
+export const SectionMenuBox = styled.div`
+	display: flex;
+	flex-direction: row;
+	gap: 0.9rem;
+`;
+
+export const SectionTitle = styled.div`
+	height: 100%;
+	font-weight: 600;
+	font-size: 1.5em;
+	display: flex;
+	align-items: center;
 `;
