@@ -12,5 +12,6 @@ export type ButtonColor = {
 	[key in Color]: {
 		backgroundColor: string,
 		hoverBackgroundColor: string,
+		fontColor: string,
 	}
 }
