@@ -1,14 +1,6 @@
-import { useEffect, useRef } from "react";
-import { FiMoreHorizontal as Icon } from "react-icons/fi";
 
-import { SquareButton as MoreButton } from "../button/Button.styled";
-import ToggleButton from "../button/ToggleButton";
-import Popper from "../popper/Popper";
-
-import { ButtonBox, PortfolioTitle, ProfileContainer, UserName, Image, SpanBox } from "./Profile.styled";
-
-import useOpenMenu from "@/hooks/useOpenMenu";
-import { IComponentFactory } from "@/types";
+import { Image, ProfileLayout } from "./Profile.styled";
+import { renderProfile } from "./Profile.utils";
 
 type Profile = 'Default' | 'Portfolio' | 'Chat';
 
@@ -17,61 +9,12 @@ type Props = {
 }
 
 function Profile({type}: Props) {
-	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
-	const buttonBoxRef = useRef(null);
-
-	const renderProfile = (type: Profile) => {
-		const ComponentFactory: IComponentFactory = {
-			Default: (
-				<>
-					<UserName type={type}>username</UserName>
-				</>
-			),
-			Portfolio: (
-				<>
-					<SpanBox>
-						<UserName type={type}>username</UserName>
-						<PortfolioTitle>PortfolioTitleBlaBla</PortfolioTitle>
-					</SpanBox>
-
-					<ButtonBox className='button-box' ref={buttonBoxRef}>
-						<ToggleButton type='Bookmark'/>
-
-						<MoreButton onClick={openMenu} color='Gray'>
-							<Icon/>
-						</MoreButton>
-					</ButtonBox>
-
-					{ menuOpen &&
-						<Popper type='PortfolioMenu' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} popOut={closeMenu}/>
-					}
-				</>
-			),
-			Chat: (
-				<></>
-			)
-		}
-
-		return ComponentFactory[type];
-	}
-
-	useEffect(()=>{
-		const buttonBox :HTMLElement = buttonBoxRef.current!;
-
-		if(menuOpen){
-			buttonBox!.style.display = 'flex';
-			return;
-		}
-
-		buttonBox!.style.display = '';
-
-	}, [menuOpen])
 
 	return(
-		<ProfileContainer type={type}>
+		<ProfileLayout type={type}>
 			<Image type={type}/>
 			{renderProfile(type)}
-		</ProfileContainer>
+		</ProfileLayout>
 	)
 }
 

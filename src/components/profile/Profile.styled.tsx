@@ -6,7 +6,7 @@ const portfolioProfile = css`
 	border: 1px solid blue;
 `
 
-export const ProfileContainer = styled.div<{type: Profile}>`
+export const ProfileLayout = styled.div<{type: Profile}>`
 	width: 100%;
 
 	display: flex;
