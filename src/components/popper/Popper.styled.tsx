@@ -43,4 +43,5 @@ export const SectionGroup = styled(Group)`
 export const Item = styled.a`
     padding: 0.5rem;
     display: flex;
+		cursor: pointer;
 `;
