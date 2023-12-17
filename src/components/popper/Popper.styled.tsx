@@ -1,5 +1,8 @@
 import { styled } from 'styled-components';
 
+import { popperSize } from '@/styles/token';
+import { Size } from '@/types/style';
+
 export const PopperLayout = styled.div`
 	width: 100vw;
 	height: 100%;
@@ -29,8 +32,8 @@ export const Separator = styled.div`
 	background-color: black;
 `;
 
-export const Group = styled.div`
-	width: 15rem;
+export const Group = styled.div<{size: Size}>`
+	width: ${(props)=>popperSize[props.size].width};
 	height: 100%;
 
 	display: flex;
@@ -38,10 +41,6 @@ export const Group = styled.div`
 
 	padding: 8px;
 `;
-
-export const SectionGroup = styled(Group)`
-	width: fit-content;
-`
 
 export const Item = styled.a`
 	display: flex;
