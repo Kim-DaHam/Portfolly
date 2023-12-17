@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { Group, Item, PopperContainer, PopperLayout, SectionGroup, Separator } from "./Popper.styled";
 
 import { IComponentFactory } from "@/types";
+import { moveScrollY, stopScrollY } from "@/utils/style";
 
 export type Popper = 'header' | 'portfolioItem' | 'section';
 
@@ -52,18 +53,9 @@ const renderPopper = (type: Popper) => {
 function Popper({ type, right, bottom, popOut}: Props) {
 
 	useEffect(()=>{
-		document.body.style.cssText = `
-			position: fixed;
-			top: -${window.scrollY}px;
-			overflow-y: scroll;
-			width: 100%;
-			overflow: hidden;
-		`
-
+		stopScrollY();
 		return () => {
-			const scrollY = document.body.style.top;
-			document.body.style.cssText = '';
-			window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+			moveScrollY();
 		}
 	},[]);
 

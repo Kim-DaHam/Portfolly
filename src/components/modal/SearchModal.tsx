@@ -5,6 +5,7 @@ import SearchBar from "../searchBar/SearchBar";
 import { ModalLayout, ModalBox, SearchContainer, ContentContainer, FilterGroup, ItemList, ContentBox, OptionButton, Item, FlexBox } from "./SearchModal.styled";
 
 import { IComponentFactory } from "@/types";
+import { moveScrollY, stopScrollY } from "@/utils/style";
 
 type Filter = 'Trending' | 'Categories' | 'Tags' | 'Search';
 
@@ -73,18 +74,9 @@ function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
 
 	useEffect(()=>{
-		document.body.style.cssText = `
-				position: fixed;
-				top: -${window.scrollY}px;
-				overflow-y: scroll;
-				width: 100%;
-				overflow: hidden;
-		`
-
+		stopScrollY();
 		return () => {
-				const scrollY = document.body.style.top;
-				document.body.style.cssText = '';
-				window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+			moveScrollY();
 		}
 	},[]);
 
