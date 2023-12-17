@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Slider from "react-slick";
 
-function useHandleSlider() {
-	const [slick, setSlick] = useState<Slider>();
+import { InitialProps } from "@/types";
+
+function useHandleSlider({type, slidesToShow, slidesToScroll, speed, maxIndex=0}: InitialProps) {
+	const [slider, setSlider] = useState<Slider>();
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 	const [isClickedJustBefore, setClickedJustBefore] = useState(false);
 
@@ -10,23 +12,41 @@ function useHandleSlider() {
 		if(isClickedJustBefore) return;
 
 		setClickedJustBefore(prev=>!prev);
-		slick?.slickPrev();
-		setCurrentSlideIndex(prev => prev - 1);
+		slider?.slickPrev();
 
-		setTimeout(()=>setClickedJustBefore(prev=>!prev), 200);
+		if(type === 'Short'){
+			setCurrentSlideIndex(prev => prev - slidesToScroll);
+		}
+		if(type === 'Long'){
+			setCurrentSlideIndex(prev => {
+				if(prev - slidesToScroll < slidesToShow) return slidesToShow;
+				else return (prev - slidesToScroll);
+			})
+		}
+
+		setTimeout(()=>setClickedJustBefore(prev=>!prev), speed);
 	};
 
   const handleNext = ()=> {
 		if(isClickedJustBefore) return;
 
 		setClickedJustBefore(prev=>!prev);
-		slick?.slickNext();
-		setCurrentSlideIndex(prev=>prev+1);
+		slider?.slickNext();
 
-		setTimeout(()=>setClickedJustBefore(prev=>!prev), 200);
+		if(type === 'Short'){
+			setCurrentSlideIndex(prev=>prev + slidesToScroll);
+		}
+		if(type === 'Long'){
+			setCurrentSlideIndex(prev=>{
+				if(prev + slidesToShow > maxIndex) return maxIndex
+				else return (prev + slidesToShow);
+			})
+		}
+
+		setTimeout(()=>setClickedJustBefore(prev=>!prev), speed);
 	};
 
-	return { handlePrev, handleNext, setSlick, currentSlideIndex };
+	return { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex };
 }
 
 export default useHandleSlider;

@@ -7,18 +7,26 @@ import { sliderSettings } from "./PortfolioItem.constants";
 
 import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
+import { InitialProps } from "@/types";
 import { Section } from "@/types/portfolio";
 
 type Props = {
 	type: Section;
 }
 
+const initialProps: InitialProps = {
+	type: 'Short',
+	slidesToShow: sliderSettings.slidesToShow!,
+	slidesToScroll: sliderSettings.slidesToScroll!,
+	speed: sliderSettings.speed!,
+}
+
 function PortfolioItem({type}: Props){
 	const sliderRef = useRef(null);
-	const { handlePrev, handleNext, setSlick, currentSlideIndex } = useHandleSlider();
+	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
 
 	useEffect(()=>{
-		setSlick(sliderRef.current!);
+		setSlider(sliderRef.current!);
 	}, [])
 
 	return(
