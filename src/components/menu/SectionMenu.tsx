@@ -1,4 +1,4 @@
-import { FiMoreHorizontal } from "react-icons/fi";
+import { FiMoreHorizontal as Icon} from "react-icons/fi";
 
 import { SquareButton as MoreButton } from "../button/Button.styled";
 import Popper from "../popper/Popper";
@@ -16,7 +16,7 @@ function SectionMenu() {
 				<SectionTitle>Section</SectionTitle>
 
 				<MoreButton color='Transparency' onClick={popUp}>
-					<FiMoreHorizontal color='gray' />
+					<Icon color='gray'/>
 				</MoreButton>
 			</SectionMenuBox>
 

@@ -1,4 +1,4 @@
-import { FiBookmark, FiHeart } from "react-icons/fi";
+import { FiBookmark as BookmarkIcon, FiHeart as LikeIcon } from "react-icons/fi";
 
 import { SquareButton } from "./Button.styled";
 
@@ -14,12 +14,12 @@ const renderToggleButton = (type: Toggle) => {
 	const ComponentFactory: IComponentFactory = {
 		Bookmark: (
 			<SquareButton color='Black'>
-				<FiBookmark/>
+				<BookmarkIcon/>
 			</SquareButton>
 		),
 		Like: (
 			<SquareButton color='White'>
-				<FiHeart/>
+				<LikeIcon/>
 			</SquareButton>
 		),
 	}

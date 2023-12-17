@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { FiMoreHorizontal } from "react-icons/fi";
+import { FiMoreHorizontal as Icon } from "react-icons/fi";
 
 import { SquareButton as MoreButton } from "../button/Button.styled";
 import ToggleButton from "../button/ToggleButton";
@@ -38,7 +38,7 @@ function Profile({type}: Props) {
 						<ToggleButton type='Bookmark'/>
 
 						<MoreButton onClick={openMenu} color='Gray'>
-							<FiMoreHorizontal/>
+							<Icon/>
 						</MoreButton>
 					</ButtonBox>
 
