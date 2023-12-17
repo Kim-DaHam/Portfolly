@@ -1,10 +1,13 @@
 import { useState } from "react";
-import Slider, { Settings } from "react-slick";
+import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { sliderSettings } from "./PortfolioItem.constants";
+
 import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/portfolio-item/PortfolioItem.styled";
 import { Section } from "@/types/portfolio";
+
 
 type Props = {
 	type: Section;
@@ -12,50 +15,28 @@ type Props = {
 
 function PortfolioItem({type}: Props){
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-	const [beforeClicked, setBeforeClicked] = useState(false);
+	const [isClickedJustBefore, setClickedJustBefore] = useState(false);
 	const [slick, setSlick] = useState<Slider>();
 
 	const handlePrev = ()=> {
-		if(beforeClicked) return;
+		if(isClickedJustBefore) return;
 
-		setBeforeClicked((prev)=>!prev);
+		setClickedJustBefore(prev=>!prev);
 		slick?.slickPrev();
-		setCurrentSlideIndex((prev) => prev - 1);
+		setCurrentSlideIndex(prev => prev - 1);
 
-		setTimeout(()=>setBeforeClicked((prev)=>!prev), 200);
+		setTimeout(()=>setClickedJustBefore(prev=>!prev), 200);
 	};
 
   const handleNext = ()=> {
-		if(beforeClicked) return;
+		if(isClickedJustBefore) return;
 
-		setBeforeClicked((prev)=>!prev);
+		setClickedJustBefore(prev=>!prev);
 		slick?.slickNext();
-		setCurrentSlideIndex((prev) => prev + 1);
+		setCurrentSlideIndex(prev=>prev+1);
 
-		setTimeout(()=>setBeforeClicked((prev)=>!prev), 200);
+		setTimeout(()=>setClickedJustBefore(prev=>!prev), 200);
 	};
-
-	const settings: Settings = {
-		dots: true,
-		infinite: false,
-		speed: 200,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		draggable: false,
-		fade: false,
-		arrows: false,
-		vertical: false,
-		initialSlide: 0,
-		responsive: [
-			{
-				breakpoint: 960, // 화면 사이즈 960px일 때
-				settings: {
-					dots: false,
-					arrows: false,
-				}
-			}
-		]
-	}
 
 	return(
 		<PortfolioItemContainer type={type}>
@@ -65,7 +46,7 @@ function PortfolioItem({type}: Props){
 					<NextArrow onClick={handleNext} current={currentSlideIndex} last={2}/>
 				</ArrowBox>
 
-				<Slider {...settings}
+				<Slider {...sliderSettings}
 					ref={(element)=>{
 						if(element !== null){
 							setSlick(element);
