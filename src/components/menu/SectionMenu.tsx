@@ -22,7 +22,7 @@ function SectionMenu() {
 
 			{isPopUp &&
 				<Popper
-					type='section'
+					type='SectionMenu'
 					right={menuButtonCoordinate.right}
 					bottom={menuButtonCoordinate.bottom}
 					popOut={popOut}
