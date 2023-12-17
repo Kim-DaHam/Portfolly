@@ -7,12 +7,12 @@ import { IComponentFactory } from "@/types";
 
 export type Popper = 'header' | 'portfolioItem' | 'section';
 
-interface PopperProps {
+type Props = {
 	type: Popper;
 	right: number;
 	bottom: number;
 	closeMenu: Dispatch<SetStateAction<boolean>>;
-}
+};
 
 const renderPopper = (type: Popper) => {
     const ComponentFactory: IComponentFactory = {
@@ -49,7 +49,7 @@ const renderPopper = (type: Popper) => {
     return ComponentFactory[type];
 }
 
-function Popper({ type, right, bottom, closeMenu}: PopperProps) {
+function Popper({ type, right, bottom, closeMenu}: Props) {
 
     useEffect(()=>{
         document.body.style.cssText = `

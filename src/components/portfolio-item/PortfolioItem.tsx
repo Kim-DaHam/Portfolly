@@ -6,9 +6,11 @@ import 'slick-carousel/slick/slick-theme.css';
 import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/portfolio-item/PortfolioItem.styled";
 import { Section } from "@/types/portfolio";
 
-function PortfolioItem(props: {type: Section}){
-	const type = props.type;
+type Props = {
+	type: Section;
+}
 
+function PortfolioItem({type}: Props){
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 	const [beforeClicked, setBeforeClicked] = useState(false);
 	const [slick, setSlick] = useState<Slider>();

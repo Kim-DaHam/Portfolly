@@ -5,6 +5,9 @@ import { FlexBox, PreviewContainer, PreviewRow, ViewMoreButton } from "./Preview
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
 import { Section } from "@/types/portfolio";
 
+type Props = {
+	section: Section;
+}
 
 const PreviewRowColumns = {
 	'Android/iOS': 3,
@@ -14,8 +17,7 @@ const PreviewRowColumns = {
 	'Video': 2,
 }
 
-function Preview(props: {section: Section}){
-	const section = props.section;
+function Preview({section}: Props){
 	return(
 		<PreviewContainer>
 			<FlexBox>

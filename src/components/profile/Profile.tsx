@@ -10,15 +10,13 @@ import { ButtonBox, PortfolioTitle, ProfileContainer, UserName, Image, SpanBox }
 import useOpenMenu from "@/hooks/useOpenMenu";
 import { IComponentFactory } from "@/types";
 
-
-
 type Profile = 'Default' | 'Portfolio' | 'Chat';
 
-interface ProfileProps {
+type Props = {
 	type: Profile;
 }
 
-function Profile({type}: ProfileProps) {
+function Profile({type}: Props) {
 	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
 	const buttonBoxRef = useRef(null);
 

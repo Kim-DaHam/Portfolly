@@ -4,12 +4,11 @@ import { SquareButton } from "./Button.styled";
 
 import { IComponentFactory } from "@/types";
 
-
 type Toggle = 'Bookmark' | 'Like';
 
-interface ToggleButtonProps {
+type Props = {
 	type: Toggle;
-}
+};
 
 const renderToggleButton = (type: Toggle) => {
 	const ComponentFactory: IComponentFactory = {
@@ -28,7 +27,7 @@ const renderToggleButton = (type: Toggle) => {
 	return ComponentFactory[type];
 }
 
-function ToggleButton({type}: ToggleButtonProps) {
+function ToggleButton({type}: Props) {
 	return(
 		<>
 			{renderToggleButton(type)}
