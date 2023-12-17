@@ -31,7 +31,18 @@ export const Image = styled.img<{type: Profile}>`
 export const SpanBox = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	flex-grow: 1;
+
+	overflow:hidden;
+
+	& span {
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	}
+
+	flex-shrink: 1;
 `;
 
 export const UserName = styled.span<{type: Profile}>`
@@ -48,5 +59,8 @@ export const PortfolioTitle = styled.span`
 
 export const ButtonBox = styled.div`
 	display: none;
+	& button {
+		flex: none;
+	}
 	gap: 0.4rem;
 `;

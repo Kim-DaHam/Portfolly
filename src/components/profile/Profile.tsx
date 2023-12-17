@@ -24,7 +24,7 @@ const renderProfile = (type: Profile) => {
 			<>
 				<SpanBox>
 					<UserName type={type}>username</UserName>
-					<PortfolioTitle>PortfolioTitle</PortfolioTitle>
+					<PortfolioTitle>PortfolioTitleBlaBla</PortfolioTitle>
 				</SpanBox>
 
 					<ButtonBox className='button-box'>
