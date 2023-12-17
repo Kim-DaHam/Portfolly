@@ -19,16 +19,23 @@ function Header(){
 	const location = useLocation();
 	const showSearchBar = (location.pathname !== '/' && '/login' && '/signup' );
 	const showSectionMenu = (location.pathname === '/main')
-	const { menuOpen, menuButtonCoordinate, openMenu, closeMenu} = useOpenMenu();
+	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
+	const [sectionMenuOpen, sectionButtonCoordinate, openSectionMenu, closeSectionMenu] = useOpenMenu();
 
 	const renderSectionMenu = ()=> {
 		return(
-			<SectionMenuBox>
-				<SectionTitle>Section</SectionTitle>
-				<MoreButton color='Transparency'>
-					<FiMoreHorizontal color='gray'/>
-				</MoreButton>
-			</SectionMenuBox>
+			<>
+				<SectionMenuBox>
+					<SectionTitle>Section</SectionTitle>
+					<MoreButton color='Transparency' onClick={openSectionMenu}>
+						<FiMoreHorizontal color='gray'/>
+					</MoreButton>
+				</SectionMenuBox>
+
+				{ sectionMenuOpen &&
+					<Popper type='section' right={sectionButtonCoordinate.right} bottom={sectionButtonCoordinate.bottom} closeMenu={closeSectionMenu}/>
+				}
+			</>
 		)
 	}
 
