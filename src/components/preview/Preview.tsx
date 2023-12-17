@@ -1,6 +1,6 @@
 import PortfolioItem from "../portfolio-item/PortfolioItem";
 
-import { FlexBox, PreviewContainer, PreviewRow, ViewMoreButton } from "./Preview.styled";
+import { FlexBox, PreviewLayout, PreviewRow, ViewMoreButton } from "./Preview.styled";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
 import { Section } from "@/types/portfolio";
@@ -19,7 +19,7 @@ const PreviewRowColumns = {
 
 function Preview({section}: Props){
 	return(
-		<PreviewContainer>
+		<PreviewLayout>
 			<FlexBox>
 					<h1>{section}</h1>
 					<p>
@@ -31,7 +31,7 @@ function Preview({section}: Props){
 				<PortfolioItem type={section}/>
 				<ViewMoreButton/>
 			</PreviewRow>
-		</PreviewContainer>
+		</PreviewLayout>
 	)
 }
 

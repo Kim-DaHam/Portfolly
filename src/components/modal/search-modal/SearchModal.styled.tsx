@@ -42,7 +42,7 @@ export const ContentContainer = styled.section`
 	padding: 0 1.25rem 1rem 1.25rem;
 `
 
-export const FilterGroup = styled.aside`
+export const FilterGroup = styled.nav`
 	display: flex;
 	flex-direction: column;
 	flex-basis: 20%;

@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
 	width: 100%;
 	height: 3.5rem;
 
@@ -18,14 +18,14 @@ export const HeaderContainer = styled.div`
 	background-color: lightgray;
 `;
 
-export const ButtonBox = styled.div`
+export const ButtonBox = styled.nav`
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 	gap: 0.9rem;
 `
 
-export const LogoBox = styled.div`
+export const LogoBox = styled.a`
 	width: 3.1rem;
 	height: 100%;
 

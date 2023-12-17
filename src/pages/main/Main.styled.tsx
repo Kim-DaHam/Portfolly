@@ -8,7 +8,7 @@ export const MainLayout = styled.div`
 	z-index: 100;
 `;
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.main`
 	width: 100%;
 
 	display: flex;
