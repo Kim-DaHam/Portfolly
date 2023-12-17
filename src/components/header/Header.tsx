@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import SectionMenu from "../menu/SectionMenu";
-import SearchModal from "../modal/SearchModal";
+import SearchModal from "../modal/search-modal/SearchModal";
 import Popper from "../popper/Popper";
 import SearchBar from "../searchBar/SearchBar";
 

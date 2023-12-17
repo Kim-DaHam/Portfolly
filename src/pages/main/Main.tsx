@@ -4,7 +4,7 @@ import Slider, { Settings } from "react-slick";
 import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
-import SearchModal from "@/components/modal/SearchModal";
+import SearchModal from "@/components/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
 import Profile from "@/components/profile/Profile";
 
