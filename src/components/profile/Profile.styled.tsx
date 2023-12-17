@@ -23,6 +23,8 @@ export const Image = styled.img<{type: Profile}>`
 	width: 23%;
 	height: 100%;
 
+	flex: none;
+
 	background-color: pink;
 `;
 
@@ -46,7 +48,5 @@ export const PortfolioTitle = styled.span`
 
 export const ButtonBox = styled.div`
 	display: none;
-	gap: 1rem;
-
-	background-color: lavender;
+	gap: 0.4rem;
 `;

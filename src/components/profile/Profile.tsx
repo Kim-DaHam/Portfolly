@@ -1,3 +1,8 @@
+import { FiMoreHorizontal } from "react-icons/fi";
+
+import { SquareButton } from "../button/Button.styled";
+import ToggleButton from "../button/ToggleButton";
+
 import { ButtonBox, PortfolioTitle, ProfileContainer, UserName, Image, SpanBox } from "./Profile.styled";
 
 import { IComponentFactory } from "@/types";
@@ -23,9 +28,10 @@ const renderProfile = (type: Profile) => {
 				</SpanBox>
 
 					<ButtonBox className='button-box'>
-						<div></div>
-						<div></div>
-						{/* 북마크, 메뉴 버튼 */}
+						<ToggleButton type='Bookmark'/>
+						<SquareButton color='Gray'>
+							<FiMoreHorizontal />
+						</SquareButton>
 					</ButtonBox>
 			</>
 		),
@@ -40,7 +46,6 @@ const renderProfile = (type: Profile) => {
 function Profile({type}: ProfileProps) {
 	return(
 		<ProfileContainer type={type}>
-			{/* <ABox/> */}
 			<Image type={type}/>
 			{renderProfile(type)}
 		</ProfileContainer>
