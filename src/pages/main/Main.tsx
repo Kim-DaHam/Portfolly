@@ -1,73 +1,33 @@
-import { LegacyRef, useEffect, useRef, useState } from "react";
-import Slider, { Settings } from "react-slick";
+import { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
 
+import { sliderSettings } from "./Main.constants";
 import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
 import SearchModal from "@/components/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
 import Profile from "@/components/profile/Profile";
+import useHandleSlider from "@/hooks/useHandleSlider";
+import { InitialProps } from "@/types";
+
+
+const initialProps: InitialProps = {
+	type: 'Long',
+	slidesToShow: sliderSettings.slidesToShow!,
+	slidesToScroll: sliderSettings.slidesToScroll!,
+	speed: sliderSettings.speed!,
+	maxIndex: 11,
+}
 
 function Main(){
-	const [slick, setSlick] = useState<Slider>();
 	const [filterOpen, setFilterOpen] = useState(false);
-	const [beforeClicked, setBeforeClicked] = useState(false);
-	const [currentSlideIndex, setCurrentSlideIndex] = useState(7);
 
-	const slickRef :LegacyRef<Slider> | null = useRef(null);
-
-	const settings: Settings = {
-		dots: false,
-		infinite: false,
-		speed: 500,
-		slidesToShow: 7,
-		slidesToScroll: 3,
-		draggable: false,
-		fade: false,
-		arrows: false,
-		vertical: false,
-		initialSlide: 0,
-		responsive: [
-			{
-				breakpoint: 960, // 화면 사이즈 960px일 때
-				settings: {
-					dots: false,
-					arrows: false,
-				}
-			}
-		]
-	}
-
-	const handlePrev = ()=> {
-		if(beforeClicked) return;
-
-		setBeforeClicked((prev)=>!prev);
-		slick?.slickPrev();
-
-		setCurrentSlideIndex((prev) => {
-			if(prev - 3 < 7) return 7;
-			else return (prev - 3);
-		});
-
-		setTimeout(()=>setBeforeClicked((prev)=>!prev), 500);
-	};
-
-  const handleNext = ()=> {
-		if(beforeClicked) return;
-
-		setBeforeClicked((prev)=>!prev);
-		slick?.slickNext();
-
-		setCurrentSlideIndex((prev) => {
-			if(prev + 3 > 11) return 11
-			else return (prev + 3);
-		});
-
-		setTimeout(()=>setBeforeClicked((prev)=>!prev), 500);
-	};
+	const sliderRef = useRef(null);
+	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
 
 	useEffect(()=> {
-		setSlick(slickRef.current!);
+		setSlider(sliderRef.current!);
 	}, [])
 
 	return(
@@ -97,7 +57,7 @@ function Main(){
 						</ArrowBox>
 
 						<CategoryRow>
-							<Slider {...settings} ref={slickRef}>
+							<Slider {...sliderSettings} ref={sliderRef}>
 								<CategoryButton>1</CategoryButton>
 								<CategoryButton>2</CategoryButton>
 								<CategoryButton>3</CategoryButton>
