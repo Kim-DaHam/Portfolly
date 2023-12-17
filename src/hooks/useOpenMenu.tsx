@@ -8,7 +8,7 @@ function useOpenMenu() {
 });
 
 	const openMenu = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		const menuButton = event.target as HTMLElement;
+		const menuButton = event.currentTarget as HTMLElement;
 
 		setMenuButtonCoordinate((prev) => ({
 				...prev,
