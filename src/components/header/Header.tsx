@@ -9,11 +9,11 @@ import SearchBar from "../searchBar/SearchBar";
 import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
 
 import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVersionButton } from "@/components/header/Header.styled";
-import useOpenMenu from "@/hooks/useOpenMenu";
+import usePopup from "@/hooks/usePopup";
 import { ROUTE_PATH } from "@/utils/path";
 
 function Header() {
-	const [isHeaderMenuPopUp, menuButtonCoordinate, popUp, popOut] = useOpenMenu();
+	const [isHeaderMenuPopUp, menuButtonCoordinate, popUp, popOut] = usePopup();
 	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
 	const navigate = useNavigate();

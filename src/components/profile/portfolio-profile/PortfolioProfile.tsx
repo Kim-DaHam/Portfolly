@@ -6,12 +6,12 @@ import { ButtonBox, PortfolioTitle, SpanBox, UserName } from "../Profile.styled"
 import { SquareButton as MoreButton } from "@/components/button/Button.styled";
 import ToggleButton from "@/components/button/ToggleButton";
 import Popper from "@/components/popper/Popper";
-import useOpenMenu from "@/hooks/useOpenMenu";
+import usePopup from "@/hooks/usePopup";
 
 function PortfolioProfile() {
 	const buttonBoxRef = useRef(null);
 
-	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
+	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = usePopup();
 
 	useEffect(()=>{
 		const buttonBox :HTMLElement = buttonBoxRef.current!;

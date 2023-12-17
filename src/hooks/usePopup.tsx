@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function useOpenMenu() {
-	const [menuOpen, setMenuOpen] = useState(false);
+function usePopup() {
+	const [popUp, setPopUp] = useState(false);
 	const [menuButtonCoordinate, setMenuButtonCoordinate] = useState({
 		right: 0,
 		bottom: 0,
@@ -16,11 +16,11 @@ function useOpenMenu() {
 				bottom: calculateCoordinate(menuButton).bottom,
 		}))
 
-		setMenuOpen((prev)=>!prev);
+		setPopUp((prev)=>!prev);
 	}
 
 	const closeMenu = ()=> {
-		setMenuOpen((prev)=>!prev);
+		setPopUp((prev)=>!prev);
 	}
 
 	const calculateCoordinate = (button: HTMLElement)=> {
@@ -40,7 +40,7 @@ function useOpenMenu() {
 		}
 	}
 
-	return [menuOpen, menuButtonCoordinate, openMenu, closeMenu] as const;
+	return [popUp, menuButtonCoordinate, openMenu, closeMenu] as const;
 }
 
-export default useOpenMenu;
+export default usePopup;

@@ -5,10 +5,10 @@ import Popper from "../popper/Popper";
 
 import { SectionMenuBox, SectionMenuLayout, SectionTitle } from "./SectionMenu.styled";
 
-import useOpenMenu from "@/hooks/useOpenMenu";
+import usePopup from "@/hooks/usePopup";
 
 function SectionMenu() {
-	const [isPopUp, menuButtonCoordinate, popUp, popOut] = useOpenMenu();
+	const [isPopUp, menuButtonCoordinate, popUp, popOut] = usePopup();
 
 	return(
 		<SectionMenuLayout>
