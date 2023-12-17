@@ -1,11 +1,16 @@
+import { useEffect, useRef } from "react";
 import { FiMoreHorizontal } from "react-icons/fi";
 
-import { SquareButton } from "../button/Button.styled";
+import { SquareButton as MoreButton } from "../button/Button.styled";
 import ToggleButton from "../button/ToggleButton";
+import Popper from "../popper/Popper";
 
 import { ButtonBox, PortfolioTitle, ProfileContainer, UserName, Image, SpanBox } from "./Profile.styled";
 
+import useOpenMenu from "@/hooks/useOpenMenu";
 import { IComponentFactory } from "@/types";
+
+
 
 type Profile = 'Default' | 'Portfolio' | 'Chat';
 
@@ -13,38 +18,57 @@ interface ProfileProps {
 	type: Profile;
 }
 
-const renderProfile = (type: Profile) => {
-	const ComponentFactory: IComponentFactory = {
-		Default: (
-			<>
-				<UserName type={type}>username</UserName>
-			</>
-		),
-		Portfolio: (
-			<>
-				<SpanBox>
-					<UserName type={type}>username</UserName>
-					<PortfolioTitle>PortfolioTitleBlaBla</PortfolioTitle>
-				</SpanBox>
+function Profile({type}: ProfileProps) {
+	const { menuOpen, menuButtonCoordinate, openMenu, closeMenu} = useOpenMenu();
+	const buttonBoxRef = useRef(null);
 
-					<ButtonBox className='button-box'>
+	const renderProfile = (type: Profile) => {
+		const ComponentFactory: IComponentFactory = {
+			Default: (
+				<>
+					<UserName type={type}>username</UserName>
+				</>
+			),
+			Portfolio: (
+				<>
+					<SpanBox>
+						<UserName type={type}>username</UserName>
+						<PortfolioTitle>PortfolioTitleBlaBla</PortfolioTitle>
+					</SpanBox>
+
+					<ButtonBox className='button-box' ref={buttonBoxRef}>
 						<ToggleButton type='Bookmark'/>
 
-						<SquareButton color='Gray' type="Icon">
+						<MoreButton onClick={openMenu} color='Gray' type="Icon">
 							<FiMoreHorizontal/>
-						</SquareButton>
+						</MoreButton>
 					</ButtonBox>
-			</>
-		),
-		Chat: (
-			<></>
-		)
+
+					{ menuOpen &&
+						<Popper type='portfolioItem' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} closeMenu={closeMenu}/>
+					}
+				</>
+			),
+			Chat: (
+				<></>
+			)
+		}
+
+		return ComponentFactory[type];
 	}
 
-	return ComponentFactory[type];
-}
+	useEffect(()=>{
+		const buttonBox :HTMLElement = buttonBoxRef.current!;
 
-function Profile({type}: ProfileProps) {
+		if(menuOpen){
+			buttonBox!.style.display = 'flex';
+			return;
+		}
+
+		buttonBox!.style.display = '';
+
+	}, [menuOpen])
+
 	return(
 		<ProfileContainer type={type}>
 			<Image type={type}/>

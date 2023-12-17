@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	body #modal {
+		height: 9999px;
 		position: absolute;
 		z-index: 999;
 	}
