@@ -1,6 +1,6 @@
 import { Section } from "./portfolio"
 
-type Color = 'White' | 'Black' | 'Gray';
+export type Color = 'White' | 'Black' | 'Gray';
 
 export type PortfolioItemSize = {
     [key in Section]: {
