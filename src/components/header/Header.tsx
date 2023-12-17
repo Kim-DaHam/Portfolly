@@ -13,8 +13,8 @@ import useOpenMenu from "@/hooks/useOpenMenu";
 import { ROUTE_PATH } from "@/utils/path";
 
 function Header() {
-	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
-	const [isSearchModalPopup, setIsSearchModalPopup] = useState(false);
+	const [isHeaderMenuPopUp, menuButtonCoordinate, popUp, popOut] = useOpenMenu();
+	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -22,8 +22,8 @@ function Header() {
 	const showSearchBar = (location.pathname === PAGE_SHOW_SEARCH_BAR );
 	const showSectionMenu = (location.pathname === PAGE_SHOW_SECTION_MENU);
 
-	const popUpOutSearchModal = ()=> {
-		setIsSearchModalPopup(prev=>!prev);
+	const handleSearchModal = ()=> {
+		setIsSearchModalOpen(prev=>!prev);
 	}
 
 	return(
@@ -34,10 +34,10 @@ function Header() {
 
 			{ showSearchBar ?
 				<>
-					<SearchBar isClicked={isSearchModalPopup} onClick={popUpOutSearchModal}/>
+					<SearchBar isClicked={isSearchModalOpen} onClick={handleSearchModal}/>
 
-					{ isSearchModalPopup &&
-						<SearchModal onClick={popUpOutSearchModal}/>
+					{ isSearchModalOpen &&
+						<SearchModal onClick={handleSearchModal}/>
 					}
 				</>
 				:
@@ -49,15 +49,15 @@ function Header() {
 
 				<TrialVersionButton>Start Trial Version</TrialVersionButton>
 
-				<MenuButton id='header-menu' onClick = {openMenu}>=</MenuButton>
+				<MenuButton onClick={popUp}>=</MenuButton>
 			</ButtonBox>
 
-			{ menuOpen &&
+			{ isHeaderMenuPopUp &&
 				<Popper
-					type='header'
+					type='HeaderMenu'
 					right={menuButtonCoordinate.right}
 					bottom={menuButtonCoordinate.bottom}
-					popOut={closeMenu}
+					popOut={popOut}
 				/>
 			}
 		</HeaderContainer>
