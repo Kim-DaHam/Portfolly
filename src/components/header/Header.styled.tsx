@@ -46,7 +46,6 @@ export const MenuButton = styled.button`
 export const SectionMenuBox = styled.div`
 	display: flex;
 	flex-direction: row;
-	gap: 0.9rem;
 `;
 
 export const SectionTitle = styled.div`

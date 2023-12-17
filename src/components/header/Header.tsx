@@ -25,7 +25,7 @@ function Header(){
 		return(
 			<SectionMenuBox>
 				<SectionTitle>Section</SectionTitle>
-				<MoreButton color='White'>
+				<MoreButton color='Transparency'>
 					<FiMoreHorizontal color='gray'/>
 				</MoreButton>
 			</SectionMenuBox>
