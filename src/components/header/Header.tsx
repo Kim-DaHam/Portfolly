@@ -12,7 +12,6 @@ import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVers
 import useOpenMenu from "@/hooks/useOpenMenu";
 import { ROUTE_PATH } from "@/utils/path";
 
-
 function Header() {
 	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
 	const [isSearchModalPopup, setIsSearchModalPopup] = useState(false);
