@@ -7,8 +7,8 @@ import { sliderSettings } from "./PortfolioItem.constants";
 
 import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
-import { InitialProps } from "@/types";
 import { Section } from "@/types/portfolio";
+import { InitialProps } from "@/types/slider";
 
 type Props = {
 	type: Section;

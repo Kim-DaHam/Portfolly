@@ -9,7 +9,7 @@ import SearchModal from "@/components/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
 import Profile from "@/components/profile/Profile";
 import useHandleSlider from "@/hooks/useHandleSlider";
-import { InitialProps } from "@/types";
+import { InitialProps } from "@/types/slider";
 
 
 const initialProps: InitialProps = {
