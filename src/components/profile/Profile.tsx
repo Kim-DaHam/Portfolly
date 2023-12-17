@@ -43,7 +43,7 @@ function Profile({type}: Props) {
 					</ButtonBox>
 
 					{ menuOpen &&
-						<Popper type='portfolioItem' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} closeMenu={closeMenu}/>
+						<Popper type='portfolioItem' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} popOut={closeMenu}/>
 					}
 				</>
 			),

@@ -45,18 +45,3 @@ export const TrialVersionButton = styled.button`
 export const MenuButton = styled.button`
 	padding: 0 1rem 0 1rem;
 `;
-
-export const SectionMenuBox = styled.div`
-	display: flex;
-	flex-direction: row;
-`;
-
-export const SectionTitle = styled.div`
-	height: 100%;
-
-	display: flex;
-	align-items: center;
-
-	font-weight: 600;
-	font-size: 1.5em;
-`;

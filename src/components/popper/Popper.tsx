@@ -11,7 +11,7 @@ type Props = {
 	type: Popper;
 	right: number;
 	bottom: number;
-	closeMenu: Dispatch<SetStateAction<boolean>>;
+	popOut: Dispatch<SetStateAction<boolean>>;
 };
 
 const renderPopper = (type: Popper) => {
@@ -49,7 +49,7 @@ const renderPopper = (type: Popper) => {
 	return ComponentFactory[type];
 }
 
-function Popper({ type, right, bottom, closeMenu}: Props) {
+function Popper({ type, right, bottom, popOut}: Props) {
 
 	useEffect(()=>{
 		document.body.style.cssText = `
@@ -68,7 +68,7 @@ function Popper({ type, right, bottom, closeMenu}: Props) {
 	},[]);
 
 	return createPortal(
-		<PopperLayout onClick={()=>closeMenu((prev)=>!prev)}>
+		<PopperLayout onClick={()=>popOut(prev=>!prev)}>
 			<PopperContainer top={bottom} right={right} onClick={(event)=> event.stopPropagation()}>
 				{renderPopper(type)}
 			</PopperContainer>,
