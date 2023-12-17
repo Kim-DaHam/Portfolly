@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -6,37 +6,20 @@ import 'slick-carousel/slick/slick-theme.css';
 import { sliderSettings } from "./PortfolioItem.constants";
 
 import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/portfolio-item/PortfolioItem.styled";
+import useHandleSlider from "@/hooks/useHandleSlider";
 import { Section } from "@/types/portfolio";
-
 
 type Props = {
 	type: Section;
 }
 
 function PortfolioItem({type}: Props){
-	const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-	const [isClickedJustBefore, setClickedJustBefore] = useState(false);
-	const [slick, setSlick] = useState<Slider>();
+	const sliderRef = useRef(null);
+	const { handlePrev, handleNext, setSlick, currentSlideIndex } = useHandleSlider();
 
-	const handlePrev = ()=> {
-		if(isClickedJustBefore) return;
-
-		setClickedJustBefore(prev=>!prev);
-		slick?.slickPrev();
-		setCurrentSlideIndex(prev => prev - 1);
-
-		setTimeout(()=>setClickedJustBefore(prev=>!prev), 200);
-	};
-
-  const handleNext = ()=> {
-		if(isClickedJustBefore) return;
-
-		setClickedJustBefore(prev=>!prev);
-		slick?.slickNext();
-		setCurrentSlideIndex(prev=>prev+1);
-
-		setTimeout(()=>setClickedJustBefore(prev=>!prev), 200);
-	};
+	useEffect(()=>{
+		setSlick(sliderRef.current!);
+	}, [])
 
 	return(
 		<PortfolioItemContainer type={type}>
@@ -46,13 +29,7 @@ function PortfolioItem({type}: Props){
 					<NextArrow onClick={handleNext} current={currentSlideIndex} last={2}/>
 				</ArrowBox>
 
-				<Slider {...sliderSettings}
-					ref={(element)=>{
-						if(element !== null){
-							setSlick(element);
-						}}
-					}
-				>
+				<Slider {...sliderSettings} ref={sliderRef}>
 					<div>1</div>
 					<div>2</div>
 					<div>3</div>
