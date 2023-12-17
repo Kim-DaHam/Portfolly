@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 
-import { sliderSettings } from "./Main.constants";
+import { initialProps, sliderSettings } from "./Main.constants";
 import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
@@ -9,22 +9,16 @@ import SearchModal from "@/components/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
 import Profile from "@/components/profile/Profile";
 import useHandleSlider from "@/hooks/useHandleSlider";
-import { InitialProps } from "@/types/slider";
-
-
-const initialProps: InitialProps = {
-	type: 'Long',
-	slidesToShow: sliderSettings.slidesToShow!,
-	slidesToScroll: sliderSettings.slidesToScroll!,
-	speed: sliderSettings.speed!,
-	maxIndex: 11,
-}
 
 function Main(){
 	const [filterOpen, setFilterOpen] = useState(false);
 
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
+
+	const openFilter = ()=>{
+		setFilterOpen((prev)=>!prev);
+	}
 
 	useEffect(()=> {
 		setSlider(sliderRef.current!);
@@ -40,12 +34,12 @@ function Main(){
 				</TitleSection>
 
 				<CategorySection>
-					<FilterButton onClick={()=> setFilterOpen((prev)=>!prev)}>
+					<FilterButton onClick={openFilter}>
 						Filters
 					</FilterButton>
 
 					{ filterOpen &&
-						<SearchModal onClick={()=> setFilterOpen((prev)=>!prev)}/>
+						<SearchModal onClick={openFilter}/>
 					}
 
 					<Divider/>
