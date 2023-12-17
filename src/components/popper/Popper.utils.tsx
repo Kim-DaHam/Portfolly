@@ -3,7 +3,6 @@ import { Popper } from "./Popper.type";
 
 import { IComponentFactory } from "@/types";
 
-
 export const renderPopper = (type: Popper) => {
 	const ComponentFactory: IComponentFactory = {
 		HeaderMenu: (

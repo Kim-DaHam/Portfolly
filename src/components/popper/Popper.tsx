@@ -8,7 +8,6 @@ import { renderPopper } from "./Popper.utils";
 import { eventStopPropagation } from "@/utils/event";
 import { moveScrollY, stopScrollY } from "@/utils/style";
 
-
 function Popper({ type, right, bottom, popOut}: Props) {
 
 	useEffect(()=>{
