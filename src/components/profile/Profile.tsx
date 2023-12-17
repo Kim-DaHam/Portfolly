@@ -19,7 +19,7 @@ interface ProfileProps {
 }
 
 function Profile({type}: ProfileProps) {
-	const { menuOpen, menuButtonCoordinate, openMenu, closeMenu} = useOpenMenu();
+	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
 	const buttonBoxRef = useRef(null);
 
 	const renderProfile = (type: Profile) => {

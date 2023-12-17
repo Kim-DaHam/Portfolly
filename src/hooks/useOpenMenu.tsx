@@ -41,7 +41,7 @@ function useOpenMenu() {
 		}
 	}
 
-	return {menuOpen, menuButtonCoordinate, openMenu, closeMenu}
+	return [menuOpen, menuButtonCoordinate, openMenu, closeMenu] as const;
 }
 
 export default useOpenMenu;
