@@ -130,7 +130,7 @@ const Arrow = css`
 
 export const PrevArrow = styled.button<{current: number}>`
 	${Arrow}
-	visibility: ${(props) => props.current === 7 ? 'hidden' : 'visible'};
+	visibility: ${(props) => props.current === 6 ? 'hidden' : 'visible'};
 `;
 
 export const NextArrow = styled.button<{current: number, last:number}>`
