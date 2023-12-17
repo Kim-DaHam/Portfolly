@@ -29,8 +29,9 @@ const renderProfile = (type: Profile) => {
 
 					<ButtonBox className='button-box'>
 						<ToggleButton type='Bookmark'/>
-						<SquareButton color='Gray'>
-							<FiMoreHorizontal />
+
+						<SquareButton color='Gray' type="Icon">
+							<FiMoreHorizontal/>
 						</SquareButton>
 					</ButtonBox>
 			</>

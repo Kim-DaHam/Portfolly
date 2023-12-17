@@ -1,4 +1,4 @@
-import { FiBookmark } from "react-icons/fi";
+import { FiBookmark, FiHeart } from "react-icons/fi";
 
 import { SquareButton } from "./Button.styled";
 
@@ -14,13 +14,13 @@ interface ToggleButtonProps {
 const renderToggleButton = (type: Toggle) => {
 	const ComponentFactory: IComponentFactory = {
 		Bookmark: (
-			<SquareButton color='Black'>
-				<FiBookmark />
+			<SquareButton color='Black' type="Icon">
+				<FiBookmark/>
 			</SquareButton>
 		),
 		Like: (
-			<SquareButton color='White'>
-
+			<SquareButton color='White' type="Icon">
+				<FiHeart/>
 			</SquareButton>
 		),
 	}

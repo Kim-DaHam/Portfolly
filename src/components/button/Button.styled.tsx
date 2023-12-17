@@ -3,6 +3,8 @@ import { css, styled } from 'styled-components';
 import { buttonColor } from '@/styles/token';
 import { Color } from '@/types/style';
 
+type ButtonType = 'Icon' | 'Text';
+
 const buttonStyle = css`
 	font-size: 1em;
 	line-height: 1.5em;
@@ -13,8 +15,9 @@ const buttonStyle = css`
 	border: 0;
 `;
 
-export const SquareButton = styled.button<{color: Color}>`
+export const SquareButton = styled.button<{color: Color, type: ButtonType}>`
 	${buttonStyle}
+	padding-top: ${(props)=>props.type === 'Icon' ? '0.4rem' : ''};
 	border-radius: 1em;
 
 	${(props)=>{
@@ -28,9 +31,10 @@ export const SquareButton = styled.button<{color: Color}>`
 	}}
 `;
 
-export const RoundButton = styled.button<{color: Color}>`
+export const RoundButton = styled.button<{color: Color, type:ButtonType}>`
 	${buttonStyle}
 	border-radius: 9999px;
+	font-size: ${(props)=>props.type === 'Text' ? '1rem' : ''};
 
 	${(props)=>{
 		return css`
