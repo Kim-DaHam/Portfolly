@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-import { Group, Item, PopperContainer, PopperLayout, Separator } from "./Popper.styled";
+import { Group, Item, PopperContainer, PopperLayout, SectionGroup, Separator } from "./Popper.styled";
 
 import { IComponentFactory } from "@/types";
 
@@ -36,13 +36,13 @@ const renderPopper = (type: Popper) => {
 					</Group>
         ),
 				section: (
-					<Group>
+					<SectionGroup>
 						<Item>Android/iOS</Item>
 						<Item>Web</Item>
 						<Item>Illustration</Item>
 						<Item>Graphics</Item>
 						<Item>Video</Item>
-					</Group>
+					</SectionGroup>
 				),
     }
 

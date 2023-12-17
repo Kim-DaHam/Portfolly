@@ -7,7 +7,7 @@ export const PopperLayout = styled.div`
 `;
 
 export const PopperContainer = styled.div<{top: number, right: number}>`
-    width: 15rem;
+    width: auto;
     background-color: lightgray;
     border-radius: 16px;
 
@@ -28,13 +28,17 @@ export const Separator = styled.div`
 `;
 
 export const Group = styled.div`
-    width: 100%;
+    width: 15rem;
     height: 100%;
     padding: 8px;
 
     display: flex;
     flex-direction: column;
 `;
+
+export const SectionGroup = styled(Group)`
+	width: fit-content;
+`
 
 export const Item = styled.a`
     padding: 0.5rem;
