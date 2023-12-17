@@ -1,10 +1,13 @@
 import PortfolioItem from "../portfolio-item/PortfolioItem";
 
-import { FlexBox, PreviewContainer, PreviewRow, ViewMoreButton } from "./Preview.styled";
+import { FlexBox, PreviewLayout, PreviewRow, ViewMoreButton } from "./Preview.styled";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
 import { Section } from "@/types/portfolio";
 
+type Props = {
+	section: Section;
+}
 
 const PreviewRowColumns = {
 	'Android/iOS': 3,
@@ -14,10 +17,9 @@ const PreviewRowColumns = {
 	'Video': 2,
 }
 
-function Preview(props: {section: Section}){
-	const section = props.section;
+function Preview({section}: Props){
 	return(
-		<PreviewContainer>
+		<PreviewLayout>
 			<FlexBox>
 					<h1>{section}</h1>
 					<p>
@@ -26,10 +28,10 @@ function Preview(props: {section: Section}){
 			</FlexBox>
 
 			<PreviewRow column={PreviewRowColumns[section]}>
-					<PortfolioItem type={section}/>
-					<ViewMoreButton/>
+				<PortfolioItem type={section}/>
+				<ViewMoreButton/>
 			</PreviewRow>
-		</PreviewContainer>
+		</PreviewLayout>
 	)
 }
 

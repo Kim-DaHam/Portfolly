@@ -6,7 +6,7 @@ const portfolioProfile = css`
 	border: 1px solid blue;
 `
 
-export const ProfileContainer = styled.div<{type: Profile}>`
+export const ProfileLayout = styled.div<{type: Profile}>`
 	width: 100%;
 
 	display: flex;
@@ -33,16 +33,16 @@ export const SpanBox = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	flex-grow: 1;
+	flex-shrink: 1;
 
-	overflow:hidden;
+	overflow: hidden;
 
 	& span {
-		overflow:hidden;
-		text-overflow:ellipsis;
-		white-space:nowrap;
-	}
+		overflow: hidden;
 
-	flex-shrink: 1;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 `;
 
 export const UserName = styled.span<{type: Profile}>`
@@ -59,8 +59,9 @@ export const PortfolioTitle = styled.span`
 
 export const ButtonBox = styled.div`
 	display: none;
+	gap: 0.4rem;
+
 	& button {
 		flex: none;
 	}
-	gap: 0.4rem;
 `;

@@ -1,3 +1,3 @@
-export interface IComponentFactory {
-    [key: string]: JSX.Element;
-  }
+export type IComponentFactory = {
+	[key: string]: JSX.Element;
+}

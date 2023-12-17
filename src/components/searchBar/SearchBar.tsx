@@ -1,34 +1,22 @@
-import { Dispatch, HTMLAttributes, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, HTMLAttributes, SetStateAction } from "react";
 
 import { SearchBarContainer, SearchInputArea, SearchLogo } from "./SearchBar.styled";
 
-interface SearchBarProps extends HTMLAttributes<HTMLDivElement> {
+import useSearch from "@/hooks/useSearch";
+
+type Props = HTMLAttributes<HTMLDivElement> & {
 	isClicked: boolean;
 	onInputChange?: Dispatch<SetStateAction<boolean>>;
-}
+};
 
-function SearchBar({ isClicked, onInputChange, ...attributes }: SearchBarProps){
-	const [searchWord, setSearchWord] = useState<string>('');
-
-	const searchKeyword = (keyword:string) => {
-		console.log(keyword);
-		setSearchWord(keyword);
-		if(searchWord.length > 0){
-			onInputChange?.(true);
-		}
-	}
-
-	useEffect(()=>{
-		if(searchWord === ''){
-			onInputChange?.(false);
-		}
-	}, [searchWord])
+function SearchBar({ isClicked, onInputChange, ...attributes }: Props){
+	const { searchKeyword } = useSearch({onInputChange});
 
 	return(
 		<SearchBarContainer {...attributes}>
 			<SearchLogo/>
 			{ isClicked ?
-				<SearchInputArea onChange={(event)=>searchKeyword(event.target.value)}/>
+				<SearchInputArea onChange={searchKeyword}/>
 				:
 				<div>Search on type...</div>
 			}

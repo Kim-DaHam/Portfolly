@@ -9,9 +9,10 @@ export const PortfolioItemContainer = styled.div<{type: Section}>`
 
 	position: 'relative';
 
+	overflow: hidden;
+
 	background-color: lightgray;
 	border-radius: 1.8rem;
-	overflow: hidden;
 
 	& :hover {
 		& .slick-dots {
@@ -27,14 +28,17 @@ export const PortfolioItemContainer = styled.div<{type: Section}>`
 export const SliderBox = styled.div`
 	width: 100%;
 	height: 100%;
-	cursor: pointer;
-	padding: 1.4em 1.5em 1.4em 1.5em;
 
 	position: relative;
+
+	padding: 1.4em 1.5em 1.4em 1.5em;
+
+	cursor: pointer;
 
 	& .slick-initialized {
 		width: 100%;
 		height: 100%;
+
 		border-radius: 1.8rem;
 		background-color: gray;
 	}
@@ -54,6 +58,7 @@ export const SliderBox = styled.div`
 
 	& .slick-dots > li {
 		margin: 0;
+
 		cursor: default;
 	}
 
@@ -65,39 +70,43 @@ export const SliderBox = styled.div`
 export const SliderItem = styled.div`
 	width: 100%;
 	height: 100%;
-	border-radius: 1.8rem;
 
 	overflow: hidden;
+
+	border-radius: 1.8rem;
 	background-color: gray;
 `;
 
 export const ArrowBox = styled.div`
 	width: 100%;
-	padding: 0 0.5rem 0 0.5rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
 	position: absolute;
 	z-index: 100;
 	top: 49%;
 	left: 0;
 
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	padding: 0 0.5rem 0 0.5rem;
 `;
 
 const Arrow = css`
-	cursor: pointer;
 	width: 1rem;
 	height: 1rem;
+
 	display: none;
+
+	cursor: pointer;
 `;
 
 export const PrevArrow = styled.button<{current: number}>`
 	${Arrow}
-	visibility: ${(props) => props.current === 0 ? 'hidden' : 'visible'}
+	visibility: ${(props) => props.current === 0 ? 'hidden' : 'visible'};
 `;
 
 export const NextArrow = styled.button<{current: number, last:number}>`
-${Arrow}
-visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'}
+	${Arrow}
+	visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'};
 `;

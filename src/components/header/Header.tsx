@@ -1,70 +1,45 @@
 import { useState } from "react";
-import { FiMoreHorizontal } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { RoundButton as MoreButton } from "../button/Button.styled";
-import SearchModal from "../modal/SearchModal";
+import SectionMenu from "../menu/SectionMenu";
+import SearchModal from "../modal/search-modal/SearchModal";
 import Popper from "../popper/Popper";
 import SearchBar from "../searchBar/SearchBar";
 
-import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, SectionMenuBox, SectionTitle, TrialVersionButton } from "@/components/header/Header.styled";
-import useOpenMenu from "@/hooks/useOpenMenu";
+import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
+
+import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVersionButton } from "@/components/header/Header.styled";
+import usePopup from "@/hooks/usePopup";
 import { ROUTE_PATH } from "@/utils/path";
 
-
-function Header(){
-	const [searchBarOpen, setSearchBarOpen] = useState(false);
+function Header() {
+	const [isHeaderMenuPopUp, menuButtonCoordinate, popUp, popOut] = usePopup();
+	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
 	const navigate = useNavigate();
 	const location = useLocation();
-	const showSearchBar = (location.pathname !== '/' && '/login' && '/signup' );
-	const showSectionMenu = (location.pathname === '/main')
-	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
-	const [sectionMenuOpen, sectionButtonCoordinate, openSectionMenu, closeSectionMenu] = useOpenMenu();
 
-	const renderSectionMenu = ()=> {
-		return(
-			<>
-				<SectionMenuBox>
-					<SectionTitle>Section</SectionTitle>
-					<MoreButton color='Transparency' onClick={openSectionMenu}>
-						<FiMoreHorizontal color='gray'/>
-					</MoreButton>
-				</SectionMenuBox>
+	const showSearchBar = (location.pathname === PAGE_SHOW_SEARCH_BAR );
+	const showSectionMenu = (location.pathname === PAGE_SHOW_SECTION_MENU);
 
-				{ sectionMenuOpen &&
-					<Popper type='section' right={sectionButtonCoordinate.right} bottom={sectionButtonCoordinate.bottom} closeMenu={closeSectionMenu}/>
-				}
-			</>
-		)
-	}
-
-	const renderSearchBar = ()=> {
-		return(
-			<>
-				<SearchBar isClicked={searchBarOpen} onClick={() => setSearchBarOpen((prev)=>!prev)}/>
-
-				{ searchBarOpen &&
-					<SearchModal onClick={() => setSearchBarOpen((prev)=>!prev)}/>
-				}
-			</>
-		)
+	const handleSearchModal = ()=> {
+		setIsSearchModalOpen(prev=>!prev);
 	}
 
 	return(
 		<HeaderContainer>
-			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}>
+			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}></LogoBox>
 
-			</LogoBox>
-
-			{ showSectionMenu ?
-				renderSectionMenu()
-				:
-				<div></div>
-			}
+			{ showSectionMenu ? <SectionMenu/> : <div></div> }
 
 			{ showSearchBar ?
-				renderSearchBar()
+				<>
+					<SearchBar isClicked={isSearchModalOpen} onClick={handleSearchModal}/>
+
+					{ isSearchModalOpen &&
+						<SearchModal onClick={handleSearchModal}/>
+					}
+				</>
 				:
 				<div></div>
 			}
@@ -74,13 +49,17 @@ function Header(){
 
 				<TrialVersionButton>Start Trial Version</TrialVersionButton>
 
-				<MenuButton id='header-menu' onClick = {openMenu}>=</MenuButton>
+				<MenuButton onClick={popUp}>=</MenuButton>
 			</ButtonBox>
 
-			{ menuOpen &&
-					<Popper type='header' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} closeMenu={closeMenu}/>
+			{ isHeaderMenuPopUp &&
+				<Popper
+					type='HeaderMenu'
+					right={menuButtonCoordinate.right}
+					bottom={menuButtonCoordinate.bottom}
+					popOut={popOut}
+				/>
 			}
-
 		</HeaderContainer>
 	)
 }

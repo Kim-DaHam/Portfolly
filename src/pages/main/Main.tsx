@@ -1,68 +1,27 @@
-import { LegacyRef, useEffect, useRef, useState } from "react";
-import Slider, { Settings } from "react-slick";
+import { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
 
+import { initialProps, sliderSettings } from "./Main.constants";
 import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
 import Header from "@/components/header/Header";
-import SearchModal from "@/components/modal/SearchModal";
+import SearchModal from "@/components/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
 import Profile from "@/components/profile/Profile";
-
+import useHandleSlider from "@/hooks/useHandleSlider";
 
 function Main(){
-	const [currentSlideIndex, setCurrentSlideIndex] = useState(7);
-	const [beforeClicked, setBeforeClicked] = useState(false);
-	const [slick, setSlick] = useState<Slider>();
 	const [filterOpen, setFilterOpen] = useState(false);
 
-	const slickRef :LegacyRef<Slider> | null = useRef(null);
+	const sliderRef = useRef(null);
+	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
 
-	const settings: Settings = {
-		dots: false,
-		infinite: false,
-		speed: 500,
-		slidesToShow: 7,
-		slidesToScroll: 3,
-		draggable: false,
-		fade: false,
-		arrows: false,
-		vertical: false,
-		initialSlide: 0,
-		responsive: [
-			{
-				breakpoint: 960, // 화면 사이즈 960px일 때
-				settings: {
-					dots: false,
-					arrows: false,
-				}
-			}
-		]
+	const openFilter = ()=>{
+		setFilterOpen((prev)=>!prev);
 	}
 
-	const handlePrev = ()=> {
-		if(beforeClicked) return;
-		setBeforeClicked((prev)=>!prev);
-		slick?.slickPrev();
-		setCurrentSlideIndex((prev) => {
-			if(prev - 3 < 7) return 7;
-			else return (prev - 3);
-		});
-		setTimeout(()=>setBeforeClicked((prev)=>!prev), 500);
-	};
-
-  const handleNext = ()=> {
-		if(beforeClicked) return;
-		setBeforeClicked((prev)=>!prev);
-		slick?.slickNext();
-		setCurrentSlideIndex((prev) => {
-			if(prev + 3 > 11) return 11
-			else return (prev + 3);
-		});
-		setTimeout(()=>setBeforeClicked((prev)=>!prev), 500);
-	};
-
 	useEffect(()=> {
-		setSlick(slickRef.current!);
+		setSlider(sliderRef.current!);
 	}, [])
 
 	return(
@@ -75,12 +34,12 @@ function Main(){
 				</TitleSection>
 
 				<CategorySection>
-					<FilterButton onClick={()=> setFilterOpen((prev)=>!prev)}>
+					<FilterButton onClick={openFilter}>
 						Filters
 					</FilterButton>
 
 					{ filterOpen &&
-						<SearchModal onClick={()=> setFilterOpen((prev)=>!prev)}/>
+						<SearchModal onClick={openFilter}/>
 					}
 
 					<Divider/>
@@ -92,7 +51,7 @@ function Main(){
 						</ArrowBox>
 
 						<CategoryRow>
-							<Slider {...settings} ref={slickRef}>
+							<Slider {...sliderSettings} ref={sliderRef}>
 								<CategoryButton>1</CategoryButton>
 								<CategoryButton>2</CategoryButton>
 								<CategoryButton>3</CategoryButton>
@@ -125,7 +84,6 @@ function Main(){
 				</PortfolioSection>
 
 			</MainContainer>
-
 		</MainLayout>
 	)
 }
