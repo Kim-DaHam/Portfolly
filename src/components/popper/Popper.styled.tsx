@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const PopperLayout = styled.div`
 	width: 100vw;
-	height: 100vh;
+	height: 100%;
 	background-color: transparent;
 `;
 
@@ -12,7 +12,7 @@ export const PopperContainer = styled.div<{top: number, right: number}>`
     border-radius: 16px;
 
     position: fixed;
-		z-index: 100;
+		z-index: 999;
 
     display: flex;
     flex-direction: column;

@@ -30,7 +30,12 @@ const renderPopper = (type: Popper) => {
             </>
         ),
         portfolioItem: (
-            <></>
+            <>
+						<Group>
+							<Item>MenuItem1</Item>
+							<Item>MenuItem2</Item>
+						</Group>
+						</>
         ),
     }
 
