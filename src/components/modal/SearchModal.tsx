@@ -11,7 +11,7 @@ type Filter = 'Trending' | 'Categories' | 'Tags' | 'Search';
 const renderContent = (filter: Filter) => {
 	const ComponentFactory: IComponentFactory = {
 		Trending: (
-				<>
+			<>
 				<div>요즘 핫한 파트너</div>
 				<FlexBox>
 					<div>1</div>
@@ -27,10 +27,10 @@ const renderContent = (filter: Filter) => {
 				<FlexBox>
 					인기 태그 5~개
 				</FlexBox>
-				</>
-			),
-			Categories: (
-				<>
+			</>
+		),
+		Categories: (
+			<>
 				<div>{filter}</div>
 				<ItemList>
 					<Item>
@@ -46,23 +46,23 @@ const renderContent = (filter: Filter) => {
 						<span>count</span>
 					</Item>
 				</ItemList>
-				</>
-			),
-			Tags: (
-				<>
+			</>
+		),
+		Tags: (
+			<>
 				<div>{filter}</div>
 				<ItemList>
 					반복문으로 Item 출력
 				</ItemList>
-				</>
-			),
-			Search: (
-				<>
+			</>
+		),
+		Search: (
+			<>
 				<ItemList>
 					검색 결과
 				</ItemList>
-				</>
-			)
+			</>
+		)
 	}
 
 	return ComponentFactory[filter];
@@ -89,10 +89,7 @@ function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
 	},[]);
 
 	useEffect(()=>{
-		isTextEntered ?
-			setFilter('Search')
-		:
-			setFilter('Trending')
+		isTextEntered ? setFilter('Search') : setFilter('Trending')
 	}, [isTextEntered])
 
 	return(
@@ -122,7 +119,6 @@ function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
 						{renderContent(filter)}
 					</ContentBox>
 				</ContentContainer>
-
 			</ModalBox>
 		</ModalLayout>
 	)

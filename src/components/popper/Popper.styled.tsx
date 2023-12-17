@@ -3,37 +3,40 @@ import { styled } from 'styled-components';
 export const PopperLayout = styled.div`
 	width: 100vw;
 	height: 100%;
+
 	background-color: transparent;
 `;
 
 export const PopperContainer = styled.div<{top: number, right: number}>`
-    width: auto;
-    background-color: lightgray;
-    border-radius: 16px;
+	width: auto;
 
-    position: fixed;
-		z-index: 999;
+	display: flex;
+	flex-direction: column;
 
-    display: flex;
-    flex-direction: column;
+	position: fixed;
+	z-index: 999;
+	top: ${(props) => props.top + 10}px;
+	right: ${(props) => document.documentElement.clientWidth - props.right}px;
 
-    top: ${(props) => props.top + 10}px;
-    right: ${(props) => document.documentElement.clientWidth - props.right}px;
+	border-radius: 16px;
+	background-color: lightgray;
 `;
 
 export const Separator = styled.div`
-    width: 100%;
-    height: 0.1rem;
-    background-color: black;
+	width: 100%;
+	height: 0.1rem;
+
+	background-color: black;
 `;
 
 export const Group = styled.div`
-    width: 15rem;
-    height: 100%;
-    padding: 8px;
+	width: 15rem;
+	height: 100%;
 
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
+
+	padding: 8px;
 `;
 
 export const SectionGroup = styled(Group)`
@@ -41,7 +44,9 @@ export const SectionGroup = styled(Group)`
 `
 
 export const Item = styled.a`
-    padding: 0.5rem;
-    display: flex;
-		cursor: pointer;
+	display: flex;
+
+	padding: 0.5rem;
+
+	cursor: pointer;
 `;

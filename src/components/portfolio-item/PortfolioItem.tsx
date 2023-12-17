@@ -17,17 +17,21 @@ function PortfolioItem({type}: Props){
 
 	const handlePrev = ()=> {
 		if(beforeClicked) return;
+
 		setBeforeClicked((prev)=>!prev);
 		slick?.slickPrev();
 		setCurrentSlideIndex((prev) => prev - 1);
+
 		setTimeout(()=>setBeforeClicked((prev)=>!prev), 200);
 	};
 
   const handleNext = ()=> {
 		if(beforeClicked) return;
+
 		setBeforeClicked((prev)=>!prev);
 		slick?.slickNext();
 		setCurrentSlideIndex((prev) => prev + 1);
+
 		setTimeout(()=>setBeforeClicked((prev)=>!prev), 200);
 	};
 
@@ -61,11 +65,13 @@ function PortfolioItem({type}: Props){
 					<NextArrow onClick={handleNext} current={currentSlideIndex} last={2}/>
 				</ArrowBox>
 
-				<Slider {...settings} ref={(element)=>{
-					if(element !== null){
-						setSlick(element);
+				<Slider {...settings}
+					ref={(element)=>{
+						if(element !== null){
+							setSlick(element);
+						}}
 					}
-				}}>
+				>
 					<div>1</div>
 					<div>2</div>
 					<div>3</div>
@@ -74,7 +80,6 @@ function PortfolioItem({type}: Props){
 					</SliderItem> */}
 				</Slider>
 			</SliderBox>
-
 		</PortfolioItemContainer>
 	)
 }

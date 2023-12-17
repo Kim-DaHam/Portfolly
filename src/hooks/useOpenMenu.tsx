@@ -5,7 +5,7 @@ function useOpenMenu() {
 	const [menuButtonCoordinate, setMenuButtonCoordinate] = useState({
 		right: 0,
 		bottom: 0,
-});
+	});
 
 	const openMenu = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		const menuButton = event.currentTarget as HTMLElement;
@@ -25,7 +25,6 @@ function useOpenMenu() {
 
 	const calculateCoordinate = (button: HTMLElement)=> {
 		const clientHeight = document.body.clientHeight;
-
 		const coordinates = {
 			right: button.getBoundingClientRect().right,
 			bottom: button.getBoundingClientRect().bottom,

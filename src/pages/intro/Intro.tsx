@@ -1,4 +1,4 @@
-import { Dvider, IntroLayout, Introduce } from "./Intro.styled";
+import { Divider, IntroLayout, Introduce } from "./Intro.styled";
 
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
@@ -15,27 +15,27 @@ function Intro(){
 				});
 			}
 		}}>
-				<Header/>
-				<Introduce>
-						<h1>Welcome to Portfolly</h1>
-						<h2>클라이언트와 파트너 간 소통해요</h2>
-				</Introduce>
-				<Dvider/>
+			<Header/>
+			<Introduce>
+					<h1>Welcome to Portfolly</h1>
+					<h2>클라이언트와 파트너 간 소통해요</h2>
+			</Introduce>
+			<Divider/>
 
-				<Preview section='Android/iOS'/>
-				<Dvider/>
+			<Preview section='Android/iOS'/>
+			<Divider/>
 
-				<Preview section='Web'/>
-				<Dvider/>
+			<Preview section='Web'/>
+			<Divider/>
 
-				<Preview section='Illustration'/>
-				<Dvider/>
+			<Preview section='Illustration'/>
+			<Divider/>
 
-				<Preview section='Graphics'/>
-				<Dvider/>
+			<Preview section='Graphics'/>
+			<Divider/>
 
-				<Preview section='Video'/>
-				<Footer/>
+			<Preview section='Video'/>
+			<Footer/>
 		</IntroLayout>
 	)
 }

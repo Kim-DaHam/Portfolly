@@ -4,15 +4,17 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		width: 100vw;
 		height: 100vh;
-		box-sizing: border-box;
-		overflow-x: hidden;
 
 		position: relative;
 		z-index: 0;
+
+		overflow-x: hidden;
+		box-sizing: border-box;
 	}
 
 	body #modal {
 		height: 9999px;
+
 		position: absolute;
 		z-index: 999;
 	}
@@ -20,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
 	* {
 		margin: 0;
 		padding: 0;
+
 		box-sizing: border-box;
 	}
 `;

@@ -4,24 +4,26 @@ export const ModalLayout = styled.div`
 	width: 100vw;
 	height: 100vh;
 
+	display: flex;
+	justify-content: center;
+
 	position: fixed;
 	z-index: 9999;
 	top: 0;
 	left: 0;
-	background-color: #0000007e;
 
-	display: flex;
-	justify-content: center;
+	background-color: #0000007e;
 `;
 
 export const ModalBox = styled.div`
 	width: 50%;
 	height: 80%;
-	background-color: white;
-	border-radius: 16px;
 
 	display: flex;
 	flex-direction: column;
+
+	border-radius: 16px;
+	background-color: white;
 `;
 
 export const SearchContainer = styled.section`
@@ -33,14 +35,14 @@ export const SearchContainer = styled.section`
 export const ContentContainer = styled.section`
 	width: 100%;
 	height: 100%;
-	padding: 0 1.25rem 1rem 1.25rem;
 
 	display: flex;
 	gap: 2rem;
+
+	padding: 0 1.25rem 1rem 1.25rem;
 `
 
 export const FilterGroup = styled.aside`
-
 	display: flex;
 	flex-direction: column;
 	flex-basis: 20%;

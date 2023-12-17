@@ -12,28 +12,36 @@ import useOpenMenu from "@/hooks/useOpenMenu";
 import { ROUTE_PATH } from "@/utils/path";
 
 
-function Header(){
+function Header() {
 	const [searchBarOpen, setSearchBarOpen] = useState(false);
+
+	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
+	const [sectionMenuOpen, sectionButtonCoordinate, openSectionMenu, closeSectionMenu] = useOpenMenu();
 
 	const navigate = useNavigate();
 	const location = useLocation();
+
 	const showSearchBar = (location.pathname !== '/' && '/login' && '/signup' );
 	const showSectionMenu = (location.pathname === '/main')
-	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = useOpenMenu();
-	const [sectionMenuOpen, sectionButtonCoordinate, openSectionMenu, closeSectionMenu] = useOpenMenu();
 
 	const renderSectionMenu = ()=> {
 		return(
 			<>
 				<SectionMenuBox>
 					<SectionTitle>Section</SectionTitle>
+
 					<MoreButton color='Transparency' onClick={openSectionMenu}>
 						<FiMoreHorizontal color='gray'/>
 					</MoreButton>
 				</SectionMenuBox>
 
 				{ sectionMenuOpen &&
-					<Popper type='section' right={sectionButtonCoordinate.right} bottom={sectionButtonCoordinate.bottom} closeMenu={closeSectionMenu}/>
+					<Popper
+						type='section'
+						right={sectionButtonCoordinate.right}
+						bottom={sectionButtonCoordinate.bottom}
+						closeMenu={closeSectionMenu}
+					/>
 				}
 			</>
 		)
@@ -53,21 +61,11 @@ function Header(){
 
 	return(
 		<HeaderContainer>
-			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}>
+			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}></LogoBox>
 
-			</LogoBox>
+			{ showSectionMenu ? renderSectionMenu() : <div></div> }
 
-			{ showSectionMenu ?
-				renderSectionMenu()
-				:
-				<div></div>
-			}
-
-			{ showSearchBar ?
-				renderSearchBar()
-				:
-				<div></div>
-			}
+			{ showSearchBar ? renderSearchBar() : <div></div> }
 
 			<ButtonBox>
 				<LogInButton>Log in</LogInButton>
@@ -78,9 +76,13 @@ function Header(){
 			</ButtonBox>
 
 			{ menuOpen &&
-					<Popper type='header' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} closeMenu={closeMenu}/>
+					<Popper
+						type='header'
+						right={menuButtonCoordinate.right}
+						bottom={menuButtonCoordinate.bottom}
+						closeMenu={closeMenu}
+					/>
 			}
-
 		</HeaderContainer>
 	)
 }

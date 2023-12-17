@@ -28,8 +28,8 @@ function Preview({section}: Props){
 			</FlexBox>
 
 			<PreviewRow column={PreviewRowColumns[section]}>
-					<PortfolioItem type={section}/>
-					<ViewMoreButton/>
+				<PortfolioItem type={section}/>
+				<ViewMoreButton/>
 			</PreviewRow>
 		</PreviewContainer>
 	)

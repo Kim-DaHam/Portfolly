@@ -10,7 +10,6 @@ import SignUp from '@/pages/signUp/SignUp';
 import { ROUTE_PATH } from '@/utils/path';
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>

@@ -8,12 +8,11 @@ import SearchModal from "@/components/modal/SearchModal";
 import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
 import Profile from "@/components/profile/Profile";
 
-
 function Main(){
-	const [currentSlideIndex, setCurrentSlideIndex] = useState(7);
-	const [beforeClicked, setBeforeClicked] = useState(false);
 	const [slick, setSlick] = useState<Slider>();
 	const [filterOpen, setFilterOpen] = useState(false);
+	const [beforeClicked, setBeforeClicked] = useState(false);
+	const [currentSlideIndex, setCurrentSlideIndex] = useState(7);
 
 	const slickRef :LegacyRef<Slider> | null = useRef(null);
 
@@ -41,23 +40,29 @@ function Main(){
 
 	const handlePrev = ()=> {
 		if(beforeClicked) return;
+
 		setBeforeClicked((prev)=>!prev);
 		slick?.slickPrev();
+
 		setCurrentSlideIndex((prev) => {
 			if(prev - 3 < 7) return 7;
 			else return (prev - 3);
 		});
+
 		setTimeout(()=>setBeforeClicked((prev)=>!prev), 500);
 	};
 
   const handleNext = ()=> {
 		if(beforeClicked) return;
+
 		setBeforeClicked((prev)=>!prev);
 		slick?.slickNext();
+
 		setCurrentSlideIndex((prev) => {
 			if(prev + 3 > 11) return 11
 			else return (prev + 3);
 		});
+
 		setTimeout(()=>setBeforeClicked((prev)=>!prev), 500);
 	};
 
@@ -125,7 +130,6 @@ function Main(){
 				</PortfolioSection>
 
 			</MainContainer>
-
 		</MainLayout>
 	)
 }

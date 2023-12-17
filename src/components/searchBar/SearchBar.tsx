@@ -11,8 +11,8 @@ function SearchBar({ isClicked, onInputChange, ...attributes }: Props){
 	const [searchWord, setSearchWord] = useState<string>('');
 
 	const searchKeyword = (keyword:string) => {
-		console.log(keyword);
 		setSearchWord(keyword);
+
 		if(searchWord.length > 0){
 			onInputChange?.(true);
 		}

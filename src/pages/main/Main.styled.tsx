@@ -10,14 +10,15 @@ export const MainLayout = styled.div`
 
 export const MainContainer = styled.div`
 	width: 100%;
-	padding: 8rem 5rem 3rem 5rem;
-
-	background-color: #fff5f5;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	gap: 1.7rem;
+
+	padding: 8rem 5rem 3rem 5rem;
+
+	background-color: #fff5f5;
 `;
 
 export const TitleSection = styled.section`
@@ -43,14 +44,13 @@ export const CategorySection = styled.section`
 	width: 100%;
 	height: 3rem;
 
-	border: 1px solid black;
-
 	display: flex;
 	gap: 2rem;
+
+	border: 1px solid black;
 `;
 
 export const FilterButton = styled.button`
-
 `;
 
 export const Divider = styled.div`
@@ -63,13 +63,15 @@ export const Divider = styled.div`
 export const CategoryBox = styled.div`
 	width: 100%;
 	height: inherit;
-	overflow: hidden;
-	position: relative;
 
 	display: flex;
 	gap: 2rem;
 	align-items: center;
 	flex-grow: 1;
+
+	position: relative;
+
+	overflow: hidden;
 `;
 
 export const CategoryRow = styled.div`
@@ -94,6 +96,7 @@ export const CategoryRow = styled.div`
 
 	& .slick-active div {
 		height: 100%;
+
 		padding: 0 0.2rem 0 0.2rem;
 	}
 `;
@@ -109,19 +112,20 @@ export const CategoryButton = styled.button`
 export const ArrowBox = styled.div`
 	width: 100%;
 
-	position: absolute;
-	z-index: 100;
-	left: 0;
-
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	position: absolute;
+	z-index: 100;
+	left: 0;
 `;
 
 const Arrow = css`
-	cursor: pointer;
 	width: 1rem;
 	height: 1rem;
+
+	cursor: pointer;
 `;
 
 export const PrevArrow = styled.button<{current: number}>`
@@ -145,23 +149,24 @@ export const GridBox = styled.div<{column: number}>`
 	width: 100%;
 	height: 100%;
 
-	border: 1px solid red;
-
 	display: grid;
 	gap: 1.7rem;
 	grid-template-columns: repeat(${(props)=>props.column}, 1fr);
+
+	border: 1px solid red;
 `;
 
 export const GridItem = styled.div`
 	width: 100%;
 	height: 100%;
-	cursor: pointer;
-
-	position: relative;
 
 	display: grid;
 	grid-template-rows: 1fr 0.1fr;
 	row-gap: 1rem;
+
+	position: relative;
+
+	cursor: pointer;
 
 	&:hover {
 		& .button-box {

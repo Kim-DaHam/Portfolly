@@ -3,10 +3,11 @@ import { styled } from 'styled-components';
 export const IntroLayout = styled.div`
 	width: 100%;
 	height: 100%;
-	overflow-y: auto;
 
 	position: absolute;
 	z-index: 100;
+
+	overflow-y: auto;
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -27,8 +28,9 @@ export const Introduce = styled.div`
 	background-color: aliceblue;
 `;
 
-export const Dvider = styled.div`
+export const Divider = styled.div`
 	width: 100%;
 	height: 5px;
+
 	background-color: transparent;
 `

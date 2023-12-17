@@ -3,9 +3,9 @@ import { Section } from "./portfolio"
 export type Color = 'White' | 'Black' | 'Gray' | 'Transparency';
 
 export type PortfolioItemSize = {
-    [key in Section]: {
-        aspectRatio: string,
-    }
+	[key in Section]: {
+			aspectRatio: string,
+	}
 }
 
 export type ButtonColor = {
