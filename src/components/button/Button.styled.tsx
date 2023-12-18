@@ -4,6 +4,8 @@ import { buttonColor } from '@/styles/token';
 import { Color } from '@/types/style';
 
 const Button = styled.button<{color: Color}>`
+	height: 100%;
+
 	padding: 0 1em 0 1em;
 	line-height: 1.5em;
 
@@ -14,6 +16,7 @@ const Button = styled.button<{color: Color}>`
 	border: 0;
 
 	display: flex;
+	justify-content: center;
 	align-items: center;
 
 	cursor: pointer;

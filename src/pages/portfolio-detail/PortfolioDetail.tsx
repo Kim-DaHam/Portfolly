@@ -1,36 +1,41 @@
-import { GridBox, HtmlContentBox, InformationBox, PortfolioContentSection, PortfolioDetailLayout, RightSideSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetail.styeld";
+import { AskButton, GridBox, HtmlContentBox, InformationBox, PortfolioContentSection, PortfolioDetailContainer, PortfolioDetailLayout, RightSideSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetail.styeld";
 
 import Header from "@/components/header/Header";
+import Profile from "@/components/profile/Profile";
 
 function PortfolioDetail(){
 	return(
 		<PortfolioDetailLayout>
 			<Header/>
-			<PortfolioContentSection>
-				<HtmlContentBox>
-					HtmlContentBox
-				</HtmlContentBox>
-			</PortfolioContentSection>
+			<PortfolioDetailContainer>
+				<PortfolioContentSection>
+					<HtmlContentBox>
+						HtmlContentBox
+					</HtmlContentBox>
+				</PortfolioContentSection>
 
-			<RightSideSection>
-				<UserBox>
-					UserBox
-				</UserBox>
-				<InformationBox>
-					<TitleBox>
-						TitleBox
-					</TitleBox>
-					<TagBox>
-						TagBox
-					</TagBox>
-					<SummaryBox>
-						SummaryBox
-					</SummaryBox>
-				</InformationBox>
-				<GridBox>
-					GridBox
-				</GridBox>
-			</RightSideSection>
+				<RightSideSection>
+					<UserBox>
+						<Profile type='Default'/>
+						<AskButton color='White'>문의하기</AskButton>
+					</UserBox>
+					<InformationBox>
+						<TitleBox>
+							TitleBox
+						</TitleBox>
+						<TagBox>
+							TagBox
+						</TagBox>
+						<SummaryBox>
+							SummaryBox
+						</SummaryBox>
+					</InformationBox>
+					<GridBox>
+						GridBox
+					</GridBox>
+				</RightSideSection>
+
+			</PortfolioDetailContainer>
 		</PortfolioDetailLayout>
 	)
 }

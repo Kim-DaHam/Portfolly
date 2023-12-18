@@ -8,6 +8,7 @@ const portfolioProfile = css`
 
 export const ProfileLayout = styled.div<{type: Profile}>`
 	width: 100%;
+	height: 100%;
 
 	display: flex;
 	gap: 0.5rem;
