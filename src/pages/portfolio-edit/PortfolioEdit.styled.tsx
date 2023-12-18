@@ -14,13 +14,17 @@ export const PortfolioEditLayout = styled.div`
 `;
 
 export const EditHeader = styled.header`
-	width: 100%;
+	width: fit-content;
 	height: ${HEADER_HEIGHT};
 
 	display: flex;
 	justify-content: space-between;
 
-	background-color: black;
+	position: absolute;
+	z-index: 200;
+	top: 0;
+
+	background-color: transparent;
 `;
 
 export const Logo = styled.div`
@@ -41,6 +45,8 @@ export const FlexContainer = styled.div`
 export const EditorSection = styled.section`
 	width: 100%;
 	height: 100%;
+
+	position: relative;
 
 	background-color: lemonchiffon;
 `;

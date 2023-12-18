@@ -4,7 +4,7 @@ import Intro from '@/pages/intro/Intro';
 import Main from '@/pages/main/Main';
 import MyPage from '@/pages/mypage/MyPage';
 import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
-import PortfolioEdit from '@/pages/portfolioEdit/PortfolioEdit';
+import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
 import SignIn from '@/pages/signIn/SignIn';
 import SignUp from '@/pages/signUp/SignUp';
 import { ROUTE_PATH } from '@/utils/path';
