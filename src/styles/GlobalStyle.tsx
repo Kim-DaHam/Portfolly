@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
 		height: 9999px;
 
 		position: absolute;
+		top: 0;
 		z-index: 999;
 	}
 

@@ -1,11 +1,14 @@
 import { css, styled } from 'styled-components';
 
+import { HEADER_HEIGHT } from '@/components/header/Header.styled';
+
 export const MainLayout = styled.div`
 	width: 100%;
 	height: 100%;
 
-	position: absolute;
+	position: relative;
 	z-index: 100;
+	top: ${HEADER_HEIGHT};
 `;
 
 export const MainContainer = styled.main`
@@ -16,14 +19,14 @@ export const MainContainer = styled.main`
 	justify-content: center;
 	gap: 1.7rem;
 
-	padding: 8rem 5rem 3rem 5rem;
+	padding: 3rem 5rem 3rem 5rem;
 
 	background-color: #fff5f5;
 `;
 
 export const TitleSection = styled.section`
 	width: 100%;
-	height: 7rem;
+	height: 100%;
 
 	display: flex;
 	gap: 2rem;
@@ -142,7 +145,7 @@ export const PortfolioSection = styled.section`
 	width: 100%;
 	height: 100%;
 
-	padding-top: 3rem;
+	padding-top: 1rem;
 `;
 
 export const GridBox = styled.div<{column: number}>`

@@ -4,7 +4,8 @@ export const IntroLayout = styled.div`
 	width: 100%;
 	height: 100%;
 
-	position: absolute;
+	position: fixed;
+	top: 0;
 	z-index: 100;
 
 	overflow-y: auto;
