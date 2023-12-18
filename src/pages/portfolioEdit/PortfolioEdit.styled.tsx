@@ -102,3 +102,19 @@ export const SubmitButton = styled(SquareButton)`
 	width: 8rem;
 	height: 7%;
 `;
+
+export const TagInput = styled.div`
+	min-width: 5rem;
+	max-width: fit-content;
+	height: 2rem;
+
+	display: flex;
+	align-items: center;
+
+	padding: 0 1rem 0 1rem;
+
+	border-radius: 1rem;
+
+	color: white;
+	background-color: black;
+`;
