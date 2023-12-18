@@ -1,6 +1,8 @@
 import { Label } from "../portfolio-detail/PortfolioDetail.styeld";
 
-import { CategorySelector, EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, PortfolioEditLayout, SubmitButton, SummaryInputArea, TagBox, TitleInput } from "./PortfolioEdit.styled";
+import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, PortfolioEditLayout, SubmitButton, SummaryInputArea, TagBox, TitleInput } from "./PortfolioEdit.styled";
+
+import Selector from "@/components/atoms/selector/Selector";
 
 function PortfolioEdit(){
 	return(
@@ -18,8 +20,11 @@ function PortfolioEdit(){
 					<FormBox>
 						<TitleInput/>
 
+						<Label>Section</Label>
+						<Selector type='Section'/>
+
 						<Label>Category</Label>
-						<CategorySelector/>
+						<Selector type='Category'/>
 
 						<Label>Tags</Label>
 						<TagBox>

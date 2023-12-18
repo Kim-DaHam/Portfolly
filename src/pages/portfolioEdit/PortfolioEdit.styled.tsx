@@ -53,7 +53,6 @@ export const FormSection = styled.section`
 	flex-direction: column;
 	align-items: end;
 	flex: none;
-	gap: 1rem;
 
 	padding: 3rem 1rem 2rem 1rem;
 
