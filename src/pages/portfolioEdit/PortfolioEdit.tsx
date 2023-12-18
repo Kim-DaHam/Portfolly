@@ -3,6 +3,7 @@ import { Label } from "../portfolio-detail/PortfolioDetail.styeld";
 import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, PortfolioEditLayout, SubmitButton, SummaryInputArea, TagBox, TagInput, TitleInput } from "./PortfolioEdit.styled";
 
 import Selector from "@/components/atoms/selector/Selector";
+import Tag from "@/components/atoms/tag/Tag";
 
 function PortfolioEdit(){
 	return(
@@ -29,7 +30,7 @@ function PortfolioEdit(){
 						<Label>Tags</Label>
 						<TagBox>
 							<TagInput contentEditable/>
-							{/* <Tag></Tag> */}
+							<Tag readOnly={false} value={'Tag'}/>
 						</TagBox>
 
 						<Label>Summary</Label>
