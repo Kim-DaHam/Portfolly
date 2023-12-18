@@ -3,7 +3,7 @@ import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 
 import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, Span } from "./Selector.styled";
 
-type Selector = 'Category';
+type Selector = 'Category' | 'Section';
 
 type Props = {
 	type: Selector;

@@ -20,6 +20,9 @@ function PortfolioEdit(){
 					<FormBox>
 						<TitleInput/>
 
+						<Label>Section</Label>
+						<Selector type='Section'/>
+
 						<Label>Category</Label>
 						<Selector type='Category'/>
 
