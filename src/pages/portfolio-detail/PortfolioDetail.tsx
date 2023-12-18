@@ -1,4 +1,4 @@
-import { AskButton, ButtonBox, Category, FlexBox, GridBox, GridItem, HtmlContentBox, Label, PortfolioContentSection, PortfolioDetailContainer, PortfolioDetailLayout, RightSideSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetail.styeld";
+import { AskButton, BackButton, ButtonBox, Category, FlexBox, GridBox, GridItem, HtmlContentBox, Label, PortfolioContentSection, PortfolioDetailContainer, PortfolioDetailLayout, RightSideSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetail.styeld";
 
 import ToggleButton from "@/components/button/ToggleButton";
 import Header from "@/components/header/Header";
@@ -8,6 +8,7 @@ function PortfolioDetail(){
 	return(
 		<PortfolioDetailLayout>
 			<Header/>
+			<BackButton color='Transparency'>뒤로가기</BackButton>
 			<PortfolioDetailContainer>
 				<PortfolioContentSection>
 					<HtmlContentBox>

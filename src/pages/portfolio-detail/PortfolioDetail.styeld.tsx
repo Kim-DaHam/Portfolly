@@ -1,17 +1,30 @@
 import { styled } from 'styled-components';
 
-import { SquareButton } from '@/components/button/Button.styled';
+import { RoundButton, SquareButton } from '@/components/button/Button.styled';
 import { HEADER_HEIGHT } from '@/components/header/Header.styled';
-
 
 export const PortfolioDetailLayout = styled.div`
 	width: 100%;
 	height: 100%;
 
+	display: flex;
+	flex-direction: column;
+
 	position: relative;
 	z-index: 100;
 	top: ${HEADER_HEIGHT};
+
+	padding-top: 2rem;
+
+	background-color: salmon;
 `;
+
+export const BackButton = styled(RoundButton)`
+	width: fit-content;
+
+	margin-left: 3rem;
+	background-color: red;
+`
 
 export const PortfolioDetailContainer = styled.div`
 	width: 100%;
@@ -20,9 +33,7 @@ export const PortfolioDetailContainer = styled.div`
 	display: flex;
 	gap: 1.2rem;
 
-	padding: 2.5rem 3rem 2rem 3rem;
-
-	background-color: salmon;
+	padding: 1rem 3rem 2rem 3rem;
 `;
 
 export const PortfolioContentSection = styled.section`
