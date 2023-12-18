@@ -1,8 +1,10 @@
 import { styled } from 'styled-components';
 
+export const HEADER_HEIGHT = '3.5rem';
+
 export const HeaderContainer = styled.header`
 	width: 100%;
-	height: 3.5rem;
+	height: ${HEADER_HEIGHT};
 
 	display: grid;
 	grid-template-columns: 0.1fr 0.75fr 0.8fr 1fr;

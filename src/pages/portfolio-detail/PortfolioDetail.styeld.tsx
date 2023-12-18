@@ -1,5 +1,8 @@
 import { styled } from 'styled-components';
 
+import { HEADER_HEIGHT } from '@/components/header/Header.styled';
+
+
 export const PortfolioDetailLayout = styled.div`
 	width: 100%;
 	height: 100%;
@@ -9,7 +12,7 @@ export const PortfolioDetailLayout = styled.div`
 
 	position: absolute;
 	z-index: 100;
-	top: 3.5rem;
+	top: ${HEADER_HEIGHT};
 
 	padding: 2.5rem 3rem 2rem 3rem;
 
