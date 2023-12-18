@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 		position: relative;
 		z-index: 0;
 
-		overflow-x: hidden;
+		/* overflow-x: hidden; */
 		box-sizing: border-box;
 	}
 
