@@ -48,7 +48,7 @@ export const RightSideSection = styled.aside`
 	display: flex;
 	flex-direction: column;
 	flex: none;
-	gap: 2rem;
+	gap: 1rem;
 
 	background-color: cornsilk;
 `;
@@ -87,17 +87,38 @@ export const InformationBox = styled.div`
 	flex-direction: column;
 	gap: 1rem;
 
-	background-color: gainsboro;
+	padding: 1rem 1rem 2rem 1rem;
+
+	border-radius: 1.5rem;
+
+	background-color: skyblue;
 `;
 
 export const TitleBox = styled.div`
 	width: 100%;
-	height: 5rem;
 
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 0.8fr 1fr;
+	row-gap: 0.4rem;
 
 	background-color: white;
+`;
+
+export const Category = styled.span`
+	font-weight: 600;
+	color: gray;
+`;
+
+export const ButtonBox = styled.div`
+	width: 100%;
+	height: 3rem;
+
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	gap: 	1rem;
+
+	margin-top: 1rem;
 `;
 
 export const TagBox = styled.div`
