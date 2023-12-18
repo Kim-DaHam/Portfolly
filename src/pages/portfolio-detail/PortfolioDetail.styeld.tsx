@@ -8,7 +8,7 @@ export const PortfolioDetailLayout = styled.div`
 	width: 100%;
 	height: 100%;
 
-	position: absolute;
+	position: relative;
 	z-index: 100;
 	top: ${HEADER_HEIGHT};
 `;
@@ -28,6 +28,8 @@ export const PortfolioDetailContainer = styled.div`
 export const PortfolioContentSection = styled.section`
 	width: 100%;
 	height: 100%;
+
+	flex-basis: 1;
 
 	padding: 2.5rem 3rem 2rem 3rem;
 
@@ -55,7 +57,7 @@ export const RightSideSection = styled.aside`
 
 export const UserBox = styled.div`
 	width: 100%;
-	height: 32rem;
+	height: 13rem;
 
 	display: flex;
 	flex-direction: column;
@@ -79,7 +81,7 @@ export const AskButton = styled(SquareButton)`
 	height: 5rem;
 `;
 
-export const InformationBox = styled.div`
+export const FlexBox = styled.div`
 	width: 100%;
 	height: 100%;
 
@@ -117,8 +119,13 @@ export const ButtonBox = styled.div`
 	justify-content: end;
 	align-items: center;
 	gap: 	1rem;
+`;
 
-	margin-top: 1rem;
+export const Label = styled.label`
+	font-size: 1rem;
+
+	font-weight: 600;
+	color: gray;
 `;
 
 export const TagBox = styled.div`
@@ -126,6 +133,7 @@ export const TagBox = styled.div`
 	height: 100%;
 
 	display: flex;
+	gap: 1rem;
 
 	background-color: lightsalmon;
 `;
@@ -144,7 +152,22 @@ export const GridBox = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.4rem;
+
 	background-color: bisque;
+`;
+
+export const GridItem = styled.div`
+	width: 100%;
+	height: 6rem;
+
+	overflow: hidden;
+
+	border-radius: 0.6rem;
+
+	background-color: brown;
 `;
 
 
