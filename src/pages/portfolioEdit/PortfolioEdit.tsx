@@ -4,17 +4,18 @@ import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, P
 
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
+import Editor from "@/components/editor/Editor";
 
 function PortfolioEdit(){
 	return(
 		<PortfolioEditLayout>
-			<EditHeader>
-				<Logo>Logo</Logo>
-			</EditHeader>
-
 			<FlexContainer>
 				<EditorSection>
-					EditorSection
+					<EditHeader>
+						<Logo>Logo</Logo>
+					</EditHeader>
+
+					<Editor/>
 				</EditorSection>
 
 				<FormSection>
