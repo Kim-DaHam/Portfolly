@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Intro from '@/pages/intro/Intro';
 import Main from '@/pages/main/Main';
 import MyPage from '@/pages/mypage/MyPage';
-import Portfolio from '@/pages/portfolio/Portfolio';
+import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
 import PortfolioEdit from '@/pages/portfolioEdit/PortfolioEdit';
 import SignIn from '@/pages/signIn/SignIn';
 import SignUp from '@/pages/signUp/SignUp';
@@ -18,7 +18,7 @@ function App() {
         <Route path={ROUTE_PATH.SIGNUP} element={<SignUp/>}></Route>
         <Route path={ROUTE_PATH.SIGNIN} element={<SignIn/>}></Route>
         <Route path={ROUTE_PATH.MYPAGE} element={<MyPage/>}></Route>
-        <Route path={ROUTE_PATH.PORTFOLIO} element={<Portfolio/>}></Route>
+        <Route path={ROUTE_PATH.PORTFOLIO} element={<PortfolioDetail/>}></Route>
         <Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEdit/>}></Route>
       </Routes>
     </BrowserRouter>
