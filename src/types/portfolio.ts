@@ -1,1 +1,1 @@
-export type Section = 'Android/iOS' | 'Web' | 'Illustration' | 'Graphics' | 'Video';
+export type Section = 'Android/iOS' | 'Web' | 'Illustration' | 'Photo' | 'Video';
