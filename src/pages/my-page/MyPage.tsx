@@ -9,7 +9,7 @@ import { renderDescription, renderNavigation } from "./MyPage.utils";
 import Rating from "@/components/molecules/rating/Rating";
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";
-import { Span } from "@/components/organisms/profile-description/Introduce.styled";
+import { Span } from "@/components/organisms/profile-description/introduce/Introduce.styled";
 
 function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('Introduce');
