@@ -1,10 +1,10 @@
 import { FiMoreHorizontal as Icon} from "react-icons/fi";
 
-import { SquareButton as MoreButton } from "../button/Button.styled";
 import Popper from "../popper/Popper";
 
 import { SectionMenuBox, SectionMenuLayout, SectionTitle } from "./SectionMenu.styled";
 
+import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
 import usePopup from "@/hooks/usePopup";
 
 function SectionMenu() {
