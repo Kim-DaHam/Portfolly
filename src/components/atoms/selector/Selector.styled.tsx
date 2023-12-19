@@ -18,7 +18,7 @@ export const SelectorOutSide = styled.div`
 	left: 0;
 	z-index: 100;
 
-	background-color: lightgreen;
+	background-color: transparent;
 `;
 
 export const SelectorBox = styled.div`
