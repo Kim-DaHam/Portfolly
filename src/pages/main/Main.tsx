@@ -4,10 +4,10 @@ import Slider from "react-slick";
 import { initialProps, sliderSettings } from "./Main.constants";
 import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
-import Header from "@/components/header/Header";
-import SearchModal from "@/components/modal/search-modal/SearchModal";
-import PortfolioItem from "@/components/portfolio-item/PortfolioItem";
-import Profile from "@/components/profile/Profile";
+import Profile from "@/components/molecules/profile/Profile";
+import Header from "@/components/organisms/header/Header";
+import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
+import PortfolioItem from "@/components/organisms/portfolio-item/PortfolioItem";
 import useHandleSlider from "@/hooks/useHandleSlider";
 
 function Main(){

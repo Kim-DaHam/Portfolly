@@ -1,8 +1,8 @@
 import { Divider, IntroLayout, Introduce } from "./Intro.styled";
 
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
-import Preview from "@/components/preview/Preview";
+import Footer from "@/components/organisms/footer/Footer";
+import Header from "@/components/organisms/header/Header";
+import Preview from "@/components/organisms/preview/Preview";
 import { wheelHandler } from "@/utils/wheelHandler";
 
 function Intro(){

@@ -5,7 +5,7 @@ import { ButtonBox, PortfolioTitle, SpanBox, UserName } from "../Profile.styled"
 
 import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
-import Popper from "@/components/popper/Popper";
+import Popper from "@/components/molecules/popper/Popper";
 import usePopup from "@/hooks/usePopup";
 
 function PortfolioProfile() {

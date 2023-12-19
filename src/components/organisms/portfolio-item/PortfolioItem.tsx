@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { sliderSettings } from "./PortfolioItem.constants";
 
-import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/portfolio-item/PortfolioItem.styled";
+import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
 import { Section } from "@/types/portfolio";
 import { InitialProps } from "@/types/slider";

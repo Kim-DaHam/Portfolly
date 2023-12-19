@@ -1,6 +1,6 @@
 import { css, styled } from 'styled-components';
 
-import { HEADER_HEIGHT } from '@/components/header/Header.styled';
+import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 
 export const MainLayout = styled.div`
 	width: 100%;

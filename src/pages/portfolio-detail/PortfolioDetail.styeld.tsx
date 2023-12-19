@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
-import { RoundButton, SquareButton } from '@/components/button/Button.styled';
-import { HEADER_HEIGHT } from '@/components/header/Header.styled';
+import { RoundButton, SquareButton } from '@/components/atoms/button/Button.styled';
+import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 
 export const PortfolioDetailLayout = styled.div`
 	width: 100%;
