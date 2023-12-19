@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Label } from "../portfolio-detail/PortfolioDetail.styeld";
 
 import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, PortfolioEditLayout, SubmitButton, SummaryInputArea, TagBox, TagInput, TitleInput } from "./PortfolioEdit.styled";
@@ -5,8 +7,11 @@ import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, P
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
 import Editor from "@/components/organisms/editor/Editor";
+import { Section } from "@/types/portfolio";
 
 function PortfolioEdit(){
+	const [section] = useState<Section>('Android/iOS');
+
 	return(
 		<PortfolioEditLayout>
 			<FlexContainer>
@@ -23,10 +28,10 @@ function PortfolioEdit(){
 						<TitleInput/>
 
 						<Label>Section</Label>
-						<Selector type='Section'/>
+						<Selector type='Section' placeholder='종류'/>
 
 						<Label>Category</Label>
-						<Selector type='Category'/>
+						<Selector type={section} placeholder='카테고리'/>
 
 						<Label>Tags</Label>
 						<TagBox>

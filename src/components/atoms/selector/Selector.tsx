@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 
-import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, Span } from "./Selector.styled";
+import { selectorList , Selector as TSelector } from "./Selector.constants";
+import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, SelectorOutSide, Span } from "./Selector.styled";
 
-type Selector = 'Category' | 'Section';
+import { Section } from "@/types/portfolio";
 
 type Props = {
-	type: Selector;
+	type: TSelector | Section;
+	placeholder: string;
 }
 
-function Selector({type}: Props) {
+function Selector({type, placeholder}: Props) {
 	const [isSelectorOpen, setIsSelectorOpen] = useState(false);
-	const [select, setSelect] = useState('Select');
+	const [select, setSelect] = useState(placeholder);
 
 	const openSelector = ()=> {
 		setIsSelectorOpen(prev=>!prev);
@@ -32,17 +34,14 @@ function Selector({type}: Props) {
 			</SelectorBox>
 
 			{ isSelectorOpen &&
+				<>
 				<DropDownBox>
-					<DropDownItem onClick={changeSelect}>1</DropDownItem>
-					<DropDownItem>2</DropDownItem>
-					<DropDownItem>3</DropDownItem>
-					<DropDownItem>4</DropDownItem>
-					<DropDownItem>5</DropDownItem>
-					<DropDownItem>6</DropDownItem>
-					<DropDownItem>7</DropDownItem>
-					<DropDownItem>8</DropDownItem>
-					<DropDownItem>9</DropDownItem>
+					{ selectorList[type].map((selector)=>{
+						return <DropDownItem onClick={changeSelect}>{selector}</DropDownItem>
+					})}
 				</DropDownBox>
+				<SelectorOutSide onClick={openSelector}/>
+				</>
 			}
 		</SelectorLayout>
 	)

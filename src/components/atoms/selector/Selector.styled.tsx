@@ -1,12 +1,24 @@
 import { styled } from 'styled-components';
 
 export const SelectorLayout = styled.div`
-	width: 45%;
+	width: 100%;
 
 	display: flex;
 	flex-direction: column;
 
 	position: relative;
+`;
+
+export const SelectorOutSide = styled.div`
+	width: 100%;
+	height: 100%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+
+	background-color: transparent;
 `;
 
 export const SelectorBox = styled.div`

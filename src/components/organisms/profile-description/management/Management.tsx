@@ -9,7 +9,7 @@ import { SquareButton } from "@/components/atoms/button/Button.styled";
 import Selector from "@/components/atoms/selector/Selector";
 
 function Management() {
-	const [isOpenModal, setIsOpenModal] = useState(true);
+	const [isOpenModal, setIsOpenModal] = useState(false);
 
 	const openRequestModal = ()=> {
 		setIsOpenModal(prev=>!prev)
@@ -64,14 +64,14 @@ function Management() {
 
 			<SearchFilterSection>
 				<FilterForm>
-					<Selector type='Category'/>
-					<Selector type='Category'/>
+					<Selector type='RequestType' placeholder='전체 상품'/>
+					<Selector type='RequestState' placeholder='전체 상태'/>
 
 					<DateSelector>
 						DateSelector
 					</DateSelector>
 
-					<Selector type='Category'/>
+					<Selector type='SearchFilter' placeholder='닉네임'/>
 
 					<Input/>
 
@@ -93,7 +93,7 @@ function Management() {
 			</ContentSection>
 
 			{ isOpenModal &&
-				<RequestModal/>
+				<RequestModal handleModal={setIsOpenModal}/>
 			}
 		</ManagementLayout>
 	)

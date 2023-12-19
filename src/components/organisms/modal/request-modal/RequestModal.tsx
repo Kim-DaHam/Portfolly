@@ -1,48 +1,64 @@
+import { FiX as XIcon } from "react-icons/fi";
+
 import { Span } from "../../profile-description/introduce/Introduce.styled";
 
-import { ButtonGroup, Content, FlexBox, FlexColumnBox, ModalBox, RequestForm, RequestModalLayout, Title, TitleSection } from "./RequestModal.styled";
+import { ButtonGroup, CloseButton, Content, ContentBox, FlexBox, FlexColumnBox, ModalBox, RequestForm, RequestModalLayout, Title, TitleSection } from "./RequestModal.styled";
 
 import { SquareButton } from "@/components/atoms/button/Button.styled";
 import Profile from "@/components/molecules/profile/Profile";
 import { Label } from "@/pages/portfolio-detail/PortfolioDetail.styeld";
+import { SetState } from "@/types";
 import { eventStopPropagation } from "@/utils/event";
 
+type Props = {
+	handleModal: SetState<boolean>;
+}
 
-function RequestModal() {
+function RequestModal({handleModal}: Props) {
+
+	const closeModal = ()=> {
+		handleModal(prev=>!prev);
+	}
+
 	return(
-		<RequestModalLayout>
+		<RequestModalLayout onClick={closeModal}>
 			<ModalBox onClick={eventStopPropagation}>
-				<TitleSection>
-					<Title>Title</Title>
-					<Span>Date</Span>
-				</TitleSection>
+				<CloseButton onClick={closeModal}>
+					<XIcon size={28}/>
+				</CloseButton>
 
-				<RequestForm>
-					<FlexColumnBox>
-						<Label>전문가 정보</Label>
-						<FlexBox>
-							<Profile type='Default'/>
-							<Label>이름</Label>
-							<Label>연락처</Label>
-						</FlexBox>
-					</FlexColumnBox>
+				<ContentBox>
+					<TitleSection>
+						<Title>Title</Title>
+						<Span>Date</Span>
+					</TitleSection>
 
-					<FlexColumnBox>
-						<Label>의뢰 내용</Label>
-						<Content>내용</Content>
-					</FlexColumnBox>
+					<RequestForm>
+						<FlexColumnBox>
+							<Label>전문가 정보</Label>
+							<FlexBox>
+								<Profile type='Default'/>
+								<Label>이름</Label>
+								<Label>연락처</Label>
+							</FlexBox>
+						</FlexColumnBox>
 
-					<FlexColumnBox>
-						<Label>마감 기한</Label>
-						<Content>내용</Content>
-					</FlexColumnBox>
+						<FlexColumnBox>
+							<Label>의뢰 내용</Label>
+							<Content>내용</Content>
+						</FlexColumnBox>
 
-					<FlexColumnBox>
-						<Label>비용</Label>
-						<Content>내용</Content>
-					</FlexColumnBox>
+						<FlexColumnBox>
+							<Label>마감 기한</Label>
+							<Content>내용</Content>
+						</FlexColumnBox>
+
+						<FlexColumnBox>
+							<Label>비용</Label>
+							<Content>내용</Content>
+						</FlexColumnBox>
 				</RequestForm>
-
+				</ContentBox>
 				<ButtonGroup>
 					<SquareButton color='Black'>주문 취소</SquareButton>
 				</ButtonGroup>
