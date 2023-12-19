@@ -5,7 +5,7 @@ import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 
 export const MyPageLayout = styled.div`
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 
 	display: flex;
 	flex-direction: column;
@@ -75,7 +75,7 @@ export const ContactButton = styled(SquareButton)`
 
 export const ProfileNavigationSection = styled.section`
 	width: 100%;
-	height: 6.5rem;
+	height: 5rem;
 
 	display: flex;
 	gap: 1.2rem;
@@ -111,16 +111,15 @@ export const ProfileDescriptionSection = styled.section`
 	width: 100%;
 	height: 100%;
 
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
 	flex-basis: 1;
+
+	padding: 3rem 2rem 3rem 2rem;
 
 	background-color: yellow;
 `;
 
 export const ProfileInformationSection = styled.section`
-	width: 30rem;
+	width: 24rem;
 	height: 100%;
 
 	flex: none;

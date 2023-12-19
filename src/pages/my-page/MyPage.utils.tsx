@@ -1,6 +1,8 @@
 import { Navigation } from "./MyPage.styled";
 import { User, Navigation as TNavigation } from "./MyPage.type";
 
+import Introduce from "@/components/organisms/profile-description/Introduce";
+import PortfolioList from "@/components/organisms/profile-description/PortfolioList";
 import { IComponentFactory, SetState } from "@/types";
 
 
@@ -47,10 +49,10 @@ export const renderNavigation = (user:User, handleNavigation:SetState<TNavigatio
 export const renderDescription = (navigation: TNavigation)=>{
 	const ComponentFactory: IComponentFactory = {
 		Introduce: (
-			<>Introduce</>
+			<Introduce/>
 		),
 		Portfolio: (
-			<>Portfolio</>
+			<PortfolioList/>
 		),
 		Review: (
 			<>Review</>
