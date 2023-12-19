@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 
+import { SquareButton } from '@/components/atoms/button/Button.styled';
 import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 
 export const MyPageLayout = styled.div`
@@ -19,17 +20,57 @@ export const UserProfileContainer = styled.div`
 
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-	padding: 1rem 2rem 1rem 2rem;
+	padding: 5rem 10rem 2rem 10rem;
 
 	background-color: salmon;
 `;
 
 export const ProfileMainSection = styled.section`
 	width: 100%;
-	height: 10rem;
+	height: fit-content;
+
+	display: flex;
+	gap: 1rem;
+
+	padding: 2rem 3rem 2rem 3rem;
 
 	background-color: violet;
+`;
+
+export const ProfileImg = styled.div`
+	width: 150px;
+	height: 150px;
+
+	background-color: white;
+`;
+
+export const FlexCoulumnBox = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	background-color: goldenrod;
+`;
+
+export const UserName = styled.div`
+	font-size: 2em;
+	font-weight: 600;
+`;
+
+export const ButtonBox = styled.div`
+	display: flex;
+	justify-content: end;
+`;
+
+export const ContactButton = styled(SquareButton)`
+	width: 13rem;
+	height: 3rem;
 `;
 
 export const ProfileNavigationSection = styled.section`
