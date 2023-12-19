@@ -124,5 +124,41 @@ export const ProfileInformationSection = styled.section`
 
 	flex: none;
 
+	padding: 1rem;
+
 	background-color: white;
+`;
+
+export const InformationBox = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	padding: 1rem;
+
+	background-color: lightsteelblue;
+`;
+
+export const FlexColumBox = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	background-color: aqua;
+`;
+
+export const SpanBox = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	justify-content: space-between;
+
+	background-color: thistle;
 `;
