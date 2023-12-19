@@ -2,7 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import Intro from '@/pages/intro/Intro';
 import Main from '@/pages/main/Main';
-import MyPage from '@/pages/mypage/MyPage';
+import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
 import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
 import SignIn from '@/pages/signIn/SignIn';
