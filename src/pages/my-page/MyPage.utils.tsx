@@ -1,10 +1,10 @@
 import { Navigation } from "./MyPage.styled";
+import { User, Navigation as TNavigation } from "./MyPage.type";
 
 import { IComponentFactory, SetState } from "@/types";
 
-type User = 'Expert' | 'Client';
 
-export const renderNavigation = (user:User, handleNavigation:SetState) => {
+export const renderNavigation = (user:User, handleNavigation:SetState<TNavigation>) => {
 	const ComponentFactory: IComponentFactory = {
 		Expert: (
 			<>
@@ -42,4 +42,23 @@ export const renderNavigation = (user:User, handleNavigation:SetState) => {
 	}
 
 	return ComponentFactory[user];
+}
+
+export const renderDescription = (navigation: TNavigation)=>{
+	const ComponentFactory: IComponentFactory = {
+		Introduce: (
+			<>Introduce</>
+		),
+		Portfolio: (
+			<>Portfolio</>
+		),
+		Review: (
+			<>Review</>
+		),
+		Management: (
+			<>Management</>
+		),
+	}
+
+	return ComponentFactory[navigation];
 }

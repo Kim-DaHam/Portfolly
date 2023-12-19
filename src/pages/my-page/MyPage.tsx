@@ -1,16 +1,15 @@
 import { useState } from "react";
 
-import { Label } from "../portfolio-detail/PortfolioDetail.styeld";
-
 import { ButtonBox, ContactButton, FlexCoulumnBox, MyPageLayout, ProfileContentContainer, ProfileDescriptionSection, ProfileImg, ProfileInformationSection, ProfileMainSection, ProfileNavigationSection, UserName, UserProfileContainer } from "./MyPage.styled";
-import { renderNavigation } from "./MyPage.utils";
+import { Navigation } from "./MyPage.type";
+import { renderDescription, renderNavigation } from "./MyPage.utils";
 
 import Rating from "@/components/molecules/rating/Rating";
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";
 
 function MyPage(){
-	const [, setNavigation] = useState('');
+	const [navigation , setNavigation] = useState<Navigation>('Introduce');
 
 	return(
 		<MyPageLayout>
@@ -41,19 +40,7 @@ function MyPage(){
 
 				<ProfileContentContainer>
 					<ProfileDescriptionSection>
-						<Label>소개</Label>
-
-						<Label>경력 사항</Label>
-
-						<Label>총 경력</Label>
-
-						<Label>지역</Label>
-
-						<Label>희망 급여</Label>
-
-						<Label>전문 분야 및 상세 분야</Label>
-
-						<Label>보유 기술</Label>
+						{renderDescription(navigation)}
 					</ProfileDescriptionSection>
 
 					<ProfileInformationSection>

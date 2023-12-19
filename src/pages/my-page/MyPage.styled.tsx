@@ -92,6 +92,8 @@ export const Navigation = styled.a`
 	display: flex;
 	align-items: center;
 
+	cursor: pointer;
+
 	font-size: 1.1rem;
 	border-bottom: 3px solid black;
 `;
