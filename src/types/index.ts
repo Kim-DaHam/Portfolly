@@ -2,4 +2,4 @@ export type IComponentFactory = {
 	[key: string]: JSX.Element;
 }
 
-export type SetState = React.Dispatch<React.SetStateAction<string>>;
+export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
