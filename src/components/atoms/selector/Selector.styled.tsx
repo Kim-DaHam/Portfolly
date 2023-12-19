@@ -9,6 +9,18 @@ export const SelectorLayout = styled.div`
 	position: relative;
 `;
 
+export const SelectorOutSide = styled.div`
+	width: 100%;
+	height: 100%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+
+	background-color: lightgreen;
+`;
+
 export const SelectorBox = styled.div`
 	width: 100%;
 	height: 2rem;

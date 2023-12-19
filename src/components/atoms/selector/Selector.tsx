@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 
 import { selectorList , Selector as TSelector } from "./Selector.constants";
-import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, Span } from "./Selector.styled";
+import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, SelectorOutSide, Span } from "./Selector.styled";
 
 import { Section } from "@/types/portfolio";
 
@@ -34,11 +34,14 @@ function Selector({type, placeholder}: Props) {
 			</SelectorBox>
 
 			{ isSelectorOpen &&
+				<>
 				<DropDownBox>
 					{ selectorList[type].map((selector)=>{
 						return <DropDownItem onClick={changeSelect}>{selector}</DropDownItem>
 					})}
 				</DropDownBox>
+				<SelectorOutSide onClick={openSelector}/>
+				</>
 			}
 		</SelectorLayout>
 	)
