@@ -5,12 +5,21 @@ import { ButtonGroup, Content, FlexBox, FlexColumnBox, ModalBox, RequestForm, Re
 import { SquareButton } from "@/components/atoms/button/Button.styled";
 import Profile from "@/components/molecules/profile/Profile";
 import { Label } from "@/pages/portfolio-detail/PortfolioDetail.styeld";
+import { SetState } from "@/types";
 import { eventStopPropagation } from "@/utils/event";
 
+type Props = {
+	handleModal: SetState<boolean>;
+}
 
-function RequestModal() {
+function RequestModal({handleModal}: Props) {
+
+	const closeModal = ()=> {
+		handleModal(prev=>!prev);
+	}
+
 	return(
-		<RequestModalLayout>
+		<RequestModalLayout onClick={closeModal}>
 			<ModalBox onClick={eventStopPropagation}>
 				<TitleSection>
 					<Title>Title</Title>

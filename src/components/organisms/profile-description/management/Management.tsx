@@ -93,7 +93,7 @@ function Management() {
 			</ContentSection>
 
 			{ isOpenModal &&
-				<RequestModal/>
+				<RequestModal handleModal={setIsOpenModal}/>
 			}
 		</ManagementLayout>
 	)
