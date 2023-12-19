@@ -44,6 +44,8 @@ export const ProfileImg = styled.div`
 	width: 150px;
 	height: 150px;
 
+	flex: none;
+
 	background-color: white;
 `;
 
@@ -121,8 +123,6 @@ export const ProfileDescriptionSection = styled.section`
 export const ProfileInformationSection = styled.section`
 	width: 24rem;
 	height: 100%;
-
-	flex: none;
 
 	padding: 1rem;
 
