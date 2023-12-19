@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import SectionMenu from "../menu/SectionMenu";
 import SearchModal from "../modal/search-modal/SearchModal";
-import Popper from "../popper/Popper";
-import SearchBar from "../searchBar/SearchBar";
+import SectionMenu from "../../molecules/menu/SectionMenu";
+import Popper from "../../molecules/popper/Popper";
+import SearchBar from "../../molecules/searchBar/SearchBar";
 
 import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
 
-import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVersionButton } from "@/components/header/Header.styled";
+import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVersionButton } from "@/components/organisms/header/Header.styled";
 import usePopup from "@/hooks/usePopup";
 import { ROUTE_PATH } from "@/utils/path";
 

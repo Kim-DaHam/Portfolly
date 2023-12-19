@@ -4,7 +4,7 @@ import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, P
 
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
-import Editor from "@/components/editor/Editor";
+import Editor from "@/components/organisms/editor/Editor";
 
 function PortfolioEdit(){
 	return(

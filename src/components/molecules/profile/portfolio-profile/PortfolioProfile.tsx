@@ -3,9 +3,9 @@ import { FiMoreHorizontal as Icon } from "react-icons/fi";
 
 import { ButtonBox, PortfolioTitle, SpanBox, UserName } from "../Profile.styled";
 
-import { SquareButton as MoreButton } from "@/components/button/Button.styled";
-import ToggleButton from "@/components/button/ToggleButton";
-import Popper from "@/components/popper/Popper";
+import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
+import ToggleButton from "@/components/atoms/button/ToggleButton";
+import Popper from "@/components/molecules/popper/Popper";
 import usePopup from "@/hooks/usePopup";
 
 function PortfolioProfile() {

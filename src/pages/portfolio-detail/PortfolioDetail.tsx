@@ -1,8 +1,8 @@
 import { AskButton, BackButton, ButtonBox, Category, FlexBox, GridBox, GridItem, HtmlContentBox, Label, PortfolioContentSection, PortfolioDetailContainer, PortfolioDetailLayout, RightSideSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetail.styeld";
 
-import ToggleButton from "@/components/button/ToggleButton";
-import Header from "@/components/header/Header";
-import Profile from "@/components/profile/Profile";
+import ToggleButton from "@/components/atoms/button/ToggleButton";
+import Profile from "@/components/molecules/profile/Profile";
+import Header from "@/components/organisms/header/Header";
 
 function PortfolioDetail(){
 	return(

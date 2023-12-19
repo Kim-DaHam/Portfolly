@@ -1,6 +1,6 @@
 import { HTMLAttributes, useEffect, useState } from "react";
 
-import SearchBar from "../../searchBar/SearchBar";
+import SearchBar from "../../../molecules/searchBar/SearchBar";
 
 import { searchFilter, searchFilterList } from "./SearchModal.constants";
 import { ModalLayout, ModalBox, SearchContainer, ContentContainer, FilterGroup, ContentBox, OptionButton } from "./SearchModal.styled";

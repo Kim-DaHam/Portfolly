@@ -3,7 +3,7 @@ import { memo, useMemo } from 'react';
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from 'react-quill';
 
-import { EditorContainer } from '@/components/editor/Editor.styled';
+import { EditorContainer } from '@/components/organisms/editor/Editor.styled';
 
 const QuillEditor = memo(() => {
   const modules = useMemo(
