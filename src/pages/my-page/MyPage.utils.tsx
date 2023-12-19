@@ -1,10 +1,10 @@
 import { Navigation } from "./MyPage.styled";
 import { User, Navigation as TNavigation } from "./MyPage.type";
 
-import Introduce from "@/components/organisms/profile-description/Introduce";
-import Management from "@/components/organisms/profile-description/Management";
-import PortfolioList from "@/components/organisms/profile-description/PortfolioList";
-import Review from "@/components/organisms/profile-description/Review";
+import Introduce from "@/components/organisms/profile-description/introduce/Introduce";
+import Management from "@/components/organisms/profile-description/management/Management";
+import PortfolioList from "@/components/organisms/profile-description/portfolio-list/PortfolioList";
+import Review from "@/components/organisms/profile-description/review/Review";
 import { IComponentFactory, SetState } from "@/types";
 
 
