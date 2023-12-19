@@ -115,7 +115,7 @@ export const Input = styled.input`
 
 export const ContentSection = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 38rem;
 
 	padding: 1rem;
 	margin-top: 1rem;
@@ -133,10 +133,12 @@ export const List = styled.ul`
 
 export const Item = styled.li`
 	width: 100%;
-	height: 100%;
+	height: fit-content;
 
 	display: flex;
 	gap: 3rem;
+
+	padding: 0.1rem 0 0.1rem;
 
 	background-color: white;
 `;
