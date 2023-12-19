@@ -24,11 +24,33 @@ export const ModalBox = styled.div`
 	flex-direction: column;
 	gap: 2rem;
 
-	padding: 3rem 2rem 3rem 2rem;
+	padding: 1.7rem 2rem 3rem 2rem;
 
 	border-radius: 16px;
 	background-color: white;
 `;
+
+export const CloseButton = styled.div`
+	width: 100%;
+
+	display: flex;
+	justify-content: right;
+
+	cursor: pointer;
+`
+
+export const ContentBox = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	overflow-y: auto;
+
+	background-color: beige;
+`
 
 export const TitleSection = styled.div`
 	width: 100%;
