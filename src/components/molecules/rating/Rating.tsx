@@ -1,6 +1,8 @@
 import { FiStar as StarIcon } from "react-icons/fi";
 
-import { RatingBox, RatingLayout, Score } from "./Rating.styled";
+import { RatingBox, RatingLayout } from "./Rating.styled";
+
+import { Text } from '@/styles/Text.styled';
 
 function Rating() {
 	const renderStarIcon = ()=>{
@@ -16,9 +18,7 @@ function Rating() {
 			<RatingBox>
 				{renderStarIcon()}
 			</RatingBox>
-			<Score>
-				Score
-			</Score>
+			<Text size='Medium' color='Gray'>Score</Text>
 		</RatingLayout>
 	)
 }
