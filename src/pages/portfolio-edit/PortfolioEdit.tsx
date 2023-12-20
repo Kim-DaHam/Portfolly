@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-import { Label } from "../portfolio-detail/PortfolioDetail.styeld";
-
 import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, PortfolioEditLayout, SubmitButton, SummaryInputArea, TagBox, TagInput, TitleInput } from "./PortfolioEdit.styled";
 
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
 import Editor from "@/components/organisms/editor/Editor";
+import { Label } from "@/styles/Text.styled";
 import { Section } from "@/types/portfolio";
 
 function PortfolioEdit(){
