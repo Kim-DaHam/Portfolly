@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 
-import { SquareButton } from '@/components/atoms/button/Button.styled';
 import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 
 export const MyPageLayout = styled.div`
@@ -11,7 +10,7 @@ export const MyPageLayout = styled.div`
 	flex-direction: column;
 `;
 
-export const UserProfileContainer = styled.div`
+export const ProfileContainer = styled.div`
 	width: 100%;
 	height: 100%;
 
@@ -23,7 +22,7 @@ export const UserProfileContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	padding: 5rem 10rem 2rem 10rem;
+	padding: 3rem 10rem 2rem 10rem;
 
 	background-color: salmon;
 `;
@@ -49,32 +48,7 @@ export const ProfileImg = styled.div`
 	background-color: white;
 `;
 
-export const FlexCoulumnBox = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	background-color: goldenrod;
-`;
-
-export const UserName = styled.div`
-	font-size: 2em;
-	font-weight: 600;
-`;
-
-export const ButtonBox = styled.div`
-	display: flex;
-	justify-content: end;
-`;
-
-export const ContactButton = styled(SquareButton)`
-	/* height: 3rem; */
-`;
-
-export const ProfileNavigationSection = styled.section`
+export const NavigationSection = styled.section`
 	width: 100%;
 	height: 5rem;
 
@@ -99,7 +73,7 @@ export const Navigation = styled.a`
 	border-bottom: 3px solid black;
 `;
 
-export const ProfileContentContainer = styled.div`
+export const ContentContainer = styled.div`
 	width: 100%;
 	height: 100%;
 
@@ -108,7 +82,7 @@ export const ProfileContentContainer = styled.div`
 	background-color: lightgreen;
 `;
 
-export const ProfileDescriptionSection = styled.section`
+export const DescriptionSection = styled.section`
 	width: 100%;
 	height: 100%;
 
@@ -119,45 +93,11 @@ export const ProfileDescriptionSection = styled.section`
 	background-color: yellow;
 `;
 
-export const ProfileInformationSection = styled.section`
+export const InformationSection = styled.aside`
 	width: 24rem;
 	height: 100%;
 
 	padding: 1rem;
 
 	background-color: white;
-`;
-
-export const InformationBox = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	padding: 1rem;
-
-	background-color: lightsteelblue;
-`;
-
-export const FlexColumBox = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-
-	background-color: aqua;
-`;
-
-export const SpanBox = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	justify-content: space-between;
-
-	background-color: thistle;
 `;
