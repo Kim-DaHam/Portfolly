@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 
-import { SquareButton } from '@/components/atoms/button/Button.styled';
 import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 
 export const PortfolioEditLayout = styled.div`
@@ -51,7 +50,7 @@ export const EditorSection = styled.section`
 	background-color: lemonchiffon;
 `;
 
-export const FormSection = styled.section`
+export const FormSection = styled.aside`
 	width: 22rem;
 	height: 100%;
 
@@ -102,10 +101,6 @@ export const SummaryInputArea = styled.div`
 	height: 5rem;
 
 	background-color: red;
-`;
-
-export const SubmitButton = styled(SquareButton)`
-	/* height: 7%; */
 `;
 
 export const TagInput = styled.div`
