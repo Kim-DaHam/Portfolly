@@ -4,8 +4,8 @@ import { bodyFontSize, fontColor, headingFontSize } from "./token";
 
 import { FontColor, FontSize } from "@/types/style";
 
-export const Heading = styled.div<{size: FontSize, color: FontColor}>`
-	color: ${(props)=>fontColor[props.color].color};
+export const Heading = styled.div<{size: FontSize, color?: FontColor}>`
+	color: ${(props)=>props.color ? fontColor[props.color].color : '#111111'};
 
 	${(props)=>{
 		const size = props.size;
@@ -19,8 +19,8 @@ export const Heading = styled.div<{size: FontSize, color: FontColor}>`
 	}}
 `;
 
-export const Text = styled.span<{size: FontSize, color: FontColor}>`
-	color: ${(props)=>fontColor[props.color].color};
+export const Text = styled.span<{size: FontSize, color?: FontColor}>`
+	color: ${(props)=>props.color ? fontColor[props.color].color : '#111111'};
 
 	${(props)=>{
 		const size = props.size;
@@ -34,8 +34,8 @@ export const Text = styled.span<{size: FontSize, color: FontColor}>`
 	}}
 `;
 
-export const Label = styled.label<{color: FontColor}>`
-	color: ${(props)=>fontColor[props.color].color};
+export const Label = styled.label<{color?: FontColor}>`
+	color: ${(props)=>props.color ? fontColor[props.color].color : '#111111'};
 
 	font-size: 1rem;
 	line-height: 1.5rme;
