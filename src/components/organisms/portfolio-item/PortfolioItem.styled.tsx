@@ -3,7 +3,7 @@ import { styled, css } from 'styled-components';
 import { portfolioItemSize } from '@/styles/token';
 import { Section } from '@/types/portfolio';
 
-export const PortfolioItemContainer = styled.div<{type: Section}>`
+export const PortfolioItemLayout = styled.div<{type: Section}>`
 	width: 100%;
 	aspect-ratio: ${(props) => portfolioItemSize[props.type].aspectRatio};
 

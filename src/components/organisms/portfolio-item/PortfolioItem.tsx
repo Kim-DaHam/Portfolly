@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { sliderSettings } from "./PortfolioItem.constants";
 
-import { ArrowBox, NextArrow, PortfolioItemContainer, PrevArrow, SliderBox } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
+import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderBox } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
 import { Section } from "@/types/portfolio";
 import { InitialProps } from "@/types/slider";
@@ -30,7 +30,7 @@ function PortfolioItem({type}: Props){
 	}, [])
 
 	return(
-		<PortfolioItemContainer type={type}>
+		<PortfolioItemLayout type={type}>
 			<SliderBox>
 				<ArrowBox>
 					<PrevArrow onClick={handlePrev} current={currentSlideIndex}/>
@@ -46,7 +46,7 @@ function PortfolioItem({type}: Props){
 					</SliderItem> */}
 				</Slider>
 			</SliderBox>
-		</PortfolioItemContainer>
+		</PortfolioItemLayout>
 	)
 }
 
