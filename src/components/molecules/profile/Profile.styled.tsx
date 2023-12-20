@@ -58,7 +58,7 @@ export const PortfolioTitle = styled.span`
 	background-color: yellow;
 `;
 
-export const ButtonBox = styled.div`
+export const ButtonGroup = styled.div`
 	display: none;
 	gap: 0.4rem;
 

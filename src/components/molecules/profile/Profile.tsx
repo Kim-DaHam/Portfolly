@@ -2,7 +2,6 @@
 import { Image, ProfileLayout } from "./Profile.styled";
 import { renderProfile } from "./Profile.utils";
 
-
 type Profile = 'Default' | 'Portfolio' | 'Chat';
 
 type Props = {
