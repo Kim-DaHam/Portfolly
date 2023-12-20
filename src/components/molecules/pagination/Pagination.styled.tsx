@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const PagenationLayout = styled.div`
+export const PaginationLayout = styled.div`
 	width: 380px;
 	height: 40px;
 

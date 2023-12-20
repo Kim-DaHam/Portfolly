@@ -1,6 +1,6 @@
 import { ContentBox, FlexColumnBox, ProfileBox, ProfileImage, ReviewBox, ReviewLayout, ReviewList, Span } from "./Review.styled";
 
-import Pagenation from "@/components/molecules/pagenation/Pagenation";
+import Pagination from "@/components/molecules/pagination/Pagination";
 import Rating from "@/components/molecules/rating/Rating";
 
 function Review() {
@@ -25,7 +25,7 @@ function Review() {
 				</ReviewBox>
 
 			</ReviewList>
-			<Pagenation/>
+			<Pagination/>
 		</ReviewLayout>
 	)
 }

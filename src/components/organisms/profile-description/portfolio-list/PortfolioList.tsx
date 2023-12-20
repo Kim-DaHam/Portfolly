@@ -1,6 +1,6 @@
 import { GridBox, GridItem, PortfolioListLayout, Span, ThumbnailImage, Title, TitleBox } from "./PortfolioList.styled";
 
-import Pagenation from "@/components/molecules/pagenation/Pagenation";
+import Pagination from "@/components/molecules/pagination/Pagination";
 
 
 function PortfolioList() {
@@ -18,7 +18,7 @@ function PortfolioList() {
 				</GridItem>
 			</GridBox>
 
-			<Pagenation/>
+			<Pagination/>
 		</PortfolioListLayout>
 	)
 }
