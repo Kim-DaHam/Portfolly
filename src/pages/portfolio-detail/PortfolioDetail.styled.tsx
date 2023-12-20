@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 
-import { RoundButton, SquareButton } from '@/components/atoms/button/Button.styled';
 import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 
 export const PortfolioDetailLayout = styled.div`
@@ -19,24 +18,23 @@ export const PortfolioDetailLayout = styled.div`
 	background-color: salmon;
 `;
 
-export const BackButton = styled(RoundButton)`
-	width: fit-content;
-
-	margin-left: 3rem;
-	background-color: red;
-`
-
 export const PortfolioDetailContainer = styled.div`
 	width: 100%;
 	height: 100%;
 
 	display: flex;
-	gap: 1.2rem;
+	flex-direction: column;
+	gap: 0.5rem;
 
 	padding: 1rem 3rem 2rem 3rem;
 `;
 
-export const PortfolioContentSection = styled.section`
+export const ContentContainer = styled.div`
+	display: flex;
+	gap: 1.2rem;
+`
+
+export const PortfolioSection = styled.section`
 	width: 100%;
 	height: 100%;
 
@@ -47,14 +45,14 @@ export const PortfolioContentSection = styled.section`
 	background-color: lightgreen;
 `;
 
-export const HtmlContentBox = styled.div`
+export const HtmlContent = styled.div`
 	width: 100%;
 	height: 100%;
 
 	background-color: white;
 `;
 
-export const RightSideSection = styled.aside`
+export const RightSection = styled.aside`
 	width: 23rem;
 	height: 100%;
 
@@ -87,9 +85,12 @@ export const UserBox = styled.div`
 	background-color: violet;
 `;
 
-export const AskButton = styled(SquareButton)`
-	width: 70%;
-	height: 5rem;
+export const ProfileBox = styled.div`
+	width: 100%;
+
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 `;
 
 export const FlexBox = styled.div`
@@ -117,12 +118,7 @@ export const TitleBox = styled.div`
 	background-color: white;
 `;
 
-export const Category = styled.span`
-	font-weight: 600;
-	color: gray;
-`;
-
-export const ButtonBox = styled.div`
+export const ButtonGroup = styled.div`
 	width: 100%;
 	height: 3rem;
 
@@ -130,13 +126,6 @@ export const ButtonBox = styled.div`
 	justify-content: end;
 	align-items: center;
 	gap: 	1rem;
-`;
-
-export const Label = styled.label`
-	font-size: 1rem;
-
-	font-weight: 600;
-	color: gray;
 `;
 
 export const TagBox = styled.div`

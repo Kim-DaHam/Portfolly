@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import SearchModal from "../modal/search-modal/SearchModal";
-import SectionMenu from "../../molecules/menu/SectionMenu";
+import SectionNavigatior from "../../molecules/navigator/SectionNavigator";
 import Popper from "../../molecules/popper/Popper";
 import SearchBar from "../../molecules/searchBar/SearchBar";
+import SearchModal from "../modal/search-modal/SearchModal";
 
 import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
 
-import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVersionButton } from "@/components/organisms/header/Header.styled";
+import { SquareButton } from "@/components/atoms/button/Button.styled";
+import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
 import usePopup from "@/hooks/usePopup";
 import { ROUTE_PATH } from "@/utils/path";
 
@@ -30,7 +31,7 @@ function Header() {
 		<HeaderContainer>
 			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}></LogoBox>
 
-			{ showSectionMenu ? <SectionMenu/> : <div></div> }
+			{ showSectionMenu ? <SectionNavigatior/> : <div></div> }
 
 			{ showSearchBar ?
 				<>
@@ -44,13 +45,13 @@ function Header() {
 				<div></div>
 			}
 
-			<ButtonBox>
-				<LogInButton>Log in</LogInButton>
+			<ButtonGroup>
+				<SquareButton size='Fit' color='White'>Log in</SquareButton>
 
-				<TrialVersionButton>Start Trial Version</TrialVersionButton>
+				<SquareButton size='Fit' color='Black'>Start Trial Version</SquareButton>
 
-				<MenuButton onClick={popUp}>=</MenuButton>
-			</ButtonBox>
+				<SquareButton size='Fit' color='Transparency' onClick={popUp}>=</SquareButton>
+			</ButtonGroup>
 
 			{ isHeaderMenuPopUp &&
 				<Popper

@@ -3,7 +3,7 @@ import { HTMLAttributes, useEffect, useState } from "react";
 import SearchBar from "../../../molecules/searchBar/SearchBar";
 
 import { searchFilter, searchFilterList } from "./SearchModal.constants";
-import { ModalLayout, ModalBox, SearchContainer, ContentContainer, FilterGroup, ContentBox, OptionButton } from "./SearchModal.styled";
+import { ModalLayout, ModalBox, FilterGroup, ContentBox, OptionButton, SearchSection, ContentSection } from "./SearchModal.styled";
 import { Filter } from "./SearchModal.type";
 import { renderContent } from "./SearchModal.utils";
 
@@ -33,26 +33,28 @@ function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
 	return(
 		<ModalLayout {...attributes}>
 			<ModalBox onClick={eventStopPropagation}>
-				<SearchContainer>
+				<SearchSection>
 					<SearchBar isClicked={true} onInputChange={setIsTextEntered}/>
-				</SearchContainer>
+				</SearchSection>
 
-				<ContentContainer>
-					<FilterGroup>
-						{searchFilterList.map((filter)=>{
-							return (
-								<OptionButton onClick={()=>changeFilter(filter)}>
-									{searchFilter[filter].logo}
-									{searchFilter[filter].name}
-								</OptionButton>
-							)
-						})}
-					</FilterGroup>
+				<ContentSection>
+					{ !isTextEntered &&
+						<FilterGroup>
+							{searchFilterList.map((filter)=>{
+								return (
+									<OptionButton color='White' size='Large' onClick={()=>changeFilter(filter)}>
+										{searchFilter[filter].icon}
+										{searchFilter[filter].name}
+									</OptionButton>
+								)
+							})}
+						</FilterGroup>
+					}
 
 					<ContentBox>
 						{renderContent(searchFilter[filter].contentType)}
 					</ContentBox>
-				</ContentContainer>
+				</ContentSection>
 			</ModalBox>
 		</ModalLayout>
 	)

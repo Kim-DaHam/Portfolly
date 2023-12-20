@@ -4,7 +4,7 @@ export type Content = 'Trending' | 'List' | 'Search';
 export type SearchFilter = {
 	[key in Filter]: {
 		name: string;
-		logo: JSX.Element;
+		icon: JSX.Element;
 		contentType: Content;
 	}
 };

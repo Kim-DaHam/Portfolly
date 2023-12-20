@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 
-import { selectorList , Selector as TSelector } from "./Selector.constants";
+import { selectorList } from "./Selector.constants";
 import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, SelectorOutSide, Span } from "./Selector.styled";
 
+import { Selector as TSelector } from '@/components/atoms/selector/Selector.type'
 import { Section } from "@/types/portfolio";
 
 type Props = {

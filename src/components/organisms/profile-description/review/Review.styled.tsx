@@ -54,17 +54,6 @@ export const ProfileImage = styled.div`
 	background-color: white;
 `;
 
-export const FlexColumnBox = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-
-	gap: 0.5rem;
-`;
-
 export const Span = styled.span`
 	font-size: 1.1rem;
 	font-weight: 600;

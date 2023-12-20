@@ -1,10 +1,10 @@
 import { TfiArrowCircleLeft as LeftArrowIcon, TfiArrowCircleRight as RightArrowIcon } from "react-icons/tfi";
 
-import { PagenationLayout } from "./Pagenation.styled";
+import { PaginationLayout } from "./Pagination.styled";
 
-function Pagenation() {
+function Pagination() {
 	return(
-		<PagenationLayout>
+		<PaginationLayout>
 			<LeftArrowIcon size={20}/>
 				<div>1</div>
 				<div>2</div>
@@ -16,8 +16,8 @@ function Pagenation() {
 				<div>8</div>
 				<div>9</div>
 			<RightArrowIcon size={20}/>
-		</PagenationLayout>
+		</PaginationLayout>
 	)
 }
 
-export default Pagenation;
+export default Pagination;

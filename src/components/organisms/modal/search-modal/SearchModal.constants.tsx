@@ -5,22 +5,22 @@ export const searchFilterList: Array<Filter> = ['Trending', 'AppCategory', 'User
 export const searchFilter: SearchFilter = {
 	Trending: {
 		name: 'Trending',
-		logo: (<></>),
+		icon: (<></>),
 		contentType: 'Trending'
 	},
 	AppCategory: {
 		name: 'App Category',
-		logo: (<></>),
+		icon: (<></>),
 		contentType: 'List'
 	},
 	UserTags: {
 		name: 'User Tags',
-		logo: (<></>),
+		icon: (<></>),
 		contentType: 'List'
 	},
 	Search: {
 		name: "",
-		logo: (<></>),
+		icon: (<></>),
 		contentType: 'Search'
 	}
 };

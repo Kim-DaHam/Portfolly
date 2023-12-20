@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { Label } from "../portfolio-detail/PortfolioDetail.styeld";
+import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, PortfolioEditLayout, SummaryInputArea, TagBox, TagInput, TitleInput } from "./PortfolioEdit.styled";
 
-import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, PortfolioEditLayout, SubmitButton, SummaryInputArea, TagBox, TagInput, TitleInput } from "./PortfolioEdit.styled";
-
+import { SquareButton } from "@/components/atoms/button/Button.styled";
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
 import Editor from "@/components/organisms/editor/Editor";
+import { Label } from "@/styles/Text.styled";
 import { Section } from "@/types/portfolio";
 
 function PortfolioEdit(){
@@ -42,7 +42,7 @@ function PortfolioEdit(){
 						<Label>Summary</Label>
 						<SummaryInputArea/>
 					</FormBox>
-					<SubmitButton color='Black'>Submit</SubmitButton>
+					<SquareButton color='Black' size='Medium'>Submit</SquareButton>
 				</FormSection>
 			</FlexContainer>
 		</PortfolioEditLayout>

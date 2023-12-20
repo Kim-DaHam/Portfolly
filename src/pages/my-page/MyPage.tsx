@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-import { Label } from "../portfolio-detail/PortfolioDetail.styeld";
-
-import { ButtonBox, ContactButton, FlexColumBox, FlexCoulumnBox, InformationBox, MyPageLayout, ProfileContentContainer, ProfileDescriptionSection, ProfileImg, ProfileInformationSection, ProfileMainSection, ProfileNavigationSection, SpanBox, UserName, UserProfileContainer } from "./MyPage.styled";
+import { ContentContainer, InformationSection, MyPageLayout, NavigationSection, ProfileContainer, DescriptionSection, ProfileImg, ProfileMainSection } from "./MyPage.styled";
 import { Navigation } from "./MyPage.type";
 import { renderDescription, renderNavigation } from "./MyPage.utils";
 
+
+import { SquareButton } from "@/components/atoms/button/Button.styled";
 import Rating from "@/components/molecules/rating/Rating";
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";
-import { Span } from "@/components/organisms/profile-description/introduce/Introduce.styled";
+import UserInformation from "@/components/organisms/user-information/UserInformation";
+import { FlexBox, FlexColumnBox } from "@/styles/Container.styled";
+import { Heading } from "@/styles/Text.styled";
 
 function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('Introduce');
@@ -17,56 +19,41 @@ function MyPage(){
 	return(
 		<MyPageLayout>
 			<Header/>
-			<UserProfileContainer>
+			<ProfileContainer>
 				<ProfileMainSection>
 					<ProfileImg>
 						<img/>
 					</ProfileImg>
 
-					<FlexCoulumnBox>
-						<UserName>User Name</UserName>
+					<FlexColumnBox gap='1rem'>
+						<Heading size='Large'>User Name</Heading>
 						<Rating/>
 
 						{ true && // 본인 아니면
-							<ButtonBox>
-								<ContactButton color='Black'>
+							<FlexBox justify="right">
+								<SquareButton color='Black' size='Large'>
 									문의하기
-								</ContactButton>
-							</ButtonBox>
+								</SquareButton>
+							</FlexBox>
 						}
-					</FlexCoulumnBox>
+					</FlexColumnBox>
 				</ProfileMainSection>
 
-				<ProfileNavigationSection>
+				<NavigationSection>
 					{renderNavigation('Expert', setNavigation)}
-				</ProfileNavigationSection>
+				</NavigationSection>
 
-				<ProfileContentContainer>
-					<ProfileDescriptionSection>
+				<ContentContainer>
+					<DescriptionSection>
 						{renderDescription(navigation)}
-					</ProfileDescriptionSection>
+					</DescriptionSection>
 
-					<ProfileInformationSection>
-						<InformationBox>
-							<Label>활동 정보</Label>
-							<FlexColumBox>
-								<SpanBox>
-									<Span>총 작업 수</Span>
-									<Span>0개</Span>
-								</SpanBox>
-								<SpanBox>
-									<Span>만족도</Span>
-									<Span>0%</Span>
-								</SpanBox>
-								<SpanBox>
-									<Span>연락 가능 시간</Span>
-									<Span>언제나 가능</Span>
-								</SpanBox>
-							</FlexColumBox>
-						</InformationBox>
-					</ProfileInformationSection>
-				</ProfileContentContainer>
-			</UserProfileContainer>
+					<InformationSection>
+						<UserInformation/>
+					</InformationSection>
+				</ContentContainer>
+			</ProfileContainer>
+
 			<Footer/>
 		</MyPageLayout>
 	)

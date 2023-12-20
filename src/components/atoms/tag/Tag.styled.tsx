@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const TagContainer = styled.div<{readOnly: boolean}>`
+export const TagLayout = styled.div<{readOnly: boolean}>`
 	width: fit-content;
 	height: 2rem;
 

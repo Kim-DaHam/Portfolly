@@ -1,8 +1,4 @@
-export type Selector = 'Section' | 'Android/iOS' | 'Web' | 'Illustration' | 'Photo' | 'Video' | 'RequestType' | 'RequestState' | 'SearchFilter' | 'MessageState';
-
-type SelectorList = {
-	[key in Selector] : Array<string>;
-}
+import { SelectorList } from "./Selector.type";
 
 export const selectorList: SelectorList = {
 	Section: ['Android/iOS', 'Web', 'Illlustration', 'Graphics', 'Video'],

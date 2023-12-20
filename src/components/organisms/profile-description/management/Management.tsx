@@ -2,11 +2,14 @@ import { useState } from "react";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
 import RequestModal from "../../modal/request-modal/RequestModal";
+import Tracking from "../../tracking/Tracking";
 
-import { Box, BoxList, ContentSection, Count, DateSelector, FilterForm, FlexBox, FlexColumnBox, Input, Item, LabelBox, List, ManagementLayout, SearchFilterSection, Span, SpanBox, Title, TrackingSection } from "./Management.styled";
+import { ContentSection, DateSelector, FilterForm, Item, List, ManagementLayout, Notice, SearchFilterSection, SearchInput } from "./Management.styled";
 
 import { SquareButton } from "@/components/atoms/button/Button.styled";
 import Selector from "@/components/atoms/selector/Selector";
+import { FlexColumnBox } from "@/styles/Container.styled";
+import { Text } from "@/styles/Text.styled";
 
 function Management() {
 	const [isOpenModal, setIsOpenModal] = useState(false);
@@ -17,50 +20,12 @@ function Management() {
 
 	return(
 		<ManagementLayout>
-			<TrackingSection>
-				<BoxList>
-					<Box>
-						<LabelBox>
-							<div>아이콘</div>
-							<Span>진행중</Span>
-						</LabelBox>
-						<Count>0</Count>
-					</Box>
-					<Box>
-						<LabelBox>
-							<div>아이콘</div>
-							<Span>진행중</Span>
-						</LabelBox>
-						<Count>0</Count>
-					</Box>
-					<Box>
-						<LabelBox>
-							<div>아이콘</div>
-							<Span>진행중</Span>
-						</LabelBox>
-						<Count>0</Count>
-					</Box>
-					<Box>
-						<SpanBox>
-							<Span>구매 확정</Span>
-							<Span>0</Span>
-						</SpanBox>
-						<SpanBox>
-							<Span>작성 가능한 리뷰</Span>
-							<Span>0</Span>
-						</SpanBox>
-						<SpanBox>
-							<Span>주문 취소</Span>
-							<Span>0</Span>
-						</SpanBox>
-					</Box>
-				</BoxList>
-			</TrackingSection>
+			<Tracking/>
 
-			<FlexBox>
+			<Notice>
 				<QuestionIcon/>
-				<Span>구매 과정 및 주문 상태 안내</Span>
-			</FlexBox>
+				<Text size='Small'>구매 과정 및 주문 상태 안내</Text>
+			</Notice>
 
 			<SearchFilterSection>
 				<FilterForm>
@@ -73,20 +38,20 @@ function Management() {
 
 					<Selector type='SearchFilter' placeholder='닉네임'/>
 
-					<Input/>
+					<SearchInput/>
 
-					<SquareButton color="White">검색</SquareButton>
+					<SquareButton color="White" size='Fit'>검색</SquareButton>
 				</FilterForm>
 			</SearchFilterSection>
 
 			<ContentSection>
 				<List>
 					<Item>
-						<Span>1</Span>
+						<Text size='Small'>1</Text>
 						<FlexColumnBox onClick={openRequestModal}>
-							<Title>Title</Title>
-							<Span>의뢰 설명</Span>
-							<Span>의뢰 날짜</Span>
+							<Text size='Medium'>Title</Text>
+							<Text size='Small'>의뢰 설명</Text>
+							<Text size='Small'>의뢰 날짜</Text>
 						</FlexColumnBox>
 					</Item>
 				</List>

@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
 
-export const SectionMenuLayout = styled.div`
+export const SectionNavigatorLayout = styled.div`
 	width: 100%;
 	height: 100%;
 `
 
-export const SectionMenuBox = styled.div`
+export const SectionNavigatorBox = styled.div`
 	width: 100%;
 	height: 100%;
 

@@ -1,10 +1,11 @@
 import { css, styled } from 'styled-components';
 
-import { buttonColor } from '@/styles/token';
-import { Color } from '@/types/style';
+import { buttonColor, buttonSize } from '@/styles/token';
+import { ButtonColor, ButtonSize } from '@/types/style';
 
-const Button = styled.button<{color: Color}>`
-	height: 100%;
+const Button = styled.button<{color: ButtonColor, size: ButtonSize}>`
+	width: ${(props)=>buttonSize[props.size].width};
+	height: 2.9rem;
 
 	padding: 0 1em 0 1em;
 	line-height: 1.5em;
@@ -22,12 +23,14 @@ const Button = styled.button<{color: Color}>`
 	cursor: pointer;
 
 	${(props)=>{
+		const color = props.color;
+
 		return css`
-			color: ${buttonColor[props.color].fontColor};
-			background-color: ${buttonColor[props.color].backgroundColor};
+			color: ${buttonColor[color].fontColor};
+			background-color: ${buttonColor[color].backgroundColor};
 
 			&:hover{
-				background-color: ${buttonColor[props.color].hoverBackgroundColor};
+				background-color: ${buttonColor[color].hoverBackgroundColor};
 			}
 		`
 	}}
@@ -37,6 +40,6 @@ export const SquareButton = styled(Button)`
 	border-radius: 1em;
 `;
 
-export const RoundButton = styled(SquareButton)`
+export const RoundButton = styled(Button)`
 	border-radius: 9999px;
 `;

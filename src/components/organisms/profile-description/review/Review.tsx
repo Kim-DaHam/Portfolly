@@ -1,7 +1,8 @@
-import { ContentBox, FlexColumnBox, ProfileBox, ProfileImage, ReviewBox, ReviewLayout, ReviewList, Span } from "./Review.styled";
+import { ContentBox, ProfileBox, ProfileImage, ReviewBox, ReviewLayout, ReviewList, Span } from "./Review.styled";
 
-import Pagenation from "@/components/molecules/pagenation/Pagenation";
+import Pagination from "@/components/molecules/pagination/Pagination";
 import Rating from "@/components/molecules/rating/Rating";
+import { FlexColumnBox } from "@/styles/Container.styled";
 
 function Review() {
 	return(
@@ -13,7 +14,7 @@ function Review() {
 							<img />
 						</ProfileImage>
 
-						<FlexColumnBox>
+						<FlexColumnBox gap='0.5rem' justify="center">
 							<Span>Name</Span>
 							<Rating/>
 						</FlexColumnBox>
@@ -23,9 +24,9 @@ function Review() {
 						리뷰리뷰
 					</ContentBox>
 				</ReviewBox>
-
 			</ReviewList>
-			<Pagenation/>
+
+			<Pagination/>
 		</ReviewLayout>
 	)
 }

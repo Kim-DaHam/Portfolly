@@ -1,12 +1,10 @@
 import { FiX as XIcon } from "react-icons/fi";
 
-import { Span } from "../../profile-description/introduce/Introduce.styled";
-
-import { ButtonGroup, CloseButton, Content, ContentBox, FlexBox, FlexColumnBox, ModalBox, RequestForm, RequestModalLayout, Title, TitleSection } from "./RequestModal.styled";
+import { ButtonGroup, CloseButton, ContentSection, ModalBox, RequestForm, RequestModalLayout, TitleBox } from "./RequestModal.styled";
 
 import { SquareButton } from "@/components/atoms/button/Button.styled";
-import Profile from "@/components/molecules/profile/Profile";
-import { Label } from "@/pages/portfolio-detail/PortfolioDetail.styeld";
+import { FlexColumnBox } from "@/styles/Container.styled";
+import { Heading, Label, Text } from "@/styles/Text.styled";
 import { SetState } from "@/types";
 import { eventStopPropagation } from "@/utils/event";
 
@@ -27,40 +25,43 @@ function RequestModal({handleModal}: Props) {
 					<XIcon size={28}/>
 				</CloseButton>
 
-				<ContentBox>
-					<TitleSection>
-						<Title>Title</Title>
-						<Span>Date</Span>
-					</TitleSection>
+				<ContentSection>
+					<TitleBox>
+						<Heading size='Small'>Title</Heading>
+						<Text size='Small'>Date</Text>
+					</TitleBox>
 
 					<RequestForm>
-						<FlexColumnBox>
+						<FlexColumnBox gap='1rem'>
 							<Label>전문가 정보</Label>
-							<FlexBox>
-								<Profile type='Default'/>
+							<FlexColumnBox gap='0.5rem'>
+								{/* <Profile type='Default'/> */}
 								<Label>이름</Label>
+								<Text size='Medium'>홍길동</Text>
 								<Label>연락처</Label>
-							</FlexBox>
+								<Text size='Medium'>010-0000-0000</Text>
+							</FlexColumnBox>
 						</FlexColumnBox>
 
 						<FlexColumnBox>
 							<Label>의뢰 내용</Label>
-							<Content>내용</Content>
+							<Text size='Medium'>내용</Text>
 						</FlexColumnBox>
 
 						<FlexColumnBox>
 							<Label>마감 기한</Label>
-							<Content>내용</Content>
+							<Text size='Medium'>내용</Text>
 						</FlexColumnBox>
 
 						<FlexColumnBox>
 							<Label>비용</Label>
-							<Content>내용</Content>
+							<Text size='Medium'>내용</Text>
 						</FlexColumnBox>
 				</RequestForm>
-				</ContentBox>
+				</ContentSection>
+
 				<ButtonGroup>
-					<SquareButton color='Black'>주문 취소</SquareButton>
+					<SquareButton color='Black' size='Medium'>주문 취소</SquareButton>
 				</ButtonGroup>
 			</ModalBox>
 		</RequestModalLayout>

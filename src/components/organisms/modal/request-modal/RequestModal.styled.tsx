@@ -1,5 +1,7 @@
 import { styled } from 'styled-components';
 
+import { FlexColumnBox } from '@/styles/Container.styled';
+
 export const RequestModalLayout = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -39,7 +41,7 @@ export const CloseButton = styled.div`
 	cursor: pointer;
 `
 
-export const ContentBox = styled.div`
+export const ContentSection = styled.div`
 	width: 100%;
 	height: 100%;
 
@@ -52,17 +54,9 @@ export const ContentBox = styled.div`
 	background-color: beige;
 `
 
-export const TitleSection = styled.div`
-	width: 100%;
-
-	display: flex;
-	flex-direction: column;
+export const TitleBox = styled(FlexColumnBox)`
 	gap: 0.5rem;
 `;
-
-export const Title = styled.h1`
-
-`
 
 export const RequestForm = styled.form`
 	width: 100%;
@@ -73,32 +67,6 @@ export const RequestForm = styled.form`
 	gap: 2rem;
 
 	border: 1px solid black;
-`;
-
-export const FlexColumnBox = styled.div`
-	width: 100%;
-
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	background-color: skyblue;
-`;
-
-export const FlexBox = styled.div`
-	width: 100%;
-
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	border: 1px solid black;
-`;
-
-export const Content = styled.div`
-	width: 100%;
-
-	background-color: lemonchiffon;
 `;
 
 export const ButtonGroup = styled.div`

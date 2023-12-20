@@ -1,5 +1,7 @@
 import { styled } from 'styled-components';
 
+import { SquareButton } from '@/components/atoms/button/Button.styled';
+
 export const ModalLayout = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -26,13 +28,13 @@ export const ModalBox = styled.div`
 	background-color: white;
 `;
 
-export const SearchContainer = styled.section`
+export const SearchSection = styled.section`
 	width: 100%;
 
 	padding: 0.75rem 1.25rem 0.75rem 1.25rem;
 `
 
-export const ContentContainer = styled.section`
+export const ContentSection = styled.section`
 	width: 100%;
 	height: 100%;
 
@@ -42,21 +44,20 @@ export const ContentContainer = styled.section`
 	padding: 0 1.25rem 1rem 1.25rem;
 `
 
-export const FilterGroup = styled.nav`
+export const FilterGroup = styled.aside`
 	display: flex;
 	flex-direction: column;
-	flex-basis: 20%;
 `;
 
-export const OptionButton = styled.button`
+export const OptionButton = styled(SquareButton)`
 	display: flex;
+	align-items: center;
 `;
 
 export const ContentBox = styled.div`
 	display: flex;
 	flex-direction: column;
-	flex-basis: 80%;
-	row-gap: 1rem;
+	gap: 1rem;
 `;
 
 export const ItemList = styled.ul`
@@ -68,11 +69,4 @@ export const Item = styled.li`
 
 	display: flex;
 	justify-content: space-between;
-`;
-
-export const FlexBox = styled.div`
-	width: 100%;
-
-	display: flex;
-	gap: 2rem;
 `;

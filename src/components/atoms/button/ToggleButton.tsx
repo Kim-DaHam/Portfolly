@@ -13,12 +13,12 @@ type Props = {
 const renderToggleButton = (type: Toggle) => {
 	const ComponentFactory: IComponentFactory = {
 		Bookmark: (
-			<SquareButton color='Black'>
+			<SquareButton color='Black' size='Fit'>
 				<BookmarkIcon/>
 			</SquareButton>
 		),
 		Like: (
-			<SquareButton color='White'>
+			<SquareButton color='White' size='Fit'>
 				<LikeIcon/>
 			</SquareButton>
 		),
