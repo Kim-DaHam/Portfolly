@@ -6,15 +6,14 @@ import Preview from "@/components/organisms/preview/Preview";
 import { wheelHandler } from "@/utils/wheelHandler";
 
 function Intro(){
-
 	return(
 		<IntroLayout ref={(element)=>{
 			if(element !== null) {
 				element.addEventListener("wheel", (event:WheelEvent)=>{
 					wheelHandler(event, element)
 				});
-			}
-		}}>
+			}}}
+		>
 			<Header/>
 			<Introduce>
 					<h1>Welcome to Portfolly</h1>

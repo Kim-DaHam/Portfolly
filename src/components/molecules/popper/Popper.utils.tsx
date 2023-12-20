@@ -24,7 +24,7 @@ export const renderPopper = (type: Popper) => {
 				<Item>MenuItem2</Item>
 			</Group>
 		),
-		SectionMenu: (
+		SectionNavigator: (
 			<Group size='Fit'>
 				<Item>Android/iOS</Item>
 				<Item>Web</Item>

@@ -5,7 +5,11 @@ import { PopperSize } from '@/types/style';
 
 export const PopperLayout = styled.div`
 	width: 100vw;
-	height: 100%;
+	height: 100vh;
+
+	display: fixed;
+	top: 0;
+	z-index: 200;
 
 	background-color: transparent;
 `;
