@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import SearchModal from "../modal/search-modal/SearchModal";
-import SectionMenu from "../../molecules/menu/SectionMenu";
+import SectionNavigation from "../../molecules/navigator/SectionNavigator";
 import Popper from "../../molecules/popper/Popper";
 import SearchBar from "../../molecules/searchBar/SearchBar";
+import SearchModal from "../modal/search-modal/SearchModal";
 
 import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
 
@@ -30,7 +30,7 @@ function Header() {
 		<HeaderContainer>
 			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}></LogoBox>
 
-			{ showSectionMenu ? <SectionMenu/> : <div></div> }
+			{ showSectionMenu ? <SectionNavigation/> : <div></div> }
 
 			{ showSearchBar ?
 				<>

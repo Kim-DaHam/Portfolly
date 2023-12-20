@@ -1,4 +1,4 @@
-export type Popper = 'HeaderMenu' | 'PortfolioMenu' | 'SectionMenu';
+export type Popper = 'HeaderMenu' | 'PortfolioMenu' | 'SectionNavigator';
 
 export type Props = {
 	type: Popper;
