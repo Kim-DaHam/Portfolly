@@ -1,6 +1,6 @@
 import { Dispatch, HTMLAttributes, SetStateAction } from "react";
 
-import { SearchBarContainer, SearchInputArea, SearchLogo } from "./SearchBar.styled";
+import { SearchBarLayout, SearchInputArea, SearchLogo } from "./SearchBar.styled";
 
 import useSearch from "@/hooks/useSearch";
 
@@ -13,14 +13,14 @@ function SearchBar({ isClicked, onInputChange, ...attributes }: Props){
 	const { searchKeyword } = useSearch({onInputChange});
 
 	return(
-		<SearchBarContainer {...attributes}>
+		<SearchBarLayout {...attributes}>
 			<SearchLogo/>
 			{ isClicked ?
 				<SearchInputArea onChange={searchKeyword}/>
 				:
 				<div>Search on type...</div>
 			}
-		</SearchBarContainer>
+		</SearchBarLayout>
 	)
 }
 
