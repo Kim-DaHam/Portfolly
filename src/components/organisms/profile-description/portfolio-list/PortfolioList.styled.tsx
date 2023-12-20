@@ -50,13 +50,3 @@ export const TitleBox = styled.div`
 
 	background-color: lightgreen;
 `;
-
-export const Title = styled.span`
-	font-size: 1.2rem;
-	font-weight: 600;
-`;
-
-export const Span = styled.span`
-	color: gray;
-	font-size: 1rem;
-`;

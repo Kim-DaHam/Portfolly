@@ -1,6 +1,7 @@
-import { GridBox, GridItem, PortfolioListLayout, Span, ThumbnailImage, Title, TitleBox } from "./PortfolioList.styled";
+import { GridBox, GridItem, PortfolioListLayout, ThumbnailImage, TitleBox } from "./PortfolioList.styled";
 
 import Pagination from "@/components/molecules/pagination/Pagination";
+import { Text } from "@/styles/Text.styled";
 
 
 function PortfolioList() {
@@ -11,9 +12,10 @@ function PortfolioList() {
 					<ThumbnailImage>
 						<img src="" alt="" />
 					</ThumbnailImage>
+
 					<TitleBox>
-						<Title>Title</Title>
-						<Span>Date</Span>
+						<Text size='Medium'>Title</Text>
+						<Text size='Small'>Date</Text>
 					</TitleBox>
 				</GridItem>
 			</GridBox>
