@@ -5,7 +5,6 @@ import { Span } from "../../profile-description/introduce/Introduce.styled";
 import { ButtonGroup, CloseButton, Content, ContentBox, FlexBox, FlexColumnBox, ModalBox, RequestForm, RequestModalLayout, Title, TitleSection } from "./RequestModal.styled";
 
 import { SquareButton } from "@/components/atoms/button/Button.styled";
-import Profile from "@/components/molecules/profile/Profile";
 import { Label } from "@/pages/portfolio-detail/PortfolioDetail.styeld";
 import { SetState } from "@/types";
 import { eventStopPropagation } from "@/utils/event";
@@ -37,7 +36,7 @@ function RequestModal({handleModal}: Props) {
 						<FlexColumnBox>
 							<Label>전문가 정보</Label>
 							<FlexBox>
-								<Profile type='Default'/>
+								{/* <Profile type='Default'/> */}
 								<Label>이름</Label>
 								<Label>연락처</Label>
 							</FlexBox>

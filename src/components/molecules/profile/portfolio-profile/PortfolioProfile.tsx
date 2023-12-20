@@ -1,12 +1,16 @@
 import { useEffect, useRef } from "react";
 import { FiMoreHorizontal as Icon } from "react-icons/fi";
 
-import { ButtonGroup, PortfolioTitle, SpanBox, UserName } from "../Profile.styled";
+import { ButtonGroup, PorfolioProfileLayout, SpanBox } from "./PortfolioProfile.styled";
 
 import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
+import Image from '@/components/atoms/image/Image';
 import Popper from "@/components/molecules/popper/Popper";
 import usePopup from "@/hooks/usePopup";
+import { Text } from "@/styles/Text.styled";
+
+
 
 function PortfolioProfile() {
 	const buttonGroupRef = useRef(null);
@@ -26,10 +30,11 @@ function PortfolioProfile() {
 	}, [menuOpen])
 
 	return(
-		<>
+		<PorfolioProfileLayout>
+			<Image src='' alt='user profile'/>
 			<SpanBox>
-				<UserName type='Portfolio'>username</UserName>
-				<PortfolioTitle>PortfolioTitleBlaBla</PortfolioTitle>
+				<Text size='Medium' color='Black'>Portfolio Title</Text>
+				<Text size='Small' color='Gray'>Portfolio Summary</Text>
 			</SpanBox>
 
 			<ButtonGroup className='button-box' ref={buttonGroupRef}>
@@ -43,7 +48,7 @@ function PortfolioProfile() {
 			{ menuOpen &&
 				<Popper type='PortfolioMenu' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} popOut={closeMenu}/>
 			}
-		</>
+		</PorfolioProfileLayout>
 	)
 }
 

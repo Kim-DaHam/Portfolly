@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { initialProps, sliderSettings } from "./Main.constants";
 import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
 
-import Profile from "@/components/molecules/profile/Profile";
+import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
 import Header from "@/components/organisms/header/Header";
 import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/organisms/portfolio-item/PortfolioItem";
@@ -73,12 +73,12 @@ function Main(){
 					<GridBox column={6}>
 						<GridItem>
 							<PortfolioItem type='Android/iOS'/>
-							<Profile type='Portfolio'/>
+							<PortfolioProfile/>
 						</GridItem>
 
 						<GridItem>
 							<PortfolioItem type='Web'/>
-							<Profile type='Portfolio'/>
+							<PortfolioProfile/>
 						</GridItem>
 					</GridBox>
 				</PortfolioSection>

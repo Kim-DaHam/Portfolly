@@ -1,7 +1,6 @@
 import { AskButton, BackButton, ButtonBox, Category, FlexBox, GridBox, GridItem, HtmlContentBox, Label, PortfolioContentSection, PortfolioDetailContainer, PortfolioDetailLayout, RightSideSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetail.styeld";
 
 import ToggleButton from "@/components/atoms/button/ToggleButton";
-import Profile from "@/components/molecules/profile/Profile";
 import Header from "@/components/organisms/header/Header";
 
 function PortfolioDetail(){
@@ -18,7 +17,7 @@ function PortfolioDetail(){
 
 				<RightSideSection>
 					<UserBox>
-						<Profile type='Default'/>
+						{/* <Profile type='Default'/> */}
 						<AskButton color='White' size='Medium'>문의하기</AskButton>
 					</UserBox>
 
