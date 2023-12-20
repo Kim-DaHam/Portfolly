@@ -1,5 +1,6 @@
 import { styled, css } from 'styled-components';
 
+import { SquareButton } from '@/components/atoms/button/Button.styled';
 import { portfolioItemSize } from '@/styles/token';
 import { Section } from '@/types/portfolio';
 
@@ -101,12 +102,12 @@ const Arrow = css`
 	cursor: pointer;
 `;
 
-export const PrevArrow = styled.button<{current: number}>`
+export const PrevArrow = styled(SquareButton)<{current: number}>`
 	${Arrow}
 	visibility: ${(props) => props.current === 0 ? 'hidden' : 'visible'};
 `;
 
-export const NextArrow = styled.button<{current: number, last:number}>`
+export const NextArrow = styled(SquareButton)<{current: number, last:number}>`
 	${Arrow}
 	visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'};
 `;
