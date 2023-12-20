@@ -1,6 +1,6 @@
 import { FiX as DeleteIcon } from "react-icons/fi";
 
-import { IconBox, TagContainer } from "./Tag.styled";
+import { IconBox, TagLayout } from "./Tag.styled";
 
 type Props = {
 	readOnly: boolean;
@@ -10,14 +10,14 @@ type Props = {
 function Tag({readOnly, value}: Props) {
 
 	return (
-		<TagContainer readOnly={readOnly} >
+		<TagLayout readOnly={readOnly} >
 			{value}
 			{ !readOnly &&
 				<IconBox>
 					<DeleteIcon/>
 				</IconBox>
 			}
-		</TagContainer>
+		</TagLayout>
 	)
 }
 
