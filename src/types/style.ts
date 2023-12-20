@@ -1,30 +1,48 @@
 import { Section } from "./portfolio"
 
-export type Color = 'White' | 'Black' | 'Gray' | 'Transparency';
-export type Size = 'Default' | 'Fit' | 'Large' | 'Medium' | 'Small';
+export type ButtonColor = 'White' | 'Black' | 'Gray' | 'Transparency';
+export type ButtonSize = 'Default' | 'Fit' | 'Large' | 'Medium' | 'Small';
+export type PopperSize = 'Default' | 'Fit';
+export type FontSize = 'Large' | 'Medium' | 'Small';
+export type FontColor = 'Black' | 'Gray' | 'LightGray';
 
-export type PortfolioItemSize = {
+export type PortfolioItemStyle = {
 	[key in Section]: {
 			aspectRatio: string,
 	}
 };
 
-export type ButtonColor = {
-	[key in Color]: {
+export type FontSizeStyle = {
+	[key in FontSize]: {
+		fontSize: string;
+		lineHeight: string;
+		letterSpacing: string;
+		fontWeight: string;
+	}
+}
+
+export type FontColorStyle = {
+	[key in FontColor]: {
+		color: string;
+	}
+}
+
+export type ButtonColorStyle = {
+	[key in ButtonColor]: {
 		backgroundColor: string,
 		hoverBackgroundColor: string,
 		fontColor: string,
 	}
 };
 
-export type ButtonSize = {
-	[key in Size]: {
+export type ButtonSizeStyle = {
+	[key in ButtonSize]: {
 		width: string,
 	}
 };
 
-export type PopperSize = {
-	[key in Size]: {
+export type PopperStyle = {
+	[key in PopperSize]: {
 		width: string,
 	}
 };

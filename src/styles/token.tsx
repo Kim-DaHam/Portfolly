@@ -1,6 +1,6 @@
-import { ButtonColor, ButtonSize, PopperSize, PortfolioItemSize } from "@/types/style";
+import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, PopperStyle, PortfolioItemStyle } from "@/types/style";
 
-export const portfolioItemSize: PortfolioItemSize = {
+export const portfolioItemSize: PortfolioItemStyle = {
 	'Android/iOS': {
 			aspectRatio: '1 / 1.90',
 	},
@@ -16,9 +16,63 @@ export const portfolioItemSize: PortfolioItemSize = {
 	Video: {
 			aspectRatio: '1 / 0.67',
 	},
+};
+
+export const bodyFontSize: FontSizeStyle = {
+	Large: {
+		fontSize: '',
+		lineHeight: '',
+		letterSpacing: '',
+		fontWeight: '',
+	},
+	Medium: {
+		fontSize: '1rem',
+		lineHeight: '1.5rem',
+		letterSpacing: '-.008em',
+		fontWeight: '500',
+	},
+	Small: {
+		fontSize: '0.875rem',
+		lineHeight: '1.25rem',
+		letterSpacing: '-.024em',
+		fontWeight: '400',
+	},
+};
+
+export const headingFontSize: FontSizeStyle = {
+	Large: {
+		fontSize: '2.75rem',
+		lineHeight: '3rem',
+		letterSpacing: '-.024em',
+		fontWeight: '600',
+	},
+	Medium: {
+		fontSize: '',
+		lineHeight: '',
+		letterSpacing: '',
+		fontWeight: '',
+	},
+	Small: {
+		fontSize: '1.5rem',
+		lineHeight: '2rem',
+		letterSpacing: '-.008em',
+		fontWeight: '600',
+	},
+};
+
+export const fontColor: FontColorStyle = {
+	Black: {
+		color: '#111111',
+	},
+	Gray: {
+		color: '#747474',
+	},
+	LightGray: {
+		color: '#989898',
+	},
 }
 
-export const buttonColor: ButtonColor = {
+export const buttonColor: ButtonColorStyle = {
 	White: {
 		backgroundColor: '#FFFFFF',
 		hoverBackgroundColor: '#f3f3f3',
@@ -41,7 +95,7 @@ export const buttonColor: ButtonColor = {
 	}
 };
 
-export const buttonSize: ButtonSize = {
+export const buttonSize: ButtonSizeStyle = {
 	Default: {
 		width: '100%',
 	},
@@ -59,20 +113,11 @@ export const buttonSize: ButtonSize = {
 	}
 };
 
-export const popperSize: PopperSize = {
+export const popperSize: PopperStyle = {
 	Default: {
 		width: '14rem'
 	},
 	Fit: {
 		width: 'fit-content'
-	},
-	Large: {
-		width: '',
-	},
-	Medium: {
-		width: '',
-	},
-	Small: {
-		width: '',
 	}
 };

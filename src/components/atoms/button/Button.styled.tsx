@@ -1,9 +1,9 @@
 import { css, styled } from 'styled-components';
 
 import { buttonColor, buttonSize } from '@/styles/token';
-import { Color, Size } from '@/types/style';
+import { ButtonColor, ButtonSize } from '@/types/style';
 
-const Button = styled.button<{color: Color, size: Size}>`
+const Button = styled.button<{color: ButtonColor, size: ButtonSize}>`
 	width: ${(props)=>buttonSize[props.size].width};
 	height: 2.8rem;
 
