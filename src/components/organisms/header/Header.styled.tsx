@@ -20,7 +20,7 @@ export const HeaderContainer = styled.header`
 	background-color: lightgray;
 `;
 
-export const ButtonBox = styled.nav`
+export const ButtonGroup = styled.nav`
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -34,16 +34,4 @@ export const LogoBox = styled.a`
 	background-color: black;
 
 	cursor: pointer;
-`;
-
-export const LogInButton = styled.button`
-	padding: 0 1rem 0 1rem;
-`;
-
-export const TrialVersionButton = styled.button`
-	padding: 0 1rem 0 1rem;
-`;
-
-export const MenuButton = styled.button`
-	padding: 0 1rem 0 1rem;
 `;

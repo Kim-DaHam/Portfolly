@@ -8,7 +8,8 @@ import SearchModal from "../modal/search-modal/SearchModal";
 
 import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
 
-import { ButtonBox, HeaderContainer, LogInButton, LogoBox, MenuButton, TrialVersionButton } from "@/components/organisms/header/Header.styled";
+import { SquareButton } from "@/components/atoms/button/Button.styled";
+import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
 import usePopup from "@/hooks/usePopup";
 import { ROUTE_PATH } from "@/utils/path";
 
@@ -44,13 +45,13 @@ function Header() {
 				<div></div>
 			}
 
-			<ButtonBox>
-				<LogInButton>Log in</LogInButton>
+			<ButtonGroup>
+				<SquareButton size='Fit' color='White'>Log in</SquareButton>
 
-				<TrialVersionButton>Start Trial Version</TrialVersionButton>
+				<SquareButton size='Fit' color='Black'>Start Trial Version</SquareButton>
 
-				<MenuButton onClick={popUp}>=</MenuButton>
-			</ButtonBox>
+				<SquareButton size='Fit' color='Transparency' onClick={popUp}>=</SquareButton>
+			</ButtonGroup>
 
 			{ isHeaderMenuPopUp &&
 				<Popper
