@@ -70,14 +70,34 @@ function Main(){
 				</CategorySection>
 
 				<PortfolioSection>
-					<GridBox column={6}>
+					<GridBox>
 						<GridItem>
 							<PortfolioItem type='Android/iOS'/>
 							<PortfolioProfile/>
 						</GridItem>
 
 						<GridItem>
-							<PortfolioItem type='Web'/>
+							<PortfolioItem type='Android/iOS'/>
+							<PortfolioProfile/>
+						</GridItem>
+
+						<GridItem>
+							<PortfolioItem type='Android/iOS'/>
+							<PortfolioProfile/>
+						</GridItem>
+
+						<GridItem>
+							<PortfolioItem type='Android/iOS'/>
+							<PortfolioProfile/>
+						</GridItem>
+
+						<GridItem>
+							<PortfolioItem type='Android/iOS'/>
+							<PortfolioProfile/>
+						</GridItem>
+
+						<GridItem>
+							<PortfolioItem type='Android/iOS'/>
 							<PortfolioProfile/>
 						</GridItem>
 					</GridBox>

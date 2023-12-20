@@ -34,7 +34,7 @@ function PortfolioProfile() {
 			<Image src='' alt='user profile'/>
 			<SpanBox>
 				<Text size='Medium' color='Black'>Portfolio Title</Text>
-				<Text size='Small' color='Gray'>Portfolio Summary</Text>
+				<Text size='Small' color='Gray'>Portfolio Summarysfsdf</Text>
 			</SpanBox>
 
 			<ButtonGroup className='button-box' ref={buttonGroupRef}>

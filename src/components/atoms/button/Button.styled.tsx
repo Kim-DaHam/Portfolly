@@ -5,7 +5,7 @@ import { ButtonColor, ButtonSize } from '@/types/style';
 
 const Button = styled.button<{color: ButtonColor, size: ButtonSize}>`
 	width: ${(props)=>buttonSize[props.size].width};
-	height: 2.8rem;
+	height: 2.9rem;
 
 	padding: 0 1em 0 1em;
 	line-height: 1.5em;

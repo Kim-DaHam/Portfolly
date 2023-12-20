@@ -2,25 +2,21 @@ import { styled } from 'styled-components';
 
 export const PorfolioProfileLayout = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 3.5rem;
 
 	display: flex;
 	gap: 0.5rem;
-`;
 
-export const Image = styled.img`
-	width: 23%;
-	height: 100%;
+	position: absolute;
+	bottom: 0;
 
-	flex: none;
-
-	background-color: pink;
+	background-color: yellow;
 `;
 
 export const SpanBox = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-grow: 1;
 	flex-shrink: 1;
 
@@ -35,6 +31,8 @@ export const SpanBox = styled.div`
 `;
 
 export const ButtonGroup = styled.div`
+	height: 100%;
+
 	display: none;
 	gap: 0.4rem;
 

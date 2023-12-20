@@ -2,19 +2,19 @@ import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, Poppe
 
 export const portfolioItemSize: PortfolioItemStyle = {
 	'Android/iOS': {
-			aspectRatio: '1 / 1.90',
+		aspectRatio: '1 / 1.90',
 	},
 	Web: {
-			aspectRatio: '1 / 0.67',
+		aspectRatio: '1 / 0.67',
 	},
 	Illustration: {
-			aspectRatio: '1 / 1.25',
+		aspectRatio: '1 / 1.25',
 	},
 	Photo: {
-			aspectRatio: '1 / 1.25',
+		aspectRatio: '1 / 1.25',
 	},
 	Video: {
-			aspectRatio: '1 / 0.67',
+		aspectRatio: '1 / 0.67',
 	},
 };
 
