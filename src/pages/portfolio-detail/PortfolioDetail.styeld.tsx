@@ -88,7 +88,6 @@ export const UserBox = styled.div`
 `;
 
 export const AskButton = styled(SquareButton)`
-	width: 70%;
 	height: 5rem;
 `;
 

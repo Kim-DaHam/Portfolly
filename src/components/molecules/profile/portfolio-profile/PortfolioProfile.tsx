@@ -35,7 +35,7 @@ function PortfolioProfile() {
 			<ButtonBox className='button-box' ref={buttonBoxRef}>
 				<ToggleButton type='Bookmark'/>
 
-				<MoreButton onClick={openMenu} color='Gray'>
+				<MoreButton onClick={openMenu} color='Gray' size='Fit'>
 					<Icon/>
 				</MoreButton>
 			</ButtonBox>

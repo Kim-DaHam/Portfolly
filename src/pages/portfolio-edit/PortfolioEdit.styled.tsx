@@ -105,8 +105,7 @@ export const SummaryInputArea = styled.div`
 `;
 
 export const SubmitButton = styled(SquareButton)`
-	width: 8rem;
-	height: 7%;
+	/* height: 7%; */
 `;
 
 export const TagInput = styled.div`

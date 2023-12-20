@@ -31,7 +31,7 @@ function Intro(){
 			<Preview section='Illustration'/>
 			<Divider/>
 
-			<Preview section='Graphics'/>
+			<Preview section='Photo'/>
 			<Divider/>
 
 			<Preview section='Video'/>

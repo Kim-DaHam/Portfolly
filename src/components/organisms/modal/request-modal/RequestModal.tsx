@@ -60,7 +60,7 @@ function RequestModal({handleModal}: Props) {
 				</RequestForm>
 				</ContentBox>
 				<ButtonGroup>
-					<SquareButton color='Black'>주문 취소</SquareButton>
+					<SquareButton color='Black' size='Medium'>주문 취소</SquareButton>
 				</ButtonGroup>
 			</ModalBox>
 		</RequestModalLayout>

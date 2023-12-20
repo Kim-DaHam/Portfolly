@@ -8,7 +8,7 @@ function PortfolioDetail(){
 	return(
 		<PortfolioDetailLayout>
 			<Header/>
-			<BackButton color='Transparency'>뒤로가기</BackButton>
+			<BackButton color='Transparency' size='Fit'>뒤로가기</BackButton>
 			<PortfolioDetailContainer>
 				<PortfolioContentSection>
 					<HtmlContentBox>
@@ -19,7 +19,7 @@ function PortfolioDetail(){
 				<RightSideSection>
 					<UserBox>
 						<Profile type='Default'/>
-						<AskButton color='White'>문의하기</AskButton>
+						<AskButton color='White' size='Medium'>문의하기</AskButton>
 					</UserBox>
 
 					<FlexBox>

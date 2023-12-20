@@ -15,7 +15,7 @@ function SectionMenu() {
 			<SectionMenuBox>
 				<SectionTitle>Section</SectionTitle>
 
-				<MoreButton color='Transparency' onClick={popUp}>
+				<MoreButton color='Transparency' size='Fit' onClick={popUp}>
 					<Icon color='gray'/>
 				</MoreButton>
 			</SectionMenuBox>

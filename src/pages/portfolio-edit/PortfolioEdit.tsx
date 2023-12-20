@@ -42,7 +42,7 @@ function PortfolioEdit(){
 						<Label>Summary</Label>
 						<SummaryInputArea/>
 					</FormBox>
-					<SubmitButton color='Black'>Submit</SubmitButton>
+					<SubmitButton color='Black' size='Medium'>Submit</SubmitButton>
 				</FormSection>
 			</FlexContainer>
 		</PortfolioEditLayout>

@@ -29,7 +29,7 @@ function MyPage(){
 
 						{ true && // 본인 아니면
 							<ButtonBox>
-								<ContactButton color='Black'>
+								<ContactButton color='Black' size='Large'>
 									문의하기
 								</ContactButton>
 							</ButtonBox>

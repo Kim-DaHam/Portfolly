@@ -71,8 +71,7 @@ export const ButtonBox = styled.div`
 `;
 
 export const ContactButton = styled(SquareButton)`
-	width: 13rem;
-	height: 3rem;
+	/* height: 3rem; */
 `;
 
 export const ProfileNavigationSection = styled.section`
