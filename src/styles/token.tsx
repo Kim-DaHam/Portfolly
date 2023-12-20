@@ -1,4 +1,4 @@
-import { ButtonColor, PopperSize, PortfolioItemSize } from "@/types/style";
+import { ButtonColor, ButtonSize, PopperSize, PortfolioItemSize } from "@/types/style";
 
 export const portfolioItemSize: PortfolioItemSize = {
 	'Android/iOS': {
@@ -10,7 +10,7 @@ export const portfolioItemSize: PortfolioItemSize = {
 	Illustration: {
 			aspectRatio: '1 / 1.25',
 	},
-	Graphics: {
+	Photo: {
 			aspectRatio: '1 / 1.25',
 	},
 	Video: {
@@ -39,13 +39,40 @@ export const buttonColor: ButtonColor = {
 		hoverBackgroundColor: 'transparent',
 		fontColor: '11111',
 	}
-}
+};
+
+export const buttonSize: ButtonSize = {
+	Default: {
+		width: '100%',
+	},
+	Fit: {
+		width: 'fit-content',
+	},
+	Large: {
+		width: '13rem',
+	},
+	Medium: {
+		width: '9rem',
+	},
+	Small: {
+		width: '5rem',
+	}
+};
 
 export const popperSize: PopperSize = {
 	Default: {
-		width: '15rem'
+		width: '14rem'
 	},
 	Fit: {
 		width: 'fit-content'
+	},
+	Large: {
+		width: '',
+	},
+	Medium: {
+		width: '',
+	},
+	Small: {
+		width: '',
 	}
-}
+};
