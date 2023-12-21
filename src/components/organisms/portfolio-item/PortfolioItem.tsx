@@ -33,8 +33,8 @@ function PortfolioItem({type}: Props){
 		<PortfolioItemLayout type={type}>
 			<SliderBox>
 				<ArrowBox>
-					<PrevArrow color='White' size='Fit' onClick={handlePrev} current={currentSlideIndex}/>
-					<NextArrow color='White' size='Fit' onClick={handleNext} current={currentSlideIndex} last={2}/>
+					<PrevArrow color='White' size='Fit' onClick={handlePrev} $current={currentSlideIndex}/>
+					<NextArrow color='White' size='Fit' onClick={handleNext} $current={currentSlideIndex} $last={2}/>
 				</ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>

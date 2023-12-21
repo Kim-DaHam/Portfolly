@@ -27,7 +27,7 @@ function Preview({section}: Props){
 					</p>
 			</FlexBox>
 
-			<PreviewRow column={PreviewRowColumns[section]}>
+			<PreviewRow $column={PreviewRowColumns[section]}>
 				<PortfolioItem type={section}/>
 				<ViewMoreButton/>
 			</PreviewRow>
