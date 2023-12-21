@@ -1,7 +1,7 @@
 import { SelectorList } from "./Selector.type";
 
 export const selectorList: SelectorList = {
-	Section: ['Android/iOS', 'Web', 'Illlustration', 'Graphics', 'Video'],
+	Section: ['Android/iOS', 'Web', 'Illlustration', 'Photo', 'Video'],
 	'Android/iOS': ['Finance', 'Business', 'Shopping', 'Food & Drink', 'Education', 'Health & Fitness', 'Travel & Transportation', 'Communication', 'Entertainment', 'Artificial Intelligence', 'CRM', 'Lifestyle', 'Crypto & Web3', 'Productivity'],
 	Web: ['Business', 'Finance', 'CRM', 'Shopping', 'Education', 'Health & Fitness', 'Entertainment', 'Communication', 'Travel & Transportation', 'Developer Tools'],
 	Illustration: ['출판', '마케팅&광고', '콘셉트 아트', '패션', '테크니컬', '인포그래픽', '패키징', '캐리커쳐', '3D그래픽', '게임'],
