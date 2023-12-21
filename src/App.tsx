@@ -1,3 +1,7 @@
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import Intro from '@/pages/intro/Intro';
@@ -9,19 +13,23 @@ import SignIn from '@/pages/signIn/SignIn';
 import SignUp from '@/pages/signUp/SignUp';
 import { ROUTE_PATH } from '@/utils/path';
 
+const queryClient = new QueryClient()
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={ROUTE_PATH.INTRO} element={<Intro/>}></Route>
-        <Route path={ROUTE_PATH.MAIN} element={<Main/>}></Route>
-        <Route path={ROUTE_PATH.SIGNUP} element={<SignUp/>}></Route>
-        <Route path={ROUTE_PATH.SIGNIN} element={<SignIn/>}></Route>
-        <Route path={ROUTE_PATH.MYPAGE} element={<MyPage/>}></Route>
-        <Route path={ROUTE_PATH.PORTFOLIO} element={<PortfolioDetail/>}></Route>
-        <Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEdit/>}></Route>
-      </Routes>
-    </BrowserRouter>
+		<QueryClientProvider client={queryClient}>
+			<BrowserRouter>
+				<Routes>
+					<Route path={ROUTE_PATH.INTRO} element={<Intro/>}></Route>
+					<Route path={ROUTE_PATH.MAIN} element={<Main/>}></Route>
+					<Route path={ROUTE_PATH.SIGNUP} element={<SignUp/>}></Route>
+					<Route path={ROUTE_PATH.SIGNIN} element={<SignIn/>}></Route>
+					<Route path={ROUTE_PATH.MYPAGE} element={<MyPage/>}></Route>
+					<Route path={ROUTE_PATH.PORTFOLIO} element={<PortfolioDetail/>}></Route>
+					<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEdit/>}></Route>
+				</Routes>
+			</BrowserRouter>
+		</QueryClientProvider>
   )
 }
 
