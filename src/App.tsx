@@ -23,8 +23,13 @@ import { ROUTE_PATH } from '@/utils/path';
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
+			throwOnError: true,
 			retry: 0,
-		}
+		},
+		mutations: {
+      throwOnError: false,
+      retry: 0,
+    },
 	}
 })
 

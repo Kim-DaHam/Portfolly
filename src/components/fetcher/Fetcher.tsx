@@ -1,4 +1,5 @@
 import React from "react";
+import { useErrorBoundary } from 'react-error-boundary';
 
 import useFetcher from "@/hooks/useFetcher";
 
@@ -12,7 +13,7 @@ function Fetcher({action, children}: Props) {
 
 	if(loading) return <></>;
 
-	if(error) throw error;
+	if(error) useErrorBoundary();
 
 	return (
 		<>
