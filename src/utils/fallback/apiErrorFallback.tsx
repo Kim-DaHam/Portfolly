@@ -1,32 +1,21 @@
 import type { FallbackProps } from 'react-error-boundary';
 
-const renderApiError = ({error, resetErrorBoundary}: FallbackProps) => {
+import Error from '@/pages/error/Error';
+
+function ApiErrorFallback({error, resetErrorBoundary}: FallbackProps) {
 	const { status } = error.response;
 
-	if(status) { // 네트워크 에러
+	if(status) {
 		return(
-			<>
-				{error.message}
-				<div onClick={() => resetErrorBoundary()}>reset</div>
-			</>
+			<Error reset={resetErrorBoundary}/>
 		)
 	}
 
-	if(status) { // 서버 점검 에러
+	if(status) {
 		return(
-			<>
-				{error.message}
-				<div onClick={() => resetErrorBoundary()}>reset</div>
-			</>
+			<Error reset={resetErrorBoundary}/>
 		)
 	}
 }
 
-export const apiErrorFallback = ({error, resetErrorBoundary}: FallbackProps) => {
-
-	return(
-		<>
-		{renderApiError({error, resetErrorBoundary})}
-		</>
-	);
-}
+export default ApiErrorFallback;

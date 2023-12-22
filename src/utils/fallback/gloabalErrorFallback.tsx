@@ -1,32 +1,26 @@
 import type { FallbackProps } from 'react-error-boundary';
 
-const renderGlobalError = ({error, resetErrorBoundary}: FallbackProps)=> {
-	const { status } = error.response;
+import Error from '@/pages/error/Error';
+
+
+function GlobalErrorFallback({error, resetErrorBoundary}: FallbackProps) {
+	const status = error.response?.status;
 
 	if(status) { // 네트워크 에러
 		return(
-			<>
-				{error.message}
-				<div onClick={() => resetErrorBoundary()}>reset</div>
-			</>
+			<Error reset={resetErrorBoundary}/>
 		)
 	}
 
 	if(status) { // 서버 점검 에러
 		return(
-			<>
-				{error.message}
-				<div onClick={() => resetErrorBoundary()}>reset</div>
-			</>
+			<Error reset={resetErrorBoundary}/>
 		)
 	}
-}
-
-export const globalErrorFallback = ({error, resetErrorBoundary}: FallbackProps) => {
 
 	return(
-		<>
-		{renderGlobalError({error, resetErrorBoundary})}
-		</>
-	);
+		<Error reset={resetErrorBoundary}/>
+	)
 }
+
+export default GlobalErrorFallback;

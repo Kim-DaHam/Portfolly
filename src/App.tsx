@@ -4,13 +4,11 @@ import {
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import {
-	ErrorBoundary as ApiErrorBoundary,
 	ErrorBoundary as GlobalErrorBoundary,
 } from "react-error-boundary";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import { apiErrorFallback } from './utils/fallback/apiErrorFallback';
-import { globalErrorFallback } from './utils/fallback/gloabalErrorFallback';
+import GlobalErrorFallback from './utils/fallback/GloabalErrorFallback';
 
 import Intro from '@/pages/intro/Intro';
 import Main from '@/pages/main/Main';
@@ -36,8 +34,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-		<GlobalErrorBoundary fallback={globalErrorFallback}>
-		<ApiErrorBoundary fallback={apiErrorFallback}>
+		<GlobalErrorBoundary FallbackComponent={GlobalErrorFallback}>
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
 					<Routes>
@@ -52,7 +49,6 @@ function App() {
 				</BrowserRouter>
 				<ReactQueryDevtools initialIsOpen={false} />
 			</QueryClientProvider>
-		</ApiErrorBoundary>
 		</GlobalErrorBoundary>
   )
 }
