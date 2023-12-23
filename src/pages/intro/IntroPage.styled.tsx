@@ -17,7 +17,7 @@ export const IntroLayout = styled.div`
 	scrollbar-width: none;
 `;
 
-export const Introduce = styled.div`
+export const IntroduceContainer = styled.div`
 	width: 100%;
 	height: 100vh;
 

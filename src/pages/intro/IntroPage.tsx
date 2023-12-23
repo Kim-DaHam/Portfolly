@@ -1,6 +1,6 @@
 import { separatePortfolioSection } from "./Intro.utils";
 import { portfolios } from "./IntroPage.constants";
-import { Divider, IntroLayout, Introduce } from "./IntroPage.styled";
+import { Divider, IntroLayout, IntroduceContainer } from "./IntroPage.styled";
 
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";
@@ -27,10 +27,10 @@ function IntroPage(){
 		>
 			<Header/>
 
-			<Introduce>
+			<IntroduceContainer>
 				<h1>Welcome to Portfolly</h1>
 				<h2>클라이언트와 파트너 간 소통해요</h2>
-			</Introduce>
+			</IntroduceContainer>
 
 			{ sections.map((section: Section, index: number)=>{
 				return(
