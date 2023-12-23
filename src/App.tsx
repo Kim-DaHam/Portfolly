@@ -10,7 +10,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import GlobalErrorFallback from './utils/fallback/GloabalErrorFallback';
 
-import Intro from '@/pages/intro/Intro';
+import Intro from '@/pages/intro/IntroPage';
 import Main from '@/pages/main/Main';
 import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
