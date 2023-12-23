@@ -24,6 +24,8 @@ export const useTopPortfoliosQuery = ()=> {
 	return useQuery({
 		queryKey: portfolioKeys.list('top'),
 		queryFn: getTopPortfolios,
+		staleTime: Infinity,
+		gcTime: Infinity,
 	})
 };
 
