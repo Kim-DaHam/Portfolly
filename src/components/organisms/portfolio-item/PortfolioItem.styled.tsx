@@ -47,6 +47,8 @@ export const SliderBox = styled.div`
 	& .slick-list {
 		width: 100%;
 		height: 100%;
+
+		border-radius: 1.8rem;
 	}
 
 	& .slick-track {
@@ -71,8 +73,6 @@ export const SliderBox = styled.div`
 export const SliderItem = styled.div`
 	width: 100%;
 	height: 100%;
-
-	overflow: hidden;
 
 	border-radius: 1.8rem;
 	background-color: gray;

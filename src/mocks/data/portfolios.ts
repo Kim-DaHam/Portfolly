@@ -27,7 +27,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [1, 2, 3],
 		likes: 10,
 		thumbnailUrl: [
-			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHQuPD%2FbtsCoHXromf%2FnyN2KuF1tYHSgwTOnjolE1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbznSgX%2FbtsCq6Wr2iR%2Fvrky1sv79sMwWDaOpOS4N1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fk0N3h%2FbtsCraLjLBs%2Flp2zYkrhBjIcWGvi5KmKI1%2Fimg.png'
 		],
 	},
 	{
@@ -43,7 +43,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [1, 2, 3, 4],
 		likes: 20,
 		thumbnailUrl: [
-			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fk0N3h%2FbtsCraLjLBs%2Flp2zYkrhBjIcWGvi5KmKI1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqSbhK%2FbtsCoF6oDZ4%2FD5k6E46MN9i0eBYUmOlHx0%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcBGb4c%2FbtsCo5Ydegw%2FYd7KkFfWb9SC5RVrma5JK1%2Fimg.png'
 		],
 	},
 	{
@@ -59,7 +59,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [2, 4],
 		likes: 30,
 		thumbnailUrl: [
-			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcgzjbs%2FbtsCojCxHIG%2FqSaB4HGpkvgRSWr4ge7jbK%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdvPsDM%2FbtsCo454EML%2FITTiyvE1L8RCcquOXoKYfk%2Fimg.png', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
 	{
@@ -75,7 +75,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [5, 6, 7],
 		likes: 30,
 		thumbnailUrl: [
-			'https://mobbin.com/screens/dcb853ef-9e1c-44f6-b3b2-23ed8b668bb6', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b'
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYVgES%2FbtsCox8vHf6%2Fu3GoarkFBroF47LJENuO90%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbkuz2P%2FbtsCpAp7hnX%2FVQMr9SZGAwBUTOZAB2oRA1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb4Kbzk%2FbtsCnMybIFj%2Fk1jDykZNGoNyJIqdIhiae1%2Fimg.png'
 		],
 	},
 	{
@@ -107,7 +107,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [9],
 		likes: 35,
 		thumbnailUrl: [
-			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FEOI0a%2FbtsCr8sVXvT%2FdkW2odXy12VaGgAMoBG68k%2Fimg.jpg',
 		],
 	},
 	{
@@ -123,7 +123,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [9, 10],
 		likes: 56,
 		thumbnailUrl: [
-			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F1MtqU%2FbtsCnENTel6%2F6P4HLs5XNLZloYuoU9MXgk%2Fimg.jpg',
 		],
 	},
 	{
@@ -139,7 +139,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [11],
 		likes: 32,
 		thumbnailUrl: [
-			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FGVXGW%2FbtsCogFWkNA%2Fvq1IkFnqEQVpIseuWTDWOk%2Fimg.jpg', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYEsGY%2FbtsCo6CNoMQ%2FmPTEIhvZ6kXJz1KOxglqqK%2Fimg.jpg'
 		],
 	},
 	{
@@ -155,7 +155,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [11, 12],
 		likes: 9,
 		thumbnailUrl: [
-			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBN053%2FbtsCpzkszo2%2Fa9f7RMWiH0DEUA2E1ae9H0%2Fimg.jpg', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc57UJv%2FbtsCoC2TznJ%2FW4pFgjkvHDTfA4foWgSrT0%2Fimg.jpg'
 		],
 	},
 	{
@@ -171,7 +171,7 @@ export const portfolios: Portfolio[] = [
 		tagId: [13],
 		likes: 99,
 		thumbnailUrl: [
-			'https://youtu.be/4Yit1OqUfMg',
+			'https://www.youtube.com/embed/rMPYde_oBic?list=RDxs-NZ9osEAY',
 		],
 	},
 	{

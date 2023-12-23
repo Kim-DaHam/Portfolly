@@ -3,11 +3,13 @@ import PortfolioItem from "../portfolio-item/PortfolioItem";
 import { PreviewLayout, PreviewRow, TextBox, ViewMoreButton } from "./Preview.styled";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
+import { Portfolio } from "@/mocks/data/portfolios";
 import { Heading, Text } from "@/styles/Text.styled";
 import { Section } from "@/types/portfolio";
 
 type Props = {
 	section: Section;
+	portfolios: Portfolio[];
 }
 
 const PreviewRowColumns = {
@@ -18,12 +20,12 @@ const PreviewRowColumns = {
 	'Video': 2,
 }
 
-function Preview({section}: Props){
+function Preview({section, portfolios}: Props){
 	const renderPortfolioItems = (section: Section, count: number)=> {
 		const portfolioItems = [];
 		for(let i=0; i < count; i++) {
 			portfolioItems.push(
-				<PortfolioItem type={section} key={i}/>
+				<PortfolioItem type={section} key={i} portfolio={portfolios[i]}/>
 			)
 		}
 

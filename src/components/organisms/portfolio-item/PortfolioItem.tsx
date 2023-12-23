@@ -5,13 +5,16 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { sliderSettings } from "./PortfolioItem.constants";
 
-import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderBox } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
+import Image from "@/components/atoms/image/Image";
+import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderBox, SliderItem } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
+import { Portfolio } from "@/mocks/data/portfolios";
 import { Section } from "@/types/portfolio";
 import { InitialProps } from "@/types/slider";
 
 type Props = {
 	type: Section;
+	portfolio: Portfolio;
 }
 
 const initialProps: InitialProps = {
@@ -21,7 +24,7 @@ const initialProps: InitialProps = {
 	speed: sliderSettings.speed!,
 }
 
-function PortfolioItem({type}: Props){
+function PortfolioItem({type, portfolio}: Props){
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
 
@@ -38,12 +41,13 @@ function PortfolioItem({type}: Props){
 				</ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					{/* <SliderItem>
-
-					</SliderItem> */}
+					{portfolio?.thumbnailUrl.map((url, index)=>{
+						return (
+							<SliderItem key={index}>
+								<Image src={url} size='auto' key={index}/>
+							</SliderItem>
+						)
+					})}
 				</Slider>
 			</SliderBox>
 		</PortfolioItemLayout>

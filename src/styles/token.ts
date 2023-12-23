@@ -8,13 +8,13 @@ export const portfolioItemSize: PortfolioItemStyle = {
 		aspectRatio: '1 / 0.67',
 	},
 	Illustration: {
-		aspectRatio: '1 / 1.25',
+		aspectRatio: '',
 	},
 	Photo: {
-		aspectRatio: '1 / 1.25',
+		aspectRatio: '',
 	},
 	Video: {
-		aspectRatio: '1 / 0.67',
+		aspectRatio: '',
 	},
 };
 
