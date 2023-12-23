@@ -10,6 +10,7 @@ import Image from "@/components/atoms/image/Image";
 import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
 import { Portfolio, Section } from "@/types/portfolio";
+import { eventStopPropagation } from "@/utils/event";
 
 
 export type Props = {
@@ -30,7 +31,7 @@ function PortfolioItem({type, portfolio}: Props){
 	return(
 		<PortfolioItemLayout type={type} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
 			<SliderContainer>
-				<ArrowBox>
+				<ArrowBox onClick={eventStopPropagation}>
 					<PrevArrow
 						color='White'
 						size='Fit'
