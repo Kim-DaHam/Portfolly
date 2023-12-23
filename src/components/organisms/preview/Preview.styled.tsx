@@ -1,5 +1,8 @@
 import { styled } from 'styled-components';
 
+import { SquareButton } from '@/components/atoms/button/Button.styled';
+
+
 export const PreviewLayout = styled.div`
 	width: 100%;
 	height: 100vh;
@@ -41,10 +44,8 @@ export const PreviewRow = styled.div<{$column: number}>`
 	border: solid 1px black;
 `;
 
-export const ViewMoreButton = styled.button`
-	width: 3rem;
-	height: 2rem;
-
+export const ViewMoreButton = styled(SquareButton)`
 	position: absolute;
+	z-index: 200;
 	right: 3rem;
 `;

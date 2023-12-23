@@ -18,7 +18,9 @@ function Preview({section, portfolios}: Props){
 				{renderPortfolioItems(section, portfolios, PreviewRowColumns[section])}
 			</PreviewRow>
 
-			<ViewMoreButton/>
+			<ViewMoreButton size='Fit' color='White'>
+				More
+			</ViewMoreButton>
 		</PreviewLayout>
 	)
 }
