@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -10,12 +11,14 @@ import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderContainer, S
 import useHandleSlider from "@/hooks/useHandleSlider";
 import { Portfolio, Section } from "@/types/portfolio";
 
+
 export type Props = {
 	type: Section;
 	portfolio: Portfolio;
 }
 
 function PortfolioItem({type, portfolio}: Props){
+	const navigate = useNavigate();
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
 	const lastSliderIndex = portfolio?.thumbnailUrl.length - 1;
@@ -25,7 +28,7 @@ function PortfolioItem({type, portfolio}: Props){
 	}, [])
 
 	return(
-		<PortfolioItemLayout type={type}>
+		<PortfolioItemLayout type={type} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
 			<SliderContainer>
 				<ArrowBox>
 					<PrevArrow

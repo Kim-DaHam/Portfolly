@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { PreviewRowColumns } from "./Preview.constants";
 import { PreviewLayout, PreviewRow, TextBox, ViewMoreButton } from "./Preview.styled";
 import { Props } from "./Preview.type";
@@ -7,6 +9,8 @@ import { sectionIntroduction as introduction} from '@/assets/data/phrase';
 import { Heading, Text } from "@/styles/Text.styled";
 
 function Preview({section, portfolios}: Props){
+	const navigate = useNavigate();
+
 	return(
 		<PreviewLayout>
 			<TextBox>
@@ -18,7 +22,7 @@ function Preview({section, portfolios}: Props){
 				{renderPortfolioItems(section, portfolios, PreviewRowColumns[section])}
 			</PreviewRow>
 
-			<ViewMoreButton size='Fit' color='White'>
+			<ViewMoreButton size='Fit' color='White' onClick={()=>navigate(`/main/${section}`)}>
 				More
 			</ViewMoreButton>
 		</PreviewLayout>
