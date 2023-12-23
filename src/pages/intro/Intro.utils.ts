@@ -1,6 +1,6 @@
 import { portfolios } from "./IntroPage.constants";
 
-import { Portfolio } from "@/mocks/data/portfolios";
+import { Portfolio } from "@/types/portfolio";
 
 export const separatePortfolioSection = (portfolioList: Portfolio[])=> {
 	portfolioList?.map((portfolio: Portfolio)=>{

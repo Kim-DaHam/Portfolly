@@ -1,7 +1,6 @@
 import PortfolioItem from "../portfolio-item/PortfolioItem";
 
-import { Portfolio } from "@/mocks/data/portfolios";
-import { Section } from "@/types/portfolio";
+import { Portfolio, Section } from "@/types/portfolio";
 
 export const renderPortfolioItems = (section: Section, portfolios: Portfolio[], count: number)=> {
 	const portfolioItems = [];

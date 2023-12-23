@@ -8,8 +8,7 @@ import { sliderSettings } from "./PortfolioItem.constants";
 import Image from "@/components/atoms/image/Image";
 import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderBox, SliderItem } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
-import { Portfolio } from "@/mocks/data/portfolios";
-import { Section } from "@/types/portfolio";
+import { Portfolio, Section } from "@/types/portfolio";
 import { InitialProps } from "@/types/slider";
 
 type Props = {

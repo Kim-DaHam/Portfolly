@@ -1,6 +1,8 @@
 import { HttpResponse, http } from 'msw';
 
-import { Portfolio, portfolios } from './data/portfolios';
+import { portfolios } from './data/portfolios';
+
+import { Portfolio } from '@/types/portfolio';
 
 const PortfolioHandlers= [
 	http.get('/portfolios/:section', ()=>{
