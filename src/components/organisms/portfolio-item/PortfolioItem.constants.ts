@@ -1,5 +1,7 @@
 import { Settings } from "react-slick";
 
+import { InitialProps } from "@/types/slider";
+
 export const sliderSettings: Settings = {
 	dots: true,
 	infinite: false,
@@ -21,3 +23,10 @@ export const sliderSettings: Settings = {
 		}
 	]
 };
+
+export const initialProps: InitialProps = {
+	type: 'Short',
+	slidesToShow: sliderSettings.slidesToShow!,
+	slidesToScroll: sliderSettings.slidesToScroll!,
+	speed: sliderSettings.speed!,
+}

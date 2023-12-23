@@ -3,29 +3,22 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { sliderSettings } from "./PortfolioItem.constants";
+import { initialProps, sliderSettings } from "./PortfolioItem.constants";
 
 import Image from "@/components/atoms/image/Image";
-import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderBox, SliderItem } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
+import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
 import { Portfolio, Section } from "@/types/portfolio";
-import { InitialProps } from "@/types/slider";
 
-type Props = {
+export type Props = {
 	type: Section;
 	portfolio: Portfolio;
-}
-
-const initialProps: InitialProps = {
-	type: 'Short',
-	slidesToShow: sliderSettings.slidesToShow!,
-	slidesToScroll: sliderSettings.slidesToScroll!,
-	speed: sliderSettings.speed!,
 }
 
 function PortfolioItem({type, portfolio}: Props){
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
+	const lastSliderIndex = portfolio?.thumbnailUrl.length - 1;
 
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
@@ -33,10 +26,25 @@ function PortfolioItem({type, portfolio}: Props){
 
 	return(
 		<PortfolioItemLayout type={type}>
-			<SliderBox>
+			<SliderContainer>
 				<ArrowBox>
-					<PrevArrow color='White' size='Fit' onClick={handlePrev} $current={currentSlideIndex}/>
-					<NextArrow color='White' size='Fit' onClick={handleNext} $current={currentSlideIndex} $last={2}/>
+					<PrevArrow
+						color='White'
+						size='Fit'
+						onClick={handlePrev}
+						$current={currentSlideIndex}
+					>
+						Prev
+					</PrevArrow>
+					<NextArrow
+						color='White'
+						size='Fit'
+						onClick={handleNext}
+						$current={currentSlideIndex}
+						$last={lastSliderIndex}
+					>
+						Next
+					</NextArrow>
 				</ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
@@ -48,7 +56,7 @@ function PortfolioItem({type, portfolio}: Props){
 						)
 					})}
 				</Slider>
-			</SliderBox>
+			</SliderContainer>
 		</PortfolioItemLayout>
 	)
 }

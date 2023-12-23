@@ -26,7 +26,7 @@ export const PortfolioItemLayout = styled.div<{type: Section}>`
 	}
 `
 
-export const SliderBox = styled.div`
+export const SliderContainer = styled.div`
 	width: 100%;
 	height: 100%;
 
@@ -93,21 +93,14 @@ export const ArrowBox = styled.div`
 	padding: 0 0.5rem 0 0.5rem;
 `;
 
-const Arrow = css`
-	width: 1rem;
-	height: 1rem;
-
+export const PrevArrow = styled(SquareButton)<{$current: number}>`
 	display: none;
-
+	visibility: ${(props) => props.$current === 0 ? 'hidden' : 'visible'};
 	cursor: pointer;
 `;
 
-export const PrevArrow = styled(SquareButton)<{$current: number}>`
-	${Arrow}
-	visibility: ${(props) => props.$current === 0 ? 'hidden' : 'visible'};
-`;
-
 export const NextArrow = styled(SquareButton)<{$current: number, $last:number}>`
-	${Arrow}
+	display: none;
 	visibility: ${(props) => props.$current === props.$last ? 'hidden' : 'visible'};
+	cursor: pointer;
 `;
