@@ -1,4 +1,19 @@
-export const portfolios = [
+export type Portfolio = {
+	id: number,
+	userId: number,
+	title: string,
+	content: string,
+	summary: string,
+	createdAt: number,
+	modifiedAt: number,
+	sectionId: number,
+	categoryId: number,
+	tagId: number[],
+	likes: number,
+	thumbnailUrl: string[],
+}
+
+export const portfolios: Portfolio[] = [
 	{
 		id: 1,
 		userId: 1,
@@ -11,7 +26,7 @@ export const portfolios = [
 		categoryId: 1,
 		tagId: [1, 2, 3],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -27,7 +42,7 @@ export const portfolios = [
 		categoryId: 2,
 		tagId: [1, 2, 3, 4],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -43,7 +58,7 @@ export const portfolios = [
 		categoryId: 3,
 		tagId: [2, 4],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -59,7 +74,7 @@ export const portfolios = [
 		categoryId: 4,
 		tagId: [5, 6, 7],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/dcb853ef-9e1c-44f6-b3b2-23ed8b668bb6', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b'
 		],
 	},
@@ -75,7 +90,7 @@ export const portfolios = [
 		categoryId: 5,
 		tagId: [5, 7, 8],
 		likes: 324,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/39df6d41-3725-4d83-808d-5bd1312b3710', 'https://mobbin.com/screens/12ffda69-1432-4772-b7f2-1d299ce687e7', 'https://mobbin.com/screens/762adac6-98cc-458f-9813-964ca237a116'
 		],
 	},
@@ -91,7 +106,7 @@ export const portfolios = [
 		categoryId: 18,
 		tagId: [9],
 		likes: 35,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
 		],
 	},
@@ -107,7 +122,7 @@ export const portfolios = [
 		categoryId: 19,
 		tagId: [9, 10],
 		likes: 56,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
 		],
 	},
@@ -123,7 +138,7 @@ export const portfolios = [
 		categoryId: 26,
 		tagId: [11],
 		likes: 32,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
 		],
 	},
@@ -139,7 +154,7 @@ export const portfolios = [
 		categoryId: 27,
 		tagId: [11, 12],
 		likes: 9,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
 		],
 	},
@@ -155,7 +170,7 @@ export const portfolios = [
 		categoryId: 36,
 		tagId: [13],
 		likes: 99,
-		thumnail: [
+		thumbnailUrl: [
 			'https://youtu.be/4Yit1OqUfMg',
 		],
 	},
@@ -171,7 +186,7 @@ export const portfolios = [
 		categoryId: 38,
 		tagId: [13, 14],
 		likes: 99,
-		thumnail: [
+		thumbnailUrl: [
 			'https://youtu.be/jdYJf_ybyVo',
 		],
 	},
@@ -187,7 +202,7 @@ export const portfolios = [
 		categoryId: 1,
 		tagId: [1, 2, 3],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -203,7 +218,7 @@ export const portfolios = [
 		categoryId: 2,
 		tagId: [1, 2, 3, 4],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -219,7 +234,7 @@ export const portfolios = [
 		categoryId: 3,
 		tagId: [2, 4],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -235,7 +250,7 @@ export const portfolios = [
 		categoryId: 4,
 		tagId: [5, 6, 7],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/dcb853ef-9e1c-44f6-b3b2-23ed8b668bb6', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b'
 		],
 	},
@@ -251,7 +266,7 @@ export const portfolios = [
 		categoryId: 5,
 		tagId: [5, 7, 8],
 		likes: 324,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/39df6d41-3725-4d83-808d-5bd1312b3710', 'https://mobbin.com/screens/12ffda69-1432-4772-b7f2-1d299ce687e7', 'https://mobbin.com/screens/762adac6-98cc-458f-9813-964ca237a116'
 		],
 	},
@@ -267,7 +282,7 @@ export const portfolios = [
 		categoryId: 18,
 		tagId: [9],
 		likes: 35,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
 		],
 	},
@@ -283,7 +298,7 @@ export const portfolios = [
 		categoryId: 19,
 		tagId: [9, 10],
 		likes: 56,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
 		],
 	},
@@ -299,7 +314,7 @@ export const portfolios = [
 		categoryId: 26,
 		tagId: [11],
 		likes: 32,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
 		],
 	},
@@ -315,7 +330,7 @@ export const portfolios = [
 		categoryId: 27,
 		tagId: [11, 12],
 		likes: 9,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
 		],
 	},
@@ -331,7 +346,7 @@ export const portfolios = [
 		categoryId: 36,
 		tagId: [13],
 		likes: 99,
-		thumnail: [
+		thumbnailUrl: [
 			'https://youtu.be/4Yit1OqUfMg',
 		],
 	},
@@ -347,7 +362,7 @@ export const portfolios = [
 		categoryId: 38,
 		tagId: [13, 14],
 		likes: 99,
-		thumnail: [
+		thumbnailUrl: [
 			'https://youtu.be/jdYJf_ybyVo',
 		],
 	},
@@ -363,7 +378,7 @@ export const portfolios = [
 		categoryId: 1,
 		tagId: [1, 2, 3],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -379,7 +394,7 @@ export const portfolios = [
 		categoryId: 2,
 		tagId: [1, 2, 3, 4],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -395,7 +410,7 @@ export const portfolios = [
 		categoryId: 3,
 		tagId: [2, 4],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -411,7 +426,7 @@ export const portfolios = [
 		categoryId: 4,
 		tagId: [5, 6, 7],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/dcb853ef-9e1c-44f6-b3b2-23ed8b668bb6', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b', 'https://mobbin.com/screens/5e4cb6fa-3f99-43cd-8c1e-6d0c9af2923b'
 		],
 	},
@@ -427,7 +442,7 @@ export const portfolios = [
 		categoryId: 5,
 		tagId: [5, 7, 8],
 		likes: 324,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/39df6d41-3725-4d83-808d-5bd1312b3710', 'https://mobbin.com/screens/12ffda69-1432-4772-b7f2-1d299ce687e7', 'https://mobbin.com/screens/762adac6-98cc-458f-9813-964ca237a116'
 		],
 	},
@@ -443,7 +458,7 @@ export const portfolios = [
 		categoryId: 18,
 		tagId: [9],
 		likes: 35,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
 		],
 	},
@@ -459,7 +474,7 @@ export const portfolios = [
 		categoryId: 19,
 		tagId: [9, 10],
 		likes: 56,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2019/09/30/10/12/notredame-de-paris-4515298_1280.jpg',
 		],
 	},
@@ -475,7 +490,7 @@ export const portfolios = [
 		categoryId: 26,
 		tagId: [11],
 		likes: 32,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
 		],
 	},
@@ -491,7 +506,7 @@ export const portfolios = [
 		categoryId: 27,
 		tagId: [11, 12],
 		likes: 9,
-		thumnail: [
+		thumbnailUrl: [
 			'https://cdn.pixabay.com/photo/2023/10/27/09/18/mountains-8344543_1280.jpg', 'https://cdn.pixabay.com/photo/2023/10/22/20/11/flowers-8334774_1280.jpg'
 		],
 	},
@@ -507,7 +522,7 @@ export const portfolios = [
 		categoryId: 36,
 		tagId: [13],
 		likes: 99,
-		thumnail: [
+		thumbnailUrl: [
 			'https://youtu.be/4Yit1OqUfMg',
 		],
 	},
@@ -523,7 +538,7 @@ export const portfolios = [
 		categoryId: 38,
 		tagId: [13, 14],
 		likes: 99,
-		thumnail: [
+		thumbnailUrl: [
 			'https://youtu.be/jdYJf_ybyVo',
 		],
 	},
@@ -537,8 +552,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -552,8 +568,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -567,8 +584,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -582,8 +600,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -597,8 +616,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -612,8 +632,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -627,8 +648,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -642,8 +664,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -657,8 +680,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -672,8 +696,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -687,8 +712,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -702,8 +728,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -717,8 +744,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -732,8 +760,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -747,8 +776,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -762,8 +792,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -777,8 +808,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -792,8 +824,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -807,8 +840,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -822,8 +856,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -837,8 +872,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -852,8 +888,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -867,8 +904,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 1,
+		tagId: [],
 		likes: 10,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/d749931b-00a7-4b5c-afe6-b09e551a9b24', 'https://mobbin.com/screens/2a025d99-9027-4800-ba44-e9798fe502cb', 'https://mobbin.com/screens/c024b366-10f2-44ad-aad9-56fa9a95b7e0'
 		],
 	},
@@ -882,8 +920,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 2,
+		tagId: [],
 		likes: 20,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/ea9d939a-c3af-4ae3-b3ea-62a1687c9959', 'https://mobbin.com/screens/7195b4c3-260a-47ac-adef-c744a13de7cf', 'https://mobbin.com/screens/c6b926d0-37bc-48ec-863f-3da5b5cd8766'
 		],
 	},
@@ -897,8 +936,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
@@ -912,8 +952,9 @@ export const portfolios = [
 		modifiedAt: Date.now(),
 		sectionId: 1,
 		categoryId: 3,
+		tagId: [],
 		likes: 30,
-		thumnail: [
+		thumbnailUrl: [
 			'https://mobbin.com/screens/8f5d81c4-6077-432b-b3f4-fe1e611f4c77', 'https://mobbin.com/screens/ae84cce6-3a14-4ffc-a5c6-bd9ab4bf3547', 'https://mobbin.com/screens/66a692a8-5645-4f3e-9720-5ba71ed45cdd', 'https://mobbin.com/screens/f46db71b-68d1-4c7a-b472-f3ccaa024635'
 		],
 	},
