@@ -3,15 +3,9 @@ import type { AxiosRequestHeaders, AxiosRequestConfig } from 'axios';
 
 import { API_BASE_URL } from '@/app-config';
 
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
+type Method = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
-export type InitialProps = {
-	api: string;
-	method: Method;
-	data?: object;
-};
-
-export async function fetch({api, method, data}: InitialProps) {
+export async function fetch(api: string, method: Method, data?: object) {
 
 	// redux에서 토큰 가져오기
   // const accessToken = localStorage.getItem(ACCESS_TOKEN);
