@@ -14,7 +14,7 @@ export const PreviewLayout = styled.div`
 	border-bottom: solid 1px black;
 `
 
-export const FlexBox = styled.div`
+export const TextBox = styled.div`
 	height: 100%;
 
 	display: flex;

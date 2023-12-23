@@ -1,8 +1,9 @@
 import PortfolioItem from "../portfolio-item/PortfolioItem";
 
-import { FlexBox, PreviewLayout, PreviewRow, ViewMoreButton } from "./Preview.styled";
+import { PreviewLayout, PreviewRow, TextBox, ViewMoreButton } from "./Preview.styled";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
+import { Heading, Text } from "@/styles/Text.styled";
 import { Section } from "@/types/portfolio";
 
 type Props = {
@@ -18,19 +19,29 @@ const PreviewRowColumns = {
 }
 
 function Preview({section}: Props){
+	const renderPortfolioItems = (section: Section, count: number)=> {
+		const portfolioItems = [];
+		for(let i=0; i < count; i++) {
+			portfolioItems.push(
+				<PortfolioItem type={section} key={i}/>
+			)
+		}
+
+		return portfolioItems;
+	};
+
 	return(
 		<PreviewLayout>
-			<FlexBox>
-					<h1>{section}</h1>
-					<p>
-					{introduction[section]}
-					</p>
-			</FlexBox>
+			<TextBox>
+				<Heading size='Large'>{section}</Heading>
+				<Text size='Medium'>{introduction[section]}</Text>
+			</TextBox>
 
 			<PreviewRow $column={PreviewRowColumns[section]}>
-				<PortfolioItem type={section}/>
-				<ViewMoreButton/>
+				{renderPortfolioItems(section, PreviewRowColumns[section])}
 			</PreviewRow>
+
+			<ViewMoreButton/>
 		</PreviewLayout>
 	)
 }
