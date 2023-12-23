@@ -1,36 +1,30 @@
-import PortfolioItem from "../portfolio-item/PortfolioItem";
+import { useNavigate } from "react-router-dom";
 
-import { FlexBox, PreviewLayout, PreviewRow, ViewMoreButton } from "./Preview.styled";
+import { PreviewRowColumns } from "./Preview.constants";
+import { PreviewLayout, PreviewRow, TextBox, ViewMoreButton } from "./Preview.styled";
+import { Props } from "./Preview.type";
+import { renderPortfolioItems } from "./Preview.utils";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
-import { Section } from "@/types/portfolio";
+import { Heading, Text } from "@/styles/Text.styled";
 
-type Props = {
-	section: Section;
-}
+function Preview({section, portfolios}: Props){
+	const navigate = useNavigate();
 
-const PreviewRowColumns = {
-	'Android/iOS': 3,
-	'Web': 2,
-	'Illustration': 2,
-	'Photo': 2,
-	'Video': 2,
-}
-
-function Preview({section}: Props){
 	return(
 		<PreviewLayout>
-			<FlexBox>
-					<h1>{section}</h1>
-					<p>
-					{introduction[section]}
-					</p>
-			</FlexBox>
+			<TextBox>
+				<Heading size='Large'>{section}</Heading>
+				<Text size='Medium'>{introduction[section]}</Text>
+			</TextBox>
 
 			<PreviewRow $column={PreviewRowColumns[section]}>
-				<PortfolioItem type={section}/>
-				<ViewMoreButton/>
+				{renderPortfolioItems(section, portfolios, PreviewRowColumns[section])}
 			</PreviewRow>
+
+			<ViewMoreButton size='Fit' color='White' onClick={()=>navigate(`/main/${section}`)}>
+				More
+			</ViewMoreButton>
 		</PreviewLayout>
 	)
 }

@@ -1,51 +1,66 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { sliderSettings } from "./PortfolioItem.constants";
+import { initialProps, sliderSettings } from "./PortfolioItem.constants";
 
-import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderBox } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
+import Image from "@/components/atoms/image/Image";
+import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
 import useHandleSlider from "@/hooks/useHandleSlider";
-import { Section } from "@/types/portfolio";
-import { InitialProps } from "@/types/slider";
+import { Portfolio, Section } from "@/types/portfolio";
+import { eventStopPropagation } from "@/utils/event";
 
-type Props = {
+
+export type Props = {
 	type: Section;
+	portfolio: Portfolio;
 }
 
-const initialProps: InitialProps = {
-	type: 'Short',
-	slidesToShow: sliderSettings.slidesToShow!,
-	slidesToScroll: sliderSettings.slidesToScroll!,
-	speed: sliderSettings.speed!,
-}
-
-function PortfolioItem({type}: Props){
+function PortfolioItem({type, portfolio}: Props){
+	const navigate = useNavigate();
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
+	const lastSliderIndex = portfolio?.thumbnailUrl.length - 1;
 
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
 	}, [])
 
 	return(
-		<PortfolioItemLayout type={type}>
-			<SliderBox>
-				<ArrowBox>
-					<PrevArrow color='White' size='Fit' onClick={handlePrev} $current={currentSlideIndex}/>
-					<NextArrow color='White' size='Fit' onClick={handleNext} $current={currentSlideIndex} $last={2}/>
+		<PortfolioItemLayout type={type} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
+			<SliderContainer>
+				<ArrowBox onClick={eventStopPropagation}>
+					<PrevArrow
+						color='White'
+						size='Fit'
+						onClick={handlePrev}
+						$current={currentSlideIndex}
+					>
+						Prev
+					</PrevArrow>
+					<NextArrow
+						color='White'
+						size='Fit'
+						onClick={handleNext}
+						$current={currentSlideIndex}
+						$last={lastSliderIndex}
+					>
+						Next
+					</NextArrow>
 				</ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					{/* <SliderItem>
-
-					</SliderItem> */}
+					{portfolio?.thumbnailUrl.map((url, index)=>{
+						return (
+							<SliderItem key={index}>
+								<Image src={url} size='auto' key={index}/>
+							</SliderItem>
+						)
+					})}
 				</Slider>
-			</SliderBox>
+			</SliderContainer>
 		</PortfolioItemLayout>
 	)
 }

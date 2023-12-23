@@ -3,7 +3,7 @@ import { ImageLayout } from "./Image.styled";
 type Props = {
 	size: string;
 	src: string;
-	alt: string;
+	alt?: string;
 };
 
 function Image({size, src, alt}: Props) {
