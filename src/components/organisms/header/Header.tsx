@@ -8,6 +8,7 @@ import SearchBar from "../../molecules/searchBar/SearchBar";
 import SearchModal from "../modal/search-modal/SearchModal";
 
 import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
+import { renderHeaderMenuPopper } from "./Header.utils";
 
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import Image from '@/components/atoms/image/Image';
@@ -58,24 +59,21 @@ function Header() {
 				<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
 
 				<RoundButton color='Transparency' onClick={popUp}>
-					{ isLogin ?
-						<>
+					{ isLogin &&
 							<Image src='' size='1rem'/>
-							<div>=</div>
-						</>
-						:
-						<div>=</div>
 					}
+					<div>=</div>
 				</RoundButton>
 			</ButtonGroup>
 
 			{ isHeaderMenuPopUp &&
 				<Popper
-					type='HeaderMenu'
 					right={menuButtonCoordinate.right}
 					bottom={menuButtonCoordinate.bottom}
 					popOut={popOut}
-				/>
+				>
+					{renderHeaderMenuPopper(isLogin)}
+				</Popper>
 			}
 		</HeaderContainer>
 	)
