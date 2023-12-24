@@ -27,11 +27,6 @@ export const ButtonGroup = styled.nav`
 	gap: 0.9rem;
 `
 
-export const LogoBox = styled.a`
-	width: 3.1rem;
-	height: 100%;
-
-	background-color: black;
-
+export const Logo = styled.a`
 	cursor: pointer;
 `;

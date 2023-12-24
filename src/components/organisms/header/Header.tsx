@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import SectionNavigatior from "../../molecules/navigator/SectionNavigator";
@@ -6,18 +7,26 @@ import Popper from "../../molecules/popper/Popper";
 import SearchBar from "../../molecules/searchBar/SearchBar";
 import SearchModal from "../modal/search-modal/SearchModal";
 
-import { showSearchBar, showSectionMenu } from "./Header.constants";
+import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
 
-import { SquareButton } from "@/components/atoms/button/Button.styled";
-import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
+import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
+import Image from '@/components/atoms/image/Image';
+import { ButtonGroup, HeaderContainer, Logo } from "@/components/organisms/header/Header.styled";
 import usePopup from "@/hooks/usePopup";
+import { RootState } from "@/redux/store";
 import { ROUTE_PATH } from "@/utils/path";
 
 function Header() {
 	const [isHeaderMenuPopUp, menuButtonCoordinate, popUp, popOut] = usePopup();
 	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
+	const isLogin = useSelector((state: RootState) => state.auth.isLogin);
+
 	const navigate = useNavigate();
+	const location = useLocation();
+
+	const showSearchBar = (location.pathname === PAGE_SHOW_SEARCH_BAR );
+	const showSectionMenu = (location.pathname === PAGE_SHOW_SECTION_MENU);
 
 	const handleSearchModal = ()=> {
 		setIsSearchModalOpen(prev=>!prev);
@@ -25,7 +34,9 @@ function Header() {
 
 	return(
 		<HeaderContainer>
-			<LogoBox onClick={()=>navigate(ROUTE_PATH.MAIN)}></LogoBox>
+			<Logo onClick={()=>navigate(ROUTE_PATH.MAIN)}>
+				<Image src='' size='3rem'/>
+			</Logo>
 
 			{ showSectionMenu ? <SectionNavigatior/> : <div></div> }
 
@@ -46,7 +57,16 @@ function Header() {
 
 				<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
 
-				<SquareButton color='Transparency' onClick={popUp}>=</SquareButton>
+				<RoundButton color='Transparency' onClick={popUp}>
+					{ isLogin ?
+						<>
+							<Image src='' size='1rem'/>
+							<div>=</div>
+						</>
+						:
+						<div>=</div>
+					}
+				</RoundButton>
 			</ButtonGroup>
 
 			{ isHeaderMenuPopUp &&
