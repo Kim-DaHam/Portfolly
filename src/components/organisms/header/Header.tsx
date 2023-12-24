@@ -11,9 +11,10 @@ import SearchModal from "../modal/search-modal/SearchModal";
 import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
 import { renderHeaderMenuPopper } from "./Header.utils";
 
+import Logo from '@/assets/images/logo.png';
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import Image from '@/components/atoms/image/Image';
-import { ButtonGroup, HeaderContainer, Logo } from "@/components/organisms/header/Header.styled";
+import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
 import usePopup from "@/hooks/usePopup";
 import { RootState } from "@/redux/store";
 import { ROUTE_PATH } from "@/utils/path";
@@ -37,9 +38,9 @@ function Header() {
 
 	return(
 		<HeaderContainer>
-			<Logo onClick={()=>navigate(`/main/android-ios`)}>
-				<Image src='./images/logo.png' size='2.3rem'/>
-			</Logo>
+			<LogoBox onClick={()=>navigate(`/main/android-ios`)}>
+				<Image src={Logo} size='2.3rem'/>
+			</LogoBox>
 
 			{ showSectionMenu ? <SectionNavigatior/> : <div></div> }
 

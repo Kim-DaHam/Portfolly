@@ -28,6 +28,6 @@ export const ButtonGroup = styled.nav`
 	gap: 0.9rem;
 `
 
-export const Logo = styled.a`
+export const LogoBox = styled.a`
 	cursor: pointer;
 `;
