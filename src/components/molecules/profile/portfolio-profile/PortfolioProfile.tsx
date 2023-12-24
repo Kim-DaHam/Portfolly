@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import { FiMoreHorizontal as Icon } from "react-icons/fi";
 
+import { Group, Item } from "../../popper/Popper.styled";
+
 import { ButtonGroup, PorfolioProfileLayout, SpanBox } from "./PortfolioProfile.styled";
 
 import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
@@ -46,7 +48,11 @@ function PortfolioProfile() {
 			</ButtonGroup>
 
 			{ menuOpen &&
-				<Popper type='PortfolioMenu' right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} popOut={closeMenu}/>
+				<Popper right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} popOut={closeMenu}>
+					<Group>
+						<Item>공유하기</Item>
+					</Group>
+				</Popper>
 			}
 		</PorfolioProfileLayout>
 	)

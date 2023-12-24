@@ -1,6 +1,7 @@
 import { FiMoreHorizontal as Icon} from "react-icons/fi";
 
 import Popper from "../popper/Popper";
+import { Group, Item } from "../popper/Popper.styled";
 
 import { SectionNavigatorBox, SectionNavigatorLayout, SectionTitle } from "./SectionNavigator.styled";
 
@@ -22,11 +23,18 @@ function SectionNavigator() {
 
 			{isPopUp &&
 				<Popper
-					type='SectionNavigator'
 					right={menuButtonCoordinate.right}
 					bottom={menuButtonCoordinate.bottom}
 					popOut={popOut}
-				/>
+				>
+					<Group size='Fit'>
+						<Item>Android/iOS</Item>
+						<Item>Web</Item>
+						<Item>Illustration</Item>
+						<Item>Graphics</Item>
+						<Item>Video</Item>
+					</Group>
+				</Popper>
 			}
 		</SectionNavigatorLayout>
 	)
