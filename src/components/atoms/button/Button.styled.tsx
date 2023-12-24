@@ -3,8 +3,8 @@ import { css, styled } from 'styled-components';
 import { buttonColor, buttonSize } from '@/styles/token';
 import { ButtonColor, ButtonSize } from '@/types/style';
 
-const Button = styled.button<{color: ButtonColor, size: ButtonSize}>`
-	width: ${(props)=>buttonSize[props.size].width};
+const Button = styled.button<{color: ButtonColor, size?: ButtonSize}>`
+	width: ${(props)=> props.size? buttonSize[props.size].width : 'fit-content'};
 	height: 2.9rem;
 
 	padding: 0 1em 0 1em;

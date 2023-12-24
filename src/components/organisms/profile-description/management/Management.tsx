@@ -40,7 +40,7 @@ function Management() {
 
 					<SearchInput/>
 
-					<SquareButton color="White" size='Fit'>검색</SquareButton>
+					<SquareButton color="White">검색</SquareButton>
 				</FilterForm>
 			</SearchFilterSection>
 
