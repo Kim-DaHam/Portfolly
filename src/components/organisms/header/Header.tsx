@@ -37,7 +37,7 @@ function Header() {
 
 	return(
 		<HeaderContainer>
-			<Logo onClick={()=>navigate(`${ROUTE_PATH.MAIN}/android-ios`)}>
+			<Logo onClick={()=>navigate(`/main/android-ios`)}>
 				<Image src='./images/logo.png' size='2.3rem'/>
 			</Logo>
 
