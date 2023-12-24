@@ -36,8 +36,8 @@ export const Separator = styled.div`
 	background-color: black;
 `;
 
-export const Group = styled.div<{size: PopperSize}>`
-	width: ${(props)=>popperSize[props.size].width};
+export const Group = styled.div<{size?: PopperSize}>`
+	width: ${(props)=> props.size ? popperSize[props.size].width : '14rem'};
 	height: 100%;
 
 	display: flex;
@@ -48,6 +48,7 @@ export const Group = styled.div<{size: PopperSize}>`
 
 export const Item = styled.a`
 	display: flex;
+	gap: 1rem;
 
 	padding: 0.5rem;
 

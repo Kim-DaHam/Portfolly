@@ -1,6 +1,6 @@
 export const ROUTE_PATH = {
 	INTRO: '/',
-	MAIN: '/main',
+	MAIN: '/main/:section',
 	SIGNUP: '/signup',
 	SIGNIN: '/login',
 	TRIAL_LOGIN: '/trial',

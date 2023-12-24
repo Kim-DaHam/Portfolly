@@ -14,3 +14,11 @@ export type Portfolio = {
 	likes: number,
 	thumbnailUrl: string[],
 };
+
+export enum SectionEndPoint {
+	'Android/iOS' = 'android-ios',
+	'Web' = 'web',
+	'Illustration' = 'illustration',
+	'Photo' = 'photo',
+	'Video' = 'video',
+}

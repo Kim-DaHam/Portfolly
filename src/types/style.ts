@@ -32,6 +32,7 @@ export type ButtonColorStyle = {
 		backgroundColor: string,
 		hoverBackgroundColor: string,
 		fontColor: string,
+		border: string,
 	}
 };
 
