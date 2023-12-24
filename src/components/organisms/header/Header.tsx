@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FiMenu as MenuIcon} from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -36,7 +37,7 @@ function Header() {
 
 	return(
 		<HeaderContainer>
-			<Logo onClick={()=>navigate(ROUTE_PATH.MAIN)}>
+			<Logo onClick={()=>navigate(`${ROUTE_PATH.MAIN}/android-ios`)}>
 				<Image src='./images/logo.png' size='2.3rem'/>
 			</Logo>
 
@@ -59,14 +60,14 @@ function Header() {
 					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</SquareButton>
 					<RoundButton color='Transparency' onClick={popUp}>
 						<Image src='' size='1rem'/>
-						<div>=</div>
+						<MenuIcon size={15}/>
 					</RoundButton>
 				</ButtonGroup>
 				:
 				<ButtonGroup>
 					<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGNIN)}>Log in</SquareButton>
 					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
-					<RoundButton color='Transparency' onClick={popUp}>=</RoundButton>
+					<RoundButton color='Transparency' onClick={popUp}><MenuIcon size={15}/></RoundButton>
 				</ButtonGroup>
 			}
 
