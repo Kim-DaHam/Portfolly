@@ -16,7 +16,7 @@ function SectionNavigator() {
 			<SectionNavigatorBox>
 				<SectionTitle>Section</SectionTitle>
 
-				<MoreButton color='Transparency' onClick={popUp}>
+				<MoreButton color='White' onClick={popUp}>
 					<Icon color='gray'/>
 				</MoreButton>
 			</SectionNavigatorBox>

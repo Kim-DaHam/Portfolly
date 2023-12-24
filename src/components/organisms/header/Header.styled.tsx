@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
 	display: grid;
 	grid-template-columns: 0.1fr 0.75fr 0.8fr 1fr;
 	justify-content: space-between;
+	align-items: center;
 	column-gap: 1rem;
 
 	position: fixed;
@@ -17,7 +18,7 @@ export const HeaderContainer = styled.header`
 
 	padding: 0.3rem 2rem 0.3rem 2rem;
 
-	background-color: lightgray;
+	background-color: white;
 `;
 
 export const ButtonGroup = styled.nav`

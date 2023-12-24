@@ -1,2 +1,2 @@
-export const PAGE_SHOW_SEARCH_BAR = '/main' || '/profile' || '/contact';
-export const PAGE_SHOW_SECTION_MENU = '/main';
+export const PAGE_SHOW_SEARCH_BAR = ['main', 'profile', 'contact'];
+export const PAGE_SHOW_SECTION_MENU = ['main'];

@@ -25,9 +25,10 @@ function Header() {
 
 	const navigate = useNavigate();
 	const location = useLocation();
+	const firstPathName = location.pathname.split('/')[1];
 
-	const showSearchBar = (location.pathname === PAGE_SHOW_SEARCH_BAR );
-	const showSectionMenu = (location.pathname === PAGE_SHOW_SECTION_MENU);
+	const showSearchBar = PAGE_SHOW_SEARCH_BAR.indexOf(firstPathName) !== -1;
+	const showSectionMenu = PAGE_SHOW_SECTION_MENU.indexOf(firstPathName) !== -1;
 
 	const handleSearchModal = ()=> {
 		setIsSearchModalOpen(prev=>!prev);
@@ -36,7 +37,7 @@ function Header() {
 	return(
 		<HeaderContainer>
 			<Logo onClick={()=>navigate(ROUTE_PATH.MAIN)}>
-				<Image src='' size='3rem'/>
+				<Image src='./images/logo.png' size='2.3rem'/>
 			</Logo>
 
 			{ showSectionMenu ? <SectionNavigatior/> : <div></div> }
@@ -53,18 +54,22 @@ function Header() {
 				<div></div>
 			}
 
-			<ButtonGroup>
-				<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGNIN)}>Log in</SquareButton>
+			{ isLogin ?
+				<ButtonGroup>
+					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</SquareButton>
+					<RoundButton color='Transparency' onClick={popUp}>
+						<Image src='' size='1rem'/>
+						<div>=</div>
+					</RoundButton>
+				</ButtonGroup>
+				:
+				<ButtonGroup>
+					<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGNIN)}>Log in</SquareButton>
+					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
+					<RoundButton color='Transparency' onClick={popUp}>=</RoundButton>
+				</ButtonGroup>
+			}
 
-				<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
-
-				<RoundButton color='Transparency' onClick={popUp}>
-					{ isLogin &&
-							<Image src='' size='1rem'/>
-					}
-					<div>=</div>
-				</RoundButton>
-			</ButtonGroup>
 
 			{ isHeaderMenuPopUp &&
 				<Popper
