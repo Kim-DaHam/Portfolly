@@ -6,7 +6,7 @@ import Popper from "../../molecules/popper/Popper";
 import SearchBar from "../../molecules/searchBar/SearchBar";
 import SearchModal from "../modal/search-modal/SearchModal";
 
-import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
+import { showSearchBar, showSectionMenu } from "./Header.constants";
 
 import { SquareButton } from "@/components/atoms/button/Button.styled";
 import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
@@ -18,10 +18,6 @@ function Header() {
 	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
 	const navigate = useNavigate();
-	const location = useLocation();
-
-	const showSearchBar = (location.pathname === PAGE_SHOW_SEARCH_BAR );
-	const showSectionMenu = (location.pathname === PAGE_SHOW_SECTION_MENU);
 
 	const handleSearchModal = ()=> {
 		setIsSearchModalOpen(prev=>!prev);
@@ -46,11 +42,11 @@ function Header() {
 			}
 
 			<ButtonGroup>
-				<SquareButton size='Fit' color='White'>Log in</SquareButton>
+				<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGNIN)}>Log in</SquareButton>
 
-				<SquareButton size='Fit' color='Black'>Start Trial Version</SquareButton>
+				<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
 
-				<SquareButton size='Fit' color='Transparency' onClick={popUp}>=</SquareButton>
+				<SquareButton color='Transparency' onClick={popUp}>=</SquareButton>
 			</ButtonGroup>
 
 			{ isHeaderMenuPopUp &&

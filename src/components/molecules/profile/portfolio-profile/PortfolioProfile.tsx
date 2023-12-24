@@ -31,7 +31,7 @@ function PortfolioProfile() {
 
 	return(
 		<PorfolioProfileLayout>
-			<Image src='' alt='user profile'/>
+			<Image src='' alt='user profile' size='1rem'/>
 			<SpanBox>
 				<Text size='Medium' color='Black'>Portfolio Title</Text>
 				<Text size='Small' color='Gray'>Portfolio Summarysfsdf</Text>
