@@ -77,21 +77,25 @@ export const buttonColor: ButtonColorStyle = {
 		backgroundColor: '#FFFFFF',
 		hoverBackgroundColor: '#f3f3f3',
 		fontColor: '11111',
+		border: '0px',
 	},
 	Black: {
 		backgroundColor: '#111111',
 		hoverBackgroundColor: '#1d1d1d',
 		fontColor: '#FFFFFF',
+		border: '0px',
 	},
 	Gray: {
 		backgroundColor: '#f3f3f3',
 		hoverBackgroundColor: '#d0d0d0',
 		fontColor: '11111',
+		border: '0px',
 	},
 	Transparency: {
 		backgroundColor: 'transparent',
 		hoverBackgroundColor: 'transparent',
 		fontColor: '11111',
+		border: '1px solid #f3f3f3',
 	}
 };
 

@@ -7,6 +7,11 @@ const Button = styled.button<{color: ButtonColor, size?: ButtonSize}>`
 	width: ${(props)=> props.size? buttonSize[props.size].width : 'fit-content'};
 	height: 2.9rem;
 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+
 	padding: 0 1em 0 1em;
 	line-height: 1.5em;
 
@@ -16,10 +21,6 @@ const Button = styled.button<{color: ButtonColor, size?: ButtonSize}>`
 	letter-spacing: -.008em;
 	border: 0;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
 	cursor: pointer;
 
 	${(props)=>{
@@ -28,6 +29,7 @@ const Button = styled.button<{color: ButtonColor, size?: ButtonSize}>`
 		return css`
 			color: ${buttonColor[color].fontColor};
 			background-color: ${buttonColor[color].backgroundColor};
+			border: ${buttonColor[color].border};
 
 			&:hover{
 				background-color: ${buttonColor[color].hoverBackgroundColor};
