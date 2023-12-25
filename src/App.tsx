@@ -14,7 +14,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import GlobalErrorFallback from './utils/fallback/gloabalErrorFallback';
 
 import Intro from '@/pages/intro/IntroPage';
-import Main from '@/pages/main/Main';
+import Main from '@/pages/main/MainPage';
 import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
 import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
