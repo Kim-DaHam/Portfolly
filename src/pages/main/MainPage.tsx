@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
 
-import { initialProps, sliderSettings } from "./Main.constants";
-import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
+import { initialProps, sliderSettings } from "./MainPage.constants";
+import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
 
 import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
 import Header from "@/components/organisms/header/Header";
