@@ -18,7 +18,7 @@ function Popper({ children, right, bottom, popOut}: Props) {
 
 	return createPortal(
 		<PopperLayout onClick={popOut}>
-			<PopperContainer top={bottom} right={right} onClick={eventStopPropagation}>
+			<PopperContainer $top={bottom} $right={right} onClick={eventStopPropagation}>
 				{children}
 			</PopperContainer>
 		</PopperLayout>,

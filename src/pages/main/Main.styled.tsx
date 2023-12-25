@@ -131,14 +131,14 @@ const Arrow = css`
 	cursor: pointer;
 `;
 
-export const PrevArrow = styled.button<{current: number}>`
+export const PrevArrow = styled.button<{$current: number}>`
 	${Arrow}
-	visibility: ${(props) => props.current === 6 ? 'hidden' : 'visible'};
+	visibility: ${(props) => props.$current === 6 ? 'hidden' : 'visible'};
 `;
 
-export const NextArrow = styled.button<{current: number, last:number}>`
+export const NextArrow = styled.button<{$current: number, $last:number}>`
 	${Arrow}
-	visibility: ${(props) => props.current === props.last ? 'hidden' : 'visible'};
+	visibility: ${(props) => props.$current === props.$last ? 'hidden' : 'visible'};
 `;
 
 export const PortfolioSection = styled.section`
