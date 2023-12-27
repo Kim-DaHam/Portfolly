@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { initialProps, sliderSettings } from "./MainPage.constants";
 import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
 
+import { mainPageSectionSummary } from '@/assets/data/phrase';
 import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
 import Header from "@/components/organisms/header/Header";
 import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
@@ -34,7 +35,7 @@ function Main(){
 			<MainContainer>
 				<TitleSection>
 					<Title>{currentSection}</Title>
-					<Summary>간단한 설명 blabla</Summary>
+					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
 				</TitleSection>
 
 				<CategorySection>
