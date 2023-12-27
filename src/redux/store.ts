@@ -2,6 +2,8 @@ import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import sectionSlice from './sectionSlice';
+
 import loginSlice from '@/redux/loginSlice';
 
 const authPersistConfig = {
@@ -12,6 +14,7 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
 	auth: persistReducer(authPersistConfig, loginSlice.reducer),
+	section: sectionSlice.reducer,
 });
 
 export const store = configureStore({

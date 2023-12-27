@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { RootState } from './store';
+
 type InitialState = {
 	authority: 'expert' | 'client',
 	isLogin: boolean,
@@ -24,4 +26,6 @@ export const loginSlice = createSlice({
 });
 
 export const { actions, reducer } = loginSlice;
+export const isLogin = (state: RootState) => state.auth.isLogin;
+
 export default loginSlice;

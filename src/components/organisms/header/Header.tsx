@@ -8,29 +8,28 @@ import Popper from "../../molecules/popper/Popper";
 import SearchBar from "../../molecules/searchBar/SearchBar";
 import SearchModal from "../modal/search-modal/SearchModal";
 
-import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
-import { renderHeaderMenuPopper } from "./Header.utils";
+import { checkIsShowSearchBarPage, checkIsShowSectionMenuPage, renderHeaderMenuPopper } from "./Header.utils";
 
 import Logo from '@/assets/images/logo.png';
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import Image from '@/components/atoms/image/Image';
 import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
 import usePopup from "@/hooks/usePopup";
-import { RootState } from "@/redux/store";
+import { isLogin as IsLogin } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils/path";
 
 function Header() {
 	const [isHeaderMenuPopUp, menuButtonCoordinate, popUp, popOut] = usePopup();
 	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
-	const isLogin = useSelector((state: RootState) => state.auth.isLogin);
-
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	const isLogin = useSelector(IsLogin);
 	const firstPathName = location.pathname.split('/')[1];
 
-	const showSearchBar = PAGE_SHOW_SEARCH_BAR.indexOf(firstPathName) !== -1;
-	const showSectionMenu = PAGE_SHOW_SECTION_MENU.indexOf(firstPathName) !== -1;
+	const showSearchBar = checkIsShowSearchBarPage(firstPathName);
+	const showSectionMenu = checkIsShowSectionMenuPage(firstPathName);
 
 	const handleSearchModal = ()=> {
 		setIsSearchModalOpen(prev=>!prev);

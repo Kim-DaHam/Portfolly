@@ -14,7 +14,7 @@ export const PopperLayout = styled.div`
 	background-color: transparent;
 `;
 
-export const PopperContainer = styled.div<{top: number, right: number}>`
+export const PopperContainer = styled.div<{$top: number, $right: number}>`
 	width: auto;
 
 	display: flex;
@@ -22,8 +22,8 @@ export const PopperContainer = styled.div<{top: number, right: number}>`
 
 	position: fixed;
 	z-index: 999;
-	top: ${(props) => props.top + 10}px;
-	right: ${(props) => document.documentElement.clientWidth - props.right}px;
+	top: ${(props) => props.$top + 10}px;
+	right: ${(props) => document.documentElement.clientWidth - props.$right}px;
 
 	border-radius: 16px;
 	background-color: lightgray;

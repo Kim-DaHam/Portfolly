@@ -1,20 +1,25 @@
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import Slider from "react-slick";
 
-import { initialProps, sliderSettings } from "./Main.constants";
-import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./Main.styled";
+import { initialProps, sliderSettings } from "./MainPage.constants";
+import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
 
+import { mainPageSectionSummary } from '@/assets/data/phrase';
 import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
 import Header from "@/components/organisms/header/Header";
 import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/organisms/portfolio-item/PortfolioItem";
 import useHandleSlider from "@/hooks/useHandleSlider";
+import { section } from "@/redux/sectionSlice";
 
 function Main(){
 	const [filterOpen, setFilterOpen] = useState(false);
 
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
+
+	const currentSection = useSelector(section);
 
 	const openFilter = ()=>{
 		setFilterOpen((prev)=>!prev);
@@ -29,8 +34,8 @@ function Main(){
 			<Header/>
 			<MainContainer>
 				<TitleSection>
-					<Title>Title</Title>
-					<Summary>간단한 설명 blabla</Summary>
+					<Title>{currentSection}</Title>
+					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
 				</TitleSection>
 
 				<CategorySection>
@@ -46,8 +51,8 @@ function Main(){
 
 					<CategoryBox>
 						<ArrowBox>
-							<PrevArrow current={currentSlideIndex} onClick={handlePrev}>Prev</PrevArrow>
-							<NextArrow current={currentSlideIndex} last={11} onClick={handleNext}>Next</NextArrow>
+							<PrevArrow $current={currentSlideIndex} onClick={handlePrev}>Prev</PrevArrow>
+							<NextArrow $current={currentSlideIndex} $last={11} onClick={handleNext}>Next</NextArrow>
 						</ArrowBox>
 
 						<CategoryRow>
