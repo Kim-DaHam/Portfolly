@@ -53,9 +53,6 @@ export const CategorySection = styled.section`
 	border: 1px solid black;
 `;
 
-export const FilterButton = styled.button`
-`;
-
 export const Divider = styled.div`
 	width: 1px;
 	height: inherit;
@@ -103,14 +100,6 @@ export const CategoryRow = styled.div`
 		padding: 0 0.2rem 0 0.2rem;
 	}
 `;
-
-export const CategoryButton = styled.button`
-	width: 10rem;
-	height: 100%;
-
-	border-radius: 2rem;
-	background-color: lightgray;
-`
 
 export const ArrowBox = styled.div`
 	width: 100%;

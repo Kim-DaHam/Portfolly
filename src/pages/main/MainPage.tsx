@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { CgOptions as FilterIcon } from "react-icons/cg";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
 
-import { initialProps, sliderSettings } from "./MainPage.constants";
-import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
+import { categories, initialProps, sliderSettings } from "./MainPage.constants";
+import { ArrowBox, CategoryBox, CategoryRow, CategorySection, Divider, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
+import { RoundButton as FilterButton, RoundButton } from "@/components/atoms/button/Button.styled";
 import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
 import Header from "@/components/organisms/header/Header";
 import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
@@ -15,14 +17,20 @@ import { section } from "@/redux/sectionSlice";
 
 function Main(){
 	const [filterOpen, setFilterOpen] = useState(false);
+	const [category, setCategory] = useState('All');
 
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
 
 	const currentSection = useSelector(section);
 
-	const openFilter = ()=>{
+	const openFilter = ()=> {
 		setFilterOpen((prev)=>!prev);
+	};
+
+	const handleCategory = (event: React.MouseEvent<Element, MouseEvent>)=> {
+		const eventTarget = event.target as HTMLElement;
+		setCategory(eventTarget.innerText);
 	}
 
 	useEffect(()=> {
@@ -39,7 +47,8 @@ function Main(){
 				</TitleSection>
 
 				<CategorySection>
-					<FilterButton onClick={openFilter}>
+					<FilterButton color='Gray' onClick={openFilter}>
+						<FilterIcon size={20}/>
 						Filters
 					</FilterButton>
 
@@ -57,18 +66,15 @@ function Main(){
 
 						<CategoryRow>
 							<Slider {...sliderSettings} ref={sliderRef}>
-								<CategoryButton>1</CategoryButton>
-								<CategoryButton>2</CategoryButton>
-								<CategoryButton>3</CategoryButton>
-								<CategoryButton>4</CategoryButton>
-								<CategoryButton>5</CategoryButton>
-								<CategoryButton>6</CategoryButton>
-								<CategoryButton>7</CategoryButton>
-								<CategoryButton>8</CategoryButton>
-								<CategoryButton>9</CategoryButton>
-								<CategoryButton>10</CategoryButton>
-								<CategoryButton>11</CategoryButton>
-								<CategoryButton>12</CategoryButton>
+								{categories[currentSection].map((category, index)=>{
+									return <RoundButton
+														color='Transparency'
+														key={index}
+														onClick={handleCategory}
+														value={category}>
+														{category}
+													</RoundButton>
+								}) }
 							</Slider>
 						</CategoryRow>
 					</CategoryBox>
