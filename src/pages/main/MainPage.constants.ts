@@ -13,6 +13,7 @@ export const sliderSettings: Settings = {
 	arrows: false,
 	vertical: false,
 	initialSlide: 0,
+	variableWidth: true,
 	responsive: [
 		{
 			breakpoint: 960, // 화면 사이즈 960px일 때

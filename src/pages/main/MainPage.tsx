@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { CgOptions as FilterIcon } from "react-icons/cg";
+import { FiArrowRight as ArrowRightIcon, FiArrowLeft as ArrowLeftIcon } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
 
 import { categories, initialProps, sliderSettings } from "./MainPage.constants";
-import { ArrowBox, CategoryBox, CategoryRow, CategorySection, Divider, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
+import { CategoryBox, CategoryRow, CategorySection, Divider, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
 import { RoundButton as FilterButton, RoundButton } from "@/components/atoms/button/Button.styled";
@@ -17,7 +18,7 @@ import { section } from "@/redux/sectionSlice";
 
 function Main(){
 	const [filterOpen, setFilterOpen] = useState(false);
-	const [category, setCategory] = useState('All');
+	const [currentCategory, setCurrentCategory] = useState('전체');
 
 	const sliderRef = useRef(null);
 	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
@@ -30,7 +31,7 @@ function Main(){
 
 	const handleCategory = (event: React.MouseEvent<Element, MouseEvent>)=> {
 		const eventTarget = event.target as HTMLElement;
-		setCategory(eventTarget.innerText);
+		setCurrentCategory(eventTarget.innerText);
 	}
 
 	useEffect(()=> {
@@ -40,6 +41,7 @@ function Main(){
 	return(
 		<MainLayout>
 			<Header/>
+
 			<MainContainer>
 				<TitleSection>
 					<Title>{currentSection}</Title>
@@ -59,19 +61,23 @@ function Main(){
 					<Divider/>
 
 					<CategoryBox>
-						<ArrowBox>
-							<PrevArrow $current={currentSlideIndex} onClick={handlePrev}>Prev</PrevArrow>
-							<NextArrow $current={currentSlideIndex} $last={11} onClick={handleNext}>Next</NextArrow>
-						</ArrowBox>
+						<PrevArrow color='White' $current={currentSlideIndex} onClick={handlePrev}>
+							<ArrowLeftIcon size={16}/>
+						</PrevArrow>
+						<NextArrow color='White' $current={currentSlideIndex} $last={11} onClick={handleNext}>
+							<ArrowRightIcon size={16}/>
+						</NextArrow>
 
 						<CategoryRow>
 							<Slider {...sliderSettings} ref={sliderRef}>
 								{categories[currentSection].map((category, index)=>{
+									let active = false;
+									if(category === currentCategory) active = true;
 									return <RoundButton
 														color='Transparency'
 														key={index}
 														onClick={handleCategory}
-														value={category}>
+														active={active}>
 														{category}
 													</RoundButton>
 								}) }
@@ -82,31 +88,6 @@ function Main(){
 
 				<PortfolioSection>
 					<GridBox>
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
 						<GridItem>
 							<PortfolioItem type='Android/iOS'/>
 							<PortfolioProfile/>

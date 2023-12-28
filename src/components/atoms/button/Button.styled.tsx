@@ -3,7 +3,7 @@ import { css, styled } from 'styled-components';
 import { buttonColor, buttonSize } from '@/styles/token';
 import { ButtonColor, ButtonSize } from '@/types/style';
 
-const Button = styled.button<{color: ButtonColor, size?: ButtonSize}>`
+const Button = styled.button<{color: ButtonColor, size?: ButtonSize, active?:boolean}>`
 	width: ${(props)=> props.size? buttonSize[props.size].width : 'fit-content'};
 	height: 2.9rem;
 
@@ -24,15 +24,15 @@ const Button = styled.button<{color: ButtonColor, size?: ButtonSize}>`
 	cursor: pointer;
 
 	${(props)=>{
-		const color = props.color;
+		const colorType = props.active ? 'Black' : props.color;
 
 		return css`
-			color: ${buttonColor[color].fontColor};
-			background-color: ${buttonColor[color].backgroundColor};
-			border: ${buttonColor[color].border};
+			color: ${buttonColor[colorType].fontColor};
+			background-color: ${buttonColor[colorType].backgroundColor};
+			border: ${buttonColor[colorType].border};
 
 			&:hover{
-				background-color: ${buttonColor[color].hoverBackgroundColor};
+				background-color: ${buttonColor[colorType].hoverBackgroundColor};
 			}
 		`
 	}}
