@@ -1,6 +1,6 @@
-import { separatePortfolioSection } from "./Intro.utils";
 import { portfolios } from "./IntroPage.constants";
 import { Divider, IntroLayout, IntroduceContainer } from "./IntroPage.styled";
+import { separatePortfolioSection } from "./IntroPage.utils";
 
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";

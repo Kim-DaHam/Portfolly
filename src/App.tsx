@@ -13,8 +13,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import GlobalErrorFallback from './utils/fallback/gloabalErrorFallback';
 
-import Intro from '@/pages/intro/IntroPage';
-import Main from '@/pages/main/MainPage';
+import IntroPage from '@/pages/intro/IntroPage';
+import MainPage from '@/pages/main/MainPage';
 import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
 import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
@@ -46,8 +46,8 @@ function App() {
 					<QueryClientProvider client={queryClient}>
 						<BrowserRouter>
 							<Routes>
-								<Route path={ROUTE_PATH.INTRO} element={<Intro/>}></Route>
-								<Route path={ROUTE_PATH.MAIN} element={<Main/>}></Route>
+								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>}></Route>
+								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>}></Route>
 								<Route path={ROUTE_PATH.SIGNUP} element={<SignUp/>}></Route>
 								<Route path={ROUTE_PATH.SIGNIN} element={<SignIn/>}></Route>
 								<Route path={ROUTE_PATH.MYPAGE} element={<MyPage/>}></Route>
