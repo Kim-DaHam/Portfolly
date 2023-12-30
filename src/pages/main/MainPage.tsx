@@ -1,106 +1,31 @@
-import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import Slider from "react-slick";
 
-import { initialProps, sliderSettings } from "./MainPage.constants";
-import { ArrowBox, CategoryBox, CategoryButton, CategoryRow, CategorySection, Divider, FilterButton, GridBox, GridItem, MainContainer, MainLayout, NextArrow, PortfolioSection, PrevArrow, Summary, Title, TitleSection } from "./MainPage.styled";
+import { GridBox, GridItem, MainContainer, MainLayout, PortfolioSection, Summary, Title, TitleSection } from "./MainPage.styled";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
 import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
+import CategorySlider from "@/components/organisms/category-slider/CategorySlider";
 import Header from "@/components/organisms/header/Header";
-import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
 import PortfolioItem from "@/components/organisms/portfolio-item/PortfolioItem";
-import useHandleSlider from "@/hooks/useHandleSlider";
 import { section } from "@/redux/sectionSlice";
 
-function Main(){
-	const [filterOpen, setFilterOpen] = useState(false);
-
-	const sliderRef = useRef(null);
-	const { handlePrev, handleNext, setSlick: setSlider, currentSlideIndex } = useHandleSlider(initialProps);
-
+function MainPage(){
 	const currentSection = useSelector(section);
-
-	const openFilter = ()=>{
-		setFilterOpen((prev)=>!prev);
-	}
-
-	useEffect(()=> {
-		setSlider(sliderRef.current!);
-	}, [])
 
 	return(
 		<MainLayout>
 			<Header/>
+
 			<MainContainer>
 				<TitleSection>
 					<Title>{currentSection}</Title>
 					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
 				</TitleSection>
 
-				<CategorySection>
-					<FilterButton onClick={openFilter}>
-						Filters
-					</FilterButton>
-
-					{ filterOpen &&
-						<SearchModal onClick={openFilter}/>
-					}
-
-					<Divider/>
-
-					<CategoryBox>
-						<ArrowBox>
-							<PrevArrow $current={currentSlideIndex} onClick={handlePrev}>Prev</PrevArrow>
-							<NextArrow $current={currentSlideIndex} $last={11} onClick={handleNext}>Next</NextArrow>
-						</ArrowBox>
-
-						<CategoryRow>
-							<Slider {...sliderSettings} ref={sliderRef}>
-								<CategoryButton>1</CategoryButton>
-								<CategoryButton>2</CategoryButton>
-								<CategoryButton>3</CategoryButton>
-								<CategoryButton>4</CategoryButton>
-								<CategoryButton>5</CategoryButton>
-								<CategoryButton>6</CategoryButton>
-								<CategoryButton>7</CategoryButton>
-								<CategoryButton>8</CategoryButton>
-								<CategoryButton>9</CategoryButton>
-								<CategoryButton>10</CategoryButton>
-								<CategoryButton>11</CategoryButton>
-								<CategoryButton>12</CategoryButton>
-							</Slider>
-						</CategoryRow>
-					</CategoryBox>
-				</CategorySection>
+				<CategorySlider section={currentSection}/>
 
 				<PortfolioSection>
 					<GridBox>
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
-
 						<GridItem>
 							<PortfolioItem type='Android/iOS'/>
 							<PortfolioProfile/>
@@ -113,4 +38,4 @@ function Main(){
 	)
 }
 
-export default Main;
+export default MainPage;
