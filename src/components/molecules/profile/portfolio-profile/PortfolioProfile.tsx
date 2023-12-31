@@ -12,8 +12,6 @@ import Popper from "@/components/molecules/popper/Popper";
 import usePopup from "@/hooks/usePopup";
 import { Text } from "@/styles/Text.styled";
 
-
-
 function PortfolioProfile() {
 	const buttonGroupRef = useRef(null);
 

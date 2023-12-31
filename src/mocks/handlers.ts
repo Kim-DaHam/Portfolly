@@ -2,11 +2,31 @@ import { HttpResponse, http } from 'msw';
 
 import { portfolios } from './data/portfolios';
 
-import { Portfolio } from '@/types/portfolio';
+import { Portfolio, Section } from '@/types/portfolio';
+
+const sectionId = {
+	'Android/iOS': 1,
+	'Web': 2,
+	'Illustration': 3,
+	'Photo': 4,
+	'Video': 5,
+}
 
 const PortfolioHandlers= [
-	http.get('/portfolios/:section', ()=>{
-		return new HttpResponse(null, {status: 404});
+	http.get(`/portfolios`, ({request})=>{
+		const url = new URL(request.url);
+		const limit = url.searchParams.get('limit') as string;
+		const section = url.searchParams.get('section') as Section;
+
+		const filteredPortfolios = portfolios.filter((portfolio)=>{
+			return sectionId[section] === portfolio.sectionId
+		})
+
+		const limitedPortfolios = filteredPortfolios.filter((_, index)=>{
+			return index < Number(limit);
+		})
+
+		return HttpResponse.json(limitedPortfolios, { status: 200 });
 	}),
 
 	http.get('/top-portfolios', ()=>{

@@ -6,7 +6,6 @@ export const sliderSettings: Settings = {
 	dots: false,
 	infinite: false,
 	speed: 500,
-	slidesToShow: 7,
 	slidesToScroll: 3,
 	draggable: false,
 	fade: false,
@@ -26,8 +25,6 @@ export const sliderSettings: Settings = {
 }
 
 export const initialProps: InitialProps = {
-	type: 'Long',
-	slidesToShow: sliderSettings.slidesToShow!,
 	slidesToScroll: sliderSettings.slidesToScroll!,
 	speed: sliderSettings.speed!,
 	maxIndex: 11,
