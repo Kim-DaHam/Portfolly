@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { GridBox, GridItem, MainContainer, MainLayout, PortfolioSection, Summary, Title, TitleSection } from "./MainPage.styled";
@@ -12,9 +13,11 @@ import { Portfolio } from "@/types/portfolio";
 import { usePortfoliosQuery } from "@/utils/api-service/portfolio";
 
 function MainPage(){
+	const [category, setCategory] = useState<string>('전체');
+
 	const currentSection = useSelector(section);
 
-	const { data } = usePortfoliosQuery(30, currentSection);
+	const { data } = usePortfoliosQuery(30, currentSection, { filterKey: 'category', filterValue: category});
 	const portfolios = data;
 
 	console.log(portfolios)
@@ -29,7 +32,7 @@ function MainPage(){
 					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
 				</TitleSection>
 
-				<CategorySlider section={currentSection}/>
+				<CategorySlider section={currentSection} handleCategory={setCategory}/>
 
 				<PortfolioSection>
 					<GridBox>

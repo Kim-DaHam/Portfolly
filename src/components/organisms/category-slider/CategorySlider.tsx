@@ -9,13 +9,15 @@ import { categories, sliderSettings } from "./CategorySlider.constants";
 import { CategoryBox, CategoryRow, CategorySliderLayout, Divider, NextArrow, PrevArrow } from "./CategorySlider.styled";
 
 import { RoundButton as FilterButton, RoundButton } from "@/components/atoms/button/Button.styled";
+import { SetState } from "@/types";
 import { Section } from "@/types/portfolio";
 
 type Props = {
 	section: Section;
+	handleCategory: SetState<string>;
 }
 
-function CategorySlider({section}: Props) {
+function CategorySlider({section, handleCategory}: Props) {
 	const [filterOpen, setFilterOpen] = useState(false);
 	const [currentCategory, setCurrentCategory] = useState('전체');
 	const [showPrevArrow, setShowPrevArrow] = useState(false);
@@ -28,9 +30,12 @@ function CategorySlider({section}: Props) {
 		setFilterOpen((prev)=>!prev);
 	};
 
-	const handleCategory = (event: React.MouseEvent<Element, MouseEvent>)=> {
+	const setCategory = (event: React.MouseEvent<Element, MouseEvent>)=> {
 		const eventTarget = event.target as HTMLElement;
-		setCurrentCategory(eventTarget.innerText);
+		const category = eventTarget.textContent as string;
+
+		setCurrentCategory(category);
+		handleCategory(category);
 	};
 
 	const handlePrev = ()=> {
@@ -83,7 +88,7 @@ function CategorySlider({section}: Props) {
 								key={index}
 								color='Transparency'
 								$active={active}
-								onClick={handleCategory}>
+								onClick={setCategory}>
 								{category}
 							</RoundButton>
 						)

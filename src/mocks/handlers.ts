@@ -3,6 +3,7 @@ import { HttpResponse, http } from 'msw';
 import { portfolios } from './data/portfolios';
 
 import { Portfolio, Section } from '@/types/portfolio';
+import { getCategoryId } from '@/utils/mswHandler';
 
 const sectionId = {
 	'Android/iOS': 1,
@@ -17,10 +18,43 @@ const PortfolioHandlers= [
 		const url = new URL(request.url);
 		const limit = url.searchParams.get('limit') as string;
 		const section = url.searchParams.get('section') as Section;
+		const category = url.searchParams.get('category') as string;
+		// const tag = url.searchParams.get('tag');
+		// const user = url.searchParams.get('user');
 
-		const filteredPortfolios = portfolios.filter((portfolio)=>{
-			return sectionId[section] === portfolio.sectionId
+		let filteredPortfolios: Portfolio[] = [];
+
+		portfolios.map((portfolio)=>{
+			if(sectionId[section] === portfolio.sectionId){
+				filteredPortfolios.push(portfolio);
+			}
 		})
+
+		if(category && category !== '전체'){
+			const categoryId = getCategoryId(category);
+
+			const categoryFilteredPortfolios = filteredPortfolios.filter((portfolio)=>{
+				return portfolio.categoryId === categoryId
+			})
+
+			filteredPortfolios = categoryFilteredPortfolios;
+		}
+
+		// if(tag){
+		// 	filteredPortfolios.map((portfolio)=>{
+		// 		if(tagId[tag] === portfolio.categoryId){
+		// 			filteredPortfolios.push(portfolio);
+		// 		}
+		// 	})
+		// }
+
+		// if(user){
+		// 	filteredPortfolios.map((portfolio)=>{
+		// 		if(userId[user] === portfolio.categoryId){
+		// 			filteredPortfolios.push(portfolio);
+		// 		}
+		// 	})
+		// }
 
 		const limitedPortfolios = filteredPortfolios.filter((_, index)=>{
 			return index < Number(limit);

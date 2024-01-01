@@ -1,4 +1,4 @@
-export const category = [
+export const categories = [
 	{
 		id: 1,
 		name: '금융',
@@ -65,7 +65,7 @@ export const category = [
 	},
 	{
 		id: 17,
-		name: '마케팅&광고',
+		name: '마케팅 & 광고',
 	},
 	{
 		id: 18,
