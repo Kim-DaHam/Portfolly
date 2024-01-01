@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { GridBox, GridItem, MainContainer, MainLayout, PortfolioSection, Summary, Title, TitleSection } from "./MainPage.styled";
@@ -8,9 +9,18 @@ import CategorySlider from "@/components/organisms/category-slider/CategorySlide
 import Header from "@/components/organisms/header/Header";
 import PortfolioItem from "@/components/organisms/portfolio-item/PortfolioItem";
 import { section } from "@/redux/sectionSlice";
+import { Portfolio } from "@/types/portfolio";
+import { usePortfoliosQuery } from "@/utils/api-service/portfolio";
 
 function MainPage(){
+	const [category, setCategory] = useState<string>('전체');
+
 	const currentSection = useSelector(section);
+
+	const { data } = usePortfoliosQuery(30, currentSection, { filterKey: 'category', filterValue: category});
+	const portfolios = data;
+
+	console.log(portfolios)
 
 	return(
 		<MainLayout>
@@ -22,14 +32,18 @@ function MainPage(){
 					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
 				</TitleSection>
 
-				<CategorySlider section={currentSection}/>
+				<CategorySlider section={currentSection} handleCategory={setCategory}/>
 
 				<PortfolioSection>
 					<GridBox>
-						<GridItem>
-							<PortfolioItem type='Android/iOS'/>
-							<PortfolioProfile/>
-						</GridItem>
+						{ portfolios && portfolios.map((portfolio: Portfolio)=>{
+							return(
+								<GridItem key={portfolio.id}>
+									<PortfolioItem type={currentSection} portfolio={portfolio}/>
+									<PortfolioProfile/>
+								</GridItem>
+							)
+						})}
 					</GridBox>
 				</PortfolioSection>
 

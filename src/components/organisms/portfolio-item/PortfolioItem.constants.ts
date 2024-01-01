@@ -25,7 +25,6 @@ export const sliderSettings: Settings = {
 };
 
 export const initialProps: InitialProps = {
-	type: 'Short',
 	slidesToShow: sliderSettings.slidesToShow!,
 	slidesToScroll: sliderSettings.slidesToScroll!,
 	speed: sliderSettings.speed!,

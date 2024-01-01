@@ -28,6 +28,7 @@ export const persistor = persistStore(store);
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
+			refetchOnWindowFocus: false,
 			throwOnError: true,
 			retry: 0,
 		},

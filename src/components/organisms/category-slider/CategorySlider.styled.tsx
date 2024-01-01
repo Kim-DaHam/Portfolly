@@ -38,11 +38,12 @@ export const CategoryRow = styled.div`
 	width: 100%;
 	height: 100%;
 
-	position: relative;
-
 	& .slick-initialized {
 		width: 100%;
 		height: 100%;
+
+		position: absolute;
+		right: 0px;
 	}
 
 	& .slick-slide {
@@ -52,6 +53,8 @@ export const CategoryRow = styled.div`
 	& .slick-list {
 		width: 100%;
 		height: 100%;
+
+
 
 		margin: 0 -3px;
 	}
@@ -67,22 +70,22 @@ export const CategoryRow = styled.div`
 	}
 `;
 
-export const PrevArrow = styled(RoundButton)<{$current: number}>`
+export const PrevArrow = styled(RoundButton)<{$showPrevArrow: boolean}>`
 	position: absolute;
 	z-index: 100;
 	top: 0;
 	left: 0;
 
 	cursor: pointer;
-	visibility: ${(props) => props.$current === 6 ? 'hidden' : 'visible'};
+	visibility: ${(props) => props.$showPrevArrow ? 'visible' : 'hidden'};
 `;
 
-export const NextArrow = styled(RoundButton)<{$current: number, $last:number}>`
+export const NextArrow = styled(RoundButton)<{$showNextArrow: boolean}>`
 	position: absolute;
 	z-index: 100;
 	top: 0;
 	right: 0;
 
 	cursor: pointer;
-	visibility: ${(props) => props.$current === props.$last ? 'hidden' : 'visible'};
+	visibility: ${(props) => props.$showNextArrow ? 'visible' : 'hidden'};
 `;

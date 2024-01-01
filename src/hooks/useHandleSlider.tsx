@@ -3,10 +3,36 @@ import Slider from "react-slick";
 
 import { InitialProps } from "@/types/slider";
 
-function useHandleSlider({type, slidesToShow, slidesToScroll, speed, maxIndex=0}: InitialProps) {
+function useHandleSlider({ slidesToShow = 0, slidesToScroll, speed, maxIndex = 0 }: InitialProps) {
 	const [slider, setSlider] = useState<Slider>();
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(slidesToShow-1);
 	const [isClickedJustBefore, setClickedJustBefore] = useState(false);
+
+	const calcCurrentSlideIndexWithPrev = ()=> {
+		if(slidesToShow === 1) {
+			setCurrentSlideIndex(prev => prev - slidesToScroll);
+		}
+
+		if(slidesToShow > 1) {
+			setCurrentSlideIndex(prev => {
+				if(prev - slidesToScroll < slidesToShow) return slidesToShow;
+				return (prev - slidesToScroll);
+			})
+		}
+	}
+
+	const calcCurrentSlideIndexWithNext = ()=> {
+		if(slidesToShow === 1) {
+			setCurrentSlideIndex(prev=>prev + slidesToScroll);
+		}
+
+		if(slidesToShow > 1) {
+			setCurrentSlideIndex(prev=>{
+				if(prev + slidesToShow > maxIndex) return maxIndex;
+				return (prev + slidesToScroll);
+			})
+		}
+	}
 
 	const handlePrev = ()=> {
 		if(isClickedJustBefore) return;
@@ -14,15 +40,7 @@ function useHandleSlider({type, slidesToShow, slidesToScroll, speed, maxIndex=0}
 		setClickedJustBefore(prev=>!prev);
 		slider?.slickPrev();
 
-		if(type === 'Short'){
-			setCurrentSlideIndex(prev => prev - slidesToScroll);
-		}
-		if(type === 'Long'){
-			setCurrentSlideIndex(prev => {
-				if(prev - slidesToScroll < slidesToShow) return slidesToShow;
-				else return (prev - slidesToScroll);
-			})
-		}
+		calcCurrentSlideIndexWithPrev();
 
 		setTimeout(()=>setClickedJustBefore(prev=>!prev), speed);
 	};
@@ -33,15 +51,7 @@ function useHandleSlider({type, slidesToShow, slidesToScroll, speed, maxIndex=0}
 		setClickedJustBefore(prev=>!prev);
 		slider?.slickNext();
 
-		if(type === 'Short'){
-			setCurrentSlideIndex(prev=>prev + slidesToScroll);
-		}
-		if(type === 'Long'){
-			setCurrentSlideIndex(prev=>{
-				if(prev + slidesToShow > maxIndex) return maxIndex
-				else return (prev + slidesToScroll);
-			})
-		}
+		calcCurrentSlideIndexWithNext();
 
 		setTimeout(()=>setClickedJustBefore(prev=>!prev), speed);
 	};
