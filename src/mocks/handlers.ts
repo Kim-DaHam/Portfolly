@@ -3,7 +3,7 @@ import { HttpResponse, http } from 'msw';
 import { portfolios } from './data/portfolios';
 
 import { Portfolio, Section } from '@/types/portfolio';
-import { getCategoryId } from '@/utils/mswHandler';
+import { getCategoryId, getUserData } from '@/utils/mswHandler';
 
 const sectionId = {
 	'Android/iOS': 1,
@@ -22,11 +22,12 @@ const PortfolioHandlers= [
 		// const tag = url.searchParams.get('tag');
 		// const user = url.searchParams.get('user');
 
-		let filteredPortfolios: Portfolio[] = [];
+		let filteredPortfolios: any[] = [];
 
 		portfolios.map((portfolio)=>{
 			if(sectionId[section] === portfolio.sectionId){
-				filteredPortfolios.push(portfolio);
+				const user = getUserData(portfolio.userId);
+				filteredPortfolios.push({...portfolio, user});
 			}
 		})
 
