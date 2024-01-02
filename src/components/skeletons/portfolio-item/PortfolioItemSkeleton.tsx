@@ -1,12 +1,17 @@
+import { useSelector } from "react-redux";
+
+import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Section } from "@/types/portfolio";
 
 type Props = {
-	type: Section;
+	section?: Section;
 }
 
-function PortfolioItemSkeleton({type}: Props) {
+function PortfolioItemSkeleton({section}: Props) {
+	const currentSection = useSelector(sectionSlice);
+
 	return(
-		<PortfolioItemSkeleton type={type}/>
+		<PortfolioItemSkeleton section={section || currentSection}/>
 	)
 }
 
