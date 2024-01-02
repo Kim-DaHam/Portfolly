@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import PortfolioItem from "../portfolio-item/PortfolioItem";
 
@@ -6,20 +7,22 @@ import { GridBox, GridItem } from "./PortfolioList.styled";
 
 import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
-import { Portfolio, Section } from "@/types/portfolio";
+import { section } from "@/redux/sectionSlice";
+import { Portfolio } from "@/types/portfolio";
 import { usePortfoliosQuery } from "@/utils/api-service/portfolio";
 
 const LOADED_DATA_COUNT = 10;
 const LIMIT = 100;
 
 type Props = {
-	currentSection: Section;
 	category: string;
 }
 
-function PortfolioList({currentSection, category}: Props) {
+function PortfolioList({category}: Props) {
 	const [lastPage, setLastPage] = useState(LOADED_DATA_COUNT);
 	const [loadNextPage, setLoadNextPage] = useState(true);
+
+	const currentSection = useSelector(section);
 
 	const { data } = usePortfoliosQuery(LIMIT, currentSection, { filterKey: 'category', filterValue: category});
 	const portfolios = data;
