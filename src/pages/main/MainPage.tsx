@@ -40,7 +40,7 @@ function MainPage(){
 							return(
 								<GridItem key={portfolio.id}>
 									<PortfolioItem type={currentSection} portfolio={portfolio}/>
-									<PortfolioProfile/>
+									<PortfolioProfile portfolio={portfolio}/>
 								</GridItem>
 							)
 						})}

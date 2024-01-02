@@ -11,8 +11,13 @@ import Image from '@/components/atoms/image/Image';
 import Popper from "@/components/molecules/popper/Popper";
 import usePopup from "@/hooks/usePopup";
 import { Text } from "@/styles/Text.styled";
+import { Portfolio } from "@/types/portfolio";
 
-function PortfolioProfile() {
+type Props = {
+	portfolio: Portfolio;
+}
+
+function PortfolioProfile({portfolio}: Props) {
 	const buttonGroupRef = useRef(null);
 
 	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = usePopup();
@@ -33,8 +38,8 @@ function PortfolioProfile() {
 		<PorfolioProfileLayout>
 			<Image src='' alt='user profile' size='1rem'/>
 			<SpanBox>
-				<Text size='Medium' color='Black'>Portfolio Title</Text>
-				<Text size='Small' color='Gray'>Portfolio Summarysfsdf</Text>
+				<Text size='Medium' color='Black'>{portfolio.title}</Text>
+				<Text size='Small' color='Gray'>{portfolio.summary}</Text>
 			</SpanBox>
 
 			<ButtonGroup className='button-box' ref={buttonGroupRef}>
