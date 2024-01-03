@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 
 import { Section } from '@/types/portfolio';
 import { fetch } from '@/utils/fetch';
@@ -15,7 +15,7 @@ export const usePortfoliosQuery = (limit: number, section: Section, filter: {fil
 	const filterValueQuery = filter.filterValue.replace(' ', '+').replace('&', '%26');
 	const getPortfolios = ()=> fetch(`/portfolios?limit=${limit}&section=${section}&${filter.filterKey}=${filterValueQuery}`, 'GET');
 
-	return useQuery({
+	return useSuspenseQuery({
 		queryKey: portfolioKeys.list(section, {type: filter.filterKey, value: filter.filterValue}),
 		queryFn: getPortfolios,
 		staleTime: Infinity,
@@ -35,7 +35,7 @@ export const useTopPortfoliosQuery = ()=> {
 
 export const usePortfolioDetailQuery = (id: string)=> {
 	const getPortfolio = ()=> fetch(`/portfolios/${id}`, 'GET');
-	return useQuery({
+	return useSuspenseQuery({
 		queryKey: portfolioKeys.detail(id),
 		queryFn: getPortfolio,
 	})

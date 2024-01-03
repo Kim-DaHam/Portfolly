@@ -12,7 +12,11 @@ import Popper from "@/components/molecules/popper/Popper";
 import usePopup from "@/hooks/usePopup";
 import { Text } from "@/styles/Text.styled";
 
-function PortfolioProfile() {
+type Props = {
+	portfolio: any;
+}
+
+function PortfolioProfile({portfolio}: Props) {
 	const buttonGroupRef = useRef(null);
 
 	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = usePopup();
@@ -31,10 +35,10 @@ function PortfolioProfile() {
 
 	return(
 		<PorfolioProfileLayout>
-			<Image src='' alt='user profile' size='1rem'/>
+			<Image src={portfolio.user.profileImage} alt='user profile' size='3.5rem'/>
 			<SpanBox>
-				<Text size='Medium' color='Black'>Portfolio Title</Text>
-				<Text size='Small' color='Gray'>Portfolio Summarysfsdf</Text>
+				<Text size='Medium' color='Black'>{portfolio.title}</Text>
+				<Text size='Small' color='Gray'>{portfolio.summary}</Text>
 			</SpanBox>
 
 			<ButtonGroup className='button-box' ref={buttonGroupRef}>
