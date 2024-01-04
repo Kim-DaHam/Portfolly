@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { MainContainer, MainLayout, PortfolioSection, Summary, Title, TitleSection } from "./MainPage.styled";
@@ -12,7 +12,7 @@ import { section } from "@/redux/sectionSlice";
 const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioList'));
 
 function MainPage(){
-	const [category, setCategory] = useState<string>('전체');
+	const [category, setCategory] = useState('전체');
 
 	const currentSection = useSelector(section);
 
@@ -25,7 +25,7 @@ function MainPage(){
 					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
 				</TitleSection>
 
-				<CategorySlider section={currentSection} handleCategory={setCategory}/>
+				<CategorySlider handlePortfolioList={setCategory}/>
 
 				<PortfolioSection>
 					<Suspense fallback={<PortfolioListSkeleton profile='portfolio-item'/>}>

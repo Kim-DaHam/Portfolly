@@ -1,6 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CgOptions as FilterIcon } from "react-icons/cg";
 import { FiArrowRight as ArrowRightIcon, FiArrowLeft as ArrowLeftIcon } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 
 import SearchModal from "../modal/search-modal/SearchModal";
@@ -9,33 +11,40 @@ import { categories, sliderSettings } from "./CategorySlider.constants";
 import { CategoryBox, CategoryRow, CategorySliderLayout, Divider, NextArrow, PrevArrow } from "./CategorySlider.styled";
 
 import { RoundButton as FilterButton, RoundButton } from "@/components/atoms/button/Button.styled";
+import { section } from "@/redux/sectionSlice";
 import { SetState } from "@/types";
-import { Section } from "@/types/portfolio";
+import { SectionEndPoint } from "@/types/portfolio";
+import { getFiltersQuery, stringToUrl } from "@/utils/path";
 
 type Props = {
-	section: Section;
-	handleCategory: SetState<string>;
+	handlePortfolioList: SetState<string>;
 }
 
-function CategorySlider({section, handleCategory}: Props) {
+function CategorySlider({handlePortfolioList}: Props) {
 	const [filterOpen, setFilterOpen] = useState(false);
 	const [currentCategory, setCurrentCategory] = useState('전체');
 	const [showPrevArrow, setShowPrevArrow] = useState(false);
 	const [showNextArrow, setShowNextArrow] = useState(true);
 
+	const currentSection = useSelector(section);
+
+	const navigate = useNavigate();
 	const sliderRef = useRef(null);
 	const categoryBoxRef = useRef(null);
 
-	const openFilter = ()=> {
-		setFilterOpen((prev)=>!prev);
-	};
-
-	const setCategory = (event: React.MouseEvent<Element, MouseEvent>)=> {
+	const handleCategory = (event: React.MouseEvent<Element, MouseEvent>)=> {
 		const eventTarget = event.target as HTMLElement;
 		const category = eventTarget.textContent as string;
+		const categoryUrl = stringToUrl(category);
 
 		setCurrentCategory(category);
-		handleCategory(category);
+		handlePortfolioList(category);
+
+		if(category === '전체') {
+			navigate(`/main/${SectionEndPoint[currentSection]}`);
+			return;
+		}
+		navigate(`/main/${SectionEndPoint[currentSection]}?filter=appCategory.${categoryUrl}`);
 	};
 
 	const handlePrev = ()=> {
@@ -53,15 +62,21 @@ function CategorySlider({section, handleCategory}: Props) {
 		slider.style.left = '-50px';
 	};
 
+	useEffect(()=>{
+		const { filterValue } = getFiltersQuery();
+		setCurrentCategory(filterValue);
+		handlePortfolioList(filterValue);
+	})
+
  return(
 	<CategorySliderLayout>
-		<FilterButton color='Gray' onClick={openFilter}>
+		<FilterButton color='Gray' onClick={()=>setFilterOpen((prev)=>!prev)}>
 			<FilterIcon size={20}/>
 			Filters
 		</FilterButton>
 
 		{ filterOpen &&
-			<SearchModal onClick={openFilter}/>
+			<SearchModal onClick={()=>setFilterOpen((prev)=>!prev)}/>
 		}
 
 		<Divider/>
@@ -76,19 +91,15 @@ function CategorySlider({section, handleCategory}: Props) {
 
 			<CategoryRow>
 				<Slider {...sliderSettings} ref={sliderRef}>
-					{categories[section].map((category, index)=>{
+					{categories[currentSection].map((category, index)=>{
 						let active = false;
-						let id = '';
 						if(category === currentCategory) active = true;
-						if(index === 0) id = 'first-index';
-						if(index === categories[section].length - 1) id = 'last-index';
 						return (
 							<RoundButton
-								id={id}
 								key={index}
 								color='Transparency'
 								$active={active}
-								onClick={setCategory}>
+								onClick={handleCategory}>
 								{category}
 							</RoundButton>
 						)
