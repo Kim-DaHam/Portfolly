@@ -4,9 +4,9 @@ import { SquareButton } from '@/components/atoms/button/Button.styled';
 import { portfolioItemSize } from '@/styles/token';
 import { Section } from '@/types/portfolio';
 
-export const PortfolioItemLayout = styled.div<{type: Section}>`
+export const PortfolioItemLayout = styled.div<{$section: Section}>`
 	width: 100%;
-	aspect-ratio: ${(props) => portfolioItemSize[props.type].aspectRatio};
+	aspect-ratio: ${(props) => portfolioItemSize[props.$section].aspectRatio};
 
 	position: 'relative';
 
@@ -93,14 +93,14 @@ export const ArrowBox = styled.div`
 	padding: 0 0.5rem 0 0.5rem;
 `;
 
-export const PrevArrow = styled(SquareButton)<{$current: number}>`
+export const PrevArrow = styled(SquareButton)<{$showPrevArrow: boolean}>`
 	display: none;
-	visibility: ${(props) => props.$current === 0 ? 'hidden' : 'visible'};
+	visibility: ${(props) => props.$showPrevArrow ? 'visible' : 'hidden'};
 	cursor: pointer;
 `;
 
-export const NextArrow = styled(SquareButton)<{$current: number, $last:number}>`
+export const NextArrow = styled(SquareButton)<{$showNextArrow: boolean}>`
 	display: none;
-	visibility: ${(props) => props.$current === props.$last ? 'hidden' : 'visible'};
+	visibility: ${(props) => props.$showNextArrow ? 'visible' : 'hidden'};
 	cursor: pointer;
 `;

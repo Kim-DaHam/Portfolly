@@ -24,8 +24,7 @@ function PortfolioList({category}: Props) {
 
 	const currentSection = useSelector(section);
 
-	const { data } = usePortfoliosQuery(LIMIT, currentSection, { filterKey: 'category', filterValue: category});
-	const portfolios = data;
+	const { data: portfolios } = usePortfoliosQuery(LIMIT, currentSection, { filterKey: 'category', filterValue: category});
 
 	const loadNewPortfolios = ()=> {
 		if(lastPage === LIMIT) {
@@ -42,7 +41,7 @@ function PortfolioList({category}: Props) {
 				if(index < lastPage) {
 					return(
 						<GridItem key={portfolio.id}>
-							<PortfolioItem type={currentSection} portfolio={portfolio}/>
+							<PortfolioItem portfolio={portfolio}/>
 							<PortfolioProfile portfolio={portfolio}/>
 						</GridItem>
 					)

@@ -7,7 +7,7 @@ export const renderPortfolioItems = (section: Section, portfolios: Portfolio[], 
 
 	for(let i=0; i < count; i++) {
 		portfolioItems.push(
-			<PortfolioItem type={section} key={i} portfolio={portfolios[i]}/>
+			<PortfolioItem section={section} key={i} portfolio={portfolios[i]}/>
 		)
 	}
 
