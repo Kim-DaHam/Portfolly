@@ -18,10 +18,15 @@ function MainPage(){
 	const dispatch = useDispatch();
 	const currentSection = useSelector(sectionSlice);
 
-	useEffect(()=>{
+	const getSectionUrlParameter = () => {
 		const section = getSection();
 		dispatch(setSection(section));
-	});
+	}
+
+	useEffect(()=>{
+		window.addEventListener("popstate", getSectionUrlParameter);
+    return () => window.removeEventListener("popstate", getSectionUrlParameter);
+	}, []);
 
 	return(
 		<MainLayout>
