@@ -14,13 +14,14 @@ import Logo from '@/assets/images/logo.png';
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import Image from '@/components/atoms/image/Image';
 import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
+import useModal from "@/hooks/useModal";
 import usePopup from "@/hooks/usePopup";
 import { isLogin as IsLogin } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils/path";
 
 function Header() {
-	const [isHeaderMenuPopUp, menuButtonCoordinate, popUp, popOut] = usePopup();
-	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+	const { isPopUp, buttonCoordinate, popUp, popOut } = usePopup();
+	const { isModalOpen, handleModal } = useModal();
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -30,10 +31,6 @@ function Header() {
 
 	const showSearchBar = checkIsShowSearchBarPage(firstPathName);
 	const showSectionMenu = checkIsShowSectionMenuPage(firstPathName);
-
-	const handleSearchModal = ()=> {
-		setIsSearchModalOpen(prev=>!prev);
-	}
 
 	return(
 		<HeaderContainer>
@@ -45,10 +42,10 @@ function Header() {
 
 			{ showSearchBar ?
 				<>
-					<SearchBar isClicked={isSearchModalOpen} onClick={handleSearchModal}/>
+					<SearchBar isClicked={isModalOpen} onClick={handleModal}/>
 
-					{ isSearchModalOpen &&
-						<SearchModal onClick={handleSearchModal}/>
+					{ isModalOpen &&
+						<SearchModal onClick={handleModal}/>
 					}
 				</>
 				:
@@ -65,17 +62,17 @@ function Header() {
 				</ButtonGroup>
 				:
 				<ButtonGroup>
-					<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGNIN)}>Log in</SquareButton>
+					<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGN_IN)}>Log in</SquareButton>
 					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
 					<RoundButton color='Transparency' onClick={popUp}><MenuIcon size={15}/></RoundButton>
 				</ButtonGroup>
 			}
 
 
-			{ isHeaderMenuPopUp &&
+			{ isPopUp &&
 				<Popper
-					right={menuButtonCoordinate.right}
-					bottom={menuButtonCoordinate.bottom}
+					right={buttonCoordinate.right}
+					bottom={buttonCoordinate.bottom}
 					popOut={popOut}
 				>
 					{renderHeaderMenuPopper(isLogin)}
