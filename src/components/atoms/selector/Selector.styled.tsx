@@ -9,7 +9,7 @@ export const SelectorLayout = styled.div`
 	position: relative;
 `;
 
-export const SelectorOutSide = styled.div`
+export const SelectorOutside = styled.div`
 	width: 100%;
 	height: 100%;
 

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 
 import { selectorList } from "./Selector.constants";
-import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, SelectorOutSide, Span } from "./Selector.styled";
+import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, SelectorOutside, Span } from "./Selector.styled";
 
-import { Selector as TSelector } from '@/components/atoms/selector/Selector.type'
+import { Selector as TSelector } from '@/components/atoms/selector/Selector.types'
 import { Section } from "@/types/portfolio";
 
 type Props = {
@@ -41,7 +41,7 @@ function Selector({type, placeholder}: Props) {
 						return <DropDownItem onClick={changeSelect}>{selector}</DropDownItem>
 					})}
 				</DropDownBox>
-				<SelectorOutSide onClick={openSelector}/>
+				<SelectorOutside onClick={openSelector}/>
 				</>
 			}
 		</SelectorLayout>
