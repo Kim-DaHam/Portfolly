@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { initialProps, sliderSettings } from "./PortfolioThumbnail.constants";
 
 import Image from "@/components/atoms/image/Image";
-import { ArrowBox, NextArrow, PortfolioThumbnailLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/organisms/portfolio-thumbnail/PortfolioThumbnail.styled";
+import { ArrowBox, NextArrow, PortfolioThumbnailLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail.styled";
 import useHandleSlider from "@/hooks/slider/useHandleSlider";
 import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Portfolio, Section } from "@/types/portfolio";
