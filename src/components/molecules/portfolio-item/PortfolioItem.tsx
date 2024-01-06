@@ -5,9 +5,9 @@ import { SquareButton as MoreButton } from "@/components/atoms/button/Button.sty
 import ToggleButton from "@/components/atoms/button/ToggleButton";
 import Popper from "@/components/molecules/popper/Popper";
 import { Group, Item } from "@/components/molecules/popper/Popper.styled";
+import { ButtonGroup, PortfolioItemLayout, ProfileBox } from "@/components/molecules/portfolio-item/PortfolioItem.styled";
 import PortfolioThumbnail from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail";
 import Profile from "@/components/molecules/profile/Profile";
-import { ButtonGroup, PortfolioItemLayout, ProfileBox } from "@/components/organisms/portfolio-list/portfolio-item/PortfolioItem.styled";
 import usePopup from "@/hooks/usePopup";
 import { Portfolio } from "@/types/portfolio";
 
