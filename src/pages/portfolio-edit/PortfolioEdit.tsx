@@ -5,7 +5,7 @@ import { EditHeader, EditorSection, FlexContainer, FormBox, FormSection, Logo, P
 import { SquareButton } from "@/components/atoms/button/Button.styled";
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
-import Editor from "@/components/organisms/editor/Editor";
+import Editor from "@/components/molecules/editor/QuillEditor";
 import { Label } from "@/styles/Text.styled";
 import { Section } from "@/types/portfolio";
 
