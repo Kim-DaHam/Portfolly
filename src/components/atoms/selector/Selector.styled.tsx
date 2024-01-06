@@ -9,19 +9,7 @@ export const SelectorLayout = styled.div`
 	position: relative;
 `;
 
-export const SelectorOutSide = styled.div`
-	width: 100%;
-	height: 100%;
-
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
-
-	background-color: transparent;
-`;
-
-export const SelectorBox = styled.div`
+export const SelectorHead = styled.div`
 	width: 100%;
 	height: 2rem;
 
@@ -38,11 +26,7 @@ export const SelectorBox = styled.div`
 	cursor: pointer;
 `;
 
-export const Span = styled.span`
-
-`
-
-export const DropDownBox = styled.div`
+export const DropDown = styled.div`
 	width: 100%;
 	max-height: 15rem;
 
@@ -71,4 +55,16 @@ export const DropDownItem = styled.div`
 	&:hover {
 		background-color: lightgray;
 	}
+`;
+
+export const SelectorOutside = styled.div`
+	width: 100%;
+	height: 100%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+
+	background-color: transparent;
 `;

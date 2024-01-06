@@ -5,37 +5,35 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { initialProps, sliderSettings } from "./PortfolioItem.constants";
+import { initialProps, sliderSettings } from "./PortfolioThumbnail.constants";
 
 import Image from "@/components/atoms/image/Image";
-import { ArrowBox, NextArrow, PortfolioItemLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/organisms/portfolio-item/PortfolioItem.styled";
+import { ArrowBox, NextArrow, PortfolioThumbnailLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail.styled";
 import useHandleSlider from "@/hooks/slider/useHandleSlider";
 import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Portfolio, Section } from "@/types/portfolio";
 import { eventStopPropagation } from "@/utils/event";
-
-
-
 
 export type Props = {
 	section?: Section;
 	portfolio: Portfolio;
 }
 
-function PortfolioItem({section, portfolio}: Props){
+export default function PortfolioThumnail({section, portfolio}: Props){
 	const navigate = useNavigate();
 	const sliderRef = useRef(null);
-	const lastIndex = portfolio.thumbnailUrl.length - 1;
-	const { handlePrev, handleNext, setSlider, showPrevArrow, showNextArrow } = useHandleSlider({...initialProps, lastIndex: lastIndex});
 
 	const currentSection = useSelector(sectionSlice);
+
+	const lastIndex = portfolio.thumbnailUrl.length - 1;
+	const { handlePrev, handleNext, setSlider, showPrevArrow, showNextArrow } = useHandleSlider({...initialProps, lastIndex: lastIndex});
 
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
 	}, [])
 
 	return(
-		<PortfolioItemLayout $section={section || currentSection} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
+		<PortfolioThumbnailLayout $section={section || currentSection} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
 			<SliderContainer>
 				<ArrowBox onClick={eventStopPropagation}>
 					<PrevArrow
@@ -60,8 +58,6 @@ function PortfolioItem({section, portfolio}: Props){
 					})}
 				</Slider>
 			</SliderContainer>
-		</PortfolioItemLayout>
+		</PortfolioThumbnailLayout>
 	)
 }
-
-export default PortfolioItem;

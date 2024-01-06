@@ -1,14 +1,19 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
-export const PorfolioProfileLayout = styled.div`
+import { Profile } from "./Profile";
+
+import { profileSize } from "@/styles/token";
+
+export const ProfileLayout = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: 3.5rem;
+	height: ${(props)=>profileSize[props.$type]};
 
 	display: flex;
 	gap: 0.5rem;
+	flex-grow: 1;
+	flex-shrink: 1;
 
-	position: absolute;
-	bottom: 0;
+	overflow: hidden;
 
 	background-color: yellow;
 `;
@@ -17,7 +22,6 @@ export const SpanBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	flex-grow: 1;
 	flex-shrink: 1;
 
 	overflow: hidden;
@@ -27,16 +31,5 @@ export const SpanBox = styled.div`
 
 		text-overflow: ellipsis;
 		white-space: nowrap;
-	}
-`;
-
-export const ButtonGroup = styled.div`
-	height: 100%;
-
-	display: none;
-	gap: 0.4rem;
-
-	& button {
-		flex: none;
 	}
 `;

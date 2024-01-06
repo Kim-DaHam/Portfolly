@@ -1,52 +1,38 @@
 import { FiMoreHorizontal as Icon} from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Popper from "../popper/Popper";
 import { Group, Item } from "../popper/Popper.styled";
 
-import { SectionNavigatorBox, SectionNavigatorLayout, SectionTitle } from "./SectionNavigator.styled";
+import { SectionNavigatorLayout, SectionTitle } from "./SectionNavigator.styled";
 
 import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
 import usePopup from "@/hooks/usePopup";
-import { section, setSection } from "@/redux/sectionSlice";
-import { Section, SectionEndPoint } from "@/types/portfolio";
+import useSectionNavigator from "@/hooks/useSectionNavigator";
+import { section as sectionSlice } from "@/redux/sectionSlice";
+import { Section } from "@/types/portfolio";
 
 const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
 
-function SectionNavigator() {
-	const [isPopUp, menuButtonCoordinate, popUp, popOut] = usePopup();
-	const currentSection = useSelector(section);
-
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-
-	const navigateSection = (section: Section)=> {
-		popOut();
-		dispatch(setSection(section));
-		navigate(`/main/${SectionEndPoint[section]}`);
-	}
+export default function SectionNavigator() {
+	const currentSection = useSelector(sectionSlice);
+	const { isPopUp, coordinate, popUp, popOut } = usePopup();
+	const { handleSection } = useSectionNavigator(popOut);
 
 	return(
 		<SectionNavigatorLayout>
-			<SectionNavigatorBox>
-				<SectionTitle>{currentSection}</SectionTitle>
+			<SectionTitle>{currentSection}</SectionTitle>
 
-				<MoreButton color='White' onClick={popUp}>
-					<Icon color='gray'/>
-				</MoreButton>
-			</SectionNavigatorBox>
+			<MoreButton color='White' onClick={popUp}>
+				<Icon color='gray'/>
+			</MoreButton>
 
 			{isPopUp &&
-				<Popper
-					right={menuButtonCoordinate.right}
-					bottom={menuButtonCoordinate.bottom}
-					popOut={popOut}
-				>
+				<Popper coordinate={coordinate} popOut={popOut}>
 					<Group size='Fit'>
-						{sections.map((section: Section, index:number)=>{
+						{sections.map((section: Section, index: number)=>{
 							return(
-								<Item onClick={()=>navigateSection(section)} key={index}>{section}</Item>
+								<Item onClick={()=>handleSection(section)} key={index}>{section}</Item>
 							)
 						})}
 					</Group>
@@ -55,5 +41,3 @@ function SectionNavigator() {
 		</SectionNavigatorLayout>
 	)
 }
-
-export default SectionNavigator;

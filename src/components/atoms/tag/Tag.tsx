@@ -7,7 +7,7 @@ type Props = {
 	value: string;
 }
 
-function Tag({readOnly, value}: Props) {
+export default function Tag({readOnly, value}: Props) {
 
 	return (
 		<TagLayout readOnly={readOnly} >
@@ -20,5 +20,3 @@ function Tag({readOnly, value}: Props) {
 		</TagLayout>
 	)
 }
-
-export default Tag;

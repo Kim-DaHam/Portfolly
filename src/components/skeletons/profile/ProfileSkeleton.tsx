@@ -1,35 +1,33 @@
 import { ImageBox, TextBox } from "./ProfileSkeleton.styled";
 
-import { PorfolioProfileLayout, SpanBox } from "@/components/molecules/profile/portfolio-profile/PortfolioProfile.styled";
+import { Profile } from "@/components/molecules/profile/Profile";
+import { ProfileLayout, SpanBox } from "@/components/molecules/profile/Profile.styled";
 import { IComponentFactory } from "@/types";
-import { Profile } from "@/types/profile";
 
 type Props = {
-	profile: Profile;
+	type: Profile;
 }
 
-const renderProfileSkeleton = (profile: Profile) => {
+export default function ProfileSkeleton({type}: Props) {
+	return(
+		<>
+			{renderProfileSkeleton(type)}
+		</>
+	)
+}
+
+const renderProfileSkeleton = (type: Profile) => {
 	const ComponentFactory:IComponentFactory = {
     'portfolio-item': (
-			<PorfolioProfileLayout>
+			<ProfileLayout $type={type}>
 				<ImageBox/>
 				<SpanBox>
 					<TextBox/>
 					<TextBox/>
 				</SpanBox>
-			</PorfolioProfileLayout>
+			</ProfileLayout>
 		),
   }
 
-  return ComponentFactory[profile];
+  return ComponentFactory[type];
 }
-
-function ProfileSkeleton({profile}: Props) {
-	return(
-		<>
-			{renderProfileSkeleton(profile)}
-		</>
-	)
-}
-
-export default ProfileSkeleton;

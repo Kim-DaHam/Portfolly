@@ -1,10 +1,11 @@
-import { useState } from "react";
 import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 
 import { selectorList } from "./Selector.constants";
-import { DropDownBox, DropDownItem, SelectorBox, SelectorLayout, SelectorOutSide, Span } from "./Selector.styled";
+import { DropDown, DropDownItem, SelectorHead, SelectorLayout, SelectorOutside } from "./Selector.styled";
 
-import { Selector as TSelector } from '@/components/atoms/selector/Selector.type'
+import { Selector as TSelector } from '@/components/atoms/selector/Selector.types'
+import useSelector from "@/hooks/useSelector";
+import { Text } from "@/styles/Text.styled";
 import { Section } from "@/types/portfolio";
 
 type Props = {
@@ -12,40 +13,27 @@ type Props = {
 	placeholder: string;
 }
 
-function Selector({type, placeholder}: Props) {
-	const [isSelectorOpen, setIsSelectorOpen] = useState(false);
-	const [select, setSelect] = useState(placeholder);
-
-	const openSelector = ()=> {
-		setIsSelectorOpen(prev=>!prev);
-	}
-
-	const changeSelect = (event: React.MouseEvent)=>{
-		const target = event.target as HTMLDivElement;
-
-		setSelect(target.innerText);
-		setIsSelectorOpen(prev=>!prev);
-	}
+export default function Selector({type, placeholder}: Props) {
+	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
 
 	return(
 		<SelectorLayout>
-			<SelectorBox onClick={openSelector}>
-				<Span>{select}</Span>
+			<SelectorHead onClick={handleSelector}>
+				<Text size='Medium'>{selectedValue}</Text>
 				{isSelectorOpen ? <UpIcon /> : <DownIcon />}
-			</SelectorBox>
+			</SelectorHead>
 
 			{ isSelectorOpen &&
 				<>
-				<DropDownBox>
+				<DropDown>
 					{ selectorList[type].map((selector)=>{
-						return <DropDownItem onClick={changeSelect}>{selector}</DropDownItem>
+						return <DropDownItem onClick={handleSelectedValue}>{selector}</DropDownItem>
 					})}
-				</DropDownBox>
-				<SelectorOutSide onClick={openSelector}/>
+				</DropDown>
+
+				<SelectorOutside onClick={handleSelector}/>
 				</>
 			}
 		</SelectorLayout>
 	)
 }
-
-export default Selector;

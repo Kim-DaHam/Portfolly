@@ -1,4 +1,4 @@
-import { SelectorList } from "./Selector.type";
+import { SelectorList } from "./Selector.types";
 
 export const selectorList: SelectorList = {
 	Section: ['Android/iOS', 'Web', 'Illlustration', 'Photo', 'Video'],

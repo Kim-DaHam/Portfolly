@@ -25,6 +25,7 @@ export const sliderSettings: Settings = {
 };
 
 export const initialProps: InitialProps = {
+	lastIndex: 0,
 	slidesToShow: sliderSettings.slidesToShow!,
 	slidesToScroll: sliderSettings.slidesToScroll!,
 	speed: sliderSettings.speed!,

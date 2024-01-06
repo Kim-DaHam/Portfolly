@@ -1,1 +1,0 @@
-export type Profile = 'portfolio-item' | 'portfolio-detail' | 'mypage' | 'review' | 'message';

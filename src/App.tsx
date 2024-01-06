@@ -19,9 +19,32 @@ import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
 import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
 import SignIn from '@/pages/signIn/SignIn';
-import SignUp from '@/pages/signUp/SignUp';
 import { store } from '@/redux/store';
 import { ROUTE_PATH } from '@/utils/path';
+
+export default function App() {
+  return (
+		<GlobalErrorBoundary FallbackComponent={GlobalErrorFallback}>
+			<Provider store={store}>
+				<PersistGate loading={null} persistor={persistor}>
+					<QueryClientProvider client={queryClient}>
+						<BrowserRouter>
+							<Routes>
+								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>}></Route>
+								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>}></Route>
+								<Route path={ROUTE_PATH.SIGN_IN} element={<SignIn/>}></Route>
+								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>}></Route>
+								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetail/>}></Route>
+								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEdit/>}></Route>
+							</Routes>
+						</BrowserRouter>
+						<ReactQueryDevtools initialIsOpen={false} />
+					</QueryClientProvider>
+				</PersistGate>
+			</Provider>
+		</GlobalErrorBoundary>
+  )
+}
 
 export const persistor = persistStore(store);
 
@@ -38,30 +61,3 @@ const queryClient = new QueryClient({
     },
 	}
 })
-
-function App() {
-  return (
-		<GlobalErrorBoundary FallbackComponent={GlobalErrorFallback}>
-			<Provider store={store}>
-				<PersistGate loading={null} persistor={persistor}>
-					<QueryClientProvider client={queryClient}>
-						<BrowserRouter>
-							<Routes>
-								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>}></Route>
-								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>}></Route>
-								<Route path={ROUTE_PATH.SIGNUP} element={<SignUp/>}></Route>
-								<Route path={ROUTE_PATH.SIGNIN} element={<SignIn/>}></Route>
-								<Route path={ROUTE_PATH.MYPAGE} element={<MyPage/>}></Route>
-								<Route path={ROUTE_PATH.PORTFOLIO} element={<PortfolioDetail/>}></Route>
-								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEdit/>}></Route>
-							</Routes>
-						</BrowserRouter>
-						<ReactQueryDevtools initialIsOpen={false} />
-					</QueryClientProvider>
-				</PersistGate>
-			</Provider>
-		</GlobalErrorBoundary>
-  )
-}
-
-export default App;

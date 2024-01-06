@@ -2,7 +2,7 @@ import { TfiArrowCircleLeft as LeftArrowIcon, TfiArrowCircleRight as RightArrowI
 
 import { PaginationLayout } from "./Pagination.styled";
 
-function Pagination() {
+export default function Pagination() {
 	return(
 		<PaginationLayout>
 			<LeftArrowIcon size={20}/>
@@ -19,5 +19,3 @@ function Pagination() {
 		</PaginationLayout>
 	)
 }
-
-export default Pagination;

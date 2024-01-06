@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 function usePopup() {
-	const [popUp, setPopUp] = useState(false);
-	const [buttonCoordinate, setButtonCoordinate] = useState({
+	const [isPopUp, setIsPopUp] = useState(false);
+	const [coordinate, setCoordinate] = useState({
 		right: 0,
 		bottom: 0,
 	});
@@ -31,23 +31,23 @@ function usePopup() {
 		}
 	}
 
-	const openPopper = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const popUp = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		const menuButton = event.currentTarget as HTMLElement;
 
-		setButtonCoordinate((prev) => ({
+		setCoordinate(prev => ({
 				...prev,
 				right: calculateCoordinate(menuButton).right,
 				bottom: calculateCoordinate(menuButton).bottom,
 		}))
 
-		setPopUp((prev)=>!prev);
+		setIsPopUp(prev=>!prev);
 	}
 
-	const closePopper = ()=>{
-		setPopUp((prev)=>!prev);
+	const popOut = ()=>{
+		setIsPopUp(prev=>!prev);
 	}
 
-	return [popUp, buttonCoordinate, openPopper, closePopper] as const;
+	return { isPopUp, coordinate, popUp, popOut };
 }
 
 export default usePopup;
