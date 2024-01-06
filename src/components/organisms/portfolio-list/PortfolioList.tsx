@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import PortfolioItem from "../portfolio-item/PortfolioItem";
+import { GridBox } from "./PortfolioList.styled";
 
-import { GridBox, GridItem } from "./PortfolioList.styled";
-
-import PortfolioProfile from "@/components/molecules/profile/portfolio-profile/PortfolioProfile";
+import PortfolioItem from "@/components/organisms/portfolio-list/portfolio-item/PortfolioItem";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { section } from "@/redux/sectionSlice";
 import { Portfolio } from "@/types/portfolio";
@@ -40,10 +38,7 @@ export default function PortfolioList({category}: Props) {
 			{ portfolios && portfolios.map((portfolio: Portfolio, index: number)=>{
 				if(index < lastPage) {
 					return(
-						<GridItem key={portfolio.id}>
-							<PortfolioItem portfolio={portfolio}/>
-							<PortfolioProfile portfolio={portfolio}/>
-						</GridItem>
+						<PortfolioItem key={portfolio.id} portfolio={portfolio}/>
 					)
 				}})
 			}

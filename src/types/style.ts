@@ -6,7 +6,7 @@ export type PopperSize = 'Default' | 'Fit';
 export type FontSize = 'Large' | 'Medium' | 'Small';
 export type FontColor = 'Black' | 'Gray' | 'LightGray';
 
-export type PortfolioItemStyle = {
+export type PortfolioThumbnailStyle = {
 	[key in Section]: {
 			aspectRatio: string,
 	}

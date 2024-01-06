@@ -1,6 +1,6 @@
-import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, PopperStyle, PortfolioItemStyle } from "@/types/style";
+import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, PopperStyle, PortfolioThumbnailStyle, } from "@/types/style";
 
-export const portfolioItemSize: PortfolioItemStyle = {
+export const portfolioThumbnailSize: PortfolioThumbnailStyle = {
 	'Android/iOS': {
 		aspectRatio: '1 / 1.90',
 	},

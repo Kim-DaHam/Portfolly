@@ -1,8 +1,8 @@
 import { ImageBox, TextBox } from "./ProfileSkeleton.styled";
 
 import { PorfolioProfileLayout, SpanBox } from "@/components/molecules/profile/portfolio-profile/PortfolioProfile.styled";
+import { Profile } from "@/components/molecules/profile/Profile";
 import { IComponentFactory } from "@/types";
-import { Profile } from "@/types/profile";
 
 type Props = {
 	profile: Profile;

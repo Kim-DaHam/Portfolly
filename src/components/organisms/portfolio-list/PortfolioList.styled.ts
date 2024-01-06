@@ -11,24 +11,3 @@ export const GridBox = styled.div`
 
 	border: 1px solid red;
 `;
-
-export const GridItem = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: grid;
-	grid-template-rows: 1fr;
-
-	position: relative;
-
-	padding-bottom: 4rem;
-
-	cursor: pointer;
-
-	&:hover {
-		& .button-box {
-			display: flex;
-			align-items: center;
-		}
-	}
-`;

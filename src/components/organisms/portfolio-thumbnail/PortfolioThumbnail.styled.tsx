@@ -1,14 +1,14 @@
-import { styled, css } from 'styled-components';
+import { styled } from 'styled-components';
 
 import { SquareButton } from '@/components/atoms/button/Button.styled';
-import { portfolioItemSize } from '@/styles/token';
+import { portfolioThumbnailSize } from '@/styles/token';
 import { Section } from '@/types/portfolio';
 
-export const PortfolioItemLayout = styled.div<{$section: Section}>`
+export const PortfolioThumbnailLayout = styled.div<{$section: Section}>`
 	width: 100%;
-	aspect-ratio: ${(props) => portfolioItemSize[props.$section].aspectRatio};
+	aspect-ratio: ${(props) => portfolioThumbnailSize[props.$section].aspectRatio};
 
-	position: 'relative';
+	position: relative;
 
 	overflow: hidden;
 
