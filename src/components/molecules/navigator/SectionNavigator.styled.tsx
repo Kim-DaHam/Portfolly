@@ -3,15 +3,10 @@ import { styled } from 'styled-components';
 export const SectionNavigatorLayout = styled.div`
 	width: 100%;
 	height: 100%;
-`
-
-export const SectionNavigatorBox = styled.div`
-	width: 100%;
-	height: 100%;
 
 	display: flex;
 	flex-direction: row;
-`;
+`
 
 export const SectionTitle = styled.div`
 	height: 100%;
