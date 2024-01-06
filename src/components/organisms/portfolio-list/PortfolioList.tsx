@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { GridBox } from "./PortfolioList.styled";
 
-import PortfolioItem from "@/components/organisms/portfolio-list/portfolio-item/PortfolioItem";
+import PortfolioItem from "@/components/molecules/portfolio-item/PortfolioItem";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { section } from "@/redux/sectionSlice";
 import { Portfolio } from "@/types/portfolio";

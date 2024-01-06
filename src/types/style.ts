@@ -1,5 +1,7 @@
 import { Section } from "./portfolio"
 
+import { Profile } from "@/components/molecules/profile/Profile";
+
 export type ButtonColor = 'White' | 'Black' | 'Gray' | 'Transparency';
 export type ButtonSize = 'Default' | 'Fit' | 'Large' | 'Medium' | 'Small';
 export type PopperSize = 'Default' | 'Fit';
@@ -47,3 +49,9 @@ export type PopperStyle = {
 		width: string,
 	}
 };
+
+export type ProfileSize = {
+	[key in Profile]: {
+		height: string,
+	}
+}

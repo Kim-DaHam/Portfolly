@@ -1,4 +1,4 @@
-import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, PopperStyle, PortfolioThumbnailStyle, } from "@/types/style";
+import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, PopperStyle, PortfolioThumbnailStyle, ProfileSize, } from "@/types/style";
 
 export const portfolioThumbnailSize: PortfolioThumbnailStyle = {
 	'Android/iOS': {
@@ -125,3 +125,21 @@ export const popperSize: PopperStyle = {
 		width: 'fit-content'
 	}
 };
+
+export const profileSize: ProfileSize = {
+	'portfolio-item': {
+		height: '3.5rem',
+	},
+	'portfolio-detail': {
+		height: '',
+	},
+	'mypage': {
+		height: '',
+	},
+	'review': {
+		height: '',
+	},
+	'message': {
+		height: '',
+	},
+}

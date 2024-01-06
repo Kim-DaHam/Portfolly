@@ -1,8 +1,12 @@
 import { styled } from "styled-components";
 
-export const ProfileLayout = styled.div<{$height: string}>`
+import { Profile } from "./Profile";
+
+import { profileSize } from "@/styles/token";
+
+export const ProfileLayout = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: ${(props)=>props.$height};
+	height: ${(props)=>profileSize[props.$type]};
 
 	display: flex;
 	gap: 0.5rem;

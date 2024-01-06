@@ -22,8 +22,8 @@ export default function Profile({type, user}: Props) {
 const renderProfile = (type: Profile, user: any) => {
 	const ComponentFactory:IComponentFactory = {
     'portfolio-item': (
-			<ProfileLayout $height='3.5rem'>
-				<Image src={user.profileImage} alt='user profile' size='3.5rem'/>
+			<ProfileLayout $type={type}>
+				<Image src={user.profileImage} alt='user profile' size='3.5rem' shape='foursquare'/>
 				<SpanBox>
 					<Text size='Medium' color='Black'>{user.title}</Text>
 					<Text size='Small' color='Gray'>{user.name}</Text>
