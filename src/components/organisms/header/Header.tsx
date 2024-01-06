@@ -20,7 +20,7 @@ import { isLogin as IsLogin } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils/path";
 
 function Header() {
-	const { isPopUp, buttonCoordinate, popUp, popOut } = usePopup();
+	const { isPopUp, coordinate, popUp, popOut } = usePopup();
 	const { isModalOpen, handleModal } = useModal();
 
 	const navigate = useNavigate();
@@ -70,11 +70,7 @@ function Header() {
 
 
 			{ isPopUp &&
-				<Popper
-					right={buttonCoordinate.right}
-					bottom={buttonCoordinate.bottom}
-					popOut={popOut}
-				>
+				<Popper coordinate={coordinate} popOut={popOut}>
 					{renderHeaderMenuPopper(isLogin)}
 				</Popper>
 			}

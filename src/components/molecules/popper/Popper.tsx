@@ -7,18 +7,18 @@ import { Props } from "./Popper.type";
 import { eventStopPropagation } from "@/utils/event";
 import { moveScrollY, stopScrollY } from "@/utils/style";
 
-function Popper({ children, right, bottom, popOut}: Props) {
+function Popper({ children, coordinate, popOut}: Props) {
 
 	useEffect(()=>{
 		stopScrollY();
 		return () => {
 			moveScrollY();
 		}
-	},[]);
+	}, []);
 
 	return createPortal(
 		<PopperLayout onClick={popOut}>
-			<PopperContainer $top={bottom} $right={right} onClick={eventStopPropagation}>
+			<PopperContainer $top={coordinate.bottom} $right={coordinate.right} onClick={eventStopPropagation}>
 				{children}
 			</PopperContainer>
 		</PopperLayout>,

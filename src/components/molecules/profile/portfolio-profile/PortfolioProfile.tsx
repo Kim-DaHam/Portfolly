@@ -19,19 +19,19 @@ type Props = {
 function PortfolioProfile({portfolio}: Props) {
 	const buttonGroupRef = useRef(null);
 
-	const [menuOpen, menuButtonCoordinate, openMenu, closeMenu] = usePopup();
+	const { isPopUp, coordinate, popUp, popOut } = usePopup();
 
 	useEffect(()=>{
 		const buttonGroup :HTMLElement = buttonGroupRef.current!;
 
-		if(menuOpen){
+		if(isPopUp){
 			buttonGroup!.style.display = 'flex';
 			return;
 		}
 
 		buttonGroup!.style.display = '';
 
-	}, [menuOpen])
+	}, [isPopUp])
 
 	return(
 		<PorfolioProfileLayout>
@@ -44,13 +44,13 @@ function PortfolioProfile({portfolio}: Props) {
 			<ButtonGroup className='button-box' ref={buttonGroupRef}>
 				<ToggleButton type='Bookmark'/>
 
-				<MoreButton onClick={openMenu} color='Gray' size='Fit'>
+				<MoreButton onClick={popUp} color='Gray' size='Fit'>
 					<Icon/>
 				</MoreButton>
 			</ButtonGroup>
 
-			{ menuOpen &&
-				<Popper right={menuButtonCoordinate.right} bottom={menuButtonCoordinate.bottom} popOut={closeMenu}>
+			{ isPopUp &&
+				<Popper coordinate={coordinate} popOut={popOut}>
 					<Group>
 						<Item>공유하기</Item>
 					</Group>
