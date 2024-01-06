@@ -8,7 +8,7 @@ import { SectionNavigatorLayout, SectionTitle } from "./SectionNavigator.styled"
 
 import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
 import usePopup from "@/hooks/usePopup";
-import useSectionNavigate from "@/hooks/useSectionNavigate";
+import useSectionNavigator from "@/hooks/useSectionNavigator";
 import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Section } from "@/types/portfolio";
 
@@ -17,7 +17,7 @@ const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Vid
 export default function SectionNavigator() {
 	const currentSection = useSelector(sectionSlice);
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
-	const { handleSection } = useSectionNavigate(popOut);
+	const { handleSection } = useSectionNavigator(popOut);
 
 	return(
 		<SectionNavigatorLayout>

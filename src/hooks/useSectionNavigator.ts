@@ -5,7 +5,7 @@ import { setSection } from "@/redux/sectionSlice";
 import { Section } from "@/types/portfolio";
 import { stringToUrlParameter } from "@/utils/path";
 
-export default function useSectionNavigate(popOut: ()=>void) {
+export default function useSectionNavigator(popOut: ()=>void) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
