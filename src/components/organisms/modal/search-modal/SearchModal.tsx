@@ -7,8 +7,8 @@ import { ModalLayout, ModalBox, FilterGroup, ContentBox, OptionButton, SearchSec
 import { Filter } from "./SearchModal.type";
 import { renderContent } from "./SearchModal.utils";
 
+import useStopScrollY from "@/hooks/useStopScrollY";
 import { eventStopPropagation } from "@/utils/event";
-import { moveScrollY, stopScrollY } from "@/utils/style";
 
 
 function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
@@ -19,12 +19,7 @@ function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
 		setFilter(filter);
 	}
 
-	useEffect(()=>{
-		stopScrollY();
-		return () => {
-			moveScrollY();
-		}
-	},[]);
+	useStopScrollY();
 
 	useEffect(()=>{
 		isTextEntered ? setFilter('Search') : setFilter('Trending')

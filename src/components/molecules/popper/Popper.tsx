@@ -1,20 +1,13 @@
-import { useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import { PopperContainer, PopperLayout} from "./Popper.styled";
 import { Props } from "./Popper.type";
 
+import useStopScrollY from "@/hooks/useStopScrollY";
 import { eventStopPropagation } from "@/utils/event";
-import { moveScrollY, stopScrollY } from "@/utils/style";
 
 function Popper({ children, coordinate, popOut}: Props) {
-
-	useEffect(()=>{
-		stopScrollY();
-		return () => {
-			moveScrollY();
-		}
-	}, []);
+	useStopScrollY();
 
 	return createPortal(
 		<PopperLayout onClick={popOut}>
