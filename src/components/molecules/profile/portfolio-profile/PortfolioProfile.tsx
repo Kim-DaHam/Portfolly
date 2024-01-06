@@ -16,7 +16,7 @@ type Props = {
 	portfolio: any;
 }
 
-function PortfolioProfile({portfolio}: Props) {
+export default function PortfolioProfile({portfolio}: Props) {
 	const buttonGroupRef = useRef(null);
 
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
@@ -59,5 +59,3 @@ function PortfolioProfile({portfolio}: Props) {
 		</PorfolioProfileLayout>
 	)
 }
-
-export default PortfolioProfile;

@@ -9,7 +9,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 	onInputChange?: Dispatch<SetStateAction<boolean>>;
 };
 
-function SearchBar({ isClicked, onInputChange, ...attributes }: Props){
+export default function SearchBar({ isClicked, onInputChange, ...attributes }: Props){
 	const { searchKeyword } = useSearch({onInputChange});
 
 	return(
@@ -23,5 +23,3 @@ function SearchBar({ isClicked, onInputChange, ...attributes }: Props){
 		</SearchBarLayout>
 	)
 }
-
-export default SearchBar;

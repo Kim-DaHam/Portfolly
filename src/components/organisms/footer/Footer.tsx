@@ -1,11 +1,9 @@
 import { FooterContainer } from "./Footer.styled";
 
-function Footer(){
+export default function Footer(){
 	return(
 		<FooterContainer>
 				Footer
 		</FooterContainer>
 	)
 }
-
-export default Footer;

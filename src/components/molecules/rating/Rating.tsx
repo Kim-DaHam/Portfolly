@@ -4,7 +4,7 @@ import { RatingBox, RatingLayout } from "./Rating.styled";
 
 import { Text } from '@/styles/Text.styled';
 
-function Rating() {
+export default function Rating() {
 	const renderStarIcon = ()=>{
 		const stars = [];
 		for(let i=0; i<5; i++){
@@ -22,5 +22,3 @@ function Rating() {
 		</RatingLayout>
 	)
 }
-
-export default Rating;

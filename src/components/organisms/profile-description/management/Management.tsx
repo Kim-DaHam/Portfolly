@@ -11,7 +11,7 @@ import Selector from "@/components/atoms/selector/Selector";
 import { FlexColumnBox } from "@/styles/Container.styled";
 import { Text } from "@/styles/Text.styled";
 
-function Management() {
+export default function Management() {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 
 	const openRequestModal = ()=> {
@@ -63,5 +63,3 @@ function Management() {
 		</ManagementLayout>
 	)
 }
-
-export default Management;

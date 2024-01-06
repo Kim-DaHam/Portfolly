@@ -8,6 +8,14 @@ type Props = {
 	profile: Profile;
 }
 
+export default function ProfileSkeleton({profile}: Props) {
+	return(
+		<>
+			{renderProfileSkeleton(profile)}
+		</>
+	)
+}
+
 const renderProfileSkeleton = (profile: Profile) => {
 	const ComponentFactory:IComponentFactory = {
     'portfolio-item': (
@@ -23,13 +31,3 @@ const renderProfileSkeleton = (profile: Profile) => {
 
   return ComponentFactory[profile];
 }
-
-function ProfileSkeleton({profile}: Props) {
-	return(
-		<>
-			{renderProfileSkeleton(profile)}
-		</>
-	)
-}
-
-export default ProfileSkeleton;

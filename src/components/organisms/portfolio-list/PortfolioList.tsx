@@ -18,7 +18,7 @@ type Props = {
 	category: string;
 }
 
-function PortfolioList({category}: Props) {
+export default function PortfolioList({category}: Props) {
 	const [lastPage, setLastPage] = useState(LOADED_DATA_COUNT);
 	const [loadNextPage, setLoadNextPage] = useState(true);
 
@@ -53,5 +53,3 @@ function PortfolioList({category}: Props) {
 		</GridBox>
 	)
 }
-
-export default PortfolioList;

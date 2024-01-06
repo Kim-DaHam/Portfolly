@@ -12,7 +12,7 @@ type Props = {
 	handleModal: SetState<boolean>;
 }
 
-function RequestModal({handleModal}: Props) {
+export default function RequestModal({handleModal}: Props) {
 
 	const closeModal = ()=> {
 		handleModal(prev=>!prev);
@@ -67,5 +67,3 @@ function RequestModal({handleModal}: Props) {
 		</RequestModalLayout>
 	)
 }
-
-export default RequestModal;

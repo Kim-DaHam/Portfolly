@@ -12,7 +12,7 @@ type Props = {
 	placeholder: string;
 }
 
-function Selector({type, placeholder}: Props) {
+export default function Selector({type, placeholder}: Props) {
 	const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 	const [select, setSelect] = useState(placeholder);
 
@@ -47,5 +47,3 @@ function Selector({type, placeholder}: Props) {
 		</SelectorLayout>
 	)
 }
-
-export default Selector;

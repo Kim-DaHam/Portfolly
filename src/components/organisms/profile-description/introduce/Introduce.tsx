@@ -3,7 +3,7 @@ import { ContentBox, IntroduceLayout, TextBox } from "./Introduce.styled";
 import Tag from "@/components/atoms/tag/Tag";
 import { Label, Text } from "@/styles/Text.styled";
 
-function Introduce() {
+export default function Introduce() {
 	return(
 		<IntroduceLayout>
 			<ContentBox gap='1rem'>
@@ -52,5 +52,3 @@ function Introduce() {
 		</IntroduceLayout>
 	)
 }
-
-export default Introduce;

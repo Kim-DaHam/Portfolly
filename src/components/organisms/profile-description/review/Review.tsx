@@ -4,7 +4,7 @@ import Pagination from "@/components/molecules/pagination/Pagination";
 import Rating from "@/components/molecules/rating/Rating";
 import { FlexColumnBox } from "@/styles/Container.styled";
 
-function Review() {
+export default function Review() {
 	return(
 		<ReviewLayout>
 			<ReviewList>
@@ -30,5 +30,3 @@ function Review() {
 		</ReviewLayout>
 	)
 }
-
-export default Review;

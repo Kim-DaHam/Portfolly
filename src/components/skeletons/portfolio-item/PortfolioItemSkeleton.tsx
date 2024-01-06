@@ -9,12 +9,10 @@ type Props = {
 	section?: Section;
 }
 
-function PortfolioItemSkeleton({section}: Props) {
+export default function PortfolioItemSkeleton({section}: Props) {
 	const currentSection = useSelector(sectionSlice);
 
 	return(
 		<PortfolioItemSkeletonLayout section={section ? section : currentSection}/>
 	)
 }
-
-export default PortfolioItemSkeleton;

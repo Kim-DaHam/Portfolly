@@ -13,7 +13,7 @@ import { sectionUrlParameterMap } from "@/utils/path";
 
 const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioList'));
 
-function MainPage(){
+export default function MainPage(){
 	const [category, setCategory] = useState('전체');
 
 	const dispatch = useDispatch();
@@ -51,5 +51,3 @@ function MainPage(){
 		</MainLayout>
 	)
 }
-
-export default MainPage;

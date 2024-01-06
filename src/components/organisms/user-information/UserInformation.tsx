@@ -3,7 +3,7 @@ import { UserInformationLayout } from "./UserInformation.styled";
 import { FlexColumnBox, FlexBox } from "@/styles/Container.styled";
 import { Label, Text } from "@/styles/Text.styled";
 
-function UserInformation() {
+export default function UserInformation() {
 	return(
 		<UserInformationLayout>
 			<Label>활동 정보</Label>
@@ -26,5 +26,3 @@ function UserInformation() {
 		</UserInformationLayout>
 	)
 }
-
-export default UserInformation;

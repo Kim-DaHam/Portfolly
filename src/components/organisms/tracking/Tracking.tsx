@@ -2,8 +2,7 @@ import { Box, BoxGroup, LabelGroup, TextGroup, TrackingLayout } from "./Tracking
 
 import { Heading as Count, Text } from "@/styles/Text.styled";
 
-
-function Tracking() {
+export default function Tracking() {
 	return(
 		<TrackingLayout>
 			<BoxGroup>
@@ -51,5 +50,3 @@ function Tracking() {
 		</TrackingLayout>
 	)
 }
-
-export default Tracking;

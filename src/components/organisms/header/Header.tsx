@@ -19,7 +19,7 @@ import usePopup from "@/hooks/usePopup";
 import { isLogin as IsLogin } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils/path";
 
-function Header() {
+export default function Header() {
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
 	const { isModalOpen, handleModal } = useModal();
 
@@ -77,5 +77,3 @@ function Header() {
 		</HeaderContainer>
 	)
 }
-
-export default Header;

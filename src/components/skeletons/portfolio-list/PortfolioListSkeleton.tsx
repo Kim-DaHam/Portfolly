@@ -8,7 +8,7 @@ type Props = {
 	profile: Profile;
 }
 
-function PortfolioListSkeleton({profile}: Props) {
+export default function PortfolioListSkeleton({profile}: Props) {
 	return(
 		<GridBox>
 			{ new Array(12).fill(1).map((_, index: number)=>{
@@ -22,5 +22,3 @@ function PortfolioListSkeleton({profile}: Props) {
 		</GridBox>
 	)
 }
-
-export default PortfolioListSkeleton;

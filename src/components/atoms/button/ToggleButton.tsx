@@ -10,6 +10,14 @@ type Props = {
 	type: Toggle;
 };
 
+export default function ToggleButton({type}: Props) {
+	return(
+		<>
+			{renderToggleButton(type)}
+		</>
+	)
+}
+
 const renderToggleButton = (type: Toggle) => {
 	const ComponentFactory: IComponentFactory = {
 		Bookmark: (
@@ -26,13 +34,3 @@ const renderToggleButton = (type: Toggle) => {
 
 	return ComponentFactory[type];
 }
-
-function ToggleButton({type}: Props) {
-	return(
-		<>
-			{renderToggleButton(type)}
-		</>
-	)
-}
-
-export default ToggleButton;

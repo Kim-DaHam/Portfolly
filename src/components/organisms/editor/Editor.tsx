@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 
 import { EditorContainer } from '@/components/organisms/editor/Editor.styled';
 
-const QuillEditor = memo(() => {
+export default memo(function QuillEditor() {
   const modules = useMemo(
     () => ({
       toolbar: {
@@ -38,5 +38,3 @@ const QuillEditor = memo(() => {
     </EditorContainer>
   )
 })
-
-export default QuillEditor;

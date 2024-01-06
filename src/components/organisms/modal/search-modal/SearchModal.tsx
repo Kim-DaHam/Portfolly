@@ -10,8 +10,7 @@ import { renderContent } from "./SearchModal.utils";
 import useStopScrollY from "@/hooks/useStopScrollY";
 import { eventStopPropagation } from "@/utils/event";
 
-
-function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
+export default function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
 	const [filter, setFilter] = useState<Filter>('Trending');
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
 
@@ -54,5 +53,3 @@ function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
 		</ModalLayout>
 	)
 }
-
-export default SearchModal;

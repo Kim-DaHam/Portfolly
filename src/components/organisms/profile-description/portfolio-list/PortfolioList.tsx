@@ -3,8 +3,7 @@ import { GridBox, GridItem, PortfolioListLayout, ThumbnailImage, TitleBox } from
 import Pagination from "@/components/molecules/pagination/Pagination";
 import { Text } from "@/styles/Text.styled";
 
-
-function PortfolioList() {
+export default function PortfolioList() {
 	return(
 		<PortfolioListLayout>
 			<GridBox>
@@ -24,5 +23,3 @@ function PortfolioList() {
 		</PortfolioListLayout>
 	)
 }
-
-export default PortfolioList;

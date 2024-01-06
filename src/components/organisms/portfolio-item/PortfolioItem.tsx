@@ -14,15 +14,12 @@ import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Portfolio, Section } from "@/types/portfolio";
 import { eventStopPropagation } from "@/utils/event";
 
-
-
-
 export type Props = {
 	section?: Section;
 	portfolio: Portfolio;
 }
 
-function PortfolioItem({section, portfolio}: Props){
+export default function PortfolioItem({section, portfolio}: Props){
 	const navigate = useNavigate();
 	const sliderRef = useRef(null);
 	const lastIndex = portfolio.thumbnailUrl.length - 1;
@@ -63,5 +60,3 @@ function PortfolioItem({section, portfolio}: Props){
 		</PortfolioItemLayout>
 	)
 }
-
-export default PortfolioItem;
