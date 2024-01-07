@@ -13,12 +13,5 @@ export type Portfolio = {
 	tagId: number[],
 	likes: number,
 	thumbnailUrl: string[],
+	user?: object,
 };
-
-export enum SectionEndPoint {
-	'Android/iOS' = 'android-ios',
-	'Web' = 'web',
-	'Illustration' = 'illustration',
-	'Photo' = 'photo',
-	'Video' = 'video',
-}

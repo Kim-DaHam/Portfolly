@@ -1,26 +1,31 @@
+import { ISectionFactory } from "@/types";
+
 export const ROUTE_PATH = {
 	INTRO: '/',
 	MAIN: '/main/:section',
-	SIGNUP: '/signup',
-	SIGNIN: '/login',
+	SIGN_IN: '/login',
 	TRIAL_LOGIN: '/trial',
-	MYPAGE: '/profile/:id',
-	PORTFOLIO: '/portfolio/:portfolio_id',
-	PORTFOLIO_EDIT: '/portfolio/edit',
+	MY_PAGE: '/profile/:id',
+	PORTFOLIO_DETAIL: '/portfolios/:portfolio_id',
+	PORTFOLIO_EDIT: '/portfolios/edit',
 };
 
-export const stringToUrl = (string: string) => {
-	return string.replace(' ', '+').replace('&', '%26');
+export const sectionUrlParameterMap: ISectionFactory = {
+	'android-ios': 'Android/iOS',
+	'web': 'Web',
+	'illustration': 'Illustration',
+	'photo': 'Photo',
+	'video': 'Video',
 };
 
-export const urlToString = (url: string) => {
-	return url.replace('+', ' ').replace('%26', '&');
+export const stringToUrlParameter = (string: string) => {
+	return string.replace(/ /g, '+').replace(/&/g, '%26').replace('/', '-').toLowerCase();
 };
 
-export const getFiltersQuery = () => {
+export const getFilterQueryParameter = () => {
 	const url = new URL(window.location.href);
-	const query = url.searchParams as URLSearchParams;
-	const filterQuery = query.get('filter') as string;
+	const queryParameters = url.searchParams as URLSearchParams;
+	const filterQuery = queryParameters.get('filter') as string;
 
 	if(filterQuery) {
 		const filterType = filterQuery.split('.')[0];
