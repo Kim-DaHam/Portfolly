@@ -1,20 +1,21 @@
 import { FiBookmark as BookmarkIcon, FiUser as UserIcon } from "react-icons/fi";
 
-import { PAGE_SHOW_SEARCH_BAR, PAGE_SHOW_SECTION_MENU } from "./Header.constants";
-
 import { Group, Item, Separator } from "@/components/molecules/popper/Popper.styled";
 import { FlexColumnBox } from "@/styles/Container.styled";
 import { Text } from '@/styles/Text.styled';
 
-export const checkIsShowSearchBarPage = (firstPathName: string)=> {
+const PAGE_SHOW_SEARCH_BAR = ['main', 'profile', 'contact', 'portfolios'];
+const PAGE_SHOW_SECTION_MENU = ['main'];
+
+export const checkIsShowSearchBarPage = (firstPathName: string) => {
 	return PAGE_SHOW_SEARCH_BAR.indexOf(firstPathName) !== -1;
 }
 
-export const checkIsShowSectionMenuPage = (firstPathName: string)=> {
+export const checkIsShowSectionMenuPage = (firstPathName: string) => {
 	return PAGE_SHOW_SECTION_MENU.indexOf(firstPathName) !== -1;
 }
 
-export const renderHeaderMenuPopper = (isLogin: boolean)=>{
+export const renderHeaderMenuPopper = (isLogin: boolean) => {
 	if(isLogin){
 		return (
 			<>

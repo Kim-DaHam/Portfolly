@@ -1,44 +1,36 @@
-import { useState } from "react";
 import { FiMenu as MenuIcon} from "react-icons/fi";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
-
-import SectionNavigatior from "../../molecules/navigator/SectionNavigator";
-import Popper from "../../molecules/popper/Popper";
-import SearchBar from "../../molecules/searchBar/SearchBar";
-import SearchModal from "../modal/search-modal/SearchModal";
-
-import { checkIsShowSearchBarPage, checkIsShowSectionMenuPage, renderHeaderMenuPopper } from "./Header.utils";
+import { useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo.png';
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import Image from '@/components/atoms/image/Image';
+import SectionNavigatior from "@/components/molecules/navigator/SectionNavigator";
+import Popper from "@/components/molecules/popper/Popper";
+import SearchBar from "@/components/molecules/searchBar/SearchBar";
+import { renderHeaderMenuPopper } from "@/components/organisms/header/Header.helpers";
 import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
-import useModal from "@/hooks/useModal";
-import usePopup from "@/hooks/usePopup";
+import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
+import { useHeader, useModal, usePopup } from "@/hooks";
 import { isLogin as IsLogin } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils/path";
 
 export default function Header() {
+	const { showSearchBar, showSectionNavigator } = useHeader();
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
 	const { isModalOpen, handleModal } = useModal();
 
 	const navigate = useNavigate();
-	const location = useLocation();
 
 	const isLogin = useSelector(IsLogin);
-	const firstPathName = location.pathname.split('/')[1];
-
-	const showSearchBar = checkIsShowSearchBarPage(firstPathName);
-	const showSectionMenu = checkIsShowSectionMenuPage(firstPathName);
 
 	return(
 		<HeaderContainer>
-			<LogoBox onClick={()=>navigate(`/main/android-ios`)}>
+			<LogoBox onClick={()=>navigate('/main/android-ios')}>
 				<Image src={Logo} size='2.3rem'/>
 			</LogoBox>
 
-			{ showSectionMenu ? <SectionNavigatior/> : <div></div> }
+			{ showSectionNavigator ? <SectionNavigatior/> : <div></div> }
 
 			{ showSearchBar ?
 				<>
@@ -67,7 +59,6 @@ export default function Header() {
 					<RoundButton color='Transparency' onClick={popUp}><MenuIcon size={15}/></RoundButton>
 				</ButtonGroup>
 			}
-
 
 			{ isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>
