@@ -1,3 +1,4 @@
+import useDispatchSectionParameter from "@/hooks/useDispatchSectionParameter";
 import useHeader from "@/hooks/useHeader";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import useModal from "@/hooks/useModal";
@@ -16,4 +17,5 @@ export {
 	useSectionNavigator,
 	useSelector,
 	useStopScrollY,
+	useDispatchSectionParameter,
 };
