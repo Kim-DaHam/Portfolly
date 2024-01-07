@@ -16,9 +16,6 @@ export default function useDispatchSectionParameter() {
 
 	useEffect(() => {
 		getSectionUrlParameter();
-
-		window.addEventListener("popstate", getSectionUrlParameter);
-		return () => window.removeEventListener("popstate", getSectionUrlParameter);
 	}, [params]);
 
 	return;
