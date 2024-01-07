@@ -8,8 +8,6 @@ export const CategorySliderLayout = styled.section`
 
 	display: flex;
 	gap: 2rem;
-
-	border: 1px solid black;
 `;
 
 export const Divider = styled.div`
@@ -24,50 +22,27 @@ export const CategoryBox = styled.div`
 	height: inherit;
 
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	flex-grow: 1;
 	gap: 1rem;
 
 	position: relative;
-
 	overflow: hidden;
 `;
 
-export const CategoryRow = styled.div`
-	width: 100%;
+export const Slider = styled.ul`
+	width: 10000px;
 	height: 100%;
 
-	& .slick-initialized {
-		width: 100%;
-		height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
 
-		position: absolute;
-		right: 0px;
-	}
+	position: absolute;
+	left: 0;
+	transition: left 0.2s ease-out;
 
-	& .slick-slide {
-		margin: 0 3px;
-	}
-
-	& .slick-list {
-		width: 100%;
-		height: 100%;
-
-
-
-		margin: 0 -3px;
-	}
-
-	& .slick-track {
-		height: 100%;
-	}
-
-	& .slick-active div {
-		height: 100%;
-
-		padding: 0 0.2rem 0 0.2rem;
-	}
+	background-color: salmon;
 `;
 
 export const PrevArrow = styled(RoundButton)<{$showPrevArrow: boolean}>`
@@ -89,3 +64,13 @@ export const NextArrow = styled(RoundButton)<{$showNextArrow: boolean}>`
 	cursor: pointer;
 	visibility: ${(props) => props.$showNextArrow ? 'visible' : 'hidden'};
 `;
+
+export const CategoryBoxDiv = styled.label`
+	display: inline;
+	position: relative;
+`
+
+export const SliderBox = styled.label`
+	display: inline;
+	position: relative;
+`
