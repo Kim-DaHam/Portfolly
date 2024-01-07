@@ -1,35 +1,3 @@
-import { Settings } from "react-slick";
-
-import { InitialProps } from "@/types/slider";
-
-export const sliderSettings: Settings = {
-	dots: false,
-	infinite: false,
-	speed: 500,
-	slidesToScroll: 3,
-	draggable: false,
-	fade: false,
-	arrows: false,
-	vertical: false,
-	initialSlide: 0,
-	variableWidth: true,
-	responsive: [
-		{
-			breakpoint: 960,
-			settings: {
-				dots: false,
-				arrows: false,
-			}
-		}
-	]
-}
-
-export const initialProps: InitialProps = {
-	slidesToScroll: sliderSettings.slidesToScroll!,
-	speed: sliderSettings.speed!,
-	maxIndex: 11,
-}
-
 export const categories = {
 	'Android/iOS': ['전체', '금융', '비즈니스', '쇼핑', '음식', '교육', '건강 & 휘트니스', '여행 & 교통', '엔터테이먼트', '인공지능', 'CRM', '라이프 스타일', 'Crypto & Web3', '생산', '커뮤니티'],
 	'Web': ['전체', '금융', '비즈니스', '쇼핑', '음식', '교육', '건강 & 휘트니스', '여행 & 교통', '엔터테이먼트', '인공지능', 'CRM', '라이프 스타일', 'Crypto & Web3', '생산', '커뮤니티', '개발 도구'],

@@ -9,15 +9,15 @@ import Header from "@/components/organisms/header/Header";
 import PortfolioListSkeleton from "@/components/skeletons/portfolio-list/PortfolioListSkeleton";
 import { useDispatchSectionParameter } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
+import { getFilterQueryParameter } from "@/utils/path";
 
 const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioList'));
 
 export default function MainPage(){
-	const [category, setCategory] = useState('전체');
-
 	useDispatchSectionParameter();
 
 	const currentSection = useSelector(section);
+	const currentCategory = getFilterQueryParameter().filterValue;
 
 	return(
 		<MainLayout>
@@ -28,11 +28,11 @@ export default function MainPage(){
 					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
 				</TitleSection>
 
-				<CategorySlider handlePortfolioList={setCategory}/>
+				<CategorySlider/>
 
 				<PortfolioSection>
 					<Suspense fallback={<PortfolioListSkeleton profile='portfolio-item'/>}>
-						<PortfolioList category={category}/>
+						<PortfolioList category={currentCategory}/>
 					</Suspense>
 				</PortfolioSection>
 			</MainContainer>

@@ -1,5 +1,6 @@
 export type InitialProps = {
-	slidesToShow?: number;
+	lastIndex: number;
+	slidesToShow: number;
 	slidesToScroll: number;
 	speed: number;
 	maxIndex?: number;
