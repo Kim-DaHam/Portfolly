@@ -8,7 +8,7 @@ import Popper from "../../molecules/popper/Popper";
 import SearchBar from "../../molecules/searchBar/SearchBar";
 import SearchModal from "../modal/search-modal/SearchModal";
 
-import { checkIsShowSearchBarPage, checkIsShowSectionMenuPage, renderHeaderMenuPopper } from "./Header.utils";
+import { checkIsShowSearchBarPage, checkIsShowSectionMenuPage, renderHeaderMenuPopper } from "./Header.helpers";
 
 import Logo from '@/assets/images/logo.png';
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
@@ -16,12 +16,14 @@ import Image from '@/components/atoms/image/Image';
 import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
 import useModal from "@/hooks/useModal";
 import usePopup from "@/hooks/usePopup";
+import useSectionNavigator from "@/hooks/useSectionNavigator";
 import { isLogin as IsLogin } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils/path";
 
 export default function Header() {
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
 	const { isModalOpen, handleModal } = useModal();
+	const { handleSection } = useSectionNavigator();
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -34,7 +36,7 @@ export default function Header() {
 
 	return(
 		<HeaderContainer>
-			<LogoBox onClick={()=>navigate(`/main/android-ios`)}>
+			<LogoBox onClick={()=>handleSection('Android/iOS')}>
 				<Image src={Logo} size='2.3rem'/>
 			</LogoBox>
 

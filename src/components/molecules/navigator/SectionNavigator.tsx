@@ -17,7 +17,13 @@ const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Vid
 export default function SectionNavigator() {
 	const currentSection = useSelector(sectionSlice);
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
-	const { handleSection } = useSectionNavigator(popOut);
+	const { handleSection } = useSectionNavigator();
+
+	const handleSectionNavigator = (event: React.MouseEvent) => {
+		const section = event.currentTarget.textContent as Section;
+		popOut();
+		handleSection(section);
+	}
 
 	return(
 		<SectionNavigatorLayout>
@@ -32,7 +38,7 @@ export default function SectionNavigator() {
 					<Group size='Fit'>
 						{sections.map((section: Section, index: number)=>{
 							return(
-								<Item onClick={()=>handleSection(section)} key={index}>{section}</Item>
+								<Item onClick={handleSectionNavigator} key={index}>{section}</Item>
 							)
 						})}
 					</Group>
