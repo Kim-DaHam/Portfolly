@@ -11,7 +11,7 @@ import SearchBar from "@/components/molecules/searchBar/SearchBar";
 import { renderHeaderMenuPopper } from "@/components/organisms/header/Header.helpers";
 import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
 import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
-import { useHeader, useModal, usePopup, useSectionNavigator } from "@/hooks";
+import { useHeader, useModal, usePopup } from "@/hooks";
 import { isLogin as IsLogin } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils/path";
 
@@ -19,7 +19,6 @@ export default function Header() {
 	const { showSearchBar, showSectionNavigator } = useHeader();
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
 	const { isModalOpen, handleModal } = useModal();
-	const { handleSection } = useSectionNavigator();
 
 	const navigate = useNavigate();
 
@@ -27,7 +26,7 @@ export default function Header() {
 
 	return(
 		<HeaderContainer>
-			<LogoBox onClick={()=>handleSection('Android/iOS')}>
+			<LogoBox onClick={()=>navigate('/main/android-ios')}>
 				<Image src={Logo} size='2.3rem'/>
 			</LogoBox>
 
