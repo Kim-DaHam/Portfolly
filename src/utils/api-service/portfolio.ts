@@ -1,5 +1,7 @@
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 
+import { stringToUrlParameter } from '../path';
+
 import { Section } from '@/types/portfolio';
 import { fetch } from '@/utils/fetch';
 
@@ -12,7 +14,7 @@ const portfolioKeys = {
 }
 
 export const usePortfoliosQuery = (limit: number, section: Section, filter: {filterKey: string, filterValue: string})=> {
-	const filterParameter = encodeURI(filter.filterValue);
+	const filterParameter = stringToUrlParameter(filter.filterValue);
 	const getPortfolios = () => fetch(`/portfolios?limit=${limit}&section=${section}&${filter.filterKey}=${filterParameter}`, 'GET');
 
 	return useSuspenseQuery({

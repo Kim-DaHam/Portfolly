@@ -3,9 +3,9 @@ import { styled } from "styled-components";
 import { portfolioThumbnailSize } from "@/styles/token";
 import { Section } from "@/types/portfolio";
 
-export const PortfolioItemSkeletonLayout = styled.div<{section: Section}>`
+export const PortfolioItemSkeletonLayout = styled.div<{$section: Section}>`
 	width: 100%;
-	aspect-ratio: ${(props) => portfolioThumbnailSize[props.section].aspectRatio};
+	aspect-ratio: ${(props) => portfolioThumbnailSize[props.$section].aspectRatio};
 
 	position: 'relative';
 

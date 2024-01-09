@@ -13,6 +13,6 @@ export default function PortfolioItemSkeleton({section}: Props) {
 	const currentSection = useSelector(sectionSlice);
 
 	return(
-		<PortfolioItemSkeletonLayout section={section ? section : currentSection}/>
+		<PortfolioItemSkeletonLayout $section={section ? section : currentSection}/>
 	)
 }
