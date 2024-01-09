@@ -1,6 +1,4 @@
-import { portfolios } from "./IntroPage.constants";
 import { Divider, IntroLayout, IntroduceContainer } from "./IntroPage.styled";
-import { separatePortfolioSection } from "./IntroPage.utils";
 
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";
@@ -11,11 +9,8 @@ import { wheelHandler } from "@/utils/wheelHandler";
 
 const sections: Array<Section> = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
 
-function IntroPage(){
-	const { data } = useTopPortfoliosQuery();
-	const topPortfolioList = data;
-
-	separatePortfolioSection(topPortfolioList);
+export default function IntroPage(){
+	const { data: topPortfolioLists } = useTopPortfoliosQuery();
 
 	return(
 		<IntroLayout ref={(element)=>{
@@ -36,7 +31,7 @@ function IntroPage(){
 				return(
 					<div key={index}>
 						<Divider/>
-						<Preview section={section} portfolios={portfolios[section]}/>
+						<Preview section={section} portfolios={topPortfolioLists[section]}/>
 					</div>
 				)
 			})}
@@ -44,5 +39,3 @@ function IntroPage(){
 		</IntroLayout>
 	)
 }
-
-export default IntroPage;
