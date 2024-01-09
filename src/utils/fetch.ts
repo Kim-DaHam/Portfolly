@@ -5,8 +5,7 @@ import { API_BASE_URL } from '@/app-config';
 
 type Method = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
-export async function fetch(api: string, method: Method, data?: object) {
-
+export async function fetch(api: string, method: Method, body?: object) {
 	// redux에서 토큰 가져오기
   // const accessToken = localStorage.getItem(ACCESS_TOKEN);
 
@@ -21,8 +20,8 @@ export async function fetch(api: string, method: Method, data?: object) {
     url: API_BASE_URL + api,
   };
 
-  if (data) {
-    options.data = JSON.stringify(data);
+  if (body) {
+    options.data = JSON.stringify(body);
   }
 
 	const response = await axios(options);
