@@ -49,6 +49,7 @@ export default function CategorySlider() {
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
 		setCategoryBox(categoryBoxRef.current!);
+		getCategoryQueryParameter();
 
 		window.addEventListener("popstate", getCategoryQueryParameter);
     return () => window.removeEventListener("popstate", getCategoryQueryParameter);
