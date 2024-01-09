@@ -27,13 +27,14 @@ export default function IntroPage(){
 				<h2>클라이언트와 파트너 간 소통해요</h2>
 			</IntroduceContainer>
 
-			{ sections.map((section: Section, index: number)=>{
-				return(
-					<div key={index}>
-						<Divider/>
-						<Preview section={section} portfolios={topPortfolioLists[section]}/>
-					</div>
-				)
+			{ topPortfolioLists &&
+				sections.map((section: Section, index: number)=>{
+					return(
+						<div key={index}>
+							<Divider/>
+							<Preview section={section} portfolios={topPortfolioLists[section]}/>
+						</div>
+					)
 			})}
 			<Footer/>
 		</IntroLayout>
