@@ -18,8 +18,7 @@ const PortfolioHandlers= [
 		const url = new URL(request.url);
 		const limit = url.searchParams.get('limit') as string;
 		const section = url.searchParams.get('section') as Section;
-		const categoryParameter = url.searchParams.get('category') as string;
-		const category = decodeURI(categoryParameter);
+		const category = url.searchParams.get('category') as string;
 		// const tag = url.searchParams.get('tag');
 		// const user = url.searchParams.get('user');
 
