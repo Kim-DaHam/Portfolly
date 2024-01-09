@@ -1,4 +1,4 @@
-import { ButtonGroup, ContentContainer, FlexBox, GridBox, GridItem, HtmlContent, PortfolioDetailContainer, PortfolioDetailLayout, PortfolioSection, ProfileBox, RightSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetail.styled";
+import { ButtonGroup, ContentContainer, FlexBox, GridBox, GridItem, HtmlContent, PortfolioDetailContainer, PortfolioDetailLayout, PortfolioSection, ProfileBox, RightSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetailPage.styled";
 
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
