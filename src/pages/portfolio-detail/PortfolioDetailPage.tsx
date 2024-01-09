@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 import { ButtonGroup, ContentContainer, FlexBox, GridBox, GridItem, HtmlContent, PortfolioDetailContainer, PortfolioDetailLayout, PortfolioSection, ProfileBox, RightSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetailPage.styled";
 
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
@@ -7,6 +9,11 @@ import Header from "@/components/organisms/header/Header";
 import { Heading, Label, Text } from "@/styles/Text.styled";
 
 function PortfolioDetail(){
+
+	const portfolio = useLocation().state;
+
+	console.log(portfolio);
+
 	return(
 		<PortfolioDetailLayout>
 			<Header/>

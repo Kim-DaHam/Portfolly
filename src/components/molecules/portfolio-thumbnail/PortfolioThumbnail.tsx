@@ -28,12 +28,18 @@ export default function PortfolioThumnail({section, portfolio}: Props){
 	const lastIndex = portfolio.thumbnailUrl.length - 1;
 	const { handlePrev, handleNext, setSlider, showPrevArrow, showNextArrow } = useHandleSlider({...initialProps, lastIndex: lastIndex});
 
+	const handlePortfolioThumbnail = () => {
+		navigate(`/portfolios/${portfolio.id}`, {
+			state: portfolio,
+		});
+	}
+
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
 	}, [])
 
 	return(
-		<PortfolioThumbnailLayout $section={section || currentSection} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
+		<PortfolioThumbnailLayout $section={section || currentSection} onClick={handlePortfolioThumbnail}>
 			<SliderContainer>
 				<ArrowBox onClick={eventStopPropagation}>
 					<PrevArrow
