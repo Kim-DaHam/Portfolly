@@ -27,9 +27,7 @@ export default function PortfolioItem({ portfolio }: Props) {
 			buttonGroup!.style.display = 'flex';
 			return;
 		}
-
 		buttonGroup!.style.display = '';
-
 	}, [isPopUp])
 
 	return (
@@ -37,7 +35,7 @@ export default function PortfolioItem({ portfolio }: Props) {
 			<PortfolioThumbnail portfolio={portfolio}/>
 
 			<ProfileBox>
-				<Profile type='portfolio-item' user={{...portfolio.user, title: portfolio.title}}/>
+				<Profile type='portfolio-item' user={{portfolio: portfolio}}/>
 
 				<ButtonGroup className='button-group' ref={buttonGroupRef}>
 					<ToggleButton type='Bookmark'/>

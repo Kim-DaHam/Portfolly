@@ -19,7 +19,7 @@ export default function ProfileSkeleton({profile}: Props) {
 const renderProfileSkeleton = (profile: Profile) => {
 	const ComponentFactory:IComponentFactory = {
     'portfolio-item': (
-			<ProfileLayout $profile={profile}>
+			<ProfileLayout $type={profile}>
 				<ImageBox/>
 				<SpanBox>
 					<TextBox/>

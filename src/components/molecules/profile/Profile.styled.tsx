@@ -4,9 +4,9 @@ import { Profile } from "./Profile";
 
 import { profileSize } from "@/styles/token";
 
-export const ProfileLayout = styled.div<{$profile: Profile}>`
+export const ProfileLayout = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: ${(props)=>profileSize[props.$profile]};
+	height: ${(props)=>profileSize[props.$type]};
 
 	display: flex;
 	gap: 0.5rem;
