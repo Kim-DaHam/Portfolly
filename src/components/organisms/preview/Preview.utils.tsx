@@ -1,4 +1,4 @@
-import PortfolioItem from "../portfolio-item/PortfolioItem";
+import PortfolioItem from "../../molecules/portfolio-thumbnail/PortfolioThumbnail";
 
 import { Portfolio, Section } from "@/types/portfolio";
 

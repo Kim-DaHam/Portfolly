@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-function useIntersectionObserver(onIntersect: ()=>void) {
-	const [observationTarget, setObservationTarget] = useState<HTMLDivElement | null>(null);
+function useIntersectionObserver(onIntersect: (isIntersecting?: boolean)=>void) {
+	const [observationTarget, setObservationTarget] = useState<HTMLElement | null>(null);
 
 	const observer = useRef(
     new IntersectionObserver(([entry]) => {
 			if (!entry.isIntersecting) return;
-			onIntersect();
+			onIntersect(entry.isIntersecting);
 		},
 		{ threshold: 1 }
 	));

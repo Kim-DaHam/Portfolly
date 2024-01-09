@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { PreviewRowColumns } from "./Preview.constants";
@@ -7,17 +6,15 @@ import { Props } from "./Preview.type";
 import { renderPortfolioItems } from "./Preview.utils";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
-import { setSection } from "@/redux/sectionSlice";
 import { Heading, Text } from "@/styles/Text.styled";
-import { SectionEndPoint } from "@/types/portfolio";
+import { stringToUrlParameter } from "@/utils/path";
 
-function Preview({section, portfolios}: Props){
+export default function Preview({section, portfolios}: Props){
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const navigateMain = ()=>{
-		dispatch(setSection(section))
-		navigate(`/main/${SectionEndPoint[section]}`)
+		const sectionParameter = stringToUrlParameter(section);
+		navigate(`/main/${sectionParameter}`)
 	}
 
 	return(
@@ -37,5 +34,3 @@ function Preview({section, portfolios}: Props){
 		</PreviewLayout>
 	)
 }
-
-export default Preview;
