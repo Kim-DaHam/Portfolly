@@ -24,17 +24,11 @@ export default function Profile({type, user}: Props) {
 }
 
 const renderProfile = (type: Profile, user: any, navigate: any) => {
-	const handlePortfolioProfile = () => {
-		navigate(`/portfolios/${user.portfolio.id}`, {
-			state: user.portfolio,
-		});
-	}
-
 	const ComponentFactory:IComponentFactory = {
     'portfolio-item': (
 			<>
 				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare'/>
-				<SpanBox onClick={handlePortfolioProfile}>
+				<SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
 					<Text size='Medium' color='Black'>{user.title}</Text>
 					<Text size='Small' color='Gray'>{user.nickname}</Text>
 				</SpanBox>
