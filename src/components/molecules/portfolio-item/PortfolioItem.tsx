@@ -35,7 +35,7 @@ export default function PortfolioItem({ portfolio }: Props) {
 			<PortfolioThumbnail portfolio={portfolio}/>
 
 			<ProfileBox>
-				<Profile type='portfolio-item' user={{portfolio: portfolio}}/>
+				<Profile type='portfolio-item' user={{...portfolio, ...portfolio.user}}/>
 
 				<ButtonGroup className='button-group' ref={buttonGroupRef}>
 					<ToggleButton type='Bookmark'/>

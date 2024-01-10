@@ -6,9 +6,10 @@ import { profileSize } from "@/styles/token";
 
 export const ProfileLayout = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: ${(props)=>profileSize[props.$type]};
+	height: ${(props) => profileSize[props.$type]};
 
 	display: flex;
+	align-items: ${(props) => props.$type === 'portfolio-detail' ? 'center' : ''};
 	gap: 0.5rem;
 	flex-grow: 1;
 	flex-shrink: 1;
