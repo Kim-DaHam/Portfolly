@@ -1,4 +1,5 @@
 import { categories } from "@/mocks/data/categories"
+import { tags } from "@/mocks/data/tags";
 import { experts } from "@/mocks/data/users";
 
 export const getUserData = (userId: number) => {
@@ -9,10 +10,22 @@ export const getUserData = (userId: number) => {
 	return result[0];
 };
 
-export const getCategoryId = (category: string) => {
-	const result = categories.filter((categoryObject)=>{
-		return categoryObject.name === category;
-	});
+export const getCategory = (categoryId: number) => {
+	const result = categories.filter((category) => {
+		return category.id === categoryId
+	})
 
-	return result[0].id;
+	return result[0].name;
+};
+
+export const getTags = (tagIds: number[]) => {
+	const tagObjects = tags.filter((tag) => {
+		return tagIds.includes(tag.id)
+	})
+
+	const result = tagObjects.map((tag) => {
+		return tag.name;
+	})
+
+	return result;
 };
