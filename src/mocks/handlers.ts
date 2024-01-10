@@ -3,7 +3,7 @@ import { HttpResponse, http } from 'msw';
 import { portfolios } from './data/portfolios';
 
 import { Portfolio, Section } from '@/types/portfolio';
-import { getCategoryId, getUserData } from '@/utils/mswHandler';
+import { getCategory, getTags, getUserData } from '@/utils/mswHandler';
 
 const sectionIdMap = new Map([
 	['Android/iOS', 1],
@@ -14,7 +14,7 @@ const sectionIdMap = new Map([
 ]);
 
 const PortfolioHandlers= [
-	http.get(`/portfolios`, ({request})=>{
+	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
 		const limit = url.searchParams.get('limit') as string;
 		const section = url.searchParams.get('section') as Section;
@@ -24,22 +24,37 @@ const PortfolioHandlers= [
 
 		let filteredPortfolios: any[] = [];
 
-		portfolios.map((portfolio)=>{
-			if(sectionIdMap.get(section) === portfolio.sectionId){
-				const user = getUserData(portfolio.userId);
-				filteredPortfolios.push({...portfolio, user});
+		portfolios.map((portfolio: Portfolio) => {
+			if(portfolio.sectionId === sectionIdMap.get(section)){
+				filteredPortfolios.push(portfolio);
 			}
 		})
 
-		if(category && category !== '전체'){
-			const categoryId = getCategoryId(category);
-
-			const categoryFilteredPortfolios = filteredPortfolios.filter((portfolio)=>{
-				return portfolio.categoryId === categoryId
+		if(category && category !== '전체') {
+			const categoryFilteredPortfolios = filteredPortfolios.filter((portfolio) => {
+				return portfolio.category === category;
 			})
 
 			filteredPortfolios = categoryFilteredPortfolios;
 		}
+
+		const responseData = filteredPortfolios.map((portfolio: Portfolio) => {
+			const user = getUserData(portfolio.userId);
+
+			const portfolioData = {
+				id: portfolio.id,
+				title: portfolio.title,
+				category: category,
+				content: portfolio.content,
+				summary: portfolio.summary,
+				likes: portfolio.likes,
+				thumbnailUrl: portfolio.thumbnailUrl,
+				user,
+			};
+
+			return portfolioData;
+		})
+
 
 		// if(tag){
 		// 	filteredPortfolios.map((portfolio)=>{
@@ -57,11 +72,11 @@ const PortfolioHandlers= [
 		// 	})
 		// }
 
-		const limitedPortfolios = filteredPortfolios.filter((_, index)=>{
+		const limitedResponseData = responseData.filter((_, index)=>{
 			return index < Number(limit);
 		})
 
-		return HttpResponse.json(limitedPortfolios, { status: 200 });
+		return HttpResponse.json(limitedResponseData, { status: 200 });
 	}),
 
 	http.get('/top-portfolios', ()=>{
@@ -100,7 +115,44 @@ const PortfolioHandlers= [
 		}
 
 		return HttpResponse.json(topPortfolios, { status: 200 });
-	})
+	}),
+
+	http.get('/portfolios/detail', ({request}) => {
+		const url = new URL(request.url);
+		const portfolioId = url.searchParams.get('id') as string;
+
+		const portfolioData = portfolios.find((portfolio) => {
+			return portfolio.id === Number(portfolioId);
+		});
+
+		const otherPortfolios = portfolios.reduce((result: Portfolio[], portfolio: Portfolio) => {
+			if(result.length < 9){
+				if(portfolio.userId === portfolioData!.userId) {
+					result.push(portfolio);
+				}
+			}
+			return result;
+		}, []);
+
+		const user = getUserData(portfolioData!.userId);
+		const category = getCategory(portfolioData!.categoryId);
+		const tags = getTags(portfolioData!.tagId);
+
+		const responseData = {
+			id: portfolioData!.id,
+			title: portfolioData!.title,
+			category: category,
+			content: portfolioData!.content,
+			summary: portfolioData!.summary,
+			tags,
+			likes: portfolioData!.likes,
+			thumbnailUrl: portfolioData!.thumbnailUrl,
+			user,
+			otherPortfolios,
+		};
+
+		return HttpResponse.json(responseData, { status: 200 });
+	}),
 ];
 
 export const handlers = PortfolioHandlers

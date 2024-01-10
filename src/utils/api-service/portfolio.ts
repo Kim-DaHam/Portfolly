@@ -37,10 +37,12 @@ export const useTopPortfoliosQuery = () => {
 };
 
 export const usePortfolioDetailQuery = (id: string) => {
-	const getPortfolio = () => fetch(`/portfolios/${id}`, 'GET');
+	const getPortfolio = () => fetch(`/portfolios/detail?id=${id}`, 'GET');
 
-	return useSuspenseQuery({
+	return useQuery({
 		queryKey: portfolioKeys.detail(id),
 		queryFn: getPortfolio,
+		staleTime: Infinity,
+		gcTime: Infinity,
 	});
 };

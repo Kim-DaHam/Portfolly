@@ -16,7 +16,7 @@ import GlobalErrorFallback from './utils/fallback/gloabalErrorFallback';
 import IntroPage from '@/pages/intro/IntroPage';
 import MainPage from '@/pages/main/MainPage';
 import MyPage from '@/pages/my-page/MyPage';
-import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetail';
+import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetailPage';
 import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
 import SignIn from '@/pages/signIn/SignIn';
 import { store } from '@/redux/store';

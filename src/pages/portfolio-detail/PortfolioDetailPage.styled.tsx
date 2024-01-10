@@ -13,8 +13,6 @@ export const PortfolioDetailLayout = styled.div`
 	z-index: 100;
 	top: ${HEADER_HEIGHT};
 
-	padding-top: 2rem;
-
 	background-color: salmon;
 `;
 
@@ -133,7 +131,7 @@ export const TagBox = styled.div`
 	height: 100%;
 
 	display: flex;
-	gap: 1rem;
+	gap: 0.5rem;
 
 	background-color: lightsalmon;
 `;
@@ -161,11 +159,15 @@ export const GridBox = styled.div`
 
 export const GridItem = styled.div`
 	width: 100%;
-	height: 6rem;
 
 	overflow: hidden;
 
 	border-radius: 0.6rem;
+
+	& img {
+		width: 100%;
+		height: 100%;
+	}
 
 	background-color: brown;
 `;

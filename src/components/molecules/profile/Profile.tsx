@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 import { ProfileLayout, SpanBox } from "./Profile.styled";
 
 import Image from '@/components/atoms/image/Image';
-import { Text } from "@/styles/Text.styled";
+import { Heading, Text } from "@/styles/Text.styled";
 import { IComponentFactory } from "@/types";
 
 export type Profile = 'portfolio-item' | 'portfolio-detail' | 'mypage' | 'review' | 'message';
@@ -12,23 +14,31 @@ type Props = {
 }
 
 export default function Profile({type, user}: Props) {
+	const navigate = useNavigate();
+
 	return(
-		<>
-			{renderProfile(type, user)}
-		</>
+		<ProfileLayout $type={type}>
+			{renderProfile(type, user, navigate)}
+		</ProfileLayout>
 	)
 }
 
-const renderProfile = (type: Profile, user: any) => {
+const renderProfile = (type: Profile, user: any, navigate: any) => {
 	const ComponentFactory:IComponentFactory = {
     'portfolio-item': (
-			<ProfileLayout $type={type}>
-				<Image src={user.profileImage} alt='user profile' size='3.5rem' shape='foursquare'/>
-				<SpanBox>
+			<>
+				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare'/>
+				<SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
 					<Text size='Medium' color='Black'>{user.title}</Text>
-					<Text size='Small' color='Gray'>{user.name}</Text>
+					<Text size='Small' color='Gray'>{user.nickname}</Text>
 				</SpanBox>
-			</ProfileLayout>
+			</>
+		),
+		'portfolio-detail': (
+			<>
+				<Image size='5rem' src={user.profileImage} alt='user profile' shape='foursquare'/>
+				<Heading size='Small'>{user.nickname}</Heading>
+			</>
 		),
   }
 
