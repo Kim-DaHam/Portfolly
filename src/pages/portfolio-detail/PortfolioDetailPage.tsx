@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { Aside, ButtonGroup, Content, FlexBox, FlexColumnBox, GridBox, GridItem, HtmlContent, PortfolioInfoBox, PortfolioSection, ProfileBox, SummaryBox, TagBox, TitleBox, Wrapper } from "./PortfolioDetailPage.styled";
+import { Aside, ButtonGroup, Content, FlexBox, GridBox, GridItem, HtmlContent, PortfolioInfoBox, PortfolioSection, ProfileBox, SummaryBox, TagBox, TitleBox, Wrapper } from "./PortfolioDetailPage.styled";
 
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
@@ -12,7 +12,7 @@ import { Heading, Label, Text } from "@/styles/Text.styled";
 import { Portfolio } from "@/types/portfolio";
 import { usePortfolioDetailQuery } from "@/utils/api-service/portfolio";
 
-function PortfolioDetail(){
+export default function PortfolioDetail(){
 	const portfolioId = useParams().portfolio_id as string;
 	const { data: portfolio } = usePortfolioDetailQuery(portfolioId);
 
@@ -75,5 +75,3 @@ function PortfolioDetail(){
 		</Wrapper>
 	)
 }
-
-export default PortfolioDetail;
