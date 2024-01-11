@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { PortfolioItemSkeletonLayout } from "./PortfolioItemSkeleton.styled";
+import { PortfolioItemSkeletonLayout } from "./PortfolioThumbnailSkeleton.styled";
 
 import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Section } from "@/types/portfolio";
