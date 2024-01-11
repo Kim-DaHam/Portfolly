@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { Aside, ButtonGroup, Content, FlexBox, GridBox, GridItem, HtmlContent, PortfolioInfoBox, PortfolioSection, ProfileBox, SummaryBox, TagBox, TitleBox, Wrapper } from "./PortfolioDetailPage.styled";
 
@@ -16,11 +16,13 @@ export default function PortfolioDetail(){
 	const portfolioId = useParams().portfolio_id as string;
 	const { data: portfolio } = usePortfolioDetailQuery(portfolioId);
 
+	const navigate = useNavigate();
+
 	return(
 		<Wrapper>
 			<Header/>
 			<Content>
-				<RoundButton color='Transparency' size='Fit'>뒤로가기</RoundButton>
+				<RoundButton color='Transparency' size='Fit' onClick={()=>navigate(-1)}>뒤로가기</RoundButton>
 				{ portfolio &&
 					<FlexBox>
 						<PortfolioSection>
