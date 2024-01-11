@@ -1,4 +1,4 @@
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery, useSuspenseQuery } from '@tanstack/react-query';
 
 import { stringToUrlParameter } from '../path';
 
@@ -13,13 +13,19 @@ const portfolioKeys = {
   detail: (id: string) => [...portfolioKeys.details(), id] as const,
 }
 
-export const usePortfoliosQuery = (limit: number, section: Section, filter: {filterKey: string, filterValue: string}) => {
+export const usePortfoliosQuery = (section: Section, filter: {filterKey: string, filterValue: string}) => {
 	const filterParameter = stringToUrlParameter(filter.filterValue);
-	const getPortfolios = () => fetch(`/portfolios?limit=${limit}&section=${section}&${filter.filterKey}=${filterParameter}`, 'GET');
+	const getPortfolios = ({ pageParam = 1 }) => fetch(`/portfolios?page=${pageParam}&section=${section}&${filter.filterKey}=${filterParameter}`, 'GET');
 
-	return useSuspenseQuery({
+	return useInfiniteQuery({
 		queryKey: portfolioKeys.list(section, {type: filter.filterKey, value: filter.filterValue}),
 		queryFn: getPortfolios,
+		select: data => data.pages[0],
+		initialPageParam: 1,
+		getNextPageParam: (lastPage, allPages) => {
+			const nextPage = allPages.length + 1;
+			return lastPage.length < 100 ? undefined :nextPage;
+		},
 		staleTime: Infinity,
 		gcTime: Infinity,
 	});
