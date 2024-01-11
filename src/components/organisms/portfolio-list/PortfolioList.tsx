@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { GridBox } from "./PortfolioList.styled";
@@ -13,8 +13,11 @@ type Props = {
 	category: string;
 }
 
+const ITEMS_PER_PAGE = 10;
+export const SESSIONSTORAGE_KEY = "lastClickedPortfolio";
+
 export default function PortfolioList({category}: Props) {
-	const [count, setCount] = useState(10);
+	const [count, setCount] = useState(ITEMS_PER_PAGE);
 	const [loadData, setLoadData] = useState(true);
 
 	const currentSection = useSelector(section);
@@ -33,17 +36,41 @@ export default function PortfolioList({category}: Props) {
 		if(isOnePageLoaded && hasNextPage) {
 			fetchNextPage();
 		}
-		setCount(prev => prev + 10);
+		setCount(prev => prev + ITEMS_PER_PAGE);
 	}
 
 	const setObservationTarget = useIntersectionObserver(loadNextPage);
+
+	const saveScroll = (index: number) => {
+    sessionStorage.setItem(SESSIONSTORAGE_KEY, JSON.stringify({
+      anchorPosition: window.pageYOffset,
+      clickedPortfolioIndex: index,
+    }));
+  };
+
+	useEffect(() => {
+		const getStorage = sessionStorage.getItem(SESSIONSTORAGE_KEY);
+		if(!getStorage) return;
+
+		const { anchorPosition, clickedPortfolioIndex } = JSON.parse(getStorage);
+
+		setCount(clickedPortfolioIndex);
+
+		setTimeout(() => {
+      window.scrollTo({
+        top: anchorPosition,
+      });
+
+    }, 1000);
+		return () => sessionStorage.removeItem(SESSIONSTORAGE_KEY);
+	}, []);
 
 	return (
 		<GridBox>
 			{ portfolios && portfolios.map((portfolio: Portfolio, index: number)=>{
 				if(index < count) {
 					return(
-						<PortfolioItem key={portfolio.id} portfolio={portfolio}/>
+						<PortfolioItem key={index} portfolio={portfolio} onClick={()=>saveScroll(++index)}/>
 					)
 				}})
 			}

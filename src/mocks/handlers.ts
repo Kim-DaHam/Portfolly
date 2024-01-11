@@ -73,7 +73,8 @@ const PortfolioHandlers= [
 		// }
 
 		const limitedResponseData = responseData.filter((_, index)=>{
-			return index < Number(page)*100;
+			const pageNum = Number(page);
+			return index >= (pageNum - 1) * 100 && index < pageNum * 100;
 		})
 
 		return HttpResponse.json(limitedResponseData, { status: 200 });
