@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { ButtonGroup, ContentContainer, FlexBox, GridBox, GridItem, HtmlContent, PortfolioDetailContainer, PortfolioDetailLayout, PortfolioSection, ProfileBox, RightSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetailPage.styled";
+import { Aside, ButtonGroup, Content, FlexBox, FlexColumnBox, GridBox, GridItem, HtmlContent, PortfolioInfoBox, PortfolioSection, ProfileBox, SummaryBox, TagBox, TitleBox, Wrapper } from "./PortfolioDetailPage.styled";
 
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
@@ -17,32 +17,28 @@ function PortfolioDetail(){
 	const { data: portfolio } = usePortfolioDetailQuery(portfolioId);
 
 	return(
-		<PortfolioDetailLayout>
+		<Wrapper>
 			<Header/>
-			<PortfolioDetailContainer>
+			<Content>
 				<RoundButton color='Transparency' size='Fit'>뒤로가기</RoundButton>
 				{ portfolio &&
-					<ContentContainer>
+					<FlexBox>
 						<PortfolioSection>
 							<HtmlContent>
 								{portfolio.content}
 							</HtmlContent>
 						</PortfolioSection>
 
-						<RightSection>
-							<UserBox>
-								<ProfileBox>
-									<Profile type='portfolio-detail' user={portfolio.user}/>
-								</ProfileBox>
+						<Aside>
+							<ProfileBox>
+								<Profile type='portfolio-detail' user={portfolio.user}/>
 								<SquareButton color='White' size='Medium'>문의하기</SquareButton>
-							</UserBox>
+							</ProfileBox>
 
-							<FlexBox>
+							<PortfolioInfoBox>
 								<TitleBox>
 									<Text size='Medium' color='Gray'>{portfolio.category}</Text>
-
 									<Heading size='Small'>{portfolio.title}</Heading>
-
 									<ButtonGroup>
 										<ToggleButton type='Like'/>
 										<ToggleButton type='Bookmark'/>
@@ -60,10 +56,8 @@ function PortfolioDetail(){
 								<SummaryBox>
 									{portfolio.summary}
 								</SummaryBox>
-							</FlexBox>
 
-							<FlexBox>
-								<Label>전문가의 다른 포트폴리오</Label>
+								<Label>이 전문가의 다른 포트폴리오 {'>'}</Label>
 								<GridBox>
 									{ portfolio.otherPortfolios.map((portfolio: Portfolio) => {
 										return (
@@ -73,13 +67,12 @@ function PortfolioDetail(){
 										)
 									})}
 								</GridBox>
-							</FlexBox>
-						</RightSection>
-					</ContentContainer>
-
+							</PortfolioInfoBox>
+						</Aside>
+					</FlexBox>
 				}
-			</PortfolioDetailContainer>
-		</PortfolioDetailLayout>
+			</Content>
+		</Wrapper>
 	)
 }
 
