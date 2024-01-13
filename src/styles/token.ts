@@ -146,8 +146,8 @@ export const profileSize: ProfileSize = {
 
 export const modalSize: ModalSize = {
 	'alert': {
-		width: '6rem',
-		height: '4rem',
+		width: '22%',
+		height: 'content-fit',
 	},
 	'search': {
 		width: '50%',
