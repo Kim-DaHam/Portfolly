@@ -1,9 +1,10 @@
 import { HttpResponse, http } from 'msw';
 
-import { portfolios } from './data/portfolios';
+import { portfolios } from '../data/portfolios';
+import { clients } from '../data/users';
 
 import { Portfolio, Section } from '@/types/portfolio';
-import { getCategory, getTags, getUserData } from '@/utils/mswHandler';
+import { getCategory, getIsBookmarked, getIsLiked, getTags, getUserData } from '@/utils/mswHandler';
 
 const sectionIdMap = new Map([
 	['Android/iOS', 1],
@@ -13,7 +14,7 @@ const sectionIdMap = new Map([
 	['Video', 5],
 ]);
 
-const PortfolioHandlers= [
+export const PortfolioHandlers= [
 	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
 		const page = url.searchParams.get('page') as string;
@@ -40,6 +41,8 @@ const PortfolioHandlers= [
 
 		const responseData = filteredPortfolios.map((portfolio: Portfolio) => {
 			const user = getUserData(portfolio.userId);
+			const bookmarks = clients.find((client) => client.id === 100)!.bookmarks;
+			const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
 
 			const portfolioData = {
 				id: portfolio.id,
@@ -49,6 +52,7 @@ const PortfolioHandlers= [
 				summary: portfolio.summary,
 				likes: portfolio.likes,
 				thumbnailUrl: portfolio.thumbnailUrl,
+				isBookmarked: isBookmarked,
 				user,
 			};
 
@@ -138,6 +142,10 @@ const PortfolioHandlers= [
 		const user = getUserData(portfolioData!.userId);
 		const category = getCategory(portfolioData!.categoryId);
 		const tags = getTags(portfolioData!.tagId);
+		const likes = clients.find((client) => client.id === 100)!.likes;
+		const bookmarks = clients.find((client) => client.id === 100)!.bookmarks;
+		const isBookmarked = getIsBookmarked(portfolioData!.id, bookmarks);
+		const isLiked = getIsLiked(portfolioData!.id, likes);
 
 		const responseData = {
 			id: portfolioData!.id,
@@ -150,11 +158,10 @@ const PortfolioHandlers= [
 			thumbnailUrl: portfolioData!.thumbnailUrl,
 			user,
 			otherPortfolios,
+			isBookmarked: isBookmarked,
+			isLiked: isLiked,
 		};
 
 		return HttpResponse.json(responseData, { status: 200 });
 	}),
 ];
-
-export const handlers = PortfolioHandlers
-  // .concat(HJHandlers);

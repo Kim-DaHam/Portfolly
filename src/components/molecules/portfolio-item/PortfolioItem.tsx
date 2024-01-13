@@ -9,10 +9,9 @@ import { ButtonGroup, PortfolioItemLayout, ProfileBox } from "@/components/molec
 import PortfolioThumbnail from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail";
 import Profile from "@/components/molecules/profile/Profile";
 import usePopup from "@/hooks/usePopup";
-import { Portfolio } from "@/types/portfolio";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
-	portfolio: Portfolio;
+	portfolio: any;
 	onClick: () => void;
 }
 
@@ -39,7 +38,7 @@ export default function PortfolioItem({ portfolio, onClick }: Props) {
 				<Profile type='portfolio-item' user={{...portfolio, ...portfolio.user}}/>
 
 				<ButtonGroup className='button-group' ref={buttonGroupRef}>
-					<ToggleButton type='Bookmark'/>
+					<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
 
 					<MoreButton onClick={popUp} color='Gray' size='Fit'>
 						<MoreIcon/>

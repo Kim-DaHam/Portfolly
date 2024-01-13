@@ -14,4 +14,6 @@ export type Portfolio = {
 	likes: number,
 	thumbnailUrl: string[],
 	user?: object,
+	isLiked?: boolean,
+	isBookmarked?: boolean,
 };

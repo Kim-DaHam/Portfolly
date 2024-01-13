@@ -29,3 +29,15 @@ export const getTags = (tagIds: number[]) => {
 
 	return result;
 };
+
+export const getIsBookmarked = (portfolioId: number, bookmarks: number[]) => {
+	const isBookmarked = bookmarks.includes(portfolioId) ? true : false;
+
+	return isBookmarked;
+};
+
+export const getIsLiked = (portfolioId: number, likes: number[]) => {
+	const isLiked = likes.includes(portfolioId) ? true : false;
+
+	return isLiked;
+};

@@ -37,6 +37,9 @@ export const Text = styled.span<{size: FontSize, color?: FontColor}>`
 export const Label = styled.label<{color?: FontColor}>`
 	color: ${(props)=>props.color ? fontColor[props.color].color : '#111111'};
 
+	display: flex;
+	align-items: center;
+
 	font-size: 1rem;
 	line-height: 1.5rme;
 	letter-spacing: -.008em;
