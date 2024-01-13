@@ -57,6 +57,14 @@ export const usePortfolioDetailQuery = (id: string) => {
 	});
 };
 
+export const usePortfolioDeleteQuery = (id: string) => {
+	const deletePortfolio = () => fetch(`/portfolios?id=${id}`, 'DELETE');
+
+	return useMutation({
+		mutationFn: deletePortfolio,
+	});
+};
+
 export const useToggleButtonQuery = (id: number, type: Toggle) => {
 	const queryClient = useQueryClient();
 
@@ -83,4 +91,4 @@ export const useToggleButtonQuery = (id: number, type: Toggle) => {
 			return () => queryClient.setQueryData(queryKey, prevData);
 		}
 	})
-}
+};
