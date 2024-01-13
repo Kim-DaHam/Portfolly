@@ -42,7 +42,7 @@ const ModalBox = styled.div<{$type: Modal}>`
 	${mixins.flexColumn}
 	gap: 2rem;
 
-	padding: 1.7rem 2rem 3rem 2rem;
+	padding: 1.7rem 2rem 1.7rem 2rem;
 
 	border-radius: 16px;
 	background-color: white;
