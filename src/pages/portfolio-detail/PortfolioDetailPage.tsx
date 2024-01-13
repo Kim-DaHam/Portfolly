@@ -1,4 +1,5 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { FiChevronRight as ChevronRightIcon } from "react-icons/fi";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Aside, ButtonGroup, Content, FlexBox, GridBox, GridItem, HtmlContent, PortfolioInfoBox, PortfolioSection, ProfileBox, SummaryBox, TagBox, TitleBox, Wrapper } from "./PortfolioDetailPage.styled";
 
@@ -59,11 +60,14 @@ export default function PortfolioDetail(){
 									{portfolio.summary}
 								</SummaryBox>
 
-								<Label>이 전문가의 다른 포트폴리오 {'>'}</Label>
+								<Label onClick={()=>navigate(`/profile/${portfolio.user.id}`)}>
+									전문가의 다른 포트폴리오
+									<ChevronRightIcon size={18}/>
+								</Label>
 								<GridBox>
 									{ portfolio.otherPortfolios.map((portfolio: Portfolio) => {
 										return (
-											<GridItem key={portfolio.id}>
+											<GridItem key={portfolio.id} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
 												<Image size='100%' src={portfolio.thumbnailUrl[0]} shape='foursquare'/>
 											</GridItem>
 										)

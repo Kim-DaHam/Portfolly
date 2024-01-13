@@ -104,6 +104,7 @@ export const GridItem = styled.div`
 	overflow: hidden;
 
 	border-radius: 0.6rem;
+	cursor: pointer;
 
 	& img {
 		width: 100%;
