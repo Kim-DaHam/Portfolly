@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
 
 import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
@@ -11,11 +11,12 @@ import Profile from "@/components/molecules/profile/Profile";
 import usePopup from "@/hooks/usePopup";
 import { Portfolio } from "@/types/portfolio";
 
-type Props = {
+type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: Portfolio;
+	onClick: () => void;
 }
 
-export default function PortfolioItem({ portfolio }: Props) {
+export default function PortfolioItem({ portfolio, onClick }: Props) {
 	const buttonGroupRef = useRef(null);
 
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
@@ -31,7 +32,7 @@ export default function PortfolioItem({ portfolio }: Props) {
 	}, [isPopUp])
 
 	return (
-		<PortfolioItemLayout>
+		<PortfolioItemLayout onClick={onClick}>
 			<PortfolioThumbnail portfolio={portfolio}/>
 
 			<ProfileBox>

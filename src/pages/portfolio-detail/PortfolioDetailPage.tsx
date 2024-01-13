@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
-import { ButtonGroup, ContentContainer, FlexBox, GridBox, GridItem, HtmlContent, PortfolioDetailContainer, PortfolioDetailLayout, PortfolioSection, ProfileBox, RightSection, SummaryBox, TagBox, TitleBox, UserBox } from "./PortfolioDetailPage.styled";
+import { Aside, ButtonGroup, Content, FlexBox, GridBox, GridItem, HtmlContent, PortfolioInfoBox, PortfolioSection, ProfileBox, SummaryBox, TagBox, TitleBox, Wrapper } from "./PortfolioDetailPage.styled";
 
 import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
@@ -12,37 +12,35 @@ import { Heading, Label, Text } from "@/styles/Text.styled";
 import { Portfolio } from "@/types/portfolio";
 import { usePortfolioDetailQuery } from "@/utils/api-service/portfolio";
 
-function PortfolioDetail(){
+export default function PortfolioDetail(){
 	const portfolioId = useParams().portfolio_id as string;
 	const { data: portfolio } = usePortfolioDetailQuery(portfolioId);
 
+	const navigate = useNavigate();
+
 	return(
-		<PortfolioDetailLayout>
+		<Wrapper>
 			<Header/>
-			<PortfolioDetailContainer>
-				<RoundButton color='Transparency' size='Fit'>뒤로가기</RoundButton>
+			<Content>
+				<RoundButton color='Transparency' size='Fit' onClick={()=>navigate(-1)}>뒤로가기</RoundButton>
 				{ portfolio &&
-					<ContentContainer>
+					<FlexBox>
 						<PortfolioSection>
 							<HtmlContent>
 								{portfolio.content}
 							</HtmlContent>
 						</PortfolioSection>
 
-						<RightSection>
-							<UserBox>
-								<ProfileBox>
-									<Profile type='portfolio-detail' user={portfolio.user}/>
-								</ProfileBox>
+						<Aside>
+							<ProfileBox>
+								<Profile type='portfolio-detail' user={portfolio.user}/>
 								<SquareButton color='White' size='Medium'>문의하기</SquareButton>
-							</UserBox>
+							</ProfileBox>
 
-							<FlexBox>
+							<PortfolioInfoBox>
 								<TitleBox>
 									<Text size='Medium' color='Gray'>{portfolio.category}</Text>
-
 									<Heading size='Small'>{portfolio.title}</Heading>
-
 									<ButtonGroup>
 										<ToggleButton type='Like'/>
 										<ToggleButton type='Bookmark'/>
@@ -60,10 +58,8 @@ function PortfolioDetail(){
 								<SummaryBox>
 									{portfolio.summary}
 								</SummaryBox>
-							</FlexBox>
 
-							<FlexBox>
-								<Label>전문가의 다른 포트폴리오</Label>
+								<Label>이 전문가의 다른 포트폴리오 {'>'}</Label>
 								<GridBox>
 									{ portfolio.otherPortfolios.map((portfolio: Portfolio) => {
 										return (
@@ -73,14 +69,11 @@ function PortfolioDetail(){
 										)
 									})}
 								</GridBox>
-							</FlexBox>
-						</RightSection>
-					</ContentContainer>
-
+							</PortfolioInfoBox>
+						</Aside>
+					</FlexBox>
 				}
-			</PortfolioDetailContainer>
-		</PortfolioDetailLayout>
+			</Content>
+		</Wrapper>
 	)
 }
-
-export default PortfolioDetail;

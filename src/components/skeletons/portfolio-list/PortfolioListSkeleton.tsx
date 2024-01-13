@@ -1,8 +1,11 @@
-import PortfolioItemSkeleton from "../portfolio-item/PortfolioItemSkeleton";
+import styled from "styled-components";
+
+import PortfolioThumbnailSkeleton from "../portfolio-thumbnail/PortfolioThumbnailSkeleton";
 import ProfileSkeleton from "../profile/ProfileSkeleton";
 
 import { Profile } from "@/components/molecules/profile/Profile";
 import { GridBox } from "@/components/organisms/portfolio-list/PortfolioList.styled";
+import * as mixins from '@/styles/mixins';
 
 type Props = {
 	profile: Profile;
@@ -13,12 +16,17 @@ export default function PortfolioListSkeleton({profile}: Props) {
 		<GridBox>
 			{ new Array(12).fill(1).map((_, index: number)=>{
 				return(
-					<div key={index}>
-						<PortfolioItemSkeleton/>
-						<ProfileSkeleton profile={profile}/>
-					</div>
+					<GridItem key={index}>
+						<PortfolioThumbnailSkeleton/>
+						<ProfileSkeleton type={profile}/>
+					</GridItem>
 				)
 			})}
 		</GridBox>
 	)
 }
+
+const GridItem = styled.div`
+	${mixins.flexColumn}
+	gap: 0.5rem;
+`;

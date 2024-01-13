@@ -11,7 +11,7 @@ export const PortfolioItemSkeletonLayout = styled.div<{$section: Section}>`
 
 	overflow: hidden;
 
-	background-color: lightgray;
+	background-color: lemonchiffon;
 	border-radius: 1.8rem;
 `;
 

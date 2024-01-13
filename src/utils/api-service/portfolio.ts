@@ -1,9 +1,12 @@
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
 import { stringToUrlParameter } from '../path';
 
+import { SESSIONSTORAGE_KEY } from '@/components/organisms/portfolio-list/PortfolioList';
 import { Section } from '@/types/portfolio';
 import { fetch } from '@/utils/fetch';
+
+const PORTFOLIOS_PER_PAGE = 100;
 
 const portfolioKeys = {
   all: ['portfolios'] as const,
@@ -13,13 +16,20 @@ const portfolioKeys = {
   detail: (id: string) => [...portfolioKeys.details(), id] as const,
 }
 
-export const usePortfoliosQuery = (limit: number, section: Section, filter: {filterKey: string, filterValue: string}) => {
+export const usePortfoliosQuery = (section: Section, filter: {filterKey: string, filterValue: string}) => {
 	const filterParameter = stringToUrlParameter(filter.filterValue);
-	const getPortfolios = () => fetch(`/portfolios?limit=${limit}&section=${section}&${filter.filterKey}=${filterParameter}`, 'GET');
 
-	return useSuspenseQuery({
+	const getPortfolios = ({pageParam}: {pageParam: number}) => fetch(`/portfolios?page=${pageParam}&section=${section}&${filter.filterKey}=${filterParameter}`, 'GET');
+
+	return useSuspenseInfiniteQuery({
 		queryKey: portfolioKeys.list(section, {type: filter.filterKey, value: filter.filterValue}),
 		queryFn: getPortfolios,
+		select: data => data.pages[0],
+		initialPageParam: 1,
+		getNextPageParam: (lastPage, allPages) => {
+			const nextPage = allPages.length + 1;
+			return lastPage.length < PORTFOLIOS_PER_PAGE ? undefined :nextPage;
+		},
 		staleTime: Infinity,
 		gcTime: Infinity,
 	});

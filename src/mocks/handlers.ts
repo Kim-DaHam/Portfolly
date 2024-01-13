@@ -16,7 +16,7 @@ const sectionIdMap = new Map([
 const PortfolioHandlers= [
 	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
-		const limit = url.searchParams.get('limit') as string;
+		const page = url.searchParams.get('page') as string;
 		const section = url.searchParams.get('section') as Section;
 		const category = url.searchParams.get('category') as string;
 		// const tag = url.searchParams.get('tag');
@@ -73,7 +73,8 @@ const PortfolioHandlers= [
 		// }
 
 		const limitedResponseData = responseData.filter((_, index)=>{
-			return index < Number(limit);
+			const pageNum = Number(page);
+			return index >= (pageNum - 1) * 100 && index < pageNum * 100;
 		})
 
 		return HttpResponse.json(limitedResponseData, { status: 200 });

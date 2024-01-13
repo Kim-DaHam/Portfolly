@@ -16,7 +16,7 @@ import GlobalErrorFallback from './utils/fallback/gloabalErrorFallback';
 import IntroPage from '@/pages/intro/IntroPage';
 import MainPage from '@/pages/main/MainPage';
 import MyPage from '@/pages/my-page/MyPage';
-import PortfolioDetail from '@/pages/portfolio-detail/PortfolioDetailPage';
+import PortfolioDetailPage from '@/pages/portfolio-detail/PortfolioDetailPage';
 import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
 import SignIn from '@/pages/signIn/SignIn';
 import { store } from '@/redux/store';
@@ -34,7 +34,7 @@ export default function App() {
 								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>}></Route>
 								<Route path={ROUTE_PATH.SIGN_IN} element={<SignIn/>}></Route>
 								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>}></Route>
-								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetail/>}></Route>
+								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>}></Route>
 								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEdit/>}></Route>
 							</Routes>
 						</BrowserRouter>
