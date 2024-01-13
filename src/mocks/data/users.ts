@@ -79,7 +79,8 @@ export const clients = [
 			score: 100,
 			contactTime: '언제나 가능',
 		},
-		bookmark: [ 1, 2, 3, 4, 5 ],
+		likes: [1, 2, 3, 4, 5],
+		bookmarks: [1, 2, 3, 4, 5],
 	},
 	{
 		id: 200,
@@ -94,7 +95,8 @@ export const clients = [
 		activity: {
 			contactTime: '언제나 가능',
 		},
-		bookmark: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ],
+		likes: [1, 2, 3, 4, 5],
+		bookmarks: [1, 2, 3, 4, 5],
 	},
 	{
 		id: 300,
@@ -109,6 +111,7 @@ export const clients = [
 		activity: {
 			contactTime: '언제나 가능',
 		},
-		bookmark: [ 6, 7, 8, 9, 10, 11 ],
+		likes: [1, 2, 3, 4, 5],
+		bookmarks: [1, 2, 3, 4, 5],
 	},
 ];
