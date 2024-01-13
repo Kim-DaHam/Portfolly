@@ -120,7 +120,7 @@ export const GridItem = styled.div`
 export const TextButton = styled(Label)`
 	cursor: pointer;
 
-	& hover {
+	&:hover {
 		text-decoration: underline;
 	}
 `;

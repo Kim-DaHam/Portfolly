@@ -52,9 +52,7 @@ export default function PortfolioList({category}: Props) {
 		const getStorage = sessionStorage.getItem(SESSIONSTORAGE_KEY);
 		if(!getStorage) return;
 
-		const { anchorPosition, clickedPortfolioIndex } = JSON.parse(getStorage);
-
-		setCount(clickedPortfolioIndex);
+		const { anchorPosition } = JSON.parse(getStorage);
 
 		setTimeout(() => {
       window.scrollTo({

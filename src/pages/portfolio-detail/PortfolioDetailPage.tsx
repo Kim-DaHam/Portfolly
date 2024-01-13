@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { FiChevronRight as ChevronRightIcon } from "react-icons/fi";
 import { useSelector } from "react-redux";
@@ -11,25 +12,43 @@ import Image from "@/components/atoms/image/Image";
 import Tag from "@/components/atoms/tag/Tag";
 import Profile from "@/components/molecules/profile/Profile";
 import Header from "@/components/organisms/header/Header";
+import AlertModal from "@/components/organisms/modal/alert-modal/AlertModal";
+import { useModal } from "@/hooks";
 import { userId } from "@/redux/loginSlice";
+import { section } from "@/redux/sectionSlice";
 import { Heading, Label, Text } from "@/styles/Text.styled";
 import { Portfolio } from "@/types/portfolio";
-import { usePortfolioDetailQuery } from "@/utils/api-service/portfolio";
+import { usePortfolioDeleteQuery, usePortfolioDetailQuery } from "@/utils/api-service/portfolio";
+import { stringToUrlParameter } from "@/utils/path";
 
 export default function PortfolioDetail(){
 	const [hasAuthority, setHasAuthority] = useState(false);
 
-	const portfolioId = useParams().portfolio_id as string;
-	const { data: portfolio } = usePortfolioDetailQuery(portfolioId);
-
-	const navigate = useNavigate();
-
 	const user = useSelector(userId);
 
+	const portfolioId = useParams().portfolio_id as string;
+	const { data: portfolio } = usePortfolioDetailQuery(portfolioId);
+	const deletePorfolioMutation = usePortfolioDeleteQuery(portfolioId);
+
+	const navigate = useNavigate();
+	const currentSection = useSelector(section);
+	const { isModalOpen, handleModal } = useModal();
+
+	const handleEditButton = () => {
+		navigate(`/portfolios/edit?id=${portfolio.id}`, {state: portfolio});
+	};
+
+	const deletePortfolio = async () => {
+		await deletePorfolioMutation.mutate();
+		navigate(`/main/${stringToUrlParameter(currentSection)}`);
+	};
+
 	useEffect(() => {
-		const hasAuthority = (user === portfolio.user.id) ? true : false;
-		setHasAuthority(hasAuthority);
-	}, [])
+		if(portfolio) {
+			const hasAuthority = (user === portfolio.user.id) ? true : false;
+			setHasAuthority(hasAuthority);
+		}
+	}, [portfolio])
 
 	return(
 		<Wrapper>
@@ -63,8 +82,8 @@ export default function PortfolioDetail(){
 
 								{ hasAuthority &&
 									<ButtonGroup>
-										<TextButton>수정하기</TextButton>
-										<TextButton>삭제하기</TextButton>
+										<TextButton onClick={handleEditButton}>수정하기</TextButton>
+										<TextButton onClick={handleModal}>삭제하기</TextButton>
 									</ButtonGroup>
 								}
 
@@ -98,6 +117,9 @@ export default function PortfolioDetail(){
 					</FlexBox>
 				}
 			</Content>
+			{ isModalOpen &&
+				<AlertModal type='delete' onClick={deletePortfolio} handleModal={handleModal}/>
+			}
 		</Wrapper>
 	)
 }
