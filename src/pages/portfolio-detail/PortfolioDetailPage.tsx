@@ -43,8 +43,8 @@ export default function PortfolioDetail(){
 									<Text size='Medium' color='Gray'>{portfolio.category}</Text>
 									<Heading size='Small'>{portfolio.title}</Heading>
 									<ButtonGroup>
-										<ToggleButton type='Like'/>
-										<ToggleButton type='Bookmark'/>
+										<ToggleButton type='like' isToggled={portfolio.isLiked} portfolioId={portfolio.id} currentLikes={portfolio.likes}/>
+										<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
 									</ButtonGroup>
 								</TitleBox>
 
