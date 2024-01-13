@@ -1,8 +1,8 @@
-import { useQuery, useSuspenseInfiniteQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
 import { stringToUrlParameter } from '../path';
 
-import { SESSIONSTORAGE_KEY } from '@/components/organisms/portfolio-list/PortfolioList';
+import { Toggle } from '@/components/atoms/button/ToggleButton';
 import { Section } from '@/types/portfolio';
 import { fetch } from '@/utils/fetch';
 
@@ -56,3 +56,31 @@ export const usePortfolioDetailQuery = (id: string) => {
 		gcTime: Infinity,
 	});
 };
+
+export const useToggleButtonQuery = (id: number, type: Toggle) => {
+	const queryClient = useQueryClient();
+
+	const handleToggleButton = () => fetch(`/${type}?id=${id}`, 'POST');
+
+	return useMutation({
+		mutationFn: handleToggleButton,
+		onMutate: async () => {
+			const queryKey = ['portfolios', 'detail', String(id)];
+			const prevData: any = queryClient.getQueryData(queryKey);
+
+			await queryClient.cancelQueries({queryKey: queryKey});
+
+			queryClient.setQueryData(queryKey, ()=>{
+				if(type === 'bookmark')
+					return {...prevData, isBookmarked: !prevData.isBookmarked};
+				if(type === 'like'){
+					if(prevData.isLiked)
+						return {...prevData, isLiked: !prevData.isLiked, likes: --prevData.likes};
+					return {...prevData, isLiked: !prevData.isLiked, likes: ++prevData.likes};
+				}
+			});
+
+			return () => queryClient.setQueryData(queryKey, prevData);
+		}
+	})
+}
