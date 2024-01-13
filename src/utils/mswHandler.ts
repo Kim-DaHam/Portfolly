@@ -3,19 +3,27 @@ import { tags } from "@/mocks/data/tags";
 import { experts } from "@/mocks/data/users";
 
 export const getUserData = (userId: number) => {
-	const result = experts.filter((expert)=>{
+	const result = experts.find((expert)=>{
 		return expert.id === userId;
 	})
 
-	return result[0];
+	return result;
 };
 
 export const getCategory = (categoryId: number) => {
-	const result = categories.filter((category) => {
+	const result = categories.find((category) => {
 		return category.id === categoryId
 	})
 
-	return result[0].name;
+	return result?.name;
+};
+
+export const getCategoryId = (categoryName: string) => {
+	const result = categories.find((category) => {
+		return category.name === categoryName
+	})
+
+	return result?.id;
 };
 
 export const getTags = (tagIds: number[]) => {

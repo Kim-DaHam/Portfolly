@@ -4,7 +4,7 @@ import { portfolios } from '../data/portfolios';
 import { clients } from '../data/users';
 
 import { Portfolio, Section } from '@/types/portfolio';
-import { getCategory, getIsBookmarked, getIsLiked, getTags, getUserData } from '@/utils/mswHandler';
+import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getTags, getUserData } from '@/utils/mswHandler';
 
 const sectionIdMap = new Map([
 	['Android/iOS', 1],
@@ -32,8 +32,10 @@ export const PortfolioHandlers= [
 		})
 
 		if(category && category !== '전체') {
+			const categoryId = getCategoryId(category);
+
 			const categoryFilteredPortfolios = filteredPortfolios.filter((portfolio) => {
-				return portfolio.category === category;
+				return portfolio.categoryId === categoryId;
 			})
 
 			filteredPortfolios = categoryFilteredPortfolios;
