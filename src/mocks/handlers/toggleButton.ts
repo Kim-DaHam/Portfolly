@@ -1,7 +1,7 @@
 import { HttpResponse, http } from 'msw';
 
 import { portfolios } from '../data/portfolios';
-import { clients } from '../data/users';
+import { users } from '../data/users';
 
 export const toggleButtonHandlers= [
 	http.post('/like', ({request}) => {
@@ -17,7 +17,7 @@ export const toggleButtonHandlers= [
 			}
 		});
 
-		clients.forEach((user) => {
+		users.forEach((user) => {
 			if(user.id === userId) {
 				const index = user.likes.indexOf(Number(portfolioId));
 				user.likes.splice(index, 1);
@@ -38,7 +38,7 @@ export const toggleButtonHandlers= [
 			}
 		});
 
-		clients.forEach((user) => {
+		users.forEach((user) => {
 			if(user.id === userId) {
 				const index = user.bookmarks.indexOf(Number(portfolioId));
 				user.likes.splice(index, 1);

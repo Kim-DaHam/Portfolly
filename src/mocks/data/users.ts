@@ -1,4 +1,4 @@
-export const experts = [
+export const users = [
 	{
 		id: 1,
 		nickname: '전문가 1',
@@ -71,9 +71,6 @@ export const experts = [
 		bookmarks: [1, 2, 3, 4, 5],
 		portfolios: [3, 6, 9, 14, 17, 20, 25, 28, 31, 36, 39, 42, 45, 46, 49, 52, 55, 58, 59,],
 	},
-];
-
-export const clients = [
 	{
 		id: 100,
 		nickname: '의뢰인 1',
@@ -90,6 +87,7 @@ export const clients = [
 		},
 		likes: [1, 2, 3, 4, 5],
 		bookmarks: [1, 2, 3, 4, 5],
+		portfolios: [],
 	},
 	{
 		id: 200,
@@ -106,6 +104,7 @@ export const clients = [
 		},
 		likes: [1, 2, 3, 4, 5],
 		bookmarks: [1, 2, 3, 4, 5],
+		portfolios: [],
 	},
 	{
 		id: 300,
@@ -122,5 +121,6 @@ export const clients = [
 		},
 		likes: [1, 2, 3, 4, 5],
 		bookmarks: [1, 2, 3, 4, 5],
+		portfolios: [],
 	},
 ];

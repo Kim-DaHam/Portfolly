@@ -1,10 +1,10 @@
 import { categories } from "@/mocks/data/categories"
 import { tags } from "@/mocks/data/tags";
-import { experts } from "@/mocks/data/users";
+import { users } from "@/mocks/data/users";
 
 export const getUserData = (userId: number) => {
-	const result = experts.find((expert)=>{
-		return expert.id === userId;
+	const result = users.find((user)=>{
+		return user.id === userId;
 	})
 
 	return result;

@@ -1,7 +1,7 @@
 import { HttpResponse, http } from 'msw';
 
 import { portfolios } from '../data/portfolios';
-import { clients, experts } from '../data/users';
+import { users } from '../data/users';
 
 import { Portfolio, Section } from '@/types/portfolio';
 import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getTags, getUserData } from '@/utils/mswHandler';
@@ -45,7 +45,7 @@ export const PortfolioHandlers= [
 
 		const responseData = filteredPortfolios.map((portfolio: Portfolio) => {
 			const user = getUserData(portfolio.userId);
-			const bookmarks = clients.find((client) => client.id === USER_ID)!.bookmarks;
+			const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks;
 			const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
 
 			const portfolioData = {
@@ -146,8 +146,8 @@ export const PortfolioHandlers= [
 		const user = getUserData(portfolioData!.userId);
 		const category = getCategory(portfolioData!.categoryId);
 		const tags = getTags(portfolioData!.tagId);
-		const likes = clients.find((client) => client.id === USER_ID)!.likes;
-		const bookmarks = clients.find((client) => client.id === USER_ID)!.bookmarks;
+		const likes = users.find((user) => user.id === USER_ID)!.likes;
+		const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks;
 		const isBookmarked = getIsBookmarked(portfolioData!.id, bookmarks);
 		const isLiked = getIsLiked(portfolioData!.id, likes);
 
@@ -173,13 +173,21 @@ export const PortfolioHandlers= [
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
 
-		const user = experts.find((user) => {
+		const user = users.find((user) => {
 			return user.id === USER_ID;
 		});
 
 		user?.portfolios.forEach((portfolio, index) => {
-      if (portfolio === Number(portfolioId)) portfolios.splice(index, 1);
+      if (portfolio === Number(portfolioId)) {
+				user?.portfolios.splice(index, 1);
+			}
     });
+
+		portfolios.forEach((portfolio, index) => {
+			if(portfolio.id === Number(portfolioId)) {
+				portfolios.splice(index, 1);
+			}
+		});
 
 		return HttpResponse.json(null, { status: 200 });
 	}),
