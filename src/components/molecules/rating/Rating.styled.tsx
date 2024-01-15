@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-export const RatingLayout = styled.div`
+export const Wrapper = styled.div`
 	width: fit-content;
 
 	display: flex;
@@ -10,7 +10,7 @@ export const RatingLayout = styled.div`
 	background-color: yellow;
 `;
 
-export const RatingBox = styled.div`
+export const Content = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.1rem;
