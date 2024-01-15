@@ -26,7 +26,7 @@ const activeButton: {[key in Alert]: string} = {
 
 export default function AlertModal({type, onClick, handleModal}: Props) {
 	return(
-		<Modal type='alert'>
+		<Modal $type='alert'>
 			<Content>
 				<Text size='Medium'>{alertMessage[type]}</Text>
 				<ButtonGroup>
