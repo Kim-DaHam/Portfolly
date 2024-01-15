@@ -2,12 +2,12 @@ import { FiMoreHorizontal as Icon} from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Popper from "../popper/Popper";
 import { Group, Item } from "../popper/Popper.styled";
 
-import { SectionNavigatorLayout, SectionTitle } from "./SectionNavigator.styled";
+import * as S from "./SectionNavigator.styled";
 
 import { Button } from "@/components/atoms/index";
+import { Popper }  from "@/components/molecules/index";
 import usePopup from "@/hooks/usePopup";
 import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Section } from "@/types/portfolio";
@@ -28,8 +28,8 @@ export default function SectionNavigator() {
 	};
 
 	return(
-		<SectionNavigatorLayout>
-			<SectionTitle>{currentSection}</SectionTitle>
+		<S.Wrapper>
+			<S.SectionTitle>{currentSection}</S.SectionTitle>
 
 			<Button color='white' shape='round' onClick={popUp}>
 				<Icon color='gray'/>
@@ -37,7 +37,7 @@ export default function SectionNavigator() {
 
 			{isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>
-					<Group size='Fit'>
+					<Group size='fit'>
 						{sections.map((section: Section, index: number)=>{
 							return(
 								<Item onClick={handleSection} key={index}>{section}</Item>
@@ -46,6 +46,6 @@ export default function SectionNavigator() {
 					</Group>
 				</Popper>
 			}
-		</SectionNavigatorLayout>
+		</S.Wrapper>
 	)
 }

@@ -1,20 +1,24 @@
 import { createPortal } from "react-dom";
 
-import { PopperContainer, PopperLayout} from "./Popper.styled";
-import { Props } from "./Popper.types";
-
+import * as S from "@/components/molecules/popper/Popper.styled";
 import useStopScrollY from "@/hooks/useStopScrollY";
 import { eventStopPropagation } from "@/utils/event";
+
+export type Props = {
+	coordinate: {right: number, bottom: number};
+	popOut: ()=>void;
+	children: JSX.Element;
+};
 
 export default function Popper({ children, coordinate, popOut}: Props) {
 	useStopScrollY();
 
 	return createPortal(
-		<PopperLayout onClick={popOut}>
-			<PopperContainer $top={coordinate.bottom} $right={coordinate.right} onClick={eventStopPropagation}>
+		<S.Wrapper onClick={popOut}>
+			<S.PopperBox $top={coordinate.bottom} $right={coordinate.right} onClick={eventStopPropagation}>
 				{children}
-			</PopperContainer>
-		</PopperLayout>,
+			</S.PopperBox>
+		</S.Wrapper>,
 		document.getElementById('modal')!
 	)
 }

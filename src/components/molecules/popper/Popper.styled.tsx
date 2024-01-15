@@ -1,9 +1,8 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-import { popperSize } from '@/styles/token';
-import { PopperSize } from '@/types/style';
+import * as mixins from '@/styles/mixins';
 
-export const PopperLayout = styled.div`
+export const Wrapper = styled.div`
 	width: 100vw;
 	height: 100vh;
 
@@ -14,11 +13,10 @@ export const PopperLayout = styled.div`
 	background-color: transparent;
 `;
 
-export const PopperContainer = styled.div<{$top: number, $right: number}>`
+export const PopperBox = styled.div<{$top: number, $right: number}>`
 	width: auto;
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 
 	position: fixed;
 	z-index: 999;
@@ -36,12 +34,11 @@ export const Separator = styled.div`
 	background-color: black;
 `;
 
-export const Group = styled.div<{size?: PopperSize}>`
-	width: ${(props)=> props.size ? popperSize[props.size].width : '14rem'};
+export const Group = styled.div<{size?: 'fit'}>`
+	width: ${(props)=> props.size === 'fit' ?'fit-content' : '14rem'};
 	height: 100%;
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 
 	padding: 8px;
 `;

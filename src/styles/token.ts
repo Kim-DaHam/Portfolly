@@ -72,60 +72,6 @@ export const fontColor: FontColorStyle = {
 	},
 }
 
-export const buttonColor: ButtonColorStyle = {
-	White: {
-		backgroundColor: '#FFFFFF',
-		hoverBackgroundColor: '#f3f3f3',
-		fontColor: '11111',
-		border: '0px',
-	},
-	Black: {
-		backgroundColor: '#111111',
-		hoverBackgroundColor: '#1d1d1d',
-		fontColor: '#FFFFFF',
-		border: '0px',
-	},
-	Gray: {
-		backgroundColor: '#f3f3f3',
-		hoverBackgroundColor: '#d0d0d0',
-		fontColor: '11111',
-		border: '0px',
-	},
-	Transparency: {
-		backgroundColor: 'transparent',
-		hoverBackgroundColor: 'transparent',
-		fontColor: '11111',
-		border: '1px solid #f3f3f3',
-	}
-};
-
-export const buttonSize: ButtonSizeStyle = {
-	Default: {
-		width: '100%',
-	},
-	Fit: {
-		width: 'fit-content',
-	},
-	Large: {
-		width: '13rem',
-	},
-	Medium: {
-		width: '9rem',
-	},
-	Small: {
-		width: '5rem',
-	}
-};
-
-export const popperSize: PopperStyle = {
-	Default: {
-		width: '14rem'
-	},
-	Fit: {
-		width: 'fit-content'
-	}
-};
-
 export const profileSize: ProfileSize = {
 	'portfolio-item': {
 		height: '3.5rem',
