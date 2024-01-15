@@ -5,20 +5,13 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./PortfolioDetailPage.styled";
 
-import ToggleButton from "@/components/atoms/button/ToggleButton";
-import Image from "@/components/atoms/image/Image";
-import { Button } from "@/components/atoms/index";
-import Tag from "@/components/atoms/tag/Tag";
-import Profile from "@/components/molecules/profile/Profile";
-import Header from "@/components/organisms/header/Header";
-import AlertModal from "@/components/organisms/modal/alert-modal/AlertModal";
+import { Image, Button, ToggleButton, Tag, Profile, Header, AlertModal } from "@/components";
 import { useModal } from "@/hooks";
 import { userId } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
 import { Heading, Label, Text } from "@/styles/Text.styled";
-import { Portfolio } from "@/types/portfolio";
-import { usePortfolioDeleteQuery, usePortfolioDetailQuery } from "@/utils/api-service/portfolio";
-import { stringToUrlParameter } from "@/utils/path";
+import { Portfolio } from "@/types";
+import { usePortfolioDeleteQuery, usePortfolioDetailQuery, stringToUrlParameter } from "@/utils";
 
 export default function PortfolioDetail(){
 	const [hasAuthority, setHasAuthority] = useState(false);

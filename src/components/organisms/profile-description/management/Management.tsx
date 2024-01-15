@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
-import { Selector , Button } from "@/components/atoms";
-import { RequestModal, Tracking} from "@/components/organisms";
+import { Selector , Button, RequestModal, Tracking } from "@/components";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
 import { Text } from "@/styles/Text.styled";
 

@@ -8,12 +8,11 @@ import SearchModal from "../modal/search-modal/SearchModal";
 
 import { categories } from "./CategorySlider.constants";
 
-import { Button } from "@/components/atoms/index";
+import { Button } from "@/components";
 import * as S from "@/components/organisms/category-slider/CategorySlider.styled";
-import useCategorySlider from "@/hooks/useCategorySlider";
-import useModal from "@/hooks/useModal";
+import { useModal, useCategorySlider } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
-import { getFilterQueryParameter, stringToUrlParameter } from "@/utils/path";
+import { getFilterQueryParameter, stringToUrlParameter } from "@/utils";
 
 export default function CategorySlider() {
 	const [currentCategory, setCurrentCategory] = useState('전체');

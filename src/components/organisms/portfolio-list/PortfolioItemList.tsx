@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { PortfolioItem } from "@/components/molecules";
+import { PortfolioItem } from "@/components";
 import * as S from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
 import { useIntersectionObserver } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
-import { Portfolio } from "@/types/portfolio";
-import { usePortfoliosQuery } from "@/utils/api-service/portfolio";
+import { Portfolio } from "@/types";
+import { usePortfoliosQuery } from "@/utils";
 
 type Props = {
 	category: string;

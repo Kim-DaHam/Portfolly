@@ -1,10 +1,8 @@
 import { useMutation, useQuery, useQueryClient, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
-import { stringToUrlParameter } from '../path';
-
 import { Toggle } from '@/components/atoms/button/ToggleButton';
-import { Section } from '@/types/portfolio';
-import { fetch } from '@/utils/fetch';
+import { Section } from '@/types';
+import { fetch, stringToUrlParameter } from "@/utils";
 
 const PORTFOLIOS_PER_PAGE = 100;
 

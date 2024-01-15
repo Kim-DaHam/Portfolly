@@ -2,8 +2,7 @@ import { FiX as XIcon } from "react-icons/fi";
 
 import * as S from "./RequestModal.styled";
 
-import { Button } from "@/components/atoms";
-import { Modal } from "@/components/molecules";
+import { Button, Modal } from "@/components";
 import { Heading, Label, Text } from "@/styles/Text.styled";
 import { SetState } from "@/types";
 

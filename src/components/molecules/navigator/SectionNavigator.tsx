@@ -6,12 +6,12 @@ import { Group, Item } from "../popper/Popper.styled";
 
 import * as S from "./SectionNavigator.styled";
 
-import { Button } from "@/components/atoms/index";
-import { Popper }  from "@/components/molecules/index";
-import usePopup from "@/hooks/usePopup";
+import { Button } from "@/components/atoms";
+import { Popper }  from "@/components/molecules";
+import { usePopup } from "@/hooks";
 import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Section } from "@/types/portfolio";
-import { stringToUrlParameter } from "@/utils/path";
+import { Section } from "@/types";
+import { stringToUrlParameter } from "@/utils";
 
 const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
 

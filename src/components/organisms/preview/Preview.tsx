@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
-import { PortfolioThumbnail } from "@/components/molecules";
+import { PortfolioThumbnail } from "@/components";
 import * as S from "@/components/organisms/preview/Preview.styled";
 import { Heading, Text } from "@/styles/Text.styled";
-import { Portfolio, Section } from "@/types/portfolio";
-import { stringToUrlParameter } from "@/utils/path";
+import { Portfolio, Section } from "@/types";
+import { stringToUrlParameter } from "@/utils";
 
 type Props = {
 	section: Section,

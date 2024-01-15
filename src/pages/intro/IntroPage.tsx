@@ -1,9 +1,8 @@
 import * as S from "./IntroPage.styled";
 
 import { Footer, Header, Preview } from "@/components/organisms";
-import { Section } from "@/types/portfolio";
-import { useTopPortfoliosQuery } from "@/utils/api-service/portfolio";
-import { wheelHandler } from "@/utils/wheelHandler";
+import { Section } from "@/types";
+import { wheelHandler, useTopPortfoliosQuery } from "@/utils";
 
 const sections: Array<Section> = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
 

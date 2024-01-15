@@ -1,7 +1,7 @@
 import { Dispatch, HTMLAttributes, SetStateAction } from "react";
 
 import * as S from "@/components/molecules/searchBar/SearchBar.styled";
-import useSearch from "@/hooks/useSearch";
+import { useSearch } from "@/hooks";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	isClicked: boolean;

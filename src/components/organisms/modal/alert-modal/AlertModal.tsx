@@ -1,8 +1,7 @@
 import { MouseEventHandler } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-import { Button } from "@/components/atoms/index";
-import { Modal } from "@/components/molecules/index";
+import { Button, Modal } from "@/components";
 import * as mixins from '@/styles/mixins';
 import { Text } from "@/styles/Text.styled";
 

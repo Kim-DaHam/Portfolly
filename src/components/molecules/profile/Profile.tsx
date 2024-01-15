@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { Image } from '@/components/atoms/index';
+import { Image } from '@/components';
 import * as S from "@/components/molecules/profile/Profile.styled";
 import { Heading, Text } from "@/styles/Text.styled";
 import { IComponentFactory } from "@/types";

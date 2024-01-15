@@ -1,11 +1,10 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
 
-import { Button, ToggleButton } from "@/components/atoms/index";
-import { Popper, PortfolioThumbnail, Profile } from "@/components/molecules/index";
+import { Button, ToggleButton, Popper, PortfolioThumbnail, Profile } from "@/components";
 import { Group, Item } from "@/components/molecules/popper/Popper.styled";
 import * as S from "@/components/molecules/portfolio-item/PortfolioItem.styled";
-import usePopup from "@/hooks/usePopup";
+import { usePopup } from "@/hooks";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: any;

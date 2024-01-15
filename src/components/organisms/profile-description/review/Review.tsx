@@ -1,4 +1,4 @@
-import { Pagination, Rating } from "@/components/molecules";
+import { Pagination, Rating } from "@/components";
 import * as S from "@/components/organisms/profile-description/review/Review.styled";
 import { Text } from "@/styles/Text.styled";
 

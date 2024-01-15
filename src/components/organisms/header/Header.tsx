@@ -3,14 +3,12 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo.png';
-import { Image, Button } from '@/components/atoms/index';
-import { SectionNavigator, Popper, SearchBar } from "@/components/molecules/index";
+import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from '@/components';
 import { renderHeaderMenuPopper } from "@/components/organisms/header/Header.helpers";
 import * as S from "@/components/organisms/header/Header.styled";
-import { SearchModal } from "@/components/organisms/index";
 import { useHeader, useModal, usePopup } from "@/hooks";
 import { isLogin as IsLogin } from "@/redux/loginSlice";
-import { ROUTE_PATH } from "@/utils/path";
+import { ROUTE_PATH } from "@/utils";
 
 export default function Header() {
 	const { showSearchBar, showSectionNavigator } = useHeader();

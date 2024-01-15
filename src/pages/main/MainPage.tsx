@@ -4,11 +4,10 @@ import { useSelector } from "react-redux";
 import * as S from "./MainPage.styled";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
-import { Header, CategorySlider } from "@/components/organisms";
-import PortfolioListSkeleton from "@/components/skeletons/portfolio-list/PortfolioListSkeleton";
+import { Header, CategorySlider, PortfolioListSkeleton } from "@/components";
 import { useDispatchSectionParameter } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
-import { getFilterQueryParameter } from "@/utils/path";
+import { getFilterQueryParameter } from "@/utils";
 
 const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioItemList'));
 

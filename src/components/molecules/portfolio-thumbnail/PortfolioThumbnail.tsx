@@ -7,12 +7,12 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { initialProps, sliderSettings } from "./PortfolioThumbnail.constants";
 
-import { Image } from "@/components/atoms/index";
+import { Image } from "@/components";
 import * as S from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail.styled";
-import useHandleSlider from "@/hooks/slider/useHandleSlider";
+import { useHandleSlider } from "@/hooks";
 import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Portfolio, Section } from "@/types/portfolio";
-import { eventStopPropagation } from "@/utils/event";
+import { Portfolio, Section } from "@/types";
+import { eventStopPropagation } from "@/utils";
 
 export type Props = {
 	section?: Section;

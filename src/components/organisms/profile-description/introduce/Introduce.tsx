@@ -1,4 +1,4 @@
-import Tag from "@/components/atoms/tag/Tag";
+import { Tag } from "@/components";
 import * as S from "@/components/organisms/profile-description/introduce/Introduce.styled";
 import { Label, Text } from "@/styles/Text.styled";
 

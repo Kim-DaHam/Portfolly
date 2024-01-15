@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
 
 import * as S from "@/components/molecules/popper/Popper.styled";
-import useStopScrollY from "@/hooks/useStopScrollY";
-import { eventStopPropagation } from "@/utils/event";
+import { useStopScrollY } from "@/hooks";
+import { eventStopPropagation } from "@/utils";
 
 export type Props = {
 	coordinate: {right: number, bottom: number};
