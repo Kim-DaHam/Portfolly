@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { GridBox } from "./PortfolioItemList.styled";
-
-import PortfolioItem from "@/components/molecules/portfolio-item/PortfolioItem";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { PortfolioItem } from "@/components/molecules";
+import * as S from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
+import { useIntersectionObserver } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
 import { Portfolio } from "@/types/portfolio";
 import { usePortfoliosQuery } from "@/utils/api-service/portfolio";
@@ -64,7 +63,7 @@ export default function PortfolioItemList({category}: Props) {
 	}, []);
 
 	return (
-		<GridBox>
+		<S.GridBox>
 			{ portfolios && portfolios.map((portfolio: Portfolio, index: number)=>{
 				if(index < count) {
 					return(
@@ -75,6 +74,6 @@ export default function PortfolioItemList({category}: Props) {
 			{ loadData &&
 				<div ref={setObservationTarget}></div>
 			}
-		</GridBox>
+		</S.GridBox>
 	)
 }
