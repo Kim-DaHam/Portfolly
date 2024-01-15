@@ -4,18 +4,12 @@ import * as S from "@/components/molecules/rating/Rating.styled";
 import { Text } from '@/styles/Text.styled';
 
 export default function Rating() {
-	const renderStarIcon = ()=>{
-		const stars = [];
-		for(let i=0; i<5; i++){
-			stars.push(<StarIcon/>)
-		}
-		return stars;
-	}
-
 	return(
 		<S.Wrapper>
 			<S.Content>
-				{renderStarIcon()}
+				{new Array(0).fill(0, 0, 5).map((_, index: number) => {
+					return <StarIcon key={index}/>;
+				})}
 			</S.Content>
 			<Text size='Medium' color='Gray'>Score</Text>
 		</S.Wrapper>
