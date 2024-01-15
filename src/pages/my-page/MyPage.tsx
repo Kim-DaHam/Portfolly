@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ContentContainer, InformationSection, MyPageLayout, NavigationSection, ProfileContainer, DescriptionSection, ProfileImg, ProfileMainSection } from "./MyPage.styled";
+import * as S from "./MyPage.styled";
 import { Navigation } from "./MyPage.type";
 import { renderDescription, renderNavigation } from "./MyPage.utils";
 
@@ -17,13 +17,13 @@ function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('Introduce');
 
 	return(
-		<MyPageLayout>
+		<S.MyPageLayout>
 			<Header/>
-			<ProfileContainer>
-				<ProfileMainSection>
-					<ProfileImg>
+			<S.ProfileContainer>
+				<S.ProfileMainSection>
+					<S.ProfileImg>
 						<img/>
-					</ProfileImg>
+					</S.ProfileImg>
 
 					<FlexColumnBox gap='1rem'>
 						<Heading size='Large'>User Name</Heading>
@@ -37,25 +37,25 @@ function MyPage(){
 							</FlexBox>
 						}
 					</FlexColumnBox>
-				</ProfileMainSection>
+				</S.ProfileMainSection>
 
-				<NavigationSection>
+				<S.NavigationSection>
 					{renderNavigation('Expert', setNavigation)}
-				</NavigationSection>
+				</S.NavigationSection>
 
-				<ContentContainer>
-					<DescriptionSection>
+				<S.ContentContainer>
+					<S.DescriptionSection>
 						{renderDescription(navigation)}
-					</DescriptionSection>
+					</S.DescriptionSection>
 
-					<InformationSection>
+					<S.InformationSection>
 						<UserInformation/>
-					</InformationSection>
-				</ContentContainer>
-			</ProfileContainer>
+					</S.InformationSection>
+				</S.ContentContainer>
+			</S.ProfileContainer>
 
 			<Footer/>
-		</MyPageLayout>
+		</S.MyPageLayout>
 	)
 }
 

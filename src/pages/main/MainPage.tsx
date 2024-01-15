@@ -1,7 +1,7 @@
 import { Suspense, lazy, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { MainContainer, MainLayout, PortfolioSection, Summary, Title, TitleSection } from "./MainPage.styled";
+import * as S from "./MainPage.styled";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
 import CategorySlider from "@/components/organisms/category-slider/CategorySlider";
@@ -20,22 +20,22 @@ export default function MainPage(){
 	const currentCategory = getFilterQueryParameter().filterValue;
 
 	return(
-		<MainLayout>
+		<S.MainLayout>
 			<Header/>
-			<MainContainer>
-				<TitleSection>
-					<Title>{currentSection}</Title>
-					<Summary>{mainPageSectionSummary[currentSection]}</Summary>
-				</TitleSection>
+			<S.MainContainer>
+				<S.TitleSection>
+					<S.Title>{currentSection}</S.Title>
+					<S.Summary>{mainPageSectionSummary[currentSection]}</S.Summary>
+				</S.TitleSection>
 
 				<CategorySlider/>
 
-				<PortfolioSection>
+				<S.PortfolioSection>
 					<Suspense fallback={<PortfolioListSkeleton profile='portfolio-item'/>}>
 						<PortfolioList category={currentCategory}/>
 					</Suspense>
-				</PortfolioSection>
-			</MainContainer>
-		</MainLayout>
+				</S.PortfolioSection>
+			</S.MainContainer>
+		</S.MainLayout>
 	)
 }
