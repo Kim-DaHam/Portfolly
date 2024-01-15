@@ -1,15 +1,16 @@
 import { styled } from 'styled-components';
 
-export const SelectorLayout = styled.div`
+import * as mixins from '@/styles/mixins';
+
+export const Wrapper = styled.div`
 	width: 100%;
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 
 	position: relative;
 `;
 
-export const SelectorHead = styled.div`
+export const SelectorBox = styled.div`
 	width: 100%;
 	height: 2rem;
 

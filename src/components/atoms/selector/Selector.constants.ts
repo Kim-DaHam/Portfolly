@@ -1,6 +1,6 @@
-import { SelectorList } from "./Selector.types";
+import { TSelector } from "@/components/atoms/selector/Selector";
 
-export const selectorList: SelectorList = {
+export const selectorList: {[key in TSelector] : Array<string>} = {
 	Section: ['Android/iOS', 'Web', 'Illlustration', 'Photo', 'Video'],
 	'Android/iOS': ['Finance', 'Business', 'Shopping', 'Food & Drink', 'Education', 'Health & Fitness', 'Travel & Transportation', 'Communication', 'Entertainment', 'Artificial Intelligence', 'CRM', 'Lifestyle', 'Crypto & Web3', 'Productivity'],
 	Web: ['Business', 'Finance', 'CRM', 'Shopping', 'Education', 'Health & Fitness', 'Entertainment', 'Communication', 'Travel & Transportation', 'Developer Tools'],
