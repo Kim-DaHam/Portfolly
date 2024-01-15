@@ -4,7 +4,7 @@ import PortfolioThumbnailSkeleton from "../portfolio-thumbnail/PortfolioThumbnai
 import ProfileSkeleton from "../profile/ProfileSkeleton";
 
 import { Profile } from "@/components/molecules/profile/Profile";
-import { GridBox } from "@/components/organisms/portfolio-list/PortfolioList.styled";
+import { GridBox } from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
 import * as mixins from '@/styles/mixins';
 
 type Props = {

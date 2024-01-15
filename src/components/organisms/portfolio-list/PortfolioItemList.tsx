@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { GridBox } from "./PortfolioList.styled";
+import { GridBox } from "./PortfolioItemList.styled";
 
 import PortfolioItem from "@/components/molecules/portfolio-item/PortfolioItem";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
@@ -16,7 +16,7 @@ type Props = {
 const ITEMS_PER_PAGE = 10;
 export const SESSIONSTORAGE_KEY = "lastClickedPortfolio";
 
-export default function PortfolioList({category}: Props) {
+export default function PortfolioItemList({category}: Props) {
 	const [count, setCount] = useState(ITEMS_PER_PAGE);
 	const [loadData, setLoadData] = useState(true);
 

@@ -11,7 +11,7 @@ import { useDispatchSectionParameter } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
 import { getFilterQueryParameter } from "@/utils/path";
 
-const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioList'));
+const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioItemList'));
 
 export default function MainPage(){
 	useDispatchSectionParameter();
