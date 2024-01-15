@@ -1,11 +1,10 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-export const ManagementLayout = styled.div`
-	width: 100%;
-	height: 100%;
+import * as mixins from '@/styles/mixins';
 
-	display: flex;
-	flex-direction: column;
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
+	${mixins.flexColumn}
 
 	background-color: lightpink;
 `;
@@ -22,8 +21,7 @@ export const Notice = styled.div`
 `
 
 export const SearchFilterSection = styled.div`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
 	padding: 0.5rem 1rem 0.5rem 1rem;
 
@@ -32,13 +30,9 @@ export const SearchFilterSection = styled.div`
 	background-color: violet;
 `;
 
-export const FilterForm = styled.form`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
+export const Form = styled.form`
+	${mixins.fullWidthHeight}
+	${mixins.flexCenter}
 	gap: 1rem;
 `;
 
@@ -46,7 +40,7 @@ export const DateSelector = styled.div`
 	background-color: lime;
 `;
 
-export const SearchInput = styled.input`
+export const Input = styled.input`
 
 `;
 
@@ -61,8 +55,7 @@ export const ContentSection = styled.div`
 `;
 
 export const List = styled.ul`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
 	display: flex;
 	flex-direction: column;
@@ -78,4 +71,9 @@ export const Item = styled.li`
 	padding: 0.1rem 0 0.1rem;
 
 	background-color: white;
+`;
+
+export const Box = styled.div`
+	${mixins.flexColumn}
+	gap: 0.5rem;
 `;

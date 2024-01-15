@@ -1,17 +1,19 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-import { FlexColumnBox } from '@/styles/Container.styled';
+import * as mixins from '@/styles/mixins';
 
-export const IntroduceLayout = styled.div`
-	width: 100%;
-	height: 100%;
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
 
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
 `;
 
-export const ContentBox = styled(FlexColumnBox)`
+export const Box = styled.div`
+	${mixins.flexColumn}
+	gap: 1rem;
+
 	& ul {
 		padding-left: 2rem;
 	}
@@ -24,8 +26,4 @@ export const TextBox = styled.div`
 	height: 100%;
 
 	background-color: white;
-`
-
-export const Span = styled.span`
-	font-size: 1rem;
 `;

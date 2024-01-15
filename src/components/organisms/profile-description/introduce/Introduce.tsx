@@ -1,54 +1,53 @@
-import { ContentBox, IntroduceLayout, TextBox } from "./Introduce.styled";
-
 import Tag from "@/components/atoms/tag/Tag";
+import * as S from "@/components/organisms/profile-description/introduce/Introduce.styled";
 import { Label, Text } from "@/styles/Text.styled";
 
 export default function Introduce() {
 	return(
-		<IntroduceLayout>
-			<ContentBox gap='1rem'>
+		<S.Wrapper>
+			<S.Box>
 				<Label>소개</Label>
-				<TextBox>
+				<S.TextBox>
 					blablablablablablalalablablalblablalba
-				</TextBox>
-			</ContentBox>
+				</S.TextBox>
+			</S.Box>
 
-			<ContentBox gap='1rem'>
+			<S.Box>
 				<Label>지역</Label>
 				<Text size='Medium'>대구</Text>
-			</ContentBox>
+			</S.Box>
 
 			{ true && // 전문가면
 				<>
-				<ContentBox gap='1rem'>
+				<S.Box>
 					<Label>경력사항</Label>
 					<ul>
 						<li>네이버</li>
 						<li>카카오</li>
 					</ul>
-				</ContentBox>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
+				<S.Box>
 					<Label>총 경력</Label>
 					<Text size='Medium'>10년</Text>
-				</ContentBox>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
+				<S.Box>
 					<Label>희망 급여</Label>
 					<Text size='Medium'>3천억</Text>
-				</ContentBox>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
+				<S.Box>
 					<Label>전문분야 및 상세분야</Label>
 					<Tag value='Web' readOnly/>
-				</ContentBox>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
+				<S.Box>
 					<Label>보유 기술</Label>
 					<Tag value='React' readOnly/>
-				</ContentBox>
+				</S.Box>
 				</>
 			}
-		</IntroduceLayout>
+		</S.Wrapper>
 	)
 }

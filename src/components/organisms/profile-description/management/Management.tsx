@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
-import RequestModal from "../../modal/request-modal/RequestModal";
-import Tracking from "../../tracking/Tracking";
-
-import { ContentSection, DateSelector, FilterForm, Item, List, ManagementLayout, Notice, SearchFilterSection, SearchInput } from "./Management.styled";
-
-import { Button } from "@/components/atoms/index";
-import Selector from "@/components/atoms/selector/Selector";
-import { FlexColumnBox } from "@/styles/Container.styled";
+import { Selector , Button } from "@/components/atoms";
+import { RequestModal, Tracking} from "@/components/organisms";
+import * as S from "@/components/organisms/profile-description/management/Management.styled";
 import { Text } from "@/styles/Text.styled";
 
 export default function Management() {
@@ -19,47 +14,47 @@ export default function Management() {
 	}
 
 	return(
-		<ManagementLayout>
+		<S.Wrapper>
 			<Tracking/>
 
-			<Notice>
+			<S.Notice>
 				<QuestionIcon/>
 				<Text size='Small'>구매 과정 및 주문 상태 안내</Text>
-			</Notice>
+			</S.Notice>
 
-			<SearchFilterSection>
-				<FilterForm>
+			<S.SearchFilterSection>
+				<S.Form>
 					<Selector type='RequestType' placeholder='전체 상품'/>
 					<Selector type='RequestState' placeholder='전체 상태'/>
 
-					<DateSelector>
+					<S.DateSelector>
 						DateSelector
-					</DateSelector>
+					</S.DateSelector>
 
 					<Selector type='SearchFilter' placeholder='닉네임'/>
 
-					<SearchInput/>
+					<S.Input/>
 
 					<Button color="white" shape="square">검색</Button>
-				</FilterForm>
-			</SearchFilterSection>
+				</S.Form>
+			</S.SearchFilterSection>
 
-			<ContentSection>
-				<List>
-					<Item>
+			<S.ContentSection>
+				<S.List>
+					<S.Item>
 						<Text size='Small'>1</Text>
-						<FlexColumnBox onClick={openRequestModal}>
+						<S.Box onClick={openRequestModal}>
 							<Text size='Medium'>Title</Text>
 							<Text size='Small'>의뢰 설명</Text>
 							<Text size='Small'>의뢰 날짜</Text>
-						</FlexColumnBox>
-					</Item>
-				</List>
-			</ContentSection>
+						</S.Box>
+					</S.Item>
+				</S.List>
+			</S.ContentSection>
 
 			{ isOpenModal &&
 				<RequestModal handleModal={setIsOpenModal}/>
 			}
-		</ManagementLayout>
+		</S.Wrapper>
 	)
 }

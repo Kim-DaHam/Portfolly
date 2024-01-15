@@ -1,32 +1,30 @@
-import { ContentBox, ProfileBox, ProfileImage, ReviewBox, ReviewLayout, ReviewList, Span } from "./Review.styled";
-
-import Pagination from "@/components/molecules/pagination/Pagination";
-import Rating from "@/components/molecules/rating/Rating";
-import { FlexColumnBox } from "@/styles/Container.styled";
+import { Pagination, Rating } from "@/components/molecules";
+import * as S from "@/components/organisms/profile-description/review/Review.styled";
+import { Text } from "@/styles/Text.styled";
 
 export default function Review() {
 	return(
-		<ReviewLayout>
-			<ReviewList>
-				<ReviewBox>
-					<ProfileBox>
-						<ProfileImage>
+		<S.Wrapper>
+			<S.Content>
+				<S.ReviewBox>
+					<S.ProfileBox>
+						<S.ProfileImage>
 							<img />
-						</ProfileImage>
+						</S.ProfileImage>
 
-						<FlexColumnBox gap='0.5rem' justify="center">
-							<Span>Name</Span>
+						<S.Box>
+							<Text size='Medium'>Name</Text>
 							<Rating/>
-						</FlexColumnBox>
-					</ProfileBox>
+						</S.Box>
+					</S.ProfileBox>
 
-					<ContentBox>
+					<S.ContentBox>
 						리뷰리뷰
-					</ContentBox>
-				</ReviewBox>
-			</ReviewList>
+					</S.ContentBox>
+				</S.ReviewBox>
+			</S.Content>
 
 			<Pagination/>
-		</ReviewLayout>
+		</S.Wrapper>
 	)
 }
