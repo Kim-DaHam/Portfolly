@@ -9,7 +9,7 @@ import SearchModal from "../modal/search-modal/SearchModal";
 import { categories } from "./CategorySlider.constants";
 import { CategoryBox, CategorySliderLayout, Divider, NextArrow, PrevArrow, Slider } from "./CategorySlider.styled";
 
-import { RoundButton as FilterButton, RoundButton as CategoryButton} from "@/components/atoms/button/Button.styled";
+import { Button } from "@/components/atoms/index";
 import useCategorySlider from "@/hooks/useCategorySlider";
 import useModal from "@/hooks/useModal";
 import { section } from "@/redux/sectionSlice";
@@ -57,10 +57,10 @@ export default function CategorySlider() {
 
  return(
 	<CategorySliderLayout>
-		<FilterButton color='Gray' onClick={handleModal}>
+		<Button color='gray' shape='square' onClick={handleModal}>
 			<FilterIcon size={20}/>
 			Filters
-		</FilterButton>
+		</Button>
 
 		{ isModalOpen &&
 			<SearchModal onClick={handleModal}/>
@@ -69,24 +69,25 @@ export default function CategorySlider() {
 		<Divider/>
 
 		<CategoryBox ref={categoryBoxRef}>
-			<PrevArrow color='White' $showPrevArrow={showPrevArrow} onClick={handlePrev}>
+			<PrevArrow color='white' shape='round' $showPrevArrow={showPrevArrow} onClick={handlePrev}>
 				<ArrowLeftIcon size={16}/>
 			</PrevArrow>
-			<NextArrow color='White' $showNextArrow={showNextArrow} onClick={handleNext}>
+			<NextArrow color='white' shape='round' $showNextArrow={showNextArrow} onClick={handleNext}>
 				<ArrowRightIcon size={16}/>
 			</NextArrow>
 
 			<Slider ref={sliderRef}>
 				{categories[currentSection].map((category, index)=>{
 					return (
-						<CategoryButton
+						<Button
 							className={(index === lastIndex) ? 'last-category' : ''}
 							key={index}
-							color='Transparency'
+							color='transparent'
+							shape='round'
 							onClick={handleCategory}
 							$active={(category === currentCategory) ? true : false}>
 						{category}
-						</CategoryButton>
+						</Button>
 					)
 				}) }
 			</Slider>

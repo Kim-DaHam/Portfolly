@@ -21,7 +21,7 @@ export const ButtonStyle = styled.button<Props>`
 
 	cursor: pointer;
 
-	${props => (props.active ? colors['black'] : colors[props.color])}
+	${props => (props.$active ? colors['black'] : colors[props.color])}
   ${props => (props.size ? sizes[props.size] : sizes['fit'])};
 	${props => (props.shape ? shapes[props.shape] : '')};
 `;
