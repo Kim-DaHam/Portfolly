@@ -1,5 +1,6 @@
 import { Section } from "./portfolio"
 
+import { Modal } from "@/components/molecules/modal/Modal";
 import { Profile } from "@/components/molecules/profile/Profile";
 
 export type ButtonColor = 'White' | 'Black' | 'Gray' | 'Transparency';
@@ -52,6 +53,13 @@ export type PopperStyle = {
 
 export type ProfileSize = {
 	[key in Profile]: {
+		height: string,
+	}
+};
+
+export type ModalSize = {
+	[key in Modal]: {
+		width: string,
 		height: string,
 	}
 }

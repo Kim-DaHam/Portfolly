@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
+import { Label } from '@/styles/Text.styled';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
@@ -51,6 +52,7 @@ export const FlexColumnBox = styled.div`
 	${mixins.flexColumn}
 	padding: 2.4rem 1rem 2rem 1rem;
 	border-radius: 1.5rem;
+	gap: 1rem;
 	background-color: violet;
 `;
 
@@ -67,7 +69,7 @@ export const PortfolioInfoBox = styled(FlexColumnBox)`
 export const TitleBox = styled(FlexColumnBox)`
 	padding: 0;
 	border-radius: 0;
-
+	gap: 0.2rem;
 	background-color: white;
 `;
 
@@ -81,11 +83,12 @@ export const ButtonGroup = styled.div`
 export const TagBox = styled.div`
 	${mixins.flexRow}
 	gap: 0.5rem;
-
+	margin-bottom: 1rem;
 	background-color: lightsalmon;
 `;
 
 export const SummaryBox = styled.div`
+	margin-bottom: 1rem;
 	background-color: lightpink;
 `;
 
@@ -112,4 +115,12 @@ export const GridItem = styled.div`
 	}
 
 	background-color: brown;
+`;
+
+export const TextButton = styled(Label)`
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
 `;

@@ -1,4 +1,4 @@
-import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, PopperStyle, PortfolioThumbnailStyle, ProfileSize, } from "@/types/style";
+import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, ModalSize, PopperStyle, PortfolioThumbnailStyle, ProfileSize, } from "@/types/style";
 
 export const portfolioThumbnailSize: PortfolioThumbnailStyle = {
 	'Android/iOS': {
@@ -142,4 +142,19 @@ export const profileSize: ProfileSize = {
 	'message': {
 		height: '',
 	},
-}
+};
+
+export const modalSize: ModalSize = {
+	'alert': {
+		width: '22%',
+		height: 'content-fit',
+	},
+	'search': {
+		width: '50%',
+		height: '80%',
+	},
+	'form': {
+		width: '50%',
+		height: '90%',
+	},
+};

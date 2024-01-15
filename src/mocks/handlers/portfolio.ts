@@ -1,10 +1,10 @@
 import { HttpResponse, http } from 'msw';
 
 import { portfolios } from '../data/portfolios';
-import { clients } from '../data/users';
+import { users } from '../data/users';
 
 import { Portfolio, Section } from '@/types/portfolio';
-import { getCategory, getIsBookmarked, getIsLiked, getTags, getUserData } from '@/utils/mswHandler';
+import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getTags, getUserData } from '@/utils/mswHandler';
 
 const sectionIdMap = new Map([
 	['Android/iOS', 1],
@@ -13,6 +13,8 @@ const sectionIdMap = new Map([
 	['Photo', 4],
 	['Video', 5],
 ]);
+
+const USER_ID = 1;
 
 export const PortfolioHandlers= [
 	http.get(`/portfolios`, ({request}) => {
@@ -32,8 +34,10 @@ export const PortfolioHandlers= [
 		})
 
 		if(category && category !== '전체') {
+			const categoryId = getCategoryId(category);
+
 			const categoryFilteredPortfolios = filteredPortfolios.filter((portfolio) => {
-				return portfolio.category === category;
+				return portfolio.categoryId === categoryId;
 			})
 
 			filteredPortfolios = categoryFilteredPortfolios;
@@ -41,7 +45,7 @@ export const PortfolioHandlers= [
 
 		const responseData = filteredPortfolios.map((portfolio: Portfolio) => {
 			const user = getUserData(portfolio.userId);
-			const bookmarks = clients.find((client) => client.id === 100)!.bookmarks;
+			const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks;
 			const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
 
 			const portfolioData = {
@@ -142,8 +146,8 @@ export const PortfolioHandlers= [
 		const user = getUserData(portfolioData!.userId);
 		const category = getCategory(portfolioData!.categoryId);
 		const tags = getTags(portfolioData!.tagId);
-		const likes = clients.find((client) => client.id === 100)!.likes;
-		const bookmarks = clients.find((client) => client.id === 100)!.bookmarks;
+		const likes = users.find((user) => user.id === USER_ID)!.likes;
+		const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks;
 		const isBookmarked = getIsBookmarked(portfolioData!.id, bookmarks);
 		const isLiked = getIsLiked(portfolioData!.id, likes);
 
@@ -163,5 +167,28 @@ export const PortfolioHandlers= [
 		};
 
 		return HttpResponse.json(responseData, { status: 200 });
+	}),
+
+	http.delete('/portfolios', ({request}) => {
+		const url = new URL(request.url);
+		const portfolioId = url.searchParams.get('id') as string;
+
+		const user = users.find((user) => {
+			return user.id === USER_ID;
+		});
+
+		user?.portfolios.forEach((portfolio, index) => {
+      if (portfolio === Number(portfolioId)) {
+				user?.portfolios.splice(index, 1);
+			}
+    });
+
+		portfolios.forEach((portfolio, index) => {
+			if(portfolio.id === Number(portfolioId)) {
+				portfolios.splice(index, 1);
+			}
+		});
+
+		return HttpResponse.json(null, { status: 200 });
 	}),
 ];

@@ -11,7 +11,7 @@ type InitialState = {
 const initialState: InitialState = {
 	authority: 'expert',
 	isLogin: true,
-	userId: 100,
+	userId: 1,
 };
 
 export const loginSlice = createSlice({
