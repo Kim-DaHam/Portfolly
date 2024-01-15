@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { SquareButton } from '@/components/atoms/button/Button.styled';
+import { ButtonStyle } from '@/components/atoms/index';
 
 export const ModalLayout = styled.div`
 	width: 100vw;
@@ -49,7 +49,7 @@ export const FilterGroup = styled.aside`
 	flex-direction: column;
 `;
 
-export const OptionButton = styled(SquareButton)`
+export const OptionButton = styled(ButtonStyle)`
 	display: flex;
 	align-items: center;
 `;

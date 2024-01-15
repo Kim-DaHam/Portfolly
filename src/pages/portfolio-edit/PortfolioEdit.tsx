@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import * as S from "./PortfolioEdit.styled";
 
-import { SquareButton } from "@/components/atoms/button/Button.styled";
+import { Button } from "@/components/atoms/index";
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
 import Editor from "@/components/molecules/editor/QuillEditor";
@@ -42,7 +42,7 @@ function PortfolioEdit(){
 						<Label>Summary</Label>
 						<S.SummaryInputArea/>
 					</S.FormBox>
-					<SquareButton color='Black' size='Medium'>Submit</SquareButton>
+					<Button color='black' size='medium' shape='square'>Submit</Button>
 				</S.FormSection>
 			</S.FlexContainer>
 		</S.PortfolioEditLayout>

@@ -2,7 +2,7 @@ import { FiX as XIcon } from "react-icons/fi";
 
 import { ButtonGroup, CloseButton, ContentSection, ModalBox, RequestForm, RequestModalLayout, TitleBox } from "./RequestModal.styled";
 
-import { SquareButton } from "@/components/atoms/button/Button.styled";
+import { Button } from "@/components/atoms/index";
 import { FlexColumnBox } from "@/styles/Container.styled";
 import { Heading, Label, Text } from "@/styles/Text.styled";
 import { SetState } from "@/types";
@@ -61,7 +61,7 @@ export default function RequestModal({handleModal}: Props) {
 				</ContentSection>
 
 				<ButtonGroup>
-					<SquareButton color='Black' size='Medium'>주문 취소</SquareButton>
+					<Button color='black' size='medium' shape='square'>주문 취소</Button>
 				</ButtonGroup>
 			</ModalBox>
 		</RequestModalLayout>

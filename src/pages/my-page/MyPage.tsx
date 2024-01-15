@@ -5,7 +5,7 @@ import { Navigation } from "./MyPage.type";
 import { renderDescription, renderNavigation } from "./MyPage.utils";
 
 
-import { SquareButton } from "@/components/atoms/button/Button.styled";
+import { Button } from "@/components/atoms/index";
 import Rating from "@/components/molecules/rating/Rating";
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";
@@ -31,9 +31,9 @@ function MyPage(){
 
 						{ true && // 본인 아니면
 							<FlexBox justify="right">
-								<SquareButton color='Black' size='Large'>
+								<Button color='black' size='large' shape='square'>
 									문의하기
-								</SquareButton>
+								</Button>
 							</FlexBox>
 						}
 					</FlexColumnBox>

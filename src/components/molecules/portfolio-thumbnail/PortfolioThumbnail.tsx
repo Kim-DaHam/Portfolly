@@ -37,12 +37,14 @@ export default function PortfolioThumnail({section, portfolio}: Props){
 			<SliderContainer>
 				<ArrowBox onClick={eventStopPropagation}>
 					<PrevArrow
-						color='White'
+						color='white'
+						shape='square'
 						onClick={handlePrev}
 						$showPrevArrow={showPrevArrow}>
 					Prev</PrevArrow>
 					<NextArrow
-						color='White'
+						color='white'
+						shape='square'
 						onClick={handleNext}
 						$showNextArrow={showNextArrow}>
 					Next</NextArrow>

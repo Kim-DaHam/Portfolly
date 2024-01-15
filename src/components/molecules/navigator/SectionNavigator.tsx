@@ -7,7 +7,7 @@ import { Group, Item } from "../popper/Popper.styled";
 
 import { SectionNavigatorLayout, SectionTitle } from "./SectionNavigator.styled";
 
-import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
+import { Button } from "@/components/atoms/index";
 import usePopup from "@/hooks/usePopup";
 import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Section } from "@/types/portfolio";
@@ -31,9 +31,9 @@ export default function SectionNavigator() {
 		<SectionNavigatorLayout>
 			<SectionTitle>{currentSection}</SectionTitle>
 
-			<MoreButton color='White' onClick={popUp}>
+			<Button color='white' shape='round' onClick={popUp}>
 				<Icon color='gray'/>
-			</MoreButton>
+			</Button>
 
 			{isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>

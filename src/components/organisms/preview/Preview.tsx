@@ -28,7 +28,7 @@ export default function Preview({section, portfolios}: Props){
 				{renderPortfolioItems(section, portfolios, PreviewRowColumns[section])}
 			</PreviewRow>
 
-			<ViewMoreButton size='Fit' color='White' onClick={navigateMain}>
+			<ViewMoreButton shape='square' color='white' onClick={navigateMain}>
 				More
 			</ViewMoreButton>
 		</PreviewLayout>

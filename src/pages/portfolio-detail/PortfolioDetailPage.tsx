@@ -5,9 +5,9 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./PortfolioDetailPage.styled";
 
-import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
 import Image from "@/components/atoms/image/Image";
+import { Button } from "@/components/atoms/index";
 import Tag from "@/components/atoms/tag/Tag";
 import Profile from "@/components/molecules/profile/Profile";
 import Header from "@/components/organisms/header/Header";
@@ -53,7 +53,7 @@ export default function PortfolioDetail(){
 		<S.Wrapper>
 			<Header/>
 			<S.Content>
-				<RoundButton color='Transparency' size='Fit' onClick={()=>navigate(-1)}>뒤로가기</RoundButton>
+				<Button color='transparent' shape='round' onClick={()=>navigate(-1)}>뒤로가기</Button>
 				{ portfolio &&
 					<S.FlexBox>
 						<S.PortfolioSection>
@@ -65,7 +65,7 @@ export default function PortfolioDetail(){
 						<S.Aside>
 							<S.ProfileBox>
 								<Profile type='portfolio-detail' user={portfolio.user}/>
-								<SquareButton color='White' size='Medium'>문의하기</SquareButton>
+								<Button color='white' size='medium' shape='square'>문의하기</Button>
 							</S.ProfileBox>
 
 							<S.PortfolioInfoBox>

@@ -1,11 +1,10 @@
 import { MouseEventHandler } from "react";
 import { styled } from "styled-components";
 
-import { SquareButton } from "@/components/atoms/button/Button.styled";
+import { Button } from "@/components/atoms/index";
 import Modal from "@/components/molecules/modal/Modal";
 import * as mixins from '@/styles/mixins';
 import { Text } from "@/styles/Text.styled";
-import { SetState } from "@/types";
 
 type Alert = 'delete' | 'cancel';
 
@@ -31,8 +30,8 @@ export default function AlertModal({type, onClick, handleModal}: Props) {
 			<Content>
 				<Text size='Medium'>{alertMessage[type]}</Text>
 				<ButtonGroup>
-					<SquareButton color='Transparency' size='Default' onClick={onClick}>{activeButton[type]}</SquareButton>
-					<SquareButton color='Transparency' size='Default' onClick={handleModal}>취소하기</SquareButton>
+					<Button color='transparent' size='full' shape='square' onClick={onClick}>{activeButton[type]}</Button>
+					<Button color='transparent' size='full' shape='square' onClick={handleModal}>취소하기</Button>
 				</ButtonGroup>
 			</Content>
 		</Modal>

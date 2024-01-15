@@ -6,7 +6,7 @@ import Tracking from "../../tracking/Tracking";
 
 import { ContentSection, DateSelector, FilterForm, Item, List, ManagementLayout, Notice, SearchFilterSection, SearchInput } from "./Management.styled";
 
-import { SquareButton } from "@/components/atoms/button/Button.styled";
+import { Button } from "@/components/atoms/index";
 import Selector from "@/components/atoms/selector/Selector";
 import { FlexColumnBox } from "@/styles/Container.styled";
 import { Text } from "@/styles/Text.styled";
@@ -40,7 +40,7 @@ export default function Management() {
 
 					<SearchInput/>
 
-					<SquareButton color="White">검색</SquareButton>
+					<Button color="white" shape="square">검색</Button>
 				</FilterForm>
 			</SearchFilterSection>
 

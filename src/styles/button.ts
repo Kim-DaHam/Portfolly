@@ -36,7 +36,7 @@ const white = css`
 	&:hover {
 		background-color: #f3f3f3;
 	}
-	color: 11111;
+	color: #111111;
 	border: 0px;
 `;
 
@@ -45,7 +45,7 @@ const black = css`
 	&:hover {
 		background-color: #1d1d1d;
 	}
-	color: FFFFFF;
+	color: #FFFFFF;
 	border: 0px;
 `;
 
@@ -54,7 +54,7 @@ const gray = css`
 	&:hover {
 		background-color: #d0d0d0;
 	}
-	color: 11111;
+	color: #111111;
 	border: 0px;
 `;
 
@@ -63,7 +63,7 @@ const transparent = css`
 	&:hover {
 		background-color: transparent;
 	}
-	color: 11111;
+	color: #111111;
 	border: 0px;
 `;
 

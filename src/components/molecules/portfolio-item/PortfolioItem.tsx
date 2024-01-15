@@ -1,8 +1,8 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
 
-import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
+import { Button } from "@/components/atoms/index";
 import Popper from "@/components/molecules/popper/Popper";
 import { Group, Item } from "@/components/molecules/popper/Popper.styled";
 import { ButtonGroup, PortfolioItemLayout, ProfileBox } from "@/components/molecules/portfolio-item/PortfolioItem.styled";
@@ -40,9 +40,9 @@ export default function PortfolioItem({ portfolio, onClick }: Props) {
 				<ButtonGroup className='button-group' ref={buttonGroupRef}>
 					<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
 
-					<MoreButton onClick={popUp} color='Gray' size='Fit'>
+					<Button onClick={popUp} color='gray' shape='square'>
 						<MoreIcon/>
-					</MoreButton>
+					</Button>
 				</ButtonGroup>
 
 				{ isPopUp &&

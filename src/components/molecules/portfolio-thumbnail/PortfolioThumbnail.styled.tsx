@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { SquareButton } from '@/components/atoms/button/Button.styled';
+import { ButtonStyle } from '@/components/atoms/index';
 import { portfolioThumbnailSize } from '@/styles/token';
 import { Section } from '@/types/portfolio';
 
@@ -93,13 +93,13 @@ export const ArrowBox = styled.div`
 	padding: 0 0.5rem 0 0.5rem;
 `;
 
-export const PrevArrow = styled(SquareButton)<{$showPrevArrow: boolean}>`
+export const PrevArrow = styled(ButtonStyle)<{$showPrevArrow: boolean}>`
 	display: none;
 	visibility: ${(props) => props.$showPrevArrow ? 'visible' : 'hidden'};
 	cursor: pointer;
 `;
 
-export const NextArrow = styled(SquareButton)<{$showNextArrow: boolean}>`
+export const NextArrow = styled(ButtonStyle)<{$showNextArrow: boolean}>`
 	display: none;
 	visibility: ${(props) => props.$showNextArrow ? 'visible' : 'hidden'};
 	cursor: pointer;

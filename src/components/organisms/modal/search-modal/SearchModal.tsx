@@ -36,7 +36,7 @@ export default function SearchModal({...attributes}: HTMLAttributes<HTMLDivEleme
 						<FilterGroup>
 							{searchFilterList.map((filter)=>{
 								return (
-									<OptionButton color='White' size='Large' onClick={()=>changeFilter(filter)}>
+									<OptionButton color='white' size='large' shape='square' onClick={()=>changeFilter(filter)}>
 										{searchFilter[filter].icon}
 										{searchFilter[filter].name}
 									</OptionButton>

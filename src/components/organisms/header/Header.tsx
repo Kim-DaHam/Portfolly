@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo.png';
-import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
 import Image from '@/components/atoms/image/Image';
+import { Button } from "@/components/atoms/index";
 import SectionNavigatior from "@/components/molecules/navigator/SectionNavigator";
 import Popper from "@/components/molecules/popper/Popper";
 import SearchBar from "@/components/molecules/searchBar/SearchBar";
@@ -46,17 +46,17 @@ export default function Header() {
 
 			{ isLogin ?
 				<ButtonGroup>
-					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</SquareButton>
-					<RoundButton color='Transparency' onClick={popUp}>
+					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</Button>
+					<Button color='transparent' shape='square' onClick={popUp}>
 						<Image src='' size='1rem'/>
 						<MenuIcon size={15}/>
-					</RoundButton>
+					</Button>
 				</ButtonGroup>
 				:
 				<ButtonGroup>
-					<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGN_IN)}>Log in</SquareButton>
-					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
-					<RoundButton color='Transparency' onClick={popUp}><MenuIcon size={15}/></RoundButton>
+					<Button color='white' shape='square' onClick={()=>navigate(ROUTE_PATH.SIGN_IN)}>Log in</Button>
+					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</Button>
+					<Button color='transparent' shape='round' onClick={popUp}><MenuIcon size={15}/></Button>
 				</ButtonGroup>
 			}
 
