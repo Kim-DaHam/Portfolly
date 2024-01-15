@@ -2,30 +2,7 @@ import { styled } from 'styled-components';
 
 import { ButtonStyle } from '@/components/atoms/index';
 
-export const ModalLayout = styled.div`
-	width: 100vw;
-	height: 100vh;
-
-	display: flex;
-	justify-content: center;
-
-	position: fixed;
-	z-index: 9999;
-	top: 0;
-	left: 0;
-
-	background-color: #0000007e;
-`;
-
-export const ModalBox = styled.div`
-	width: 50%;
-	height: 80%;
-
-	display: flex;
-	flex-direction: column;
-
-	border-radius: 16px;
-	background-color: white;
+export const Content = styled.div`
 `;
 
 export const SearchSection = styled.section`
@@ -49,7 +26,7 @@ export const FilterGroup = styled.aside`
 	flex-direction: column;
 `;
 
-export const OptionButton = styled(ButtonStyle)`
+export const Option = styled(ButtonStyle)`
 	display: flex;
 	align-items: center;
 `;
