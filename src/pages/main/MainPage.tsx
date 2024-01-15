@@ -1,11 +1,10 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy } from "react";
 import { useSelector } from "react-redux";
 
 import * as S from "./MainPage.styled";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
-import CategorySlider from "@/components/organisms/category-slider/CategorySlider";
-import Header from "@/components/organisms/header/Header";
+import { Header, CategorySlider } from "@/components/organisms";
 import PortfolioListSkeleton from "@/components/skeletons/portfolio-list/PortfolioListSkeleton";
 import { useDispatchSectionParameter } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
@@ -20,9 +19,9 @@ export default function MainPage(){
 	const currentCategory = getFilterQueryParameter().filterValue;
 
 	return(
-		<S.MainLayout>
+		<S.Wrapper>
 			<Header/>
-			<S.MainContainer>
+			<S.Content>
 				<S.TitleSection>
 					<S.Title>{currentSection}</S.Title>
 					<S.Summary>{mainPageSectionSummary[currentSection]}</S.Summary>
@@ -35,7 +34,7 @@ export default function MainPage(){
 						<PortfolioList category={currentCategory}/>
 					</Suspense>
 				</S.PortfolioSection>
-			</S.MainContainer>
-		</S.MainLayout>
+			</S.Content>
+		</S.Wrapper>
 	)
 }

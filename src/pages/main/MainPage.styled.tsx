@@ -1,30 +1,23 @@
 import { styled } from 'styled-components';
 
-import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
+import * as mixins from '@/styles/mixins';
 
-export const MainLayout = styled.div`
-	width: 100%;
-	height: 100%;
-
-	position: relative;
-	z-index: 100;
-	top: ${HEADER_HEIGHT};
+export const Wrapper = styled.div`
+	${mixins.fullScreen}
 `;
 
-export const MainContainer = styled.main`
+export const Content = styled.main`
 	width: 100%;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	${mixins.flexCenter}
+	${mixins.flexColumn}
 	gap: 1.7rem;
 
 	padding: 3rem 5rem 3rem 5rem;
 `;
 
 export const TitleSection = styled.section`
-	width: 100%;
-	height: 100%;
+	${mixins.fullScreen}
 
 	display: flex;
 	gap: 2rem;
@@ -42,8 +35,7 @@ export const Summary = styled.span`
 `;
 
 export const PortfolioSection = styled.section`
-	width: 100%;
-	height: 100%;
+	${mixins.fullScreen}
 
 	padding-top: 1rem;
 `;
