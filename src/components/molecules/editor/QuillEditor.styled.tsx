@@ -1,5 +1,4 @@
-/* 2023-07-04 홈페이지에 들어가는 모든 Input styled - 김다함*/
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 import { HEADER_HEIGHT } from '../../organisms/header/Header.styled';
 
@@ -45,4 +44,4 @@ export const EditorContainer = styled.div`
 		width: 100%;
 		height: calc(100vh - ${HEADER_HEIGHT});
   }
-`
+`;

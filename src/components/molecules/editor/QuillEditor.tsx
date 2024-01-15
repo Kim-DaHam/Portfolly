@@ -1,9 +1,8 @@
-/* 2023-07-06 React Quill Editor - 김다함 */
 import { memo, useMemo } from 'react';
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from 'react-quill';
 
-import { EditorContainer } from '@/components/molecules/editor/QuillEditor.styled';
+import * as S from '@/components/molecules/editor/QuillEditor.styled';
 
 export default memo(function QuillEditor() {
   const modules = useMemo(
@@ -25,7 +24,7 @@ export default memo(function QuillEditor() {
     }), []);
 
   return (
-    <EditorContainer>
+    <S.EditorContainer>
       <ReactQuill
         // ref={}
         // value={}
@@ -35,6 +34,6 @@ export default memo(function QuillEditor() {
         style={{ height: '100%', marginBottom: '0' }}
         placeholder={'Write Something...'}
       />
-    </EditorContainer>
-  )
+    </S.EditorContainer>
+  );
 })
