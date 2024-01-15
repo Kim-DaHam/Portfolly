@@ -1,18 +1,16 @@
-import { ImageLayout } from "./Image.styled";
+import * as S from "./Image.styled";
 
-export type Shape = 'square' | 'foursquare' | 'circle';
-
-type Props = {
+export type Props = {
 	size: string;
-	shape?: Shape;
+	shape?: 'square' | 'foursquare' | 'circle';
 	src: string;
 	alt?: string;
 };
 
-export default function Image({size, src, alt, shape='square'}: Props) {
+export default function Image({shape='square', ...props}: Props) {
 	return(
-		<ImageLayout $size={size} $shape={shape}>
-			<img src={src} alt={alt} />
-		</ImageLayout>
+		<S.ImageLayout shape={shape} {...props}>
+			<img src={props.src} alt={props.alt} />
+		</S.ImageLayout>
 	)
 }
