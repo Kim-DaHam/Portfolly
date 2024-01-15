@@ -1,23 +1,5 @@
 import { ButtonColorStyle, ButtonSizeStyle, FontColorStyle, FontSizeStyle, ModalSize, PopperStyle, PortfolioThumbnailStyle, ProfileSize, } from "@/types/style";
 
-export const portfolioThumbnailSize: PortfolioThumbnailStyle = {
-	'Android/iOS': {
-		aspectRatio: '1 / 1.90',
-	},
-	Web: {
-		aspectRatio: '1 / 0.67',
-	},
-	Illustration: {
-		aspectRatio: '',
-	},
-	Photo: {
-		aspectRatio: '',
-	},
-	Video: {
-		aspectRatio: '',
-	},
-};
-
 export const bodyFontSize: FontSizeStyle = {
 	Large: {
 		fontSize: '',

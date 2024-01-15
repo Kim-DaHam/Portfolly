@@ -1,12 +1,12 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 import { ButtonStyle } from '@/components/atoms/index';
-import { portfolioThumbnailSize } from '@/styles/token';
+import { ratios } from '@/styles/portfolioThumbnail';
 import { Section } from '@/types/portfolio';
 
-export const PortfolioThumbnailLayout = styled.div<{$section: Section}>`
+export const Wrapper = styled.div<{$section: Section}>`
 	width: 100%;
-	aspect-ratio: ${(props) => portfolioThumbnailSize[props.$section].aspectRatio};
+	aspect-ratio: ${(props) => ratios[props.$section]};
 
 	position: relative;
 
@@ -24,9 +24,9 @@ export const PortfolioThumbnailLayout = styled.div<{$section: Section}>`
 			display: inline-block;
 		}
 	}
-`
+`;
 
-export const SliderContainer = styled.div`
+export const Content = styled.div`
 	width: 100%;
 	height: 100%;
 
