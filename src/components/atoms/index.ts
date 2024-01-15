@@ -1,4 +1,5 @@
-import Button, { ButtonStyle } from "@/components/atoms/button/Button";
+import Button from "@/components/atoms/button/Button";
+import { ButtonStyle } from "@/components/atoms/button/Button.styled";
 import ToggleButton from "@/components/atoms/button/ToggleButton";
 import Image from "@/components/atoms/image/Image";
 import Selector from "@/components/atoms/selector/Selector";
