@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 import { ButtonStyle } from "@/components/atoms/index";
 
-export const CategorySliderLayout = styled.section`
+export const Wrapper = styled.section`
 	width: 100%;
 	height: 3rem;
 

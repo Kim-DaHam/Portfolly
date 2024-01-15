@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom";
 import SearchModal from "../modal/search-modal/SearchModal";
 
 import { categories } from "./CategorySlider.constants";
-import { CategoryBox, CategorySliderLayout, Divider, NextArrow, PrevArrow, Slider } from "./CategorySlider.styled";
 
 import { Button } from "@/components/atoms/index";
+import * as S from "@/components/organisms/category-slider/CategorySlider.styled";
 import useCategorySlider from "@/hooks/useCategorySlider";
 import useModal from "@/hooks/useModal";
 import { section } from "@/redux/sectionSlice";
@@ -56,7 +56,7 @@ export default function CategorySlider() {
 	}, [currentSection]);
 
  return(
-	<CategorySliderLayout>
+	<S.Wrapper>
 		<Button color='gray' shape='square' onClick={handleModal}>
 			<FilterIcon size={20}/>
 			Filters
@@ -66,17 +66,17 @@ export default function CategorySlider() {
 			<SearchModal onClick={handleModal}/>
 		}
 
-		<Divider/>
+		<S.Divider/>
 
-		<CategoryBox ref={categoryBoxRef}>
-			<PrevArrow color='white' shape='round' $showPrevArrow={showPrevArrow} onClick={handlePrev}>
+		<S.CategoryBox ref={categoryBoxRef}>
+			<S.PrevArrow color='white' shape='round' $showPrevArrow={showPrevArrow} onClick={handlePrev}>
 				<ArrowLeftIcon size={16}/>
-			</PrevArrow>
-			<NextArrow color='white' shape='round' $showNextArrow={showNextArrow} onClick={handleNext}>
+			</S.PrevArrow>
+			<S.NextArrow color='white' shape='round' $showNextArrow={showNextArrow} onClick={handleNext}>
 				<ArrowRightIcon size={16}/>
-			</NextArrow>
+			</S.NextArrow>
 
-			<Slider ref={sliderRef}>
+			<S.Slider ref={sliderRef}>
 				{categories[currentSection].map((category, index)=>{
 					return (
 						<Button
@@ -90,8 +90,8 @@ export default function CategorySlider() {
 						</Button>
 					)
 				}) }
-			</Slider>
-		</CategoryBox>
-	</CategorySliderLayout>
+			</S.Slider>
+		</S.CategoryBox>
+	</S.Wrapper>
  )
 }
