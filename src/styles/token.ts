@@ -54,24 +54,6 @@ export const fontColor: FontColorStyle = {
 	},
 }
 
-export const profileSize: ProfileSize = {
-	'portfolio-item': {
-		height: '3.5rem',
-	},
-	'portfolio-detail': {
-		height: '',
-	},
-	'mypage': {
-		height: '',
-	},
-	'review': {
-		height: '',
-	},
-	'message': {
-		height: '',
-	},
-};
-
 export const modalSize: ModalSize = {
 	'alert': {
 		width: '22%',

@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import { ProfileLayout, SpanBox } from "./Profile.styled";
-
-import Image from '@/components/atoms/image/Image';
+import { Image } from '@/components/atoms/index';
+import * as S from "@/components/molecules/profile/Profile.styled";
 import { Heading, Text } from "@/styles/Text.styled";
 import { IComponentFactory } from "@/types";
 
@@ -17,9 +16,9 @@ export default function Profile({type, user}: Props) {
 	const navigate = useNavigate();
 
 	return(
-		<ProfileLayout $type={type}>
+		<S.Wrapper $type={type}>
 			{renderProfile(type, user, navigate)}
-		</ProfileLayout>
+		</S.Wrapper>
 	)
 }
 
@@ -28,10 +27,10 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
     'portfolio-item': (
 			<>
 				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare'/>
-				<SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
+				<S.SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
 					<Text size='Medium' color='Black'>{user.title}</Text>
 					<Text size='Small' color='Gray'>{user.nickname}</Text>
-				</SpanBox>
+				</S.SpanBox>
 			</>
 		),
 		'portfolio-detail': (

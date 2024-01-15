@@ -1,12 +1,20 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 import { Profile } from "./Profile";
 
-import { profileSize } from "@/styles/token";
+import * as mixins from '@/styles/mixins';
 
-export const ProfileLayout = styled.div<{$type: Profile}>`
+export const height = {
+	'portfolio-item': '3.5rem',
+	'portfolio-detail': '',
+	'mypage': '',
+	'review': '',
+	'message': '',
+};
+
+export const Wrapper = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: ${(props) => profileSize[props.$type]};
+	height: ${(props) => height[props.$type]};
 
 	display: flex;
 	align-items: ${(props) => props.$type === 'portfolio-detail' ? 'center' : ''};
@@ -20,8 +28,7 @@ export const ProfileLayout = styled.div<{$type: Profile}>`
 `;
 
 export const SpanBox = styled.div`
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 	justify-content: space-around;
 	flex-shrink: 1;
 
