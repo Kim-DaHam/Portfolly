@@ -1,8 +1,6 @@
 import * as S from "./IntroPage.styled";
 
-import Footer from "@/components/organisms/footer/Footer";
-import Header from "@/components/organisms/header/Header";
-import Preview from "@/components/organisms/preview/Preview";
+import { Footer, Header, Preview } from "@/components/organisms";
 import { Section } from "@/types/portfolio";
 import { useTopPortfoliosQuery } from "@/utils/api-service/portfolio";
 import { wheelHandler } from "@/utils/wheelHandler";
@@ -13,7 +11,7 @@ export default function IntroPage(){
 	const { data: topPortfolioLists } = useTopPortfoliosQuery();
 
 	return(
-		<S.IntroLayout ref={(element)=>{
+		<S.Wrapper ref={(element)=>{
 			if(element !== null) {
 				element.addEventListener("wheel", (event:WheelEvent)=>{
 					wheelHandler(event, element)
@@ -22,10 +20,10 @@ export default function IntroPage(){
 		>
 			<Header/>
 
-			<S.IntroduceContainer>
+			<S.Introduce>
 				<h1>Welcome to Portfolly</h1>
 				<h2>클라이언트와 파트너 간 소통해요</h2>
-			</S.IntroduceContainer>
+			</S.Introduce>
 
 			{ topPortfolioLists &&
 				sections.map((section: Section, index: number)=>{
@@ -37,6 +35,6 @@ export default function IntroPage(){
 					)
 			})}
 			<Footer/>
-		</S.IntroLayout>
+		</S.Wrapper>
 	)
 }
