@@ -1,30 +1,27 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-export const TrackingLayout = styled.div`
-	width: 100%;
-	height: 100%;
+import * as mixins from '@/styles/mixins';
+
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
 
 	padding: 1rem 2rem 1rem 2rem;
 
 	background-color: gray;
 `;
 
-export const BoxGroup = styled.div`
+export const Content = styled.div`
 	width: 100%;
 	height: 8rem;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	${mixins.flexCenter}
 	gap: 1.5rem;
 `;
 
 export const Box = styled.div`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 	justify-content: center;
 	align-items: end;
 	gap: 1rem;
@@ -34,27 +31,20 @@ export const Box = styled.div`
 	background-color: white;
 `;
 
-export const LabelGroup = styled.div`
-	width: 100%;
-	height: fit-content;
+export const Group = styled.div`
+	${mixins.fullWidthHeight}
 
 	display: flex;
 	justify-content: space-between;
 
 	background-color: salmon;
+`;
+
+export const LabelGroup = styled(Group)`
+	height: fit-content;
 `;
 
 export const Count = styled.span`
 	font-size: 2rem;
 	font-weight: 600;
-`;
-
-export const TextGroup = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	justify-content: space-between;
-
-	background-color: salmon;
 `;
