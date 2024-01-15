@@ -1,7 +1,6 @@
 import { Dispatch, HTMLAttributes, SetStateAction } from "react";
 
-import { SearchBarLayout, SearchInputArea, SearchLogo } from "./SearchBar.styled";
-
+import * as S from "@/components/molecules/searchBar/SearchBar.styled";
 import useSearch from "@/hooks/useSearch";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
@@ -13,13 +12,13 @@ export default function SearchBar({ isClicked, onInputChange, ...attributes }: P
 	const { searchKeyword } = useSearch({onInputChange});
 
 	return(
-		<SearchBarLayout {...attributes}>
-			<SearchLogo/>
+		<S.Wrapper {...attributes}>
+			<S.SearchLogo/>
 			{ isClicked ?
-				<SearchInputArea onChange={searchKeyword}/>
+				<S.Input onChange={searchKeyword}/>
 				:
 				<div>Search on type...</div>
 			}
-		</SearchBarLayout>
+		</S.Wrapper>
 	)
 }

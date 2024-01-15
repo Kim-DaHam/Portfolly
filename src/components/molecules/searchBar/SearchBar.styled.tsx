@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-export const SearchBarLayout = styled.div`
+export const Wrapper = styled.div`
 	width: 100%;
 	height: 100%;
 
@@ -16,7 +16,7 @@ export const SearchBarLayout = styled.div`
 	background-color: gray;
 `;
 
-export const SearchInputArea = styled.input`
+export const Input = styled.input`
 	height: 2rem;
 
 	flex-grow: 1;
