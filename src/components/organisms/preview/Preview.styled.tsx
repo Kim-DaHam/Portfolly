@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
 
 import { ButtonStyle } from '@/components/atoms/index';
+import * as mixins from '@/styles/mixins';
 
-
-export const PreviewLayout = styled.div`
+export const Wrapper = styled.div`
 	width: 100%;
 	height: 100vh;
 
@@ -20,16 +20,15 @@ export const PreviewLayout = styled.div`
 export const TextBox = styled.div`
 	height: 100%;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	${mixins.flexCenter}
+	${mixins.flexColumn}
 	gap: 2rem;
 	flex-basis: 35%;
 
 	border: solid 1px black;
 `;
 
-export const PreviewRow = styled.div<{$column: number}>`
+export const PreviewBox = styled.div<{$column: number}>`
 	width: 100%;
 
 	display: grid;
