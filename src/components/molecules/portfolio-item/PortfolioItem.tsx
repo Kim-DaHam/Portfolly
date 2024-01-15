@@ -1,13 +1,10 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
 
-import ToggleButton from "@/components/atoms/button/ToggleButton";
-import { Button } from "@/components/atoms/index";
-import Popper from "@/components/molecules/popper/Popper";
+import { Button, ToggleButton } from "@/components/atoms/index";
+import { Popper, PortfolioThumbnail, Profile } from "@/components/molecules/index";
 import { Group, Item } from "@/components/molecules/popper/Popper.styled";
-import { ButtonGroup, PortfolioItemLayout, ProfileBox } from "@/components/molecules/portfolio-item/PortfolioItem.styled";
-import PortfolioThumbnail from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail";
-import Profile from "@/components/molecules/profile/Profile";
+import * as S from "@/components/molecules/portfolio-item/PortfolioItem.styled";
 import usePopup from "@/hooks/usePopup";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
@@ -31,19 +28,19 @@ export default function PortfolioItem({ portfolio, onClick }: Props) {
 	}, [isPopUp])
 
 	return (
-		<PortfolioItemLayout onClick={onClick}>
+		<S.Wrapper onClick={onClick}>
 			<PortfolioThumbnail portfolio={portfolio}/>
 
-			<ProfileBox>
+			<S.ProfileBox>
 				<Profile type='portfolio-item' user={{...portfolio, ...portfolio.user}}/>
 
-				<ButtonGroup className='button-group' ref={buttonGroupRef}>
+				<S.ButtonGroup className='button-group' ref={buttonGroupRef}>
 					<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
 
 					<Button onClick={popUp} color='gray' shape='square'>
 						<MoreIcon/>
 					</Button>
-				</ButtonGroup>
+				</S.ButtonGroup>
 
 				{ isPopUp &&
 					<Popper coordinate={coordinate} popOut={popOut}>
@@ -52,7 +49,7 @@ export default function PortfolioItem({ portfolio, onClick }: Props) {
 						</Group>
 					</Popper>
 				}
-			</ProfileBox>
-		</PortfolioItemLayout>
+			</S.ProfileBox>
+		</S.Wrapper>
 	)
 }
