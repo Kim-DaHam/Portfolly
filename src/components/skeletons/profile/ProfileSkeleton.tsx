@@ -1,7 +1,7 @@
 import { ImageBox, TextBox } from "./ProfileSkeleton.styled";
 
 import { Profile } from "@/components/molecules/profile/Profile";
-import { ProfileLayout, SpanBox } from "@/components/molecules/profile/Profile.styled";
+import { Wrapper, SpanBox } from "@/components/molecules/profile/Profile.styled";
 import { IComponentFactory } from "@/types";
 
 type Props = {
@@ -10,9 +10,9 @@ type Props = {
 
 export default function ProfileSkeleton({type}: Props) {
 	return(
-		<ProfileLayout $type={type}>
+		<Wrapper $type={type}>
 			{renderProfileSkeleton(type)}
-		</ProfileLayout>
+		</Wrapper>
 	)
 }
 

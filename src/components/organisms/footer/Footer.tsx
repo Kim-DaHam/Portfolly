@@ -1,9 +1,9 @@
-import { FooterContainer } from "./Footer.styled";
+import * as S from "@/components/organisms/footer/Footer.styled";
 
 export default function Footer(){
 	return(
-		<FooterContainer>
+		<S.Wrapper>
 				Footer
-		</FooterContainer>
+		</S.Wrapper>
 	)
 }

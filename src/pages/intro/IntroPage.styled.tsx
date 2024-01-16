@@ -1,8 +1,9 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-export const IntroLayout = styled.div`
-	width: 100%;
-	height: 100%;
+import * as mixins from '@/styles/mixins';
+
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
 
 	position: fixed;
 	top: 0;
@@ -17,14 +18,12 @@ export const IntroLayout = styled.div`
 	scrollbar-width: none;
 `;
 
-export const IntroduceContainer = styled.div`
+export const Introduce = styled.div`
 	width: 100%;
 	height: 100vh;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	${mixins.flexCenter}
+	${mixins.flexColumn}
 
 	background-color: aliceblue;
 `;

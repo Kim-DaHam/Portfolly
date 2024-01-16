@@ -1,12 +1,12 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-export const FooterContainer = styled.footer`
+import * as mixins from '@/styles/mixins';
+
+export const Wrapper = styled.footer`
 	width: 100%;
 	height: 4rem;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	${mixins.flexCenter}
 
 	border-top: 1px solid gray;
 

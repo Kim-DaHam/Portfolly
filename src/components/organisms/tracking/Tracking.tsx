@@ -1,52 +1,51 @@
-import { Box, BoxGroup, LabelGroup, TextGroup, TrackingLayout } from "./Tracking.styled";
-
-import { Heading as Count, Text } from "@/styles/Text.styled";
+import { Text } from "@/components";
+import * as S from "@/components/organisms/tracking/Tracking.styled";
 
 export default function Tracking() {
 	return(
-		<TrackingLayout>
-			<BoxGroup>
-				<Box>
-					<LabelGroup>
+		<S.Wrapper>
+			<S.Content>
+				<S.Box>
+					<S.LabelGroup>
 						<div>아이콘</div>
-						<Text size='Medium'>진행중</Text>
-					</LabelGroup>
-					<Count size='Small'>0</Count>
-				</Box>
+						<Text type='common'>진행중</Text>
+					</S.LabelGroup>
+					<Text type='small'>0</Text>
+				</S.Box>
 
-				<Box>
-					<LabelGroup>
+				<S.Box>
+					<S.LabelGroup>
 						<div>아이콘</div>
-						<Text size='Medium'>진행중</Text>
-					</LabelGroup>
-					<Count size='Small'>0</Count>
-				</Box>
+						<Text type='common'>진행중</Text>
+					</S.LabelGroup>
+					<Text type='small'>0</Text>
+				</S.Box>
 
-				<Box>
-					<LabelGroup>
+				<S.Box>
+					<S.LabelGroup>
 						<div>아이콘</div>
-						<Text size='Medium'>진행중</Text>
-					</LabelGroup>
-					<Count size='Small'>0</Count>
-				</Box>
+						<Text type='common'>진행중</Text>
+					</S.LabelGroup>
+					<Text type='small'>0</Text>
+				</S.Box>
 
-				<Box>
-					<TextGroup>
-						<Text size='Medium'>구매 확정</Text>
-						<Text size='Medium'>0</Text>
-					</TextGroup>
+				<S.Box>
+					<S.Group>
+						<Text type='common'>구매 확정</Text>
+						<Text type='common'>0</Text>
+					</S.Group>
 
-					<TextGroup>
-						<Text size='Medium'>작성 가능한 리뷰</Text>
-						<Text size='Medium'>0</Text>
-					</TextGroup>
+					<S.Group>
+						<Text type='common'>작성 가능한 리뷰</Text>
+						<Text type='common'>0</Text>
+					</S.Group>
 
-					<TextGroup>
-						<Text size='Medium'>주문 취소</Text>
-						<Text size='Medium'>0</Text>
-					</TextGroup>
-				</Box>
-			</BoxGroup>
-		</TrackingLayout>
+					<S.Group>
+						<Text type='common'>주문 취소</Text>
+						<Text type='common'>0</Text>
+					</S.Group>
+				</S.Box>
+			</S.Content>
+		</S.Wrapper>
 	)
 }

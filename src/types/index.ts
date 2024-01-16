@@ -9,3 +9,6 @@ export type ISectionFactory = {
 }
 
 export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
+
+export * from '@/types/portfolio';
+export * from '@/types/slider';

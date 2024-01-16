@@ -1,6 +1,6 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-export const PaginationLayout = styled.div`
+export const Wrapper = styled.div`
 	width: 380px;
 	height: 40px;
 

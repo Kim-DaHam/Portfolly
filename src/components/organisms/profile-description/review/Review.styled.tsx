@@ -1,22 +1,18 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-export const ReviewLayout = styled.div`
-	width: 100%;
-	height: 100%;
+import * as mixins from '@/styles/mixins';
 
-	display: flex;
-	flex-direction: column;
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
+	${mixins.flexColumn}
 	align-items: center;
 
 	gap: 3rem;
 `;
 
-export const ReviewList = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
+export const Content = styled.div`
+	${mixins.fullWidthHeight}
+	${mixins.flexColumn}
 	gap: 2rem;
 
 	padding-left: 2rem;
@@ -28,8 +24,7 @@ export const ReviewBox = styled.div`
 	width: 60%;
 	height: 10rem;
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 	gap: 1rem;
 
 	background-color: beige;
@@ -60,12 +55,17 @@ export const Span = styled.span`
 `;
 
 export const ContentBox = styled.div`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
 	flex-basis: 1;
 
 	padding-left: 1rem;
 
 	background-color: #b3d2ee;
+`;
+
+export const Box = styled.div`
+	${mixins.flexColumn}
+	justify-content: center;
+	gap: 0.5rem;
 `;

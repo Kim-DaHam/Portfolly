@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
-import { RoundButton } from "@/components/atoms/button/Button.styled";
+import { ButtonStyle } from "@/components/atoms/index";
 
-export const CategorySliderLayout = styled.section`
+export const Wrapper = styled.section`
 	width: 100%;
 	height: 3rem;
 
@@ -45,7 +45,7 @@ export const Slider = styled.ul`
 	background-color: salmon;
 `;
 
-export const PrevArrow = styled(RoundButton)<{$showPrevArrow: boolean}>`
+export const PrevArrow = styled(ButtonStyle)<{$showPrevArrow: boolean}>`
 	position: absolute;
 	z-index: 100;
 	top: 0;
@@ -55,7 +55,7 @@ export const PrevArrow = styled(RoundButton)<{$showPrevArrow: boolean}>`
 	visibility: ${(props) => props.$showPrevArrow ? 'visible' : 'hidden'};
 `;
 
-export const NextArrow = styled(RoundButton)<{$showNextArrow: boolean}>`
+export const NextArrow = styled(ButtonStyle)<{$showNextArrow: boolean}>`
 	position: absolute;
 	z-index: 100;
 	top: 0;

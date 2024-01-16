@@ -7,12 +7,12 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { initialProps, sliderSettings } from "./PortfolioThumbnail.constants";
 
-import Image from "@/components/atoms/image/Image";
-import { ArrowBox, NextArrow, PortfolioThumbnailLayout, PrevArrow, SliderContainer, SliderItem } from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail.styled";
-import useHandleSlider from "@/hooks/slider/useHandleSlider";
+import { Image } from "@/components";
+import * as S from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail.styled";
+import { useHandleSlider } from "@/hooks";
 import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Portfolio, Section } from "@/types/portfolio";
-import { eventStopPropagation } from "@/utils/event";
+import { Portfolio, Section } from "@/types";
+import { eventStopPropagation } from "@/utils";
 
 export type Props = {
 	section?: Section;
@@ -33,31 +33,33 @@ export default function PortfolioThumnail({section, portfolio}: Props){
 	}, [])
 
 	return(
-		<PortfolioThumbnailLayout $section={section || currentSection} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
-			<SliderContainer>
-				<ArrowBox onClick={eventStopPropagation}>
-					<PrevArrow
-						color='White'
+		<S.Wrapper $section={section || currentSection} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
+			<S.Content>
+				<S.ArrowBox onClick={eventStopPropagation}>
+					<S.PrevArrow
+						color='white'
+						shape='square'
 						onClick={handlePrev}
 						$showPrevArrow={showPrevArrow}>
-					Prev</PrevArrow>
-					<NextArrow
-						color='White'
+					Prev</S.PrevArrow>
+					<S.NextArrow
+						color='white'
+						shape='square'
 						onClick={handleNext}
 						$showNextArrow={showNextArrow}>
-					Next</NextArrow>
-				</ArrowBox>
+					Next</S.NextArrow>
+				</S.ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
 					{portfolio?.thumbnailUrl.map((url, index)=>{
 						return (
-							<SliderItem key={index}>
+							<S.SliderItem key={index}>
 								<Image src={url} size='auto' key={index}/>
-							</SliderItem>
+							</S.SliderItem>
 						)
 					})}
 				</Slider>
-			</SliderContainer>
-		</PortfolioThumbnailLayout>
+			</S.Content>
+		</S.Wrapper>
 	)
 }

@@ -1,21 +1,19 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-export const PortfolioListLayout = styled.div`
-	width: 100%;
-	height: 100%;
+import * as mixins from '@/styles/mixins';
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
+
+	${mixins.flexCenter}
+	${mixins.flexColumn}
 	gap: 3rem;
 
 	background-color: lightpink;
 `;
 
 export const GridBox = styled.div`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -23,11 +21,9 @@ export const GridBox = styled.div`
 `;
 
 export const GridItem = styled.div`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 	gap: 1rem;
 
 	cursor: pointer;
@@ -35,7 +31,7 @@ export const GridItem = styled.div`
 	background-color: red;
 `;
 
-export const ThumbnailImage = styled.div`
+export const Thumbnail = styled.div`
 	width: 100%;
 	aspect-ratio: 1 / 1;
 
@@ -45,8 +41,7 @@ export const ThumbnailImage = styled.div`
 export const TitleBox = styled.div`
 	width: 100%;
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 
 	background-color: lightgreen;
 `;

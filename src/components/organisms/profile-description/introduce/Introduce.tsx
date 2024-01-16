@@ -1,54 +1,52 @@
-import { ContentBox, IntroduceLayout, TextBox } from "./Introduce.styled";
-
-import Tag from "@/components/atoms/tag/Tag";
-import { Label, Text } from "@/styles/Text.styled";
+import { Text, Tag } from "@/components";
+import * as S from "@/components/organisms/profile-description/introduce/Introduce.styled";
 
 export default function Introduce() {
 	return(
-		<IntroduceLayout>
-			<ContentBox gap='1rem'>
-				<Label>소개</Label>
-				<TextBox>
+		<S.Wrapper>
+			<S.Box>
+				<Text type='label'>소개</Text>
+				<S.TextBox>
 					blablablablablablalalablablalblablalba
-				</TextBox>
-			</ContentBox>
+				</S.TextBox>
+			</S.Box>
 
-			<ContentBox gap='1rem'>
-				<Label>지역</Label>
-				<Text size='Medium'>대구</Text>
-			</ContentBox>
+			<S.Box>
+				<Text type='label'>지역</Text>
+				<Text type='common'>대구</Text>
+			</S.Box>
 
 			{ true && // 전문가면
 				<>
-				<ContentBox gap='1rem'>
-					<Label>경력사항</Label>
+				<S.Box>
+					<Text type='label'>경력사항</Text>
 					<ul>
 						<li>네이버</li>
 						<li>카카오</li>
 					</ul>
-				</ContentBox>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
-					<Label>총 경력</Label>
-					<Text size='Medium'>10년</Text>
-				</ContentBox>
+				<S.Box>
+					<Text type='label'>총 경력</Text>
+					<Text type='common'>10년</Text>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
-					<Label>희망 급여</Label>
-					<Text size='Medium'>3천억</Text>
-				</ContentBox>
+				<S.Box>
+					<Text type='label'>희망 급여</Text>
+					<Text type='common'>3천억</Text>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
-					<Label>전문분야 및 상세분야</Label>
+				<S.Box>
+					<Text type='label'>전문분야 및 상세분야</Text>
 					<Tag value='Web' readOnly/>
-				</ContentBox>
+				</S.Box>
 
-				<ContentBox gap='1rem'>
-					<Label>보유 기술</Label>
+				<S.Box>
+					<Text type='label'>보유 기술</Text>
 					<Tag value='React' readOnly/>
-				</ContentBox>
+				</S.Box>
 				</>
 			}
-		</IntroduceLayout>
+		</S.Wrapper>
 	)
 }

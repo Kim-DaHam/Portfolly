@@ -3,17 +3,12 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo.png';
-import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
-import Image from '@/components/atoms/image/Image';
-import SectionNavigatior from "@/components/molecules/navigator/SectionNavigator";
-import Popper from "@/components/molecules/popper/Popper";
-import SearchBar from "@/components/molecules/searchBar/SearchBar";
+import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from '@/components';
 import { renderHeaderMenuPopper } from "@/components/organisms/header/Header.helpers";
-import { ButtonGroup, HeaderContainer, LogoBox } from "@/components/organisms/header/Header.styled";
-import SearchModal from "@/components/organisms/modal/search-modal/SearchModal";
+import * as S from "@/components/organisms/header/Header.styled";
 import { useHeader, useModal, usePopup } from "@/hooks";
 import { isLogin as IsLogin } from "@/redux/loginSlice";
-import { ROUTE_PATH } from "@/utils/path";
+import { ROUTE_PATH } from "@/utils";
 
 export default function Header() {
 	const { showSearchBar, showSectionNavigator } = useHeader();
@@ -25,12 +20,12 @@ export default function Header() {
 	const isLogin = useSelector(IsLogin);
 
 	return(
-		<HeaderContainer>
-			<LogoBox onClick={()=>navigate('/main/android-ios')}>
+		<S.Wrapper>
+			<S.Logo onClick={()=>navigate('/main/android-ios')}>
 				<Image src={Logo} size='2.3rem'/>
-			</LogoBox>
+			</S.Logo>
 
-			{ showSectionNavigator ? <SectionNavigatior/> : <div></div> }
+			{ showSectionNavigator ? <SectionNavigator/> : <div></div> }
 
 			{ showSearchBar ?
 				<>
@@ -45,19 +40,19 @@ export default function Header() {
 			}
 
 			{ isLogin ?
-				<ButtonGroup>
-					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</SquareButton>
-					<RoundButton color='Transparency' onClick={popUp}>
+				<S.ButtonGroup>
+					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</Button>
+					<Button color='transparent' shape='square' onClick={popUp}>
 						<Image src='' size='1rem'/>
 						<MenuIcon size={15}/>
-					</RoundButton>
-				</ButtonGroup>
+					</Button>
+				</S.ButtonGroup>
 				:
-				<ButtonGroup>
-					<SquareButton color='White' onClick={()=>navigate(ROUTE_PATH.SIGN_IN)}>Log in</SquareButton>
-					<SquareButton color='Black' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</SquareButton>
-					<RoundButton color='Transparency' onClick={popUp}><MenuIcon size={15}/></RoundButton>
-				</ButtonGroup>
+				<S.ButtonGroup>
+					<Button color='white' shape='square' onClick={()=>navigate(ROUTE_PATH.SIGN_IN)}>Log in</Button>
+					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</Button>
+					<Button color='transparent' shape='round' onClick={popUp}><MenuIcon size={15}/></Button>
+				</S.ButtonGroup>
 			}
 
 			{ isPopUp &&
@@ -65,6 +60,6 @@ export default function Header() {
 					{renderHeaderMenuPopper(isLogin)}
 				</Popper>
 			}
-		</HeaderContainer>
+		</S.Wrapper>
 	)
 }

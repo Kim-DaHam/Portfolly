@@ -1,61 +1,55 @@
 import { useState } from "react";
 
-import { ContentContainer, InformationSection, MyPageLayout, NavigationSection, ProfileContainer, DescriptionSection, ProfileImg, ProfileMainSection } from "./MyPage.styled";
-import { Navigation } from "./MyPage.type";
-import { renderDescription, renderNavigation } from "./MyPage.utils";
+import { Text, Button, Rating, Footer, Header, UserInformation } from "@/components/";
+import { renderDescription, renderNavigation } from "@/pages/my-page/MyPage.helpers";
+import * as S from "@/pages/my-page/MyPage.styled";
 
-
-import { SquareButton } from "@/components/atoms/button/Button.styled";
-import Rating from "@/components/molecules/rating/Rating";
-import Footer from "@/components/organisms/footer/Footer";
-import Header from "@/components/organisms/header/Header";
-import UserInformation from "@/components/organisms/user-information/UserInformation";
-import { FlexBox, FlexColumnBox } from "@/styles/Container.styled";
-import { Heading } from "@/styles/Text.styled";
+export type User = 'expert' | 'client';
+export type Navigation = 'Introduce' | 'Portfolio' | 'Review' | 'Management';
 
 function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('Introduce');
 
 	return(
-		<MyPageLayout>
+		<S.Wrapper>
 			<Header/>
-			<ProfileContainer>
-				<ProfileMainSection>
-					<ProfileImg>
+			<S.Content>
+				<S.ProfileMainSection>
+					<S.ProfileImg>
 						<img/>
-					</ProfileImg>
+					</S.ProfileImg>
 
-					<FlexColumnBox gap='1rem'>
-						<Heading size='Large'>User Name</Heading>
+					<S.Box>
+						<Text type='title'>User Name</Text>
 						<Rating/>
 
 						{ true && // 본인 아니면
-							<FlexBox justify="right">
-								<SquareButton color='Black' size='Large'>
+							<S.ButtonBox>
+								<Button color='black' size='large' shape='square'>
 									문의하기
-								</SquareButton>
-							</FlexBox>
+								</Button>
+							</S.ButtonBox>
 						}
-					</FlexColumnBox>
-				</ProfileMainSection>
+					</S.Box>
+				</S.ProfileMainSection>
 
-				<NavigationSection>
-					{renderNavigation('Expert', setNavigation)}
-				</NavigationSection>
+				<S.NavigationSection>
+					{renderNavigation('expert', setNavigation)}
+				</S.NavigationSection>
 
-				<ContentContainer>
-					<DescriptionSection>
+				<S.ContentContainer>
+					<S.DescriptionSection>
 						{renderDescription(navigation)}
-					</DescriptionSection>
+					</S.DescriptionSection>
 
-					<InformationSection>
+					<S.InformationSection>
 						<UserInformation/>
-					</InformationSection>
-				</ContentContainer>
-			</ProfileContainer>
+					</S.InformationSection>
+				</S.ContentContainer>
+			</S.Content>
 
 			<Footer/>
-		</MyPageLayout>
+		</S.Wrapper>
 	)
 }
 

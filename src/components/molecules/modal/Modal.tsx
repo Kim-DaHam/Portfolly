@@ -1,49 +1,19 @@
-import { ReactElement } from "react";
-import { styled } from "styled-components";
+import { HTMLAttributes, ReactElement } from "react";
 
-import * as mixins from '@/styles/mixins';
-import { modalSize } from "@/styles/token";
+import * as S from '@/components/molecules/modal/Modal.styled';
+import { eventStopPropagation } from "@/utils/event";
 
-export type Modal = 'alert' | 'search' | 'form';
-
-type Props = {
-	type: Modal;
+export type Props = HTMLAttributes<HTMLDivElement> & {
+	$type: 'alert' | 'search' | 'form';
 	children: ReactElement;
 }
 
-export default function Modal({ type, children }: Props) {
+export default function Modal({ $type, children, ...props }: Props) {
 	return(
-		<ModalLayout $type={type}>
-			<ModalBox $type={type}>
+		<S.Wrapper $type={$type} {...props}>
+			<S.ModalBox $type={$type} onClick={eventStopPropagation}>
 				{children}
-			</ModalBox>
-		</ModalLayout>
+			</S.ModalBox>
+		</S.Wrapper>
 	)
 }
-
-const ModalLayout = styled.div<{$type: Modal}>`
-	width: 100vw;
-	height: 100vh;
-
-	${mixins.flexCenter};
-
-	position: fixed;
-	z-index: 9999;
-	top: 0;
-	left: 0;
-
-	background-color: ${(props) => props.$type !== 'alert' ? '#0000007e' : 'transparent'};
-`;
-
-const ModalBox = styled.div<{$type: Modal}>`
-	width: ${(props) => modalSize[props.$type].width};
-	height: ${(props) => modalSize[props.$type].height};
-
-	${mixins.flexColumn}
-	gap: 2rem;
-
-	padding: 1.7rem 2rem 1.7rem 2rem;
-
-	border-radius: 16px;
-	background-color: white;
-`;

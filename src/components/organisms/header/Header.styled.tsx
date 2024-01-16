@@ -1,8 +1,8 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export const HEADER_HEIGHT = '3.5rem';
 
-export const HeaderContainer = styled.header`
+export const Wrapper = styled.header`
 	width: 100%;
 	height: ${HEADER_HEIGHT};
 
@@ -28,6 +28,6 @@ export const ButtonGroup = styled.nav`
 	gap: 0.9rem;
 `
 
-export const LogoBox = styled.a`
+export const Logo = styled.a`
 	cursor: pointer;
 `;

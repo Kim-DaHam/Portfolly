@@ -1,16 +1,15 @@
 import { HTMLAttributes, useEffect, useState } from "react";
 
-import SearchBar from "../../../molecules/searchBar/SearchBar";
+import * as S from "./SearchModal.styled";
 
-import { searchFilter, searchFilterList } from "./SearchModal.constants";
-import { ModalLayout, ModalBox, FilterGroup, ContentBox, OptionButton, SearchSection, ContentSection } from "./SearchModal.styled";
-import { Filter } from "./SearchModal.type";
-import { renderContent } from "./SearchModal.utils";
-
+import { Modal, SearchBar } from "@/components/molecules";
+import { searchFilter, searchFilterList, renderContent } from "@/components/organisms/modal/search-modal";
 import useStopScrollY from "@/hooks/useStopScrollY";
-import { eventStopPropagation } from "@/utils/event";
 
-export default function SearchModal({...attributes}: HTMLAttributes<HTMLDivElement>) {
+export type Filter = 'Trending' | 'AppCategory' | 'UserTags' | 'Search';
+export type Content = 'Trending' | 'List' | 'Search';
+
+export default function SearchModal({...props}: HTMLAttributes<HTMLDivElement>) {
 	const [filter, setFilter] = useState<Filter>('Trending');
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
 
@@ -25,31 +24,31 @@ export default function SearchModal({...attributes}: HTMLAttributes<HTMLDivEleme
 	}, [isTextEntered])
 
 	return(
-		<ModalLayout {...attributes}>
-			<ModalBox onClick={eventStopPropagation}>
-				<SearchSection>
+		<Modal $type='search' {...props}>
+			<S.Content>
+				<S.SearchSection>
 					<SearchBar isClicked={true} onInputChange={setIsTextEntered}/>
-				</SearchSection>
+				</S.SearchSection>
 
-				<ContentSection>
+				<S.ContentSection>
 					{ !isTextEntered &&
-						<FilterGroup>
+						<S.FilterGroup>
 							{searchFilterList.map((filter)=>{
 								return (
-									<OptionButton color='White' size='Large' onClick={()=>changeFilter(filter)}>
+									<S.Option color='white' size='large' shape='square' onClick={()=>changeFilter(filter)}>
 										{searchFilter[filter].icon}
 										{searchFilter[filter].name}
-									</OptionButton>
+									</S.Option>
 								)
 							})}
-						</FilterGroup>
+						</S.FilterGroup>
 					}
 
-					<ContentBox>
+					<S.ContentBox>
 						{renderContent(searchFilter[filter].contentType)}
-					</ContentBox>
-				</ContentSection>
-			</ModalBox>
-		</ModalLayout>
+					</S.ContentBox>
+				</S.ContentSection>
+			</S.Content>
+		</Modal>
 	)
 }

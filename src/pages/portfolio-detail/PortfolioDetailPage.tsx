@@ -1,25 +1,16 @@
-import { QueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { FiChevronRight as ChevronRightIcon } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Aside, ButtonGroup, Content, FlexBox, GridBox, GridItem, HtmlContent, PortfolioInfoBox, PortfolioSection, ProfileBox, SummaryBox, TagBox, TextButton, TitleBox, Wrapper } from "./PortfolioDetailPage.styled";
+import * as S from "./PortfolioDetailPage.styled";
 
-import { RoundButton, SquareButton } from "@/components/atoms/button/Button.styled";
-import ToggleButton from "@/components/atoms/button/ToggleButton";
-import Image from "@/components/atoms/image/Image";
-import Tag from "@/components/atoms/tag/Tag";
-import Profile from "@/components/molecules/profile/Profile";
-import Header from "@/components/organisms/header/Header";
-import AlertModal from "@/components/organisms/modal/alert-modal/AlertModal";
+import { Text, Image, Button, ToggleButton, Tag, Profile, Header, AlertModal } from "@/components";
 import { useModal } from "@/hooks";
 import { userId } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
-import { Heading, Label, Text } from "@/styles/Text.styled";
-import { Portfolio } from "@/types/portfolio";
-import { usePortfolioDeleteQuery, usePortfolioDetailQuery } from "@/utils/api-service/portfolio";
-import { stringToUrlParameter } from "@/utils/path";
+import { Portfolio } from "@/types";
+import { usePortfolioDeleteQuery, usePortfolioDetailQuery, stringToUrlParameter } from "@/utils";
 
 export default function PortfolioDetail(){
 	const [hasAuthority, setHasAuthority] = useState(false);
@@ -51,75 +42,75 @@ export default function PortfolioDetail(){
 	}, [portfolio])
 
 	return(
-		<Wrapper>
+		<S.Wrapper>
 			<Header/>
-			<Content>
-				<RoundButton color='Transparency' size='Fit' onClick={()=>navigate(-1)}>뒤로가기</RoundButton>
+			<S.Content>
+				<Button color='transparent' shape='round' onClick={()=>navigate(-1)}>뒤로가기</Button>
 				{ portfolio &&
-					<FlexBox>
-						<PortfolioSection>
-							<HtmlContent>
+					<S.FlexBox>
+						<S.PortfolioSection>
+							<S.HtmlContent>
 								{portfolio.content}
-							</HtmlContent>
-						</PortfolioSection>
+							</S.HtmlContent>
+						</S.PortfolioSection>
 
-						<Aside>
-							<ProfileBox>
+						<S.Aside>
+							<S.ProfileBox>
 								<Profile type='portfolio-detail' user={portfolio.user}/>
-								<SquareButton color='White' size='Medium'>문의하기</SquareButton>
-							</ProfileBox>
+								<Button color='white' size='medium' shape='square'>문의하기</Button>
+							</S.ProfileBox>
 
-							<PortfolioInfoBox>
-								<TitleBox>
-									<Text size='Medium' color='Gray'>{portfolio.category}</Text>
-									<Heading size='Small'>{portfolio.title}</Heading>
-								</TitleBox>
+							<S.PortfolioInfoBox>
+								<S.TitleBox>
+									<Text type='common' color='gray'>{portfolio.category}</Text>
+									<Text type='titleSmall'>{portfolio.title}</Text>
+								</S.TitleBox>
 
-								<ButtonGroup>
+								<S.ButtonGroup>
 									<ToggleButton type='like' isToggled={portfolio.isLiked} portfolioId={portfolio.id} currentLikes={portfolio.likes}/>
 									<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
-								</ButtonGroup>
+								</S.ButtonGroup>
 
 								{ hasAuthority &&
-									<ButtonGroup>
-										<TextButton onClick={handleEditButton}>수정하기</TextButton>
-										<TextButton onClick={handleModal}>삭제하기</TextButton>
-									</ButtonGroup>
+									<S.ButtonGroup>
+										<S.TextButton onClick={handleEditButton}>수정하기</S.TextButton>
+										<S.TextButton onClick={handleModal}>삭제하기</S.TextButton>
+									</S.ButtonGroup>
 								}
 
-								<Label>태그</Label>
-								<TagBox>
+								<Text type='label'>태그</Text>
+								<S.TagBox>
 									{portfolio.tags.map((tag: string, index: number) => {
 										return <Tag readOnly value={tag} key={index}/>
 									})}
-								</TagBox>
+								</S.TagBox>
 
-								<Label>요약</Label>
-								<SummaryBox>
+								<Text type='label'>요약</Text>
+								<S.SummaryBox>
 									{portfolio.summary}
-								</SummaryBox>
+								</S.SummaryBox>
 
-								<Label onClick={()=>navigate(`/profile/${portfolio.user.id}`)}>
+								<Text type='label' onClick={()=>navigate(`/profile/${portfolio.user.id}`)}>
 									전문가의 다른 포트폴리오
 									<ChevronRightIcon size={18}/>
-								</Label>
-								<GridBox>
+								</Text>
+								<S.GridBox>
 									{ portfolio.otherPortfolios.map((portfolio: Portfolio) => {
 										return (
-											<GridItem key={portfolio.id} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
+											<S.GridItem key={portfolio.id} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
 												<Image size='100%' src={portfolio.thumbnailUrl[0]} shape='foursquare'/>
-											</GridItem>
+											</S.GridItem>
 										)
 									})}
-								</GridBox>
-							</PortfolioInfoBox>
-						</Aside>
-					</FlexBox>
+								</S.GridBox>
+							</S.PortfolioInfoBox>
+						</S.Aside>
+					</S.FlexBox>
 				}
-			</Content>
+			</S.Content>
 			{ isModalOpen &&
 				<AlertModal type='delete' onClick={deletePortfolio} handleModal={handleModal}/>
 			}
-		</Wrapper>
+		</S.Wrapper>
 	)
 }

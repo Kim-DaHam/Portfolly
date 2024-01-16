@@ -1,14 +1,23 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-export const UserInformationLayout = styled.div`
-	width: 100%;
-	height: 100%;
+import * as mixins from '@/styles/mixins';
 
-	display: flex;
-	flex-direction: column;
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
+	${mixins.flexColumn}
 	gap: 1rem;
 
 	padding: 1rem;
 
 	background-color: lightsteelblue;
+`;
+
+export const Box = styled.div`
+	${mixins.flexColumn}
+	gap: 0.5rem;
+`;
+
+export const Group = styled.div`
+	${mixins.flexColumn}
+	justify-content: space-between;
 `;

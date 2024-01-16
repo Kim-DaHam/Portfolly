@@ -2,16 +2,16 @@ import { FiMoreHorizontal as Icon} from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Popper from "../popper/Popper";
 import { Group, Item } from "../popper/Popper.styled";
 
-import { SectionNavigatorLayout, SectionTitle } from "./SectionNavigator.styled";
+import * as S from "./SectionNavigator.styled";
 
-import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
-import usePopup from "@/hooks/usePopup";
+import { Button } from "@/components/atoms";
+import { Popper }  from "@/components/molecules";
+import { usePopup } from "@/hooks";
 import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Section } from "@/types/portfolio";
-import { stringToUrlParameter } from "@/utils/path";
+import { Section } from "@/types";
+import { stringToUrlParameter } from "@/utils";
 
 const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
 
@@ -28,16 +28,16 @@ export default function SectionNavigator() {
 	};
 
 	return(
-		<SectionNavigatorLayout>
-			<SectionTitle>{currentSection}</SectionTitle>
+		<S.Wrapper>
+			<S.SectionTitle>{currentSection}</S.SectionTitle>
 
-			<MoreButton color='White' onClick={popUp}>
+			<Button color='white' shape='round' onClick={popUp}>
 				<Icon color='gray'/>
-			</MoreButton>
+			</Button>
 
 			{isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>
-					<Group size='Fit'>
+					<Group size='fit'>
 						{sections.map((section: Section, index: number)=>{
 							return(
 								<Item onClick={handleSection} key={index}>{section}</Item>
@@ -46,6 +46,6 @@ export default function SectionNavigator() {
 					</Group>
 				</Popper>
 			}
-		</SectionNavigatorLayout>
+		</S.Wrapper>
 	)
 }

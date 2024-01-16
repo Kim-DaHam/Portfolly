@@ -1,13 +1,23 @@
 import { useNavigate } from "react-router-dom";
 
-import { PreviewRowColumns } from "./Preview.constants";
-import { PreviewLayout, PreviewRow, TextBox, ViewMoreButton } from "./Preview.styled";
-import { Props } from "./Preview.type";
-import { renderPortfolioItems } from "./Preview.utils";
-
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
-import { Heading, Text } from "@/styles/Text.styled";
-import { stringToUrlParameter } from "@/utils/path";
+import { Text, PortfolioThumbnail } from "@/components";
+import * as S from "@/components/organisms/preview/Preview.styled";
+import { Portfolio, Section } from "@/types";
+import { stringToUrlParameter } from "@/utils";
+
+type Props = {
+	section: Section,
+	portfolios: Portfolio[],
+};
+
+export const PreviewRowColumns = {
+	'Android/iOS': 3,
+	'Web': 2,
+	'Illustration': 2,
+	'Photo': 2,
+	'Video': 2,
+}
 
 export default function Preview({section, portfolios}: Props){
 	const navigate = useNavigate();
@@ -18,19 +28,21 @@ export default function Preview({section, portfolios}: Props){
 	}
 
 	return(
-		<PreviewLayout>
-			<TextBox>
-				<Heading size='Large'>{section}</Heading>
-				<Text size='Medium'>{introduction[section]}</Text>
-			</TextBox>
+		<S.Wrapper>
+			<S.TextBox>
+				<Text type='title'>{section}</Text>
+				<Text type='common'>{introduction[section]}</Text>
+			</S.TextBox>
 
-			<PreviewRow $column={PreviewRowColumns[section]}>
-				{renderPortfolioItems(section, portfolios, PreviewRowColumns[section])}
-			</PreviewRow>
+			<S.PreviewBox $column={PreviewRowColumns[section]}>
+				{portfolios.map((portfolio, index: number) => {
+					return <PortfolioThumbnail section={section} key={index} portfolio={portfolio}/>
+				})}
+			</S.PreviewBox>
 
-			<ViewMoreButton size='Fit' color='White' onClick={navigateMain}>
+			<S.ViewMoreButton shape='square' color='white' onClick={navigateMain}>
 				More
-			</ViewMoreButton>
-		</PreviewLayout>
+			</S.ViewMoreButton>
+		</S.Wrapper>
 	)
 }

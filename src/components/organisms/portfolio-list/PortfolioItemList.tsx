@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { GridBox } from "./PortfolioList.styled";
-
-import PortfolioItem from "@/components/molecules/portfolio-item/PortfolioItem";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { PortfolioItem } from "@/components";
+import * as S from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
+import { useIntersectionObserver } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
-import { Portfolio } from "@/types/portfolio";
-import { usePortfoliosQuery } from "@/utils/api-service/portfolio";
+import { Portfolio } from "@/types";
+import { usePortfoliosQuery } from "@/utils";
 
 type Props = {
 	category: string;
@@ -16,7 +15,7 @@ type Props = {
 const ITEMS_PER_PAGE = 10;
 export const SESSIONSTORAGE_KEY = "lastClickedPortfolio";
 
-export default function PortfolioList({category}: Props) {
+export default function PortfolioItemList({category}: Props) {
 	const [count, setCount] = useState(ITEMS_PER_PAGE);
 	const [loadData, setLoadData] = useState(true);
 
@@ -64,7 +63,7 @@ export default function PortfolioList({category}: Props) {
 	}, []);
 
 	return (
-		<GridBox>
+		<S.GridBox>
 			{ portfolios && portfolios.map((portfolio: Portfolio, index: number)=>{
 				if(index < count) {
 					return(
@@ -75,6 +74,6 @@ export default function PortfolioList({category}: Props) {
 			{ loadData &&
 				<div ref={setObservationTarget}></div>
 			}
-		</GridBox>
+		</S.GridBox>
 	)
 }

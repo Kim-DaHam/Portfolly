@@ -1,15 +1,13 @@
-import { css, styled } from 'styled-components';
+import styled from 'styled-components';
 
-import { buttonColor, buttonSize } from '@/styles/token';
-import { ButtonColor, ButtonSize } from '@/types/style';
+import { Props } from '@/components/atoms/button/Button';
+import { colors, sizes, shapes } from '@/styles/button';
+import * as mixins from '@/styles/mixins';
 
-const Button = styled.button<{color: ButtonColor, size?: ButtonSize, $active?:boolean}>`
-	width: ${(props)=> props.size? buttonSize[props.size].width : 'fit-content'};
+export const ButtonStyle = styled.button<Props>`
 	height: 2.9rem;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  ${mixins.flexCenter}
 	gap: 1rem;
 
 	padding: 0 1em 0 1em;
@@ -23,25 +21,7 @@ const Button = styled.button<{color: ButtonColor, size?: ButtonSize, $active?:bo
 
 	cursor: pointer;
 
-	${(props)=>{
-		const colorType = props.$active ? 'Black' : props.color;
-
-		return css`
-			color: ${buttonColor[colorType].fontColor};
-			background-color: ${buttonColor[colorType].backgroundColor};
-			border: ${buttonColor[colorType].border};
-
-			&:hover{
-				background-color: ${buttonColor[colorType].hoverBackgroundColor};
-			}
-		`
-	}}
-`
-
-export const SquareButton = styled(Button)`
-	border-radius: 1em;
-`;
-
-export const RoundButton = styled(Button)`
-	border-radius: 9999px;
+	${props => (props.$active ? colors['black'] : colors[props.color])}
+  ${props => (props.size ? sizes[props.size] : sizes['fit'])};
+	${props => (props.shape ? shapes[props.shape] : '')};
 `;

@@ -1,14 +1,10 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
 
-import { SquareButton as MoreButton } from "@/components/atoms/button/Button.styled";
-import ToggleButton from "@/components/atoms/button/ToggleButton";
-import Popper from "@/components/molecules/popper/Popper";
+import { Button, ToggleButton, Popper, PortfolioThumbnail, Profile } from "@/components";
 import { Group, Item } from "@/components/molecules/popper/Popper.styled";
-import { ButtonGroup, PortfolioItemLayout, ProfileBox } from "@/components/molecules/portfolio-item/PortfolioItem.styled";
-import PortfolioThumbnail from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail";
-import Profile from "@/components/molecules/profile/Profile";
-import usePopup from "@/hooks/usePopup";
+import * as S from "@/components/molecules/portfolio-item/PortfolioItem.styled";
+import { usePopup } from "@/hooks";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: any;
@@ -31,19 +27,19 @@ export default function PortfolioItem({ portfolio, onClick }: Props) {
 	}, [isPopUp])
 
 	return (
-		<PortfolioItemLayout onClick={onClick}>
+		<S.Wrapper onClick={onClick}>
 			<PortfolioThumbnail portfolio={portfolio}/>
 
-			<ProfileBox>
+			<S.ProfileBox>
 				<Profile type='portfolio-item' user={{...portfolio, ...portfolio.user}}/>
 
-				<ButtonGroup className='button-group' ref={buttonGroupRef}>
+				<S.ButtonGroup className='button-group' ref={buttonGroupRef}>
 					<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
 
-					<MoreButton onClick={popUp} color='Gray' size='Fit'>
+					<Button onClick={popUp} color='gray' shape='square'>
 						<MoreIcon/>
-					</MoreButton>
-				</ButtonGroup>
+					</Button>
+				</S.ButtonGroup>
 
 				{ isPopUp &&
 					<Popper coordinate={coordinate} popOut={popOut}>
@@ -52,7 +48,7 @@ export default function PortfolioItem({ portfolio, onClick }: Props) {
 						</Group>
 					</Popper>
 				}
-			</ProfileBox>
-		</PortfolioItemLayout>
+			</S.ProfileBox>
+		</S.Wrapper>
 	)
 }

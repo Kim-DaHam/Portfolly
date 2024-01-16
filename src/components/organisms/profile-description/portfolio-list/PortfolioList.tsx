@@ -1,25 +1,23 @@
-import { GridBox, GridItem, PortfolioListLayout, ThumbnailImage, TitleBox } from "./PortfolioList.styled";
-
-import Pagination from "@/components/molecules/pagination/Pagination";
-import { Text } from "@/styles/Text.styled";
+import { Text, Pagination } from "@/components";
+import * as S from "@/components/organisms/profile-description/portfolio-list/PortfolioList.styled";
 
 export default function PortfolioList() {
 	return(
-		<PortfolioListLayout>
-			<GridBox>
-				<GridItem>
-					<ThumbnailImage>
+		<S.Wrapper>
+			<S.GridBox>
+				<S.GridItem>
+					<S.Thumbnail>
 						<img src="" alt="" />
-					</ThumbnailImage>
+					</S.Thumbnail>
 
-					<TitleBox>
-						<Text size='Medium'>Title</Text>
-						<Text size='Small'>Date</Text>
-					</TitleBox>
-				</GridItem>
-			</GridBox>
+					<S.TitleBox>
+						<Text type='common'>Title</Text>
+						<Text type='small'>Date</Text>
+					</S.TitleBox>
+				</S.GridItem>
+			</S.GridBox>
 
 			<Pagination/>
-		</PortfolioListLayout>
+		</S.Wrapper>
 	)
 }

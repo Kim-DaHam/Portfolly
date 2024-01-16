@@ -1,5 +1,5 @@
-import { Content } from "./SearchModal.type";
 
+import { Content } from "@/components/organisms/modal/search-modal";
 import { IComponentFactory } from "@/types";
 
 export const renderContent = (type: Content) => {
@@ -22,4 +22,4 @@ export const renderContent = (type: Content) => {
 	}
 
 	return ComponentFactory[type];
-}
+};
