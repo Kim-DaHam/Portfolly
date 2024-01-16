@@ -1,46 +1,40 @@
 import { useState } from "react";
 
-import * as S from "./MyPage.styled";
-import { Navigation } from "./MyPage.type";
-import { renderDescription, renderNavigation } from "./MyPage.utils";
+import { Text, Button, Rating, Footer, Header, UserInformation } from "@/components/";
+import { renderDescription, renderNavigation } from "@/pages/my-page/MyPage.helpers";
+import * as S from "@/pages/my-page/MyPage.styled";
 
-
-import { Button } from "@/components/atoms/index";
-import Rating from "@/components/molecules/rating/Rating";
-import Footer from "@/components/organisms/footer/Footer";
-import Header from "@/components/organisms/header/Header";
-import UserInformation from "@/components/organisms/user-information/UserInformation";
-import { FlexBox, FlexColumnBox } from "@/styles/Container.styled";
-import { Heading } from "@/styles/Text.styled";
+export type User = 'expert' | 'client';
+export type Navigation = 'Introduce' | 'Portfolio' | 'Review' | 'Management';
 
 function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('Introduce');
 
 	return(
-		<S.MyPageLayout>
+		<S.Wrapper>
 			<Header/>
-			<S.ProfileContainer>
+			<S.Content>
 				<S.ProfileMainSection>
 					<S.ProfileImg>
 						<img/>
 					</S.ProfileImg>
 
-					<FlexColumnBox gap='1rem'>
-						<Heading size='Large'>User Name</Heading>
+					<S.Box>
+						<Text type='title'>User Name</Text>
 						<Rating/>
 
 						{ true && // 본인 아니면
-							<FlexBox justify="right">
+							<S.ButtonBox>
 								<Button color='black' size='large' shape='square'>
 									문의하기
 								</Button>
-							</FlexBox>
+							</S.ButtonBox>
 						}
-					</FlexColumnBox>
+					</S.Box>
 				</S.ProfileMainSection>
 
 				<S.NavigationSection>
-					{renderNavigation('Expert', setNavigation)}
+					{renderNavigation('expert', setNavigation)}
 				</S.NavigationSection>
 
 				<S.ContentContainer>
@@ -52,10 +46,10 @@ function MyPage(){
 						<UserInformation/>
 					</S.InformationSection>
 				</S.ContentContainer>
-			</S.ProfileContainer>
+			</S.Content>
 
 			<Footer/>
-		</S.MyPageLayout>
+		</S.Wrapper>
 	)
 }
 

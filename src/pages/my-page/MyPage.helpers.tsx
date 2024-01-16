@@ -1,12 +1,7 @@
-import { Navigation } from "./MyPage.styled";
-import { User, Navigation as TNavigation } from "./MyPage.type";
-
-import Introduce from "@/components/organisms/profile-description/introduce/Introduce";
-import Management from "@/components/organisms/profile-description/management/Management";
-import PortfolioList from "@/components/organisms/profile-description/portfolio-list/PortfolioList";
-import Review from "@/components/organisms/profile-description/review/Review";
+import { Introduce, Management, PortfolioList, Review } from "@/components";
+import { User, Navigation as TNavigation } from "@/pages/my-page/MyPage";
+import { Navigation } from "@/pages/my-page/MyPage.styled";
 import { IComponentFactory, SetState } from "@/types";
-
 
 export const renderNavigation = (user:User, handleNavigation:SetState<TNavigation>) => {
 	const ComponentFactory: IComponentFactory = {

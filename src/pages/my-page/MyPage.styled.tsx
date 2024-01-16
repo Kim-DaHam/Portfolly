@@ -1,26 +1,16 @@
 import { styled } from 'styled-components';
 
-import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
+import * as mixins from '@/styles/mixins';
 
-export const MyPageLayout = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
+	${mixins.flexColumn}
 `;
 
-export const ProfileContainer = styled.div`
-	width: 100%;
-	height: 100%;
-
-	position: relative;
-	top: ${HEADER_HEIGHT};
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+export const Content = styled.div`
+	${mixins.fullScreen}
+	${mixins.flexCenter}
+	${mixins.flexColumn}
 
 	padding: 3rem 10rem 2rem 10rem;
 
@@ -74,8 +64,7 @@ export const Navigation = styled.a`
 `;
 
 export const ContentContainer = styled.div`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
 	display: flex;
 
@@ -83,8 +72,7 @@ export const ContentContainer = styled.div`
 `;
 
 export const DescriptionSection = styled.section`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
 	flex-basis: 1;
 
@@ -100,4 +88,14 @@ export const InformationSection = styled.aside`
 	padding: 1rem;
 
 	background-color: white;
+`;
+
+export const Box = styled.div`
+	${mixins.flexColumn}
+	gap: 1rem;
+`;
+
+export const ButtonBox = styled.div`
+ ${mixins.flexRow}
+ justify-content: right;
 `;
