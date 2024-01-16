@@ -29,6 +29,8 @@ export const Header = styled.header`
 	z-index: 200;
 	top: 0;
 
+	padding: 0 1rem 0 1rem;
+
 	background-color: transparent;
 `;
 

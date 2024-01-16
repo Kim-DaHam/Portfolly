@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Logo from '@/assets/images/logo.png';
+import Logo from '@/assets/images/logo-white.png';
 import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
 import * as S from "@/pages/portfolio-edit/PortfolioEdit.styled";
 import { Section } from "@/types";
