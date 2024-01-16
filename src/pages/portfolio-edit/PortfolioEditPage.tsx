@@ -1,12 +1,12 @@
-import { KeyboardEventHandler, MouseEvent, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo-white.png';
 import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
+import { useTagInput } from "@/hooks";
 import * as S from "@/pages/portfolio-edit/PortfolioEditPage.styled";
 import { Section } from "@/types";
-import { eventStopPropagation } from "@/utils";
 
 type FormValues = {
 	title: string;
@@ -18,8 +18,6 @@ type FormValues = {
 }
 
 export default function PortfolioEditPage(){
-	const [tags, setTags] = useState<string[]>([]);
-
 	const navigate = useNavigate();
 	const location = useLocation();
 	const portfolio = location.state;
@@ -35,29 +33,7 @@ export default function PortfolioEditPage(){
 			summary: '',
 		}
 	});
-
-	const handleTagInput: KeyboardEventHandler<HTMLDivElement> = (event) => {
-		const input = event.target as HTMLDivElement;
-		const keyword = input.textContent;
-
-		if (event.keyCode == 13 && keyword) {
-			const tags = getValues('tags');
-			tags.push(input.textContent!);
-			setValue('tags', tags);
-			setTags(tags);
-			input.textContent = null;
-    }
-	};
-
-	const handleTag = (event: MouseEvent) => {
-		const icon = event.target as HTMLElement;
-		const tagName = icon.parentElement?.parentElement?.textContent as string;
-		const tags = getValues('tags');
-
-		tags.splice(tags.indexOf(tagName), 1);
-		setValue('tags', tags);
-		setTags(tags);
-	};
+	const { tags, setTags, handleTagInput, handleTag } = useTagInput({getValues, setValue});
 
 	const onSubmit = (data: FormValues) => {
 		console.log(data);
