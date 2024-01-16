@@ -22,7 +22,7 @@ const common = css`
 	font-weight: 500;
 `;
 
-const midSmall = css`
+const small = css`
 	font-size: 0.875rem;
 	line-height: 1.25rem;
 	letter-spacing: -.024em;
@@ -49,5 +49,5 @@ const lightgray = css`
   color: #989898;
 `;
 
-export const types = { title, titleSmall, common, midSmall, label };
+export const types = { title, titleSmall, common, small, label };
 export const colors = { black, gray, lightgray };

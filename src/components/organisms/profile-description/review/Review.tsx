@@ -1,6 +1,5 @@
-import { Pagination, Rating } from "@/components";
+import { Text, Pagination, Rating } from "@/components";
 import * as S from "@/components/organisms/profile-description/review/Review.styled";
-import { Text } from "@/styles/Text.styled";
 
 export default function Review() {
 	return(
@@ -13,7 +12,7 @@ export default function Review() {
 						</S.ProfileImage>
 
 						<S.Box>
-							<Text size='Medium'>Name</Text>
+							<Text type='common'>Name</Text>
 							<Rating/>
 						</S.Box>
 					</S.ProfileBox>

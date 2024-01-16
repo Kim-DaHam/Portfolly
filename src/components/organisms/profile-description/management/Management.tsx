@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
-import { Selector , Button, RequestModal, Tracking } from "@/components";
+import { Text, Selector , Button, RequestModal, Tracking } from "@/components";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
-import { Text } from "@/styles/Text.styled";
 
 export default function Management() {
 	const [isOpenModal, setIsOpenModal] = useState(false);
@@ -18,7 +17,7 @@ export default function Management() {
 
 			<S.Notice>
 				<QuestionIcon/>
-				<Text size='Small'>구매 과정 및 주문 상태 안내</Text>
+				<Text type='small'>구매 과정 및 주문 상태 안내</Text>
 			</S.Notice>
 
 			<S.SearchFilterSection>
@@ -41,11 +40,11 @@ export default function Management() {
 			<S.ContentSection>
 				<S.List>
 					<S.Item>
-						<Text size='Small'>1</Text>
+						<Text type='small'>1</Text>
 						<S.Box onClick={openRequestModal}>
-							<Text size='Medium'>Title</Text>
-							<Text size='Small'>의뢰 설명</Text>
-							<Text size='Small'>의뢰 날짜</Text>
+							<Text type='common'>Title</Text>
+							<Text type='small'>의뢰 설명</Text>
+							<Text type='small'>의뢰 날짜</Text>
 						</S.Box>
 					</S.Item>
 				</S.List>

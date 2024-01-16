@@ -1,6 +1,5 @@
-import { Pagination } from "@/components/molecules";
+import { Text, Pagination } from "@/components";
 import * as S from "@/components/organisms/profile-description/portfolio-list/PortfolioList.styled";
-import { Text } from "@/styles/Text.styled";
 
 export default function PortfolioList() {
 	return(
@@ -12,8 +11,8 @@ export default function PortfolioList() {
 					</S.Thumbnail>
 
 					<S.TitleBox>
-						<Text size='Medium'>Title</Text>
-						<Text size='Small'>Date</Text>
+						<Text type='common'>Title</Text>
+						<Text type='small'>Date</Text>
 					</S.TitleBox>
 				</S.GridItem>
 			</S.GridBox>

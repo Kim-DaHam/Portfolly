@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
-import { PortfolioThumbnail } from "@/components";
+import { Text, PortfolioThumbnail } from "@/components";
 import * as S from "@/components/organisms/preview/Preview.styled";
-import { Heading, Text } from "@/styles/Text.styled";
 import { Portfolio, Section } from "@/types";
 import { stringToUrlParameter } from "@/utils";
 
@@ -31,8 +30,8 @@ export default function Preview({section, portfolios}: Props){
 	return(
 		<S.Wrapper>
 			<S.TextBox>
-				<Heading size='Large'>{section}</Heading>
-				<Text size='Medium'>{introduction[section]}</Text>
+				<Text type='title'>{section}</Text>
+				<Text type='common'>{introduction[section]}</Text>
 			</S.TextBox>
 
 			<S.PreviewBox $column={PreviewRowColumns[section]}>

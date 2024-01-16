@@ -5,11 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./PortfolioDetailPage.styled";
 
-import { Image, Button, ToggleButton, Tag, Profile, Header, AlertModal } from "@/components";
+import { Text, Image, Button, ToggleButton, Tag, Profile, Header, AlertModal } from "@/components";
 import { useModal } from "@/hooks";
 import { userId } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
-import { Heading, Label, Text } from "@/styles/Text.styled";
 import { Portfolio } from "@/types";
 import { usePortfolioDeleteQuery, usePortfolioDetailQuery, stringToUrlParameter } from "@/utils";
 
@@ -63,8 +62,8 @@ export default function PortfolioDetail(){
 
 							<S.PortfolioInfoBox>
 								<S.TitleBox>
-									<Text size='Medium' color='Gray'>{portfolio.category}</Text>
-									<Heading size='Small'>{portfolio.title}</Heading>
+									<Text type='common' color='gray'>{portfolio.category}</Text>
+									<Text type='titleSmall'>{portfolio.title}</Text>
 								</S.TitleBox>
 
 								<S.ButtonGroup>
@@ -79,22 +78,22 @@ export default function PortfolioDetail(){
 									</S.ButtonGroup>
 								}
 
-								<Label>태그</Label>
+								<Text type='label'>태그</Text>
 								<S.TagBox>
 									{portfolio.tags.map((tag: string, index: number) => {
 										return <Tag readOnly value={tag} key={index}/>
 									})}
 								</S.TagBox>
 
-								<Label>요약</Label>
+								<Text type='label'>요약</Text>
 								<S.SummaryBox>
 									{portfolio.summary}
 								</S.SummaryBox>
 
-								<Label onClick={()=>navigate(`/profile/${portfolio.user.id}`)}>
+								<Text type='label' onClick={()=>navigate(`/profile/${portfolio.user.id}`)}>
 									전문가의 다른 포트폴리오
 									<ChevronRightIcon size={18}/>
-								</Label>
+								</Text>
 								<S.GridBox>
 									{ portfolio.otherPortfolios.map((portfolio: Portfolio) => {
 										return (

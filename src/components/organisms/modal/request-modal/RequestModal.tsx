@@ -2,8 +2,7 @@ import { FiX as XIcon } from "react-icons/fi";
 
 import * as S from "./RequestModal.styled";
 
-import { Button, Modal } from "@/components";
-import { Heading, Label, Text } from "@/styles/Text.styled";
+import { Text, Button, Modal } from "@/components";
 import { SetState } from "@/types";
 
 type Props = {
@@ -25,35 +24,35 @@ export default function RequestModal({handleModal}: Props) {
 
 			<S.Content>
 				<S.Box>
-					<Heading size='Small'>Title</Heading>
-					<Text size='Small'>Date</Text>
+					<Text type='titleSmall'>Title</Text>
+					<Text type='small'>Date</Text>
 				</S.Box>
 
 				<S.Form>
 					<S.Box>
-						<Label>전문가 정보</Label>
+						<Text type='label'>전문가 정보</Text>
 						<S.Box>
 							{/* <Profile type='Default'/> */}
-							<Label>이름</Label>
-							<Text size='Medium'>홍길동</Text>
-							<Label>연락처</Label>
-							<Text size='Medium'>010-0000-0000</Text>
+							<Text type='label'>이름</Text>
+							<Text type='common'>홍길동</Text>
+							<Text type='label'>연락처</Text>
+							<Text type='common'>010-0000-0000</Text>
 						</S.Box>
 					</S.Box>
 
 					<S.Box>
-						<Label>의뢰 내용</Label>
-						<Text size='Medium'>내용</Text>
+						<Text type='label'>의뢰 내용</Text>
+						<Text type='common'>내용</Text>
 					</S.Box>
 
 					<S.Box>
-						<Label>마감 기한</Label>
-						<Text size='Medium'>내용</Text>
+						<Text type='label'>마감 기한</Text>
+						<Text type='common'>내용</Text>
 					</S.Box>
 
 					<S.Box>
-						<Label>비용</Label>
-						<Text size='Medium'>내용</Text>
+						<Text type='label'>비용</Text>
+						<Text type='common'>내용</Text>
 					</S.Box>
 			</S.Form>
 			</S.Content>

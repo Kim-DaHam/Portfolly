@@ -1,19 +1,17 @@
-import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
 import * as mixins from '@/styles/mixins';
 import { colors, types } from "@/styles/text";
 
-type Props = HTMLAttributes<HTMLSpanElement> & {
-	type: 'title' | 'titleSmall' | 'common' | 'midSmall' | 'label';
+type Props = React.HTMLAttributes<HTMLSpanElement> & {
+	type: 'title' | 'titleSmall' | 'common' | 'small' | 'label';
 	color?: 'black' | 'gray' | 'lightgray';
-	value: string;
 }
 
-export default function Text({...props}: Props) {
+export default function Text({children, ...props}: Props) {
 	return (
 		<TextStyles {...props}>
-			{props.value}
+			{children}
 		</TextStyles>
 	);
 }

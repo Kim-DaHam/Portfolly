@@ -3,8 +3,8 @@ import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 import { selectorList } from "./Selector.constants";
 import * as S from "./Selector.styled";
 
+import { Text } from "@/components";
 import useSelector from "@/hooks/useSelector";
-import { Text } from "@/styles/Text.styled";
 import { Section } from "@/types/portfolio";
 
 export type TSelector = 'Section' | 'Android/iOS' | 'Web' | 'Illustration' | 'Photo' | 'Video' | 'RequestType' | 'RequestState' | 'SearchFilter' | 'MessageState';
@@ -20,7 +20,7 @@ export default function Selector({type, placeholder}: Props) {
 	return(
 		<S.Wrapper>
 			<S.SelectorBox onClick={handleSelector}>
-				<Text size='Medium'>{selectedValue}</Text>
+				<Text type='common'>{selectedValue}</Text>
 				{isSelectorOpen ? <UpIcon /> : <DownIcon />}
 			</S.SelectorBox>
 

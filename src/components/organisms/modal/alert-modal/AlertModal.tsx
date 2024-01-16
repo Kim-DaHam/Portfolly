@@ -1,9 +1,8 @@
 import { MouseEventHandler } from "react";
 import styled from "styled-components";
 
-import { Button, Modal } from "@/components";
+import { Text, Button, Modal } from "@/components";
 import * as mixins from '@/styles/mixins';
-import { Text } from "@/styles/Text.styled";
 
 type Alert = 'delete' | 'cancel';
 
@@ -27,7 +26,7 @@ export default function AlertModal({type, onClick, handleModal}: Props) {
 	return(
 		<Modal $type='alert'>
 			<Content>
-				<Text size='Medium'>{alertMessage[type]}</Text>
+				<Text type='common'>{alertMessage[type]}</Text>
 				<ButtonGroup>
 					<Button color='transparent' size='full' shape='square' onClick={onClick}>{activeButton[type]}</Button>
 					<Button color='transparent' size='full' shape='square' onClick={handleModal}>취소하기</Button>

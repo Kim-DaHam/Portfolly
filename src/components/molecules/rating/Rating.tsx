@@ -1,7 +1,7 @@
 import { FiStar as StarIcon } from "react-icons/fi";
 
+import { Text } from '@/components';
 import * as S from "@/components/molecules/rating/Rating.styled";
-import { Text } from '@/styles/Text.styled';
 
 export default function Rating() {
 	return(
@@ -11,7 +11,7 @@ export default function Rating() {
 					return <StarIcon key={index}/>;
 				})}
 			</S.Content>
-			<Text size='Medium' color='Gray'>Score</Text>
+			<Text type='common' color='gray'>Score</Text>
 		</S.Wrapper>
 	)
 }
