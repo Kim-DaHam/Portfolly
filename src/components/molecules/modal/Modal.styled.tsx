@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Props } from "@/components/molecules/modal/Modal";
 import * as mixins from '@/styles/mixins';
-import { modalSize } from "@/styles/token";
+import { types } from "@/styles/modal";
 
 export const Wrapper = styled.div<Props>`
 	width: 100vw;
@@ -19,8 +19,7 @@ export const Wrapper = styled.div<Props>`
 `;
 
 export const ModalBox = styled.div<Props>`
-	width: ${(props) => modalSize[props.$type].width};
-	height: ${(props) => modalSize[props.$type].height};
+	${props => (types[props.$type])};
 
 	${mixins.flexColumn}
 	gap: 2rem;
