@@ -1,22 +1,28 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
+import * as mixins from '@/styles/mixins';
 
-export const PortfolioEditLayout = styled.div`
-	width: 100%;
-	height: 100vh;
-
-	display: flex;
-	flex-direction: column;
+export const Wrapper = styled.div`
+	${mixins.fullWidthHeight}
+	${mixins.flexColumn}
 
 	background-color: salmon;;
 `;
 
-export const EditHeader = styled.header`
+export const Content = styled.main`
+	width: 100%;
+	height: 100vh;
+	${mixins.flexCenter}
+
+	background-color: blue;
+`;
+
+export const Header = styled.header`
 	width: fit-content;
 	height: ${HEADER_HEIGHT};
 
-	display: flex;
+	${mixins.alignCenter}
 	justify-content: space-between;
 
 	position: absolute;
@@ -30,20 +36,8 @@ export const Logo = styled.div`
 	background-color: white;
 `;
 
-export const FlexContainer = styled.div`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	background-color: blue;
-`;
-
 export const EditorSection = styled.section`
-	width: 100%;
-	height: 100%;
+	${mixins.fullWidthHeight}
 
 	position: relative;
 
@@ -54,8 +48,7 @@ export const FormSection = styled.aside`
 	width: 22rem;
 	height: 100%;
 
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 	align-items: end;
 	flex: none;
 
@@ -64,12 +57,9 @@ export const FormSection = styled.aside`
 	background-color: violet;
 `;
 
-export const FormBox = styled.form`
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
+export const Form = styled.form`
+	${mixins.fullWidthHeight}
+	${mixins.flexColumn}
 	gap: 1.5rem;
 
 	background-color: skyblue;
@@ -77,7 +67,6 @@ export const FormBox = styled.form`
 
 export const TitleInput = styled.input`
 	height: 3.5rem;
-
 `;
 
 export const CategorySelector = styled.div`
@@ -106,10 +95,8 @@ export const SummaryInputArea = styled.div`
 export const TagInput = styled.div`
 	min-width: 5rem;
 	max-width: fit-content;
-	height: 2rem;
 
-	display: flex;
-	align-items: center;
+	${mixins.alignCenter}
 
 	padding: 0 1rem 0 1rem;
 

@@ -1,26 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import * as S from "./PortfolioEdit.styled";
-
-import { Text, Button, Selector, Tag, QuillEditor } from "@/components";
+import Logo from '@/assets/images/logo.png';
+import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
+import * as S from "@/pages/portfolio-edit/PortfolioEdit.styled";
 import { Section } from "@/types";
 
 function PortfolioEdit(){
 	const [section] = useState<Section>('Android/iOS');
 
+	const navigate = useNavigate();
+
 	return(
-		<S.PortfolioEditLayout>
-			<S.FlexContainer>
+		<S.Wrapper>
+			<S.Content>
 				<S.EditorSection>
-					<S.EditHeader>
-						<S.Logo>Logo</S.Logo>
-					</S.EditHeader>
+					<S.Header>
+						<S.Logo onClick={()=>navigate('/main/android-ios')}>
+							<Image src={Logo} size='2.3rem'/>
+						</S.Logo>
+					</S.Header>
 
 					<QuillEditor/>
 				</S.EditorSection>
 
 				<S.FormSection>
-					<S.FormBox>
+					<S.Form>
 						<S.TitleInput/>
 
 						<Text type='label'>Section</Text>
@@ -37,11 +42,12 @@ function PortfolioEdit(){
 
 						<Text type='label'>Summary</Text>
 						<S.SummaryInputArea/>
-					</S.FormBox>
+					</S.Form>
+
 					<Button color='black' size='medium' shape='square'>Submit</Button>
 				</S.FormSection>
-			</S.FlexContainer>
-		</S.PortfolioEditLayout>
+			</S.Content>
+		</S.Wrapper>
 	)
 }
 
