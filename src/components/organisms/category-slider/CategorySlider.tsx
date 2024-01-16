@@ -75,7 +75,7 @@ export default function CategorySlider() {
 			</S.NextArrow>
 
 			<S.Slider ref={sliderRef}>
-				{categories[currentSection].map((category, index)=>{
+				{ ['전체', ...categories[currentSection]].map((category, index)=>{
 					return (
 						<Button
 							className={(index === lastIndex) ? 'last-category' : ''}
