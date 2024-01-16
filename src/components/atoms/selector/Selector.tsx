@@ -1,4 +1,4 @@
-import { HTMLAttributes, useEffect } from "react";
+import { HTMLAttributes, forwardRef, useEffect } from "react";
 import { UseFormSetValue } from "react-hook-form";
 import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
 
@@ -18,7 +18,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 	setValue: UseFormSetValue<any>;
 }
 
-export default function Selector({type, placeholder, section='Android/iOS', setValue }: Props) {
+function Selector({type, placeholder, section='Android/iOS', setValue }: Props) {
 	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
 
 	useEffect(() => {
@@ -52,3 +52,5 @@ export default function Selector({type, placeholder, section='Android/iOS', setV
 		</S.Wrapper>
 	)
 }
+
+export default forwardRef(Selector);
