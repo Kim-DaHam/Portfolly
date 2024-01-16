@@ -1,4 +1,4 @@
-export const section = [
+export const sections = [
 	{
 		id: 1,
 		name: 'Android/iOS',
@@ -9,7 +9,7 @@ export const section = [
 	},
 	{
 		id: 3,
-		name: 'Illlustration',
+		name: 'Illustration',
 	},
 	{
 		id: 4,

@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo-white.png';
 import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
 import * as S from "@/pages/portfolio-edit/PortfolioEdit.styled";
-import { Section } from "@/types";
 
 function PortfolioEdit(){
-	const [section] = useState<Section>('Android/iOS');
 
 	const navigate = useNavigate();
+	const location = useLocation();
+	const portfolio = location.state;
+	console.log(portfolio)
 
 	return(
 		<S.Wrapper>
@@ -21,27 +22,31 @@ function PortfolioEdit(){
 						</S.Logo>
 					</S.Header>
 
-					<QuillEditor/>
+					<QuillEditor htmlContent={portfolio? portfolio.content : ''}/>
 				</S.EditorSection>
 
 				<S.FormSection>
 					<S.Form>
-						<S.TitleInput/>
+						<S.TitleInput value={portfolio ? portfolio.title : ''} placeholder='제목'/>
 
-						<Text type='label'>Section</Text>
-						<Selector type='Section' placeholder='종류'/>
+						<Text type='label'>종류</Text>
+						<Selector type='section' placeholder={portfolio? portfolio.section : '종류'}/>
 
-						<Text type='label'>Category</Text>
-						<Selector type={section} placeholder='카테고리'/>
+						<Text type='label'>카테고리</Text>
+						<Selector
+							type={portfolio? portfolio.section : 'Android/iOS'}
+							placeholder={portfolio ? portfolio.category : '카테고리'}/>
 
-						<Text type='label'>Tags</Text>
+						<Text type='label'>태그</Text>
 						<S.TagBox>
 							<S.TagInput contentEditable/>
-							<Tag readOnly={false} value={'Tag'}/>
+							{portfolio && portfolio.tags.map((tag: string, index: number) => {
+								return <Tag readOnly={false} value={tag} key={index}/>
+							})}
 						</S.TagBox>
 
-						<Text type='label'>Summary</Text>
-						<S.SummaryInputArea/>
+						<Text type='label'>소개글</Text>
+						<S.InputArea value={portfolio ? portfolio.summary : ''} placeholder='포트폴리오를 소개하세요'/>
 					</S.Form>
 
 					<Button color='black' size='medium' shape='square'>Submit</Button>

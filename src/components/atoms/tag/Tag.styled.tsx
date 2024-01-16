@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TagLayout = styled.div<{readOnly: boolean}>`
+export const Wrapper = styled.div<{readOnly: boolean}>`
 	width: fit-content;
 	height: 2rem;
 
@@ -8,6 +8,7 @@ export const TagLayout = styled.div<{readOnly: boolean}>`
 
 	display: flex;
 	align-items: center;
+	flex: none;
 
 	padding: 0 1rem 0 1rem;
 	border: 1px solid black;
@@ -26,7 +27,7 @@ export const TagLayout = styled.div<{readOnly: boolean}>`
 	}
 `;
 
-export const IconBox = styled.div`
+export const Icon = styled.div`
 	visibility: hidden;
 
 	& svg {

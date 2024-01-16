@@ -2,7 +2,7 @@ import { throttle } from "lodash";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { categories } from "@/components/organisms/category-slider/CategorySlider.constants";
+import { categories } from "@/assets/data/portfolio";
 import { section } from "@/redux/sectionSlice";
 
 const SLIDE_WIDTH = 150;

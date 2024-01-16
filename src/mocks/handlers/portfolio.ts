@@ -4,7 +4,7 @@ import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
 import { Portfolio, Section } from '@/types/portfolio';
-import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getTags, getUserData } from '@/utils/mswHandler';
+import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getSection, getTags, getUserData } from '@/utils/mswHandler';
 
 const sectionIdMap = new Map([
 	['Android/iOS', 1],
@@ -144,6 +144,7 @@ export const PortfolioHandlers= [
 		}, []);
 
 		const user = getUserData(portfolioData!.userId);
+		const section = getSection(portfolioData!.sectionId);
 		const category = getCategory(portfolioData!.categoryId);
 		const tags = getTags(portfolioData!.tagId);
 		const likes = users.find((user) => user.id === USER_ID)!.likes;
@@ -154,6 +155,7 @@ export const PortfolioHandlers= [
 		const responseData = {
 			id: portfolioData!.id,
 			title: portfolioData!.title,
+			section: section,
 			category: category,
 			content: portfolioData!.content,
 			summary: portfolioData!.summary,

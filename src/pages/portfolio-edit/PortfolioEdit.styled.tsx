@@ -34,8 +34,9 @@ export const Header = styled.header`
 	background-color: transparent;
 `;
 
-export const Logo = styled.div`
-	background-color: white;
+export const Logo = styled.button`
+	border: 0;
+	cursor: pointer;
 `;
 
 export const EditorSection = styled.section`
@@ -54,7 +55,7 @@ export const FormSection = styled.aside`
 	align-items: end;
 	flex: none;
 
-	padding: 3rem 1rem 2rem 1rem;
+	padding: 3rem 2rem 2rem 1rem;
 
 	background-color: violet;
 `;
@@ -68,6 +69,7 @@ export const Form = styled.form`
 `;
 
 export const TitleInput = styled.input`
+	font-size: large;
 	height: 3.5rem;
 `;
 
@@ -82,21 +84,23 @@ export const TagBox = styled.div`
 	width: 100%;
 
 	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem;
 
 	background-color: yellow;
 `;
 
-export const SummaryInputArea = styled.div`
+export const InputArea = styled.textarea`
 	width: 100%;
 	height: 5rem;
-
-	background-color: red;
+	border: none;
+	resize: none;
 `;
 
 export const TagInput = styled.div`
 	min-width: 5rem;
 	max-width: fit-content;
+	height: 2rem;
 
 	${mixins.alignCenter}
 

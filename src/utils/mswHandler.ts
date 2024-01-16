@@ -1,4 +1,5 @@
 import { categories } from "@/mocks/data/categories"
+import { sections } from "@/mocks/data/sections";
 import { tags } from "@/mocks/data/tags";
 import { users } from "@/mocks/data/users";
 
@@ -8,6 +9,14 @@ export const getUserData = (userId: number) => {
 	})
 
 	return result;
+};
+
+export const getSection = (sectionId: number) => {
+	const result = sections.find((section) => {
+		return section.id === sectionId;
+	})
+
+	return result?.name;
 };
 
 export const getCategory = (categoryId: number) => {

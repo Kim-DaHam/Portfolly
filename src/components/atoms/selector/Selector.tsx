@@ -7,7 +7,7 @@ import { Text } from "@/components";
 import useSelector from "@/hooks/useSelector";
 import { Section } from "@/types/portfolio";
 
-export type TSelector = 'Section' | 'Android/iOS' | 'Web' | 'Illustration' | 'Photo' | 'Video' | 'RequestType' | 'RequestState' | 'SearchFilter' | 'MessageState';
+export type TSelector = 'section' | 'Android/iOS' | 'Web' | 'Illustration' | 'Photo' | 'Video' | 'requestType' | 'requestState' | 'searchFilter' | 'meassageState';
 
 type Props = {
 	type: TSelector | Section;
