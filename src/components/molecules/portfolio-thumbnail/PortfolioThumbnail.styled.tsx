@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { ButtonStyle } from '@/components/atoms/index';
-import { ratios } from '@/styles/portfolioThumbnail';
+import { ratios } from '@/styles/portfolio';
 import { Section } from '@/types/portfolio';
 
 export const Wrapper = styled.div<{$section: Section}>`

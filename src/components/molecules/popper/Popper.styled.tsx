@@ -51,3 +51,8 @@ export const Item = styled.a`
 
 	cursor: pointer;
 `;
+
+export const Box = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
