@@ -2,12 +2,8 @@ import { useState } from "react";
 
 import * as S from "./PortfolioEdit.styled";
 
-import { Button } from "@/components/atoms/index";
-import Selector from "@/components/atoms/selector/Selector";
-import Tag from "@/components/atoms/tag/Tag";
-import Editor from "@/components/molecules/editor/QuillEditor";
-import { Label } from "@/styles/Text.styled";
-import { Section } from "@/types/portfolio";
+import { Text, Button, Selector, Tag, QuillEditor } from "@/components";
+import { Section } from "@/types";
 
 function PortfolioEdit(){
 	const [section] = useState<Section>('Android/iOS');
@@ -20,26 +16,26 @@ function PortfolioEdit(){
 						<S.Logo>Logo</S.Logo>
 					</S.EditHeader>
 
-					<Editor/>
+					<QuillEditor/>
 				</S.EditorSection>
 
 				<S.FormSection>
 					<S.FormBox>
 						<S.TitleInput/>
 
-						<Label>Section</Label>
+						<Text type='label'>Section</Text>
 						<Selector type='Section' placeholder='종류'/>
 
-						<Label>Category</Label>
+						<Text type='label'>Category</Text>
 						<Selector type={section} placeholder='카테고리'/>
 
-						<Label>Tags</Label>
+						<Text type='label'>Tags</Text>
 						<S.TagBox>
 							<S.TagInput contentEditable/>
 							<Tag readOnly={false} value={'Tag'}/>
 						</S.TagBox>
 
-						<Label>Summary</Label>
+						<Text type='label'>Summary</Text>
 						<S.SummaryInputArea/>
 					</S.FormBox>
 					<Button color='black' size='medium' shape='square'>Submit</Button>
