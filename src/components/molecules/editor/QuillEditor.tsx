@@ -1,14 +1,16 @@
 import { memo, useMemo, useRef, useState } from 'react';
 import "react-quill/dist/quill.snow.css";
+import { UseFormSetValue } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 
 import * as S from '@/components/molecules/editor/QuillEditor.styled';
 
 type Props = {
 	htmlContent?: string;
+	setValue: UseFormSetValue<any>;
 }
 
-export default memo(function QuillEditor({htmlContent}: Props) {
+export default memo(function QuillEditor({htmlContent, setValue}: Props) {
 	const [html, setHTML] = useState(htmlContent);
 	const quillRef = useRef<ReactQuill>();
 
@@ -30,6 +32,11 @@ export default memo(function QuillEditor({htmlContent}: Props) {
       },
     }), []);
 
+		const handleEditor = (value: string) => {
+			setValue('content', value);
+			setHTML(value);
+		};
+
   return (
     <S.EditorContainer>
       <ReactQuill
@@ -39,7 +46,7 @@ export default memo(function QuillEditor({htmlContent}: Props) {
           }
         }}
         value={html}
-        onChange={(html) => setHTML(html)}
+        onChange={handleEditor}
         modules={modules}
         theme="snow"
         style={{ height: '100%', marginBottom: '0' }}

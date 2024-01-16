@@ -87,7 +87,7 @@ export default function PortfolioEditPage(){
 						</S.Logo>
 					</S.Header>
 
-					<QuillEditor />
+					<QuillEditor setValue={setValue}/>
 				</S.EditorSection>
 
 				<S.FormSection>
