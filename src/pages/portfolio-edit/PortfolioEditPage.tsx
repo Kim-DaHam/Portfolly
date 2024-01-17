@@ -32,7 +32,7 @@ export default function PortfolioEditPage(){
 			content: '',
 			section: 'Android/iOS',
 			category: '',
-			tags: [''],
+			tags: [],
 			summary: '',
 		}
 	});
