@@ -24,11 +24,8 @@ export default function useTagInput({getValues, setValue}: Props) {
 
 	const handleTag = (event: React.MouseEvent) => {
 		const icon = event.target as HTMLElement;
-		console.log(icon.parentElement?.parentElement)
 		const tagName = icon.parentElement?.parentElement?.textContent as string;
 		const tags = getValues('tags');
-		console.log(tags);
-		console.log(tagName)
 
 		tags.splice(tags.indexOf(tagName), 1);
 		setValue('tags', tags, { shouldDirty: true });
