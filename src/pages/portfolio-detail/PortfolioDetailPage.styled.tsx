@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
-import { Label } from '@/styles/Text.styled';
+import { types } from '@/styles/text';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
@@ -117,7 +117,8 @@ export const GridItem = styled.div`
 	background-color: brown;
 `;
 
-export const TextButton = styled(Label)`
+export const TextButton = styled.label`
+	${types['label']}
 	cursor: pointer;
 
 	&:hover {

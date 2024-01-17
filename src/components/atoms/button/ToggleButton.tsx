@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { FiBookmark as BookmarkIcon, FiHeart as LikeIcon } from "react-icons/fi";
 
-import { Button } from "@/components/atoms/index";
-import { Label } from "@/styles/Text.styled";
+import { Text, Button } from "@/components/atoms/index";
 import { IComponentFactory } from "@/types";
-import { useToggleButtonQuery } from "@/utils/api-service/portfolio";
+import { useToggleButtonQuery } from "@/utils";
 
 export type Toggle = 'bookmark' | 'like';
 
@@ -45,7 +44,7 @@ export default function ToggleButton({type, portfolioId, isToggled, currentLikes
 			like: (
 				<Button shape='square' color='white' onClick={handleToggleButton}>
 					<LikeIcon fill={color} color={color === 'white' ? 'black' : color}/>
-					<Label>{currentLikes}</Label>
+					<Text type='label'>{currentLikes}</Text>
 				</Button>
 			),
 		}

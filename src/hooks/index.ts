@@ -8,6 +8,7 @@ import usePopup from "@/hooks/usePopup";
 import useSearch from "@/hooks/useSearch";
 import useSelector from "@/hooks/useSelector";
 import useStopScrollY from "@/hooks/useStopScrollY";
+import useTagInput from "@/hooks/useTagInput";
 
 export {
 	useHandleSlider,
@@ -20,4 +21,5 @@ export {
 	useSearch,
 	useSelector,
 	useStopScrollY,
+	useTagInput,
 };

@@ -17,7 +17,7 @@ import IntroPage from '@/pages/intro/IntroPage';
 import MainPage from '@/pages/main/MainPage';
 import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetailPage from '@/pages/portfolio-detail/PortfolioDetailPage';
-import PortfolioEdit from '@/pages/portfolio-edit/PortfolioEdit';
+import PortfolioEditPage from '@/pages/portfolio-edit/PortfolioEditPage';
 import SignIn from '@/pages/signIn/SignIn';
 import { store } from '@/redux/store';
 import { ROUTE_PATH } from '@/utils/path';
@@ -35,7 +35,7 @@ export default function App() {
 								<Route path={ROUTE_PATH.SIGN_IN} element={<SignIn/>}></Route>
 								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>}></Route>
 								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>}></Route>
-								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEdit/>}></Route>
+								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>}></Route>
 							</Routes>
 						</BrowserRouter>
 						<ReactQueryDevtools initialIsOpen={false} />

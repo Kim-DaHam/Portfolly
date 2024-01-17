@@ -1,22 +1,24 @@
+import { HTMLAttributes, MouseEventHandler } from "react";
 import { FiX as DeleteIcon } from "react-icons/fi";
 
-import * as S from "./Tag.styled";
+import * as S from "@/components/atoms/tag/Tag.styled";
 
-type Props = {
+type Props = HTMLAttributes<HTMLDivElement> & {
 	readOnly: boolean;
 	value: string;
-}
+	handleTag: MouseEventHandler<HTMLDivElement>;
+};
 
-export default function Tag({readOnly, value}: Props) {
+export default function Tag({readOnly, value, handleTag}: Props) {
 
 	return (
-		<S.TagLayout readOnly={readOnly} >
+		<S.Wrapper readOnly={readOnly} >
 			{value}
 			{ !readOnly &&
-				<S.IconBox>
-					<DeleteIcon/>
-				</S.IconBox>
+				<S.Icon>
+					<DeleteIcon onClick={handleTag} />
+				</S.Icon>
 			}
-		</S.TagLayout>
+		</S.Wrapper>
 	)
 }
