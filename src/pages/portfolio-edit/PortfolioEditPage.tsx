@@ -117,7 +117,7 @@ export default function PortfolioEditPage(){
 						})}>
 							<S.TagInput contentEditable onKeyUp={handleTagInput}/>
 							{tags.map((tag: string, index: number) => {
-								return <Tag readOnly={false} value={tag} key={index} onClick={handleTag}/>
+								return <Tag readOnly={false} value={tag} key={index} handleTag={handleTag}/>
 							})}
 						</S.TagBox>
 
