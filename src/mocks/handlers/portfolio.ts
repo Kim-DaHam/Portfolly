@@ -3,8 +3,9 @@ import { HttpResponse, http } from 'msw';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
+import { FormValues } from '@/pages/portfolio-edit/PortfolioEditPage';
 import { Portfolio, Section } from '@/types/portfolio';
-import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getSection, getTags, getUserData } from '@/utils/mswHandler';
+import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getSection, getTagId, getTags, getUserData } from '@/utils';
 
 const sectionIdMap = new Map([
 	['Android/iOS', 1],
@@ -193,4 +194,50 @@ export const PortfolioHandlers= [
 
 		return HttpResponse.json(null, { status: 200 });
 	}),
+
+	http.post(`/portfolios`, async ({request}) => {
+		const newPortfolio = await request.json() as FormValues;
+		const portfolioId = portfolios.length + 1;
+		const sectionId = sectionIdMap.get(newPortfolio.section) as number;
+		const categoryId = getCategoryId(newPortfolio.category) as number;
+		const tagId = getTagId(newPortfolio.tags, sectionId, portfolioId) as number[];
+
+		portfolios.push({
+			id: portfolioId,
+			userId: 1,
+			title: newPortfolio.title,
+			content: newPortfolio.content,
+			summary: newPortfolio.summary,
+			createdAt: Date.now(),
+			modifiedAt: Date.now(),
+			sectionId: sectionId,
+			categoryId: categoryId,
+			tagId: tagId,
+			likes: 0,
+			thumbnailUrl: [''],
+		});
+
+		return HttpResponse.json({id: portfolioId}, { status: 200 });
+	}),
+
+	http.patch(`/portfolios`, async ({request}) => {
+		const url = new URL(request.url);
+		const portfolioId = url.searchParams.get('id') as string;
+		const changedPortfolio = await request.json() as any;
+		const sectionId = sectionIdMap.get(changedPortfolio.section) as number;
+
+		if(changedPortfolio.tags) {
+			const tagId = getTagId(changedPortfolio.tags, sectionId, Number(portfolioId)) as number[];
+			delete changedPortfolio.tags;
+			changedPortfolio.tagId = tagId;
+		}
+
+		portfolios.map((portfolio) => {
+			if(portfolio.id === Number(portfolioId)){
+				Object.assign(portfolio, changedPortfolio);
+			}
+		});
+		return HttpResponse.json({id: portfolioId}, { status: 200 });
+	}),
+
 ];

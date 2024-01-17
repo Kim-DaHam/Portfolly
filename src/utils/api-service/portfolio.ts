@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient, useSuspenseInfiniteQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { Toggle } from '@/components/atoms/button/ToggleButton';
 import { Section } from '@/types';
@@ -94,4 +95,23 @@ export const useToggleButtonQuery = (id: number, type: Toggle) => {
 			return () => queryClient.setQueryData(queryKey, prevData);
 		}
 	})
+};
+
+export const usePortfolioPostQuery = (id?: number) => {
+	const queryClient = useQueryClient();
+	const postPortfolio = (body: any) => fetch(`/portfolios`, 'POST', body);
+	const updatePortfolio = (body: any) => fetch(`/portfolios?id=${id}`, 'PATCH', body);
+
+	const navigate = useNavigate();
+
+	return useMutation({
+		mutationFn: id? updatePortfolio : postPortfolio,
+		onSuccess: (data) => {
+			if(id) {
+				queryClient.removeQueries({queryKey: ['portfolios', 'detail', id]});
+			}
+			queryClient.invalidateQueries({queryKey: ['portfolios'], refetchType: 'all' });
+			navigate(`/portfolios/${data.id}`);
+		},
+	});
 };

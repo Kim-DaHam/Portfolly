@@ -47,6 +47,25 @@ export const getTags = (tagIds: number[]) => {
 	return result;
 };
 
+export const getTagId = (tagNames: string[], sectionId: number, portfolioId: number) => {
+	const result = tagNames.map((tagName) => {
+		const tag = tags.find((tag) => tag.sectionId === sectionId && tag.name === tagName);
+		if (tag) {
+			tag.portfolioId.push(portfolioId);
+			return tag.id;
+		}
+		tags.push({
+			id: tags.length,
+			sectionId: sectionId,
+			portfolioId: [portfolioId],
+			name: tagName,
+		});
+		return tags.length;
+	});
+
+	return result;
+};
+
 export const getIsBookmarked = (portfolioId: number, bookmarks: number[]) => {
 	const isBookmarked = bookmarks.includes(portfolioId) ? true : false;
 

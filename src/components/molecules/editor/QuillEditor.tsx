@@ -1,4 +1,4 @@
-import { memo, useMemo, useRef, useState } from 'react';
+import { forwardRef, memo, useMemo, useRef, useState } from 'react';
 import "react-quill/dist/quill.snow.css";
 import { UseFormSetValue } from 'react-hook-form';
 import ReactQuill from 'react-quill';
@@ -10,32 +10,32 @@ type Props = {
 	setValue: UseFormSetValue<any>;
 }
 
-export default memo(function QuillEditor({htmlContent, setValue}: Props) {
+function QuillEditor({htmlContent, setValue}: Props) {
 	const [html, setHTML] = useState(htmlContent);
 	const quillRef = useRef<ReactQuill>();
 
   const modules = useMemo(
-    () => ({
-      toolbar: {
-        container: [
-          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-          ["bold", "italic", "underline", "strike"],
-          [{ color: [] }, { 'background': [] }],
-          ['link'],
-          ['image', 'video'],
-          ['clean']
-        ],
-        handlers: {
-          imageUrl: () => {},
-          image: () => {},
-        },
-      },
-    }), []);
+		() => ({
+			toolbar: {
+				container: [
+					[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+					["bold", "italic", "underline", "strike"],
+					[{ color: [] }, { 'background': [] }],
+					['link'],
+					['image', 'video'],
+					['clean']
+				],
+				handlers: {
+					imageUrl: () => {},
+					image: () => {},
+				},
+			},
+	}), []);
 
-		const handleEditor = (value: string) => {
-			setValue('content', value);
-			setHTML(value);
-		};
+	const handleEditor = (value: string) => {
+		setValue('content', value, { shouldDirty: true });
+		setHTML(value);
+	};
 
   return (
     <S.EditorContainer>
@@ -54,4 +54,6 @@ export default memo(function QuillEditor({htmlContent, setValue}: Props) {
       />
     </S.EditorContainer>
   );
-})
+}
+
+export default memo(forwardRef(QuillEditor));

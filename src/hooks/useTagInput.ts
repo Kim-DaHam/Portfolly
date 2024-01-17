@@ -16,7 +16,7 @@ export default function useTagInput({getValues, setValue}: Props) {
 		if (event.keyCode == 13 && keyword) {
 			const tags = getValues('tags');
 			tags.push(input.textContent!);
-			setValue('tags', tags);
+			setValue('tags', tags, { shouldDirty: true });
 			setTags(tags);
 			input.textContent = null;
     }
@@ -28,7 +28,7 @@ export default function useTagInput({getValues, setValue}: Props) {
 		const tags = getValues('tags');
 
 		tags.splice(tags.indexOf(tagName), 1);
-		setValue('tags', tags);
+		setValue('tags', tags, { shouldDirty: true });
 		setTags(tags);
 	};
 

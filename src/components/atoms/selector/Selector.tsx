@@ -22,7 +22,7 @@ function Selector({type, placeholder, section='Android/iOS', setValue }: Props) 
 	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
 
 	useEffect(() => {
-		setValue(type, selectedValue);
+		setValue(type, selectedValue, { shouldDirty: true });
 	}, [selectedValue])
 
 	return(

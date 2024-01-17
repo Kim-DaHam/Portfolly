@@ -7,8 +7,9 @@ import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
 import { useTagInput } from "@/hooks";
 import * as S from "@/pages/portfolio-edit/PortfolioEditPage.styled";
 import { Section } from "@/types";
+import { usePortfolioPostQuery } from "@/utils";
 
-type FormValues = {
+export type FormValues = {
 	title: string;
 	content: string;
 	section: Section;
@@ -22,7 +23,9 @@ export default function PortfolioEditPage(){
 	const location = useLocation();
 	const portfolio = location.state;
 
-	const { register, reset, handleSubmit, getValues, setValue } = useForm<FormValues>({
+	const portfolioMutation = usePortfolioPostQuery(portfolio ? portfolio.id : null);
+
+	const { register, reset, handleSubmit, getValues, setValue, formState: {dirtyFields} } = useForm<FormValues>({
 		mode: 'onSubmit',
 		defaultValues: {
 			title: '',
@@ -35,8 +38,20 @@ export default function PortfolioEditPage(){
 	});
 	const { tags, setTags, handleTagInput, handleTag } = useTagInput({getValues, setValue});
 
-	const onSubmit = (data: FormValues) => {
-		console.log(data);
+	const onSubmit = (form: FormValues) => {
+		if(portfolio) {
+			const copyForm: {[key: string]: any} = {...form};
+			const changedKeys = Object.keys(dirtyFields);
+			const changedValues: {[key: string]: any} = {};
+
+			changedKeys.map((key) => {
+				changedValues[key] = copyForm[key];
+			});
+			changedValues.section = form.section;
+
+			return portfolioMutation.mutate(changedValues);
+		}
+		return portfolioMutation.mutate(form);
 	};
 
 	useEffect(() => {
@@ -63,7 +78,7 @@ export default function PortfolioEditPage(){
 						</S.Logo>
 					</S.Header>
 
-					<QuillEditor setValue={setValue}/>
+					<QuillEditor htmlContent={portfolio && portfolio.content} setValue={setValue} {...register('content')}/>
 				</S.EditorSection>
 
 				<S.FormSection>
