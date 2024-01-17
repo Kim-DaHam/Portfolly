@@ -104,7 +104,7 @@ export default function PortfolioDetail(){
 									{ portfolio.otherPortfolios.map((portfolio: Portfolio) => {
 										return (
 											<S.GridItem key={portfolio.id} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
-												<Image size='100%' src={portfolio.thumbnailUrl[0]} shape='foursquare'/>
+												<Image size='100%' src={portfolio.images[0]} shape='foursquare'/>
 											</S.GridItem>
 										)
 									})}

@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient, useSuspenseInfiniteQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { Toggle } from '@/components/atoms/button/ToggleButton';
@@ -115,3 +116,23 @@ export const usePortfolioPostQuery = (id?: number) => {
 		},
 	});
 };
+
+export const useImageQuery = () => {
+  // const accessToken = localStorage.getItem('accessToken');
+
+	const uploadImage = (body: any) => {
+		return axios({
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        // accessToken: accessToken,
+      },
+      method: 'POST',
+      url: '/picture',
+      data: body,
+    });
+	};
+
+	return useMutation({
+		mutationFn: uploadImage,
+	});
+}

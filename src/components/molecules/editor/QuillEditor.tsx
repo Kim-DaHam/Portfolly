@@ -1,18 +1,22 @@
 import { forwardRef, memo, useMemo, useRef, useState } from 'react';
 import "react-quill/dist/quill.snow.css";
-import { UseFormSetValue } from 'react-hook-form';
+import { UseFormGetValues, UseFormSetValue } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 
 import * as S from '@/components/molecules/editor/QuillEditor.styled';
+import { useImageHandler } from '@/hooks';
 
 type Props = {
 	htmlContent?: string;
 	setValue: UseFormSetValue<any>;
+	getValues: UseFormGetValues<any>;
 }
 
-function QuillEditor({htmlContent, setValue}: Props) {
+function QuillEditor({htmlContent, setValue, getValues}: Props) {
 	const [html, setHTML] = useState(htmlContent);
+
 	const quillRef = useRef<ReactQuill>();
+	const { imageUrlHandler, imageHandler } = useImageHandler({setValue, getValues});
 
   const modules = useMemo(
 		() => ({
@@ -26,9 +30,9 @@ function QuillEditor({htmlContent, setValue}: Props) {
 					['clean']
 				],
 				handlers: {
-					imageUrl: () => {},
-					image: () => {},
-				},
+          imageUrl: () => imageUrlHandler(quillRef.current?.getEditor()),
+          image: () => imageHandler(quillRef.current?.getEditor()),
+        },
 			},
 	}), []);
 

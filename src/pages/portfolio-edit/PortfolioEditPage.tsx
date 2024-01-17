@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Logo from '@/assets/images/logo-white.png';
 import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
@@ -16,10 +16,10 @@ export type FormValues = {
 	category: string;
 	tags: string[];
 	summary: string;
+	images: string[];
 }
 
 export default function PortfolioEditPage(){
-	const navigate = useNavigate();
 	const location = useLocation();
 	const portfolio = location.state;
 
@@ -37,6 +37,7 @@ export default function PortfolioEditPage(){
 			category: '',
 			tags: [],
 			summary: '',
+			images: [],
 		}
 	});
 	const { tags, setTags, handleTagInput, handleTag } = useTagInput({getValues, setValue});
@@ -66,6 +67,7 @@ export default function PortfolioEditPage(){
 				category: portfolio.category,
 				tags: portfolio.tags,
 				summary: portfolio.summary,
+				images: portfolio.images,
 			});
 			setTags(portfolio.tags);
 		}
@@ -81,7 +83,12 @@ export default function PortfolioEditPage(){
 						</S.Logo>
 					</S.Header>
 
-					<QuillEditor htmlContent={portfolio && portfolio.content} setValue={setValue} {...register('content')}/>
+					<QuillEditor
+						htmlContent={portfolio && portfolio.content}
+						setValue={setValue}
+						getValues={getValues}
+						{...register('content')}
+					/>
 				</S.EditorSection>
 
 				<S.FormSection>
@@ -133,7 +140,7 @@ export default function PortfolioEditPage(){
 							placeholder='포트폴리오를 소개하세요'
 						/>
 
-						<Button color='black' size='medium' shape='square' type='submit'>Submit</Button>
+						<Button color='black' size='medium' shape='square' type='submit'>작성하기</Button>
 					</S.Form>
 				</S.FormSection>
 			</S.Content>
