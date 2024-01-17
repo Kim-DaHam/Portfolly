@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo-white.png';
 import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
-import { useTagInput } from "@/hooks";
+import { useTagInput, usePreventGoBack, usePreventRefresh } from "@/hooks";
 import * as S from "@/pages/portfolio-edit/PortfolioEditPage.styled";
 import { Section } from "@/types";
 import { usePortfolioPostQuery } from "@/utils";
@@ -22,6 +22,9 @@ export default function PortfolioEditPage(){
 	const navigate = useNavigate();
 	const location = useLocation();
 	const portfolio = location.state;
+
+	const { preventGoBack } = usePreventGoBack();
+	usePreventRefresh();
 
 	const portfolioMutation = usePortfolioPostQuery(portfolio ? portfolio.id : null);
 
@@ -73,7 +76,7 @@ export default function PortfolioEditPage(){
 			<S.Content>
 				<S.EditorSection>
 					<S.Header>
-						<S.Logo onClick={()=>navigate('/main/android-ios')}>
+						<S.Logo onClick={() => preventGoBack(`/main/android-ios`)}>
 							<Image src={Logo} size='2.3rem'/>
 						</S.Logo>
 					</S.Header>
