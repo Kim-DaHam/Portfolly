@@ -28,7 +28,7 @@ export default function PortfolioEditPage(){
 
 	const portfolioMutation = usePortfolioPostQuery(portfolio ? portfolio.id : null);
 
-	const { register, reset, handleSubmit, getValues, setValue, formState: {dirtyFields} } = useForm<FormValues>({
+	const { register, reset, handleSubmit, getValues, setValue, formState: {dirtyFields, errors} } = useForm<FormValues>({
 		mode: 'onSubmit',
 		defaultValues: {
 			title: '',
@@ -87,7 +87,17 @@ export default function PortfolioEditPage(){
 						htmlContent={portfolio && portfolio.content}
 						setValue={setValue}
 						getValues={getValues}
-						{...register('content')}
+						{...register('content', {
+							validate: {
+								content: (value) => value.length < 1 ? '포트폴리오 내용을 입력해주세요.' : true,
+								images: () => {
+									if(getValues('section') === 'Video'){
+										return getValues('images').length < 1 ? '비디오를 1개 이상 첨부하세요.' : true
+									}
+									return getValues('images').length < 1 ? '포트폴리오 이미지를 1개 이상 첨부하세요.' : true
+								},
+							}
+						})}
 					/>
 				</S.EditorSection>
 
@@ -95,8 +105,11 @@ export default function PortfolioEditPage(){
 					<S.Form onSubmit={handleSubmit(onSubmit)}>
 						<S.TitleInput
 							{...register('title', {
-								required: '제목을 입력해주세요.',
-								validate: (value) => value.length < 5 ? '5글자 이상 입력해주세요.' : true,
+								required: '제목을 입력하세요.',
+								validate: {
+									min: (value) => value.length < 5 ? '제목을 5글자 이상 입력하세요.' : true,
+									max: (value) => value.length > 30 ? '제목을 30글자 미만 입력하세요.' : true,
+								}
 							})}
 							placeholder='제목'
 						/>
@@ -116,14 +129,13 @@ export default function PortfolioEditPage(){
 							placeholder={portfolio ? portfolio.category : '카테고리'}
 							setValue={setValue}
 							{...register('category', {
-								required: '카테고리를 선택해주세요.',
-								validate: (value) => value === '카테고리' ? '카테고리를 선택해주세요.' : true,
+								validate: (value) => value === '카테고리' ? '카테고리를 선택하세요.' : true,
 							})}
 						/>
 
 						<Text type='label'>태그</Text>
 						<S.TagBox {...register('tags', {
-							validate: () => tags.length > 10? '태그는 최대 10개까지 등록 가능합니다.' : true,
+							validate: (value) => value.length > 10? '태그는 최대 10개까지 등록 가능합니다.' : true,
 						})}>
 							<S.TagInput contentEditable onKeyUp={handleTagInput}/>
 							{tags.map((tag: string, index: number) => {
