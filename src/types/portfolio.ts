@@ -12,7 +12,7 @@ export type Portfolio = {
 	categoryId: number,
 	tagId: number[],
 	likes: number,
-	thumbnailUrl: string[],
+	images: string[],
 	user?: object,
 	isLiked?: boolean,
 	isBookmarked?: boolean,

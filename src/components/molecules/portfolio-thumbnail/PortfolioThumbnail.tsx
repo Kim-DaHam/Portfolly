@@ -19,14 +19,21 @@ export type Props = {
 	portfolio: Portfolio;
 }
 
+const THUMBNAIL_PAGE = 3;
+
 export default function PortfolioThumnail({section, portfolio}: Props){
 	const navigate = useNavigate();
 	const sliderRef = useRef(null);
 
 	const currentSection = useSelector(sectionSlice);
 
-	const lastIndex = portfolio.thumbnailUrl.length - 1;
-	const { handlePrev, handleNext, setSlider, showPrevArrow, showNextArrow } = useHandleSlider({...initialProps, lastIndex: lastIndex});
+	const {
+		handlePrev,
+		handleNext,
+		setSlider,
+		showPrevArrow,
+		showNextArrow
+	} = useHandleSlider({...initialProps, lastIndex: THUMBNAIL_PAGE - 1});
 
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
@@ -51,12 +58,14 @@ export default function PortfolioThumnail({section, portfolio}: Props){
 				</S.ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
-					{portfolio?.thumbnailUrl.map((url, index)=>{
-						return (
-							<S.SliderItem key={index}>
-								<Image src={url} size='auto' key={index}/>
-							</S.SliderItem>
-						)
+					{portfolio?.images.map((url, index)=>{
+						if(index < 3) {
+							return (
+								<S.SliderItem key={index}>
+									<Image src={url} size='auto' key={index}/>
+								</S.SliderItem>
+							)
+						}
 					})}
 				</Slider>
 			</S.Content>

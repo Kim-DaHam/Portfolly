@@ -56,7 +56,7 @@ export const PortfolioHandlers= [
 				content: portfolio.content,
 				summary: portfolio.summary,
 				likes: portfolio.likes,
-				thumbnailUrl: portfolio.thumbnailUrl,
+				images: portfolio.images,
 				isBookmarked: isBookmarked,
 				user,
 			};
@@ -162,7 +162,7 @@ export const PortfolioHandlers= [
 			summary: portfolioData!.summary,
 			tags,
 			likes: portfolioData!.likes,
-			thumbnailUrl: portfolioData!.thumbnailUrl,
+			images: portfolioData!.images,
 			user,
 			otherPortfolios,
 			isBookmarked: isBookmarked,
@@ -214,7 +214,7 @@ export const PortfolioHandlers= [
 			categoryId: categoryId,
 			tagId: tagId,
 			likes: 0,
-			thumbnailUrl: [''],
+			images: [],
 		});
 
 		return HttpResponse.json({id: portfolioId}, { status: 200 });
@@ -237,7 +237,18 @@ export const PortfolioHandlers= [
 				Object.assign(portfolio, changedPortfolio);
 			}
 		});
+
 		return HttpResponse.json({id: portfolioId}, { status: 200 });
 	}),
+
+	http.post(`/picture`, async ({request}) => {
+		const imageUrl = [
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F2XzQc%2FbtsCoF6oqiQ%2FfTLqaY7HBAdFUn22D1UVP0%2Fimg.jpg',
+			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1xq4y%2FbtsCq8zX6lA%2FHsyxk6Y2YttIhEV3cmWP30%2Fimg.jpg',
+		];
+
+		return HttpResponse.json(imageUrl, { status: 200 });
+	}),
+
 
 ];

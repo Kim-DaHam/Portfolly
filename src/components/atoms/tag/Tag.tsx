@@ -6,7 +6,7 @@ import * as S from "@/components/atoms/tag/Tag.styled";
 type Props = HTMLAttributes<HTMLDivElement> & {
 	readOnly: boolean;
 	value: string;
-	handleTag: MouseEventHandler<HTMLDivElement>;
+	handleTag?: MouseEventHandler<HTMLDivElement>;
 };
 
 export default function Tag({readOnly, value, handleTag}: Props) {

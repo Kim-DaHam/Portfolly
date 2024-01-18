@@ -11,10 +11,17 @@ export default function useTagInput({getValues, setValue}: Props) {
 
 	const handleTagInput: KeyboardEventHandler<HTMLDivElement> = (event) => {
 		const input = event.target as HTMLDivElement;
-		const keyword = input.textContent;
+		const keyword = input.textContent as string;
 
 		if (event.keyCode == 13 && keyword) {
 			const tags = getValues('tags');
+			const isDuplication = tags.indexOf(keyword) > 0 ? true : false;
+
+			if(isDuplication){
+				input.textContent = null;
+				return;
+			}
+
 			tags.push(input.textContent!);
 			setValue('tags', tags, { shouldDirty: true });
 			setTags(tags);

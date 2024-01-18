@@ -7,6 +7,7 @@ import * as S from "./PortfolioDetailPage.styled";
 
 import { Text, Image, Button, ToggleButton, Tag, Profile, Header, AlertModal } from "@/components";
 import { useModal } from "@/hooks";
+import useHtmlContent from "@/hooks/useHtmlContent";
 import { userId } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
 import { Portfolio } from "@/types";
@@ -24,6 +25,7 @@ export default function PortfolioDetail(){
 	const navigate = useNavigate();
 	const currentSection = useSelector(section);
 	const { isModalOpen, handleModal } = useModal();
+	const { sanitize, setElementInlineStyle } = useHtmlContent();
 
 	const handleEditButton = () => {
 		navigate(`/portfolios/edit?id=${portfolio.id}`, {state: portfolio});
@@ -50,7 +52,11 @@ export default function PortfolioDetail(){
 					<S.FlexBox>
 						<S.PortfolioSection>
 							<S.HtmlContent>
-								{portfolio.content}
+								<div
+									dangerouslySetInnerHTML = {{
+									__html: sanitize(setElementInlineStyle(portfolio.content)),
+								}}>
+							</div>
 							</S.HtmlContent>
 						</S.PortfolioSection>
 
@@ -98,7 +104,7 @@ export default function PortfolioDetail(){
 									{ portfolio.otherPortfolios.map((portfolio: Portfolio) => {
 										return (
 											<S.GridItem key={portfolio.id} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
-												<Image size='100%' src={portfolio.thumbnailUrl[0]} shape='foursquare'/>
+												<Image size='100%' src={portfolio.images[0]} shape='foursquare'/>
 											</S.GridItem>
 										)
 									})}
