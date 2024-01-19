@@ -6,3 +6,4 @@ export * from '@/utils/fetch';
 export * from '@/utils/mswHandler';
 export * from '@/utils/path';
 export * from '@/utils/wheelHandler';
+export * from '@/utils/toast';
