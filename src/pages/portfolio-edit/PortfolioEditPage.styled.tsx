@@ -44,6 +44,7 @@ export const EditorSection = styled.section`
 
 	position: relative;
 
+	overflow-y: scroll;
 	background-color: lemonchiffon;
 `;
 

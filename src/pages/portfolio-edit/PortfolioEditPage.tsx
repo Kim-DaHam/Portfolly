@@ -1,74 +1,25 @@
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 
 import Logo from '@/assets/images/logo-white.png';
 import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
-import { useTagInput, usePreventGoBack, usePreventRefresh } from "@/hooks";
+import { useTagInput, usePreventGoBack, usePreventRefresh, usePortfolioForm, usePortfolioValidate } from "@/hooks";
 import * as S from "@/pages/portfolio-edit/PortfolioEditPage.styled";
-import { Section } from "@/types";
-import { usePortfolioPostQuery } from "@/utils";
-
-export type FormValues = {
-	title: string;
-	content: string;
-	section: Section;
-	category: string;
-	tags: string[];
-	summary: string;
-	images: string[];
-}
 
 export default function PortfolioEditPage(){
 	const location = useLocation();
-	const portfolio = location.state;
 
 	const { preventGoBack } = usePreventGoBack();
 	usePreventRefresh();
 
-	const portfolioMutation = usePortfolioPostQuery(portfolio ? portfolio.id : null);
+	const portfolio = location.state;
 
-	const { register, reset, handleSubmit, getValues, setValue, formState: {dirtyFields, errors} } = useForm<FormValues>({
-		mode: 'onSubmit',
-		defaultValues: {
-			title: '',
-			content: '',
-			section: 'Android/iOS',
-			category: '',
-			tags: [],
-			summary: '',
-			images: [],
-		}
-	});
+	const { register, handleSubmit, getValues, setValue } = usePortfolioForm({portfolio});
+	const validate = usePortfolioValidate({getValues});
 	const { tags, setTags, handleTagInput, handleTag } = useTagInput({getValues, setValue});
-
-	const onSubmit = (form: FormValues) => {
-		if(portfolio) {
-			const copyForm: {[key: string]: any} = {...form};
-			const changedKeys = Object.keys(dirtyFields);
-			const changedValues: {[key: string]: any} = {};
-
-			changedKeys.map((key) => {
-				changedValues[key] = copyForm[key];
-			});
-			changedValues.section = form.section;
-
-			return portfolioMutation.mutate(changedValues);
-		}
-		return portfolioMutation.mutate(form);
-	};
 
 	useEffect(() => {
 		if(portfolio) {
-			reset({
-				title: portfolio.title,
-				content: portfolio.content,
-				section: portfolio.section,
-				category: portfolio.category,
-				tags: portfolio.tags,
-				summary: portfolio.summary,
-				images: portfolio.images,
-			});
 			setTags(portfolio.tags);
 		}
 	}, []);
@@ -88,28 +39,17 @@ export default function PortfolioEditPage(){
 						setValue={setValue}
 						getValues={getValues}
 						{...register('content', {
-							validate: {
-								content: (value) => value.length < 1 ? '포트폴리오 내용을 입력해주세요.' : true,
-								images: () => {
-									if(getValues('section') === 'Video'){
-										return getValues('images').length < 1 ? '비디오를 1개 이상 첨부하세요.' : true
-									}
-									return getValues('images').length < 1 ? '포트폴리오 이미지를 1개 이상 첨부하세요.' : true
-								},
-							}
+							validate: validate.content
 						})}
 					/>
 				</S.EditorSection>
 
 				<S.FormSection>
-					<S.Form onSubmit={handleSubmit(onSubmit)}>
+					<S.Form onSubmit={handleSubmit}>
 						<S.TitleInput
 							{...register('title', {
 								required: '제목을 입력하세요.',
-								validate: {
-									min: (value) => value.length < 5 ? '제목을 5글자 이상 입력하세요.' : true,
-									max: (value) => value.length > 30 ? '제목을 30글자 미만 입력하세요.' : true,
-								}
+								validate: validate.title,
 							})}
 							placeholder='제목'
 						/>
@@ -129,13 +69,13 @@ export default function PortfolioEditPage(){
 							placeholder={portfolio ? portfolio.category : '카테고리'}
 							setValue={setValue}
 							{...register('category', {
-								validate: (value) => value === '카테고리' ? '카테고리를 선택하세요.' : true,
+								validate: validate.category,
 							})}
 						/>
 
 						<Text type='label'>태그</Text>
 						<S.TagBox {...register('tags', {
-							validate: (value) => value.length > 10? '태그는 최대 10개까지 등록 가능합니다.' : true,
+							validate: validate.tags,
 						})}>
 							<S.TagInput contentEditable onKeyUp={handleTagInput}/>
 							{tags.map((tag: string, index: number) => {
@@ -147,7 +87,7 @@ export default function PortfolioEditPage(){
 						<S.InputArea
 							{...register('summary', {
 								required: '소개글을 입력해주세요.',
-								validate: (value) => value.length < 20 || value.length > 1000 ? '20글자 이상 1000 글자 미만 입력해주세요.' : true,
+								validate: validate.summary,
 							})}
 							placeholder='포트폴리오를 소개하세요'
 						/>
