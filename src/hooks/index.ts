@@ -4,6 +4,7 @@ import useModal from "@/hooks/component/useModal";
 import usePopup from "@/hooks/component/usePopup";
 import useSearch from "@/hooks/component/useSearch";
 import useSelector from "@/hooks/component/useSelector";
+import useHtmlContent from '@/hooks/editor/useHtmlContent';
 import useImageHandler from "@/hooks/editor/useImageHandler";
 import useIntersectionObserver from "@/hooks/event/useIntersectionObserver";
 import usePreventGoBack from "@/hooks/event/usePreventGoBack";
@@ -30,4 +31,5 @@ export {
 	usePreventRefresh,
 	useImageHandler,
 	usePortfolioForm,
+	useHtmlContent,
 };

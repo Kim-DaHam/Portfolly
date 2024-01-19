@@ -7,7 +7,7 @@ const blockElements = ['p', 'br'];
 
 const ALLOWED_TAGS = [...headings, ...media, ...inlineElements, ...blockElements];
 
-export default function useChangeHtmlContent() {
+export default function useHtmlContent() {
   const sanitizer = dompurify.sanitize;
 
   const sanitize = (htmlContent: string) => {
