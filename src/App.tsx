@@ -13,6 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import GlobalErrorFallback from './utils/fallback/gloabalErrorFallback';
 
+import { ToastContainer } from '@/components';
 import IntroPage from '@/pages/intro/IntroPage';
 import MainPage from '@/pages/main/MainPage';
 import MyPage from '@/pages/my-page/MyPage';
@@ -38,6 +39,7 @@ export default function App() {
 								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>}></Route>
 							</Routes>
 						</BrowserRouter>
+						<ToastContainer />
 						<ReactQueryDevtools initialIsOpen={false} />
 					</QueryClientProvider>
 				</PersistGate>
