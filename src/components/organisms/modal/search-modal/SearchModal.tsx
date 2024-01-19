@@ -4,7 +4,7 @@ import * as S from "./SearchModal.styled";
 
 import { Modal, SearchBar } from "@/components/molecules";
 import { searchFilter, searchFilterList, renderContent } from "@/components/organisms/modal/search-modal";
-import useStopScrollY from "@/hooks/useStopScrollY";
+import useStopScrollY from "@/hooks/event/useStopScrollY";
 
 export type Filter = 'Trending' | 'AppCategory' | 'UserTags' | 'Search';
 export type Content = 'Trending' | 'List' | 'Search';
