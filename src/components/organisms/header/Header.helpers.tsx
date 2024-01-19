@@ -1,4 +1,5 @@
 import { FiBookmark as BookmarkIcon, FiUser as UserIcon } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 import { Text } from '@/components';
 import * as S from "@/components/molecules/popper/Popper.styled";
@@ -14,7 +15,7 @@ export const checkIsShowSectionMenuPage = (firstPathName: string) => {
 	return PAGE_SHOW_SECTION_MENU.indexOf(firstPathName) !== -1;
 }
 
-export const renderHeaderMenuPopper = (isLogin: boolean) => {
+export const renderHeaderMenuPopper = (isLogin: boolean, userId: number) => {
 	if(isLogin){
 		return (
 			<>
@@ -28,14 +29,19 @@ export const renderHeaderMenuPopper = (isLogin: boolean) => {
 				</S.Group>
 				<S.Separator/>
 				<S.Group>
-					<S.Item>
-						<BookmarkIcon size={20}/>
-						<Text type='common'>북마크</Text>
-					</S.Item>
-					<S.Item>
-						<UserIcon size={20}/>
-						<Text type='common'>내 정보</Text>
-					</S.Item>
+					<Link to={`/profile/${userId}?tab=bookmark`}>
+						<S.Item>
+							<BookmarkIcon size={20}/>
+							<Text type='common'>북마크</Text>
+						</S.Item>
+					</Link>
+
+					<Link to={`/profile/${userId}`}>
+						<S.Item>
+							<UserIcon size={20}/>
+							<Text type='common'>내 정보</Text>
+						</S.Item>
+					</Link>
 				</S.Group>
 				<S.Separator/>
 				<S.Group>
