@@ -8,6 +8,7 @@ import PortfolioThumbnail from "@/components/molecules/portfolio-thumbnail/Portf
 import Profile from "@/components/molecules/profile/Profile";
 import Rating from "@/components/molecules/rating/Rating";
 import SearchBar from "@/components/molecules/searchBar/SearchBar";
+import ToastContainer from "@/components/molecules/toast/ToastContainer";
 
 export {
 	QuillEditor,
@@ -20,4 +21,5 @@ export {
 	Profile,
 	Rating,
 	SearchBar,
+	ToastContainer,
 };

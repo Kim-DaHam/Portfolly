@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import sectionSlice from './sectionSlice';
+import toastSlice from './toastSlice';
 
 import loginSlice from '@/redux/loginSlice';
 
@@ -21,6 +22,7 @@ const sectionPersistConfig = {
 const rootReducer = combineReducers({
 	auth: persistReducer(authPersistConfig, loginSlice.reducer),
 	section: persistReducer(sectionPersistConfig, sectionSlice.reducer),
+	toast: toastSlice.reducer,
 });
 
 export const store = configureStore({

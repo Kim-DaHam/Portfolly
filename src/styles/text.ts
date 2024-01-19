@@ -49,5 +49,9 @@ const lightgray = css`
   color: #989898;
 `;
 
+const white = css`
+	color: white;
+`;
+
 export const types = { title, titleSmall, common, small, label };
-export const colors = { black, gray, lightgray };
+export const colors = { black, gray, lightgray, white };

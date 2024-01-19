@@ -5,7 +5,7 @@ import { colors, types } from "@/styles/text";
 
 type Props = React.HTMLAttributes<HTMLSpanElement> & {
 	type: 'title' | 'titleSmall' | 'common' | 'small' | 'label';
-	color?: 'black' | 'gray' | 'lightgray';
+	color?: 'black' | 'gray' | 'lightgray' | 'white';
 }
 
 export default function Text({children, ...props}: Props) {

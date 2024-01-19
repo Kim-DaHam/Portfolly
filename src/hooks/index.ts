@@ -6,6 +6,7 @@ import useImageHandler from "@/hooks/useImageHandler";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import useModal from "@/hooks/useModal";
 import usePopup from "@/hooks/usePopup";
+import usePortfolioForm from "@/hooks/usePortfolioForm";
 import usePreventGoBack from "@/hooks/usePreventGoBack";
 import usePreventRefresh from "@/hooks/usePreventRefresh";
 import useSearch from "@/hooks/useSearch";
@@ -27,5 +28,6 @@ export {
 	useTagInput,
 	usePreventGoBack,
 	usePreventRefresh,
-	useImageHandler
+	useImageHandler,
+	usePortfolioForm,
 };
