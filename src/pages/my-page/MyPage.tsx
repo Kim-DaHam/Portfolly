@@ -1,40 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { Text, Button, Rating, Footer, Header, UserInformation } from "@/components/";
+import { Button, Footer, Header, UserInformation, Profile } from "@/components/";
 import { renderDescription, renderNavigation } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
+import { authority, userId as userID } from "@/redux/loginSlice";
 
 export type User = 'expert' | 'client';
-export type Navigation = 'Introduce' | 'Portfolio' | 'Review' | 'Management';
+export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
 
 function MyPage(){
-	const [navigation , setNavigation] = useState<Navigation>('Introduce');
+	const [navigation , setNavigation] = useState<Navigation>('introduce');
+
+	const navigate = useNavigate();
+
+	const parameterId = window.location.pathname.split('/')[2];
+	const auth = useSelector(authority);
+	const userId = useSelector(userID);
+	const isMyPage = parameterId === String(userId) ? true : false;
+
+	useEffect(() => {
+		navigate(`/profile/${parameterId}?tab=${navigation}`);
+	}, [navigation]);
 
 	return(
 		<S.Wrapper>
 			<Header/>
 			<S.Content>
-				<S.ProfileMainSection>
-					<S.ProfileImg>
-						<img/>
-					</S.ProfileImg>
-
-					<S.Box>
-						<Text type='title'>User Name</Text>
-						<Rating/>
-
-						{ true && // 본인 아니면
-							<S.ButtonBox>
-								<Button color='black' size='large' shape='square'>
-									문의하기
-								</Button>
-							</S.ButtonBox>
-						}
-					</S.Box>
-				</S.ProfileMainSection>
+				<S.ProfileSection>
+					<Profile type='my-page' user={''} />
+					{ isMyPage &&
+						<S.ButtonBox>
+							<Button color='black' size='large' shape='square'>
+								문의하기
+							</Button>
+						</S.ButtonBox>
+					}
+				</S.ProfileSection>
 
 				<S.NavigationSection>
-					{renderNavigation('expert', setNavigation)}
+					{renderNavigation(auth, setNavigation, isMyPage)}
 				</S.NavigationSection>
 
 				<S.ContentContainer>

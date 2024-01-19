@@ -3,36 +3,42 @@ import { User, Navigation as TNavigation } from "@/pages/my-page/MyPage";
 import { Navigation } from "@/pages/my-page/MyPage.styled";
 import { IComponentFactory, SetState } from "@/types";
 
-export const renderNavigation = (user:User, handleNavigation:SetState<TNavigation>) => {
+export const renderNavigation = (user: User, handleNavigation: SetState<TNavigation>, isMyPage: boolean) => {
 	const ComponentFactory: IComponentFactory = {
-		Expert: (
+		expert: (
 			<>
-			<Navigation onClick={()=>handleNavigation('Introduce')}>
+			<Navigation onClick={()=>handleNavigation('introduce')}>
 				소개
 			</Navigation>
-			<Navigation onClick={()=>handleNavigation('Portfolio')} >
+			<Navigation onClick={()=>handleNavigation('portfolios')} >
 				포트폴리오
 			</Navigation>
-			<Navigation onClick={()=>handleNavigation('Review')}>
+			<Navigation onClick={()=>handleNavigation('review')}>
 				리뷰
 			</Navigation>
-			{ true && // 본인이면
-				<Navigation onClick={()=>handleNavigation('Management')}>
+			{ isMyPage &&
+				<>
+				<Navigation onClick={()=>handleNavigation('management')}>
 					판매 관리
 				</Navigation>
+
+				<Navigation onClick={()=>handleNavigation('bookmarks')}>
+					북마크
+				</Navigation>
+				</>
 			}
 			</>
 		),
-		Client: (
+		client: (
 			<>
-			<Navigation onClick={()=>handleNavigation('Introduce')}>
+			<Navigation onClick={()=>handleNavigation('introduce')}>
 				소개
 			</Navigation>
-			<Navigation onClick={()=>handleNavigation('Review')}>
+			<Navigation onClick={()=>handleNavigation('review')}>
 				리뷰
 			</Navigation>
-			{ true && // 본인이면
-				<Navigation onClick={()=>handleNavigation('Management')}>
+			{ isMyPage &&
+				<Navigation onClick={()=>handleNavigation('management')}>
 					구매 관리
 				</Navigation>
 			}
@@ -45,18 +51,21 @@ export const renderNavigation = (user:User, handleNavigation:SetState<TNavigatio
 
 export const renderDescription = (navigation: TNavigation)=>{
 	const ComponentFactory: IComponentFactory = {
-		Introduce: (
-			<Introduce/>
+		introduce: (
+			<Introduce />
 		),
-		Portfolio: (
-			<PortfolioList/>
+		portfolio: (
+			<PortfolioList />
 		),
-		Review: (
-			<Review/>
+		review: (
+			<Review />
 		),
-		Management: (
-			<Management/>
+		management: (
+			<Management />
 		),
+		bookmarks: (
+			<PortfolioList />
+		)
 	}
 
 	return ComponentFactory[navigation];

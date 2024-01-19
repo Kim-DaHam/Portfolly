@@ -3,12 +3,11 @@ import { styled } from 'styled-components';
 import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
-	${mixins.fullWidthHeight}
+	${mixins.fullScreen}
 	${mixins.flexColumn}
 `;
 
 export const Content = styled.div`
-	${mixins.fullScreen}
 	${mixins.flexCenter}
 	${mixins.flexColumn}
 
@@ -17,25 +16,16 @@ export const Content = styled.div`
 	background-color: salmon;
 `;
 
-export const ProfileMainSection = styled.section`
+export const ProfileSection = styled.section`
 	width: 100%;
 	height: fit-content;
 
-	display: flex;
+	${mixins.flexColumn}
 	gap: 1rem;
 
 	padding: 2rem 3rem 2rem 3rem;
 
 	background-color: violet;
-`;
-
-export const ProfileImg = styled.div`
-	width: 150px;
-	height: 150px;
-
-	flex: none;
-
-	background-color: white;
 `;
 
 export const NavigationSection = styled.section`
