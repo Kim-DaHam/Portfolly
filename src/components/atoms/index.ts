@@ -5,6 +5,7 @@ import Image from "@/components/atoms/image/Image";
 import Selector from "@/components/atoms/selector/Selector";
 import Tag from "@/components/atoms/tag/Tag";
 import Text from "@/components/atoms/text/Text";
+import Toast from "@/components/atoms/toast/Toast";
 
 export {
 	Button, ButtonStyle,
@@ -13,4 +14,5 @@ export {
 	Selector,
 	Tag,
 	Text,
+	Toast,
 };
