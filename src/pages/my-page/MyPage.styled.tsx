@@ -28,32 +28,7 @@ export const ProfileSection = styled.section`
 	background-color: violet;
 `;
 
-export const NavigationSection = styled.section`
-	width: 100%;
-	height: 5rem;
-
-	display: flex;
-	gap: 1.2rem;
-	align-items: center;
-
-	padding: 1rem 2rem 0 2rem;
-
-	background-color: skyblue;
-`;
-
-export const Navigation = styled.a`
-	height: 100%;
-
-	display: flex;
-	align-items: center;
-
-	cursor: pointer;
-
-	font-size: 1.1rem;
-	border-bottom: 3px solid black;
-`;
-
-export const ContentContainer = styled.div`
+export const ContentSection = styled.section`
 	${mixins.fullWidthHeight}
 
 	display: flex;
@@ -61,7 +36,7 @@ export const ContentContainer = styled.div`
 	background-color: lightgreen;
 `;
 
-export const DescriptionSection = styled.section`
+export const Description = styled.div`
 	${mixins.fullWidthHeight}
 
 	flex-basis: 1;
@@ -71,7 +46,7 @@ export const DescriptionSection = styled.section`
 	background-color: yellow;
 `;
 
-export const InformationSection = styled.aside`
+export const Aside = styled.aside`
 	width: 24rem;
 	height: 100%;
 

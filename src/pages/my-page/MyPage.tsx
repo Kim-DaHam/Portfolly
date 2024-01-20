@@ -1,14 +1,12 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Footer, Header, UserInformation, ProfileSkeleton } from "@/components/";
-import { renderDescription, renderNavigation } from "@/pages/my-page/MyPage.helpers";
+import { Button, Footer, Header, UserInformation, MyPageNavigator, Profile } from "@/components";
+import { renderDescription } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
-import { authority, userId as userID } from "@/redux/loginSlice";
+import { userId as userID } from "@/redux/loginSlice";
 import { useUserQuery } from "@/utils";
-
-const Profile = lazy(() => import('@/components/molecules/profile/Profile'));
 
 export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
 
@@ -30,11 +28,10 @@ function MyPage(){
 	return(
 		<S.Wrapper>
 			<Header/>
+			{ user &&
 			<S.Content>
 				<S.ProfileSection>
-					<Suspense fallback={<ProfileSkeleton type='my-page'/>}>
 						<Profile type='my-page' user={user} />
-					</Suspense>
 
 					{ isMyPage &&
 						<S.ButtonBox>
@@ -45,21 +42,19 @@ function MyPage(){
 					}
 				</S.ProfileSection>
 
-				<S.NavigationSection>
-					{renderNavigation(user.authority, setNavigation, isMyPage)}
-				</S.NavigationSection>
+				<MyPageNavigator auth={user.authority} handleNavigator={setNavigation} isMyPage={isMyPage}/>
 
-				<S.ContentContainer>
-					<S.DescriptionSection>
-						{renderDescription(navigation, user)}
-					</S.DescriptionSection>
+					<S.ContentSection>
+						<S.Description>
+							{renderDescription(user, navigation)}
+						</S.Description>
 
-					<S.InformationSection>
-						<UserInformation/>
-					</S.InformationSection>
-				</S.ContentContainer>
-			</S.Content>
-
+						<S.Aside>
+							<UserInformation />
+						</S.Aside>
+					</S.ContentSection>
+				</S.Content>
+				}
 			<Footer/>
 		</S.Wrapper>
 	)
