@@ -1,4 +1,5 @@
 export * from '@/utils/api-service/portfolio';
+export * from '@/utils/api-service/users';
 export * from '@/utils/event';
 export * from '@/utils/fallback/apiErrorFallback';
 export * from '@/utils/fallback/gloabalErrorFallback';

@@ -1,5 +1,7 @@
 import { PortfolioHandlers } from "./portfolio";
 import { toggleButtonHandlers } from "./toggleButton";
+import { userHandlers } from "./user";
 
 export const handlers = PortfolioHandlers
-  .concat(toggleButtonHandlers);
+.concat(userHandlers)
+.concat(toggleButtonHandlers);
