@@ -17,28 +17,3 @@ export type Portfolio = {
 	isLiked?: boolean,
 	isBookmarked?: boolean,
 };
-
-export type User = {
-	id: number,
-	nickname: string,
-	profileImage: string,
-	email: string,
-	name?: string,
-	phone?: string,
-	authority: 'expert' | 'client',
-	profile: {
-		introduce: string,
-		location: string,
-		careers?: string[],
-		careerLength?: string,
-		fields?: string[],
-		stacks?: string[],
-	},
-	activity: {
-		score?: number,
-		contactTime: string,
-	},
-	likes?: number[],
-	bookmarks?: number[],
-	portfolios?: number[],
-};
