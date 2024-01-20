@@ -4,11 +4,11 @@ import { FiArrowRight as ArrowRightIcon, FiArrowLeft as ArrowLeftIcon } from "re
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import SearchModal from "../modal/search-modal/SearchModal";
+import SearchModal from "../../modal/search-modal/SearchModal";
 
 import { categories } from "@/assets/data/portfolio";
 import { Button } from "@/components";
-import * as S from "@/components/organisms/category-slider/CategorySlider.styled";
+import * as S from "@/components/organisms/slider/category-slider/CategorySlider.styled";
 import { useModal, useCategorySlider } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
 import { getFilterQueryParameter, stringToUrlParameter } from "@/utils";

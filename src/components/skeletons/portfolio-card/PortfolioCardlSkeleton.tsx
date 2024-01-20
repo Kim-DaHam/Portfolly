@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
 
-import { PortfolioItemSkeletonLayout } from "./PortfolioThumbnailSkeleton.styled";
-
+import * as S from "@/components/skeletons/portfolio-card/PortfolioCardSkeleton.styled";
 import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Section } from "@/types/portfolio";
+import { Section } from "@/types";
 
 type Props = {
 	section?: Section;
@@ -13,6 +12,6 @@ export default function PortfolioItemSkeleton({section}: Props) {
 	const currentSection = useSelector(sectionSlice);
 
 	return(
-		<PortfolioItemSkeletonLayout $section={section ? section : currentSection}/>
+		<S.Layout $section={section ? section : currentSection}/>
 	)
 }

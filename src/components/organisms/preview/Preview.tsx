@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
-import { Text, PortfolioThumbnail } from "@/components";
+import { Text, PortfolioSlider } from "@/components";
 import * as S from "@/components/organisms/preview/Preview.styled";
 import { Portfolio, Section } from "@/types";
 import { stringToUrlParameter } from "@/utils";
@@ -36,7 +36,7 @@ export default function Preview({section, portfolios}: Props){
 
 			<S.PreviewBox $column={PreviewRowColumns[section]}>
 				{portfolios.map((portfolio, index: number) => {
-					return <PortfolioThumbnail section={section} key={index} portfolio={portfolio}/>
+					return <PortfolioSlider section={section} key={index} portfolio={portfolio}/>
 				})}
 			</S.PreviewBox>
 

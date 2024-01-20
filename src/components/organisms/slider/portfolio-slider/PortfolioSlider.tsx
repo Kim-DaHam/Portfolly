@@ -5,10 +5,10 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { initialProps, sliderSettings } from "./PortfolioThumbnail.constants";
+import { initialProps, sliderSettings } from "./PortfolioSlider.constants";
 
 import { Image } from "@/components";
-import * as S from "@/components/molecules/portfolio-thumbnail/PortfolioThumbnail.styled";
+import * as S from "@/components/organisms/slider/portfolio-slider/PortfolioSlider.styled";
 import { useHandleSlider } from "@/hooks";
 import { section as sectionSlice } from "@/redux/sectionSlice";
 import { Portfolio, Section } from "@/types";
@@ -21,7 +21,7 @@ export type Props = {
 
 const THUMBNAIL_PAGE = 3;
 
-export default function PortfolioThumnail({section, portfolio}: Props){
+export default function PortfolioSlider({section, portfolio}: Props){
 	const navigate = useNavigate();
 	const sliderRef = useRef(null);
 

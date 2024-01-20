@@ -1,9 +1,9 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
 
-import { Button, ToggleButton, Popper, PortfolioThumbnail, Profile } from "@/components";
+import { Button, ToggleButton, Popper, PortfolioSlider, Profile } from "@/components";
 import { Group, Item } from "@/components/molecules/popper/Popper.styled";
-import * as S from "@/components/molecules/portfolio-item/PortfolioItem.styled";
+import * as S from "@/components/molecules/portfolio-card/PortfolioCard.styled";
 import { usePopup } from "@/hooks";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
@@ -11,7 +11,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 	onClick: () => void;
 }
 
-export default function PortfolioItem({ portfolio, onClick }: Props) {
+export default function PortfolioCard({ portfolio, onClick }: Props) {
 	const buttonGroupRef = useRef(null);
 
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
@@ -28,7 +28,7 @@ export default function PortfolioItem({ portfolio, onClick }: Props) {
 
 	return (
 		<S.Wrapper onClick={onClick}>
-			<PortfolioThumbnail portfolio={portfolio}/>
+			<PortfolioSlider portfolio={portfolio}/>
 
 			<S.ProfileBox>
 				<Profile type='portfolio-item' user={{...portfolio, ...portfolio.user}}/>

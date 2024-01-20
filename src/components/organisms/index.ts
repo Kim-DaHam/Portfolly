@@ -1,4 +1,3 @@
-import CategorySlider from '@/components/organisms/category-slider/CategorySlider';
 import Footer from '@/components/organisms/footer/Footer';
 import Header from '@/components/organisms/header/Header';
 import AlertModal from '@/components/organisms/modal/alert-modal/AlertModal';
@@ -10,6 +9,8 @@ import Introduce from '@/components/organisms/profile-description/introduce/Intr
 import Management from '@/components/organisms/profile-description/management/Management';
 import PortfolioList from '@/components/organisms/profile-description/portfolio-list/PortfolioList';
 import Review from '@/components/organisms/profile-description/review/Review';
+import CategorySlider from '@/components/organisms/slider/category-slider/CategorySlider';
+import PortfolioSlider from '@/components/organisms/slider/portfolio-slider/PortfolioSlider';
 import Tracking from '@/components/organisms/tracking/Tracking';
 import UserInformation from '@/components/organisms/user-information/UserInformation';
 
@@ -27,5 +28,6 @@ export {
 	PortfolioList,
 	Review,
 	Tracking,
-	UserInformation
+	UserInformation,
+	PortfolioSlider,
 };
