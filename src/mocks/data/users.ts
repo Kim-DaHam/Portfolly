@@ -1,4 +1,6 @@
-export const users = [
+import { User } from "@/types";
+
+export const users: User[] = [
 	{
 		id: 1,
 		nickname: '전문가 1',
@@ -10,9 +12,9 @@ export const users = [
 		profile: {
 			introduce: '안녕하세요 전문가 1 입니다.',
 			location: '대구',
-			career: ['네이버', '카카오'],
+			careers: ['네이버', '카카오'],
 			careerLength: '10년',
-			field: ['Web', 'Frontend', 'Development'],
+			fields: ['Web', 'Frontend', 'Development'],
 			stacks: ['React', 'Vue', 'Node.js'],
 		},
 		activity: {
@@ -34,9 +36,9 @@ export const users = [
 		profile: {
 			introduce: '안녕하세요 전문가 2 입니다.',
 			location: '대구',
-			career: ['네이버', '카카오'],
+			careers: ['네이버', '카카오'],
 			careerLength: '10년',
-			field: ['Web', 'Frontend', 'Development'],
+			fields: ['Web', 'Frontend', 'Development'],
 			stacks: ['React', 'Vue', 'Node.js'],
 		},
 		activity: {
@@ -58,9 +60,9 @@ export const users = [
 		profile: {
 			introduce: '안녕하세요 전문가 3 입니다.',
 			location: '대구',
-			career: ['네이버', '카카오'],
+			careers: ['네이버', '카카오'],
 			careerLength: '10년',
-			field: ['Web', 'Frontend', 'Development'],
+			fields: ['Web', 'Frontend', 'Development'],
 			stacks: ['React', 'Vue', 'Node.js'],
 		},
 		activity: {
