@@ -1,4 +1,5 @@
 import QuillEditor from "@/components/molecules/editor/QuillEditor";
+import PortfolioItem from "@/components/molecules/items/portfolio-item/PortfolioItem";
 import Modal from "@/components/molecules/modal/Modal";
 import MyPageNavigator from "@/components/molecules/navigator/mypage-navigator/MypageNavigator";
 import SectionNavigator from "@/components/molecules/navigator/section-navigator/SectionNavigator";
@@ -22,4 +23,5 @@ export {
 	SearchBar,
 	ToastContainer,
 	MyPageNavigator,
+	PortfolioItem,
 };
