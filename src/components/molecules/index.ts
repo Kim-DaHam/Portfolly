@@ -1,5 +1,6 @@
 import QuillEditor from "@/components/molecules/editor/QuillEditor";
 import Modal from "@/components/molecules/modal/Modal";
+import MyPageNavigator from "@/components/molecules/navigator/mypage-navigator/MypageNavigator";
 import SectionNavigator from "@/components/molecules/navigator/section-navigator/SectionNavigator";
 import Pagination from "@/components/molecules/pagination/Pagination";
 import Popper from "@/components/molecules/popper/Popper";
@@ -22,4 +23,5 @@ export {
 	Rating,
 	SearchBar,
 	ToastContainer,
+	MyPageNavigator,
 };
