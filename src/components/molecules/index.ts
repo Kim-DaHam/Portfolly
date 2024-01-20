@@ -1,6 +1,6 @@
 import QuillEditor from "@/components/molecules/editor/QuillEditor";
 import Modal from "@/components/molecules/modal/Modal";
-import SectionNavigator from "@/components/molecules/navigator/SectionNavigator";
+import SectionNavigator from "@/components/molecules/navigator/section-navigator/SectionNavigator";
 import Pagination from "@/components/molecules/pagination/Pagination";
 import Popper from "@/components/molecules/popper/Popper";
 import PortfolioItem from "@/components/molecules/portfolio-item/PortfolioItem";
