@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 	${mixins.flexColumn}
 `;
 
-export const Content = styled.div`
+export const Content = styled.main`
 	${mixins.flexCenter}
 	${mixins.flexColumn}
 

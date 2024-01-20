@@ -43,7 +43,7 @@ export const Group = styled.div<{size?: 'fit'}>`
 	padding: 8px;
 `;
 
-export const Item = styled.a`
+export const Item = styled.div`
 	display: flex;
 	gap: 1rem;
 

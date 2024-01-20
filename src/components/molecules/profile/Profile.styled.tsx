@@ -45,4 +45,5 @@ export const SpanBox = styled.div`
 export const Box = styled.div`
 	${mixins.flexColumn}
 	gap: 1rem;
+	padding-top: 1rem;
 `;

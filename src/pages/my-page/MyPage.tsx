@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Footer, Header, UserInformation, Profile } from "@/components/";
+import { Button, Footer, Header, UserInformation, ProfileSkeleton } from "@/components/";
 import { renderDescription, renderNavigation } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
 import { authority, userId as userID } from "@/redux/loginSlice";
+import { useUserQuery } from "@/utils";
 
-export type User = 'expert' | 'client';
+const Profile = lazy(() => import('@/components/molecules/profile/Profile'));
+
 export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
 
 function MyPage(){
@@ -15,13 +17,14 @@ function MyPage(){
 
 	const navigate = useNavigate();
 
-	const parameterId = window.location.pathname.split('/')[2];
-	const auth = useSelector(authority);
-	const userId = useSelector(userID);
-	const isMyPage = parameterId === String(userId) ? true : false;
+	const profileId = window.location.pathname.split('/')[2];
+	const loginId = useSelector(userID);
+	const isMyPage = profileId === String(loginId) ? true : false;
+
+	const { data: user } = useUserQuery(profileId);
 
 	useEffect(() => {
-		navigate(`/profile/${parameterId}?tab=${navigation}`);
+		navigate(`/profile/${profileId}?tab=${navigation}`);
 	}, [navigation]);
 
 	return(
@@ -29,7 +32,10 @@ function MyPage(){
 			<Header/>
 			<S.Content>
 				<S.ProfileSection>
-					<Profile type='my-page' user={''} />
+					<Suspense fallback={<ProfileSkeleton type='my-page'/>}>
+						<Profile type='my-page' user={user} />
+					</Suspense>
+
 					{ isMyPage &&
 						<S.ButtonBox>
 							<Button color='black' size='large' shape='square'>
@@ -40,12 +46,12 @@ function MyPage(){
 				</S.ProfileSection>
 
 				<S.NavigationSection>
-					{renderNavigation(auth, setNavigation, isMyPage)}
+					{renderNavigation(user.authority, setNavigation, isMyPage)}
 				</S.NavigationSection>
 
 				<S.ContentContainer>
 					<S.DescriptionSection>
-						{renderDescription(navigation)}
+						{renderDescription(navigation, user)}
 					</S.DescriptionSection>
 
 					<S.InformationSection>

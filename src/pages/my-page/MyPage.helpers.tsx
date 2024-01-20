@@ -1,9 +1,11 @@
 import { Introduce, Management, PortfolioList, Review } from "@/components";
-import { User, Navigation as TNavigation } from "@/pages/my-page/MyPage";
+import { Navigation as TNavigation } from "@/pages/my-page/MyPage";
 import { Navigation } from "@/pages/my-page/MyPage.styled";
-import { IComponentFactory, SetState } from "@/types";
+import { IComponentFactory, SetState, User } from "@/types";
 
-export const renderNavigation = (user: User, handleNavigation: SetState<TNavigation>, isMyPage: boolean) => {
+type Authority = 'expert' | 'client';
+
+export const renderNavigation = (auth: Authority, handleNavigation: SetState<TNavigation>, isMyPage: boolean) => {
 	const ComponentFactory: IComponentFactory = {
 		expert: (
 			<>
@@ -46,13 +48,13 @@ export const renderNavigation = (user: User, handleNavigation: SetState<TNavigat
 		),
 	}
 
-	return ComponentFactory[user];
+	return ComponentFactory[auth];
 }
 
-export const renderDescription = (navigation: TNavigation)=>{
+export const renderDescription = (navigation: TNavigation, user: User)=>{
 	const ComponentFactory: IComponentFactory = {
 		introduce: (
-			<Introduce />
+			<Introduce user={user.profile}/>
 		),
 		portfolio: (
 			<PortfolioList />
