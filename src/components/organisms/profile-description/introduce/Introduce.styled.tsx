@@ -4,9 +4,7 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
 	${mixins.fullWidthHeight}
-
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
 	gap: 2rem;
 `;
 
@@ -26,4 +24,9 @@ export const TextBox = styled.div`
 	height: 100%;
 
 	background-color: white;
+`;
+
+export const TagBox = styled.div`
+	display: flex;
+	gap: 1rem;
 `;
