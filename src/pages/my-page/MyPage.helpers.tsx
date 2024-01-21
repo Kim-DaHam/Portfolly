@@ -3,7 +3,7 @@ import { Navigation } from "@/pages/my-page/MyPage";
 import { IComponentFactory } from "@/types";
 
 export const renderDescription = (user: any, navigation: Navigation)=>{
-	console.log(user)
+
 	const ComponentFactory: IComponentFactory = {
 		introduce: (
 			<Introduce user={{authority: user.authority, ...user.profile}}/>

@@ -26,7 +26,7 @@ function MyPage(){
 			navigate(`/profile/${profileId}?tab=${navigation}`);
 			return
 		}
-		navigate(`/profile/${profileId}?tab=${navigation}?page=1`);
+		navigate(`/profile/${profileId}?tab=${navigation}&page=1`);
 	}, [navigation]);
 
 	return(
