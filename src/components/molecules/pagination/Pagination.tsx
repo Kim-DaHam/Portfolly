@@ -28,7 +28,7 @@ export default function Pagination({handlePage, count, pageShow}: Props) {
 		const middle = (startPage + endPage) / 2
 		const isBiggerThanMiddle = endPage !== pages && page > middle;
 		const isSmallerThanMiddle = startPage > 1 && page < middle;
-		const isLastPage = page > pages - (PAGE_NUM - 1);
+		const leftisLessThanPageNum = currentPage > PAGE_NUM && page > pages - (PAGE_NUM - 1);
 
 		if(isBiggerThanMiddle || isSmallerThanMiddle) {
 			const startPage = (page - HALF_PAGE) <= 1 ? 1 : (page - HALF_PAGE);
@@ -37,7 +37,7 @@ export default function Pagination({handlePage, count, pageShow}: Props) {
 			setEndPage(endPage);
 		}
 
-		if(isLastPage) {
+		if(leftisLessThanPageNum) {
 			setStartPage(pages - (PAGE_NUM - 1));
 			setEndPage(pages);
 		}
@@ -46,6 +46,7 @@ export default function Pagination({handlePage, count, pageShow}: Props) {
 		handlePage(page);
 
 		navigate(`${pathname}?tab=portfolios&page=${page}`);
+		window.scrollTo(0, 0);
 	};
 
 	const handleNextSkip = () => {

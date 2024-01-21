@@ -7,7 +7,7 @@ type Props = {
 	portfolios: any[];
 }
 
-const PAGE_SHOW = 1;
+const PAGE_SHOW = 12;
 
 export default function PortfolioList({portfolios}: Props) {
 	const [page, setPage] = useState(1);
