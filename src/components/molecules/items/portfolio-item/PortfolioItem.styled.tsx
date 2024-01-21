@@ -8,16 +8,11 @@ export const Wrapper = styled.div`
 	${mixins.flexColumn}
 	gap: 1rem;
 
+	position: relative;
+
 	cursor: pointer;
 
 	background-color: red;
-`;
-
-export const Thumbnail = styled.div`
-	width: 100%;
-	aspect-ratio: 1 / 1;
-
-	background-color: white;
 `;
 
 export const Box = styled.div`

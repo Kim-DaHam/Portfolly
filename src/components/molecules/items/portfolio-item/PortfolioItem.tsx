@@ -1,21 +1,18 @@
 import { Image, Text } from "@/components";
 import * as S from '@/components/molecules/items/portfolio-item/PortfolioItem.styled';
-import { Portfolio } from "@/types";
 
 type Props = {
-	portfolio: Portfolio;
+	portfolio: any;
 };
 
 export default function PortfolioItem({portfolio}: Props) {
 	return(
 		<S.Wrapper>
-			<S.Thumbnail>
-				<Image src="" alt="" size='5rem'/>
-			</S.Thumbnail>
+			<Image src={portfolio.image} alt={portfolio.title} size='100%' shape='foursquare' />
 
 			<S.Box>
-				<Text type='common'>Title</Text>
-				<Text type='small'>Date</Text>
+				<Text type='common'>{portfolio.title}</Text>
+				<Text type='small'>{portfolio.summary}</Text>
 			</S.Box>
 		</S.Wrapper>
 	)

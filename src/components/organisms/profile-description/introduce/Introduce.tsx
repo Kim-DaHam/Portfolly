@@ -6,7 +6,6 @@ type Props = {
 };
 
 export default function Introduce({user}: Props) {
-	console.log(user)
 	return(
 		<S.Wrapper>
 			<S.Box>

@@ -3,7 +3,8 @@ import { HttpResponse, http } from 'msw';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
-import { FormValues } from '@/pages/portfolio-edit/PortfolioEditPage';
+import { FormValues } from '@/hooks/portfolio/usePortfolioForm';
+import { User } from '@/types';
 import { Portfolio, Section } from '@/types/portfolio';
 import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getSection, getTagId, getTags, getUserData } from '@/utils';
 
@@ -20,50 +21,47 @@ const USER_ID = 1;
 export const PortfolioHandlers= [
 	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
-		const page = url.searchParams.get('page') as string;
+
 		const section = url.searchParams.get('section') as Section;
 		const category = url.searchParams.get('category') as string;
+		const sectionId = sectionIdMap.get(section);
+		const categoryId = getCategoryId(category) || false;
+
 		// const tag = url.searchParams.get('tag');
 		// const user = url.searchParams.get('user');
 
-		let filteredPortfolios: any[] = [];
+		const page = Number(url.searchParams.get('page')) as number;
+		const isRangeOfPage = (index: number, page: number) => index >= (page - 1) * 100 && index < page * 100;
 
-		portfolios.map((portfolio: Portfolio) => {
-			if(portfolio.sectionId === sectionIdMap.get(section)){
-				filteredPortfolios.push(portfolio);
+		const filteredPortfolios: any[] = [];
+
+		portfolios.map((portfolio: Portfolio, index: number) => {
+			const sameSectionId = portfolio.sectionId === sectionId;
+			const sameCategoryId = !categoryId ? true : portfolio.categoryId === categoryId;
+
+			if( sameSectionId && sameCategoryId && isRangeOfPage(index, page)) {
+				const user = getUserData(portfolio.userId) as User;
+				const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks as number[];
+				const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
+
+				const portfolioData = {
+					id: portfolio.id,
+					title: portfolio.title,
+					category: category,
+					summary: portfolio.summary,
+					likes: portfolio.likes,
+					images: portfolio.images,
+					isBookmarked: isBookmarked,
+					user: {
+						id: user.id,
+						nickname: user.nickname,
+						profileImage: user.profileImage,
+					},
+				};
+
+				filteredPortfolios.push(portfolioData);
 			}
-		})
-
-		if(category && category !== '전체') {
-			const categoryId = getCategoryId(category);
-
-			const categoryFilteredPortfolios = filteredPortfolios.filter((portfolio) => {
-				return portfolio.categoryId === categoryId;
-			})
-
-			filteredPortfolios = categoryFilteredPortfolios;
-		}
-
-		const responseData = filteredPortfolios.map((portfolio: Portfolio) => {
-			const user = getUserData(portfolio.userId);
-			const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks;
-			const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
-
-			const portfolioData = {
-				id: portfolio.id,
-				title: portfolio.title,
-				category: category,
-				content: portfolio.content,
-				summary: portfolio.summary,
-				likes: portfolio.likes,
-				images: portfolio.images,
-				isBookmarked: isBookmarked,
-				user,
-			};
-
-			return portfolioData;
-		})
-
+		});
 
 		// if(tag){
 		// 	filteredPortfolios.map((portfolio)=>{
@@ -81,12 +79,7 @@ export const PortfolioHandlers= [
 		// 	})
 		// }
 
-		const limitedResponseData = responseData.filter((_, index)=>{
-			const pageNum = Number(page);
-			return index >= (pageNum - 1) * 100 && index < pageNum * 100;
-		})
-
-		return HttpResponse.json(limitedResponseData, { status: 200 });
+		return HttpResponse.json(filteredPortfolios, { status: 200 });
 	}),
 
 	http.get('/top-portfolios', ()=>{
@@ -129,40 +122,42 @@ export const PortfolioHandlers= [
 
 	http.get('/portfolios/detail', ({request}) => {
 		const url = new URL(request.url);
-		const portfolioId = url.searchParams.get('id') as string;
 
-		const portfolioData = portfolios.find((portfolio) => {
+		const portfolioId = url.searchParams.get('id') as string;
+		const portfolio = portfolios.find((portfolio) => {
 			return portfolio.id === Number(portfolioId);
 		});
 
-		const otherPortfolios = portfolios.reduce((result: Portfolio[], portfolio: Portfolio) => {
-			if(result.length < 9){
-				if(portfolio.userId === portfolioData!.userId) {
-					result.push(portfolio);
+		const otherPortfolios: any[] = [];
+
+		portfolios.map((p: Portfolio, index: number) => {
+			if(index < 9){
+				if(p.userId === portfolio!.userId) {
+					otherPortfolios.push(p);
 				}
 			}
-			return result;
-		}, []);
+		});
 
-		const user = getUserData(portfolioData!.userId);
-		const section = getSection(portfolioData!.sectionId);
-		const category = getCategory(portfolioData!.categoryId);
-		const tags = getTags(portfolioData!.tagId);
-		const likes = users.find((user) => user.id === USER_ID)!.likes;
-		const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks;
-		const isBookmarked = getIsBookmarked(portfolioData!.id, bookmarks);
-		const isLiked = getIsLiked(portfolioData!.id, likes);
+		const user = getUserData(portfolio!.userId);
+		const section = getSection(portfolio!.sectionId);
+		const category = getCategory(portfolio!.categoryId);
+		const tags = getTags(portfolio!.tagId);
+
+		const likes = users.find((user) => user.id === USER_ID)!.likes as number[];
+		const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks as number[];
+		const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
+		const isLiked = getIsLiked(portfolio!.id, likes);
 
 		const responseData = {
-			id: portfolioData!.id,
-			title: portfolioData!.title,
+			id: portfolio!.id,
+			title: portfolio!.title,
 			section: section,
 			category: category,
-			content: portfolioData!.content,
-			summary: portfolioData!.summary,
+			content: portfolio!.content,
+			summary: portfolio!.summary,
 			tags,
-			likes: portfolioData!.likes,
-			images: portfolioData!.images,
+			likes: portfolio!.likes,
+			images: portfolio!.images,
 			user,
 			otherPortfolios,
 			isBookmarked: isBookmarked,
@@ -180,13 +175,13 @@ export const PortfolioHandlers= [
 			return user.id === USER_ID;
 		});
 
-		user?.portfolios.forEach((portfolio, index) => {
+		user?.portfolios?.map((portfolio, index) => {
       if (portfolio === Number(portfolioId)) {
-				user?.portfolios.splice(index, 1);
+				user?.portfolios?.splice(index, 1);
 			}
     });
 
-		portfolios.forEach((portfolio, index) => {
+		portfolios.map((portfolio, index) => {
 			if(portfolio.id === Number(portfolioId)) {
 				portfolios.splice(index, 1);
 			}
@@ -249,6 +244,5 @@ export const PortfolioHandlers= [
 
 		return HttpResponse.json(imageUrl, { status: 200 });
 	}),
-
 
 ];
