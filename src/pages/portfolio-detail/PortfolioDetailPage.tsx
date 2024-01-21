@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./PortfolioDetailPage.styled";
 
-import { Text, Image, Button, ToggleButton, Tag, Profile, Header, AlertModal } from "@/components";
+import { Text, Image, Button, ToggleButton, Tag, Profile, AlertModal } from "@/components";
 import { useModal, useHtmlContent } from "@/hooks";
 import { userId } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
@@ -44,7 +44,6 @@ export default function PortfolioDetail(){
 
 	return(
 		<S.Wrapper>
-			<Header/>
 			<S.Content>
 				<Button color='transparent' shape='round' onClick={()=>navigate(-1)}>뒤로가기</Button>
 				{ portfolio &&

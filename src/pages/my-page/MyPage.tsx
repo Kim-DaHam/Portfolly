@@ -2,7 +2,7 @@ import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { Button, Footer, Header, UserInformation, MyPageNavigator, Profile } from "@/components";
+import { Button, UserInformation, MyPageNavigator, Profile } from "@/components";
 import { renderDescription } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
 import { userId as userID } from "@/redux/loginSlice";
@@ -27,7 +27,6 @@ function MyPage(){
 
 	return(
 		<S.Wrapper>
-			<Header />
 			{ user &&
 			<S.Content>
 				<S.ProfileSection>
@@ -55,7 +54,6 @@ function MyPage(){
 					</S.ContentSection>
 				</S.Content>
 				}
-			<Footer/>
 		</S.Wrapper>
 	)
 }

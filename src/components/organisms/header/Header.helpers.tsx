@@ -15,7 +15,7 @@ export const checkIsShowSectionMenuPage = (firstPathName: string) => {
 	return PAGE_SHOW_SECTION_MENU.indexOf(firstPathName) !== -1;
 }
 
-export const renderHeaderMenuPopper = (isLogin: boolean, userId: number) => {
+export const renderHeaderMenuPopper = (isLogin: boolean, userId: number, popOut: ()=>void) => {
 	if(isLogin){
 		return (
 			<>
@@ -30,14 +30,14 @@ export const renderHeaderMenuPopper = (isLogin: boolean, userId: number) => {
 				<S.Separator/>
 				<S.Group>
 					<Link to={`/profile/${userId}?tab=bookmark`}>
-						<S.Item>
+						<S.Item onClick={popOut}>
 							<BookmarkIcon size={20}/>
 							<Text type='common'>북마크</Text>
 						</S.Item>
 					</Link>
 
 					<Link to={`/profile/${userId}`}>
-						<S.Item>
+						<S.Item onClick={popOut}>
 							<UserIcon size={20}/>
 							<Text type='common'>내 정보</Text>
 						</S.Item>
@@ -45,7 +45,7 @@ export const renderHeaderMenuPopper = (isLogin: boolean, userId: number) => {
 				</S.Group>
 				<S.Separator/>
 				<S.Group>
-					<S.Item>
+					<S.Item onClick={popOut}>
 					<Text type='common'>로그아웃</Text>
 					</S.Item>
 				</S.Group>

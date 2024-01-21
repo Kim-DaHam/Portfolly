@@ -58,7 +58,7 @@ export default function Header() {
 
 			{ isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>
-					{renderHeaderMenuPopper(isLogin, userId)}
+					{renderHeaderMenuPopper(isLogin, userId, popOut)}
 				</Popper>
 			}
 		</S.Wrapper>
