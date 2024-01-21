@@ -22,7 +22,11 @@ function MyPage(){
 	const { data: user } = useUserQuery(profileId);
 
 	useEffect(() => {
-		navigate(`/profile/${profileId}?tab=${navigation}`);
+		if(navigation === 'introduce') {
+			navigate(`/profile/${profileId}?tab=${navigation}`);
+			return
+		}
+		navigate(`/profile/${profileId}?tab=${navigation}?page=1`);
 	}, [navigation]);
 
 	return(
