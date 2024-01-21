@@ -13,7 +13,7 @@ export const Wrapper = styled.section`
 	background-color: skyblue;
 `;
 
-export const Link = styled.a`
+export const Tab = styled.div`
 	height: 100%;
 
 	display: flex;

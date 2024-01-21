@@ -1,6 +1,6 @@
 import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { Button, Footer, Header, UserInformation, MyPageNavigator, Profile } from "@/components";
 import { renderDescription } from "@/pages/my-page/MyPage.helpers";
@@ -13,25 +13,21 @@ export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 
 function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('introduce');
 
-	const navigate = useNavigate();
-
-	const profileId = window.location.pathname.split('/')[2];
+	const params = useParams();
+	const profileId = params.id as string;
 	const loginId = useSelector(userID);
 	const isMyPage = profileId === String(loginId) ? true : false;
 
 	const { data: user } = useUserQuery(profileId);
 
 	useEffect(() => {
-		if(navigation === 'introduce') {
-			navigate(`/profile/${profileId}?tab=${navigation}`);
-			return
-		}
-		navigate(`/profile/${profileId}?tab=${navigation}&page=1`);
-	}, [navigation]);
+		const tab = params.tab as Navigation;
+		setNavigation(tab || 'introduce');
+	});
 
 	return(
 		<S.Wrapper>
-			<Header/>
+			<Header />
 			{ user &&
 			<S.Content>
 				<S.ProfileSection>
@@ -46,7 +42,7 @@ function MyPage(){
 					}
 				</S.ProfileSection>
 
-				<MyPageNavigator auth={user.authority} handleNavigator={setNavigation} isMyPage={isMyPage}/>
+				<MyPageNavigator auth={user.authority} isMyPage={isMyPage}/>
 
 					<S.ContentSection>
 						<S.Description>

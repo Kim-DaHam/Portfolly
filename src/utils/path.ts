@@ -6,6 +6,7 @@ export const ROUTE_PATH = {
 	SIGN_IN: '/login',
 	TRIAL_LOGIN: '/trial',
 	MY_PAGE: '/profile/:id',
+	MY_PAGE_TAB: '/profile/:id/:tab',
 	PORTFOLIO_DETAIL: '/portfolios/:portfolio_id',
 	PORTFOLIO_EDIT: '/portfolios/edit',
 };

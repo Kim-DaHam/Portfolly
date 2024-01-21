@@ -35,6 +35,7 @@ export default function App() {
 								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>}></Route>
 								<Route path={ROUTE_PATH.SIGN_IN} element={<SignIn/>}></Route>
 								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>}></Route>
+								<Route path={ROUTE_PATH.MY_PAGE_TAB} element={<MyPage/>}></Route>
 								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>}></Route>
 								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>}></Route>
 							</Routes>
