@@ -49,7 +49,7 @@ function MyPage(){
 						</S.Description>
 
 						<S.Aside>
-							<ActivityInformation />
+							<ActivityInformation activity={user.activity}/>
 						</S.Aside>
 					</S.ContentSection>
 				</S.Content>

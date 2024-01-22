@@ -1,5 +1,6 @@
 import { HttpResponse, http } from 'msw';
 
+import { commissions } from '../data/commissions';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
@@ -19,11 +20,22 @@ export const userHandlers= [
 			delete user?.likes;
 		}
 
+		const commissionList: any[] = [];
+		commissions.map((commission: any) => {
+			const isUsersCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
+			if(isUsersCommission) {
+				if(userId !== loginId) {
+					delete commission.requestDetails;
+				}
+				commissionList.push(commission);
+			}
+		});
+		user!.activity.commissions = commissionList;
+
 		const portfolioList: any[] = [];
 
 		portfolios.map((portfolio) => {
 			const isUsersPortfolio = user!.portfolios!.indexOf(portfolio.id) > -1;
-
 			if(isUsersPortfolio) {
 				const portfolioData = {
 					id: portfolio.id,
