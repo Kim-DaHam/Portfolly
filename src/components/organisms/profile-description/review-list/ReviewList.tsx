@@ -1,33 +1,36 @@
-import { Text, Pagination, Rating } from "@/components";
+import { useEffect, useState } from "react";
+
+import { Pagination, ReviewItem } from "@/components";
 import * as S from "@/components/organisms/profile-description/review-list/ReviewList.styled";
 
 type Props = {
-	commissions: any[];
+	reviews: any[];
 };
 
-export default function ReviewList({ commissions }: Props) {
+const PAGE_SHOW = 10;
+
+export default function ReviewList({ reviews }: Props) {
+	const [page, setPage] = useState(1);
+
+	useEffect(() => {
+		const params = new URL(window.location.href).searchParams;
+		const page = params.get('page') as string;
+		setPage(Number(page));
+	}, []);
+
 	return(
 		<S.Wrapper>
 			<S.Content>
-				<S.ReviewBox>
-					<S.ProfileBox>
-						<S.ProfileImage>
-							<img />
-						</S.ProfileImage>
+				{ reviews.map((review: any, index: number) => {
+					const isRangeOfPage = index >= (page - 1) * PAGE_SHOW && index < page * PAGE_SHOW;
 
-						<S.Box>
-							<Text type='common'>Name</Text>
-							<Rating/>
-						</S.Box>
-					</S.ProfileBox>
-
-					<S.ContentBox>
-						리뷰리뷰
-					</S.ContentBox>
-				</S.ReviewBox>
+					if(isRangeOfPage) {
+						return <ReviewItem review={review} key={index}/>;
+					}
+				})}
 			</S.Content>
 
-			<Pagination />
+			<Pagination handlePage={setPage} count={reviews.length} pageShow={PAGE_SHOW} />
 		</S.Wrapper>
 	)
 }

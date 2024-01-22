@@ -9,28 +9,17 @@ export const userHandlers= [
 		const url = new URL(request.url);
 		const userId = url.searchParams.get('id') as string;
 		const loginId = '1';
+		const isMyProfie = userId === loginId;
 
 		const user = users.find((user) => {
 			return user.id === Number(userId);
 		});
 
-		if(userId !== loginId) {
+		if(!isMyProfie) {
 			delete user?.name;
 			delete user?.phone;
 			delete user?.likes;
 		}
-
-		const commissionList: any[] = [];
-		commissions.map((commission: any) => {
-			const isUsersCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
-			if(isUsersCommission) {
-				if(userId !== loginId) {
-					delete commission.requestDetails;
-				}
-				commissionList.push(commission);
-			}
-		});
-		user!.activity.commissions = commissionList;
 
 		const portfolioList: any[] = [];
 
@@ -65,8 +54,42 @@ export const userHandlers= [
 			});
 		}
 
+		const commissionList: any[] = [];
+		const reviewList: any[] = [];
+
+		commissions.map((commission: any) => {
+			const isUsersCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
+
+			if(isUsersCommission) {
+				const portfolio = portfolios.find((portfolio) => portfolio.id === commission.portfolioId);
+
+				commission.portfolio = {
+					title: portfolio?.title,
+					summary: portfolio?.summary,
+					thumbnailUrl: portfolio?.images[0],
+				};
+
+				if(commission.review) {
+					const user = users.find((user) => user.id === commission.clientId);
+
+					commission.review.portfolio = commission.portfolio;
+					commission.review.user = {
+						id: user?.id,
+						nickname: user?.nickname,
+						profileImage: user?.profileImage,
+					};
+
+					reviewList.push(commission.review);
+				}
+
+				commissionList.push(commission);
+			}
+		});
+		user!.activity.commissions = commissionList;
+
 		const responseData = {
 			...user,
+			reviews: reviewList,
 			portfolios: portfolioList,
 			bookmarks: bookmarkList || [],
 		};

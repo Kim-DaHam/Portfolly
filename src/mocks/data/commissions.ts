@@ -9,7 +9,6 @@ export const commissions = [
 		cost: 350000,
 		state: 'ongoing',
 		review: {
-			userId: 1,
 			createdAt: Date.now(),
 			content: '리뷰입니다~',
 			score: 100,
@@ -25,7 +24,6 @@ export const commissions = [
 		cost: 350000,
 		state: 'ongoing',
 		review: {
-			userId: 1,
 			createdAt: Date.now(),
 			content: '웹1 리뷰입니다~',
 			score: 70,
@@ -41,7 +39,6 @@ export const commissions = [
 		cost: 350000,
 		state: 'ongoing',
 		review: {
-			userId: 1,
 			createdAt: Date.now(),
 			content: '웹2리뷰입니다~',
 			score: 80,
@@ -57,7 +54,6 @@ export const commissions = [
 		cost: 350000,
 		state: 'ongoing',
 		review: {
-			userId: 1,
 			createdAt: Date.now(),
 			content: '일러스트 리뷰입니다~',
 			score: 50,

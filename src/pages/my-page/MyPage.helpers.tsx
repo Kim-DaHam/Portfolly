@@ -11,8 +11,8 @@ export const renderDescription = (user: any, navigation: Navigation)=>{
 		portfolios: (
 			<PortfolioList portfolios={user.portfolios}/>
 		),
-		review: (
-			<ReviewList commissions={user.activity.commissions}/>
+		reviews: (
+			<ReviewList reviews={user.reviews}/>
 		),
 		// management: (
 		// 	<Management user={user.comissions}/>
