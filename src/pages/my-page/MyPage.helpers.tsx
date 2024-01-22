@@ -1,4 +1,4 @@
-import { Introduce, Management, PortfolioList, Review } from "@/components";
+import { Introduce, Management, PortfolioList, ReviewList } from "@/components";
 import { Navigation } from "@/pages/my-page/MyPage";
 import { IComponentFactory } from "@/types";
 
@@ -11,9 +11,9 @@ export const renderDescription = (user: any, navigation: Navigation)=>{
 		portfolios: (
 			<PortfolioList portfolios={user.portfolios}/>
 		),
-		// review: (
-		// 	<Review user={user.reviews}/>
-		// ),
+		reviews: (
+			<ReviewList reviews={user.reviews}/>
+		),
 		// management: (
 		// 	<Management user={user.comissions}/>
 		// ),

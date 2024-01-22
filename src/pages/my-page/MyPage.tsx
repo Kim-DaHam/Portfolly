@@ -2,7 +2,7 @@ import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { Button, UserInformation, MyPageNavigator, Profile } from "@/components";
+import { Button, ActivityInformation, MyPageNavigator, Profile } from "@/components";
 import { renderDescription } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
 import { userId as userID } from "@/redux/loginSlice";
@@ -49,7 +49,7 @@ function MyPage(){
 						</S.Description>
 
 						<S.Aside>
-							<UserInformation />
+							<ActivityInformation activity={user.activity}/>
 						</S.Aside>
 					</S.ContentSection>
 				</S.Content>

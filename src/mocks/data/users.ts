@@ -18,6 +18,7 @@ export const users: User[] = [
 			stacks: ['React', 'Vue', 'Node.js'],
 		},
 		activity: {
+			commissions: [ 1, 2, 3, 4 ],
 			score: 100,
 			contactTime: '언제나 가능',
 		},

@@ -16,4 +16,5 @@ export type Portfolio = {
 	user?: object,
 	isLiked?: boolean,
 	isBookmarked?: boolean,
+	commissions?: number[],
 };
