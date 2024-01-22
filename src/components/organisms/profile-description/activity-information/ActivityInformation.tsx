@@ -1,7 +1,7 @@
 import { Text } from "@/components";
-import * as S from "@/components/organisms/user-information/UserInformation.styled";
+import * as S from "@/components/organisms/profile-description/activity-information/ActivityInformation.styled";
 
-export default function UserInformation() {
+export default function ActivityInformation() {
 	return(
 		<S.Wrapper>
 			<Text type='label'>활동 정보</Text>
