@@ -17,6 +17,7 @@ export type User = {
 		stacks?: string[],
 	},
 	activity: {
+		commissions?: number[],
 		score?: number,
 		contactTime: string,
 	},

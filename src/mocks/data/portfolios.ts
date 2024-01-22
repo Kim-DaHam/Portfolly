@@ -16,6 +16,7 @@ export const portfolios: Portfolio[] = [
 		images: [
 			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHQuPD%2FbtsCoHXromf%2FnyN2KuF1tYHSgwTOnjolE1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbznSgX%2FbtsCq6Wr2iR%2Fvrky1sv79sMwWDaOpOS4N1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fk0N3h%2FbtsCraLjLBs%2Flp2zYkrhBjIcWGvi5KmKI1%2Fimg.png'
 		],
+		commissions: [ 1 ],
 	},
 	{
 		id: 2,
@@ -64,6 +65,7 @@ export const portfolios: Portfolio[] = [
 		images: [
 			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYVgES%2FbtsCox8vHf6%2Fu3GoarkFBroF47LJENuO90%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbkuz2P%2FbtsCpAp7hnX%2FVQMr9SZGAwBUTOZAB2oRA1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb4Kbzk%2FbtsCnMybIFj%2Fk1jDykZNGoNyJIqdIhiae1%2Fimg.png'
 		],
+		commissions: [ 2, 3 ],
 	},
 	{
 		id: 5,
@@ -96,6 +98,7 @@ export const portfolios: Portfolio[] = [
 		images: [
 			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FEOI0a%2FbtsCr8sVXvT%2FdkW2odXy12VaGgAMoBG68k%2Fimg.jpg',
 		],
+		commissions: [ 4 ],
 	},
 	{
 		id: 7,
