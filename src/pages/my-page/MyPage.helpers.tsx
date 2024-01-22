@@ -17,9 +17,9 @@ export const renderDescription = (user: any, navigation: Navigation)=>{
 		// management: (
 		// 	<Management user={user.comissions}/>
 		// ),
-		// bookmarks: (
-		// 	<PortfolioList user={user.bookmarks}/>
-		// )
+		bookmarks: (
+			<PortfolioList portfolios={user.bookmarks}/>
+		),
 	}
 
 	return ComponentFactory[navigation];

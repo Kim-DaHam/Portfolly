@@ -67,6 +67,9 @@ export default function Pagination({handlePage, count, pageShow}: Props) {
 
 	useEffect(() => {
 		const pages = Math.ceil(count / pageShow);
+		if(pages < PAGE_NUM) {
+			setEndPage(pages);
+		}
 		setPages(pages);
 	}, []);
 
