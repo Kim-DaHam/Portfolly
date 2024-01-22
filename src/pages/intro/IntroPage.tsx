@@ -1,6 +1,6 @@
 import * as S from "./IntroPage.styled";
 
-import { Footer, Header, Preview } from "@/components/organisms";
+import { Preview } from "@/components/organisms";
 import { Section } from "@/types";
 import { wheelHandler, useTopPortfoliosQuery } from "@/utils";
 
@@ -17,8 +17,6 @@ export default function IntroPage(){
 				});
 			}}}
 		>
-			<Header/>
-
 			<S.Introduce>
 				<h1>Welcome to Portfolly</h1>
 				<h2>클라이언트와 파트너 간 소통해요</h2>
@@ -33,7 +31,6 @@ export default function IntroPage(){
 						</div>
 					)
 			})}
-			<Footer/>
 		</S.Wrapper>
 	)
 }

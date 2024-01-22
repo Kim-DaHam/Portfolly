@@ -7,7 +7,7 @@ import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from 
 import { renderHeaderMenuPopper } from "@/components/organisms/header/Header.helpers";
 import * as S from "@/components/organisms/header/Header.styled";
 import { useHeader, useModal, usePopup } from "@/hooks";
-import { isLogin as IsLogin } from "@/redux/loginSlice";
+import { isLogin as IsLogin, userId as UserId } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils";
 
 export default function Header() {
@@ -18,6 +18,7 @@ export default function Header() {
 	const navigate = useNavigate();
 
 	const isLogin = useSelector(IsLogin);
+	const userId = useSelector(UserId);
 
 	return(
 		<S.Wrapper>
@@ -57,7 +58,7 @@ export default function Header() {
 
 			{ isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>
-					{renderHeaderMenuPopper(isLogin)}
+					{renderHeaderMenuPopper(isLogin, userId, popOut)}
 				</Popper>
 			}
 		</S.Wrapper>

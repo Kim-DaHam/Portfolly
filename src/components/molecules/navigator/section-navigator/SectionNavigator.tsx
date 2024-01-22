@@ -2,7 +2,7 @@ import { FiMoreHorizontal as Icon} from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Group, Item } from "../popper/Popper.styled";
+import { Group, Item } from "../../popper/Popper.styled";
 
 import * as S from "./SectionNavigator.styled";
 

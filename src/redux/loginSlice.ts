@@ -30,5 +30,6 @@ export const loginSlice = createSlice({
 export const { actions, reducer } = loginSlice;
 export const isLogin = (state: RootState) => state.auth.isLogin;
 export const userId = (state: RootState) => state.auth.userId;
+export const authority = (state: RootState) => state.auth.authority;
 
 export default loginSlice;

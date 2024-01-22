@@ -1,23 +1,36 @@
-import { Text, Pagination } from "@/components";
+import { useEffect, useState } from "react";
+
+import { Pagination, PortfolioItem } from "@/components";
 import * as S from "@/components/organisms/profile-description/portfolio-list/PortfolioList.styled";
 
-export default function PortfolioList() {
+type Props = {
+	portfolios: any[];
+}
+
+const PAGE_SHOW = 12;
+
+export default function PortfolioList({portfolios}: Props) {
+	const [page, setPage] = useState(1);
+
+	useEffect(() => {
+		const params = new URL(window.location.href).searchParams;
+		const page = params.get('page') as string;
+		setPage(Number(page));
+	}, []);
+
 	return(
 		<S.Wrapper>
 			<S.GridBox>
-				<S.GridItem>
-					<S.Thumbnail>
-						<img src="" alt="" />
-					</S.Thumbnail>
+				{ portfolios.map((portfolio: any, index: number) => {
+					const isRangeOfPage = index >= (page - 1) * PAGE_SHOW && index < page * PAGE_SHOW;
 
-					<S.TitleBox>
-						<Text type='common'>Title</Text>
-						<Text type='small'>Date</Text>
-					</S.TitleBox>
-				</S.GridItem>
+					if(isRangeOfPage) {
+						return <PortfolioItem portfolio={portfolio} key={portfolio.id} />
+					}
+				})}
 			</S.GridBox>
 
-			<Pagination/>
+			<Pagination handlePage={setPage} count={portfolios.length} pageShow={PAGE_SHOW}/>
 		</S.Wrapper>
 	)
 }

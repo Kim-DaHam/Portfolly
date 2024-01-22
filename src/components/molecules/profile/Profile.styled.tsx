@@ -7,7 +7,7 @@ import * as mixins from '@/styles/mixins';
 export const height = {
 	'portfolio-item': '3.5rem',
 	'portfolio-detail': '',
-	'mypage': '',
+	'my-page': '150px',
 	'review': '',
 	'message': '',
 };
@@ -40,4 +40,10 @@ export const SpanBox = styled.div`
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
+`;
+
+export const Box = styled.div`
+	${mixins.flexColumn}
+	gap: 1rem;
+	padding-top: 1rem;
 `;

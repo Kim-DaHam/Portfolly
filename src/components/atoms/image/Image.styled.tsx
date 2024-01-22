@@ -12,6 +12,8 @@ export const ImageLayout = styled.div<Props>`
 
 	& img {
 		width: 100%;
+		aspect-ratio: ${(props)=> props.shape === 'foursquare' ? '1/1' : ''};
+
 		object-fit: cover;
 	}
 

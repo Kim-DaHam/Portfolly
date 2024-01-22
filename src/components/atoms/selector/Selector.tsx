@@ -6,7 +6,7 @@ import { selectorList } from "./Selector.constants";
 import * as S from "./Selector.styled";
 
 import { Text } from "@/components";
-import useSelector from "@/hooks/useSelector";
+import useSelector from "@/hooks/component/useSelector";
 import { Section } from "@/types/portfolio";
 
 export type TSelector = 'section' | 'category' | 'requestType' | 'requestState' | 'searchFilter' | 'meassageState';

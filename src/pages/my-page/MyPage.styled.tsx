@@ -3,12 +3,11 @@ import { styled } from 'styled-components';
 import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
-	${mixins.fullWidthHeight}
+	${mixins.fullScreen}
 	${mixins.flexColumn}
 `;
 
-export const Content = styled.div`
-	${mixins.fullScreen}
+export const Content = styled.main`
 	${mixins.flexCenter}
 	${mixins.flexColumn}
 
@@ -17,11 +16,11 @@ export const Content = styled.div`
 	background-color: salmon;
 `;
 
-export const ProfileMainSection = styled.section`
+export const ProfileSection = styled.section`
 	width: 100%;
 	height: fit-content;
 
-	display: flex;
+	${mixins.flexColumn}
 	gap: 1rem;
 
 	padding: 2rem 3rem 2rem 3rem;
@@ -29,41 +28,7 @@ export const ProfileMainSection = styled.section`
 	background-color: violet;
 `;
 
-export const ProfileImg = styled.div`
-	width: 150px;
-	height: 150px;
-
-	flex: none;
-
-	background-color: white;
-`;
-
-export const NavigationSection = styled.section`
-	width: 100%;
-	height: 5rem;
-
-	display: flex;
-	gap: 1.2rem;
-	align-items: center;
-
-	padding: 1rem 2rem 0 2rem;
-
-	background-color: skyblue;
-`;
-
-export const Navigation = styled.a`
-	height: 100%;
-
-	display: flex;
-	align-items: center;
-
-	cursor: pointer;
-
-	font-size: 1.1rem;
-	border-bottom: 3px solid black;
-`;
-
-export const ContentContainer = styled.div`
+export const ContentSection = styled.section`
 	${mixins.fullWidthHeight}
 
 	display: flex;
@@ -71,7 +36,7 @@ export const ContentContainer = styled.div`
 	background-color: lightgreen;
 `;
 
-export const DescriptionSection = styled.section`
+export const Description = styled.div`
 	${mixins.fullWidthHeight}
 
 	flex-basis: 1;
@@ -81,7 +46,7 @@ export const DescriptionSection = styled.section`
 	background-color: yellow;
 `;
 
-export const InformationSection = styled.aside`
+export const Aside = styled.aside`
 	width: 24rem;
 	height: 100%;
 

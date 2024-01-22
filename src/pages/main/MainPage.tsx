@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import * as S from "./MainPage.styled";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
-import { Header, CategorySlider, PortfolioListSkeleton } from "@/components";
+import { CategorySlider, PortfolioListSkeleton } from "@/components";
 import { useDispatchSectionParameter } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
 import { getFilterQueryParameter } from "@/utils";
@@ -19,7 +19,6 @@ export default function MainPage(){
 
 	return(
 		<S.Wrapper>
-			<Header/>
 			<S.Content>
 				<S.TitleSection>
 					<S.Title>{currentSection}</S.Title>

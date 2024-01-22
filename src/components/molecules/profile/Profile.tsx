@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-import { Image, Text } from '@/components';
+import { Image, Rating, Text } from '@/components';
 import * as S from "@/components/molecules/profile/Profile.styled";
 import { IComponentFactory } from "@/types";
 
-export type Profile = 'portfolio-item' | 'portfolio-detail' | 'mypage' | 'review' | 'message';
+export type Profile = 'portfolio-item' | 'portfolio-detail' | 'my-page' | 'review' | 'message';
 
 type Props = {
 	type: Profile;
@@ -25,7 +25,7 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
 	const ComponentFactory:IComponentFactory = {
     'portfolio-item': (
 			<>
-				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare'/>
+				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare' />
 				<S.SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
 					<Text type='common'>{user.title}</Text>
 					<Text type='small' color='gray'>{user.nickname}</Text>
@@ -34,10 +34,19 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
 		),
 		'portfolio-detail': (
 			<>
-				<Image size='5rem' src={user.profileImage} alt='user profile' shape='foursquare'/>
+				<Image size='5rem' src={user.profileImage} alt='user profile' shape='foursquare' />
 				<Text type='titleSmall'>{user.nickname}</Text>
 			</>
 		),
+		'my-page': (
+			<>
+				<Image size='150px' src={user.profileImage} alt='user-profile' shape='foursquare' />
+				<S.Box>
+					<Text type='title'>{user.nickname}</Text>
+					<Rating />
+				</S.Box>
+			</>
+		)
   }
 
   return ComponentFactory[type];

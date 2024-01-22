@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { PortfolioItem } from "@/components";
+import { PortfolioCard } from "@/components";
 import * as S from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
 import { useIntersectionObserver } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
@@ -67,7 +67,7 @@ export default function PortfolioItemList({category}: Props) {
 			{ portfolios && portfolios.map((portfolio: Portfolio, index: number)=>{
 				if(index < count) {
 					return(
-						<PortfolioItem key={index} portfolio={portfolio} onClick={()=>saveScroll(++index)}/>
+						<PortfolioCard key={index} portfolio={portfolio} onClick={()=>saveScroll(++index)}/>
 					)
 				}})
 			}

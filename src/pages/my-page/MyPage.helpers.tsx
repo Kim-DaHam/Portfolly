@@ -1,61 +1,24 @@
 import { Introduce, Management, PortfolioList, Review } from "@/components";
-import { User, Navigation as TNavigation } from "@/pages/my-page/MyPage";
-import { Navigation } from "@/pages/my-page/MyPage.styled";
-import { IComponentFactory, SetState } from "@/types";
+import { Navigation } from "@/pages/my-page/MyPage";
+import { IComponentFactory } from "@/types";
 
-export const renderNavigation = (user:User, handleNavigation:SetState<TNavigation>) => {
+export const renderDescription = (user: any, navigation: Navigation)=>{
+
 	const ComponentFactory: IComponentFactory = {
-		Expert: (
-			<>
-			<Navigation onClick={()=>handleNavigation('Introduce')}>
-				소개
-			</Navigation>
-			<Navigation onClick={()=>handleNavigation('Portfolio')} >
-				포트폴리오
-			</Navigation>
-			<Navigation onClick={()=>handleNavigation('Review')}>
-				리뷰
-			</Navigation>
-			{ true && // 본인이면
-				<Navigation onClick={()=>handleNavigation('Management')}>
-					판매 관리
-				</Navigation>
-			}
-			</>
+		introduce: (
+			<Introduce user={{authority: user.authority, ...user.profile}}/>
 		),
-		Client: (
-			<>
-			<Navigation onClick={()=>handleNavigation('Introduce')}>
-				소개
-			</Navigation>
-			<Navigation onClick={()=>handleNavigation('Review')}>
-				리뷰
-			</Navigation>
-			{ true && // 본인이면
-				<Navigation onClick={()=>handleNavigation('Management')}>
-					구매 관리
-				</Navigation>
-			}
-			</>
+		portfolios: (
+			<PortfolioList portfolios={user.portfolios}/>
 		),
-	}
-
-	return ComponentFactory[user];
-}
-
-export const renderDescription = (navigation: TNavigation)=>{
-	const ComponentFactory: IComponentFactory = {
-		Introduce: (
-			<Introduce/>
-		),
-		Portfolio: (
-			<PortfolioList/>
-		),
-		Review: (
-			<Review/>
-		),
-		Management: (
-			<Management/>
+		// review: (
+		// 	<Review user={user.reviews}/>
+		// ),
+		// management: (
+		// 	<Management user={user.comissions}/>
+		// ),
+		bookmarks: (
+			<PortfolioList portfolios={user.bookmarks}/>
 		),
 	}
 

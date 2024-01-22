@@ -13,7 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import GlobalErrorFallback from './utils/fallback/gloabalErrorFallback';
 
-import { ToastContainer } from '@/components';
+import { Footer, Header, ToastContainer } from '@/components';
 import IntroPage from '@/pages/intro/IntroPage';
 import MainPage from '@/pages/main/MainPage';
 import MyPage from '@/pages/my-page/MyPage';
@@ -30,14 +30,17 @@ export default function App() {
 				<PersistGate loading={null} persistor={persistor}>
 					<QueryClientProvider client={queryClient}>
 						<BrowserRouter>
+							<Header />
 							<Routes>
 								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>}></Route>
 								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>}></Route>
 								<Route path={ROUTE_PATH.SIGN_IN} element={<SignIn/>}></Route>
 								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>}></Route>
+								<Route path={ROUTE_PATH.MY_PAGE_TAB} element={<MyPage/>}></Route>
 								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>}></Route>
 								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>}></Route>
 							</Routes>
+							<Footer />
 						</BrowserRouter>
 						<ToastContainer />
 						<ReactQueryDevtools initialIsOpen={false} />

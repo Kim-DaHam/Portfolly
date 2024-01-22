@@ -1,54 +1,59 @@
-import { useState } from "react";
+import {useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { Text, Button, Rating, Footer, Header, UserInformation } from "@/components/";
-import { renderDescription, renderNavigation } from "@/pages/my-page/MyPage.helpers";
+import { Button, UserInformation, MyPageNavigator, Profile } from "@/components";
+import { renderDescription } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
+import { userId as userID } from "@/redux/loginSlice";
+import { useUserQuery } from "@/utils";
 
-export type User = 'expert' | 'client';
-export type Navigation = 'Introduce' | 'Portfolio' | 'Review' | 'Management';
+export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
 
 function MyPage(){
-	const [navigation , setNavigation] = useState<Navigation>('Introduce');
+	const [navigation , setNavigation] = useState<Navigation>('introduce');
+
+	const params = useParams();
+	const profileId = params.id as string;
+	const loginId = useSelector(userID);
+	const isMyPage = profileId === String(loginId) ? true : false;
+
+	const { data: user } = useUserQuery(profileId);
+
+	useEffect(() => {
+		const tab = params.tab as Navigation;
+		setNavigation(tab || 'introduce');
+	});
 
 	return(
 		<S.Wrapper>
-			<Header/>
+			{ user &&
 			<S.Content>
-				<S.ProfileMainSection>
-					<S.ProfileImg>
-						<img/>
-					</S.ProfileImg>
+				<S.ProfileSection>
+						<Profile type='my-page' user={user} />
 
-					<S.Box>
-						<Text type='title'>User Name</Text>
-						<Rating/>
+					{ isMyPage &&
+						<S.ButtonBox>
+							<Button color='black' size='large' shape='square'>
+								문의하기
+							</Button>
+						</S.ButtonBox>
+					}
+				</S.ProfileSection>
 
-						{ true && // 본인 아니면
-							<S.ButtonBox>
-								<Button color='black' size='large' shape='square'>
-									문의하기
-								</Button>
-							</S.ButtonBox>
-						}
-					</S.Box>
-				</S.ProfileMainSection>
+				<MyPageNavigator auth={user.authority} isMyPage={isMyPage}/>
 
-				<S.NavigationSection>
-					{renderNavigation('expert', setNavigation)}
-				</S.NavigationSection>
+					<S.ContentSection>
+						<S.Description>
+							{renderDescription(user, navigation)}
+						</S.Description>
 
-				<S.ContentContainer>
-					<S.DescriptionSection>
-						{renderDescription(navigation)}
-					</S.DescriptionSection>
-
-					<S.InformationSection>
-						<UserInformation/>
-					</S.InformationSection>
-				</S.ContentContainer>
-			</S.Content>
-
-			<Footer/>
+						<S.Aside>
+							<UserInformation />
+						</S.Aside>
+					</S.ContentSection>
+				</S.Content>
+				}
 		</S.Wrapper>
 	)
 }
