@@ -6,7 +6,7 @@ type Props = {
 };
 
 export default function ActivityInformation({ activity }: Props) {
-	console.log(activity);
+
 	return(
 		<S.Wrapper>
 			<Text type='common'>활동 정보</Text>

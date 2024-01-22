@@ -1,7 +1,11 @@
 import { Text, Pagination, Rating } from "@/components";
-import * as S from "@/components/organisms/profile-description/review/Review.styled";
+import * as S from "@/components/organisms/profile-description/review-list/ReviewList.styled";
 
-export default function Review() {
+type Props = {
+	commissions: any[];
+};
+
+export default function ReviewList({ commissions }: Props) {
 	return(
 		<S.Wrapper>
 			<S.Content>
@@ -23,7 +27,7 @@ export default function Review() {
 				</S.ReviewBox>
 			</S.Content>
 
-			<Pagination/>
+			<Pagination />
 		</S.Wrapper>
 	)
 }
