@@ -5,6 +5,7 @@ import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 import { Text, Selector , Button, RequestModal, Tracking } from "@/components";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
 import { useModal } from "@/hooks";
+import { toLocalDataString } from "@/utils";
 
 type Props = {
 	commissions: any;
@@ -25,6 +26,7 @@ const defaultValues: FormValues = {
 };
 
 export default function Management({ commissions }: Props) {
+	console.log(commissions)
 	const { handleModal, isModalOpen } = useModal();
 
 	const { register, handleSubmit, setValue } = useForm<FormValues>({
@@ -79,14 +81,18 @@ export default function Management({ commissions }: Props) {
 
 			<S.ContentSection>
 				<S.List>
-					<S.Item>
-						<Text type='small'>1</Text>
-						<S.Box onClick={handleModal}>
-							<Text type='common'>Title</Text>
-							<Text type='small'>의뢰 설명</Text>
-							<Text type='small'>의뢰 날짜</Text>
-						</S.Box>
-					</S.Item>
+					{ commissions.map((commission: any) => {
+						return (
+							<S.Item onClick={handleModal} key={commission.id}>
+								<Text type='small'>1</Text>
+								<S.Box>
+									<Text type='common'>{commission.details.title}</Text>
+									<Text type='small'>{commission.details.summary}</Text>
+									<Text type='small'>{toLocalDataString(new Date(commission.createdAt))}</Text>
+								</S.Box>
+							</S.Item>
+						)})
+					}
 				</S.List>
 			</S.ContentSection>
 

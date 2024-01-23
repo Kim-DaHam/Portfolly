@@ -58,12 +58,13 @@ export const userHandlers= [
 		const reviewList: any[] = [];
 
 		commissions.map((commission: any) => {
-			const isUsersCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
+			const isMyCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
 
-			if(isUsersCommission) {
+			if(isMyCommission) {
 				const portfolio = portfolios.find((portfolio) => portfolio.id === commission.portfolioId);
 
 				commission.portfolio = {
+					id: portfolio?.id,
 					title: portfolio?.title,
 					summary: portfolio?.summary,
 					thumbnailUrl: portfolio?.images[0],
@@ -81,6 +82,42 @@ export const userHandlers= [
 
 					reviewList.push(commission.review);
 				}
+
+				if(isMyProfie) {
+					if(user!.authority === 'client') {
+						const expert = users.find((user) => user.id === commission.expertId);
+						commission.expert = {
+							id: expert?.id,
+							nickname: expert?.nickname,
+							name: expert?.name,
+							phone: expert?.phone,
+							profileImage: expert?.profileImage,
+						};
+					}
+					if(user!.authority === 'expert') {
+						const client = users.find((user) => user.id === commission.clientId);
+						commission.client = {
+							id: client?.id,
+							nickname: client?.nickname,
+							profileImage: client?.profileImage,
+						};
+					}
+					commission[user!.authority] = {
+						id: user?.id,
+						nickname: user?.nickname,
+						name: user?.name,
+						phone: user?.phone,
+						profileImage: user?.profileImage,
+					}
+				}
+
+				if(!isMyProfie) {
+					delete commission.details;
+				}
+
+				delete commission.portfolioId;
+				delete commission.expertId;
+				delete commission.clientId;
 
 				commissionList.push(commission);
 			}

@@ -3,7 +3,6 @@ import { Navigation } from "@/pages/my-page/MyPage";
 import { IComponentFactory } from "@/types";
 
 export const renderDescription = (user: any, navigation: Navigation)=>{
-
 	const ComponentFactory: IComponentFactory = {
 		introduce: (
 			<Introduce user={{authority: user.authority, ...user.profile}}/>
@@ -15,7 +14,7 @@ export const renderDescription = (user: any, navigation: Navigation)=>{
 			<ReviewList reviews={user.reviews}/>
 		),
 		management: (
-			<Management commissions={user.comissions}/>
+			<Management commissions={user.activity.commissions}/>
 		),
 		bookmarks: (
 			<PortfolioList portfolios={user.bookmarks}/>

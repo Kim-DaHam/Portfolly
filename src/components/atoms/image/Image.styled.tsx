@@ -18,6 +18,4 @@ export const ImageLayout = styled.div<Props>`
 	}
 
 	overflow: hidden;
-
-	background-color: salmon;
 `;

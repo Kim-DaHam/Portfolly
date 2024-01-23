@@ -56,9 +56,8 @@ export const ContentSection = styled.div`
 
 export const List = styled.ul`
 	${mixins.fullWidthHeight}
-
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
+	gap: 0.5rem;
 `;
 
 export const Item = styled.li`
@@ -76,4 +75,8 @@ export const Item = styled.li`
 export const Box = styled.div`
 	${mixins.flexColumn}
 	gap: 0.5rem;
+
+	& span, & label {
+		cursor: pointer;
+	}
 `;
