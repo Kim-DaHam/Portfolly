@@ -8,6 +8,7 @@ export const ButtonStyle = styled.button<Props>`
 	height: 2.9rem;
 
   ${mixins.flexCenter}
+	flex-shrink: 0;
 	gap: 1rem;
 
 	padding: 0 1em 0 1em;

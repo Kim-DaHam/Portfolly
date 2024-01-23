@@ -33,10 +33,12 @@ export const SearchFilterSection = styled.div`
 export const Form = styled.form`
 	${mixins.fullWidthHeight}
 	${mixins.flexCenter}
+	flex-wrap: nowrap;
 	gap: 1rem;
 `;
 
 export const DateSelector = styled.div`
+	flex: none;
 	background-color: lime;
 `;
 

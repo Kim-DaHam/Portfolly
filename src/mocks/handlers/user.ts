@@ -4,6 +4,8 @@ import { commissions } from '../data/commissions';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
+import { getSection } from '@/utils';
+
 export const userHandlers= [
 	http.get('/users', ({request}) => {
 		const url = new URL(request.url);
@@ -62,9 +64,11 @@ export const userHandlers= [
 
 			if(isMyCommission) {
 				const portfolio = portfolios.find((portfolio) => portfolio.id === commission.portfolioId);
+				const section = getSection(portfolio!.sectionId);
 
 				commission.portfolio = {
 					id: portfolio?.id,
+					section: section,
 					title: portfolio?.title,
 					summary: portfolio?.summary,
 					thumbnailUrl: portfolio?.images[0],

@@ -4,7 +4,8 @@ export const commissions = [
 		portfolioId: 1,
 		expertId: 1,
 		clientId: 100,
-		createdAt: Date.now(),
+		createdAt: '2024-03-06',
+		endedAt: '2024-05-06',
 		details: {
 			title: '앱 포트폴리오 커미션',
 			state: '진행 중',
@@ -19,7 +20,8 @@ export const commissions = [
 		portfolioId: 4,
 		expertId: 1,
 		clientId: 200,
-		createdAt: Date.now(),
+		createdAt: '2024-03-06',
+		endedAt: '2024-05-06',
 		details: {
 			title: '웹 포트폴리오 커미션1',
 			state: '진행 중',
@@ -38,7 +40,8 @@ export const commissions = [
 		portfolioId: 4,
 		expertId: 1,
 		clientId: 200,
-		createdAt: Date.now(),
+		createdAt: '2024-03-06',
+		endedAt: '2024-05-06',
 		details: {
 			title: '웹 포트폴리오 커미션2',
 			state: '진행 중',
@@ -57,7 +60,8 @@ export const commissions = [
 		portfolioId: 6,
 		expertId: 1,
 		clientId: 300,
-		createdAt: Date.now(),
+		createdAt: '2024-03-06',
+		endedAt: '2024-05-06',
 		details: {
 			title: '일러스트 포트폴리오 커미션',
 			state: '진행 중',

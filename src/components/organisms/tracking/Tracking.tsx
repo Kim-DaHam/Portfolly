@@ -24,7 +24,7 @@ export default function Tracking({ commissions }: Props) {
 						<Image src={ProcessIcon} size='2rem' />
 						<Text type='common'>진행 중</Text>
 					</S.LabelGroup>
-					<Text type='small'>{commissionsState['진행 중']}</Text>
+					<Text type='titleSmall'>{commissionsState['진행 중']}</Text>
 				</S.Box>
 
 				<S.Box>
@@ -32,7 +32,7 @@ export default function Tracking({ commissions }: Props) {
 						<Image src={FolderIcon} size='2rem' />
 						<Text type='common'>작업물 도착</Text>
 					</S.LabelGroup>
-					<Text type='small'>{commissionsState['작업물 도착']}</Text>
+					<Text type='titleSmall'>{commissionsState['작업물 도착']}</Text>
 				</S.Box>
 
 				<S.Box>
@@ -40,7 +40,7 @@ export default function Tracking({ commissions }: Props) {
 						<Image src={CancelIcon} size='2rem' />
 						<Text type='common'>취소 · 문제해결</Text>
 					</S.LabelGroup>
-					<Text type='small'>{commissionsState['취소/문제해결']}</Text>
+					<Text type='titleSmall'>{commissionsState['취소/문제해결']}</Text>
 				</S.Box>
 
 				<S.Box>
