@@ -40,7 +40,7 @@ export default function Management({ commissions }: Props) {
 
 	return(
 		<S.Wrapper>
-			<Tracking />
+			<Tracking commissions={commissions}/>
 
 			<S.Notice>
 				<QuestionIcon />

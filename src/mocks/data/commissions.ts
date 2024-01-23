@@ -12,11 +12,7 @@ export const commissions = [
 			cost: 350000,
 			deadline: Date.now(),
 		},
-		review: {
-			createdAt: Date.now(),
-			content: '리뷰입니다~',
-			score: 100,
-		},
+		review: null,
 	},
 	{
 		id: 2,
