@@ -9,7 +9,7 @@ import { Text } from "@/components";
 import useSelector from "@/hooks/component/useSelector";
 import { Section } from "@/types/portfolio";
 
-export type TSelector = 'section' | 'category' | 'requestType' | 'requestState' | 'searchFilter' | 'meassageState';
+export type TSelector = 'section' | 'category' | 'commissionType' | 'commissionState' | 'searchFilter' | 'messageState';
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	type: TSelector;

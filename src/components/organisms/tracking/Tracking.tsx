@@ -1,4 +1,5 @@
-import { Text } from "@/components";
+import { ProcessIcon, FolderIcon, CancelIcon } from '@/assets/images';
+import { Image, Text } from "@/components";
 import * as S from "@/components/organisms/tracking/Tracking.styled";
 
 export default function Tracking() {
@@ -7,7 +8,7 @@ export default function Tracking() {
 			<S.Content>
 				<S.Box>
 					<S.LabelGroup>
-						<div>아이콘</div>
+						<Image src={ProcessIcon} size='2rem' />
 						<Text type='common'>진행중</Text>
 					</S.LabelGroup>
 					<Text type='small'>0</Text>
@@ -15,16 +16,16 @@ export default function Tracking() {
 
 				<S.Box>
 					<S.LabelGroup>
-						<div>아이콘</div>
-						<Text type='common'>진행중</Text>
+						<Image src={FolderIcon} size='2rem' />
+						<Text type='common'>작업물 도착</Text>
 					</S.LabelGroup>
 					<Text type='small'>0</Text>
 				</S.Box>
 
 				<S.Box>
 					<S.LabelGroup>
-						<div>아이콘</div>
-						<Text type='common'>진행중</Text>
+						<Image src={CancelIcon} size='2rem' />
+						<Text type='common'>취소 · 문제해결</Text>
 					</S.LabelGroup>
 					<Text type='small'>0</Text>
 				</S.Box>

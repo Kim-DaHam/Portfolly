@@ -1,24 +1,20 @@
+import { MouseEventHandler } from "react";
 import { FiX as XIcon } from "react-icons/fi";
 
 import * as S from "./RequestModal.styled";
 
 import { Text, Button, Modal } from "@/components";
-import { SetState } from "@/types";
 
 type Props = {
-	handleModal: SetState<boolean>;
+	handleModal: MouseEventHandler<HTMLElement>;
 }
 
-export default function RequestModal({handleModal}: Props) {
-
-	const closeModal = ()=> {
-		handleModal(prev=>!prev);
-	}
+export default function RequestModal({ handleModal }: Props) {
 
 	return(
 		<Modal $type='form'>
 			<S.Box>
-			<S.ButtonBox onClick={closeModal}>
+			<S.ButtonBox onClick={handleModal}>
 				<XIcon size={28}/>
 			</S.ButtonBox>
 
