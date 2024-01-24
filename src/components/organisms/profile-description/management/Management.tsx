@@ -1,57 +1,120 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
+
+import { isIncludedKeyword } from "./Management.helpers";
 
 import { Text, Selector , Button, RequestModal, Tracking } from "@/components";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
+import { useModal } from "@/hooks";
+import { toLocalDataString } from "@/utils";
 
-export default function Management() {
-	const [isOpenModal, setIsOpenModal] = useState(false);
+type Props = {
+	commissions: any;
+};
 
-	const openRequestModal = ()=> {
-		setIsOpenModal(prev=>!prev)
-	}
+export type FormValues = {
+	commissionType: string;
+	commissionState: string;
+	searchFilter: '닉네임' | '프로젝트명';
+	searchKeyword: string;
+	startDate: string | null;
+	endDate: string | null;
+};
+
+const defaultValues: FormValues = {
+	commissionType: '전체 상품',
+	commissionState: '전체 상태',
+	searchFilter: '닉네임',
+	searchKeyword: '',
+	startDate: null,
+	endDate: null,
+};
+
+export default function Management({ commissions }: Props) {
+	const [commissionList, setCommissionList] = useState(commissions);
+
+	const { handleModal, isModalOpen } = useModal();
+	const { register, handleSubmit, setValue } = useForm<FormValues>({
+		mode: 'onSubmit',
+		defaultValues: defaultValues,
+	});
+
+	const onSubmit = (data: FormValues) => {
+		const filteredCommissions = commissions.filter((commission: any) => {
+			return (
+				(data.commissionType === '전체 상품' || commission.portfolio.section === data.commissionType) &&
+				(data.commissionState === '전체 상태' || commission.details.state === data.commissionState) &&
+				(data.startDate === null || new Date(commission.createdAt) <= new Date(data.endDate!)) &&
+				(data.endDate === null || new Date(commission.endedAt) >= new Date(data.startDate!)) &&
+				(data.searchKeyword === '' || isIncludedKeyword(data.searchFilter, commission, data.searchKeyword))
+			)
+		});
+		setCommissionList(filteredCommissions);
+	};
 
 	return(
 		<S.Wrapper>
-			<Tracking/>
+			<Tracking commissions={commissions}/>
 
 			<S.Notice>
-				<QuestionIcon/>
+				<QuestionIcon />
 				<Text type='small'>구매 과정 및 주문 상태 안내</Text>
 			</S.Notice>
 
 			<S.SearchFilterSection>
-				<S.Form>
-					<Selector type='RequestType' placeholder='전체 상품'/>
-					<Selector type='RequestState' placeholder='전체 상태'/>
+				<S.Form onSubmit={handleSubmit(onSubmit)}>
+					<Selector
+						type='commissionType'
+						placeholder='전체 상품'
+						setValue={setValue}
+						{...register('commissionType')}
+					/>
+					<Selector
+						type='commissionState'
+						placeholder='전체 상태'
+						setValue={setValue}
+						{...register('commissionState')}
+					/>
 
 					<S.DateSelector>
-						DateSelector
+						<input type='date' {...register('startDate')} />
+						ㅤ-ㅤ
+						<input type='date' {...register('endDate')} />
 					</S.DateSelector>
 
-					<Selector type='SearchFilter' placeholder='닉네임'/>
+					<Selector
+						type='searchFilter'
+						placeholder='닉네임'
+						setValue={setValue}
+						{...register('searchFilter')}
+					/>
 
-					<S.Input/>
+					<S.Input {...register('searchKeyword')} />
 
-					<Button color="white" shape="square">검색</Button>
+					<Button color="white" shape="square" type='submit' size='fit'>검색</Button>
 				</S.Form>
 			</S.SearchFilterSection>
 
 			<S.ContentSection>
 				<S.List>
-					<S.Item>
-						<Text type='small'>1</Text>
-						<S.Box onClick={openRequestModal}>
-							<Text type='common'>Title</Text>
-							<Text type='small'>의뢰 설명</Text>
-							<Text type='small'>의뢰 날짜</Text>
-						</S.Box>
-					</S.Item>
+					{ commissionList.map((commission: any) => {
+						return (
+							<S.Item onClick={handleModal} key={commission.id}>
+								<Text type='small'>1</Text>
+								<S.Box>
+									<Text type='common'>{commission.details.title}</Text>
+									<Text type='small'>{commission.client.nickname}</Text>
+									<Text type='small'>{toLocalDataString(new Date(commission.createdAt))}</Text>
+								</S.Box>
+							</S.Item>
+						)})
+					}
 				</S.List>
 			</S.ContentSection>
 
-			{ isOpenModal &&
-				<RequestModal handleModal={setIsOpenModal}/>
+			{ isModalOpen &&
+				<RequestModal handleModal={handleModal}/>
 			}
 		</S.Wrapper>
 	)

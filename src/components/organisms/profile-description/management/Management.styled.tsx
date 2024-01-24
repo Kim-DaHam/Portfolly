@@ -33,10 +33,12 @@ export const SearchFilterSection = styled.div`
 export const Form = styled.form`
 	${mixins.fullWidthHeight}
 	${mixins.flexCenter}
+	flex-wrap: nowrap;
 	gap: 1rem;
 `;
 
 export const DateSelector = styled.div`
+	flex: none;
 	background-color: lime;
 `;
 
@@ -56,9 +58,8 @@ export const ContentSection = styled.div`
 
 export const List = styled.ul`
 	${mixins.fullWidthHeight}
-
-	display: flex;
-	flex-direction: column;
+	${mixins.flexColumn}
+	gap: 0.5rem;
 `;
 
 export const Item = styled.li`
@@ -76,4 +77,8 @@ export const Item = styled.li`
 export const Box = styled.div`
 	${mixins.flexColumn}
 	gap: 0.5rem;
+
+	& span, & label {
+		cursor: pointer;
+	}
 `;
