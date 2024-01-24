@@ -1,28 +1,73 @@
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { FiX as XIcon } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import * as v from "./CommissionModal.constants";
 import * as S from "./CommissionModal.styled";
 
 import { Text, Button, Modal, Profile } from "@/components";
 import { useStopScrollY } from "@/hooks";
 import { authority } from "@/redux/loginSlice";
+import { setToast } from "@/redux/toastSlice";
 
 type Props = {
 	commission: any;
 	handleModal: MouseEventHandler<HTMLElement>;
-}
+};
+
+export type FormValues = {
+	title: string;
+	content: string;
+	deadline: Date;
+	cost: number;
+};
+
+const defaultValues: FormValues = {
+	title: '',
+	content: '',
+	deadline: new Date(),
+	cost: 0,
+};
 
 export default function RequestModal({ commission, handleModal }: Props) {
 	const [isEditMode, setIsEditMode] = useState(false);
-	console.log(commission)
 
+	const dispatch = useDispatch();
 	const auth = useSelector(authority);
+	const { register, reset, handleSubmit, formState: { isSubmitting, errors } } = useForm<FormValues>({
+		mode: 'onSubmit',
+		defaultValues: defaultValues,
+	});
 
 	useStopScrollY();
 
+	const onSubmit = () => {
+		setIsEditMode(prev=>!prev);
+	};
+
+	useEffect(() => {
+		reset({
+			title: commission.details.title,
+			content: commission.details.content,
+			deadline: commission.details.deadline,
+			cost: commission.details.cost,
+		});
+	}, []);
+
+	useEffect(() => {
+		if(isSubmitting) {
+			const copyErrors: {[key in string]: any} = {...errors};
+			const errorKeys = Object.keys(errors);
+			const toastId = Date.now();
+
+			if(errorKeys.length > 0)
+				dispatch(setToast({ id: toastId, type: 'error', message: copyErrors[errorKeys[0]].message}));
+		}
+	}, [isSubmitting]);
+
 	return(
-		<Modal $type='form' onClick={handleModal}>
+		<Modal $type='form'>
 			<S.Box>
 			<S.ButtonBox onClick={handleModal}>
 				<XIcon size={28}/>
@@ -32,7 +77,10 @@ export default function RequestModal({ commission, handleModal }: Props) {
 				<S.Form>
 					<S.Box>
 						{ isEditMode ?
-							<S.TextInput value={commission.details.title}/>
+							<S.TextInput {...register('title', {
+								required: '의뢰 제목을 입력하세요.',
+								validate: v.validateTitle,
+							})} />
 							:
 							<Text type='titleSmall'>{commission.details.title}</Text>
 						}
@@ -58,7 +106,10 @@ export default function RequestModal({ commission, handleModal }: Props) {
 					<S.Box>
 						<Text type='label'>의뢰 내용</Text>
 						{ isEditMode ?
-							<S.TextArea value={commission.details.content}/>
+							<S.TextArea {...register('content', {
+								required: '자세한 의뢰 내용을 입력하세요.',
+								validate: v.validateContent,
+							})} />
 							:
 							<Text type='common'>{commission.details.content}</Text>
 						}
@@ -67,7 +118,10 @@ export default function RequestModal({ commission, handleModal }: Props) {
 					<S.Box>
 						<Text type='label'>마감 기한</Text>
 						{ isEditMode ?
-							<input type='date' value={commission.details.deadline} />
+							<input type='date' {...register('deadline', {
+								required: '마감 기한을 입력하세요.',
+								validate: v.validateDeadline,
+							})} />
 							:
 							<Text type='common'>{commission.details.deadline}</Text>
 						}
@@ -76,19 +130,21 @@ export default function RequestModal({ commission, handleModal }: Props) {
 					<S.Box>
 						<Text type='label'>비용</Text>
 						{ isEditMode ?
-							<S.Input  value={commission.details.cost}/>
+							<S.Input {...register('cost', {
+								required: '비용을 입력하세요.',
+							})} />
 							:
 							<Text type='common'>{commission.details.cost}</Text>
 						}
 					</S.Box>
-			</S.Form>
+				</S.Form>
 			</S.Content>
 
 			<S.ButtonGroup>
 				{ auth === 'expert' && !isEditMode ?
 					<Button color='black' size='medium' shape='square' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
 					:
-					<Button color='black' size='medium' shape='square'>저장하기</Button>
+					<Button color='black' size='medium' shape='square' onClick={handleSubmit(onSubmit)}>저장하기</Button>
 				}
 				{ auth === 'client' &&
 					<Button color='black' size='medium' shape='square'>주문 취소</Button>
