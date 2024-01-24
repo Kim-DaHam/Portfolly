@@ -22,7 +22,6 @@ export const ModalBox = styled.div<Props>`
 	${props => (types[props.$type])};
 
 	${mixins.flexColumn}
-	gap: 2rem;
 
 	padding: 1.7rem 2rem 1.7rem 2rem;
 

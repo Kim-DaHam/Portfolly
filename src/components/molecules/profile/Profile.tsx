@@ -4,7 +4,7 @@ import { Image, Rating, Text } from '@/components';
 import * as S from "@/components/molecules/profile/Profile.styled";
 import { IComponentFactory } from "@/types";
 
-export type Profile = 'portfolio-item' | 'portfolio-detail' | 'my-page' | 'review' | 'message';
+export type Profile = 'default' | 'portfolio' | 'portfolio-item' | 'portfolio-detail' | 'my-page' | 'review' | 'message';
 
 type Props = {
 	type: Profile;
@@ -23,6 +23,23 @@ export default function Profile({type, user}: Props) {
 
 const renderProfile = (type: Profile, user: any, navigate: any) => {
 	const ComponentFactory:IComponentFactory = {
+		'default': (
+			<>
+				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare' />
+				<S.SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
+					<Text type='small' color='gray'>{user.nickname}</Text>
+				</S.SpanBox>
+			</>
+		),
+		'portfolio': (
+			<>
+				<Image size='3.5rem' src={user.thumbnailUrl} alt='user profile' shape='foursquare' onClick={()=>navigate(`/portfolios/${user.id}`)}/>
+				<S.SpanBox>
+					<Text type='small' color='gray' onClick={()=>navigate(`/portfolios/${user.id}`)}>{user.title}</Text>
+					<Text type='small' color='gray'>{user.summary}</Text>
+				</S.SpanBox>
+			</>
+		),
     'portfolio-item': (
 			<>
 				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare' />

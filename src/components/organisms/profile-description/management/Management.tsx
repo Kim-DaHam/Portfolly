@@ -4,7 +4,7 @@ import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
 import { isIncludedKeyword } from "./Management.helpers";
 
-import { Text, Selector , Button, RequestModal, Tracking } from "@/components";
+import { Text, Selector , Button, CommissionModal, Tracking } from "@/components";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
 import { useModal } from "@/hooks";
 import { toLocalDataString } from "@/utils";
@@ -33,12 +33,18 @@ const defaultValues: FormValues = {
 
 export default function Management({ commissions }: Props) {
 	const [commissionList, setCommissionList] = useState(commissions);
+	const [modalData, setModalData] = useState(null);
 
 	const { handleModal, isModalOpen } = useModal();
 	const { register, handleSubmit, setValue } = useForm<FormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
 	});
+
+	const openRequestModal = (event: React.MouseEvent<HTMLElement, MouseEvent>,commission: any) => {
+		setModalData(commission);
+		handleModal(event);
+	};
 
 	const onSubmit = (data: FormValues) => {
 		const filteredCommissions = commissions.filter((commission: any) => {
@@ -100,7 +106,7 @@ export default function Management({ commissions }: Props) {
 				<S.List>
 					{ commissionList.map((commission: any) => {
 						return (
-							<S.Item onClick={handleModal} key={commission.id}>
+							<S.Item onClick={(event) => openRequestModal(event, commission)} key={commission.id}>
 								<Text type='small'>1</Text>
 								<S.Box>
 									<Text type='common'>{commission.details.title}</Text>
@@ -114,7 +120,7 @@ export default function Management({ commissions }: Props) {
 			</S.ContentSection>
 
 			{ isModalOpen &&
-				<RequestModal handleModal={handleModal}/>
+				<CommissionModal commission={modalData} handleModal={handleModal}/>
 			}
 		</S.Wrapper>
 	)
