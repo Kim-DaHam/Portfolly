@@ -8,8 +8,9 @@ import * as S from "./CommissionModal.styled";
 
 import { Text, Button, Modal, Profile } from "@/components";
 import { useStopScrollY } from "@/hooks";
-import { authority } from "@/redux/loginSlice";
+import { authority, userId as UserId } from "@/redux/loginSlice";
 import { setToast } from "@/redux/toastSlice";
+import { usePostCommissionQuery } from "@/utils/api-service/commission";
 
 type Props = {
 	commission: any;
@@ -31,19 +32,38 @@ const defaultValues: FormValues = {
 };
 
 export default function RequestModal({ commission, handleModal }: Props) {
+	const [updatedCommission, setUpdatedCommission] = useState(commission);
 	const [isEditMode, setIsEditMode] = useState(false);
 
 	const dispatch = useDispatch();
+
 	const auth = useSelector(authority);
-	const { register, reset, handleSubmit, formState: { isSubmitting, errors } } = useForm<FormValues>({
+
+	const { register, reset, handleSubmit, formState: { isSubmitting, errors, dirtyFields } } = useForm<FormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
 	});
 
+	const commissionMutation = usePostCommissionQuery(commission.id);
+
 	useStopScrollY();
 
-	const onSubmit = () => {
-		setIsEditMode(prev=>!prev);
+	const onSubmit = async (form: any) => {
+		const copyForm: {[key: string]: any} = {...form};
+		const changedKeys = Object.keys(dirtyFields);
+		const changedValues: {[key: string]: any} = {};
+
+		changedKeys.map((key) => {
+			changedValues[key] = copyForm[key];
+		});
+		changedValues.section = form.section;
+
+		await commissionMutation.mutate(changedValues, {
+			onSuccess: (response) => {
+				setIsEditMode(prev=>!prev);
+				setUpdatedCommission(response);
+			},
+		});
 	};
 
 	useEffect(() => {
@@ -82,9 +102,9 @@ export default function RequestModal({ commission, handleModal }: Props) {
 								validate: v.validateTitle,
 							})} />
 							:
-							<Text type='titleSmall'>{commission.details.title}</Text>
+							<Text type='titleSmall'>{updatedCommission.details.title}</Text>
 						}
-						<Text type='small'>{commission.createdAt}</Text>
+						<Text type='small'>{updatedCommission.createdAt}</Text>
 					</S.Box>
 
 					<S.Box>
@@ -111,7 +131,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 								validate: v.validateContent,
 							})} />
 							:
-							<Text type='common'>{commission.details.content}</Text>
+							<Text type='common'>{updatedCommission.details.content}</Text>
 						}
 					</S.Box>
 
@@ -123,7 +143,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 								validate: v.validateDeadline,
 							})} />
 							:
-							<Text type='common'>{commission.details.deadline}</Text>
+							<Text type='common'>{updatedCommission.details.deadline}</Text>
 						}
 					</S.Box>
 
@@ -134,7 +154,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 								required: '비용을 입력하세요.',
 							})} />
 							:
-							<Text type='common'>{commission.details.cost}</Text>
+							<Text type='common'>{updatedCommission.details.cost}</Text>
 						}
 					</S.Box>
 				</S.Form>
