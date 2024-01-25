@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import SearchModal from "../../modal/search-modal/SearchModal";
 
-import { categories } from "@/assets/data/portfolio";
+import { categories } from "@/assets/data/fields";
 import { Button } from "@/components";
 import * as S from "@/components/organisms/slider/category-slider/CategorySlider.styled";
 import { useModal, useCategorySlider } from "@/hooks";

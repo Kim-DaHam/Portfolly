@@ -1,4 +1,4 @@
-import { CommissionState } from "@/components/atoms/selector/Selector.constants";
+import { CommissionState } from "@/types";
 
 export const countCommissionState = (commissions: any[]) => {
 	const commissionsState: {[key in CommissionState | string]: number} = {
@@ -14,6 +14,10 @@ export const countCommissionState = (commissions: any[]) => {
 	commissions.map((commission: any) => {
 		const state = commission.details.state as CommissionState;
 		commissionsState[state] += 1;
+
+		if(state === '구매 확정' && commission.review === null) {
+			commissionsState['작성 가능한 리뷰'] += 1;
+		}
 
 		if(commission.review) {
 			commissionsState['작성된 리뷰'] += 1;

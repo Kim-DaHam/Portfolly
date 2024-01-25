@@ -8,7 +8,7 @@ export const commissions = [
 		endedAt: '2024-05-06',
 		details: {
 			title: '앱 포트폴리오 커미션',
-			state: '진행 중',
+			state: '구매 확정',
 			content: '앱 포트폴리오 커미션 설명',
 			cost: 350000,
 			deadline: '2024-05-06',
