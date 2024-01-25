@@ -21,7 +21,7 @@ export const Notice = styled.div`
 `
 
 export const SearchFilterSection = styled.div`
-	${mixins.fullWidthHeight}
+	height: fit-content;
 
 	padding: 0.5rem 1rem 0.5rem 1rem;
 

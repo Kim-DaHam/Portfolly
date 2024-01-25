@@ -8,7 +8,7 @@ import * as S from "./CommissionModal.styled";
 
 import { Text, Button, Modal, Profile } from "@/components";
 import { useStopScrollY } from "@/hooks";
-import { authority, userId as UserId } from "@/redux/loginSlice";
+import { authority } from "@/redux/loginSlice";
 import { setToast } from "@/redux/toastSlice";
 import { usePostCommissionQuery } from "@/utils/api-service/commission";
 
@@ -161,15 +161,15 @@ export default function RequestModal({ commission, handleModal }: Props) {
 			</S.Content>
 
 			<S.ButtonGroup>
-				{ auth === 'expert' && !isEditMode ?
+				{ auth === 'expert' && !isEditMode &&
 					<Button color='black' size='medium' shape='square' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
-					:
-					<Button color='black' size='medium' shape='square' onClick={handleSubmit(onSubmit)}>저장하기</Button>
 				}
 				{ auth === 'client' &&
 					<Button color='black' size='medium' shape='square'>주문 취소</Button>
 				}
-				{ !isEditMode &&
+				{ isEditMode ?
+					<Button color='black' size='medium' shape='square' onClick={handleSubmit(onSubmit)}>저장하기</Button>
+					:
 					<Button color='black' size='medium' shape='square' onClick={handleModal}>닫기</Button>
 				}
 			</S.ButtonGroup>

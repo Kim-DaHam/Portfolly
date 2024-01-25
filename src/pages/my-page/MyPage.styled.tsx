@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.main`
-	${mixins.flexCenter}
+	${mixins.fullScreen}
 	${mixins.flexColumn}
 
 	padding: 3rem 10rem 2rem 10rem;
@@ -30,6 +30,7 @@ export const ProfileSection = styled.section`
 
 export const ContentSection = styled.section`
 	${mixins.fullWidthHeight}
+	min-height: 30rem;
 
 	display: flex;
 
@@ -37,7 +38,8 @@ export const ContentSection = styled.section`
 `;
 
 export const Description = styled.div`
-	${mixins.fullWidthHeight}
+	width: 100%;
+	height: auto;
 
 	flex-basis: 1;
 

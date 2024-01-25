@@ -10,7 +10,7 @@ export const userHandlers= [
 	http.get('/users', ({request}) => {
 		const url = new URL(request.url);
 		const userId = url.searchParams.get('id') as string;
-		const loginId = '1';
+		const loginId = '100';
 		const isMyProfie = userId === loginId;
 
 		const user = users.find((user) => {
