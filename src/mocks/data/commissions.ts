@@ -9,9 +9,9 @@ export const commissions = [
 		details: {
 			title: '앱 포트폴리오 커미션',
 			state: '진행 중',
-			summary: '앱 포트폴리오 커미션 설명',
+			content: '앱 포트폴리오 커미션 설명',
 			cost: 350000,
-			deadline: Date.now(),
+			deadline: '2024-05-06',
 		},
 		review: null,
 	},
@@ -25,9 +25,9 @@ export const commissions = [
 		details: {
 			title: '웹 포트폴리오 커미션1',
 			state: '진행 중',
-			summary: '웹 포트폴리오 커미션 설명',
+			content: '웹 포트폴리오 커미션 설명',
 			cost: 350000,
-			deadline: Date.now(),
+			deadline: '2024-05-06',
 		},
 		review: {
 			createdAt: Date.now(),
@@ -45,9 +45,9 @@ export const commissions = [
 		details: {
 			title: '웹 포트폴리오 커미션2',
 			state: '진행 중',
-			summary: '웹 포트폴리오 커미션 설명',
+			content: '웹 포트폴리오 커미션 설명',
 			cost: 350000,
-			deadline: Date.now(),
+			deadline: '2024-05-06',
 		},
 		review: {
 			createdAt: Date.now(),
@@ -65,7 +65,7 @@ export const commissions = [
 		details: {
 			title: '일러스트 포트폴리오 커미션',
 			state: '진행 중',
-			summary: '일러스트 포트폴리오 커미션 설명',
+			content: '일러스트 포트폴리오 커미션 설명',
 			cost: 350000,
 			deadline: Date.now(),
 		},

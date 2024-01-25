@@ -1,7 +1,7 @@
 import Footer from '@/components/organisms/footer/Footer';
 import Header from '@/components/organisms/header/Header';
 import AlertModal from '@/components/organisms/modal/alert-modal/AlertModal';
-import RequestModal from '@/components/organisms/modal/request-modal/RequestModal';
+import CommissionModal from '@/components/organisms/modal/commission-modal/CommissionModal';
 import SearchModal from '@/components/organisms/modal/search-modal/SearchModal';
 import PortfolioItemList from '@/components/organisms/portfolio-list/PortfolioItemList';
 import Preview from '@/components/organisms/preview/Preview';
@@ -19,7 +19,7 @@ export {
 	Footer,
 	Header,
 	AlertModal,
-	RequestModal,
+	CommissionModal,
 	SearchModal,
 	PortfolioItemList,
 	Preview,

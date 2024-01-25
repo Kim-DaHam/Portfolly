@@ -9,6 +9,6 @@ export const Wrapper = styled.div`
 	gap: 0.5rem;
 
 	position: absolute;
-	z-index: 999;
+	z-index: 9999;
 	bottom: 2rem;
 `;

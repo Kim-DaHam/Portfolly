@@ -1,6 +1,8 @@
+import { HTMLAttributes } from "react";
+
 import * as S from "./Image.styled";
 
-export type Props = {
+export type Props = HTMLAttributes<HTMLImageElement> & {
 	size: string;
 	shape?: 'square' | 'foursquare' | 'circle';
 	src: string;
