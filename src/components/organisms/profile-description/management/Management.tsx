@@ -4,7 +4,7 @@ import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
 import { isIncludedKeyword } from "./Management.helpers";
 
-import { Text, Selector , Button, CommissionModal, Tracking } from "@/components";
+import { Text, Selector , Button, CommissionModal, Tracking, CommissionItem } from "@/components";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
 import { useModal } from "@/hooks";
 import { toLocalDataString } from "@/utils";
@@ -104,16 +104,14 @@ export default function Management({ commissions }: Props) {
 
 			<S.ContentSection>
 				<S.List>
-					{ commissionList.map((commission: any) => {
+					{ commissionList.map((commission: any, index: number) => {
 						return (
-							<S.Item onClick={(event) => openRequestModal(event, commission)} key={commission.id}>
-								<Text type='small'>1</Text>
-								<S.Box>
-									<Text type='common'>{commission.details.title}</Text>
-									<Text type='small'>{commission.client.nickname}</Text>
-									<Text type='small'>{toLocalDataString(new Date(commission.createdAt))}</Text>
-								</S.Box>
-							</S.Item>
+							<CommissionItem
+								commission={commission}
+								index={index + 1}
+								key={commission.id}
+								onClick={(event) => openRequestModal(event, commission)}
+							/>
 						)})
 					}
 				</S.List>

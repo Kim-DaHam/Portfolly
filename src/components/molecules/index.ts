@@ -1,4 +1,5 @@
 import QuillEditor from "@/components/molecules/editor/QuillEditor";
+import CommissionItem from "@/components/molecules/items/commission-item/CommissionItem";
 import PortfolioItem from "@/components/molecules/items/portfolio-item/PortfolioItem";
 import ReviewItem from "@/components/molecules/items/review-item/ReviewItem";
 import Modal from "@/components/molecules/modal/Modal";
@@ -26,4 +27,5 @@ export {
 	MyPageNavigator,
 	PortfolioItem,
 	ReviewItem,
+	CommissionItem,
 };

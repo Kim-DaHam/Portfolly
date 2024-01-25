@@ -61,24 +61,3 @@ export const List = styled.ul`
 	${mixins.flexColumn}
 	gap: 0.5rem;
 `;
-
-export const Item = styled.li`
-	width: 100%;
-	height: fit-content;
-
-	display: flex;
-	gap: 3rem;
-
-	padding: 0.1rem 0 0.1rem;
-
-	background-color: white;
-`;
-
-export const Box = styled.div`
-	${mixins.flexColumn}
-	gap: 0.5rem;
-
-	& span, & label {
-		cursor: pointer;
-	}
-`;
