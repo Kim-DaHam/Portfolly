@@ -33,18 +33,11 @@ const defaultValues: FormValues = {
 
 export default function Management({ commissions }: Props) {
 	const [commissionList, setCommissionList] = useState(commissions);
-	const [modalData, setModalData] = useState(null);
 
-	const { handleModal, isModalOpen } = useModal();
 	const { register, handleSubmit, setValue } = useForm<FormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
 	});
-
-	const openRequestModal = (event: React.MouseEvent<HTMLElement, MouseEvent>,commission: any) => {
-		setModalData(commission);
-		handleModal(event);
-	};
 
 	const onSubmit = (data: FormValues) => {
 		const filteredCommissions = commissions.filter((commission: any) => {
@@ -110,16 +103,11 @@ export default function Management({ commissions }: Props) {
 								commission={commission}
 								index={index + 1}
 								key={commission.id}
-								onClick={(event) => openRequestModal(event, commission)}
 							/>
 						)})
 					}
 				</S.List>
 			</S.ContentSection>
-
-			{ isModalOpen &&
-				<CommissionModal commission={modalData} handleModal={handleModal}/>
-			}
 		</S.Wrapper>
 	)
 }

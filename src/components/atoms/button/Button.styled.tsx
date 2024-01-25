@@ -24,5 +24,5 @@ export const ButtonStyle = styled.button<Props>`
 
 	${props => (props.$active ? colors['black'] : colors[props.color])}
   ${props => (props.size ? sizes[props.size] : sizes['fit'])};
-	${props => (props.shape ? shapes[props.shape] : '')};
+	${props => (props.shape ? shapes[props.shape] : shapes['square'])};
 `;
