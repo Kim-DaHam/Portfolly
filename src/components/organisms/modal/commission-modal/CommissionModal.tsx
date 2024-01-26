@@ -115,7 +115,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 					<S.Box>
 						<Text type='label'>전문가 정보</Text>
 						<S.Box>
-							<Profile type='default' user={commission.expert}/>
+							<Profile type='user' user={commission.expert}/>
 							<Text type='label'>이름</Text>
 							<Text type='common'>{commission.expert.name}</Text>
 							<Text type='label'>연락처</Text>

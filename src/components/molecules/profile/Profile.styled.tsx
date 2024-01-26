@@ -4,17 +4,9 @@ import { Profile } from "./Profile";
 
 import * as mixins from '@/styles/mixins';
 
-export const height = {
-	'portfolio-item': '3.5rem',
-	'portfolio-detail': '',
-	'my-page': '150px',
-	'review': '',
-	'message': '',
-};
-
 export const Wrapper = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: ${(props) => height[props.$type]};
+	height: 100%;
 
 	display: flex;
 	align-items: ${(props) => props.$type === 'portfolio-detail' ? 'center' : ''};

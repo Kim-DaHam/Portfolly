@@ -45,7 +45,11 @@ export const Box = styled.div`
 `;
 
 export const ReviewBox = styled.div`
-	padding: 1.5rem 2rem 2rem 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	padding: 1.5rem 2rem 1.5rem 2rem;
 `;
 
 export const Form = styled.form`
@@ -60,6 +64,7 @@ export const Form = styled.form`
 
 export const TextArea = styled.textarea`
 	width: 90%;
+	height: 5rem;
 
 	resize: none;
 `;
@@ -67,4 +72,5 @@ export const TextArea = styled.textarea`
 export const ButtonBox = styled.div`
 	display: flex;
 	justify-content: end;
+	gap: 1rem;
 `;
