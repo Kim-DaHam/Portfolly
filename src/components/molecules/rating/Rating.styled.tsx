@@ -6,15 +6,15 @@ export const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export const Content = styled.div`
+export const Content = styled.fieldset`
 	position: relative;
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
+	border: 0;
 
-  input:checked ~ label,
-  labeL:hover,
-  labeL:hover ~ label {
+  label:hover,
+  label:hover ~ label {
     transition: 0.2s;
     color: orange;
   }
@@ -24,13 +24,13 @@ export const Input = styled.input`
 	display: none;
 `;
 
-export const Label = styled.label<{isHalf: boolean}>`
+export const Label = styled.label<{$isHalf: boolean, $isFilled: boolean}>`
 	cursor: pointer;
   font-size: 1.5rem;
-  color: lightgray;
+  color: ${(props) => props.$isFilled ? 'orange' : 'lightgray'};
 
 	${(props) => {
-		if(props.isHalf)
+		if(props.$isHalf)
 			return css`
 				position: absolute;
 				width: 12px;

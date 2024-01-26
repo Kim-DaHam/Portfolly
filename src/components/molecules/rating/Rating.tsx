@@ -10,7 +10,7 @@ type Props = {
 	score?: number;
 };
 
-export default function Rating({ readonly, setValue, score=0 }: Props) {
+export default function Rating({ readonly=false, setValue, score=0 }: Props) {
 	const [rating, setRating] = useState(score);
 
 	return(
@@ -22,8 +22,15 @@ export default function Rating({ readonly, setValue, score=0 }: Props) {
 
 					return (
 						<Fragment key={index}>
-							<S.Input type='radio' id={`star${value}`} value={value}/>
-							<S.Label onClick={() => setRating(value)} isHalf={isHalf} htmlFor={`stars${value}`}>
+							{ !readonly &&
+								<S.Input type='radio' id={`star${value}`} value={value}/>
+							}
+							<S.Label
+								onClick={readonly ? () => '' : () => setRating(value)}
+								htmlFor={`stars${value}`}
+								$isHalf={isHalf}
+								$isFilled={value <= rating ? true : false}
+							>
 								{ isHalf ? <HalfStar /> : <Star />}
 							</S.Label>
 						</Fragment>
