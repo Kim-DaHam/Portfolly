@@ -5,12 +5,11 @@ import * as S from "@/components/organisms/profile-description/activity-informat
 import { authority } from "@/redux/loginSlice";
 
 type Props = {
+	auth: 'expert' | 'client';
 	activity: any;
 };
 
-export default function ActivityInformation({ activity }: Props) {
-
-	const auth = useSelector(authority);
+export default function ActivityInformation({ auth, activity }: Props) {
 
 	return(
 		<S.Wrapper>
@@ -24,7 +23,7 @@ export default function ActivityInformation({ activity }: Props) {
 				{ auth === 'expert' &&
 					<S.Group>
 						<Text type='label'>만족도</Text>
-						<Text type='common'>{activity.score}</Text>
+						<Text type='common'>{activity.score}%</Text>
 					</S.Group>
 				}
 

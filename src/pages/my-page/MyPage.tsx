@@ -51,7 +51,7 @@ function MyPage(){
 						</S.Description>
 
 						<S.Aside>
-							<ActivityInformation activity={user.activity}/>
+							<ActivityInformation activity={user.activity} auth={user.authority}/>
 						</S.Aside>
 					</S.ContentSection>
 				</S.Content>

@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function Rating({ readonly=false, setValue, score=0 }: Props) {
-	const [rating, setRating] = useState(score);
+	const [rating, setRating] = useState(score/20);
 
 	return(
 		<S.Wrapper>
@@ -30,6 +30,7 @@ export default function Rating({ readonly=false, setValue, score=0 }: Props) {
 								htmlFor={`stars${value}`}
 								$isHalf={isHalf}
 								$isFilled={value <= rating ? true : false}
+								$readonly={readonly}
 							>
 								{ isHalf ? <HalfStar /> : <Star />}
 							</S.Label>

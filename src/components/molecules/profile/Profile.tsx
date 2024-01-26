@@ -60,7 +60,9 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
 				<Image size='150px' src={user.profileImage} alt='user-profile' shape='foursquare' />
 				<S.Box>
 					<Text type='title'>{user.nickname}</Text>
-					<Rating />
+					{ user.authority === 'expert' &&
+						<Rating readonly score={user.activity.score}/>
+					}
 				</S.Box>
 			</>
 		)

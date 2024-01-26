@@ -24,8 +24,8 @@ export const Input = styled.input`
 	display: none;
 `;
 
-export const Label = styled.label<{$isHalf: boolean, $isFilled: boolean}>`
-	cursor: pointer;
+export const Label = styled.label<{$isHalf: boolean, $isFilled: boolean, $readonly: boolean}>`
+	cursor: ${(props) => props.$readonly ? '' : 'cursor'};
   font-size: 1.5rem;
   color: ${(props) => props.$isFilled ? 'orange' : 'lightgray'};
 
