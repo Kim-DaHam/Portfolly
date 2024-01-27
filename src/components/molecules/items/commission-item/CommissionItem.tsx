@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Button, CommissionModal, Profile, Rating, ReviewItem, Text } from '@/components';
+import { Button, CommissionModal, Profile, Rating, ReviewForm, ReviewItem, Text } from '@/components';
 import * as S from '@/components/molecules/items/commission-item/CommissionItem.styled';
 import { useModal } from '@/hooks';
 import { authority } from '@/redux/loginSlice';
@@ -53,18 +53,7 @@ export default function CommissionItem({ commission, index }: Props) {
 			}
 
 			{ isReviewOpen && auth === 'client' &&
-				<S.ReviewBox>
-					<Profile type='portfolio' user={commission.portfolio}/>
-					<S.Form>
-						<Rating />
-						<S.TextArea />
-
-						<S.ButtonBox>
-							<Button color='black'>리뷰 등록</Button>
-							<Button color='gray' onClick={() => setIsReviewOpen(false)}>작성 취소</Button>
-						</S.ButtonBox>
-					</S.Form>
-				</S.ReviewBox>
+				<ReviewForm handleReviewOpen={setIsReviewOpen} commission={commission} />
 			}
 		</S.Wrapper>
 	)

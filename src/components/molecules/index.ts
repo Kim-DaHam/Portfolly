@@ -10,6 +10,7 @@ import Popper from "@/components/molecules/popper/Popper";
 import PortfolioCard from "@/components/molecules/portfolio-card/PortfolioCard";
 import Profile from "@/components/molecules/profile/Profile";
 import Rating from "@/components/molecules/rating/Rating";
+import ReviewForm from "@/components/molecules/review-form/ReviewForm";
 import SearchBar from "@/components/molecules/searchBar/SearchBar";
 import ToastContainer from "@/components/molecules/toast/ToastContainer";
 
@@ -28,4 +29,5 @@ export {
 	PortfolioItem,
 	ReviewItem,
 	CommissionItem,
+	ReviewForm,
 };
