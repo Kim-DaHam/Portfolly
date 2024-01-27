@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import { Fragment, MouseEventHandler, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiX as XIcon } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
@@ -88,7 +88,8 @@ export default function RequestModal({ commission, handleModal }: Props) {
 
 	return(
 		<Modal $type='form'>
-			<S.Box>
+			<Fragment>
+
 			<S.ButtonBox onClick={handleModal}>
 				<XIcon size={28}/>
 			</S.ButtonBox>
@@ -172,7 +173,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 				{ auth === 'expert' && !isEditMode &&
 					<Button color='black' size='medium' shape='square' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
 				}
-				{ auth === 'client' &&
+				{ auth === 'client' && commission.details.state !== '구매 확정' &&
 					<Button color='black' size='medium' shape='square'>주문 취소</Button>
 				}
 				{ isEditMode ?
@@ -181,7 +182,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 					<Button color='black' size='medium' shape='square' onClick={handleModal}>닫기</Button>
 				}
 			</S.ButtonGroup>
-			</S.Box>
+			</Fragment>
 		</Modal>
 	)
 }
