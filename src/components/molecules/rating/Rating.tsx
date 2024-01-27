@@ -1,4 +1,5 @@
-import { Fragment, useState } from "react";
+import { Fragment, forwardRef, useEffect, useState } from "react";
+import { UseFormSetValue } from "react-hook-form";
 import { FaStar as Star, FaStarHalf as HalfStar } from "react-icons/fa";
 
 import { Text } from '@/components';
@@ -6,16 +7,21 @@ import * as S from "@/components/molecules/rating/Rating.styled";
 
 type Props = {
 	readonly?: boolean;
-	setValue?: any;
+	setValue?: UseFormSetValue<any>;
 	score?: number;
 };
 
-export default function Rating({ readonly=false, setValue, score=0 }: Props) {
+function Rating({ readonly=false, setValue=()=>'', score=0 }: Props) {
 	const [rating, setRating] = useState(score/20);
+
+	const handleRating = (value: number) => {
+		setValue('rating', value*20);
+		setRating(value);
+	};
 
 	return(
 		<S.Wrapper>
-			<S.Content>
+			<S.Content $readonly={readonly}>
 				{new Array(10).fill(0).map((_, index: number) => {
 					const value = 5 - index * 0.5;
 					const isHalf = index % 2 === 0 || index === 0 ? false : true;
@@ -26,7 +32,7 @@ export default function Rating({ readonly=false, setValue, score=0 }: Props) {
 								<S.Input type='radio' id={`star${value}`} value={value}/>
 							}
 							<S.Label
-								onClick={readonly ? () => '' : () => setRating(value)}
+								onClick={readonly ? () => '' : () => handleRating(value)}
 								htmlFor={`stars${value}`}
 								$isHalf={isHalf}
 								$isFilled={value <= rating ? true : false}
@@ -42,3 +48,5 @@ export default function Rating({ readonly=false, setValue, score=0 }: Props) {
 		</S.Wrapper>
 	)
 }
+
+export default forwardRef(Rating);

@@ -6,18 +6,25 @@ export const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export const Content = styled.fieldset`
+export const Content = styled.fieldset<{$readonly: boolean}>`
 	position: relative;
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
 	border: 0;
 
-  label:hover,
-  label:hover ~ label {
-    transition: 0.2s;
-    color: orange;
-  }
+	${(props) => {
+		if(!props.$readonly) {
+			return css`
+				label:hover,
+				label:hover ~ label {
+					transition: 0.2s;
+					color: orange;
+				}
+			`;
+		}
+	}}
+
 `;
 
 export const Input = styled.input`
