@@ -60,6 +60,7 @@ export const userHandlers= [
 		const reviewList: any[] = [];
 
 		commissions.map((commission: any) => {
+
 			const isMyCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
 
 			if(isMyCommission) {
@@ -118,10 +119,6 @@ export const userHandlers= [
 				if(!isMyProfie) {
 					delete commission.details;
 				}
-
-				delete commission.portfolioId;
-				delete commission.expertId;
-				delete commission.clientId;
 
 				commissionList.push(commission);
 			}

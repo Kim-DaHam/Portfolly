@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as v from "./CommissionModal.constants";
 import * as S from "./CommissionModal.styled";
 
-import { Text, Button, Modal, Profile } from "@/components";
+import { Text, Button, Modal, Profile, Rating } from "@/components";
 import { useStopScrollY } from "@/hooks";
 import { authority } from "@/redux/loginSlice";
 import { setToast } from "@/redux/toastSlice";
@@ -157,6 +157,14 @@ export default function RequestModal({ commission, handleModal }: Props) {
 							<Text type='common'>{updatedCommission.details.cost}</Text>
 						}
 					</S.Box>
+
+					{ commission.review &&
+						<S.Box>
+							<Text type='label'>리뷰</Text>
+							<Rating readonly score={commission.review.score} />
+							<Text type='common'>{commission.review.content}</Text>
+						</S.Box>
+					}
 				</S.Form>
 			</S.Content>
 

@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Button, CommissionModal, Profile, Rating, ReviewForm, ReviewItem, Text } from '@/components';
+import { Button, CommissionModal, ReviewForm, ReviewItem, Text } from '@/components';
 import * as S from '@/components/molecules/items/commission-item/CommissionItem.styled';
 import { useModal } from '@/hooks';
 import { authority } from '@/redux/loginSlice';
@@ -16,6 +16,7 @@ export default function CommissionItem({ commission, index }: Props) {
 	const [isReviewOpen, setIsReviewOpen] = useState(false);
 
 	const auth = useSelector(authority);
+
 	const { handleModal, isModalOpen } = useModal();
 
 	const handleReviewButton = (event: React.MouseEvent) => {
@@ -32,12 +33,12 @@ export default function CommissionItem({ commission, index }: Props) {
 					<Text type='small'>{commission.client.nickname}</Text>
 					<Text type='small'>{toLocalDataString(new Date(commission.createdAt))}</Text>
 				</S.Box>
-				{ commission.review &&
+				{ auth === 'expert' &&
 					<Button color='gray' onClick={handleReviewButton}>
 						{isReviewOpen ? '리뷰 닫기' : '리뷰 확인'}
 					</Button>
 				}
-				{ auth === 'client' && !commission.review && !isReviewOpen &&
+				{ !isReviewOpen && auth === 'client' && !commission.review &&
 					<Button color='gray' onClick={handleReviewButton}>리뷰 작성</Button>
 				}
 			</S.Content>
@@ -52,7 +53,7 @@ export default function CommissionItem({ commission, index }: Props) {
 				</S.ReviewBox>
 			}
 
-			{ isReviewOpen && auth === 'client' &&
+			{ isReviewOpen && auth === 'client' && !commission.review &&
 				<ReviewForm handleReviewOpen={setIsReviewOpen} commission={commission} />
 			}
 		</S.Wrapper>
