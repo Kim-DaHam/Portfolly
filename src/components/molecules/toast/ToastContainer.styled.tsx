@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 	${mixins.flexColumn}
 	gap: 0.5rem;
 
-	position: absolute;
+	position: fixed;
 	z-index: 9999;
 	bottom: 2rem;
 `;
