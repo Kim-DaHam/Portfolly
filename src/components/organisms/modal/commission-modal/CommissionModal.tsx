@@ -10,6 +10,7 @@ import { Text, Button, Modal, Profile, Rating } from "@/components";
 import { useStopScrollY } from "@/hooks";
 import { authority } from "@/redux/loginSlice";
 import { setToast } from "@/redux/toastSlice";
+import { addValidationErrorToast } from "@/utils";
 import { usePostCommissionQuery } from "@/utils/api-service/commission";
 
 type Props = {
@@ -76,14 +77,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 	}, []);
 
 	useEffect(() => {
-		if(isSubmitting) {
-			const copyErrors: {[key in string]: any} = {...errors};
-			const errorKeys = Object.keys(errors);
-			const toastId = Date.now();
-
-			if(errorKeys.length > 0)
-				dispatch(setToast({ id: toastId, type: 'error', message: copyErrors[errorKeys[0]].message}));
-		}
+		addValidationErrorToast(isSubmitting, errors, dispatch);
 	}, [isSubmitting]);
 
 	return(
