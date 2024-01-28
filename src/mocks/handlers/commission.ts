@@ -2,8 +2,6 @@ import { HttpResponse, http } from 'msw';
 
 import { commissions } from '../data/commissions';
 
-import { FormValues } from '@/components/organisms/modal/commission-modal/CommissionModal';
-
 export const commissionHandlers= [
 	// http.post(`/commissions`, async ({request}) => {
 	// 	const newPortfolio = await request.json() as FormValues;

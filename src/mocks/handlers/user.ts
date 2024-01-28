@@ -11,13 +11,13 @@ export const userHandlers= [
 		const url = new URL(request.url);
 		const userId = url.searchParams.get('id') as string;
 		const loginId = '100';
-		const isMyProfie = userId === loginId;
+		const isMyProfile = userId === loginId;
 
 		const user = users.find((user) => {
 			return user.id === Number(userId);
 		});
 
-		if(!isMyProfie) {
+		if(!isMyProfile) {
 			delete user?.name;
 			delete user?.phone;
 			delete user?.likes;
@@ -88,7 +88,7 @@ export const userHandlers= [
 					reviewList.push(commission.review);
 				}
 
-				if(isMyProfie) {
+				if(isMyProfile) {
 					if(user!.authority === 'client') {
 						const expert = users.find((user) => user.id === commission.expertId);
 						commission.expert = {
@@ -116,7 +116,7 @@ export const userHandlers= [
 					}
 				}
 
-				if(!isMyProfie) {
+				if(!isMyProfile) {
 					delete commission.details;
 				}
 

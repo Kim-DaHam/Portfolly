@@ -162,7 +162,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 					{ commission.review &&
 						<S.Box>
 							<Text type='label'>리뷰</Text>
-							<Rating readonly score={commission.review.score} />
+							<Rating readonly score={commission.review.rating} />
 							<Text type='common'>{commission.review.content}</Text>
 						</S.Box>
 					}
