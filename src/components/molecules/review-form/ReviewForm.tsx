@@ -6,6 +6,7 @@ import { Button, Profile, Rating } from '@/components';
 import * as S from '@/components/molecules/review-form/ReviewForm.styled';
 import { setToast } from '@/redux/toastSlice';
 import { SetState } from "@/types";
+import { addValidationErrorToast } from '@/utils';
 import { useReviewPostQuery } from '@/utils/api-service/commission';
 
 type Props = {
@@ -43,14 +44,7 @@ export default function ReviewForm({ handleReviewOpen, commission }: Props) {
 	};
 
 	useEffect(() => {
-		if(isSubmitting) {
-			const copyErrors: {[key in string]: any} = {...errors};
-			const errorKeys = Object.keys(errors);
-			const toastId = Date.now();
-
-			if(errorKeys.length > 0)
-				dispatch(setToast({ id: toastId, type: 'error', message: copyErrors[errorKeys[0]].message}));
-		}
+		addValidationErrorToast(isSubmitting, errors, dispatch);
 	}, [isSubmitting]);
 
 	return (

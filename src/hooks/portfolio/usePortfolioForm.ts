@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setToast, toasts } from "@/redux/toastSlice";
 import { Section } from "@/types";
-import { usePortfolioPostQuery, checkMultipleErrors } from "@/utils";
+import { usePortfolioPostQuery, checkMultipleErrors, addValidationErrorToast } from "@/utils";
 
 export type FormValues = {
 	title: string;
@@ -85,18 +85,7 @@ export default function usePortfolioForm({portfolio} : Props) {
 	}, []);
 
 	useEffect(() => {
-		if(isSubmitting) {
-			const copyErrors: {[key in string]: any} = {...errors};
-			const errorKeys = Object.keys(errors);
-
-			errorKeys.map((key: string) => {
-				const toastId = Date.now() + key;
-				const isMultiple = checkMultipleErrors(currentErrors, key);
-
-				if(!isMultiple)
-					dispatch(setToast({ id: toastId, type: 'error', message: copyErrors[key].message}));
-			});
-		}
+		addValidationErrorToast(isSubmitting, errors, dispatch);
 	}, [isSubmitting]);
 
 	return { register, handleSubmit: handleSubmit(onSubmit), getValues, setValue };
