@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import { Fragment, MouseEventHandler, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiX as XIcon } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import * as v from "./CommissionModal.constants";
 import * as S from "./CommissionModal.styled";
 
-import { Text, Button, Modal, Profile } from "@/components";
+import { Text, Button, Modal, Profile, Rating } from "@/components";
 import { useStopScrollY } from "@/hooks";
-import { authority, userId as UserId } from "@/redux/loginSlice";
+import { authority } from "@/redux/loginSlice";
 import { setToast } from "@/redux/toastSlice";
 import { usePostCommissionQuery } from "@/utils/api-service/commission";
 
@@ -88,7 +88,8 @@ export default function RequestModal({ commission, handleModal }: Props) {
 
 	return(
 		<Modal $type='form'>
-			<S.Box>
+			<Fragment>
+
 			<S.ButtonBox onClick={handleModal}>
 				<XIcon size={28}/>
 			</S.ButtonBox>
@@ -115,7 +116,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 					<S.Box>
 						<Text type='label'>전문가 정보</Text>
 						<S.Box>
-							<Profile type='default' user={commission.expert}/>
+							<Profile type='user' user={commission.expert}/>
 							<Text type='label'>이름</Text>
 							<Text type='common'>{commission.expert.name}</Text>
 							<Text type='label'>연락처</Text>
@@ -157,23 +158,31 @@ export default function RequestModal({ commission, handleModal }: Props) {
 							<Text type='common'>{updatedCommission.details.cost}</Text>
 						}
 					</S.Box>
+
+					{ commission.review &&
+						<S.Box>
+							<Text type='label'>리뷰</Text>
+							<Rating readonly score={commission.review.rating} />
+							<Text type='common'>{commission.review.content}</Text>
+						</S.Box>
+					}
 				</S.Form>
 			</S.Content>
 
 			<S.ButtonGroup>
-				{ auth === 'expert' && !isEditMode ?
+				{ auth === 'expert' && !isEditMode &&
 					<Button color='black' size='medium' shape='square' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
-					:
-					<Button color='black' size='medium' shape='square' onClick={handleSubmit(onSubmit)}>저장하기</Button>
 				}
-				{ auth === 'client' &&
+				{ auth === 'client' && commission.details.state !== '구매 확정' &&
 					<Button color='black' size='medium' shape='square'>주문 취소</Button>
 				}
-				{ !isEditMode &&
+				{ isEditMode ?
+					<Button color='black' size='medium' shape='square' onClick={handleSubmit(onSubmit)}>저장하기</Button>
+					:
 					<Button color='black' size='medium' shape='square' onClick={handleModal}>닫기</Button>
 				}
 			</S.ButtonGroup>
-			</S.Box>
+			</Fragment>
 		</Modal>
 	)
 }

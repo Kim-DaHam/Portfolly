@@ -1,6 +1,6 @@
 import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Button, ActivityInformation, MyPageNavigator, Profile } from "@/components";
 import { renderDescription } from "@/pages/my-page/MyPage.helpers";
@@ -32,11 +32,13 @@ function MyPage(){
 				<S.ProfileSection>
 						<Profile type='my-page' user={user} />
 
-					{ isMyPage &&
+					{ !isMyPage &&
 						<S.ButtonBox>
-							<Button color='black' size='large' shape='square'>
-								문의하기
-							</Button>
+							<Link to={`/messages/${profileId}`}>
+								<Button color='black' size='large' shape='square'>
+									문의하기
+								</Button>
+							</Link>
 						</S.ButtonBox>
 					}
 				</S.ProfileSection>
@@ -49,11 +51,11 @@ function MyPage(){
 						</S.Description>
 
 						<S.Aside>
-							<ActivityInformation activity={user.activity}/>
+							<ActivityInformation activity={user.activity} auth={user.authority}/>
 						</S.Aside>
 					</S.ContentSection>
 				</S.Content>
-				}
+			}
 		</S.Wrapper>
 	)
 }

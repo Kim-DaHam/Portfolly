@@ -14,3 +14,4 @@ export * from '@/types/portfolio';
 export * from '@/types/user';
 export * from '@/types/slider';
 export * from '@/types/toast';
+export * from '@/types/commission';

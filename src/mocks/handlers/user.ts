@@ -10,14 +10,14 @@ export const userHandlers= [
 	http.get('/users', ({request}) => {
 		const url = new URL(request.url);
 		const userId = url.searchParams.get('id') as string;
-		const loginId = '1';
-		const isMyProfie = userId === loginId;
+		const loginId = '100';
+		const isMyProfile = userId === loginId;
 
 		const user = users.find((user) => {
 			return user.id === Number(userId);
 		});
 
-		if(!isMyProfie) {
+		if(!isMyProfile) {
 			delete user?.name;
 			delete user?.phone;
 			delete user?.likes;
@@ -60,6 +60,7 @@ export const userHandlers= [
 		const reviewList: any[] = [];
 
 		commissions.map((commission: any) => {
+
 			const isMyCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
 
 			if(isMyCommission) {
@@ -87,7 +88,7 @@ export const userHandlers= [
 					reviewList.push(commission.review);
 				}
 
-				if(isMyProfie) {
+				if(isMyProfile) {
 					if(user!.authority === 'client') {
 						const expert = users.find((user) => user.id === commission.expertId);
 						commission.expert = {
@@ -115,13 +116,9 @@ export const userHandlers= [
 					}
 				}
 
-				if(!isMyProfie) {
+				if(!isMyProfile) {
 					delete commission.details;
 				}
-
-				delete commission.portfolioId;
-				delete commission.expertId;
-				delete commission.clientId;
 
 				commissionList.push(commission);
 			}

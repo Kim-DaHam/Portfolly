@@ -2,8 +2,6 @@ import { HttpResponse, http } from 'msw';
 
 import { commissions } from '../data/commissions';
 
-import { FormValues } from '@/components/organisms/modal/commission-modal/CommissionModal';
-
 export const commissionHandlers= [
 	// http.post(`/commissions`, async ({request}) => {
 	// 	const newPortfolio = await request.json() as FormValues;
@@ -45,5 +43,25 @@ export const commissionHandlers= [
 
 		return HttpResponse.json(responseData, { status: 200 });
 	}),
+
+	http.post(`/reviews`, async ({request}) => {
+		const url = new URL(request.url);
+		const commissionId = url.searchParams.get('id') as string;
+		const reviewData = await request.json() as any;
+		const responseData: any = {};
+
+		const commission = commissions.find((commission: any) => {
+			return commission.id === Number(commissionId);
+		});
+
+		Object.assign(responseData, {
+			createdAt: Date.now(),
+			...reviewData,
+		});
+
+		commission!.review = responseData;
+
+		return HttpResponse.json(responseData, { status: 200 });
+	})
 
 ];

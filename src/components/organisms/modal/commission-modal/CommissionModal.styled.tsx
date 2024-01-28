@@ -6,6 +6,9 @@ import * as mixins from '@/styles/mixins';
 export const Content = styled.div`
 	${mixins.flexColumn}
 
+	overflow: hidden;
+	overflow-y: scroll;
+
 	background-color: beige;
 `;
 
@@ -15,12 +18,8 @@ export const Box = styled.div`
 `;
 
 export const Form = styled.form`
-	height: 90%;
 	${mixins.flexColumn}
 	gap: 2rem;
-
-	overflow: hidden;
-	overflow-y: scroll;
 
 	border: 1px solid black;
 `;
@@ -30,6 +29,8 @@ export const ButtonBox = styled.div`
 
 	display: flex;
 	justify-content: right;
+
+	margin-bottom: 0.5rem;
 
 	cursor: pointer;
 `;
@@ -41,8 +42,7 @@ export const ButtonGroup = styled.div`
 	justify-content: center;
 	gap: 1rem;
 
-	position: relative;
-	bottom: 4rem;
+	margin-top: 1rem;
 `;
 
 export const Input = styled.input`

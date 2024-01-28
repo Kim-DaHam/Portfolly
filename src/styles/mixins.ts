@@ -5,6 +5,7 @@ import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 /** Layouts */
 export const fullScreen = css`
 	width: 100%;
+	min-height: 100vh;
 	height: 100%;
 
 	padding-top: ${HEADER_HEIGHT};

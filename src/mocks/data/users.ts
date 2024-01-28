@@ -85,7 +85,7 @@ export const users: User[] = [
 			location: '대구',
 		},
 		activity: {
-			score: 100,
+			commissions: [ 1 ],
 			contactTime: '언제나 가능',
 		},
 		likes: [1, 2, 3, 4, 5],
@@ -103,6 +103,7 @@ export const users: User[] = [
 			location: '대구',
 		},
 		activity: {
+			commissions: [ 2, 3 ],
 			contactTime: '언제나 가능',
 		},
 		likes: [1, 2, 3, 4, 5],
@@ -120,6 +121,7 @@ export const users: User[] = [
 			location: '대구',
 		},
 		activity: {
+			commissions: [ 4 ],
 			contactTime: '언제나 가능',
 		},
 		likes: [1, 2, 3, 4, 5],

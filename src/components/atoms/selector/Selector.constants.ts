@@ -1,27 +1,22 @@
-import { categories } from "@/assets/data/portfolio";
-import { Section } from '@/types';
-
-export type CommissionType = '전체 상품' | 'Android/iOS' | 'Web' | 'Illustration' | 'Graphics'  | 'Video';
-export type CommissionState = '전체 상태' | '진행 중' | '작업물 도착' | '구매 확정' | '작성 가능한 리뷰' | '주문 취소' | '취소/문제해결' | '분쟁 조정 중';
-export type SearchFilter = '닉네임' | '프로젝트명';
-export type MessageState = '전체' | '안 읽음' | '거래 중';
+import { categories, commissionStates, messageStates, searchFilters, sections } from "@/assets/data/fields";
+import { CommissionState, MessageState, SearchFilter, Section } from '@/types';
 
 type SelectorList = {
 	section: Section[];
 	category: {
 		[key in Section] : string[];
 	};
-	commissionType: CommissionType[];
-	commissionState: CommissionState[];
+	commissionType: Array<Section | '전체 상품'>;
+	commissionState: Array<CommissionState | '전체 상태'>;
 	searchFilter: SearchFilter[];
-	messageState: MessageState[];
+	messageState: Array<MessageState | '전체'>;
 };
 
 export const selectorList: SelectorList = {
-	section: ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'],
+	section: [...sections],
 	category: {...categories},
-	commissionType: ['전체 상품', 'Android/iOS', 'Web', 'Illustration', 'Graphics', 'Video'],
-	commissionState: ['전체 상태', '진행 중', '작업물 도착', '구매 확정', '작성 가능한 리뷰', '주문 취소', '취소/문제해결', '분쟁 조정 중'],
-	searchFilter: ['닉네임', '프로젝트명'],
-	messageState: ['전체', '안 읽음', '거래 중'],
+	commissionType: ['전체 상품', ...sections],
+	commissionState: ['전체 상태', ...commissionStates],
+	searchFilter: [...searchFilters],
+	messageState: ['전체', ...messageStates],
 };

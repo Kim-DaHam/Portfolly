@@ -17,7 +17,8 @@ export const Content = styled.main`
 `;
 
 export const TitleSection = styled.section`
-	${mixins.fullScreen}
+	width: 100%;
+	height: fit-content;
 
 	display: flex;
 	gap: 2rem;

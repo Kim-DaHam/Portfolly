@@ -4,7 +4,7 @@ import { Image, Rating, Text } from '@/components';
 import * as S from "@/components/molecules/profile/Profile.styled";
 import { IComponentFactory } from "@/types";
 
-export type Profile = 'default' | 'portfolio' | 'portfolio-item' | 'portfolio-detail' | 'my-page' | 'review' | 'message';
+export type Profile = 'user' | 'portfolio' | 'portfolio-card' | 'portfolio-detail' | 'my-page' | 'message';
 
 type Props = {
 	type: Profile;
@@ -23,7 +23,7 @@ export default function Profile({type, user}: Props) {
 
 const renderProfile = (type: Profile, user: any, navigate: any) => {
 	const ComponentFactory:IComponentFactory = {
-		'default': (
+		'user': (
 			<>
 				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare' />
 				<S.SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
@@ -40,7 +40,7 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
 				</S.SpanBox>
 			</>
 		),
-    'portfolio-item': (
+    'portfolio-card': (
 			<>
 				<Image size='3.5rem' src={user.profileImage} alt='user profile' shape='foursquare' />
 				<S.SpanBox onClick={()=>navigate(`/portfolios/${user.id}`)}>
@@ -60,7 +60,9 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
 				<Image size='150px' src={user.profileImage} alt='user-profile' shape='foursquare' />
 				<S.Box>
 					<Text type='title'>{user.nickname}</Text>
-					<Rating />
+					{ user.authority === 'expert' &&
+						<Rating readonly score={user.activity.score}/>
+					}
 				</S.Box>
 			</>
 		)

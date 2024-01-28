@@ -3,7 +3,7 @@ import styled from "styled-components";
 import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
-	${mixins.fullWidthHeight}
+	height: fit-content;
 
 	padding: 1rem 2rem 1rem 2rem;
 

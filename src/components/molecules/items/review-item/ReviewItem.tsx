@@ -14,7 +14,7 @@ export default function ReviewItem({ review }: Props) {
 
 				<S.Box>
 					<Text type='common'>{review.user.nickname}</Text>
-					<Rating />
+					<Rating readonly/>
 				</S.Box>
 			</S.ProfileBox>
 
