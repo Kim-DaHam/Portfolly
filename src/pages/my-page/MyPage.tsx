@@ -1,6 +1,6 @@
 import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { Button, ActivityInformation, MyPageNavigator, Profile } from "@/components";
 import { renderDescription } from "@/pages/my-page/MyPage.helpers";
@@ -12,6 +12,8 @@ export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 
 
 function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('introduce');
+
+	const navigate = useNavigate();
 
 	const params = useParams();
 	const profileId = params.id as string;
@@ -35,7 +37,11 @@ function MyPage(){
 					{ !isMyPage &&
 						<S.ButtonBox>
 							<Link to={`/messages/${profileId}`}>
-								<Button color='black' size='large' shape='square'>
+								<Button
+									color='black'
+									size='large'
+									onClick={() => navigate(`/messages?partner_id=${user.id}&related_portfolio_id=&page=${1}&type=`)}
+								>
 									문의하기
 								</Button>
 							</Link>
