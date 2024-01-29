@@ -2,8 +2,8 @@ import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
 
-export const Wrapper = styled.div`
-	width: 100%;
+export const Wrapper = styled.div<{$size: string}>`
+	width: ${(props) => props.$size};
 
 	${mixins.flexColumn}
 

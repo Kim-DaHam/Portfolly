@@ -9,6 +9,7 @@ export const ROUTE_PATH = {
 	MY_PAGE_TAB: '/profile/:id/:tab',
 	PORTFOLIO_DETAIL: '/portfolios/:portfolio_id',
 	PORTFOLIO_EDIT: '/portfolios/edit',
+	MESSAGE: '/messages/:id',
 };
 
 export const sectionUrlParameterMap: ISectionFactory = {

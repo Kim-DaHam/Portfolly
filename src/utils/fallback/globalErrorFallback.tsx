@@ -2,8 +2,7 @@ import type { FallbackProps } from 'react-error-boundary';
 
 import Error from '@/pages/error/Error';
 
-
-function GlobalErrorFallback({error, resetErrorBoundary}: FallbackProps) {
+export default function GlobalErrorFallback({error, resetErrorBoundary}: FallbackProps) {
 	const status = error.response?.status;
 
 	if(status) { // 네트워크 에러
@@ -22,5 +21,3 @@ function GlobalErrorFallback({error, resetErrorBoundary}: FallbackProps) {
 		<Error reset={resetErrorBoundary}/>
 	)
 }
-
-export default GlobalErrorFallback;

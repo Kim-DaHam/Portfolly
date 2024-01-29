@@ -16,9 +16,10 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 	section?: Section;
 	placeholder: string;
 	setValue: UseFormSetValue<any>;
-}
+	size?: string;
+};
 
-function Selector({type, placeholder, section='Android/iOS', setValue }: Props) {
+function Selector({type, placeholder, section='Android/iOS', setValue, size='100%' }: Props) {
 	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
 
 	useEffect(() => {
@@ -26,7 +27,7 @@ function Selector({type, placeholder, section='Android/iOS', setValue }: Props) 
 	}, [selectedValue])
 
 	return(
-		<S.Wrapper>
+		<S.Wrapper $size={size}>
 			<S.SelectorBox onClick={handleSelector}>
 				<Text type='common'>{selectedValue}</Text>
 				{isSelectorOpen ? <UpIcon /> : <DownIcon />}

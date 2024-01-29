@@ -11,16 +11,18 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import GlobalErrorFallback from './utils/fallback/gloabalErrorFallback';
+
 
 import { Footer, Header, ToastContainer } from '@/components';
 import IntroPage from '@/pages/intro/IntroPage';
 import MainPage from '@/pages/main/MainPage';
+import MessagePage from '@/pages/message/MessagePage';
 import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetailPage from '@/pages/portfolio-detail/PortfolioDetailPage';
 import PortfolioEditPage from '@/pages/portfolio-edit/PortfolioEditPage';
 import SignIn from '@/pages/signIn/SignIn';
 import { store } from '@/redux/store';
+import { GlobalErrorFallback } from '@/utils';
 import { ROUTE_PATH } from '@/utils/path';
 
 export default function App() {
@@ -32,13 +34,14 @@ export default function App() {
 						<BrowserRouter>
 							<Header />
 							<Routes>
-								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>}></Route>
-								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>}></Route>
-								<Route path={ROUTE_PATH.SIGN_IN} element={<SignIn/>}></Route>
-								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>}></Route>
-								<Route path={ROUTE_PATH.MY_PAGE_TAB} element={<MyPage/>}></Route>
-								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>}></Route>
-								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>}></Route>
+								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>} />
+								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>} />
+								<Route path={ROUTE_PATH.SIGN_IN} element={<SignIn/>} />
+								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>} />
+								<Route path={ROUTE_PATH.MY_PAGE_TAB} element={<MyPage/>} />
+								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>} />
+								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>} />
+								<Route path={ROUTE_PATH.MESSAGE} element={<MessagePage/>} />
 							</Routes>
 							<Footer />
 						</BrowserRouter>
