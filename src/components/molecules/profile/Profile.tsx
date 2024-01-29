@@ -65,7 +65,13 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
 					}
 				</S.Box>
 			</>
-		)
+		),
+		'message': (
+			<S.MessageProfileWrapper>
+				<Image size='150px' src={user.profileImage} alt='user-profile' shape='circle' />
+				<Text type='title'>{user.nickname}</Text>
+			</S.MessageProfileWrapper>
+		),
   }
 
   return ComponentFactory[type];

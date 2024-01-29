@@ -39,3 +39,12 @@ export const Box = styled.div`
 	gap: 1rem;
 	padding-top: 1rem;
 `;
+
+export const MessageProfileWrapper = styled.div`
+	width: 100%;
+	height: fit-content;
+
+	${mixins.flexCenter}
+	${mixins.flexColumn}
+	gap: 1rem;
+`;
