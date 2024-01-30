@@ -68,8 +68,8 @@ const renderProfile = (type: Profile, user: any, navigate: any) => {
 		),
 		'message': (
 			<S.MessageProfileWrapper>
-				<Image size='150px' src={user.profileImage} alt='user-profile' shape='circle' />
-				<Text type='title'>{user.nickname}</Text>
+				<Image size='3.5rem' src={user.profileImage} alt='user-profile' shape='circle' />
+				<Text type='titleSmall'>{user.nickname}</Text>
 			</S.MessageProfileWrapper>
 		),
   }

@@ -6,7 +6,7 @@ export const messageRooms = [
 		id: 1,
 		expertId: 1,
 		clientId: 100,
-		portfolioId: null,
+		portfolioId: 1,
 		commissionStatus: null,
 		lastMessage: '마지막 메세지입니다dddddddd',
 		timestamp: Date.now(),

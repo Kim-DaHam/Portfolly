@@ -9,8 +9,8 @@ const messageKeys = {
   detail: (id: string) => ['message', id] as const,
 }
 
-export const useMessageRoomQuery = (partnerId: string) => {
-	const getMessages = () => fetch(`/messageRooms?partner_id=${partnerId}&page=${1}`, 'GET');
+export const useMessageRoomQuery = (partnerId: string | null) => {
+	const getMessages = () => fetch(`/messageRooms?partner_id=${partnerId ? partnerId : ''}&page=${1}`, 'GET');
 
 	return useQuery({
 		queryKey: partnerId !== null ? messageKeys.detail(partnerId) : messageKeys.all,

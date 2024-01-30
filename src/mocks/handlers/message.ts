@@ -17,7 +17,7 @@ export const messageHandlers= [
 		const PARTNER_ID = (AUTHORITY === 'expert') ? 'clientId' : 'expertId';
 
 		const messageRoomList: any[] = [];
-		const message: any[] = [];
+		const message: any = {};
 
 		messageRooms.map((room: any) => {
 			const isMyMessageRoom = room.clientId === LOGIN_ID || room.expertId === LOGIN_ID;
@@ -39,21 +39,24 @@ export const messageHandlers= [
 					}
 				});
 
-				// 특정 파트너와의 대화 데이터를 가져온다.
-				if(Number(partnerId) === partner?.id) {
-					room.partner = {
-						nickname: partner?.nickname,
-						profileImage: partner?.profileImage,
-						...partner?.activity,
-					};
-
-					room.portfolio = portfolios.find((portfolio) => portfolio.id === room.portfolioId);
-
-
+				if(Object.keys(message).length === 0 || Number(partnerId) === partner?.id) {
 					const recentMessages = room.messages.filter((index: number) => index < 50);
 
-					message.push({
+					const portfolio = portfolios.find((portfolio) => portfolio.id === room.portfolioId);
+
+					Object.assign(message, {
 						...room,
+						partner: {
+							id: partner.id,
+							nickname: partner?.nickname,
+							profileImage: partner?.profileImage,
+							...partner?.activity,
+						},
+						portfolio: {
+							title: portfolio?.title,
+							summary: portfolio?.summary,
+							thumbnailUrl: portfolio?.images[0],
+						},
 						messages: recentMessages,
 					});
 				}

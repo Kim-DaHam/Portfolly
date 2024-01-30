@@ -65,7 +65,6 @@ export const ProfileBox = styled.div`
 	height: inherit;
 
 	${mixins.flexColumn}
-	justify-content: center;
 	flex: none;
 	gap: 1rem;
 
@@ -125,4 +124,9 @@ export const FlexColumnBox = styled.div`
 	justify-content: center;
 	flex: none;
 	gap: 0.5rem;
+`;
+
+export const NotificationBox = styled.div`
+	${mixins.fullWidthHeight}
+	${mixins.flexCenter}
 `;

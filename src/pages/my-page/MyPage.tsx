@@ -33,18 +33,6 @@ function MyPage(){
 			<S.Content>
 				<S.ProfileSection>
 						<Profile type='my-page' user={user} />
-
-					{ !isMyPage &&
-						<S.ButtonBox>
-							<Button
-								color='black'
-								size='large'
-								onClick={() => navigate(`/messages?partner_id=${user.id}&page=${1}`)}
-							>
-								문의하기
-							</Button>
-						</S.ButtonBox>
-					}
 				</S.ProfileSection>
 
 				<MyPageNavigator auth={user.authority} isMyPage={isMyPage}/>
