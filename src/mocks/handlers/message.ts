@@ -66,7 +66,7 @@ export const messageHandlers= [
 		const responseData = {
 			messageRooms: messageRoomList,
 			...message,
-		}
+		};
 
 		return HttpResponse.json(responseData, { status: 200 });
 	}),

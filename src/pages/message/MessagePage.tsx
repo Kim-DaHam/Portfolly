@@ -34,12 +34,12 @@ export default function MessagePage() {
 		if(message && !partnerId) {
 			navigate(`/messages?partner_id=${message.partner.id}`);
 		}
-	}, [message]);
 
-	useEffect(() => {
-		const messageBox = document.querySelector('#message-box') as HTMLElement;
-		messageBox.scrollTop = messageBox.scrollHeight;
-	}, []);
+		if(message && message.messages.length > 0) {
+			const messageBox = document.querySelector('#message-box') as HTMLElement;
+			messageBox.scrollTop = messageBox.scrollHeight;
+		}
+	}, [message]);
 
 	return(
 		<S.Wrapper>
@@ -61,7 +61,7 @@ export default function MessagePage() {
 								{ message.messages.length > 0 ?
 									<>
 									{ message.messages.map((item: any) => {
-										return <Message message={item} key={message.id} partnerProfileImage={message.partner.profileImage}/>
+										return <Message message={item} key={item.id} partnerProfileImage={message.partner.profileImage}/>
 									})}
 									</>
 									:

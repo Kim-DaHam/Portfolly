@@ -42,6 +42,7 @@ export const TitleBox = styled.div`
 
 export const MessageBox = styled.div`
 	width: 100%;
+	height: 100%;
 
 	${mixins.flexColumn}
 	gap: 1rem;
@@ -76,7 +77,7 @@ export const ActivityBox = styled.div`
 `;
 
 export const InputBox = styled.div`
-	height: 7.5rem;
+	height: fit-content;
 	${mixins.flexColumn}
 	gap: 0.5rem;
 
@@ -104,7 +105,9 @@ export const LabelButton = styled.button`
 `;
 
 export const Box = styled.div`
+	height: 100%;
 	${mixins.flexRow}
+	flex-basis: 1;
 	justify-content: space-between;
 	overflow: hidden;
 `;
