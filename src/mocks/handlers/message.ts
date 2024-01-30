@@ -40,7 +40,7 @@ export const messageHandlers= [
 				});
 
 				if(Object.keys(message).length === 0 || Number(partnerId) === partner?.id) {
-					const recentMessages = room.messages.filter((index: number) => index < 50);
+					const recentMessages = room.messages.filter((_: any ,index: number) => index < 50);
 
 					const portfolio = portfolios.find((portfolio) => portfolio.id === room.portfolioId);
 

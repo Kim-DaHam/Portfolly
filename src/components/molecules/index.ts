@@ -3,6 +3,7 @@ import CommissionItem from "@/components/molecules/items/commission-item/Commiss
 import MessageRoomItem from "@/components/molecules/items/messageRoom-item/MessageRoomItem";
 import PortfolioItem from "@/components/molecules/items/portfolio-item/PortfolioItem";
 import ReviewItem from "@/components/molecules/items/review-item/ReviewItem";
+import Message from "@/components/molecules/message/Message";
 import Modal from "@/components/molecules/modal/Modal";
 import MyPageNavigator from "@/components/molecules/navigator/mypage-navigator/MypageNavigator";
 import SectionNavigator from "@/components/molecules/navigator/section-navigator/SectionNavigator";
@@ -32,4 +33,5 @@ export {
 	CommissionItem,
 	MessageRoomItem,
 	ReviewForm,
+	Message,
 };

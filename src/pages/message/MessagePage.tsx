@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiPencil as PencilIcon } from "react-icons/bi";
 "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
-import { Button, MessageRoomList, Profile, Selector, Text } from '@/components';
+import { Button, Message, MessageRoomList, Profile, Selector, Text } from '@/components';
 import * as S from '@/pages/message/MessagePage.styled';
 import { useMessageRoomQuery } from "@/utils";
 
@@ -36,6 +36,11 @@ export default function MessagePage() {
 		}
 	}, [message]);
 
+	useEffect(() => {
+		const messageBox = document.querySelector('#message-box') as HTMLElement;
+		messageBox.scrollTop = messageBox.scrollHeight;
+	}, []);
+
 	return(
 		<S.Wrapper>
 			<S.Content>
@@ -52,15 +57,17 @@ export default function MessagePage() {
 						</S.TitleBox>
 
 						<S.Box>
-							<S.ChatBox>
-								{ message ?
+							<S.MessageBox id='message-box'>
+								{ message.messages.length > 0 ?
 									<>
-										아직 메세지가 없어요.
+									{ message.messages.map((item: any) => {
+										return <Message message={item} key={message.id} partnerProfileImage={message.partner.profileImage}/>
+									})}
 									</>
 									:
-									<></>
+									<> 아직 메세지가 없어요.</>
 								}
-							</S.ChatBox>
+							</S.MessageBox>
 
 							<S.ProfileBox>
 								<Profile type='message' user={message.partner} />

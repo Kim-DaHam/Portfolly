@@ -20,8 +20,8 @@ export const Content = styled.main`
 
 export const MessageSection = styled.section`
 	width: 100%;
-	${mixins.flexColumn}
 
+	${mixins.flexColumn}
 	flex-basis: 1;
 `;
 
@@ -40,23 +40,14 @@ export const TitleBox = styled.div`
 	background-color: white;
 `;
 
-export const FlexRow = styled.div`
-	width: fit-content;
-
-	${mixins.flexRow}
-	align-items: center;
-	gap: 0.3rem;
-`;
-
-export const ChatBox = styled.div`
+export const MessageBox = styled.div`
 	width: 100%;
-	height: 100%;
 
-	${mixins.flexCenter}
-	flex-basis: 1;
+	${mixins.flexColumn}
+	gap: 1rem;
 
+	padding: 1rem;
 	overflow-y: scroll;
-
 	background-color: pink;
 `;
 
@@ -113,10 +104,9 @@ export const LabelButton = styled.button`
 `;
 
 export const Box = styled.div`
-	height: 100%;
-
 	${mixins.flexRow}
 	justify-content: space-between;
+	overflow: hidden;
 `;
 
 export const FlexColumnBox = styled.div`
