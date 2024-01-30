@@ -2,17 +2,17 @@ import { css } from "styled-components";
 
 /** Types */
 const alert = css`
-	width: 22%;
+	width: 22rem;
 	height: fit-content;
 `;
 
 const search = css`
-  width: 50%;
+  width: 50rem;
 	height: 80%;
 `;
 
 const form = css`
-  width: 50%;
+  width: 50rem;
 	height: 90%;
 `;
 

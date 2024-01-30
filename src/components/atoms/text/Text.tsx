@@ -20,4 +20,5 @@ const TextStyles = styled.span<Props>`
 	${mixins.alignCenter}
 	${props => props.type ? types[props.type] : ''}
 	${props => props.color ? colors[props.color] : colors['black']}
+	word-break: keep-all;
 `;

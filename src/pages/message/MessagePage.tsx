@@ -5,7 +5,7 @@ import { BiPencil as PencilIcon } from "react-icons/bi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Message, MessageRoomList, Profile, Selector, Text } from '@/components';
+import { AlertModal, Button, Message, MessageRoomList, Profile, Selector, Text } from '@/components';
 import * as S from '@/pages/message/MessagePage.styled';
 import { useMessageRoomQuery } from "@/utils";
 
@@ -20,6 +20,8 @@ const defaultValues: FormValues = {
 };
 
 export default function MessagePage() {
+	const [isExitModalOpen, setIsExitModalOpen] = useState(false);
+
 	const urlParams = new URL(window.location.href).searchParams;
 	const partnerId = urlParams.get('partner_id');
 
@@ -29,6 +31,10 @@ export default function MessagePage() {
 		// 	mode: 'onSubmit',
 		// 	defaultValues: defaultValues,
 		// });
+
+	const exitMessageRoom = () => {
+
+	};
 
 	useEffect(() => {
 		if(message && !partnerId) {
@@ -53,7 +59,7 @@ export default function MessagePage() {
 						<>
 						<S.TitleBox>
 							<Text type='common'>{message.partner.nickname}</Text>
-							<ExitIcon size={24} />
+							<ExitIcon size={24} onClick={() => setIsExitModalOpen(prev=>!prev)}/>
 						</S.TitleBox>
 
 						<S.Box>
@@ -102,6 +108,14 @@ export default function MessagePage() {
 					</S.InputBox>
 				</S.MessageSection>
 			</S.Content>
+
+			{ isExitModalOpen &&
+				<AlertModal
+					type='messageRoom'
+					onClick={exitMessageRoom}
+					handleModal={() => setIsExitModalOpen(prev=>!prev)}
+				/>
+			}
 		</S.Wrapper>
 	)
 }
