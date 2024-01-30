@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Image, Text } from '@/components';
 import * as S from '@/components/molecules/message/Message.styled';
 import { userId } from '@/redux/loginSlice';
+import { toLocalDateString } from '@/utils';
 
 type Props = {
 	message: any;
@@ -28,7 +29,7 @@ export default function Message({ message, partnerProfileImage }: Props) {
 					<S.Content $isOwned={isOwned}>
 						{message.message}
 					</S.Content>
-					<Text type='label' color='lightgray'>{message.createdAt}</Text>
+					<Text type='label' color='lightgray'>{toLocalDateString(new Date(message.createdAt))}</Text>
 				</>
 			}
 		</S.Wrapper>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Image, Text } from '@/components';
 import * as S from '@/components/molecules/items/messageRoom-item/MessageRoomItem.styled';
-import { toLocalDataString } from '@/utils';
+import { toLocalDateString } from '@/utils';
 
 
 type Props = {
@@ -29,7 +29,7 @@ export default function MessageRoomItem({ message }: Props) {
 			<S.Box>
 				<S.LabelBox>
 					<Text type='label'>{message.partner.nickname}</Text>
-					<Text type='label' color='gray'>{toLocalDataString(new Date(message.timestamp))}</Text>
+					<Text type='label' color='gray'>{toLocalDateString(new Date(message.timestamp))}</Text>
 				</S.LabelBox>
 
 				<S.MessageBox>

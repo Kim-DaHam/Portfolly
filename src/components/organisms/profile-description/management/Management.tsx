@@ -7,7 +7,6 @@ import { isIncludedKeyword } from "./Management.helpers";
 import { Text, Selector , Button, CommissionModal, Tracking, CommissionItem } from "@/components";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
 import { useModal } from "@/hooks";
-import { toLocalDataString } from "@/utils";
 
 type Props = {
 	commissions: any;

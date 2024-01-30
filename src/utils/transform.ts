@@ -6,7 +6,7 @@ const leftPad = (value: number) => {
 	return `0${value}`;
 };
 
-export const toLocalDataString = (date: Date) => {
+export const toLocalDateString = (date: Date) => {
 	const year = date.getFullYear();
 	const month = leftPad(date.getMonth() + 1);
 	const day = leftPad(date.getDate());
