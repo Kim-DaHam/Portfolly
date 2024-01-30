@@ -40,42 +40,6 @@ export const TitleBox = styled.div`
 	background-color: white;
 `;
 
-export const MessageBox = styled.div`
-	width: 100%;
-	height: 100%;
-
-	${mixins.flexColumn}
-	gap: 1rem;
-
-	padding: 1rem;
-	overflow-y: scroll;
-	background-color: pink;
-`;
-
-export const ProfileBox = styled.div`
-	width: 18rem;
-	height: inherit;
-
-	${mixins.flexColumn}
-	flex: none;
-	gap: 1rem;
-
-	padding: 1rem;
-
-	background-color: white;
-`;
-
-export const ActivityBox = styled.div`
-	width: 100%;
-
-	${mixins.flexColumn}
-	gap: 0.5rem;
-
-	padding: 1rem;
-
-	background-color: lightgray;
-`;
-
 export const InputBox = styled.div`
 	height: fit-content;
 	${mixins.flexColumn}
@@ -94,14 +58,23 @@ export const TextArea = styled.textarea`
 	resize: none;
 `;
 
-export const LabelButton = styled.button`
-	width: fit-content;
-	height: fit-content;
+export const FileInput = styled.div`
 	${mixins.flexRow}
+	gap: 0.5rem;
+`;
+
+export const Input = styled.input`
+	display: none;
+`;
+
+export const Label = styled.label`
+	height: fit-content;
+
+	${mixins.flexRow}
+	align-items: center;
 
 	cursor: pointer;
-	background-color: transparent;
-	font-size: medium;
+	color: gray;
 `;
 
 export const Box = styled.div`

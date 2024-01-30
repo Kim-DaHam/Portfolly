@@ -1,20 +1,22 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { BiPencil as PencilIcon } from "react-icons/bi";
+import { FiPaperclip as ClipIcon } from "react-icons/fi";
 "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
-import { AlertModal, Button, Message, MessageRoomList, Profile, Selector, Text } from '@/components';
+import { AlertModal, Button, Message, MessageRoom, MessageRoomList, Profile, Text } from '@/components';
 import * as S from '@/pages/message/MessagePage.styled';
 import { useMessageRoomDeleteMutation, useMessageRoomQuery } from "@/utils";
 
 export type FormValues = {
+	file: any;
 	message: string;
 	memo: string;
 };
 
 const defaultValues: FormValues = {
+	file: null,
 	message: '',
 	memo: '',
 };
@@ -28,14 +30,23 @@ export default function MessagePage() {
 	const navigate = useNavigate();
 	const { data: message } = useMessageRoomQuery(partnerId);
 	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(partnerId);
-	// const { register, handleSubmit, setValue } = useForm<FormValues>({
-		// 	mode: 'onSubmit',
-		// 	defaultValues: defaultValues,
-		// });
+
+	const { register, handleSubmit, setValue } = useForm<FormValues>({
+			mode: 'onSubmit',
+			defaultValues: defaultValues,
+	});
+
+	const uploadFile = () => {
+
+	};
 
 	const exitMessageRoom = () => {
 		deleteMessageRoomMutation.mutate();
 		setIsExitModalOpen(prev=>!prev);
+	};
+
+	const onSubmit = () => {
+
 	};
 
 	useEffect(() => {
@@ -57,44 +68,15 @@ export default function MessagePage() {
 				}
 
 				<S.MessageSection>
-					{ message && message.messageRooms.length > 0 ?
-						<>
-						<S.TitleBox>
+					<S.TitleBox>
+						{ message &&
 							<Text type='common'>{message.partner.nickname}</Text>
-							<ExitIcon size={24} onClick={() => setIsExitModalOpen(prev=>!prev)}/>
-						</S.TitleBox>
+						}
+						<ExitIcon size={24} onClick={() => setIsExitModalOpen(prev=>!prev)}/>
+					</S.TitleBox>
 
-						<S.Box>
-							<S.MessageBox id='message-box'>
-								{ message.messages.length > 0 ?
-									<>
-									{ message.messages.map((item: any) => {
-										return <Message message={item} key={item.id} partnerProfileImage={message.partner.profileImage}/>
-									})}
-									</>
-									:
-									<> 아직 메세지가 없어요.</>
-								}
-							</S.MessageBox>
-
-							<S.ProfileBox>
-								<Profile type='message' user={message.partner} />
-								<S.ActivityBox>
-									<S.Box>
-										<Text type='label'>만족도</Text>
-										<Text type='label'>{message.partner.score}</Text>
-									</S.Box>
-									<S.Box>
-										<Text type='label'>연락 가능 시간</Text>
-										<Text type='label'>{message.partner.contactTime}</Text>
-									</S.Box>
-								</S.ActivityBox>
-
-								<Text type='label'>전문가 서비스</Text>
-								<Profile type='portfolio' user={message.portfolio} />
-							</S.ProfileBox>
-						</S.Box>
-						</>
+					{ message && message.messageRooms.length > 0 ?
+						<MessageRoom message={message}/>
 						:
 						<S.NotificationBox>
 							여러분의 전문가와 대화를 시작하세요!
@@ -102,10 +84,23 @@ export default function MessagePage() {
 					}
 
 					<S.InputBox>
-						<S.TextArea />
+						<S.TextArea
+							{...register('message', {
+								required: '메시지를 입력하세요',
+							})}
+						/>
 						<S.Box>
-							<S.LabelButton>파일 첨부</S.LabelButton>
-							<Button color='gray'>전송</Button>
+							<S.FileInput>
+								<S.Input type='file' id='file-input' {...register('file')} />
+								<S.Label htmlFor='file-input' onClick={uploadFile}>
+									<ClipIcon size={17} color='gray'/>
+									파일 첨부
+								</S.Label>
+							</S.FileInput>
+
+							<Button color='gray' onClick={handleSubmit(onSubmit)}>
+								전송
+							</Button>
 						</S.Box>
 					</S.InputBox>
 				</S.MessageSection>
