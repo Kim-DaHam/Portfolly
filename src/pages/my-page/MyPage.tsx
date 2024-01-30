@@ -36,15 +36,13 @@ function MyPage(){
 
 					{ !isMyPage &&
 						<S.ButtonBox>
-							<Link to={`/messages/${profileId}`}>
-								<Button
-									color='black'
-									size='large'
-									onClick={() => navigate(`/messages?partner_id=${user.id}&related_portfolio_id=&page=${1}&type=`)}
-								>
-									문의하기
-								</Button>
-							</Link>
+							<Button
+								color='black'
+								size='large'
+								onClick={() => navigate(`/messages?partner_id=${user.id}&page=${1}`)}
+							>
+								문의하기
+							</Button>
 						</S.ButtonBox>
 					}
 				</S.ProfileSection>
