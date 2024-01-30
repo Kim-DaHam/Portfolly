@@ -5,7 +5,7 @@ import { Button, CommissionModal, ReviewForm, ReviewItem, Text } from '@/compone
 import * as S from '@/components/molecules/items/commission-item/CommissionItem.styled';
 import { useModal } from '@/hooks';
 import { authority } from '@/redux/loginSlice';
-import { eventStopPropagation, toLocalDataString } from '@/utils';
+import { eventStopPropagation, toLocalDateString } from '@/utils';
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	commission: any;
@@ -31,7 +31,7 @@ export default function CommissionItem({ commission, index }: Props) {
 				<S.Box>
 					<Text type='common'>{commission.details.title}</Text>
 					<Text type='small'>{commission.client.nickname}</Text>
-					<Text type='small'>{toLocalDataString(new Date(commission.createdAt))}</Text>
+					<Text type='small'>{toLocalDateString(new Date(commission.createdAt))}</Text>
 				</S.Box>
 				{ auth === 'expert' &&
 					<Button color='gray' onClick={handleReviewButton}>

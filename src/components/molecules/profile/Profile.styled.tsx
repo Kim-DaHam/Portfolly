@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Profile } from "./Profile";
 
@@ -6,12 +6,12 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: 100%;
+	height: fit-content;
 
 	display: flex;
-	align-items: ${(props) => props.$type === 'portfolio-detail' ? 'center' : ''};
+	justify-content: ${(props) => props.$type === 'message' && 'center'};
+	align-items: ${(props) => props.$type === 'portfolio-detail' && 'center'};
 	gap: 0.5rem;
-	flex-grow: 1;
 	flex-shrink: 1;
 
 	overflow: hidden;
@@ -41,7 +41,6 @@ export const Box = styled.div`
 `;
 
 export const MessageProfileWrapper = styled.div`
-	width: 100%;
 	height: fit-content;
 
 	${mixins.flexCenter}

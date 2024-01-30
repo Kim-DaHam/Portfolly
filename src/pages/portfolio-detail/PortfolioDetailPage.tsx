@@ -60,8 +60,14 @@ export default function PortfolioDetail(){
 
 						<S.Aside>
 							<S.ProfileBox>
-								<Profile type='portfolio-detail' user={portfolio.user}/>
-								<Button color='white' size='medium' shape='square'>문의하기</Button>
+								<Profile type='portfolio-detail' user={portfolio.user} />
+								<Button
+									color='white'
+									size='medium'
+									onClick={() => navigate(`/messages?partner_id=${portfolio.user.id}&related_portfolio_id=${portfolio.id}&page=${1}&type=`)}
+								>
+									문의하기
+								</Button>
 							</S.ProfileBox>
 
 							<S.PortfolioInfoBox>

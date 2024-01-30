@@ -7,6 +7,7 @@ import * as S from "./Selector.styled";
 
 import { Text } from "@/components";
 import useSelector from "@/hooks/component/useSelector";
+import { SetState } from "@/types";
 import { Section } from "@/types/portfolio";
 
 export type TSelector = 'section' | 'category' | 'commissionType' | 'commissionState' | 'searchFilter' | 'messageState';
@@ -15,15 +16,21 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 	type: TSelector;
 	section?: Section;
 	placeholder: string;
-	setValue: UseFormSetValue<any>;
+	setValue?: UseFormSetValue<any>;
+	setSelectorValue?: SetState<any>;
 	size?: string;
 };
 
-function Selector({type, placeholder, section='Android/iOS', setValue, size='100%' }: Props) {
+function Selector({type, placeholder, section='Android/iOS', setValue, setSelectorValue, size='100%' }: Props) {
 	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
 
 	useEffect(() => {
-		setValue(type, selectedValue, { shouldDirty: true });
+		if(setValue) {
+			setValue(type, selectedValue, { shouldDirty: true });
+		}
+		if(setSelectorValue) {
+			setSelectorValue(selectedValue);
+		}
 	}, [selectedValue])
 
 	return(

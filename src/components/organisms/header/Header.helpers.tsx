@@ -1,4 +1,4 @@
-import { FiBookmark as BookmarkIcon, FiUser as UserIcon } from "react-icons/fi";
+import { FiBookmark as BookmarkIcon, FiUser as UserIcon, FiMessageSquare as MessageIcon } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import { Text } from '@/components';
@@ -29,7 +29,7 @@ export const renderHeaderMenuPopper = (isLogin: boolean, userId: number, popOut:
 				</S.Group>
 				<S.Separator/>
 				<S.Group>
-					<Link to={`/profile/${userId}?tab=bookmark`}>
+					<Link to={`/profile/${userId}?tab=bookmarks`}>
 						<S.Item onClick={popOut}>
 							<BookmarkIcon size={20}/>
 							<Text type='common'>북마크</Text>
@@ -40,6 +40,13 @@ export const renderHeaderMenuPopper = (isLogin: boolean, userId: number, popOut:
 						<S.Item onClick={popOut}>
 							<UserIcon size={20}/>
 							<Text type='common'>내 정보</Text>
+						</S.Item>
+					</Link>
+
+					<Link to={`/messages`}>
+						<S.Item onClick={popOut}>
+							<MessageIcon size={20}/>
+							<Text type='common'>메시지</Text>
 						</S.Item>
 					</Link>
 				</S.Group>
