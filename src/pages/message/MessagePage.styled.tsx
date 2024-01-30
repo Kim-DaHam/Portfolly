@@ -18,41 +18,11 @@ export const Content = styled.main`
 	background-color: green;
 `;
 
-export const MessageSection = styled.aside`
-	width: 19rem;
-
-	${mixins.flexColumn}
-	flex: none;
-`;
-
-export const ChatSection = styled.section`
+export const MessageSection = styled.section`
 	width: 100%;
 	${mixins.flexColumn}
 
 	flex-basis: 1;
-`;
-
-export const SearchBox = styled.div`
-	height: 4.5rem;
-	${mixins.flexRow}
-	flex: none;
-	align-items: center;
-
-	padding: 0 0.7rem 0 0.7rem;
-
-	border-right: 1px solid gray;
-	border-bottom: 1px solid gray;
-	background-color: white;
-`;
-
-export const MessageBox = styled.div`
-	height: 100%;
-
-	${mixins.flexColumn}
-
-	overflow-y: scroll;
-
-	background-color: gray;
 `;
 
 export const TitleBox = styled.div`
@@ -155,8 +125,4 @@ export const FlexColumnBox = styled.div`
 	justify-content: center;
 	flex: none;
 	gap: 0.5rem;
-`;
-
-export const CenterBox = styled.div`
-	${mixins.flexCenter}
 `;

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiPencil as PencilIcon } from "react-icons/bi";
-import { FiStar as StarIcon } from
 "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 
-import { Button, MessageRoomItem, Profile, Selector, Text } from '@/components';
+import { Button, MessageRoomList, Profile, Selector, Text } from '@/components';
 import * as S from '@/pages/message/MessagePage.styled';
 import { useMessageRoomQuery } from "@/utils";
 
@@ -20,78 +19,27 @@ const defaultValues: FormValues = {
 };
 
 export default function MessagePage() {
-	const [messageFilter, setMessageFilter] = useState('전체');
-	const [filteredMessageRooms, setFilteredMessageRooms] = useState<any[]>([]);
-
 	const urlParams = new URL(window.location.href).searchParams;
 	const partnerId = urlParams.get('partner_id') || '';
 
-	const { data: messageRoom } = useMessageRoomQuery(partnerId);
+	const { data: message } = useMessageRoomQuery(partnerId);
 
 	// const { register, handleSubmit, setValue } = useForm<FormValues>({
 	// 	mode: 'onSubmit',
 	// 	defaultValues: defaultValues,
 	// });
 
-	const filterMessageRooms = () => {
-		if(messageFilter === '전체') {
-			return setFilteredMessageRooms(messageRoom?.messageRooms);
-		}
-
-		if(messageFilter === '안 읽음') {
-			const filteredRooms = messageRoom.messageRooms.filter((room: any) => {
-				return room.isRead === false;
-			})
-
-			return setFilteredMessageRooms(filteredRooms);
-		}
-
-		if(messageFilter === '거래 중') {
-			const filteredRooms = messageRoom?.messageRooms.filter((message: any) => {
-				return message.commissionStatus !== '구매 확정' && message.commissionStatus !== null;
-			})
-
-			return setFilteredMessageRooms(filteredRooms);
-		}
-	};
-
-	useEffect(() => {
-		if(!messageRoom) {
-			return;
-		}
-		filterMessageRooms();
-	}, [messageRoom, messageFilter]);
-
 	return(
 		<S.Wrapper>
 			<S.Content>
+					{ message &&
+						<MessageRoomList messageRooms={message.messageRooms}/>
+					}
+
 				<S.MessageSection>
-					<S.SearchBox>
-						<Selector type='messageState' placeholder='전체' setSelectorValue={setMessageFilter} size='7rem' />
-					</S.SearchBox>
-
-					<S.MessageBox>
-						{ filteredMessageRooms.length > 0 ?
-							<>
-								{ filteredMessageRooms.map((room: any) => {
-										return <MessageRoomItem message={room} key={room.id}/>
-								})}
-							</>
-							:
-							<S.CenterBox>
-								메세지 0건
-							</S.CenterBox>
-						}
-					</S.MessageBox>
-				</S.MessageSection>
-
-				<S.ChatSection>
 					<S.TitleBox>
 						<S.FlexColumnBox>
-							<S.FlexRow>
 								<Text type='common'>Username</Text>
-								<StarIcon size={17} />
-							</S.FlexRow>
 
 							<S.FlexRow>
 								<Text type='label'>메모 없음</Text>
@@ -104,7 +52,7 @@ export default function MessagePage() {
 
 					<S.Box>
 						<S.ChatBox>
-							{ messageRoom ?
+							{ message ?
 								<>
 									아직 메세지가 없어요.
 								</>
@@ -137,7 +85,7 @@ export default function MessagePage() {
 							<Button color='gray'>전송</Button>
 						</S.Box>
 					</S.InputBox>
-				</S.ChatSection>
+				</S.MessageSection>
 			</S.Content>
 		</S.Wrapper>
 	)
