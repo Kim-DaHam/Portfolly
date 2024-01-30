@@ -36,7 +36,6 @@ export const SearchBox = styled.div`
 	height: 4.5rem;
 	${mixins.flexRow}
 	flex: none;
-	justify-content: space-between;
 	align-items: center;
 
 	padding: 0 0.7rem 0 0.7rem;
@@ -49,7 +48,6 @@ export const SearchBox = styled.div`
 export const MessageBox = styled.div`
 	height: 100%;
 
-	${mixins.flexCenter}
 	${mixins.flexColumn}
 
 	overflow-y: scroll;
@@ -84,6 +82,7 @@ export const ChatBox = styled.div`
 	width: 100%;
 	height: 100%;
 
+	${mixins.flexCenter}
 	flex-basis: 1;
 
 	overflow-y: scroll;
@@ -156,4 +155,8 @@ export const FlexColumnBox = styled.div`
 	justify-content: center;
 	flex: none;
 	gap: 0.5rem;
+`;
+
+export const CenterBox = styled.div`
+	${mixins.flexCenter}
 `;

@@ -30,6 +30,8 @@ export const messageHandlers= [
 					id: room.id,
 					lastMessage: room.lastMessage,
 					timestamp: room.timestamp,
+					commissionStatus: room.commissionStatus,
+					isRead: room.messages[room.messages.length -1].isRead ? true : false,
 					partner: {
 						id: partner?.id,
 						nickname: partner?.nickname,

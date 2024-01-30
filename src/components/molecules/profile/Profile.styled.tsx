@@ -41,7 +41,7 @@ export const Box = styled.div`
 `;
 
 export const MessageProfileWrapper = styled.div`
-	width: 100%;
+	width: fit-content;
 	height: fit-content;
 
 	${mixins.flexCenter}
