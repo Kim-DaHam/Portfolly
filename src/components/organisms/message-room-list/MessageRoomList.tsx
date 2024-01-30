@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { MessageRoomItem, Selector } from "@/components";
-import * as S from '@/components/organisms/message-list/MessageRoomList.styled';
+import * as S from '@/components/organisms/message-room-list/MessageRoomList.styled';
 
 type Props = {
 	messageRooms: any;

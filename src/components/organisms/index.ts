@@ -1,6 +1,6 @@
 import Footer from '@/components/organisms/footer/Footer';
 import Header from '@/components/organisms/header/Header';
-import MessageRoomList from '@/components/organisms/message-list/MessageRoomList';
+import MessageRoomList from '@/components/organisms/message-room-list/MessageRoomList';
 import AlertModal from '@/components/organisms/modal/alert-modal/AlertModal';
 import CommissionModal from '@/components/organisms/modal/commission-modal/CommissionModal';
 import SearchModal from '@/components/organisms/modal/search-modal/SearchModal';
