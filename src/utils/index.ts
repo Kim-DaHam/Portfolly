@@ -3,6 +3,8 @@ import GlobalErrorFallback from '@/utils/fallback/globalErrorFallback';
 
 export * from '@/utils/api-service/portfolio';
 export * from '@/utils/api-service/users';
+export * from '@/utils/api-service/commission';
+export * from '@/utils/api-service/message';
 export * from '@/utils/event';
 export * from '@/utils/fetch';
 export * from '@/utils/mswHandler';

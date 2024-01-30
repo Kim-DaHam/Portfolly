@@ -1,33 +1,15 @@
 // NoSQL Database
 
-// 유저별 채팅방 리스트
-export const rooms = [
-	{
-		userId: 1,
-		roomId: 1,
-		lastMessage: '마지막 메세지입니다',
-		timestamp: Date.now(),
-	},
-	{
-		userId: 2,
-		roomId: 2,
-		lastMessage: '마지막 메세지입니다',
-		timestamp: Date.now(),
-	},
-	{
-		userId: 3,
-		roomId: 3,
-		lastMessage: '마지막 메세지입니다',
-		timestamp: Date.now(),
-	},
-];
-
 // 채팅방 별 메세지 데이터
-export const messages = [
+export const messageRooms = [
 	{
-		roomId: 1,
+		id: 1,
+		expertId: 1,
+		clientId: 100,
 		portfolioId: null,
 		commissionStatus: null,
+		lastMessage: '마지막 메세지입니다',
+		timestamp: Date.now(),
 		messages: [
 			{
 				messageId: 1,
@@ -176,9 +158,13 @@ export const messages = [
 	},
 
 	{
-		roomId: 2,
+		id: 1,
+		expertId: 2,
+		clientId: 100,
 		portfolioId: 2,
 		commissionStatus: '진행 중',
+		lastMessage: '마지막 메세지입니다',
+		timestamp: Date.now(),
 		messages: [
 			{
 				messageId: 1,
@@ -196,9 +182,13 @@ export const messages = [
 	},
 
 	{
-		roomId: 3,
+		id: 3,
+		expertId: 3,
+		clientId: 100,
 		portfolioId: 3,
 		commissionStatus: '구매 확정',
+		lastMessage: '마지막 메세지입니다',
+		timestamp: Date.now(),
 		messages: [
 			{
 				messageId: 1,
