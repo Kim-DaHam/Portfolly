@@ -6,21 +6,21 @@ import { users } from '../data/users';
 
 import { User } from '@/types';
 
-const LOGIN_ID = 100;
-const AUTHORITY = 'client';
+const LOGIN_ID: number = 100;
+const AUTHORITY: string = 'client';
 
 export const messageHandlers= [
 	http.get('/messageRooms', ({request}) => {
 		const url = new URL(request.url);
 		const partnerId = url.searchParams.get('partner_id') as string;
 
-		const PARTNER_ID = AUTHORITY + 'ID' as 'expertId' | 'clientId';
+		const PARTNER_ID = (AUTHORITY === 'expert') ? 'clientId' : 'expertId';
 
 		const messageRoomList: any[] = [];
 		const message: any[] = [];
 
 		messageRooms.map((room: any) => {
-			const isMyMessageRoom =room.clientId === LOGIN_ID || room.expertId === LOGIN_ID;
+			const isMyMessageRoom = room.clientId === LOGIN_ID || room.expertId === LOGIN_ID;
 
 			if(isMyMessageRoom) {
 				// 메세지 목록 데이터를 만든다.
@@ -31,6 +31,7 @@ export const messageHandlers= [
 					lastMessage: room.lastMessage,
 					timestamp: room.timestamp,
 					partner: {
+						id: partner?.id,
 						nickname: partner?.nickname,
 						profileImage: partner?.profileImage,
 					}

@@ -8,7 +8,7 @@ export const messageRooms = [
 		clientId: 100,
 		portfolioId: null,
 		commissionStatus: null,
-		lastMessage: '마지막 메세지입니다',
+		lastMessage: '마지막 메세지입니다dddddddd',
 		timestamp: Date.now(),
 		messages: [
 			{
