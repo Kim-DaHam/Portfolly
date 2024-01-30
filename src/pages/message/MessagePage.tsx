@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { AlertModal, Button, Message, MessageRoomList, Profile, Selector, Text } from '@/components';
 import * as S from '@/pages/message/MessagePage.styled';
-import { useMessageRoomQuery } from "@/utils";
+import { useMessageRoomDeleteMutation, useMessageRoomQuery } from "@/utils";
 
 export type FormValues = {
 	message: string;
@@ -23,17 +23,19 @@ export default function MessagePage() {
 	const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
 	const urlParams = new URL(window.location.href).searchParams;
-	const partnerId = urlParams.get('partner_id');
+	const partnerId = urlParams.get('partner_id') || '';
 
 	const navigate = useNavigate();
 	const { data: message } = useMessageRoomQuery(partnerId);
+	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(partnerId);
 	// const { register, handleSubmit, setValue } = useForm<FormValues>({
 		// 	mode: 'onSubmit',
 		// 	defaultValues: defaultValues,
 		// });
 
 	const exitMessageRoom = () => {
-
+		deleteMessageRoomMutation.mutate();
+		setIsExitModalOpen(prev=>!prev);
 	};
 
 	useEffect(() => {
