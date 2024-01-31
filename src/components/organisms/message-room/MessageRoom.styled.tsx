@@ -4,6 +4,7 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.main`
 	width: 100%;
+	height: 100%;
 
 	${mixins.flexColumn}
 	flex-basis: 1;
