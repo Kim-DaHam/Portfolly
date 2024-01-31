@@ -25,21 +25,6 @@ export const MessageSection = styled.section`
 	flex-basis: 1;
 `;
 
-export const TitleBox = styled.div`
-	height: 4.5rem;
-
-	${mixins.flexRow}
-	justify-content: space-between;
-	align-items: center;
-	flex: none;
-
-	padding: 0 2.2rem 0 0.7rem;
-
-	border-bottom: 1px solid gray;
-
-	background-color: white;
-`;
-
 export const InputBox = styled.div`
 	height: fit-content;
 	${mixins.flexColumn}

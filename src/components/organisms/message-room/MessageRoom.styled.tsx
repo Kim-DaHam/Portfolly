@@ -3,11 +3,27 @@ import styled from "styled-components";
 import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.main`
-	height: 100%;
+	width: 100%;
 
-	${mixins.flexRow}
+	${mixins.flexColumn}
+	flex-basis: 1;
 
 	overflow: hidden;
+`;
+
+export const TitleBox = styled.div`
+	height: 4.5rem;
+
+	${mixins.flexRow}
+	justify-content: space-between;
+	align-items: center;
+	flex: none;
+
+	padding: 0 2.2rem 0 0.7rem;
+
+	border-bottom: 1px solid gray;
+
+	background-color: white;
 `;
 
 export const MessageBox = styled.div`
@@ -48,8 +64,8 @@ export const ActivityBox = styled.div`
 
 export const Box = styled.div`
 	height: 100%;
+
 	${mixins.flexRow}
 	flex-basis: 1;
 	justify-content: space-between;
-	overflow: hidden;
 `;
