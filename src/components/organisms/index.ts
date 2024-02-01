@@ -1,3 +1,4 @@
+import FileModal from '@/components/organisms/file-modal/FileModal';
 import Footer from '@/components/organisms/footer/Footer';
 import Header from '@/components/organisms/header/Header';
 import MessageRoom from '@/components/organisms/message-room/MessageRoom';
@@ -34,4 +35,5 @@ export {
 	PortfolioSlider,
 	MessageRoomList,
 	MessageRoom,
+	FileModal,
 };
