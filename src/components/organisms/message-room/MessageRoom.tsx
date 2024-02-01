@@ -26,7 +26,7 @@ const defaultValues: FormValues = {
 };
 
 export default function MessageRoom({ message }: Props) {
-	const [isFileItemOpen, setIsFileItemOpen] = useState(false);
+	const [isFileModalOpen, setIsFileModalOpen] = useState(false);
 	const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
 	const dispatch = useDispatch();
@@ -52,7 +52,7 @@ export default function MessageRoom({ message }: Props) {
 		}
 
 		setValue('files', uploadedFiles);
-		setIsFileItemOpen(prev=>!prev);
+		setIsFileModalOpen(prev=>!prev);
 
 		fileInput.value = '';
 	};
@@ -87,8 +87,12 @@ export default function MessageRoom({ message }: Props) {
 					}
 					</>
 
-					{ isFileItemOpen &&
-						<FileModal files={getValues('files')} />
+					{ isFileModalOpen &&
+						<FileModal
+							handleFileModal={setIsFileModalOpen}
+							setValue={setValue}
+							getValues={getValues}
+						/>
 					}
 				</S.MessageBox>
 

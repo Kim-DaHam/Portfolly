@@ -15,17 +15,18 @@ export const Wrapper = styled.div`
 
 	& > svg {
 		float: right;
+		cursor: pointer;
 	}
 `;
 
-export const Box = styled.div`
+export const Box = styled.div<{$flex: 'row' | 'column'}>`
 	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
+	flex-direction: ${(props) => props.$flex};
+	gap: 1rem;
 `;
 
-export const FlexBox = styled.div`
-	width: 100%;
+export const FileItem = styled.div`
+	width: 80%;
 
 	display: flex;
 	align-items: center;
@@ -40,15 +41,10 @@ export const FlexBox = styled.div`
 		text-overflow: ellipsis;
 	}
 
-	& svg, & img {
+	& svg {
 		flex: none;
+		cursor: pointer;
 	}
-`;
-
-export const FileItem = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 `;
 
 export const ImageBox = styled.div`
@@ -62,5 +58,6 @@ export const ImageBox = styled.div`
 		z-index: 200;
 		top: 0;
 		right: 0;
+		cursor: pointer;
 	}
 `;
