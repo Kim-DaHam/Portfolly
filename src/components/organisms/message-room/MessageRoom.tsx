@@ -4,8 +4,9 @@ import { FiPaperclip as ClipIcon } from "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 
-import { Text, Profile, Message, AlertModal, Button, FileModal } from '@/components';
+import { Text, Message, AlertModal, Button, FileModal, PartnerProfile } from '@/components';
 import * as S from '@/components/organisms/message-room/MessageRoom.styled';
+import { authority } from "@/redux/loginSlice";
 import { setToast } from "@/redux/toastSlice";
 import { useMessageRoomDeleteMutation } from "@/utils";
 
@@ -96,23 +97,7 @@ export default function MessageRoom({ message }: Props) {
 					}
 				</S.MessageBox>
 
-				<S.ProfileBox>
-					<Profile type='message' user={message.partner} />
-
-					<S.ActivityBox>
-						<S.Box>
-							<Text type='label'>만족도</Text>
-							<Text type='label'>{message.partner.score}</Text>
-						</S.Box>
-						<S.Box>
-							<Text type='label'>연락 가능 시간</Text>
-							<Text type='label'>{message.partner.contactTime}</Text>
-						</S.Box>
-					</S.ActivityBox>
-
-					<Text type='label'>전문가 서비스</Text>
-					<Profile type='portfolio' user={message.portfolio} />
-				</S.ProfileBox>
+				<PartnerProfile message={message}/>
 			</S.Box>
 
 			<S.InputBox>
