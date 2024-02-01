@@ -1,12 +1,11 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiPaperclip as ClipIcon } from "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 
-import { Text, Message, AlertModal, Button, FileModal, PartnerProfile } from '@/components';
+import { Text, AlertModal, PartnerProfile, MessageList, Button } from '@/components';
 import * as S from '@/components/organisms/message-room/MessageRoom.styled';
-import { authority } from "@/redux/loginSlice";
 import { setToast } from "@/redux/toastSlice";
 import { useMessageRoomDeleteMutation } from "@/utils";
 
@@ -51,21 +50,14 @@ export default function MessageRoom({ message }: Props) {
 		if(fileInput.files!.length > 10) {
 			dispatch(setToast({id: 1, type: 'error', message: '파일은 최대 10개까지 첨부 가능합니다.'}));
 		}
-
-		setValue('files', uploadedFiles);
 		setIsFileModalOpen(prev=>!prev);
-
+		setValue('files', uploadedFiles);
 		fileInput.value = '';
 	};
 
 	const onSubmit = () => {
 
 	};
-
-	useEffect(() => {
-		const messageBox = document.querySelector('#message-box') as HTMLElement;
-		messageBox.scrollTop = messageBox.scrollHeight;
-	}, []);
 
 	return (
 		<S.Wrapper>
@@ -75,29 +67,14 @@ export default function MessageRoom({ message }: Props) {
 			</S.TitleBox>
 
 			<S.Box>
-				<S.MessageBox id='message-box'>
-					<>
-					{ message.messages.length > 0 ?
-						<>
-						{ message.messages.map((item: any) => {
-							return <Message message={item} key={item.id} partnerProfileImage={message.partner.profileImage}/>
-						})}
-						</>
-						:
-						<> 아직 메세지가 없어요.</>
-					}
-					</>
-
-					{ isFileModalOpen &&
-						<FileModal
-							handleFileModal={setIsFileModalOpen}
-							setValue={setValue}
-							getValues={getValues}
-						/>
-					}
-				</S.MessageBox>
-
-				<PartnerProfile message={message}/>
+				<MessageList
+					message={message}
+					setValue={setValue}
+					getValues={getValues}
+					isFileModalOpen={isFileModalOpen}
+					handleFileModal={setIsFileModalOpen}
+				/>
+				<PartnerProfile message={message} />
 			</S.Box>
 
 			<S.InputBox>
@@ -106,6 +83,7 @@ export default function MessageRoom({ message }: Props) {
 						required: '메시지를 입력하세요',
 					})}
 				/>
+
 				<S.Box>
 					<S.FileInput>
 						<S.Input type='file' id='file-input' onChange={addFile} multiple />

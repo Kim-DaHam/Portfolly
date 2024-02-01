@@ -25,15 +25,6 @@ export const TitleBox = styled.div`
 	background-color: white;
 `;
 
-export const MessageBox = styled.div`
-	${mixins.fullWidthHeight}
-	${mixins.flexColumn}
-
-	position: relative;
-	overflow-y: scroll;
-	background-color: pink;
-`;
-
 export const InputBox = styled.div`
 	height: fit-content;
 	${mixins.flexColumn}

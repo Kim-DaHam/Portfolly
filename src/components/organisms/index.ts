@@ -1,6 +1,7 @@
 import FileModal from '@/components/organisms/file-modal/FileModal';
 import Footer from '@/components/organisms/footer/Footer';
 import Header from '@/components/organisms/header/Header';
+import MessageList from '@/components/organisms/message-list/MessageList';
 import MessageRoom from '@/components/organisms/message-room/MessageRoom';
 import MessageRoomList from '@/components/organisms/message-room-list/MessageRoomList';
 import AlertModal from '@/components/organisms/modal/alert-modal/AlertModal';
@@ -38,4 +39,5 @@ export {
 	MessageRoom,
 	FileModal,
 	PartnerProfile,
+	MessageList,
 };
