@@ -1,4 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 import { fetch } from "@/utils";
 
@@ -9,13 +10,28 @@ const messageKeys = {
   detail: (id: string) => ['message', id] as const,
 }
 
-export const useMessageRoomQuery = (partnerId: string | null) => {
-	const getMessages = () => fetch(`/messageRooms?partner_id=${partnerId ? partnerId : ''}&page=${1}`, 'GET');
+export const useMessageRoomQuery = (partnerId: string) => {
+	const getMessages = () => fetch(`/messageRooms?partner_id=${partnerId}&page=${1}`, 'GET');
 
 	return useQuery({
-		queryKey: partnerId !== null ? messageKeys.detail(partnerId) : messageKeys.all,
+		queryKey: partnerId !== '' ? messageKeys.detail(partnerId) : messageKeys.all,
 		queryFn: getMessages,
 		staleTime: Infinity,
 		gcTime: Infinity,
+	});
+};
+
+export const useMessageRoomDeleteMutation = (partnerId: string) => {
+	const queryClient = useQueryClient();
+	const navigate = useNavigate();
+
+	const deleteMessageRoom = () => fetch(`/messageRooms?partner_id=${partnerId ? partnerId : ''}`, 'DELETE');
+
+	return useMutation({
+		mutationFn: deleteMessageRoom,
+		onSuccess: () => {
+			queryClient.removeQueries({queryKey: ['message', `${partnerId}`]});
+			navigate(`/messages`);
+		},
 	});
 };

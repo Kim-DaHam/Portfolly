@@ -6,6 +6,9 @@ export const Wrapper = styled.div<{$isOwned: boolean}>`
 	display: flex;
 	align-items: center;
 	justify-content: ${(props) => props.$isOwned ? 'end' : 'start'};
+
+	padding: 0.4rem 1rem 0.4rem 1rem;
+
 	color: ${(props) => props.$isOwned ? 'white' : 'black'};
 	gap: 0.4rem;
 `;

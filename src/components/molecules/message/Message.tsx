@@ -18,7 +18,7 @@ export default function Message({ message, partnerProfileImage }: Props) {
 		<S.Wrapper $isOwned={isOwned}>
 			{ isOwned ?
 				<>
-					<Text type='label' color='lightgray'>{message.createdAt}</Text>
+					<Text type='label' color='lightgray'>{toLocalTimeString(new Date(message.createdAt))}</Text>
 					<S.Content $isOwned={isOwned}>
 						{message.message}
 					</S.Content>

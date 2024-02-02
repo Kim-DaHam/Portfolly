@@ -1,9 +1,13 @@
+import FileModal from '@/components/organisms/file-modal/FileModal';
 import Footer from '@/components/organisms/footer/Footer';
 import Header from '@/components/organisms/header/Header';
-import MessageRoomList from '@/components/organisms/message-list/MessageRoomList';
+import MessageList from '@/components/organisms/message-list/MessageList';
+import MessageRoom from '@/components/organisms/message-room/MessageRoom';
+import MessageRoomList from '@/components/organisms/message-room-list/MessageRoomList';
 import AlertModal from '@/components/organisms/modal/alert-modal/AlertModal';
 import CommissionModal from '@/components/organisms/modal/commission-modal/CommissionModal';
 import SearchModal from '@/components/organisms/modal/search-modal/SearchModal';
+import PartnerProfile from '@/components/organisms/partner-profile/PartnerProfile';
 import PortfolioItemList from '@/components/organisms/portfolio-list/PortfolioItemList';
 import Preview from '@/components/organisms/preview/Preview';
 import ActivityInformation from '@/components/organisms/profile-description/activity-information/ActivityInformation';
@@ -32,4 +36,8 @@ export {
 	ActivityInformation,
 	PortfolioSlider,
 	MessageRoomList,
+	MessageRoom,
+	FileModal,
+	PartnerProfile,
+	MessageList,
 };

@@ -8,13 +8,13 @@ import { User } from '@/types';
 
 const LOGIN_ID: number = 100;
 const AUTHORITY: string = 'client';
+const PARTNER_ID = (AUTHORITY === 'expert') ? 'clientId' : 'expertId';
+const MY_ID = AUTHORITY + 'Id';
 
 export const messageHandlers= [
 	http.get('/messageRooms', ({request}) => {
 		const url = new URL(request.url);
 		const partnerId = url.searchParams.get('partner_id') as string;
-
-		const PARTNER_ID = (AUTHORITY === 'expert') ? 'clientId' : 'expertId';
 
 		const messageRoomList: any[] = [];
 		const message: any = {};
@@ -69,6 +69,19 @@ export const messageHandlers= [
 		};
 
 		return HttpResponse.json(responseData, { status: 200 });
+	}),
+
+	http.delete(`/messageRooms`, ({request}) => {
+		const url = new URL(request.url);
+		const partnerId = url.searchParams.get('partner_id') as string;
+
+		messageRooms.map((room: any, index: number) => {
+      if (room[PARTNER_ID] === Number(partnerId) && room[MY_ID] === LOGIN_ID) {
+				messageRooms.splice(index, 1);
+			}
+    });
+
+		return HttpResponse.json(null, { status: 200 });
 	}),
 
 ];
