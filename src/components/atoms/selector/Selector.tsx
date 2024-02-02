@@ -10,7 +10,7 @@ import useSelector from "@/hooks/component/useSelector";
 import { SetState } from "@/types";
 import { Section } from "@/types/portfolio";
 
-export type TSelector = 'section' | 'category' | 'commissionType' | 'commissionState' | 'searchFilter' | 'messageState';
+export type TSelector = 'section' | 'category' | 'commissionType' | 'commissionStatus' | 'searchFilter' | 'messageStatus';
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	type: TSelector;

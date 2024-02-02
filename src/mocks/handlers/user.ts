@@ -6,12 +6,13 @@ import { users } from '../data/users';
 
 import { getSection } from '@/utils';
 
+const LOGIN_ID = 1;
+
 export const userHandlers= [
 	http.get('/users', ({request}) => {
 		const url = new URL(request.url);
 		const userId = url.searchParams.get('id') as string;
-		const loginId = '100';
-		const isMyProfile = userId === loginId;
+		const isMyProfile = userId === String(LOGIN_ID);
 
 		const user = users.find((user) => {
 			return user.id === Number(userId);
@@ -40,7 +41,7 @@ export const userHandlers= [
 
 		const bookmarkList: any[] = [];
 
-		if(userId === loginId) {
+		if(userId === String(LOGIN_ID)) {
 			portfolios.map((portfolio) => {
 				const isBookmarked = user!.bookmarks!.indexOf(portfolio.id) > -1;
 
