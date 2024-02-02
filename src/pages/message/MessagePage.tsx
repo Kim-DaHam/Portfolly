@@ -15,7 +15,7 @@ export default function MessagePage() {
 	const { data: message } = useMessageRoomQuery(partnerId);
 
 	useEffect(() => {
-		if(message && !partnerId) {
+		if(message && message.messageRooms.length > 0 && !partnerId) {
 			navigate(`/messages?partner_id=${message.partner.id}`);
 			queryClient.removeQueries({queryKey: ['messages']});
 		}
