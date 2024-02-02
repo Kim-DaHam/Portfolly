@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,11 +11,13 @@ export default function MessagePage() {
 	const partnerId = urlParams.get('partner_id') || '';
 
 	const navigate = useNavigate();
+	const queryClient = useQueryClient();
 	const { data: message } = useMessageRoomQuery(partnerId);
 
 	useEffect(() => {
 		if(message && !partnerId) {
 			navigate(`/messages?partner_id=${message.partner.id}`);
+			queryClient.removeQueries({queryKey: ['messages']});
 		}
 	}, [message]);
 
