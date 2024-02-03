@@ -6,15 +6,22 @@ import loginSlice from '@/redux/loginSlice';
 import sectionSlice from '@/redux/sectionSlice';
 import toastSlice from '@/redux/toastSlice';
 
-const persistConfig = {
-	key: 'root',
+
+const authPersistConfig = {
+	key: 'user',
 	storage,
-	whitelist: ['user', 'section'],
+	whitelist: ['id', 'isLogin', 'authority'],
+};
+
+const sectionPersistConfig = {
+	key: 'section',
+	storage,
+	whitelist: ['section'],
 }
 
 const rootReducer = combineReducers({
-	user: persistReducer(persistConfig, loginSlice.reducer),
-	section: persistReducer(persistConfig, sectionSlice.reducer),
+	user: persistReducer(authPersistConfig, loginSlice.reducer),
+	section: persistReducer(sectionPersistConfig, sectionSlice.reducer),
 	toast: toastSlice.reducer,
 });
 
