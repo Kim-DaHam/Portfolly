@@ -36,7 +36,7 @@ export default function MessageRoomList({ messageRooms }: Props) {
 	return (
 		<S.Wrapper>
 			<S.SearchBox>
-				<Selector type='messageState' placeholder='전체' setSelectorValue={setMessageFilter} size='7rem' />
+				<Selector type='messageStatus' placeholder='전체' setSelectorValue={setMessageFilter} size='7rem' />
 			</S.SearchBox>
 
 			<S.MessageRoomBox>

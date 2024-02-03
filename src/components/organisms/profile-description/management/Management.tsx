@@ -14,7 +14,7 @@ type Props = {
 
 export type FormValues = {
 	commissionType: string;
-	commissionState: string;
+	commissionStatus: string;
 	searchFilter: '닉네임' | '프로젝트명';
 	searchKeyword: string;
 	startDate: string | null;
@@ -23,7 +23,7 @@ export type FormValues = {
 
 const defaultValues: FormValues = {
 	commissionType: '전체 상품',
-	commissionState: '전체 상태',
+	commissionStatus: '전체 상태',
 	searchFilter: '닉네임',
 	searchKeyword: '',
 	startDate: null,
@@ -42,7 +42,7 @@ export default function Management({ commissions }: Props) {
 		const filteredCommissions = commissions.filter((commission: any) => {
 			return (
 				(data.commissionType === '전체 상품' || commission.portfolio.section === data.commissionType) &&
-				(data.commissionState === '전체 상태' || commission.details.state === data.commissionState) &&
+				(data.commissionStatus === '전체 상태' || commission.details.state === data.commissionStatus) &&
 				(data.startDate === null || new Date(commission.createdAt) <= new Date(data.endDate!)) &&
 				(data.endDate === null || new Date(commission.endedAt) >= new Date(data.startDate!)) &&
 				(data.searchKeyword === '' || isIncludedKeyword(data.searchFilter, commission, data.searchKeyword))
@@ -69,10 +69,10 @@ export default function Management({ commissions }: Props) {
 						{...register('commissionType')}
 					/>
 					<Selector
-						type='commissionState'
+						type='commissionStatus'
 						placeholder='전체 상태'
 						setValue={setValue}
-						{...register('commissionState')}
+						{...register('commissionStatus')}
 					/>
 
 					<S.DateSelector>

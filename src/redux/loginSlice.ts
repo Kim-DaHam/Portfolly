@@ -9,9 +9,9 @@ type InitialState = {
 }
 
 const initialState: InitialState = {
-	authority: 'client',
+	authority: 'expert',
 	isLogin: true,
-	userId: 100,
+	userId: 1,
 };
 
 export const loginSlice = createSlice({

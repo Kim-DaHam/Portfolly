@@ -8,7 +8,7 @@ export const commissions = [
 		endedAt: '2024-05-06',
 		details: {
 			title: '앱 포트폴리오 커미션',
-			state: '구매 확정',
+			status: '구매 확정',
 			content: '앱 포트폴리오 커미션 설명',
 			cost: 350000,
 			deadline: '2024-05-06',
@@ -24,7 +24,7 @@ export const commissions = [
 		endedAt: '2024-05-06',
 		details: {
 			title: '웹 포트폴리오 커미션1',
-			state: '진행 중',
+			status: '진행 중',
 			content: '웹 포트폴리오 커미션 설명',
 			cost: 350000,
 			deadline: '2024-05-06',
@@ -44,7 +44,7 @@ export const commissions = [
 		endedAt: '2024-05-06',
 		details: {
 			title: '웹 포트폴리오 커미션2',
-			state: '진행 중',
+			status: '진행 중',
 			content: '웹 포트폴리오 커미션 설명',
 			cost: 350000,
 			deadline: '2024-05-06',
@@ -64,7 +64,7 @@ export const commissions = [
 		endedAt: '2024-05-06',
 		details: {
 			title: '일러스트 포트폴리오 커미션',
-			state: '진행 중',
+			status: '진행 중',
 			content: '일러스트 포트폴리오 커미션 설명',
 			cost: 350000,
 			deadline: Date.now(),
@@ -72,6 +72,46 @@ export const commissions = [
 		review: {
 			createdAt: Date.now(),
 			content: '일러스트 리뷰입니다~',
+			score: 50,
+		},
+	},
+	{
+		id: 5,
+		portfolioId: 2,
+		expertId: 2,
+		clientId: 100,
+		createdAt: '2024-03-06',
+		endedAt: '2024-05-06',
+		details: {
+			title: '앱 포트폴리오 커미션',
+			status: '진행 중',
+			content: '앱 포트폴리오 커미션 설명',
+			cost: 350000,
+			deadline: Date.now(),
+		},
+		review: {
+			createdAt: Date.now(),
+			content: '앱 리뷰입니다~',
+			score: 50,
+		},
+	},
+	{
+		id: 6,
+		portfolioId: 3,
+		expertId: 3,
+		clientId: 100,
+		createdAt: '2024-03-06',
+		endedAt: '2024-05-06',
+		details: {
+			title: '앱 포트폴리오 커미션',
+			status: '구매 확정',
+			content: '앱 포트폴리오 커미션 설명',
+			cost: 350000,
+			deadline: Date.now(),
+		},
+		review: {
+			createdAt: Date.now(),
+			content: '앱 리뷰입니다~',
 			score: 50,
 		},
 	},

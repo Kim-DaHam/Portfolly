@@ -33,7 +33,7 @@ export default function CommissionItem({ commission, index }: Props) {
 					<Text type='small'>{commission.client.nickname}</Text>
 					<Text type='small'>{toLocalDateString(new Date(commission.createdAt))}</Text>
 				</S.Box>
-				{ auth === 'expert' &&
+				{ auth === 'expert' && commission.review &&
 					<Button color='gray' onClick={handleReviewButton}>
 						{isReviewOpen ? '리뷰 닫기' : '리뷰 확인'}
 					</Button>

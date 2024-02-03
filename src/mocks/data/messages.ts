@@ -7,7 +7,7 @@ export const messageRooms = [
 		expertId: 1,
 		clientId: 100,
 		portfolioId: 1,
-		commissionStatus: null,
+		commissionId: null,
 		lastMessage: '마지막 메세지입니다dddddddd',
 		timestamp: Date.now(),
 		messages: [
@@ -186,7 +186,7 @@ export const messageRooms = [
 		expertId: 2,
 		clientId: 100,
 		portfolioId: 2,
-		commissionStatus: '진행 중',
+		commissionId: 5,
 		lastMessage: '마지막 메세지입니다',
 		timestamp: Date.now(),
 		messages: [
@@ -212,7 +212,7 @@ export const messageRooms = [
 		expertId: 3,
 		clientId: 100,
 		portfolioId: 3,
-		commissionStatus: '구매 확정',
+		commissionId: 6,
 		lastMessage: '마지막 메세지입니다',
 		timestamp: Date.now(),
 		messages: [
