@@ -1,6 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+* {
+		margin: 0;
+		padding: 0;
+
+		box-sizing: border-box;
+		font-family: 'Basier Square', sans-serif;
+	}
+
 	body {
 		width: 100vw;
 		height: 100vh;
@@ -20,13 +28,6 @@ const GlobalStyle = createGlobalStyle`
 		position: absolute;
 		top: 0;
 		z-index: 999;
-	}
-
-	* {
-		margin: 0;
-		padding: 0;
-
-		box-sizing: border-box;
 	}
 
 	a {

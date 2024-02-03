@@ -55,7 +55,7 @@ export default function Header() {
 				</S.ButtonGroup>
 				:
 				<S.ButtonGroup>
-					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.LOGIN)}>Start Trial Version</Button>
+					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.LOGIN)}>Create Trial Account</Button>
 					<Button color='transparent' shape='round' onClick={popUp}><MenuIcon size={15}/></Button>
 				</S.ButtonGroup>
 			}

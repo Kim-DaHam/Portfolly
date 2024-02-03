@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HEADER_HEIGHT = '3.5rem';
+export const HEADER_HEIGHT = '4.498rem';
 
 export const Wrapper = styled.header`
 	width: 100%;

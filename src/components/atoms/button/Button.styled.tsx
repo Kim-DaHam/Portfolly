@@ -5,18 +5,17 @@ import { colors, sizes, shapes } from '@/styles/button';
 import * as mixins from '@/styles/mixins';
 
 export const ButtonStyle = styled.button<Props>`
-	height: 2.9rem;
+	height: 2.75rem;
 
   ${mixins.flexCenter}
 	flex-shrink: 0;
 	gap: 1rem;
 
-	padding: 0 1em 0 1em;
+	padding: 0 1rem;
 	line-height: 1.5em;
 
 	font-size: 1em;
-	font-weight: 500;
-
+	font-weight: 600;
 	letter-spacing: -.008em;
 	border: 0;
 
