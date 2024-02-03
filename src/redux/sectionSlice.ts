@@ -23,7 +23,6 @@ export const sectionSlice = createSlice({
 	},
 });
 
-export const { actions, reducer } = sectionSlice;
 export const section = (state: RootState) => state.section.section;
 export const { setSection } = sectionSlice.actions;
 

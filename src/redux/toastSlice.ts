@@ -25,7 +25,6 @@ export const toastSlice = createSlice({
   },
 });
 
-export const { actions, reducer } = toastSlice;
 export const { setToast, deleteToast } = toastSlice.actions;
 export const toasts = (state: RootState) => state.toast.toasts;
 export default toastSlice;

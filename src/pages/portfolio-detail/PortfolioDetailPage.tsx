@@ -7,7 +7,7 @@ import * as S from "./PortfolioDetailPage.styled";
 
 import { Text, Image, Button, ToggleButton, Tag, Profile, AlertModal } from "@/components";
 import { useModal, useHtmlContent } from "@/hooks";
-import { userId } from "@/redux/loginSlice";
+import { userState } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
 import { Portfolio } from "@/types";
 import { usePortfolioDeleteQuery, usePortfolioDetailQuery, stringToUrlParameter } from "@/utils";
@@ -15,7 +15,7 @@ import { usePortfolioDeleteQuery, usePortfolioDetailQuery, stringToUrlParameter 
 export default function PortfolioDetail(){
 	const [hasAuthority, setHasAuthority] = useState(false);
 
-	const user = useSelector(userId);
+	const user = useSelector(userState);
 
 	const portfolioId = useParams().portfolio_id as string;
 	const { data: portfolio } = usePortfolioDetailQuery(portfolioId);
@@ -37,7 +37,7 @@ export default function PortfolioDetail(){
 
 	useEffect(() => {
 		if(portfolio) {
-			const hasAuthority = (user === portfolio.user.id) ? true : false;
+			const hasAuthority = (user.id === portfolio.user.id) ? true : false;
 			setHasAuthority(hasAuthority);
 		}
 	}, [portfolio])

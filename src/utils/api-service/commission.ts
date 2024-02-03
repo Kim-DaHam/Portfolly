@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
-import { userId as UserId} from "@/redux/loginSlice";
+import { userState } from "@/redux/loginSlice";
 import { fetch } from '@/utils'
 
 export const usePostCommissionQuery = (commissionId?: number, clientId?: number) => {
 	const queryClient = useQueryClient();
 
-	const userId = String(useSelector(UserId));
-	const user = queryClient.getQueryData(['user', userId]) as any;
+	const { id: userId } = useSelector(userState);
+	const user = queryClient.getQueryData(['user', `${userId}`]) as any;
 	const message = queryClient.getQueryData(['message', `${clientId}`]) as any;
 
 	const addCommission = (body: any) => fetch(`/commissions?portfolio_id=${message.portfolioId}&client_id=${message.clientId}`, 'POST', body);
@@ -19,7 +19,7 @@ export const usePostCommissionQuery = (commissionId?: number, clientId?: number)
 		onSuccess: (response: any) => {
 
 			if(commissionId && user) {
-				queryClient.setQueryData(['user', userId], () => {
+				queryClient.setQueryData(['user', `${userId}`], () => {
 					const commission = user.activity.commissions.find((commission: any) => {
 						return commission.id === commissionId;
 					})
@@ -41,15 +41,15 @@ export const usePostCommissionQuery = (commissionId?: number, clientId?: number)
 
 export const useReviewPostQuery = (id: number) => {
 	const queryClient = useQueryClient();
-	const userId = String(useSelector(UserId));
-	const user = queryClient.getQueryData(['user', userId]) as any;
+	const { id: userId } = useSelector(userState);
+	const user = queryClient.getQueryData(['user', `${userId}`]) as any;
 
 	const postReview = (body: any) => fetch(`/reviews?id=${id}`, 'POST', body)
 
 	return useMutation({
 		mutationFn: postReview,
 		onSuccess: (response: any) => {
-			queryClient.setQueryData(['user', userId], () => {
+			queryClient.setQueryData(['user', `${userId}`], () => {
 				const commission = user.activity.commissions.find((commission: any) => {
 					return commission.id === id;
 				});
