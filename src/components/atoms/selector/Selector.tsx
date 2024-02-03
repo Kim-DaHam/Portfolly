@@ -17,19 +17,22 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 	section?: Section;
 	placeholder: string;
 	setValue?: UseFormSetValue<any>;
-	setSelectorValue?: SetState<any>;
+	handleSelectorValue?: SetState<any>;
 	size?: string;
 };
 
-function Selector({type, placeholder, section='Android/iOS', setValue, setSelectorValue, size='100%' }: Props) {
+function Selector({type, placeholder, section='Android/iOS', setValue, handleSelectorValue, size='100%' }: Props) {
 	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
 
+	const isManagedByUseFormRegister = setValue;
+	const isManagedByUseState = handleSelectorValue;
+
 	useEffect(() => {
-		if(setValue) {
+		if(isManagedByUseFormRegister) {
 			setValue(type, selectedValue, { shouldDirty: true });
 		}
-		if(setSelectorValue) {
-			setSelectorValue(selectedValue);
+		if(isManagedByUseState) {
+			handleSelectorValue(selectedValue);
 		}
 	}, [selectedValue])
 
