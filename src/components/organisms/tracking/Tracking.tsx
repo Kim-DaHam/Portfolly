@@ -5,7 +5,7 @@ import { countCommissionStatus } from './Tracking.helpers';
 import { ProcessIcon, FolderIcon, CancelIcon } from '@/assets/images';
 import { Image, Text } from "@/components";
 import * as S from "@/components/organisms/tracking/Tracking.styled";
-import { authority } from '@/redux/loginSlice';
+import { userState } from '@/redux/loginSlice';
 
 type Props = {
 	commissions: any;
@@ -14,7 +14,7 @@ type Props = {
 export default function Tracking({ commissions }: Props) {
 	const commissionsStatus = countCommissionStatus(commissions);
 
-	const auth = useSelector(authority);
+	const { authority } = useSelector(userState);
 
 	return(
 		<S.Wrapper>
@@ -49,7 +49,7 @@ export default function Tracking({ commissions }: Props) {
 						<Text type='common'>{commissionsStatus['구매 확정']}</Text>
 					</S.Group>
 
-					{ auth === 'expert' ?
+					{ authority === 'expert' ?
 						<S.Group>
 							<Text type='common'>작성된 리뷰</Text>
 							<Text type='common'>{commissionsStatus['작성된 리뷰']}</Text>

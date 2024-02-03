@@ -2,15 +2,15 @@ import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import sectionSlice from './sectionSlice';
-import toastSlice from './toastSlice';
-
 import loginSlice from '@/redux/loginSlice';
+import sectionSlice from '@/redux/sectionSlice';
+import toastSlice from '@/redux/toastSlice';
+
 
 const authPersistConfig = {
-	key: 'auth',
+	key: 'user',
 	storage,
-	whitelist: ['user'],
+	whitelist: ['id', 'isLogin', 'authority'],
 };
 
 const sectionPersistConfig = {
@@ -20,7 +20,7 @@ const sectionPersistConfig = {
 }
 
 const rootReducer = combineReducers({
-	auth: persistReducer(authPersistConfig, loginSlice.reducer),
+	user: persistReducer(authPersistConfig, loginSlice.reducer),
 	section: persistReducer(sectionPersistConfig, sectionSlice.reducer),
 	toast: toastSlice.reducer,
 });

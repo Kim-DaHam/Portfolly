@@ -3,33 +3,35 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
 type InitialState = {
-	authority: 'expert' | 'client',
-	isLogin: boolean,
-	userId: number,
+	id: number | null;
+	isLogin: boolean;
+	authority: 'expert' | 'client' | null;
 }
 
 const initialState: InitialState = {
-	authority: 'expert',
-	isLogin: true,
-	userId: 1,
+	id: null,
+	isLogin: false,
+	authority: null,
 };
 
 export const loginSlice = createSlice({
-    name: "login",
-    initialState,
-    reducers: {
-        login: (state, action) => {
-            state = action.payload;
-        },
-				logout: (state) => {
-					state = initialState;
-				},
-    },
+	name: "user",
+	initialState,
+	reducers: {
+		login: (state, action) => {
+			state.authority = action.payload;
+			state.isLogin = true;
+			state.id = action.payload === 'expert' ? 1 : 100;
+		},
+		logout: (state) => {
+			state.authority = null;
+			state.isLogin = false;
+			state.id = null;
+		},
+	},
 });
 
-export const { actions, reducer } = loginSlice;
-export const isLogin = (state: RootState) => state.auth.isLogin;
-export const userId = (state: RootState) => state.auth.userId;
-export const authority = (state: RootState) => state.auth.authority;
+export const { login, logout } = loginSlice.actions;
+export const userState = (state: RootState) => state.user;
 
 export default loginSlice;

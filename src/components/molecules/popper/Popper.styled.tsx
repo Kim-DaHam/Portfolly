@@ -41,6 +41,15 @@ export const Group = styled.div<{size?: 'fit'}>`
 	${mixins.flexColumn}
 
 	padding: 8px;
+
+	& a {
+		display: flex;
+		gap: 1rem;
+
+		padding: 0.5rem;
+
+		cursor: pointer;
+	}
 `;
 
 export const Item = styled.div`

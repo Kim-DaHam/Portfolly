@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, ActivityInformation, MyPageNavigator, Profile } from "@/components";
 import { renderDescription } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
-import { userId as userID } from "@/redux/loginSlice";
+import { userState } from "@/redux/loginSlice";
 import { useUserQuery } from "@/utils";
 
 export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
@@ -17,8 +17,8 @@ function MyPage(){
 
 	const params = useParams();
 	const profileId = params.id as string;
-	const loginId = useSelector(userID);
-	const isMyPage = profileId === String(loginId) ? true : false;
+	const { id: userId } = useSelector(userState);
+	const isMyPage = profileId === String(userId) ? true : false;
 
 	const { data: user } = useUserQuery(profileId);
 

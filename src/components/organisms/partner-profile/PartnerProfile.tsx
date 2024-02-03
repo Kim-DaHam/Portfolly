@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Text, Button, Profile, CommissionModal } from "@/components";
 import * as S from "@/components/organisms/partner-profile/PartnerProfile.styled";
 import { useModal } from "@/hooks";
-import { authority } from "@/redux/loginSlice";
+import { userState } from "@/redux/loginSlice";
 import { toLocalDateString } from "@/utils";
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 export default function PartnerProfile({ message }: Props) {
 	const queryClient = useQueryClient();
 
-	const auth = useSelector(authority);
+	const { authority } = useSelector(userState);
 	const { isModalOpen, handleModal} = useModal();
 	const messageQuery = queryClient.getQueryData(['message', `${message.clientId}`]) as any;
 
@@ -45,7 +45,7 @@ export default function PartnerProfile({ message }: Props) {
 			<Text type='label'>전문가 서비스</Text>
 			<Profile type='portfolio' user={message.portfolio} />
 
-			{ !message.commission && auth === 'expert' &&
+			{ !message.commission && authority === 'expert' &&
 				<Button color='black' size='full' onClick={handleModal}>의뢰 폼 전송</Button>
 			}
 
@@ -53,7 +53,7 @@ export default function PartnerProfile({ message }: Props) {
 				<Button color='gray' size='full' onClick={handleModal}>의뢰 폼 확인</Button>
 			}
 
-			{ isModalOpen && !message.commission && auth === 'expert' &&
+			{ isModalOpen && !message.commission && authority === 'expert' &&
 				<CommissionModal commission={initialCommission} handleModal={handleModal} editMode />
 			}
 			{ isModalOpen && message.commission &&

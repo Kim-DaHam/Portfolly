@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { Image, Text } from '@/components';
 import * as S from '@/components/molecules/message/Message.styled';
-import { userId } from '@/redux/loginSlice';
+import { userState } from '@/redux/loginSlice';
 import { toLocalTimeString } from '@/utils';
 
 type Props = {
@@ -11,8 +11,8 @@ type Props = {
 }
 
 export default function Message({ message, partnerProfileImage }: Props) {
-	const loginId = useSelector(userId);
-	const isOwned = message.userId === loginId ? true : false;
+	const { id: userId } = useSelector(userState);
+	const isOwned = message.userId === userId ? true : false;
 
 	return (
 		<S.Wrapper $isOwned={isOwned}>

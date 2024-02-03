@@ -3,8 +3,7 @@ import { ISectionFactory } from "@/types";
 export const ROUTE_PATH = {
 	INTRO: '/',
 	MAIN: '/main/:section',
-	SIGN_IN: '/login',
-	TRIAL_LOGIN: '/trial',
+	LOGIN: '/login',
 	MY_PAGE: '/profile/:id',
 	MY_PAGE_TAB: '/profile/:id/:tab',
 	PORTFOLIO_DETAIL: '/portfolios/:portfolio_id',

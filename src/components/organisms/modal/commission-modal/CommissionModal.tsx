@@ -8,7 +8,7 @@ import * as S from "./CommissionModal.styled";
 
 import { Text, Button, Modal, Profile, Rating } from "@/components";
 import { useStopScrollY } from "@/hooks";
-import { authority } from "@/redux/loginSlice";
+import { userState } from "@/redux/loginSlice";
 import { addValidationErrorToast } from "@/utils";
 import { usePostCommissionQuery } from "@/utils/api-service/commission";
 
@@ -38,7 +38,7 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 
 	const dispatch = useDispatch();
 
-	const auth = useSelector(authority);
+	const { authority } = useSelector(userState);
 
 	const { register, reset, handleSubmit, formState: { isSubmitting, errors, dirtyFields } } = useForm<FormValues>({
 		mode: 'onSubmit',
@@ -169,10 +169,10 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 			</S.Content>
 
 			<S.ButtonGroup>
-				{ auth === 'expert' && !isEditMode &&
+				{ authority === 'expert' && !isEditMode &&
 					<Button color='black' size='medium' shape='square' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
 				}
-				{ auth === 'client' && commission.details.state !== '구매 확정' &&
+				{ authority === 'client' && commission.details.state !== '구매 확정' &&
 					<Button color='black' size='medium' shape='square'>주문 취소</Button>
 				}
 				{ isEditMode ?
