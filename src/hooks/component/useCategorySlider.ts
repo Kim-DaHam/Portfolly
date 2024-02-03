@@ -23,7 +23,11 @@ export default function useCategorySlider() {
 	const lastIndex = categories[currentSection].length - 1;
 
 	const handlePrev = () => {
-		setShowNextArrow(true);
+		const lastCategoryButton = document.querySelector('.last-category') as HTMLElement;
+		const endOfSlider = lastCategoryButton.getBoundingClientRect().right;
+
+		if(!(endOfSlider - SLIDE_WIDTH * 2 <= endOfCategoryBox))
+			setShowNextArrow(true);
 
 		if(sliderLeft + SLIDE_WIDTH * 2 > 0){
 			setShowPrevArrow(false);
@@ -31,7 +35,9 @@ export default function useCategorySlider() {
 			setSliderLeft(0);
 			return;
 		}
-		if(slider) slider.style.left = `${sliderLeft + SLIDE_WIDTH}px`;
+		if(slider)
+			slider.style.left = `${sliderLeft + SLIDE_WIDTH}px`;
+
 		setSliderLeft(prev => prev + SLIDE_WIDTH);
 	};
 

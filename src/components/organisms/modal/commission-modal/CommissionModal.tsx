@@ -9,13 +9,13 @@ import * as S from "./CommissionModal.styled";
 import { Text, Button, Modal, Profile, Rating } from "@/components";
 import { useStopScrollY } from "@/hooks";
 import { authority } from "@/redux/loginSlice";
-import { setToast } from "@/redux/toastSlice";
 import { addValidationErrorToast } from "@/utils";
 import { usePostCommissionQuery } from "@/utils/api-service/commission";
 
 type Props = {
 	commission: any;
 	handleModal: MouseEventHandler<HTMLElement>;
+	editMode?: boolean;
 };
 
 export type FormValues = {
@@ -32,9 +32,9 @@ const defaultValues: FormValues = {
 	cost: 0,
 };
 
-export default function RequestModal({ commission, handleModal }: Props) {
+export default function RequestModal({ commission, handleModal, editMode }: Props) {
 	const [updatedCommission, setUpdatedCommission] = useState(commission);
-	const [isEditMode, setIsEditMode] = useState(false);
+	const [isEditMode, setIsEditMode] = useState(editMode);
 
 	const dispatch = useDispatch();
 
@@ -45,7 +45,7 @@ export default function RequestModal({ commission, handleModal }: Props) {
 		defaultValues: defaultValues,
 	});
 
-	const commissionMutation = usePostCommissionQuery(commission.id);
+	const commissionMutation = usePostCommissionQuery(commission.id, commission.clientId);
 
 	useStopScrollY();
 
@@ -57,10 +57,10 @@ export default function RequestModal({ commission, handleModal }: Props) {
 		changedKeys.map((key) => {
 			changedValues[key] = copyForm[key];
 		});
-		changedValues.section = form.section;
 
 		await commissionMutation.mutate(changedValues, {
 			onSuccess: (response) => {
+				console.log('onSuccess')
 				setIsEditMode(prev=>!prev);
 				setUpdatedCommission(response);
 			},
@@ -68,12 +68,16 @@ export default function RequestModal({ commission, handleModal }: Props) {
 	};
 
 	useEffect(() => {
-		reset({
-			title: commission.details.title,
-			content: commission.details.content,
-			deadline: commission.details.deadline,
-			cost: commission.details.cost,
-		});
+		if(commission.details) {
+			reset({
+				title: commission.details.title,
+				content: commission.details.content,
+				deadline: commission.details.deadline,
+				cost: commission.details.cost,
+			});
+			return;
+		}
+		setUpdatedCommission({...commission, details: {...defaultValues}});
 	}, []);
 
 	useEffect(() => {
