@@ -1,5 +1,5 @@
 import { FiMenu as MenuIcon} from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo.png';
@@ -7,7 +7,7 @@ import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from 
 import { renderHeaderMenuPopper } from "@/components/organisms/header/Header.helpers";
 import * as S from "@/components/organisms/header/Header.styled";
 import { useHeader, useModal, usePopup } from "@/hooks";
-import { isLogin as IsLogin, userId as UserId } from "@/redux/loginSlice";
+import { logout, userState } from "@/redux/loginSlice";
 import { ROUTE_PATH } from "@/utils";
 
 export default function Header() {
@@ -16,9 +16,14 @@ export default function Header() {
 	const { isModalOpen, handleModal } = useModal();
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-	const isLogin = useSelector(IsLogin);
-	const userId = useSelector(UserId);
+	const user = useSelector(userState);
+
+	const handleLogOut = () => {
+		dispatch(logout());
+		popOut();
+	};
 
 	return(
 		<S.Wrapper>
@@ -40,7 +45,7 @@ export default function Header() {
 				<div></div>
 			}
 
-			{ isLogin ?
+			{ user.isLogin ?
 				<S.ButtonGroup>
 					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</Button>
 					<Button color='transparent' shape='square' onClick={popUp}>
@@ -50,15 +55,14 @@ export default function Header() {
 				</S.ButtonGroup>
 				:
 				<S.ButtonGroup>
-					<Button color='white' shape='square' onClick={()=>navigate(ROUTE_PATH.SIGN_IN)}>Log in</Button>
-					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.TRIAL_LOGIN)}>Start Trial Version</Button>
+					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.LOGIN)}>Start Trial Version</Button>
 					<Button color='transparent' shape='round' onClick={popUp}><MenuIcon size={15}/></Button>
 				</S.ButtonGroup>
 			}
 
 			{ isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>
-					{renderHeaderMenuPopper(isLogin, userId, popOut)}
+					{renderHeaderMenuPopper(user, popOut, handleLogOut)}
 				</Popper>
 			}
 		</S.Wrapper>

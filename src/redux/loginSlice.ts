@@ -15,7 +15,7 @@ const initialState: InitialState = {
 };
 
 export const loginSlice = createSlice({
-	name: "login",
+	name: "user",
 	initialState,
 	reducers: {
 		login: (state, action) => {
@@ -24,7 +24,9 @@ export const loginSlice = createSlice({
 			state.id = action.payload === 'expert' ? 1 : 100;
 		},
 		logout: (state) => {
-			state = initialState;
+			state.authority = null;
+			state.isLogin = false;
+			state.id = null;
 		},
 	},
 });
