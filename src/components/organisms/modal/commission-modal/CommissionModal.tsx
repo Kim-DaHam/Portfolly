@@ -104,6 +104,7 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 							<Text type='titleSmall'>{updatedCommission.details.title}</Text>
 						}
 						<Text type='small'>{updatedCommission.createdAt}</Text>
+						{updatedCommission.details && <Text type='small'>{updatedCommission.details.status}</Text>}
 					</S.Box>
 
 					<S.Box>

@@ -39,7 +39,7 @@ export const commissionHandlers= [
 			endedAt: '',
 			details: {
 				cost: 0,
-				state: '진행 중',
+				status: '진행 중',
 				...commission,
 			},
 			review: null,
