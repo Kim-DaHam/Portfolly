@@ -13,6 +13,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 
 
+import MainLayout from './pages/main-layout/MainLayout';
+
 import { Footer, Header, ToastContainer } from '@/components';
 import IntroPage from '@/pages/intro/IntroPage';
 import LogInPage from '@/pages/log-in/LogInPage';
@@ -32,18 +34,18 @@ export default function App() {
 				<PersistGate loading={null} persistor={persistor}>
 					<QueryClientProvider client={queryClient}>
 						<BrowserRouter>
-							<Header />
 							<Routes>
+							<Route element={<MainLayout />}>
 								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>} />
 								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>} />
-								<Route path={ROUTE_PATH.LOGIN} element={<LogInPage/>} />
 								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>} />
 								<Route path={ROUTE_PATH.MY_PAGE_TAB} element={<MyPage/>} />
 								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>} />
 								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>} />
 								<Route path={ROUTE_PATH.MESSAGE} element={<MessagePage/>} />
+							</Route>
+							<Route path={ROUTE_PATH.LOGIN} element={<LogInPage/>} />
 							</Routes>
-							<Footer />
 						</BrowserRouter>
 						<ToastContainer />
 						<ReactQueryDevtools initialIsOpen={false} />
