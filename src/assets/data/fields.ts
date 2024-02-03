@@ -1,4 +1,4 @@
-import { CommissionState, MessageState, SearchFilter, Section } from "@/types";
+import { CommissionStatus, MessageStatus, SearchFilter, Section } from "@/types";
 
 export const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
 
@@ -10,8 +10,8 @@ export const categories: {[key in Section]: string[]} = {
 	'Video': ['자연', '음악', '영화', '다큐멘터리', '요리', '일상', '편집'],
 };
 
-export const commissionStates: CommissionState[] = ['진행 중', '작업물 도착', '구매 확정', '주문 취소', '취소/문제해결', '분쟁 조정 중'];
+export const commissionStates: CommissionStatus[] = ['진행 중', '작업물 도착', '구매 확정', '주문 취소', '취소/문제해결', '분쟁 조정 중'];
 
 export const searchFilters: SearchFilter[] = ['닉네임', '프로젝트명'];
 
-export const messageStates: MessageState[] = ['안 읽음', '거래 중'];
+export const messageStates: MessageStatus[] = ['안 읽음', '거래 중'];
