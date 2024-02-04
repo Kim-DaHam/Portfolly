@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { PortfolioCard } from "@/components";
 import * as S from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
-import { useIntersectionObserver } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
 import { Portfolio } from "@/types";
+
+import { useIntersectionObserver } from "@/hooks";
 import { usePortfoliosQuery } from "@/utils";
+
+import { PortfolioCard } from "@/components";
 
 type Props = {
 	category: string;
 }
 
 const ITEMS_PER_PAGE = 10;
-export const SESSIONSTORAGE_KEY = "lastClickedPortfolio";
+export const SESSION_STORAGE_KEY = "lastClickedPortfolio";
 
 export default function PortfolioItemList({category}: Props) {
 	const [count, setCount] = useState(ITEMS_PER_PAGE);
@@ -41,14 +43,14 @@ export default function PortfolioItemList({category}: Props) {
 	const setObservationTarget = useIntersectionObserver(loadNextPage);
 
 	const saveScroll = (index: number) => {
-    sessionStorage.setItem(SESSIONSTORAGE_KEY, JSON.stringify({
+    sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify({
       anchorPosition: window.pageYOffset,
       clickedPortfolioIndex: index,
     }));
   };
 
 	useEffect(() => {
-		const getStorage = sessionStorage.getItem(SESSIONSTORAGE_KEY);
+		const getStorage = sessionStorage.getItem(SESSION_STORAGE_KEY);
 		if(!getStorage) return;
 
 		const { anchorPosition } = JSON.parse(getStorage);
@@ -59,7 +61,7 @@ export default function PortfolioItemList({category}: Props) {
       });
 
     }, 1000);
-		return () => sessionStorage.removeItem(SESSIONSTORAGE_KEY);
+		return () => sessionStorage.removeItem(SESSION_STORAGE_KEY);
 	}, []);
 
 	return (

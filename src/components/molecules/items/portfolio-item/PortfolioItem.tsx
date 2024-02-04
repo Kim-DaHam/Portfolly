@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { Image, Text } from "@/components";
 import * as S from '@/components/molecules/items/portfolio-item/PortfolioItem.styled';
+
+import { Image, Text } from "@/components";
 
 type Props = {
 	portfolio: any;

@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 
-import { ButtonStyle } from '@/components/atoms/index';
 import { ratios } from '@/styles/portfolio';
-import { Section } from '@/types/portfolio';
+import { Section } from '@/types';
+
+import { ButtonStyle } from '@/components';
 
 export const Wrapper = styled.div<{$section: Section}>`
 	width: 100%;
 	aspect-ratio: ${(props) => ratios[props.$section]};
 
 	position: relative;
-
 	overflow: hidden;
 
-	background-color: lightgray;
-	border-radius: 1.8rem;
+	cursor: pointer;
+	background-color: #f5f5f5;
+	border-radius: 1.75rem;
 
 	& :hover {
 		& .slick-dots {
@@ -24,35 +25,15 @@ export const Wrapper = styled.div<{$section: Section}>`
 			display: inline-block;
 		}
 	}
-`;
 
-export const Content = styled.div`
-	width: 100%;
-	height: 100%;
-
-	position: relative;
-
-	padding: 1.4em 1.5em 1.4em 1.5em;
-
-	cursor: pointer;
-
-	& .slick-initialized {
+	.slick-slider, .slick-list, .slick-track {
 		width: 100%;
 		height: 100%;
-
 		border-radius: 1.8rem;
-		background-color: gray;
-	}
 
-	& .slick-list {
-		width: 100%;
-		height: 100%;
-
-		border-radius: 1.8rem;
-	}
-
-	& .slick-track {
-		height: 100%;
+		div {
+			height: 100%;
+		}
 	}
 
 	& .slick-dots {
@@ -61,7 +42,6 @@ export const Content = styled.div`
 
 	& .slick-dots > li {
 		margin: 0;
-
 		cursor: default;
 	}
 
@@ -70,12 +50,19 @@ export const Content = styled.div`
 	}
 `;
 
+export const Content = styled.div`
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 1.4em 1.5em 1.4em 1.5em;
+`;
+
 export const SliderItem = styled.div`
 	width: 100%;
 	height: 100%;
 
 	border-radius: 1.8rem;
-	background-color: gray;
+	background-color: #e4e4e4;
 `;
 
 export const ArrowBox = styled.div`
@@ -86,7 +73,7 @@ export const ArrowBox = styled.div`
 	align-items: center;
 
 	position: absolute;
-	z-index: 100;
+	z-index: 300;
 	top: 49%;
 	left: 0;
 
@@ -103,4 +90,11 @@ export const NextArrow = styled(ButtonStyle)<{$showNextArrow: boolean}>`
 	display: none;
 	visibility: ${(props) => props.$showNextArrow ? 'visible' : 'hidden'};
 	cursor: pointer;
+`;
+
+export const Video = styled.iframe`
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
 `;

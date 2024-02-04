@@ -1,17 +1,20 @@
 import { useNavigate } from "react-router-dom";
 
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
-import { Text, PortfolioSlider } from "@/components";
 import * as S from "@/components/organisms/preview/Preview.styled";
-import { Portfolio, Section } from "@/types";
+
+import type { Portfolio, Section } from "@/types";
+
 import { stringToUrlParameter } from "@/utils";
+
+import { Text, PortfolioSlider } from "@/components";
 
 type Props = {
 	section: Section,
 	portfolios: Portfolio[],
 };
 
-export const PreviewRowColumns = {
+export const previewRowColumns = {
 	'Android/iOS': 3,
 	'Web': 2,
 	'Illustration': 2,
@@ -30,17 +33,17 @@ export default function Preview({section, portfolios}: Props){
 	return(
 		<S.Wrapper>
 			<S.TextBox>
-				<Text type='title'>{section}</Text>
-				<Text type='common'>{introduction[section]}</Text>
+				<Text type='headingMedium'>{section}</Text>
+				<Text type='bodyLarge'>{introduction[section]}</Text>
 			</S.TextBox>
 
-			<S.PreviewBox $column={PreviewRowColumns[section]}>
+			<S.PreviewBox $column={previewRowColumns[section]}>
 				{portfolios.map((portfolio, index: number) => {
-					return <PortfolioSlider section={section} key={index} portfolio={portfolio}/>
+					return <PortfolioSlider section={section} portfolio={portfolio} key={index} />
 				})}
 			</S.PreviewBox>
 
-			<S.ViewMoreButton shape='square' color='white' onClick={navigateMain}>
+			<S.ViewMoreButton color='white' onClick={navigateMain}>
 				More
 			</S.ViewMoreButton>
 		</S.Wrapper>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
 	${mixins.fullWidthHeight}
 
 	position: fixed;
@@ -19,13 +19,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Introduce = styled.div`
-	width: 100%;
-	height: 100vh;
-
+	${mixins.fullScreen}
 	${mixins.flexCenter}
 	${mixins.flexColumn}
+	padding: 0;
+`;
 
-	background-color: aliceblue;
+export const TextBox = styled.div`
+	${mixins.flexCenter}
+	${mixins.flexColumn}
+	gap: 1.5rem;
 `;
 
 export const Divider = styled.div`
@@ -34,3 +37,13 @@ export const Divider = styled.div`
 
 	background-color: transparent;
 `
+
+export const Label = styled.span`
+	${mixins.flexCenter}
+	${mixins.flexColumn}
+	gap: 0.2rem;
+
+	& span {
+		font-family: 'NotoSansTTFMedium';
+	}
+`;
