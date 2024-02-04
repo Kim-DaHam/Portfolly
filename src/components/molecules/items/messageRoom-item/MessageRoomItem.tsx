@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Image, Text } from '@/components';
 import * as S from '@/components/molecules/items/messageRoom-item/MessageRoomItem.styled';
+
 import { toLocalDateString } from '@/utils';
 
+import { Image, Text } from '@/components';
 
 type Props = {
 	message: any;
@@ -28,12 +28,12 @@ export default function MessageRoomItem({ message }: Props) {
 
 			<S.Box>
 				<S.LabelBox>
-					<Text type='label'>{message.partner.nickname}</Text>
-					<Text type='label' color='gray'>{toLocalDateString(new Date(message.timestamp))}</Text>
+					<Text size='label'>{message.partner.nickname}</Text>
+					<Text size='label' color='gray'>{toLocalDateString(new Date(message.timestamp))}</Text>
 				</S.LabelBox>
 
 				<S.MessageBox>
-					<Text type='common'>{message.lastMessage}</Text>
+					<Text size='bodyMedium'>{message.lastMessage}</Text>
 				</S.MessageBox>
 			</S.Box>
 		</S.Wrapper>

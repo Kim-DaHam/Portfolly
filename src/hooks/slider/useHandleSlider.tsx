@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 
-import { calcIndexWhenNextClicked, calcIndexWhenPrevClicked } from "./handleSlider.helpers";
-
 import { InitialProps } from "@/types/slider";
+
+import { calcIndexWhenNextClicked, calcIndexWhenPrevClicked } from "./handleSlider.helpers";
 
 function useHandleSlider({ slidesToShow, slidesToScroll, speed, lastIndex }: InitialProps) {
 	const [slider, setSlider] = useState<Slider>();

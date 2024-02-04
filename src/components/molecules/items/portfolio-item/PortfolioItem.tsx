@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { Image, Text } from "@/components";
 import * as S from '@/components/molecules/items/portfolio-item/PortfolioItem.styled';
+
+import { Image, Text } from "@/components";
 
 type Props = {
 	portfolio: any;
@@ -21,9 +22,9 @@ export default function PortfolioItem({portfolio}: Props) {
 
 			<S.Box>
 				<Link to={`/portfolios/${portfolio.id}`}>
-					<Text type='common'>{portfolio.title}</Text>
+					<Text size='bodyMedium'>{portfolio.title}</Text>
 				</Link>
-				<Text type='small'>{portfolio.summary}</Text>
+				<Text size='bodySmall'>{portfolio.summary}</Text>
 			</S.Box>
 		</S.Wrapper>
 	)

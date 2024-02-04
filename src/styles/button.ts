@@ -2,7 +2,7 @@ import { css } from "styled-components";
 
 /** Shapes */
 const square = css`
-	border-radius: 1em;
+	border-radius: 1rem;
 `;
 
 const round = css`

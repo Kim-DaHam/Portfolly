@@ -3,14 +3,17 @@ import { FiChevronRight as ChevronRightIcon } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import * as S from "./PortfolioDetailPage.styled";
-
-import { Text, Image, Button, ToggleButton, Tag, Profile, AlertModal } from "@/components";
-import { useModal, useHtmlContent } from "@/hooks";
 import { userState } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
-import { Portfolio } from "@/types";
+
+import * as S from "./PortfolioDetailPage.styled";
+
+import type { Portfolio } from "@/types";
+
+import { useModal, useHtmlContent } from "@/hooks";
 import { usePortfolioDeleteQuery, usePortfolioDetailQuery, stringToUrlParameter } from "@/utils";
+
+import { Text, Image, Button, ToggleButton, Tag, Profile, AlertModal } from "@/components";
 
 export default function PortfolioDetail(){
 	const [hasAuthority, setHasAuthority] = useState(false);
@@ -72,8 +75,8 @@ export default function PortfolioDetail(){
 
 							<S.PortfolioInfoBox>
 								<S.TitleBox>
-									<Text type='common' color='gray'>{portfolio.category}</Text>
-									<Text type='titleSmall'>{portfolio.title}</Text>
+									<Text size='bodyMedium' color='gray'>{portfolio.category}</Text>
+									<Text size='titleSmall'>{portfolio.title}</Text>
 								</S.TitleBox>
 
 								<S.ButtonGroup>
@@ -88,19 +91,19 @@ export default function PortfolioDetail(){
 									</S.ButtonGroup>
 								}
 
-								<Text type='label'>태그</Text>
+								<Text size='label'>태그</Text>
 								<S.TagBox>
 									{portfolio.tags.map((tag: string, index: number) => {
 										return <Tag readOnly value={tag} key={index}/>
 									})}
 								</S.TagBox>
 
-								<Text type='label'>요약</Text>
+								<Text size='label'>요약</Text>
 								<S.SummaryBox>
 									{portfolio.summary}
 								</S.SummaryBox>
 
-								<Text type='label' onClick={()=>navigate(`/profile/${portfolio.user.id}`)}>
+								<Text size='label' onClick={()=>navigate(`/profile/${portfolio.user.id}`)}>
 									전문가의 다른 포트폴리오
 									<ChevronRightIcon size={18}/>
 								</Text>

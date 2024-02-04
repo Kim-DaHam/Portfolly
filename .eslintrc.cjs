@@ -20,11 +20,32 @@ module.exports = {
 		'import/order': [
 			'error',
 			{
-				groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+				groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index'], 'type', 'unknown'],
+				pathGroups: [
+					{
+            "pattern": "@/hooks",
+            "group": "unknown",
+          },
+					{
+            "pattern": "@/utils",
+            "group": "unknown",
+          },
+          {
+            "pattern": "@/pages",
+            "group": "unknown",
+						"position": "after",
+          },
+          {
+            "pattern": "@/components",
+            "group": "unknown",
+						"position": "after",
+          },
+				],
         alphabetize: {
-          order: 'asc',
+					order: 'asc',
           caseInsensitive: true,
         },
+				'pathGroupsExcludedImportTypes': ['unknown'],
         'newlines-between': 'always',
 			}
 		],

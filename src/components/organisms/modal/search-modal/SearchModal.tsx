@@ -1,10 +1,10 @@
 import { HTMLAttributes, useEffect, useState } from "react";
 
-import * as S from "./SearchModal.styled";
-
 import { Modal, SearchBar } from "@/components/molecules";
 import { searchFilter, searchFilterList, renderContent } from "@/components/organisms/modal/search-modal";
 import useStopScrollY from "@/hooks/event/useStopScrollY";
+
+import * as S from "./SearchModal.styled";
 
 export type Filter = 'Trending' | 'AppCategory' | 'UserTags' | 'Search';
 export type Content = 'Trending' | 'List' | 'Search';

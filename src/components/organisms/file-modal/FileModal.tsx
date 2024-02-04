@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
 import { FiPaperclip as ClipIcon , FiX as XIcon } from "react-icons/fi";
 
+import * as S from '@/components/organisms/file-modal/FileModal.styled';
+
+import type { SetState } from "@/types";
 
 import { Image, Text } from '@/components';
-import * as S from '@/components/organisms/file-modal/FileModal.styled';
-import { SetState } from "@/types";
 
 type Props = {
 	handleFileModal: SetState<boolean>;
@@ -57,7 +58,7 @@ export default function FileModal({ handleFileModal, setValue, getValues }: Prop
 					return (
 						<S.FileItem>
 							<ClipIcon size={16} color='gray' />
-							<Text type='label'>{file.name}</Text>
+							<Text size='label'>{file.name}</Text>
 							<XIcon size={16} color='gray' onClick={()=>handleFile(file)} />
 						</S.FileItem>
 					)

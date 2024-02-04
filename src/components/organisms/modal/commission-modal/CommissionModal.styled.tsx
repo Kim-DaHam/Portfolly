@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
-import { types } from '@/styles//text';
 import * as mixins from '@/styles/mixins';
+import { sizes } from '@/styles/text';
 
 export const Content = styled.div`
 	${mixins.flexColumn}
@@ -50,7 +50,7 @@ export const Input = styled.input`
 
 export const TextInput = styled(Input)`
 	height: 3rem;
-	${types['titleSmall']};
+	${sizes['titleSmall']};
 `;
 
 export const TextArea = styled.textarea`

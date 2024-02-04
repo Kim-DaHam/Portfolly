@@ -1,7 +1,11 @@
 import { Dispatch, HTMLAttributes, SetStateAction } from "react";
+import { FiSearch as SearchIcon } from "react-icons/fi";
 
 import * as S from "@/components/molecules/searchBar/SearchBar.styled";
+
 import { useSearch } from "@/hooks";
+
+import { Text } from "@/components";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	isClicked: boolean;
@@ -13,11 +17,11 @@ export default function SearchBar({ isClicked, onInputChange, ...attributes }: P
 
 	return(
 		<S.Wrapper {...attributes}>
-			<S.SearchLogo/>
+			<SearchIcon size={20} />
 			{ isClicked ?
 				<S.Input onChange={searchKeyword}/>
 				:
-				<div>Search on type...</div>
+				<Text size='bodyMedium' color='gray'>Search on type...</Text>
 			}
 		</S.Wrapper>
 	)

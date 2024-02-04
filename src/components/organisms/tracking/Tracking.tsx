@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
 
-import { countCommissionStatus } from './Tracking.helpers';
-
 import { ProcessIcon, FolderIcon, CancelIcon } from '@/assets/images';
-import { Image, Text } from "@/components";
 import * as S from "@/components/organisms/tracking/Tracking.styled";
 import { userState } from '@/redux/loginSlice';
+
+import { countCommissionStatus } from './Tracking.helpers';
+
+import { Image, Text } from "@/components";
 
 type Props = {
 	commissions: any;
@@ -22,48 +23,48 @@ export default function Tracking({ commissions }: Props) {
 				<S.Box>
 					<S.LabelGroup>
 						<Image src={ProcessIcon} size='2rem' />
-						<Text type='common'>진행 중</Text>
+						<Text size='bodyMedium'>진행 중</Text>
 					</S.LabelGroup>
-					<Text type='titleSmall'>{commissionsStatus['진행 중']}</Text>
+					<Text size='titleSmall'>{commissionsStatus['진행 중']}</Text>
 				</S.Box>
 
 				<S.Box>
 					<S.LabelGroup>
 						<Image src={FolderIcon} size='2rem' />
-						<Text type='common'>작업물 도착</Text>
+						<Text size='bodyMedium'>작업물 도착</Text>
 					</S.LabelGroup>
-					<Text type='titleSmall'>{commissionsStatus['작업물 도착']}</Text>
+					<Text size='titleSmall'>{commissionsStatus['작업물 도착']}</Text>
 				</S.Box>
 
 				<S.Box>
 					<S.LabelGroup>
 						<Image src={CancelIcon} size='2rem' />
-						<Text type='common'>취소 · 문제해결</Text>
+						<Text size='bodyMedium'>취소 · 문제해결</Text>
 					</S.LabelGroup>
-					<Text type='titleSmall'>{commissionsStatus['취소/문제해결']}</Text>
+					<Text size='titleSmall'>{commissionsStatus['취소/문제해결']}</Text>
 				</S.Box>
 
 				<S.Box>
 					<S.Group>
-						<Text type='common'>구매 확정</Text>
-						<Text type='common'>{commissionsStatus['구매 확정']}</Text>
+						<Text size='bodyMedium'>구매 확정</Text>
+						<Text size='bodyMedium'>{commissionsStatus['구매 확정']}</Text>
 					</S.Group>
 
 					{ authority === 'expert' ?
 						<S.Group>
-							<Text type='common'>작성된 리뷰</Text>
-							<Text type='common'>{commissionsStatus['작성된 리뷰']}</Text>
+							<Text size='bodyMedium'>작성된 리뷰</Text>
+							<Text size='bodyMedium'>{commissionsStatus['작성된 리뷰']}</Text>
 						</S.Group>
 						:
 						<S.Group>
-							<Text type='common'>작성 가능한 리뷰</Text>
-							<Text type='common'>{commissionsStatus['작성 가능한 리뷰']}</Text>
+							<Text size='bodyMedium'>작성 가능한 리뷰</Text>
+							<Text size='bodyMedium'>{commissionsStatus['작성 가능한 리뷰']}</Text>
 						</S.Group>
 					}
 
 					<S.Group>
-						<Text type='common'>주문 취소</Text>
-						<Text type='common'>{commissionsStatus['주문 취소']}</Text>
+						<Text size='bodyMedium'>주문 취소</Text>
+						<Text size='bodyMedium'>{commissionsStatus['주문 취소']}</Text>
 					</S.Group>
 				</S.Box>
 			</S.Content>

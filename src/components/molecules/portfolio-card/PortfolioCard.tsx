@@ -1,10 +1,15 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { Group } from "@/components/molecules/popper/Popper.styled";
+import * as S from "@/components/molecules/portfolio-card/PortfolioCard.styled";
+import { section } from "@/redux/sectionSlice";
+
+import { usePopup } from "@/hooks";
 
 import { Button, ToggleButton, Popper, PortfolioSlider, Profile } from "@/components";
-import { Group, Item } from "@/components/molecules/popper/Popper.styled";
-import * as S from "@/components/molecules/portfolio-card/PortfolioCard.styled";
-import { usePopup } from "@/hooks";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: any;
@@ -15,6 +20,7 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 	const buttonGroupRef = useRef(null);
 
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
+	const currentSection = useSelector(section);
 
 	useEffect(()=>{
 		const buttonGroup :HTMLElement = buttonGroupRef.current!;
@@ -28,7 +34,7 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 
 	return (
 		<S.Wrapper onClick={onClick}>
-			<PortfolioSlider portfolio={portfolio}/>
+			<PortfolioSlider section={currentSection} portfolio={portfolio}/>
 
 			<S.ProfileBox>
 				<Profile type='portfolio-card' user={{...portfolio, ...portfolio.user}}/>
@@ -44,7 +50,9 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 				{ isPopUp &&
 					<Popper coordinate={coordinate} popOut={popOut}>
 						<Group>
-							<Item>공유하기</Item>
+							<Link to=''>
+								공유하기
+							</Link>
 						</Group>
 					</Popper>
 				}

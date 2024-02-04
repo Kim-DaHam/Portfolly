@@ -1,9 +1,10 @@
-import { Fragment, forwardRef, useEffect, useState } from "react";
+import { Fragment, forwardRef, useState } from "react";
 import { UseFormSetValue } from "react-hook-form";
 import { FaStar as Star, FaStarHalf as HalfStar } from "react-icons/fa";
 
-import { Text } from '@/components';
 import * as S from "@/components/molecules/rating/Rating.styled";
+
+import { Text } from '@/components';
 
 type Props = {
 	readonly?: boolean;
@@ -44,7 +45,7 @@ function Rating({ readonly=false, setValue=()=>'', score=0 }: Props) {
 					);
 				})}
 			</S.Content>
-			<Text type='common' color='gray'>{rating} / 5</Text>
+			<Text size='bodyMedium' color='gray'>{rating} / 5</Text>
 		</S.Wrapper>
 	)
 }

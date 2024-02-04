@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-export const HEADER_HEIGHT = '3.5rem';
+import { ButtonStyle } from '@/components/atoms/button/Button.styled';
+
+export const HEADER_HEIGHT = '4.498rem';
 
 export const Wrapper = styled.header`
-	width: 100%;
+	width: 100vw;
 	height: ${HEADER_HEIGHT};
 
 	display: grid;
@@ -26,6 +28,10 @@ export const ButtonGroup = styled.nav`
 	flex-direction: row;
 	justify-content: flex-end;
 	gap: 0.9rem;
+
+	& .profile-menu {
+		padding: 0 0.875rem 0 0.375rem;
+	}
 `
 
 export const Logo = styled.a`

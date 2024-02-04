@@ -4,28 +4,23 @@ import { ButtonStyle } from '@/components/atoms/index';
 import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
-	width: 100%;
-	height: 100vh;
+	${mixins.fullScreen}
+	${mixins.flexCenter}
 
-	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	gap: 7rem;
 
 	padding: 6rem;
-
-	border-bottom: solid 1px black;
-`
+`;
 
 export const TextBox = styled.div`
 	height: 100%;
 
 	${mixins.flexCenter}
 	${mixins.flexColumn}
-	gap: 2rem;
-	flex-basis: 35%;
 
-	border: solid 1px black;
+	align-items: start;
+	flex-basis: 33%;
+	gap: 2rem;
 `;
 
 export const PreviewBox = styled.div<{$column: number}>`
@@ -34,17 +29,23 @@ export const PreviewBox = styled.div<{$column: number}>`
 	display: grid;
 	grid-template-columns: repeat(${(props)=>props.$column}, 1fr);
 	column-gap: 3rem;
+
 	align-items: center;
-	gap: 2rem;
 	flex-basis: 65%;
+	gap: 2rem;
 
 	overflow: hidden;
-
-	border: solid 1px black;
 `;
 
 export const ViewMoreButton = styled(ButtonStyle)`
+	width: 5rem;
+	height: 3.5rem;
+
+	font-size: large;
+
 	position: absolute;
 	z-index: 200;
 	right: 3rem;
+
+	box-shadow : 0 0 1rem 1rem white;
 `;

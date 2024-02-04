@@ -1,11 +1,13 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
-import { Text, Button, Profile, CommissionModal } from "@/components";
 import * as S from "@/components/organisms/partner-profile/PartnerProfile.styled";
-import { useModal } from "@/hooks";
 import { userState } from "@/redux/loginSlice";
+
+import { useModal } from "@/hooks";
 import { toLocalDateString } from "@/utils";
+
+import { Text, Button, Profile, CommissionModal } from "@/components";
 
 type Props = {
 	message: any;
@@ -33,16 +35,16 @@ export default function PartnerProfile({ message }: Props) {
 
 			<S.ActivityBox>
 				<S.Box>
-					<Text type='label'>만족도</Text>
-					<Text type='label'>{message.partner.score}</Text>
+					<Text size='label'>만족도</Text>
+					<Text size='label'>{message.partner.score}</Text>
 				</S.Box>
 				<S.Box>
-					<Text type='label'>연락 가능 시간</Text>
-					<Text type='label'>{message.partner.contactTime}</Text>
+					<Text size='label'>연락 가능 시간</Text>
+					<Text size='label'>{message.partner.contactTime}</Text>
 				</S.Box>
 			</S.ActivityBox>
 
-			<Text type='label'>전문가 서비스</Text>
+			<Text size='label'>전문가 서비스</Text>
 			<Profile type='portfolio' user={message.portfolio} />
 
 			{ !message.commission && authority === 'expert' &&

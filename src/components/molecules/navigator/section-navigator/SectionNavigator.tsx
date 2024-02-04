@@ -1,35 +1,26 @@
 import { FiMoreHorizontal as Icon} from "react-icons/fi";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Group, Item } from "../../popper/Popper.styled";
-
-import * as S from "./SectionNavigator.styled";
-
-import { Button } from "@/components/atoms";
-import { Popper }  from "@/components/molecules";
-import { usePopup } from "@/hooks";
+import { sections } from "@/assets/data/fields";
+import * as S from "@/components/molecules/navigator/section-navigator/SectionNavigator.styled";
+import { Group } from "@/components/molecules/popper/Popper.styled";
 import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Section } from "@/types";
+
+import type { Section } from "@/types";
+
+import { usePopup } from "@/hooks";
 import { stringToUrlParameter } from "@/utils";
 
-const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
+import { Button, Popper, Text } from "@/components";
 
 export default function SectionNavigator() {
 	const currentSection = useSelector(sectionSlice);
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
 
-	const navigate = useNavigate();
-
-	const handleSection = (event: React.MouseEvent)=> {
-		const section = event.currentTarget.textContent as Section;
-		popOut();
-		navigate(`/main/${stringToUrlParameter(section)}`);
-	};
-
 	return(
 		<S.Wrapper>
-			<S.SectionTitle>{currentSection}</S.SectionTitle>
+			<Text size='bodyLarge'>{currentSection}</Text>
 
 			<Button color='white' shape='round' onClick={popUp}>
 				<Icon color='gray'/>
@@ -37,10 +28,12 @@ export default function SectionNavigator() {
 
 			{isPopUp &&
 				<Popper coordinate={coordinate} popOut={popOut}>
-					<Group size='fit'>
+					<Group size='10rem'>
 						{sections.map((section: Section, index: number)=>{
 							return(
-								<Item onClick={handleSection} key={index}>{section}</Item>
+								<Link to={`/main/${stringToUrlParameter(section)}`} onClick={popOut} key={index}>
+									{section}
+								</Link>
 							)
 						})}
 					</Group>

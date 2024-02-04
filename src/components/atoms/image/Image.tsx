@@ -12,7 +12,10 @@ export type Props = HTMLAttributes<HTMLImageElement> & {
 export default function Image({shape='square', ...props}: Props) {
 	return(
 		<S.ImageLayout shape={shape} {...props}>
-			<img src={props.src} alt={props.alt} />
+			<img
+				src={props.src}
+				alt={props.alt}
+			/>
 		</S.ImageLayout>
 	)
 }

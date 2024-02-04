@@ -1,31 +1,31 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { initialProps, sliderSettings } from "./PortfolioSlider.constants";
+import { initialProps, sliderSettings } from "@/components/organisms/slider/portfolio-slider/PortfolioSlider.constants";
+import * as S from "@/components/organisms/slider/portfolio-slider/PortfolioSlider.styled";
+
+import type { Portfolio, Section } from "@/types";
+
+import { useHandleSlider } from "@/hooks";
+import { eventStopPropagation, stringToUrlParameter } from "@/utils";
 
 import { Image } from "@/components";
-import * as S from "@/components/organisms/slider/portfolio-slider/PortfolioSlider.styled";
-import { useHandleSlider } from "@/hooks";
-import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Portfolio, Section } from "@/types";
-import { eventStopPropagation } from "@/utils";
 
 export type Props = {
-	section?: Section;
+	section: Section;
 	portfolio: Portfolio;
 }
-
-const THUMBNAIL_PAGE = 3;
 
 export default function PortfolioSlider({section, portfolio}: Props){
 	const navigate = useNavigate();
 	const sliderRef = useRef(null);
 
-	const currentSection = useSelector(sectionSlice);
+	const THUMBNAIL_PAGE = section === 'Video' ? 1 : 3;
+	const sectionName = stringToUrlParameter(section);
 
 	const {
 		handlePrev,
@@ -37,24 +37,26 @@ export default function PortfolioSlider({section, portfolio}: Props){
 
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
-	}, [])
+	}, []);
 
 	return(
-		<S.Wrapper $section={section || currentSection} onClick={()=>navigate(`/portfolios/${portfolio.id}`)}>
-			<S.Content>
+		<S.Wrapper $section={section} onClick={() => navigate(`/portfolios/${portfolio.id}`)}>
+			<S.Content className={`${sectionName}-slider-box`}>
 				<S.ArrowBox onClick={eventStopPropagation}>
 					<S.PrevArrow
 						color='white'
-						shape='square'
 						onClick={handlePrev}
-						$showPrevArrow={showPrevArrow}>
-					Prev</S.PrevArrow>
+						$showPrevArrow={showPrevArrow}
+					>
+						Prev
+					</S.PrevArrow>
 					<S.NextArrow
 						color='white'
-						shape='square'
 						onClick={handleNext}
-						$showNextArrow={showNextArrow}>
-					Next</S.NextArrow>
+						$showNextArrow={showNextArrow}
+					>
+						Next
+					</S.NextArrow>
 				</S.ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
@@ -62,7 +64,11 @@ export default function PortfolioSlider({section, portfolio}: Props){
 						if(index < 3) {
 							return (
 								<S.SliderItem key={index}>
-									<Image src={url} size='auto' key={index}/>
+									{ section !== 'Video' ?
+										<Image src={url} size='100%' alt='slider image' />
+										:
+										<S.Video src={url} />
+									}
 								</S.SliderItem>
 							)
 						}

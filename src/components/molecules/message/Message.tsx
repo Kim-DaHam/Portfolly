@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
 
-import { Image, Text } from '@/components';
 import * as S from '@/components/molecules/message/Message.styled';
 import { userState } from '@/redux/loginSlice';
+
 import { toLocalTimeString } from '@/utils';
+
+import { Image, Text } from '@/components';
 
 type Props = {
 	message: any;
@@ -18,7 +20,7 @@ export default function Message({ message, partnerProfileImage }: Props) {
 		<S.Wrapper $isOwned={isOwned}>
 			{ isOwned ?
 				<>
-					<Text type='label' color='lightgray'>{toLocalTimeString(new Date(message.createdAt))}</Text>
+					<Text size='label' color='lightgray'>{toLocalTimeString(new Date(message.createdAt))}</Text>
 					<S.Content $isOwned={isOwned}>
 						{message.message}
 					</S.Content>
@@ -29,7 +31,7 @@ export default function Message({ message, partnerProfileImage }: Props) {
 					<S.Content $isOwned={isOwned}>
 						{message.message}
 					</S.Content>
-					<Text type='label' color='lightgray'>{toLocalTimeString(new Date(message.createdAt))}</Text>
+					<Text size='label' color='lightgray'>{toLocalTimeString(new Date(message.createdAt))}</Text>
 				</>
 			}
 		</S.Wrapper>
