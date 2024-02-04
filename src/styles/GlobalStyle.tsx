@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 import BasierSquareTTFRegular from '@/assets/fonts/basiersquare-regular-webfont.ttf';
 import NotoSansTTFBold from '@/assets/fonts/NotoSansKR-Bold.ttf';
+import NotoSansTTFMedium from '@/assets/fonts/NotoSansKR-Medium.ttf';
 import NotoSansTTFSemiBold from '@/assets/fonts/NotoSansKR-SemiBold.ttf';
 
 const GlobalStyle = createGlobalStyle`
@@ -10,6 +11,14 @@ const GlobalStyle = createGlobalStyle`
 		src: local('BasierSquareTTFRegular'), local('BasierSquareTTFRegular');
 		font-style: normal;
 		src: url(${BasierSquareTTFRegular}) format('truetype');
+  }
+
+	@font-face {
+		font-family: 'NotoSansTTFMedium';
+		src: local('NotoSansTTFMedium'), local('NotoSansTTFMedium');
+		font-style: normal;
+		src: url(${NotoSansTTFMedium}) format('truetype');
+		unicode-range: U+AC00-D7A3;
   }
 
 	@font-face {
