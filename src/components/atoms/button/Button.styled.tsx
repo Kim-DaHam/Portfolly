@@ -15,7 +15,7 @@ export const ButtonStyle = styled.button<Props>`
 	line-height: 1.5em;
 
 	font-size: 1em;
-	font-weight: 600;
+	font-weight: bold;
 	letter-spacing: -.008em;
 	border: 0;
 
