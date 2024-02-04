@@ -2,18 +2,22 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 3rem;
 
 	display: flex;
 	align-items: center;
 	gap: 10px;
 
-	padding: 0 10px 0 10px;
+	padding: 0 1.25rem 0 1.25rem;
 
 	cursor: pointer;
 
-	border-radius: 16px;
-	background-color: gray;
+	border-radius: 1.5rem;
+	background-color: #f0f0f0;
+
+	& span {
+		font-weight: 600;
+	}
 `;
 
 export const Input = styled.input`
@@ -22,11 +26,4 @@ export const Input = styled.input`
 	flex-grow: 1;
 
 	cursor: pointer;
-`
-
-export const SearchLogo = styled.div`
-	width: 2rem;
-	height: 2rem;
-
-	background-color: black;
 `;

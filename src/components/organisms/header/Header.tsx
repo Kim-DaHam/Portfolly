@@ -49,16 +49,22 @@ export default function Header() {
 
 			{ user.isLogin ?
 				<S.ButtonGroup>
-					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>Upload</Button>
-					<Button color='transparent' shape='square' onClick={popUp}>
-						<Image src='' size='1rem'/>
-						<MenuIcon size={15}/>
+					<Button color='black' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>
+						Upload
+					</Button>
+					<Button color='transparent' shape='round' onClick={popUp} className='profile-menu'>
+						<Image src={user.profileImage!} size='1.999rem' shape='circle' />
+						<MenuIcon size={15} />
 					</Button>
 				</S.ButtonGroup>
 				:
 				<S.ButtonGroup>
-					<Button color='black' shape='square' onClick={()=>navigate(ROUTE_PATH.LOGIN)}>Create Trial Account</Button>
-					<Button color='transparent' shape='round' onClick={popUp}><MenuIcon size={15}/></Button>
+					<Button color='black' onClick={()=>navigate(ROUTE_PATH.LOGIN)}>
+						Create Trial Account
+					</Button>
+					<Button color='transparent' shape='round' onClick={popUp}>
+						<MenuIcon size={15}/>
+					</Button>
 				</S.ButtonGroup>
 			}
 

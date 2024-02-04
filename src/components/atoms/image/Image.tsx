@@ -15,8 +15,6 @@ export default function Image({shape='square', ...props}: Props) {
 			<img
 				src={props.src}
 				alt={props.alt}
-				sizes="(max-width: 600px) 480px,
-							800px"
 			/>
 		</S.ImageLayout>
 	)

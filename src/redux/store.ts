@@ -6,11 +6,10 @@ import loginSlice from '@/redux/loginSlice';
 import sectionSlice from '@/redux/sectionSlice';
 import toastSlice from '@/redux/toastSlice';
 
-
 const authPersistConfig = {
 	key: 'user',
 	storage,
-	whitelist: ['id', 'isLogin', 'authority'],
+	whitelist: ['id', 'isLogin', 'authority', 'profileImage'],
 };
 
 const sectionPersistConfig = {

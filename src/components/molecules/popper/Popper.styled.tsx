@@ -23,42 +23,40 @@ export const PopperBox = styled.div<{$top: number, $right: number}>`
 	top: ${(props) => props.$top + 10}px;
 	right: ${(props) => document.documentElement.clientWidth - props.$right}px;
 
-	border-radius: 16px;
-	background-color: lightgray;
+	border-radius: 1rem;
+	background-color: white;
+	box-shadow: 0 0 1rem 0.1rem #e7e7e7;
 `;
 
 export const Separator = styled.div`
 	width: 100%;
-	height: 0.1rem;
+	height: 0.01rem;
 
-	background-color: black;
+	background-color: lightgray;
 `;
 
-export const Group = styled.div<{size?: 'fit'}>`
-	width: ${(props)=> props.size === 'fit' ?'fit-content' : '14rem'};
+export const Group = styled.div<{size?: string}>`
+	width: ${(props)=> props.size || '14rem'};
 	height: 100%;
 
 	${mixins.flexColumn}
+	gap: 0.5rem;
 
-	padding: 8px;
+	padding: 0.5rem;
 
 	& a {
 		display: flex;
 		gap: 1rem;
 
-		padding: 0.5rem;
+		padding: 0.5rem 1rem 0.5rem 1rem;
 
 		cursor: pointer;
+		border-radius: 0.5rem;
+
+		&:hover {
+			background-color: #f5f5f5;
+		}
 	}
-`;
-
-export const Item = styled.div`
-	display: flex;
-	gap: 1rem;
-
-	padding: 0.5rem;
-
-	cursor: pointer;
 `;
 
 export const Box = styled.div`

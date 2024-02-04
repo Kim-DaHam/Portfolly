@@ -1,8 +1,9 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { FiMoreHorizontal as MoreIcon } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { Group, Item } from "@/components/molecules/popper/Popper.styled";
+import { Group } from "@/components/molecules/popper/Popper.styled";
 import * as S from "@/components/molecules/portfolio-card/PortfolioCard.styled";
 import { section } from "@/redux/sectionSlice";
 
@@ -49,7 +50,9 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 				{ isPopUp &&
 					<Popper coordinate={coordinate} popOut={popOut}>
 						<Group>
-							<Item>공유하기</Item>
+							<Link to=''>
+								공유하기
+							</Link>
 						</Group>
 					</Popper>
 				}
