@@ -4,10 +4,12 @@ import { FiPaperclip as ClipIcon } from "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 
-import { Text, AlertModal, PartnerProfile, MessageList, Button } from '@/components';
 import * as S from '@/components/organisms/message-room/MessageRoom.styled';
 import { setToast } from "@/redux/toastSlice";
+
 import { useMessageRoomDeleteMutation } from "@/utils";
+
+import { Text, AlertModal, PartnerProfile, MessageList, Button } from '@/components';
 
 type Props = {
 	message: any;
@@ -62,7 +64,7 @@ export default function MessageRoom({ message }: Props) {
 	return (
 		<S.Wrapper>
 			<S.TitleBox>
-				<Text type='common'>{message.partner.nickname}</Text>
+				<Text size='bodyMedium'>{message.partner.nickname}</Text>
 				<ExitIcon size={24} onClick={() => setIsExitModalOpen(prev=>!prev)}/>
 			</S.TitleBox>
 

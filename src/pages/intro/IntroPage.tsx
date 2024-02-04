@@ -21,15 +21,15 @@ export default function IntroPage(){
 		>
 			<S.Introduce>
 				<S.TextBox>
-					<Text type='headingMedium'>Welcome to Portfolly</Text>
+					<Text size='headingMedium'>Welcome to Portfolly</Text>
 					<h1>클라이언트와 파트너 간 소통해요</h1>
 
 					<S.Label>
-						<Text type='bodyLarge' color="gray">
+						<Text size='bodyLarge' color="gray">
 							앱 & 웹 & 일러스트 & 사진 & 영상 다양한 미디어 포트폴리오를
 						</Text>
 
-						<Text type='bodyLarge' color="gray">
+						<Text size='bodyLarge' color="gray">
 							한곳에서 구경하고 나만의 전문가를 만나요
 						</Text>
 					</S.Label>

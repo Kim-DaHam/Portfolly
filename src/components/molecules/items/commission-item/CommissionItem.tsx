@@ -1,11 +1,13 @@
 import React, { HTMLAttributes, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Button, CommissionModal, ReviewForm, ReviewItem, Text } from '@/components';
 import * as S from '@/components/molecules/items/commission-item/CommissionItem.styled';
-import { useModal } from '@/hooks';
 import { userState } from '@/redux/loginSlice';
+
+import { useModal } from '@/hooks';
 import { eventStopPropagation, toLocalDateString } from '@/utils';
+
+import { Button, CommissionModal, ReviewForm, ReviewItem, Text } from '@/components';
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	commission: any;
@@ -27,11 +29,11 @@ export default function CommissionItem({ commission, index }: Props) {
 	return (
 		<S.Wrapper>
 			<S.Content onClick={handleModal}>
-				<Text type='small'>{index}</Text>
+				<Text size='bodySmall'>{index}</Text>
 				<S.Box>
-					<Text type='common'>{commission.details.title}</Text>
-					<Text type='small'>{commission.client.nickname}</Text>
-					<Text type='small'>{toLocalDateString(new Date(commission.createdAt))}</Text>
+					<Text size='bodyMedium'>{commission.details.title}</Text>
+					<Text size='bodySmall'>{commission.client.nickname}</Text>
+					<Text size='bodySmall'>{toLocalDateString(new Date(commission.createdAt))}</Text>
 				</S.Box>
 				{ authority === 'expert' && commission.review &&
 					<Button color='gray' onClick={handleReviewButton}>

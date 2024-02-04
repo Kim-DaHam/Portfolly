@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Logo from '@/assets/images/logo.png';
-import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from '@/components';
 import { renderHeaderMenuPopper } from "@/components/organisms/header/Header.helpers";
 import * as S from "@/components/organisms/header/Header.styled";
-import { useHeader, useModal, usePopup } from "@/hooks";
 import { logout, userState } from "@/redux/loginSlice";
+
+import { useHeader, useModal, usePopup } from "@/hooks";
 import { ROUTE_PATH } from "@/utils";
+
+import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from '@/components';
 
 export default function Header() {
 	const { showSearchBar, showSectionNavigator } = useHeader();
@@ -28,7 +30,7 @@ export default function Header() {
 	return(
 		<S.Wrapper>
 			<S.Logo onClick={()=>navigate('/main/android-ios')}>
-				<Image src={Logo} size='2.3rem'/>
+				<Image src={Logo} size='2rem'/>
 			</S.Logo>
 
 			{ showSectionNavigator ? <SectionNavigator/> : <div></div> }

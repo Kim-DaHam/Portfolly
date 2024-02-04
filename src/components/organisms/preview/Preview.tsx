@@ -33,8 +33,8 @@ export default function Preview({section, portfolios}: Props){
 	return(
 		<S.Wrapper>
 			<S.TextBox>
-				<Text type='headingMedium'>{section}</Text>
-				<Text type='bodyLarge'>{introduction[section]}</Text>
+				<Text size='headingMedium'>{section}</Text>
+				<Text size='bodyLarge'>{introduction[section]}</Text>
 			</S.TextBox>
 
 			<S.PreviewBox $column={previewRowColumns[section]}>

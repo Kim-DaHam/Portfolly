@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
-import { types } from '@/styles/text';
+import { sizes } from '@/styles/text';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
@@ -118,7 +118,7 @@ export const GridItem = styled.div`
 `;
 
 export const TextButton = styled.label`
-	${types['label']}
+	${sizes['label']}
 	cursor: pointer;
 
 	&:hover {

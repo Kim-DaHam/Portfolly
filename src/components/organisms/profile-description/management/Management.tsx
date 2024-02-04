@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
+import * as S from "@/components/organisms/profile-description/management/Management.styled";
+
 import { isIncludedKeyword } from "./Management.helpers";
 
-import { Text, Selector , Button, CommissionModal, Tracking, CommissionItem } from "@/components";
-import * as S from "@/components/organisms/profile-description/management/Management.styled";
 import { useModal } from "@/hooks";
+
+import { Text, Selector , Button, CommissionModal, Tracking, CommissionItem } from "@/components";
 
 type Props = {
 	commissions: any;
@@ -57,7 +59,7 @@ export default function Management({ commissions }: Props) {
 
 			<S.Notice>
 				<QuestionIcon />
-				<Text type='small'>구매 과정 및 주문 상태 안내</Text>
+				<Text size='bodySmall'>구매 과정 및 주문 상태 안내</Text>
 			</S.Notice>
 
 			<S.SearchFilterSection>

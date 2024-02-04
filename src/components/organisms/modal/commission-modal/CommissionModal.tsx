@@ -3,14 +3,17 @@ import { useForm } from "react-hook-form";
 import { FiX as XIcon } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 
+import { userState } from "@/redux/loginSlice";
+import { usePostCommissionQuery } from "@/utils/api-service/commission";
+
 import * as v from "./CommissionModal.constants";
 import * as S from "./CommissionModal.styled";
 
-import { Text, Button, Modal, Profile, Rating } from "@/components";
 import { useStopScrollY } from "@/hooks";
-import { userState } from "@/redux/loginSlice";
 import { addValidationErrorToast } from "@/utils";
-import { usePostCommissionQuery } from "@/utils/api-service/commission";
+
+import { Text, Button, Modal, Profile, Rating } from "@/components";
+
 
 type Props = {
 	commission: any;
@@ -101,68 +104,68 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 								validate: v.validateTitle,
 							})} />
 							:
-							<Text type='titleSmall'>{updatedCommission.details.title}</Text>
+							<Text size='titleSmall'>{updatedCommission.details.title}</Text>
 						}
-						<Text type='small'>{updatedCommission.createdAt}</Text>
-						{updatedCommission.details && <Text type='small'>{updatedCommission.details.status}</Text>}
+						<Text size='bodySmall'>{updatedCommission.createdAt}</Text>
+						{updatedCommission.details && <Text size='bodySmall'>{updatedCommission.details.status}</Text>}
 					</S.Box>
 
 					<S.Box>
-						<Text type='label'>관련 포트폴리오</Text>
+						<Text size='label'>관련 포트폴리오</Text>
 							<Profile type='portfolio' user={commission.portfolio}/>
 					</S.Box>
 
 					<S.Box>
-						<Text type='label'>전문가 정보</Text>
+						<Text size='label'>전문가 정보</Text>
 						<S.Box>
 							<Profile type='user' user={commission.expert}/>
-							<Text type='label'>이름</Text>
-							<Text type='common'>{commission.expert.name}</Text>
-							<Text type='label'>연락처</Text>
-							<Text type='common'>{commission.expert.phone}</Text>
+							<Text size='label'>이름</Text>
+							<Text size='bodyMedium'>{commission.expert.name}</Text>
+							<Text size='label'>연락처</Text>
+							<Text size='bodyMedium'>{commission.expert.phone}</Text>
 						</S.Box>
 					</S.Box>
 
 					<S.Box>
-						<Text type='label'>의뢰 내용</Text>
+						<Text size='label'>의뢰 내용</Text>
 						{ isEditMode ?
 							<S.TextArea {...register('content', {
 								required: '자세한 의뢰 내용을 입력하세요.',
 								validate: v.validateContent,
 							})} />
 							:
-							<Text type='common'>{updatedCommission.details.content}</Text>
+							<Text size='bodyMedium'>{updatedCommission.details.content}</Text>
 						}
 					</S.Box>
 
 					<S.Box>
-						<Text type='label'>마감 기한</Text>
+						<Text size='label'>마감 기한</Text>
 						{ isEditMode ?
 							<input type='date' {...register('deadline', {
 								required: '마감 기한을 입력하세요.',
 								validate: v.validateDeadline,
 							})} />
 							:
-							<Text type='common'>{updatedCommission.details.deadline}</Text>
+							<Text size='bodyMedium'>{updatedCommission.details.deadline}</Text>
 						}
 					</S.Box>
 
 					<S.Box>
-						<Text type='label'>비용</Text>
+						<Text size='label'>비용</Text>
 						{ isEditMode ?
 							<S.Input {...register('cost', {
 								required: '비용을 입력하세요.',
 							})} />
 							:
-							<Text type='common'>{updatedCommission.details.cost}</Text>
+							<Text size='bodyMedium'>{updatedCommission.details.cost}</Text>
 						}
 					</S.Box>
 
 					{ commission.review &&
 						<S.Box>
-							<Text type='label'>리뷰</Text>
+							<Text size='label'>리뷰</Text>
 							<Rating readonly score={commission.review.rating} />
-							<Text type='common'>{commission.review.content}</Text>
+							<Text size='bodyMedium'>{commission.review.content}</Text>
 						</S.Box>
 					}
 				</S.Form>

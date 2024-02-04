@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { checkIsShowSearchBarPage, checkIsShowSectionMenuPage } from "@/components/organisms/header/Header.helpers";
+import { checkIsShowSearchBar, checkIsShowSectionMenu } from "@/components/organisms/header/Header.helpers";
 
 export default function useHeader() {
 	const [showSearchBar, setShowSearchBar] = useState(false);
@@ -10,10 +10,10 @@ export default function useHeader() {
 	const location = useLocation();
 
 	useEffect(()=>{
-		const firstPathName = location.pathname.split('/')[1];
-		setShowSearchBar(checkIsShowSearchBarPage(firstPathName));
-		setShowSectionNavigator(checkIsShowSectionMenuPage(firstPathName))
-	}, []);
+		const pathname = location.pathname.split('/')[1];
+		setShowSearchBar(checkIsShowSearchBar(pathname));
+		setShowSectionNavigator(checkIsShowSectionMenu(pathname))
+	}, [location]);
 
 	return { showSearchBar, showSectionNavigator };
 }

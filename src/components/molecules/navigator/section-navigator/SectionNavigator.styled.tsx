@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 	height: 100%;
 
 	display: flex;
+	align-items: center;
 `
 
 export const SectionTitle = styled.div`
@@ -14,5 +15,5 @@ export const SectionTitle = styled.div`
 	align-items: center;
 
 	font-weight: 600;
-	font-size: 1.5em;
+	font-size: 1.5rem;
 `;

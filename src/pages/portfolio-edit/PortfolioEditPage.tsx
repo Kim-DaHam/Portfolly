@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import Logo from '@/assets/images/logo-white.png';
-import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
-import { useTagInput, usePreventGoBack, usePreventRefresh, usePortfolioForm } from "@/hooks";
 import * as v from '@/pages/portfolio-edit/PortfolioEditPage.constants';
 import * as S from "@/pages/portfolio-edit/PortfolioEditPage.styled";
+
+import { useTagInput, usePreventGoBack, usePreventRefresh, usePortfolioForm } from "@/hooks";
+
+import { Text, Image, Button, Selector, Tag, QuillEditor } from "@/components";
 
 export default function PortfolioEditPage(){
 	const location = useLocation();
@@ -54,7 +56,7 @@ export default function PortfolioEditPage(){
 							placeholder='제목'
 						/>
 
-						<Text type='label'>포트폴리오 종류</Text>
+						<Text size='label'>포트폴리오 종류</Text>
 						<Selector
 							type='section'
 							placeholder={portfolio? portfolio.section : 'Android/iOS'}
@@ -62,7 +64,7 @@ export default function PortfolioEditPage(){
 							{...register('section')}
 						/>
 
-						<Text type='label'>카테고리</Text>
+						<Text size='label'>카테고리</Text>
 						<Selector
 							type='category'
 							section={getValues('section')}
@@ -73,7 +75,7 @@ export default function PortfolioEditPage(){
 							})}
 						/>
 
-						<Text type='label'>태그</Text>
+						<Text size='label'>태그</Text>
 						<S.TagBox {...register('tags', {
 							validate: v.validateTags,
 						})}>
@@ -83,7 +85,7 @@ export default function PortfolioEditPage(){
 							})}
 						</S.TagBox>
 
-						<Text type='label'>소개글</Text>
+						<Text size='label'>소개글</Text>
 						<S.InputArea
 							{...register('summary', {
 								required: '소개글을 입력해주세요.',

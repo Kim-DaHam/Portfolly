@@ -2,18 +2,17 @@ import { FiMoreHorizontal as Icon} from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Group, Item } from "../../popper/Popper.styled";
-
-import * as S from "./SectionNavigator.styled";
-
-import { Button } from "@/components/atoms";
-import { Popper }  from "@/components/molecules";
-import { usePopup } from "@/hooks";
+import { sections } from "@/assets/data/fields";
+import * as S from "@/components/molecules/navigator/section-navigator/SectionNavigator.styled";
+import { Group, Item } from "@/components/molecules/popper/Popper.styled";
 import { section as sectionSlice } from "@/redux/sectionSlice";
-import { Section } from "@/types";
+
+import type { Section } from "@/types";
+
+import { usePopup } from "@/hooks";
 import { stringToUrlParameter } from "@/utils";
 
-const sections: Section[] = ['Android/iOS', 'Web', 'Illustration', 'Photo', 'Video'];
+import { Button, Popper, Text } from "@/components";
 
 export default function SectionNavigator() {
 	const currentSection = useSelector(sectionSlice);
@@ -29,7 +28,7 @@ export default function SectionNavigator() {
 
 	return(
 		<S.Wrapper>
-			<S.SectionTitle>{currentSection}</S.SectionTitle>
+			<Text size='bodyMedium'>{currentSection}</Text>
 
 			<Button color='white' shape='round' onClick={popUp}>
 				<Icon color='gray'/>
