@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
 
-import { Toast } from '@/components';
-import * as S from '@/components/molecules/toast/ToastContainer.styled';
+import * as S from '@/components/molecules/toast-container/ToastContainer.styled';
 import { toasts } from '@/redux/toastSlice';
 import { Toast as TToast } from '@/types';
+
+import { Toast } from '@/components';
 
 export default function ToastContainer() {
 	const toastList = useSelector(toasts) as TToast[];
