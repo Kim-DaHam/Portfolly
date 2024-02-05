@@ -64,7 +64,7 @@ const transparent = css`
 		background-color: transparent;
 	}
 	color: #111111;
-	border: 1px solid #f3f3f3;
+	border: 1px solid #f0f0f0;
 `;
 
 export const shapes = { square, round };

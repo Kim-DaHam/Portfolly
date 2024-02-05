@@ -11,7 +11,7 @@ import * as S from "@/components/organisms/slider/portfolio-slider/PortfolioSlid
 import type { Portfolio, Section } from "@/types";
 
 import { useHandleSlider } from "@/hooks";
-import { eventStopPropagation, stringToUrlParameter } from "@/utils";
+import { eventStopPropagation, toUrlParameter } from "@/utils";
 
 import { Image } from "@/components";
 
@@ -25,7 +25,7 @@ export default function PortfolioSlider({section, portfolio}: Props){
 	const sliderRef = useRef(null);
 
 	const THUMBNAIL_PAGE = section === 'Video' ? 1 : 3;
-	const sectionName = stringToUrlParameter(section);
+	const sectionName = toUrlParameter(section);
 
 	const {
 		handlePrev,

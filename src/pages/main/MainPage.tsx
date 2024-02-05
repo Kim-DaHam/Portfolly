@@ -1,35 +1,37 @@
 import { Suspense, lazy } from "react";
 import { useSelector } from "react-redux";
 
+import { mainPageSectionSummary } from '@/assets/data/phrase';
+import { section } from "@/redux/sectionSlice";
+
 import * as S from "./MainPage.styled";
 
-import { mainPageSectionSummary } from '@/assets/data/phrase';
-import { CategorySlider, PortfolioListSkeleton } from "@/components";
 import { useDispatchSectionParameter } from "@/hooks";
-import { section } from "@/redux/sectionSlice";
-import { getFilterQueryParameter } from "@/utils";
+import { getFilterQueryString } from "@/utils";
+
+import { Text, CategorySlider, PortfolioListSkeleton } from "@/components";
 
 const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioItemList'));
 
 export default function MainPage(){
-	useDispatchSectionParameter();
-
 	const currentSection = useSelector(section);
-	const currentCategory = getFilterQueryParameter().filterValue;
+	const currentCategory = getFilterQueryString().filterValue;
+
+	useDispatchSectionParameter();
 
 	return(
 		<S.Wrapper>
 			<S.Content>
 				<S.TitleSection>
-					<S.Title>{currentSection}</S.Title>
-					<S.Summary>{mainPageSectionSummary[currentSection]}</S.Summary>
+					<Text size='headingMedium'>{currentSection}</Text>
+					<Text size='bodyLarge'>{mainPageSectionSummary[currentSection]}</Text>
 				</S.TitleSection>
 
 				<CategorySlider/>
 
 				<S.PortfolioSection>
-					<Suspense fallback={<PortfolioListSkeleton profile='portfolio-item'/>}>
-						<PortfolioList category={currentCategory}/>
+					<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
+						<PortfolioList category={currentCategory} />
 					</Suspense>
 				</S.PortfolioSection>
 			</S.Content>

@@ -12,13 +12,13 @@ import { PortfolioCard } from "@/components";
 
 type Props = {
 	category: string;
-}
+};
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_SHOW = 10;
 export const SESSION_STORAGE_KEY = "lastClickedPortfolio";
 
 export default function PortfolioItemList({category}: Props) {
-	const [count, setCount] = useState(ITEMS_PER_PAGE);
+	const [count, setCount] = useState(ITEMS_PER_SHOW);
 	const [loadData, setLoadData] = useState(true);
 
 	const currentSection = useSelector(section);
@@ -37,7 +37,7 @@ export default function PortfolioItemList({category}: Props) {
 		if(isOnePageLoaded && hasNextPage) {
 			fetchNextPage();
 		}
-		setCount(prev => prev + ITEMS_PER_PAGE);
+		setCount(prev => prev + ITEMS_PER_SHOW);
 	}
 
 	const setObservationTarget = useIntersectionObserver(loadNextPage);
