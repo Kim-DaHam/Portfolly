@@ -1,14 +1,13 @@
 import { HttpResponse, http } from 'msw';
 
+import { AUTHORITY, LOGIN_ID } from '.';
 import { commissions } from '../data/commissions';
 import { messageRooms } from '../data/messages';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
-import { User } from '@/types';
+import type { User } from '@/types';
 
-const LOGIN_ID: number = 1;
-const AUTHORITY: string = 'expert';
 const PARTNER_ID = (AUTHORITY === 'expert') ? 'clientId' : 'expertId';
 const MY_ID = AUTHORITY + 'Id';
 

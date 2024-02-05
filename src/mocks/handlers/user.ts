@@ -1,12 +1,11 @@
 import { HttpResponse, http } from 'msw';
 
+import { LOGIN_ID } from '.';
 import { commissions } from '../data/commissions';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
 import { getSection } from '@/utils';
-
-const LOGIN_ID = 1;
 
 export const userHandlers= [
 	http.get('/users', ({request}) => {
