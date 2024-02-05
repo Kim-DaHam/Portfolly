@@ -68,9 +68,7 @@ export default function CategorySlider() {
 			Filters
 		</Button>
 
-		{ isModalOpen &&
-			<SearchModal onClick={handleModal}/>
-		}
+		<SearchModal onClose={handleModal} $modalState={isModalOpen} />
 
 		<S.Divider/>
 
