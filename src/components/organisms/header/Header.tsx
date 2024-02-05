@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FiMenu as MenuIcon} from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -66,11 +65,9 @@ export default function Header() {
 				</S.ButtonGroup>
 			}
 
-			{ isPopUp &&
-				<Popper coordinate={coordinate} popOut={popOut}>
-					{renderHeaderMenuPopper(user, popOut, handleLogOut)}
-				</Popper>
-			}
+			<Popper coordinate={coordinate} popOut={popOut} $popperState={isPopUp}>
+				{renderHeaderMenuPopper(user, popOut, handleLogOut)}
+			</Popper>
 		</S.Wrapper>
 	)
 }

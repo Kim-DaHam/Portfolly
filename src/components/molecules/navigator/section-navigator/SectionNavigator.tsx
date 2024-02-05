@@ -26,19 +26,21 @@ export default function SectionNavigator() {
 				<Icon color='gray'/>
 			</Button>
 
-			{isPopUp &&
-				<Popper coordinate={coordinate} popOut={popOut}>
-					<Group size='10rem'>
-						{sections.map((section: Section, index: number)=>{
-							return(
-								<Link to={`/main/${toUrlParameter(section)}`} onClick={popOut} key={index}>
-									{section}
-								</Link>
-							)
-						})}
-					</Group>
-				</Popper>
-			}
+			<Popper
+				$popperState={isPopUp}
+				coordinate={coordinate}
+				popOut={popOut}
+			>
+				<Group size='10rem'>
+					{sections.map((section: Section, index: number)=>{
+						return(
+							<Link to={`/main/${toUrlParameter(section)}`} onClick={popOut} key={index}>
+								{section}
+							</Link>
+						)
+					})}
+				</Group>
+			</Popper>
 		</S.Wrapper>
 	)
 }

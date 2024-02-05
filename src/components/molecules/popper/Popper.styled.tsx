@@ -1,8 +1,26 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
 
-export const Wrapper = styled.div`
+const fadeIn = keyframes`
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 100;
+	}
+`;
+
+const fadeOut = keyframes`
+	from {
+		opacity: 100;
+	}
+	to {
+		opacity: 0;
+	}
+`;
+
+export const Wrapper = styled.div<{ $popperState: boolean }>`
 	width: 100vw;
 	height: 100vh;
 
@@ -11,6 +29,12 @@ export const Wrapper = styled.div`
 	z-index: 200;
 
 	background-color: transparent;
+
+	${(props) => props.$popperState ?
+		css`animation: ${fadeIn} 0.1s 0s 1 normal forwards;`
+	:
+		css`animation: ${fadeOut} 0.1s 0s 1 normal forwards;`
+	};
 `;
 
 export const PopperBox = styled.div<{$top: number, $right: number}>`

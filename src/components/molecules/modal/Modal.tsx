@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 
 import * as S from '@/components/molecules/modal/Modal.styled';
-import { eventStopPropagation } from "@/utils/event";
+import { eventStopPropagation, moveScrollY, stopScrollY } from "@/utils/event";
 
 export type Modal = 'alert' | 'search' | 'form';
 
@@ -18,11 +18,13 @@ export default function Modal({ $type, $modalState, onClose, children }: Props) 
 	useEffect(() => {
     if($modalState) {
       setIsModalOpen(true);
+			stopScrollY();
 			return;
     }
 
 		const modalTimer = setTimeout(() => {
 			setIsModalOpen(false);
+			moveScrollY();
 		}, 400);
     return () => {
 			clearTimeout(modalTimer);

@@ -51,15 +51,13 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 					</Button>
 				</S.ButtonGroup>
 
-				{ isPopUp &&
-					<Popper coordinate={coordinate} popOut={popOut}>
-						<Group>
-							<Link to=''>
-								공유하기
-							</Link>
-						</Group>
-					</Popper>
-				}
+				<Popper coordinate={coordinate} popOut={popOut} $popperState={isPopUp}>
+					<Group>
+						<Link to=''>
+							공유하기
+						</Link>
+					</Group>
+				</Popper>
 			</S.ProfileBox>
 		</S.Wrapper>
 	)

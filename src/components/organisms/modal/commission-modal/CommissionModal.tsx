@@ -9,7 +9,6 @@ import { usePostCommissionQuery } from "@/utils/api-service/commission";
 import * as v from "./CommissionModal.constants";
 import * as S from "./CommissionModal.styled";
 
-import { useStopScrollY } from "@/hooks";
 import { addValidationErrorToast } from "@/utils";
 
 import { Text, Button, Modal, Profile, Rating } from "@/components";
@@ -49,8 +48,6 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 	});
 
 	const commissionMutation = usePostCommissionQuery(commission.id, commission.clientId);
-
-	useStopScrollY();
 
 	const onSubmit = async (form: any) => {
 		const copyForm: {[key: string]: any} = {...form};

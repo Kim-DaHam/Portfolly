@@ -1,22 +1,48 @@
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import * as S from "@/components/molecules/popper/Popper.styled";
 
-import { useStopScrollY } from "@/hooks";
-import { eventStopPropagation } from "@/utils";
+import { eventStopPropagation, moveScrollY, stopScrollY } from "@/utils";
 
 export type Props = {
+	$popperState: boolean;
 	coordinate: {right: number, bottom: number};
 	popOut: ()=>void;
 	children: JSX.Element;
 };
 
-export default function Popper({ children, coordinate, popOut}: Props) {
-	useStopScrollY();
+export default function Popper({ children, coordinate, $popperState, popOut}: Props) {
+	const [isPopUp, setIsPopUp] = useState($popperState);
+
+	useEffect(() => {
+    if($popperState) {
+      setIsPopUp(true);
+			stopScrollY();
+			return;
+    }
+
+		const popperTimer = setTimeout(() => {
+			setIsPopUp(false);
+			moveScrollY();
+		}, 200);
+    return () => {
+			clearTimeout(popperTimer);
+    };
+  }, [$popperState]);
+
+	if(!isPopUp) return null;
 
 	return createPortal(
-		<S.Wrapper onClick={popOut}>
-			<S.PopperBox $top={coordinate.bottom} $right={coordinate.right} onClick={eventStopPropagation}>
+		<S.Wrapper
+			onClick={popOut}
+			$popperState={$popperState}
+		>
+			<S.PopperBox
+				$top={coordinate.bottom}
+				$right={coordinate.right}
+				onClick={eventStopPropagation}
+			>
 				{children}
 			</S.PopperBox>
 		</S.Wrapper>,

@@ -1,8 +1,7 @@
-import { HTMLAttributes, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Modal, SearchBar } from "@/components/molecules";
 import { searchFilter, searchFilterList, renderContent } from "@/components/organisms/modal/search-modal";
-import useStopScrollY from "@/hooks/event/useStopScrollY";
 
 import * as S from "./SearchModal.styled";
 
@@ -21,8 +20,6 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 	const changeFilter = (filter: Filter)=>{
 		setFilter(filter);
 	}
-
-	useStopScrollY();
 
 	useEffect(()=>{
 		isTextEntered ? setFilter('Search') : setFilter('Trending')
