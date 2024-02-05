@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FiMenu as MenuIcon} from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,9 +14,9 @@ import { ROUTE_PATH } from "@/utils";
 import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from '@/components';
 
 export default function Header() {
+	const { isModalOpen, handleModal } = useModal();
 	const { showSearchBar, showSectionNavigator } = useHeader();
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
-	const { isModalOpen, handleModal } = useModal();
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -37,11 +38,8 @@ export default function Header() {
 
 			{ showSearchBar ?
 				<>
-					<SearchBar isClicked={isModalOpen} onClick={handleModal}/>
-
-					{ isModalOpen &&
-						<SearchModal onClick={handleModal}/>
-					}
+					<SearchBar isClicked={isModalOpen} onClick={handleModal} />
+					<SearchModal $modalState={isModalOpen} onClose={handleModal} />
 				</>
 				:
 				<div></div>
