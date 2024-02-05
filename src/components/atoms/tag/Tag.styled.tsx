@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div<{readOnly: boolean}>`
 	width: fit-content;
-	height: 2.2rem;
+	height: 2.5rem;
 
 	position: relative;
 	display: flex;
@@ -10,7 +10,7 @@ export const Wrapper = styled.div<{readOnly: boolean}>`
 	flex: none;
 
 	padding: 1rem;
-	border-radius: 4rem;
+	border-radius: 9999px;
   background-color: #f3f3f3;
 	transition: all 0.2s;
 	cursor: ${(props)=>props.readOnly ? 'pointer' : ''};
@@ -29,9 +29,10 @@ export const Wrapper = styled.div<{readOnly: boolean}>`
 export const Icon = styled.div`
 	position: absolute;
 	z-index: 200;
-	right: 0.5rem;
+	right: 0.8rem;
 	visibility: hidden;
 	& svg {
 		visibility: hidden;
+		cursor: pointer;
 	}
 `;

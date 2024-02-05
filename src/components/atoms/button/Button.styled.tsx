@@ -22,6 +22,7 @@ export const ButtonStyle = styled.button<Props>`
 	font-weight: bold;
 	letter-spacing: -.008em;
 	border: 0;
+	border-radius: 50%;
 
 	cursor: pointer;
 

@@ -1,6 +1,6 @@
 import { HTMLAttributes, forwardRef, useEffect } from "react";
 import { UseFormSetValue } from "react-hook-form";
-import { FaSortDown as DownIcon, FaSortUp as UpIcon } from "react-icons/fa6";
+import { FiChevronDown as ArrowIcon } from "react-icons/fi";
 
 import useSelector from "@/hooks/component/useSelector";
 import { SetState } from "@/types";
@@ -23,10 +23,10 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 };
 
 function Selector({type, placeholder, section='Android/iOS', setValue, handleSelectorValue, size='100%' }: Props) {
-	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
-
 	const isManagedByUseFormRegister = setValue;
 	const isManagedByUseState = handleSelectorValue;
+
+	const { isSelectorOpen, selectedValue, handleSelector, handleSelectedValue } = useSelector(placeholder);
 
 	useEffect(() => {
 		if(isManagedByUseFormRegister) {
@@ -39,9 +39,9 @@ function Selector({type, placeholder, section='Android/iOS', setValue, handleSel
 
 	return(
 		<S.Wrapper $size={size}>
-			<S.SelectorBox onClick={handleSelector}>
+			<S.SelectorBox onClick={handleSelector} $isSelectorOpen={isSelectorOpen}>
 				<Text size='bodyMedium'>{selectedValue}</Text>
-				{isSelectorOpen ? <UpIcon /> : <DownIcon />}
+				<ArrowIcon />
 			</S.SelectorBox>
 
 			{ isSelectorOpen &&
@@ -49,11 +49,25 @@ function Selector({type, placeholder, section='Android/iOS', setValue, handleSel
 				<S.DropDown>
 					{ type === 'category' ?
 						selectorList[type][section].map((selector: string, index: number) => {
-							return <S.DropDownItem onClick={handleSelectedValue} key={index}>{selector}</S.DropDownItem>;
+							return (
+							<S.DropDownItem
+								key={index}
+								onClick={handleSelectedValue}
+							>
+								{selector}
+							</S.DropDownItem>
+							);
 						})
 					:
 						selectorList[type].map((selector: string, index: number) => {
-							return <S.DropDownItem onClick={handleSelectedValue} key={index}>{selector}</S.DropDownItem>;
+							return (
+								<S.DropDownItem
+									key={index}
+									onClick={handleSelectedValue}
+								>
+									{selector}
+								</S.DropDownItem>
+							);
 						})
 					}
 				</S.DropDown>

@@ -4,6 +4,7 @@ import { UseFormGetValues, UseFormSetValue } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 
 import * as S from '@/components/molecules/editor/QuillEditor.styled';
+
 import { useImageHandler } from '@/hooks';
 
 type Props = {

@@ -32,8 +32,3 @@ export const flexColumn = css`
 	display: flex;
 	flex-direction: column;
 `;
-
-export const alignCenter = css`
-	display: flex;
-	align-items: center;
-`;
