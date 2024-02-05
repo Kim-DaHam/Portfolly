@@ -42,7 +42,7 @@ export const EditorSection = styled.section`
 
 export const FormSection = styled.aside`
 	width: 22rem;
-	height: 100%;
+	height: fit-content;
 
 	${mixins.flexColumn}
 	align-items: end;
@@ -101,24 +101,20 @@ export const InputArea = styled.textarea`
 	border-radius: 1rem;
 	padding: 0.7rem 1rem;
 	margin-bottom: 4rem;
-	resize: none;
-	&:focus {
-		outline: none;
-	}
 `;
 
 export const TagInput = styled.div`
 	min-width: 5rem;
 	max-width: fit-content;
-	height: 2rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
 
 	${mixins.flexCenter}
 	justify-content: baseline;
 
 	padding: 0 1rem 0 1rem;
 
-	border-radius: 1rem;
-
 	color: white;
+	border-radius: 9999px;
 	background-color: black;
 `;

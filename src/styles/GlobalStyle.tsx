@@ -34,6 +34,15 @@ const GlobalStyle = createGlobalStyle`
 		text-decoration: none;
 		color: black;
 	}
+
+	input, textarea {
+		border: none;
+		resize: none;
+
+		&:focus {
+			outline: none;
+		}
+	}
 `;
 
 export default GlobalStyle;
