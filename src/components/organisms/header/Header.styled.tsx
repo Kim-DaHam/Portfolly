@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { ButtonStyle } from '@/components/atoms/button/Button.styled';
-
 export const HEADER_HEIGHT = '4.498rem';
 
 export const Wrapper = styled.header`
@@ -18,7 +16,7 @@ export const Wrapper = styled.header`
 	z-index: 999;
 	top: 0;
 
-	padding: 0.3rem 2rem 0.3rem 2rem;
+	padding: 0.3rem 4rem 0.3rem 4rem;
 
 	background-color: white;
 `;

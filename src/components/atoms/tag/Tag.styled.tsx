@@ -2,22 +2,21 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div<{readOnly: boolean}>`
 	width: fit-content;
-	height: 2rem;
+	height: 2.2rem;
 
 	position: relative;
-
 	display: flex;
 	align-items: center;
 	flex: none;
 
-	padding: 0 1rem 0 1rem;
-	border: 1px solid black;
-
-	cursor: ${(props)=>props.readOnly ? '' : 'pointer'};
-
-	border-radius: 1rem;
+	padding: 1rem;
+	border-radius: 4rem;
+  background-color: #f3f3f3;
+	transition: all 0.2s;
+	cursor: ${(props)=>props.readOnly ? 'pointer' : ''};
 
 	&:hover{
+		background-color: #d7d7d7;
 		& div{
 			visibility: visible;
 		}
@@ -28,13 +27,11 @@ export const Wrapper = styled.div<{readOnly: boolean}>`
 `;
 
 export const Icon = styled.div`
-	visibility: hidden;
-
-	& svg {
-		visibility: hidden;
-	}
-
 	position: absolute;
 	z-index: 200;
 	right: 0.5rem;
+	visibility: hidden;
+	& svg {
+		visibility: hidden;
+	}
 `;

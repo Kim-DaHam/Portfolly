@@ -11,8 +11,6 @@ export const Content = styled.main`
 
 	${mixins.flexCenter}
 	${mixins.flexColumn}
-
-	padding: 3rem 5rem 3rem 5rem;
 `;
 
 export const TitleSection = styled.section`

@@ -8,6 +8,7 @@ export const fullScreen = css`
 	min-height: 100vh;
 	height: 100%;
 
+	padding: 3rem 4rem 3rem 4rem;
 	padding-top: ${HEADER_HEIGHT};
 `;
 

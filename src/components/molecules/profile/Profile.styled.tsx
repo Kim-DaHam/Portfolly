@@ -9,9 +9,11 @@ export const Wrapper = styled.div<{$type: Profile}>`
 
 	display: flex;
 	flex-basis: 1;
-	justify-content: ${(props) => props.$type === 'message-room' && 'center'};
-	align-items: ${(props) => props.$type === 'portfolio-detail' && 'center'};
 	gap: 0.75rem;
+
+	& img {
+		cursor: pointer;
+	}
 `;
 
 export const SpanBox = styled.div`
@@ -46,10 +48,12 @@ export const Box = styled.div`
 	padding-top: 1rem;
 `;
 
-export const MessageProfileWrapper = styled.div`
+export const ColumnProfileWrapper = styled.div`
+	width: 100%;
 	height: fit-content;
 
 	${mixins.flexCenter}
 	${mixins.flexColumn}
+	justify-content: center;
 	gap: 1rem;
 `;
