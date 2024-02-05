@@ -19,7 +19,7 @@ export default function useCategorySlider(section: Section) {
 	const lastIndex = categories[section].length;
 
 	const handlePrev = () => {
-		const isStartOfSlider = sliderLeft + SLIDE_WIDTH >= 0;
+		const isStartOfSlider = sliderLeft + SLIDE_WIDTH * 2 >= 0;
 		setShowNextArrow(true);
 
 		if(isStartOfSlider){
@@ -38,7 +38,7 @@ export default function useCategorySlider(section: Section) {
 		const endOfSlide = lastSlideItem.getBoundingClientRect().right;
 		const endOfCategoryBox = categoryBox!.getBoundingClientRect().right;
 
-		const isEndOfSlide = endOfSlide - SLIDE_WIDTH <= endOfCategoryBox;
+		const isEndOfSlide = endOfSlide - SLIDE_WIDTH * 2 <= endOfCategoryBox;
 
 		setShowPrevArrow(true);
 
