@@ -13,10 +13,9 @@ import { Button, ToggleButton, Popper, PortfolioSlider, Profile } from "@/compon
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: any;
-	onClick: () => void;
 }
 
-export default function PortfolioCard({ portfolio, onClick }: Props) {
+export default function PortfolioCard({ portfolio }: Props) {
 	const buttonGroupRef = useRef(null);
 	const currentSection = useSelector(section);
 
@@ -33,7 +32,7 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 	}, [isPopUp])
 
 	return (
-		<S.Wrapper onClick={onClick}>
+		<S.Wrapper>
 			<PortfolioSlider section={currentSection} portfolio={portfolio}/>
 
 			<S.ProfileBox>

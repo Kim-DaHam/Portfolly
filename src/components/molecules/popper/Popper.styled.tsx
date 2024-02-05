@@ -22,11 +22,12 @@ const fadeOut = keyframes`
 
 export const Wrapper = styled.div<{ $popperState: boolean }>`
 	width: 100vw;
-	height: 100vh;
+	height: 9999px;
 
 	display: fixed;
+	z-index: 9999;
 	top: 0;
-	z-index: 200;
+	left: 0;
 
 	background-color: transparent;
 

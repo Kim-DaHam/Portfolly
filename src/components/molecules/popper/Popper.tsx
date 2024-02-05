@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 
 import * as S from "@/components/molecules/popper/Popper.styled";
 
-import { eventStopPropagation, moveScrollY, stopScrollY } from "@/utils";
+import { eventStopPropagation } from "@/utils";
 
 export type Props = {
 	$popperState: boolean;
@@ -18,13 +18,11 @@ export default function Popper({ children, coordinate, $popperState, popOut}: Pr
 	useEffect(() => {
     if($popperState) {
       setIsPopUp(true);
-			stopScrollY();
 			return;
     }
 
 		const popperTimer = setTimeout(() => {
 			setIsPopUp(false);
-			moveScrollY();
 		}, 200);
     return () => {
 			clearTimeout(popperTimer);

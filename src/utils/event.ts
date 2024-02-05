@@ -4,12 +4,12 @@ export const eventStopPropagation = (event: React.MouseEvent)=>{
 
 export const stopScrollY = () => {
 	document.body.style.cssText = `
+		width: 100%;
 		position: fixed;
 		top: -${window.scrollY}px;
 		overflow-y: scroll;
-		width: 100%;
 		overflow: hidden;
-	`
+	`;
 };
 
 export const moveScrollY = () => {

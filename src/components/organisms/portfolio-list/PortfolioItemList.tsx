@@ -26,7 +26,7 @@ export default function PortfolioItemList({category}: Props) {
 	const {
 		data: portfolios,
 		fetchNextPage, hasNextPage
-} = usePortfoliosQuery(
+	} = usePortfoliosQuery(
 		currentSection,
 		{
 			filterKey: 'category',
@@ -68,7 +68,6 @@ export default function PortfolioItemList({category}: Props) {
       window.scrollTo({
         top: anchorPosition,
       });
-
     }, 1000);
 		return () => sessionStorage.removeItem(SESSION_STORAGE_KEY);
 	}, []);
@@ -79,7 +78,11 @@ export default function PortfolioItemList({category}: Props) {
 				portfolios.map((portfolio: Portfolio, index: number)=>{
 					if(index < count) {
 						return(
-							<PortfolioCard key={index} portfolio={portfolio} onClick={()=>saveScroll(++index)}/>
+							<PortfolioCard
+								key={index}
+								portfolio={portfolio}
+								onClick={() => saveScroll(++index)}
+							/>
 						)
 				}})
 				:
