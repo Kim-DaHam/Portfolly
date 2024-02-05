@@ -6,6 +6,7 @@ import { FontColor, FontSize } from "@/types";
 
 type Props = React.HTMLAttributes<HTMLSpanElement> & {
 	size: FontSize;
+	cursor?: boolean;
 	color?: FontColor;
 }
 
@@ -21,5 +22,6 @@ const TextStyles = styled.span<Props>`
 	${mixins.alignCenter}
 	${props => props.size ? sizes[props.size] : ''}
 	${props => props.color ? colors[props.color] : colors['black']}
+	cursor: ${props => props.cursor ? 'pointer' : ''};
 	word-break: keep-all;
 `;

@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { HTMLAttributes, MouseEventHandler } from "react";
 import styled from "styled-components";
 
 import * as mixins from '@/styles/mixins';
@@ -11,8 +11,9 @@ type Alert = 'delete' | 'cancel' | 'messageRoom';
 
 type Props = {
 	type: Alert;
-	onClick: () => void;
+	$modalState: boolean;
 	handleModal: MouseEventHandler<HTMLElement>;
+	onConfirm: () => void;
 };
 
 export const renderAlertMessage = (type: Alert)=>{
@@ -45,14 +46,26 @@ const activeButton: {[key in Alert]: string} = {
 	'messageRoom': '나가기',
 };
 
-export default function AlertModal({type, onClick, handleModal}: Props) {
+export default function AlertModal({type, $modalState, handleModal, onConfirm}: Props) {
 	return(
-		<Modal $type='alert'>
+		<Modal $type='alert' $modalState={$modalState}>
 			<Content>
 				{renderAlertMessage(type)}
 				<ButtonGroup>
-					<Button color='black' size='medium' onClick={onClick}>{activeButton[type]}</Button>
-					<Button color='transparent' size='medium' onClick={handleModal}>취소하기</Button>
+					<Button
+						color='black'
+						size='medium'
+						onClick={onConfirm}
+					>
+						{activeButton[type]}
+					</Button>
+					<Button
+						color='transparent'
+						size='medium'
+						onClick={handleModal}
+					>
+						취소하기
+					</Button>
 				</ButtonGroup>
 			</Content>
 		</Modal>
@@ -64,6 +77,8 @@ const Content = styled.div`
 	${mixins.flexCenter}
 	${mixins.flexColumn}
 	gap: 2rem;
+
+	padding: 1rem;
 
 	& span {
 		text-align: center;

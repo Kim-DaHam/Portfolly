@@ -7,34 +7,32 @@ export const Wrapper = styled.div`
 	${mixins.fullScreen}
 	${mixins.flexColumn}
 
-	background-color: salmon;
+	padding-top: 6.5rem;
+	gap: 0.5rem;
+
+	& > svg {
+		float: left;
+	}
 `;
 
 export const Content = styled.main`
-	${mixins.flexColumn}
-	gap: 0.5rem;
-
-	padding: 1rem 3rem 2rem 3rem;
-`;
-
-export const FlexBox = styled.div`
 	${mixins.flexRow}
-	gap: 1.2rem;
-`
+	gap: 2rem;
+
+	margin-top: 1rem;
+`;
 
 export const PortfolioSection = styled.section`
 	${mixins.fullWidthHeight}
 
 	flex-basis: 1;
-	padding: 2.5rem 3rem 2rem 3rem;
+	padding: 2.5rem 1rem;
 
-	background-color: lightgreen;
+	border-top: 2px solid #f5f5f5;
 `;
 
 export const HtmlContent = styled.div`
 	${mixins.fullWidthHeight}
-
-	background-color: white;
 `;
 
 export const Aside = styled.aside`
@@ -43,34 +41,35 @@ export const Aside = styled.aside`
 
 	${mixins.flexColumn}
 	flex: none;
-	gap: 1rem;
 
-	background-color: cornsilk;
+	padding-bottom: 5rem;
 `;
 
 export const FlexColumnBox = styled.div`
 	${mixins.flexColumn}
-	padding: 2.4rem 1rem 2rem 1rem;
+	padding: 2.4rem 0.5rem 2rem 0.5rem;
 	border-radius: 1.5rem;
 	gap: 1rem;
-	background-color: violet;
 `;
 
 export const ProfileBox = styled(FlexColumnBox)`
 	${mixins.flexCenter}
-	gap: 1.7rem;
+	gap: 1.8rem;
+	border: 1px solid #efefef;
 `;
 
-export const PortfolioInfoBox = styled(FlexColumnBox)`
+export const InformationBox = styled(FlexColumnBox)`
 	${mixins.flexColumn}
-	gap: 1rem;
+	gap: 1.5rem;
 `;
 
 export const TitleBox = styled(FlexColumnBox)`
 	padding: 0;
-	border-radius: 0;
-	gap: 0.2rem;
-	background-color: white;
+	gap: 0.5rem;
+
+	& span {
+		font-weight: 600;
+	}
 `;
 
 export const ButtonGroup = styled.div`
@@ -78,18 +77,18 @@ export const ButtonGroup = styled.div`
 	justify-content: end;
 	align-items: center;
 	gap: 	1rem;
+
+	padding-top: 0.7rem;
 `;
 
 export const TagBox = styled.div`
 	${mixins.flexRow}
 	gap: 0.5rem;
-	margin-bottom: 1rem;
-	background-color: lightsalmon;
+	margin-bottom: 1.5rem;
 `;
 
 export const SummaryBox = styled.div`
-	margin-bottom: 1rem;
-	background-color: lightpink;
+	margin-bottom: 1.5rem;
 `;
 
 export const GridBox = styled.div`
@@ -98,9 +97,7 @@ export const GridBox = styled.div`
 
 	justify-content: space-between;
 	align-items: center;
-	gap: 0.4rem;
-
-	background-color: bisque;
+	gap: 1rem;
 `;
 
 export const GridItem = styled.div`
@@ -112,16 +109,5 @@ export const GridItem = styled.div`
 	& img {
 		width: 100%;
 		height: 100%;
-	}
-
-	background-color: brown;
-`;
-
-export const TextButton = styled.label`
-	${sizes['label']}
-	cursor: pointer;
-
-	&:hover {
-		text-decoration: underline;
 	}
 `;

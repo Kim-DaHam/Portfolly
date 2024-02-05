@@ -8,7 +8,7 @@ export type Modal = 'alert' | 'search' | 'form';
 export type Props = {
 	$type: Modal;
 	$modalState: boolean;
-	onClose: React.MouseEventHandler<HTMLElement>;
+	onClose?: React.MouseEventHandler<HTMLElement>;
 	children: ReactElement;
 }
 

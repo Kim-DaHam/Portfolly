@@ -70,6 +70,7 @@ export const ModalBox = styled.div<{$type: Modal, $modalState: boolean}>`
 	padding: 0.75rem 1.25rem 0.75rem 1.25rem;
 
 	border-radius: 1.5rem;
+	box-shadow: 0 0 1rem 0.1rem #e7e7e7;
 	background-color: white;
 
 	${(props) => props.$modalState ?

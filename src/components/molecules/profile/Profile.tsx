@@ -80,7 +80,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 			</>
 		),
 		'portfolio-detail': (
-			<>
+			<S.ColumnProfileWrapper>
 				<Image
 					size='5rem'
 					src={user?.profileImage}
@@ -88,10 +88,14 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					shape='foursquare'
 					onClick={()=>navigate(`/profiles/${user?.id}`)}
 				/>
-				<Text size='titleSmall'>
+				<Text
+					cursor
+					size='titleSmall'
+					onClick={()=>navigate(`/profiles/${user?.id}`)}
+				>
 					{user?.nickname}
 				</Text>
-			</>
+			</S.ColumnProfileWrapper>
 		),
 		'my-page': (
 			<>
@@ -112,7 +116,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 			</>
 		),
 		'message': (
-			<S.MessageProfileWrapper>
+			<S.ColumnProfileWrapper>
 				<Image
 					size='3.5rem'
 					src={user?.profileImage}
@@ -122,7 +126,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 				<Text size='titleSmall'>
 					{user?.nickname}
 				</Text>
-			</S.MessageProfileWrapper>
+			</S.ColumnProfileWrapper>
 		),
   }
 
