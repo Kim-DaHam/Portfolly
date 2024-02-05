@@ -42,9 +42,9 @@ export default function App() {
 								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>} />
 								<Route path={ROUTE_PATH.MY_PAGE_TAB} element={<MyPage/>} />
 								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>} />
-								<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>} />
 								<Route path={ROUTE_PATH.MESSAGE} element={<MessagePage/>} />
 							</Route>
+							<Route path={ROUTE_PATH.PORTFOLIO_EDIT} element={<PortfolioEditPage/>} />
 							<Route path={ROUTE_PATH.LOGIN} element={<LogInPage/>} />
 							</Routes>
 						</BrowserRouter>

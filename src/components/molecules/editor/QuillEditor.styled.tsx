@@ -37,7 +37,6 @@ export const EditorContainer = styled.div`
 		margin: 0 5rem 0 5rem;
 
     border: 0;
-		border: 1px solid red;
   }
 
   .ql-editor{

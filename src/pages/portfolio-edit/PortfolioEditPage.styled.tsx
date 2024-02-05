@@ -3,49 +3,41 @@ import styled from 'styled-components';
 import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 import * as mixins from '@/styles/mixins';
 
-export const Wrapper = styled.div`
-	${mixins.fullWidthHeight}
-	${mixins.flexColumn}
-
-	background-color: salmon;;
-`;
-
-export const Content = styled.main`
+export const Wrapper = styled.main`
 	width: 100%;
 	height: 100vh;
 	${mixins.flexCenter}
 
-	background-color: blue;
+	span {
+		font-weight: 600;
+	}
 `;
 
 export const Header = styled.header`
 	width: fit-content;
 	height: ${HEADER_HEIGHT};
 
-	${mixins.alignCenter}
+	${mixins.flexCenter}
 	justify-content: space-between;
 
 	position: absolute;
 	z-index: 200;
 	top: 0;
 
-	padding: 0 1rem 0 1rem;
-
+	padding: 0 4rem;
 	background-color: transparent;
 `;
 
 export const Logo = styled.button`
 	border: 0;
 	cursor: pointer;
+	padding-bottom: 0.7rem;
+	background-color: transparent;
 `;
 
 export const EditorSection = styled.section`
 	${mixins.fullWidthHeight}
-
 	position: relative;
-
-	overflow-y: scroll;
-	background-color: lemonchiffon;
 `;
 
 export const FormSection = styled.aside`
@@ -58,27 +50,40 @@ export const FormSection = styled.aside`
 
 	padding: 3rem 2rem 2rem 1rem;
 
-	background-color: violet;
+	border-radius: 1rem 0 0 1rem;
+	box-shadow: 0 0 1rem 0.1rem #e7e7e7;
+	background-color: white;
 `;
 
 export const Form = styled.form`
 	${mixins.fullWidthHeight}
 	${mixins.flexColumn}
-	gap: 1.5rem;
+	gap: 2rem;
 
-	background-color: skyblue;
+	padding: 0.8rem;
+
+	& > button {
+		align-self: flex-end;
+	}
+`;
+
+export const Box = styled.div`
+	${mixins.flexColumn}
+	gap: 0.8rem;
 `;
 
 export const TitleInput = styled.input`
-	font-size: large;
-	height: 3.5rem;
+	height: 4rem;
+	border: 0;
+	font-size: 1.5rem;
+	&:focus {
+		outline: none;
+	}
 `;
 
 export const CategorySelector = styled.div`
 	width: 8rem;
 	height: 2rem;
-
-	background-color: gold;
 `;
 
 export const TagBox = styled.div`
@@ -87,15 +92,19 @@ export const TagBox = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
-
-	background-color: yellow;
 `;
 
 export const InputArea = styled.textarea`
 	width: 100%;
-	height: 5rem;
-	border: none;
+	height: 10rem;
+	border: 1px solid #e5e5e5;
+	border-radius: 1rem;
+	padding: 0.7rem 1rem;
+	margin-bottom: 4rem;
 	resize: none;
+	&:focus {
+		outline: none;
+	}
 `;
 
 export const TagInput = styled.div`
@@ -103,7 +112,8 @@ export const TagInput = styled.div`
 	max-width: fit-content;
 	height: 2rem;
 
-	${mixins.alignCenter}
+	${mixins.flexCenter}
+	justify-content: baseline;
 
 	padding: 0 1rem 0 1rem;
 

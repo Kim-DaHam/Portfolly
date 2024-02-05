@@ -28,45 +28,49 @@ export default function PortfolioEditPage(){
 
 	return(
 		<S.Wrapper>
-			<S.Content>
-				<S.EditorSection>
-					<S.Header>
-						<S.Logo onClick={() => preventGoBack(`/main/android-ios`)}>
-							<Image src={Logo} size='2.3rem'/>
-						</S.Logo>
-					</S.Header>
+			<S.EditorSection>
+				<S.Header>
+					<S.Logo onClick={() => preventGoBack(`/main/android-ios`)}>
+						<Image src={Logo} size='1.8rem'/>
+					</S.Logo>
+				</S.Header>
 
-					<QuillEditor
-						htmlContent={portfolio && portfolio.content}
-						setValue={setValue}
-						getValues={getValues}
-						{...register('content', {
-							validate: v.validateContent(getValues),
+				<QuillEditor
+					htmlContent={portfolio && portfolio.content}
+					setValue={setValue}
+					getValues={getValues}
+					{...register('content', {
+						validate: v.validateContent(getValues),
+					})}
+				/>
+			</S.EditorSection>
+
+			<S.FormSection>
+				<S.Form onSubmit={handleSubmit}>
+					<S.TitleInput
+						{...register('title', {
+							required: '제목을 입력하세요.',
+							validate: v.validateTitle,
 						})}
+						placeholder='제목을 입력하세요.'
 					/>
-				</S.EditorSection>
 
-				<S.FormSection>
-					<S.Form onSubmit={handleSubmit}>
-						<S.TitleInput
-							{...register('title', {
-								required: '제목을 입력하세요.',
-								validate: v.validateTitle,
-							})}
-							placeholder='제목'
-						/>
-
+					<S.Box>
 						<Text size='label'>포트폴리오 종류</Text>
 						<Selector
 							type='section'
+							size='10rem'
 							placeholder={portfolio? portfolio.section : 'Android/iOS'}
 							setValue={setValue}
 							{...register('section')}
 						/>
+					</S.Box>
 
+					<S.Box>
 						<Text size='label'>카테고리</Text>
 						<Selector
 							type='category'
+							size='10rem'
 							section={getValues('section')}
 							placeholder={portfolio ? portfolio.category : '카테고리'}
 							setValue={setValue}
@@ -74,7 +78,9 @@ export default function PortfolioEditPage(){
 								validate: v.validateCategory,
 							})}
 						/>
+					</S.Box>
 
+					<S.Box>
 						<Text size='label'>태그</Text>
 						<S.TagBox {...register('tags', {
 							validate: v.validateTags,
@@ -84,7 +90,9 @@ export default function PortfolioEditPage(){
 								return <Tag readOnly={false} value={tag} key={index} handleTag={handleTag}/>
 							})}
 						</S.TagBox>
+					</S.Box>
 
+					<S.Box>
 						<Text size='label'>소개글</Text>
 						<S.InputArea
 							{...register('summary', {
@@ -93,11 +101,11 @@ export default function PortfolioEditPage(){
 							})}
 							placeholder='포트폴리오를 소개하세요'
 						/>
+					</S.Box>
 
-						<Button color='black' size='medium' shape='square' type='submit'>작성하기</Button>
-					</S.Form>
-				</S.FormSection>
-			</S.Content>
+					<Button color='black' size='medium' shape='square' type='submit'>작성하기</Button>
+				</S.Form>
+			</S.FormSection>
 		</S.Wrapper>
 	)
 }
