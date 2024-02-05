@@ -7,12 +7,13 @@ export const Wrapper = styled.section`
 	height: 3rem;
 
 	display: flex;
-	gap: 2rem;
+	align-items: center;
+	gap: 1rem;
 `;
 
 export const Divider = styled.div`
 	width: 1px;
-	height: inherit;
+	height: 2.2rem;
 
 	background-color: lightgray;
 `;
@@ -41,8 +42,6 @@ export const Slider = styled.ul`
 	position: absolute;
 	left: 0;
 	transition: left 0.2s ease-out;
-
-	background-color: salmon;
 `;
 
 export const PrevArrow = styled(ButtonStyle)<{$showPrevArrow: boolean}>`

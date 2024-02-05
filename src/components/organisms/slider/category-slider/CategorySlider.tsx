@@ -4,20 +4,17 @@ import { FiArrowRight as ArrowRightIcon, FiArrowLeft as ArrowLeftIcon } from "re
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import SearchModal from "../../modal/search-modal/SearchModal";
-
 import { categories } from "@/assets/data/fields";
-import { Button } from "@/components";
 import * as S from "@/components/organisms/slider/category-slider/CategorySlider.styled";
-import { useModal, useCategorySlider } from "@/hooks";
 import { section } from "@/redux/sectionSlice";
-import { getFilterQueryParameter, stringToUrlParameter } from "@/utils";
+
+import { useModal, useCategorySlider } from "@/hooks";
+import { getFilterQueryString, toUrlParameter } from "@/utils";
+
+import { Button, SearchModal } from "@/components";
 
 export default function CategorySlider() {
 	const [currentCategory, setCurrentCategory] = useState('전체');
-
-	const { isModalOpen, handleModal } = useModal();
-	const { showPrevArrow, showNextArrow, handlePrev, handleNext, lastIndex, setSlider, setCategoryBox } = useCategorySlider();
 
 	const currentSection = useSelector(section);
 
@@ -25,10 +22,21 @@ export default function CategorySlider() {
 	const sliderRef = useRef(null);
 	const categoryBoxRef = useRef(null);
 
+	const { isModalOpen, handleModal } = useModal();
+	const {
+		showPrevArrow,
+		showNextArrow,
+		handlePrev,
+		handleNext,
+		setSlider,
+		setCategoryBox,
+		lastIndex,
+	} = useCategorySlider(currentSection);
+
 	const handleCategory = (event: React.MouseEvent) => {
 		const category = event.currentTarget.textContent as string;
-		const sectionParameter = stringToUrlParameter(currentSection);
-		const categoryParameter = stringToUrlParameter(category);
+		const sectionParameter = toUrlParameter(currentSection);
+		const categoryParameter = toUrlParameter(category);
 
 		setCurrentCategory(category);
 
@@ -39,23 +47,23 @@ export default function CategorySlider() {
 		navigate(`/main/${sectionParameter}?filter=appCategory.${categoryParameter}`);
 	};
 
-	const getCategoryQueryParameter = () => {
-		const category = getFilterQueryParameter().filterValue;
+	const getCurrentCategory = () => {
+		const category = getFilterQueryString().filterValue;
 		setCurrentCategory(category);
 	}
 
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
 		setCategoryBox(categoryBoxRef.current!);
-		getCategoryQueryParameter();
+		getCurrentCategory();
 
-		window.addEventListener("popstate", getCategoryQueryParameter);
-    return () => window.removeEventListener("popstate", getCategoryQueryParameter);
+		window.addEventListener("popstate", getCurrentCategory);
+    return () => window.removeEventListener("popstate", getCurrentCategory);
 	}, [currentSection]);
 
  return(
 	<S.Wrapper>
-		<Button color='gray' shape='square' onClick={handleModal}>
+		<Button color='gray' shape='round' onClick={handleModal}>
 			<FilterIcon size={20}/>
 			Filters
 		</Button>
