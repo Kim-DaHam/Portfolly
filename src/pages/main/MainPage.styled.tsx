@@ -31,7 +31,6 @@ export const TitleSection = styled.section`
 `;
 
 export const PortfolioSection = styled.section`
-	${mixins.fullScreen}
-
+	width: 100%;
 	padding-top: 1.5rem;
 `;

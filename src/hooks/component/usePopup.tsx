@@ -7,7 +7,7 @@ function usePopup() {
 		bottom: 0,
 	});
 
-	const calculateCoordinate = (button: HTMLElement)=> {
+	const getCoordinates = (button: HTMLElement)=> {
 		const clientHeight = document.body.clientHeight;
 		const coordinates = {
 			right: button.getBoundingClientRect().right,
@@ -18,7 +18,7 @@ function usePopup() {
 
 		const popUpAtUpperPlace = (coordinates: {right:number, bottom:number})=>{
 			if(clientHeight !== 0)
-				coordinates.bottom = button.getBoundingClientRect().top - 120;
+				coordinates.bottom = button.getBoundingClientRect().top - 80;
 		}
 
 		if(isThereNoUnderPlaceToPopUp){
@@ -36,8 +36,8 @@ function usePopup() {
 
 		setCoordinate(prev => ({
 				...prev,
-				right: calculateCoordinate(menuButton).right,
-				bottom: calculateCoordinate(menuButton).bottom,
+				right: getCoordinates(menuButton).right,
+				bottom: getCoordinates(menuButton).bottom,
 		}))
 
 		setIsPopUp(prev=>!prev);

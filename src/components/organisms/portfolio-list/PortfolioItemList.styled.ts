@@ -9,3 +9,13 @@ export const GridBox = styled.div`
 	justify-content: space-between;
 	gap: 1.7rem;
 `;
+
+export const Notification = styled.div`
+	width: 100vw;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	padding-top: 5rem;
+`;

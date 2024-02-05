@@ -4,7 +4,7 @@ export const portfolios: Portfolio[] = [
 	{
 		id: 1,
 		userId: 1,
-		title: '앱 포트폴리오 1',
+		title: '앱 포트폴리오 1 긴 제목 긴 제목',
 		content: '앱 포트폴리오 1 내용입니다.',
 		summary: '앱 포트폴리오 1 요약입니다.',
 		createdAt: Date.now(),

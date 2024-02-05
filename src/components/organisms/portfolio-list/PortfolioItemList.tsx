@@ -8,7 +8,7 @@ import { Portfolio } from "@/types";
 import { useIntersectionObserver } from "@/hooks";
 import { usePortfoliosQuery } from "@/utils";
 
-import { PortfolioCard } from "@/components";
+import { PortfolioCard, Text } from "@/components";
 
 type Props = {
 	category: string;
@@ -23,7 +23,16 @@ export default function PortfolioItemList({category}: Props) {
 
 	const currentSection = useSelector(section);
 
-	const { data: portfolios, fetchNextPage, hasNextPage } = usePortfoliosQuery(currentSection, { filterKey: 'category', filterValue: category});
+	const {
+		data: portfolios,
+		fetchNextPage, hasNextPage
+} = usePortfoliosQuery(
+		currentSection,
+		{
+			filterKey: 'category',
+			filterValue: category
+		}
+	);
 
 	const loadNextPage = () => {
 		const allPortfoliosCount = portfolios ? portfolios.length : 0;
@@ -66,12 +75,19 @@ export default function PortfolioItemList({category}: Props) {
 
 	return (
 		<S.GridBox>
-			{ portfolios && portfolios.map((portfolio: Portfolio, index: number)=>{
-				if(index < count) {
-					return(
-						<PortfolioCard key={index} portfolio={portfolio} onClick={()=>saveScroll(++index)}/>
-					)
+			{ portfolios && portfolios.length > 0 ?
+				portfolios.map((portfolio: Portfolio, index: number)=>{
+					if(index < count) {
+						return(
+							<PortfolioCard key={index} portfolio={portfolio} onClick={()=>saveScroll(++index)}/>
+						)
 				}})
+				:
+				<S.Notification>
+					<Text size='bodyLarge' color='lightgray'>
+						해당하는 아이템이 없습니다.
+					</Text>
+				</S.Notification>
 			}
 			{ loadData &&
 				<div ref={setObservationTarget}></div>

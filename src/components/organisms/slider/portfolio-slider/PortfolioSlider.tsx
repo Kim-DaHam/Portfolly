@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useRef } from "react";
+import { FiArrowRight as RightArrowIcon, FiArrowLeft as LeftArrowIcon } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
@@ -44,18 +44,18 @@ export default function PortfolioSlider({section, portfolio}: Props){
 			<S.Content className={`${sectionName}-slider-box`}>
 				<S.ArrowBox onClick={eventStopPropagation}>
 					<S.PrevArrow
-						color='white'
+						color='gray'
 						onClick={handlePrev}
 						$showPrevArrow={showPrevArrow}
 					>
-						Prev
+						<LeftArrowIcon size={16} />
 					</S.PrevArrow>
 					<S.NextArrow
-						color='white'
+						color='gray'
 						onClick={handleNext}
 						$showNextArrow={showNextArrow}
 					>
-						Next
+						<RightArrowIcon size={16} />
 					</S.NextArrow>
 				</S.ArrowBox>
 

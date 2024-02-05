@@ -18,18 +18,18 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 
 export default function PortfolioCard({ portfolio, onClick }: Props) {
 	const buttonGroupRef = useRef(null);
+	const currentSection = useSelector(section);
 
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
-	const currentSection = useSelector(section);
 
 	useEffect(()=>{
 		const buttonGroup :HTMLElement = buttonGroupRef.current!;
 
-		if(isPopUp){
-			buttonGroup!.style.display = 'flex';
+		if(!isPopUp) {
+			buttonGroup!.style.display = '';
 			return;
 		}
-		buttonGroup!.style.display = '';
+		buttonGroup!.style.display = 'flex';
 	}, [isPopUp])
 
 	return (
@@ -40,9 +40,13 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 				<Profile type='portfolio-card' portfolio={portfolio} user={portfolio.user}/>
 
 				<S.ButtonGroup className='button-group' ref={buttonGroupRef}>
-					<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
+					<ToggleButton
+						type='bookmark'
+						isToggled={portfolio.isBookmarked}
+						portfolioId={portfolio.id}
+					/>
 
-					<Button onClick={popUp} color='gray' shape='square'>
+					<Button onClick={popUp} color='gray'>
 						<MoreIcon/>
 					</Button>
 				</S.ButtonGroup>

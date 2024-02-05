@@ -68,10 +68,10 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
     'portfolio-card': (
 			<>
 				<Image
-					size='3.5rem'
+					size='2.6rem'
 					src={user?.profileImage}
 					alt='user profile'
-					shape='foursquare'
+					shape='circle'
 				/>
 				<S.SpanBox onClick={()=>navigate(`/portfolios/${portfolio?.id}`)}>
 					<Text size='bodyMedium'>{portfolio?.title}</Text>

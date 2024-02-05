@@ -1,35 +1,32 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
+import { Profile } from "@/components/molecules/profile/Profile";
 import * as mixins from '@/styles/mixins';
-
-import { Profile } from "./Profile";
-
 
 export const Wrapper = styled.div<{$type: Profile}>`
 	width: 100%;
-	height: fit-content;
+	min-width: 0;
 
 	display: flex;
+	flex-basis: 1;
 	justify-content: ${(props) => props.$type === 'message-room' && 'center'};
 	align-items: ${(props) => props.$type === 'portfolio-detail' && 'center'};
-	gap: 0.5rem;
-	flex-shrink: 1;
-
-	overflow: hidden;
-
-	background-color: yellow;
+	gap: 0.75rem;
 `;
 
 export const SpanBox = styled.div`
+	width: 100%;
+	min-width: 0;
+
 	${mixins.flexColumn}
 	justify-content: space-around;
 	flex-shrink: 1;
 
-	overflow: hidden;
-
 	& span {
-		overflow: hidden;
+		width: 99%;
+		display: block;
 
+		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}

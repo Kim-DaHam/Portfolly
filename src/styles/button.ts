@@ -32,39 +32,42 @@ const small = css`
 
 /** Colors */
 const white = css`
-  background-color: #FFFFFF;
-	&:hover {
-		background-color: #f3f3f3;
-	}
 	color: #111111;
 	border: 0px;
+  background-color: #FFFFFF;
+	transition: all 0.2s;
+	&:hover {
+		background-color: #f5f5f5;
+	}
 `;
 
 const black = css`
+	color: #FFFFFF;
+	border: 0px;
   background-color: #111111;
 	&:hover {
 		background-color: #1d1d1d;
 	}
-	color: #FFFFFF;
-	border: 0px;
 `;
 
 const gray = css`
-  background-color: #f3f3f3;
-	&:hover {
-		background-color: #d0d0d0;
-	}
 	color: #111111;
 	border: 0px;
+  background-color: #f3f3f3;
+	transition: all 0.2s;
+	&:hover {
+		background-color: #d7d7d7;
+	}
 `;
 
 const transparent = css`
-  background-color: transparent;
-	&:hover {
-		background-color: transparent;
-	}
 	color: #111111;
 	border: 1px solid #f0f0f0;
+  background-color: transparent;
+	transition: all 0.2s;
+	&:hover {
+		background-color: #f5f5f5;
+	}
 `;
 
 export const shapes = { square, round };
