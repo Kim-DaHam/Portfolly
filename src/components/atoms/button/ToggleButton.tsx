@@ -20,6 +20,34 @@ const buttonColor: {[key in Toggle]: string} = {
 	bookmark: '#ffeb54',
 };
 
+const renderToggleButton = (type: Toggle, color: string, currentLikes: number, handleToggleButton: ()=>void) => {
+	const ComponentFactory: IComponentFactory = {
+		bookmark: (
+			<Button color='black' onClick={handleToggleButton}>
+				<BookmarkIcon
+					size={14}
+					fill={color}
+					color={color}
+				/>
+			</Button>
+		),
+		like: (
+			<Button color='white' onClick={handleToggleButton}>
+				<LikeIcon
+					size={14}
+					fill={color}
+					color={color === 'white' ? 'black' : color}
+				/>
+				<Text size='label'>
+					{currentLikes}
+				</Text>
+			</Button>
+		),
+	}
+
+	return ComponentFactory[type];
+};
+
 export default function ToggleButton({type, portfolioId, isToggled, currentLikes=0}: Props) {
 	const [color, setColor] = useState(isToggled ? buttonColor[type] : 'white');
 
@@ -35,27 +63,9 @@ export default function ToggleButton({type, portfolioId, isToggled, currentLikes
 		}
 	}
 
-	const renderToggleButton = (type: Toggle) => {
-		const ComponentFactory: IComponentFactory = {
-			bookmark: (
-				<Button shape='square' color='black' onClick={handleToggleButton}>
-					<BookmarkIcon fill={color} color={color}/>
-				</Button>
-			),
-			like: (
-				<Button shape='square' color='white' onClick={handleToggleButton}>
-					<LikeIcon fill={color} color={color === 'white' ? 'black' : color}/>
-					<Text size='label'>{currentLikes}</Text>
-				</Button>
-			),
-		}
-
-		return ComponentFactory[type];
-	}
-
 	return(
 		<>
-			{renderToggleButton(type)}
+			{renderToggleButton(type, color, currentLikes, handleToggleButton)}
 		</>
 	)
 }

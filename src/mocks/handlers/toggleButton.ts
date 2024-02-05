@@ -17,10 +17,10 @@ export const toggleButtonHandlers= [
 			}
 		});
 
-		users.forEach((user) => {
+		users.forEach((user:any) => {
 			if(user.id === userId) {
-				const index = user.likes.indexOf(Number(portfolioId));
-				user.likes.splice(index, 1);
+				const index = user.likes?.indexOf(Number(portfolioId));
+				user.likes?.splice(index, 1);
 			}
 		});
 
@@ -40,8 +40,8 @@ export const toggleButtonHandlers= [
 
 		users.forEach((user) => {
 			if(user.id === userId) {
-				const index = user.bookmarks.indexOf(Number(portfolioId));
-				user.likes.splice(index, 1);
+				const index = user.bookmarks?.indexOf(Number(portfolioId));
+				user.bookmarks?.splice(index, 1);
 			}
 		});
 

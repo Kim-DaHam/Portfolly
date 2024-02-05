@@ -7,8 +7,6 @@ export const Content = styled.div`
 
 export const SearchSection = styled.section`
 	width: 100%;
-
-	padding: 0.75rem 1.25rem 0.75rem 1.25rem;
 `
 
 export const ContentSection = styled.section`

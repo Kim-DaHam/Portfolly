@@ -19,18 +19,18 @@ export const sectionUrlParameterMap: ISectionFactory = {
 	'video': 'Video',
 };
 
-export const stringToUrlParameter = (string: string) => {
+export const toUrlParameter = (string: string) => {
 	return string.replace(/ /g, '+').replace(/&/g, '%26').replace('/', '-').toLowerCase();
 };
 
-export const getFilterQueryParameter = () => {
+export const getFilterQueryString = () => {
 	const url = new URL(window.location.href);
-	const queryParameters = url.searchParams as URLSearchParams;
-	const filterQuery = queryParameters.get('filter') as string;
+	const queryString = url.searchParams as URLSearchParams;
+	const filter = queryString.get('filter') as string;
 
-	if(filterQuery) {
-		const filterType = filterQuery.split('.')[0];
-		const filterValue = filterQuery.split('.')[1];
+	if(filter) {
+		const filterType = filter.split('.')[0];
+		const filterValue = filter.split('.')[1];
 
 		return { filterType, filterValue };
 	}

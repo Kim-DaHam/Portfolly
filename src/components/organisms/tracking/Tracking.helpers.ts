@@ -1,7 +1,6 @@
 import { CommissionStatus } from "@/types";
 
 export const countCommissionStatus = (commissions: any[]) => {
-	console.log(commissions)
 	const commissionsStatus: {[key in CommissionStatus | string]: number} = {
 		'진행 중': 0,
 		'작업물 도착': 0,

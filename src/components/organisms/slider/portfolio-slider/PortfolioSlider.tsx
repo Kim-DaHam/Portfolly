@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useRef } from "react";
+import { FiArrowRight as RightArrowIcon, FiArrowLeft as LeftArrowIcon } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
@@ -11,7 +11,7 @@ import * as S from "@/components/organisms/slider/portfolio-slider/PortfolioSlid
 import type { Portfolio, Section } from "@/types";
 
 import { useHandleSlider } from "@/hooks";
-import { eventStopPropagation, stringToUrlParameter } from "@/utils";
+import { eventStopPropagation, toUrlParameter } from "@/utils";
 
 import { Image } from "@/components";
 
@@ -25,7 +25,7 @@ export default function PortfolioSlider({section, portfolio}: Props){
 	const sliderRef = useRef(null);
 
 	const THUMBNAIL_PAGE = section === 'Video' ? 1 : 3;
-	const sectionName = stringToUrlParameter(section);
+	const sectionName = toUrlParameter(section);
 
 	const {
 		handlePrev,
@@ -44,18 +44,18 @@ export default function PortfolioSlider({section, portfolio}: Props){
 			<S.Content className={`${sectionName}-slider-box`}>
 				<S.ArrowBox onClick={eventStopPropagation}>
 					<S.PrevArrow
-						color='white'
+						color='gray'
 						onClick={handlePrev}
 						$showPrevArrow={showPrevArrow}
 					>
-						Prev
+						<LeftArrowIcon size={16} />
 					</S.PrevArrow>
 					<S.NextArrow
-						color='white'
+						color='gray'
 						onClick={handleNext}
 						$showNextArrow={showNextArrow}
 					>
-						Next
+						<RightArrowIcon size={16} />
 					</S.NextArrow>
 				</S.ArrowBox>
 

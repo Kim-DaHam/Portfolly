@@ -11,6 +11,10 @@ export const ButtonStyle = styled.button<Props>`
 	flex-shrink: 0;
 	gap: 0.5rem;
 
+	& button, & svg, & span {
+		flex: none;
+	}
+
 	padding: 0 1rem;
 	line-height: 1.5em;
 

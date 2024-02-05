@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Toggle } from '@/components/atoms/button/ToggleButton';
 import { Section } from '@/types';
-import { fetch, stringToUrlParameter } from "@/utils";
+
+import { fetch, toUrlParameter } from "@/utils";
 
 const PORTFOLIOS_PER_PAGE = 100;
 
@@ -17,7 +18,7 @@ const portfolioKeys = {
 }
 
 export const usePortfoliosQuery = (section: Section, filter: {filterKey: string, filterValue: string}) => {
-	const filterParameter = stringToUrlParameter(filter.filterValue);
+	const filterParameter = toUrlParameter(filter.filterValue);
 
 	const getPortfolios = ({pageParam}: {pageParam: number}) => fetch(`/portfolios?page=${pageParam}&section=${section}&${filter.filterKey}=${filterParameter}`, 'GET');
 

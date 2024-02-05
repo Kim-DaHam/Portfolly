@@ -1,19 +1,19 @@
 import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { Button, ActivityInformation, MyPageNavigator, Profile } from "@/components";
 import { renderDescription } from "@/pages/my-page/MyPage.helpers";
 import * as S from "@/pages/my-page/MyPage.styled";
 import { userState } from "@/redux/loginSlice";
+
 import { useUserQuery } from "@/utils";
+
+import { ActivityInformation, MyPageNavigator, Profile } from "@/components";
 
 export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
 
 function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('introduce');
-
-	const navigate = useNavigate();
 
 	const params = useParams();
 	const profileId = params.id as string;

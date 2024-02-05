@@ -13,9 +13,9 @@ import { ROUTE_PATH } from "@/utils";
 import { Image, Button, SectionNavigator, Popper, SearchBar, SearchModal } from '@/components';
 
 export default function Header() {
+	const { isModalOpen, handleModal } = useModal();
 	const { showSearchBar, showSectionNavigator } = useHeader();
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
-	const { isModalOpen, handleModal } = useModal();
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -37,11 +37,8 @@ export default function Header() {
 
 			{ showSearchBar ?
 				<>
-					<SearchBar isClicked={isModalOpen} onClick={handleModal}/>
-
-					{ isModalOpen &&
-						<SearchModal onClick={handleModal}/>
-					}
+					<SearchBar isClicked={isModalOpen} onClick={handleModal} />
+					<SearchModal $modalState={isModalOpen} onClose={handleModal} />
 				</>
 				:
 				<div></div>
@@ -68,11 +65,9 @@ export default function Header() {
 				</S.ButtonGroup>
 			}
 
-			{ isPopUp &&
-				<Popper coordinate={coordinate} popOut={popOut}>
-					{renderHeaderMenuPopper(user, popOut, handleLogOut)}
-				</Popper>
-			}
+			<Popper coordinate={coordinate} popOut={popOut} $popperState={isPopUp}>
+				{renderHeaderMenuPopper(user, popOut, handleLogOut)}
+			</Popper>
 		</S.Wrapper>
 	)
 }

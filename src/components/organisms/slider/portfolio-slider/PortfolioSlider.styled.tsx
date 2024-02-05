@@ -13,17 +13,15 @@ export const Wrapper = styled.div<{$section: Section}>`
 	overflow: hidden;
 
 	cursor: pointer;
-	background-color: #f5f5f5;
 	border-radius: 1.75rem;
+	background-color: #f5f5f5;
+	transition: background-color 0.2s;
 
-	& :hover {
-		& .slick-dots {
-			visibility: visible;
+	&:hover {
+		& .slick-dots, & button {
+			opacity: 100;
 		}
-
-		& button {
-			display: inline-block;
-		}
+		background-color: #e4e4e4;
 	}
 
 	.slick-slider, .slick-list, .slick-track {
@@ -37,7 +35,9 @@ export const Wrapper = styled.div<{$section: Section}>`
 	}
 
 	& .slick-dots {
-		visibility: hidden;
+		padding-bottom: 0.2rem;
+		transition: opacity 0.1s;
+		opacity: 0;
 	}
 
 	& .slick-dots > li {
@@ -74,22 +74,34 @@ export const ArrowBox = styled.div`
 
 	position: absolute;
 	z-index: 300;
-	top: 49%;
+	top: 50%;
 	left: 0;
+	transform: translate(0, -50%);
 
 	padding: 0 0.5rem 0 0.5rem;
+	background-color: transparent;
+
+	& button {
+		width: 2.5rem;
+		height: 2.5rem;
+
+		opacity: 0;
+		transition: opacity 0.1s;
+		cursor: pointer;
+
+		& svg {
+			width: fit-content;
+			height: fit-content;
+		}
+	}
 `;
 
 export const PrevArrow = styled(ButtonStyle)<{$showPrevArrow: boolean}>`
-	display: none;
 	visibility: ${(props) => props.$showPrevArrow ? 'visible' : 'hidden'};
-	cursor: pointer;
 `;
 
 export const NextArrow = styled(ButtonStyle)<{$showNextArrow: boolean}>`
-	display: none;
 	visibility: ${(props) => props.$showNextArrow ? 'visible' : 'hidden'};
-	cursor: pointer;
 `;
 
 export const Video = styled.iframe`

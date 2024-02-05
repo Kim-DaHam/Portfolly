@@ -11,7 +11,6 @@ export const Content = styled.main`
 
 	${mixins.flexCenter}
 	${mixins.flexColumn}
-	gap: 1.7rem;
 
 	padding: 3rem 5rem 3rem 5rem;
 `;
@@ -24,19 +23,14 @@ export const TitleSection = styled.section`
 	gap: 2rem;
 	align-items: end;
 
-	border: 1px solid black;
-`;
+	padding: 1rem 0 1rem 0;
 
-export const Title = styled.h1`
-	font-size: 3rem;
-`;
-
-export const Summary = styled.span`
-	font-size: 1.1rem;
+	& span {
+		font-weight: 600;
+	}
 `;
 
 export const PortfolioSection = styled.section`
-	${mixins.fullScreen}
-
-	padding-top: 1rem;
+	width: 100%;
+	padding-top: 1.5rem;
 `;

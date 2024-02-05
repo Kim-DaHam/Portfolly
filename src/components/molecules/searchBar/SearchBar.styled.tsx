@@ -21,9 +21,15 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input`
-	height: 2rem;
-
 	flex-grow: 1;
 
-	cursor: pointer;
+	border: none;
+	background-color: transparent;
+
+	font-weight: 600;
+	font-size: 1rem;
+
+	&:focus {
+		outline: none;
+	}
 `;

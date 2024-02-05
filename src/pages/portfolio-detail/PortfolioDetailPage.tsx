@@ -11,7 +11,7 @@ import * as S from "./PortfolioDetailPage.styled";
 import type { Portfolio } from "@/types";
 
 import { useModal, useHtmlContent } from "@/hooks";
-import { usePortfolioDeleteQuery, usePortfolioDetailQuery, stringToUrlParameter } from "@/utils";
+import { usePortfolioDeleteQuery, usePortfolioDetailQuery, toUrlParameter } from "@/utils";
 
 import { Text, Image, Button, ToggleButton, Tag, Profile, AlertModal } from "@/components";
 
@@ -35,7 +35,7 @@ export default function PortfolioDetail(){
 
 	const deletePortfolio = async () => {
 		await deletePorfolioMutation.mutate();
-		navigate(`/main/${stringToUrlParameter(currentSection)}`);
+		navigate(`/main/${toUrlParameter(currentSection)}`);
 	};
 
 	useEffect(() => {

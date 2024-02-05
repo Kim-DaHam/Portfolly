@@ -1,10 +1,9 @@
 import { HttpResponse, http } from 'msw';
 
+import { LOGIN_ID } from '.';
 import { commissions } from '../data/commissions';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
-
-const LOGIN_ID = 1;
 
 export const commissionHandlers= [
 	http.post(`/commissions`, async ({request}) => {

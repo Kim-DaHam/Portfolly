@@ -11,11 +11,6 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
-
-
-import MainLayout from './pages/main-layout/MainLayout';
-
-import { Footer, Header, ToastContainer } from '@/components';
 import IntroPage from '@/pages/intro/IntroPage';
 import LogInPage from '@/pages/log-in/LogInPage';
 import MainPage from '@/pages/main/MainPage';
@@ -24,8 +19,14 @@ import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetailPage from '@/pages/portfolio-detail/PortfolioDetailPage';
 import PortfolioEditPage from '@/pages/portfolio-edit/PortfolioEditPage';
 import { store } from '@/redux/store';
-import { GlobalErrorFallback } from '@/utils';
 import { ROUTE_PATH } from '@/utils/path';
+
+import MainLayout from './pages/main-layout/MainLayout';
+
+import { GlobalErrorFallback } from '@/utils';
+
+import { ToastContainer } from '@/components';
+import '@/styles/GlobalFonts.css';
 
 export default function App() {
   return (

@@ -9,7 +9,6 @@ import useImageHandler from "@/hooks/editor/useImageHandler";
 import useIntersectionObserver from "@/hooks/event/useIntersectionObserver";
 import usePreventGoBack from "@/hooks/event/usePreventGoBack";
 import usePreventRefresh from "@/hooks/event/usePreventRefresh";
-import useStopScrollY from "@/hooks/event/useStopScrollY";
 import useDispatchSectionParameter from "@/hooks/portfolio/useDispatchSectionParameter";
 import usePortfolioForm from "@/hooks/portfolio/usePortfolioForm";
 import useTagInput from "@/hooks/portfolio/useTagInput";
@@ -25,7 +24,6 @@ export {
 	usePopup,
 	useSearch,
 	useSelector,
-	useStopScrollY,
 	useTagInput,
 	usePreventGoBack,
 	usePreventRefresh,

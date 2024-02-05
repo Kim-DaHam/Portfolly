@@ -11,7 +11,7 @@ export const Layout = styled.div<{$section: Section}>`
 
 	overflow: hidden;
 
-	background-color: lemonchiffon;
-	border-radius: 1.8rem;
+	background-color: #e4e4e4;
+	border-radius: 1.75rem;
 `;
 

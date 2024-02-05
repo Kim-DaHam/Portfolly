@@ -1,11 +1,13 @@
 import { HttpResponse, http } from 'msw';
 
+import { FormValues } from '@/hooks/portfolio/usePortfolioForm';
+
+import { LOGIN_ID } from '.';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
-import { FormValues } from '@/hooks/portfolio/usePortfolioForm';
-import { User } from '@/types';
-import { Portfolio, Section } from '@/types/portfolio';
+import type { User, Portfolio, Section } from '@/types';
+
 import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getSection, getTagId, getTags, getUserData } from '@/utils';
 
 const sectionIdMap = new Map([
@@ -15,8 +17,6 @@ const sectionIdMap = new Map([
 	['Photo', 4],
 	['Video', 5],
 ]);
-
-const USER_ID = 1;
 
 export const PortfolioHandlers= [
 	http.get(`/portfolios`, ({request}) => {
@@ -41,7 +41,7 @@ export const PortfolioHandlers= [
 
 			if( sameSectionId && sameCategoryId && isRangeOfPage(index, page)) {
 				const user = getUserData(portfolio.userId) as User;
-				const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks as number[];
+				const bookmarks = users.find((user) => user.id === LOGIN_ID)!.bookmarks as number[];
 				const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
 
 				const portfolioData = {
@@ -143,8 +143,8 @@ export const PortfolioHandlers= [
 		const category = getCategory(portfolio!.categoryId);
 		const tags = getTags(portfolio!.tagId);
 
-		const likes = users.find((user) => user.id === USER_ID)!.likes as number[];
-		const bookmarks = users.find((user) => user.id === USER_ID)!.bookmarks as number[];
+		const likes = users.find((user) => user.id === LOGIN_ID)!.likes as number[];
+		const bookmarks = users.find((user) => user.id === LOGIN_ID)!.bookmarks as number[];
 		const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
 		const isLiked = getIsLiked(portfolio!.id, likes);
 
@@ -172,7 +172,7 @@ export const PortfolioHandlers= [
 		const portfolioId = url.searchParams.get('id') as string;
 
 		const user = users.find((user) => {
-			return user.id === USER_ID;
+			return user.id === LOGIN_ID;
 		});
 
 		user?.portfolios?.map((portfolio, index) => {

@@ -2,12 +2,14 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import { Button, Profile, Rating } from '@/components';
 import * as S from '@/components/molecules/review-form/ReviewForm.styled';
 import { setToast } from '@/redux/toastSlice';
 import { SetState } from "@/types";
-import { addValidationErrorToast } from '@/utils';
 import { useReviewPostQuery } from '@/utils/api-service/commission';
+
+import { addValidationErrorToast } from '@/utils';
+
+import { Button, Profile, Rating } from '@/components';
 
 type Props = {
 	handleReviewOpen: SetState<boolean>;
@@ -47,9 +49,11 @@ export default function ReviewForm({ handleReviewOpen, commission }: Props) {
 		addValidationErrorToast(isSubmitting, errors, dispatch);
 	}, [isSubmitting]);
 
+	console.log(commission.portfolio)
+
 	return (
 		<S.Wrapper>
-			<Profile type='portfolio' user={commission.portfolio}/>
+			<Profile type='portfolio' portfolio={commission.portfolio}/>
 			<S.Form onSubmit={handleSubmit(onSubmit)}>
 				<Rating setValue={setValue} {...register('rating', {
 					validate: (value: number) => value === 0 ? '별점을 등록하세요.' : true,
@@ -66,8 +70,4 @@ export default function ReviewForm({ handleReviewOpen, commission }: Props) {
 			</S.Form>
 		</S.Wrapper>
 	)
-}
-
-function dispatch(arg0: any) {
-	throw new Error('Function not implemented.');
 }

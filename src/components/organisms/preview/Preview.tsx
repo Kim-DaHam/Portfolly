@@ -5,7 +5,7 @@ import * as S from "@/components/organisms/preview/Preview.styled";
 
 import type { Portfolio, Section } from "@/types";
 
-import { stringToUrlParameter } from "@/utils";
+import { toUrlParameter } from "@/utils";
 
 import { Text, PortfolioSlider } from "@/components";
 
@@ -26,7 +26,7 @@ export default function Preview({section, portfolios}: Props){
 	const navigate = useNavigate();
 
 	const navigateMain = ()=>{
-		const sectionParameter = stringToUrlParameter(section);
+		const sectionParameter = toUrlParameter(section);
 		navigate(`/main/${sectionParameter}`)
 	}
 

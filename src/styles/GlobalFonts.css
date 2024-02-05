@@ -1,0 +1,30 @@
+@font-face {
+	font-family: 'BasierSquareTTFRegular';
+	src: local('BasierSquareTTFRegular'), local('BasierSquareTTFRegular');
+	font-style: normal;
+	src: url('@/assets/fonts/basiersquare-regular-webfont.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'NotoSansTTFMedium';
+	src: local('NotoSansTTFMedium'), local('NotoSansTTFMedium');
+	font-style: normal;
+	src: url('@/assets/fonts/NotoSansKR-Medium.ttf') format('truetype');
+	unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+	font-family: 'NotoSansTTFSemiBold';
+	src: local('NotoSansTTFSemiBold'), local('NotoSansTTFSemiBold');
+	font-style: normal;
+	src: url('@/assets/fonts/NotoSansKR-SemiBold.ttf') format('truetype');
+	unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+	font-family: 'NotoSansTTFBold';
+	src: local('NotoSansTTFBold'), local('NotoSansTTFBold');
+	font-style: normal;
+	src: url('@/assets/fonts/NotoSansKR-Bold.ttf') format('truetype');
+	unicode-range: U+AC00-D7A3;
+}

@@ -13,49 +13,50 @@ import { Button, ToggleButton, Popper, PortfolioSlider, Profile } from "@/compon
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: any;
-	onClick: () => void;
 }
 
-export default function PortfolioCard({ portfolio, onClick }: Props) {
+export default function PortfolioCard({ portfolio }: Props) {
 	const buttonGroupRef = useRef(null);
+	const currentSection = useSelector(section);
 
 	const { isPopUp, coordinate, popUp, popOut } = usePopup();
-	const currentSection = useSelector(section);
 
 	useEffect(()=>{
 		const buttonGroup :HTMLElement = buttonGroupRef.current!;
 
-		if(isPopUp){
-			buttonGroup!.style.display = 'flex';
+		if(!isPopUp) {
+			buttonGroup!.style.display = '';
 			return;
 		}
-		buttonGroup!.style.display = '';
+		buttonGroup!.style.display = 'flex';
 	}, [isPopUp])
 
 	return (
-		<S.Wrapper onClick={onClick}>
+		<S.Wrapper>
 			<PortfolioSlider section={currentSection} portfolio={portfolio}/>
 
 			<S.ProfileBox>
-				<Profile type='portfolio-card' user={{...portfolio, ...portfolio.user}}/>
+				<Profile type='portfolio-card' portfolio={portfolio} user={portfolio.user}/>
 
 				<S.ButtonGroup className='button-group' ref={buttonGroupRef}>
-					<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>
+					<ToggleButton
+						type='bookmark'
+						isToggled={portfolio.isBookmarked}
+						portfolioId={portfolio.id}
+					/>
 
-					<Button onClick={popUp} color='gray' shape='square'>
+					<Button onClick={popUp} color='gray'>
 						<MoreIcon/>
 					</Button>
 				</S.ButtonGroup>
 
-				{ isPopUp &&
-					<Popper coordinate={coordinate} popOut={popOut}>
-						<Group>
-							<Link to=''>
-								공유하기
-							</Link>
-						</Group>
-					</Popper>
-				}
+				<Popper coordinate={coordinate} popOut={popOut} $popperState={isPopUp}>
+					<Group>
+						<Link to=''>
+							공유하기
+						</Link>
+					</Group>
+				</Popper>
 			</S.ProfileBox>
 		</S.Wrapper>
 	)

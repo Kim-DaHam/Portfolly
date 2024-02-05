@@ -1,16 +1,12 @@
 import { HttpResponse, http } from 'msw';
 
+import { LOGIN_ID, MY_ID, PARTNER_ID } from '.';
 import { commissions } from '../data/commissions';
 import { messageRooms } from '../data/messages';
 import { portfolios } from '../data/portfolios';
 import { users } from '../data/users';
 
-import { User } from '@/types';
-
-const LOGIN_ID: number = 1;
-const AUTHORITY: string = 'expert';
-const PARTNER_ID = (AUTHORITY === 'expert') ? 'clientId' : 'expertId';
-const MY_ID = AUTHORITY + 'Id';
+import type { User } from '@/types';
 
 export const messageHandlers= [
 	http.get('/messageRooms', ({request}) => {

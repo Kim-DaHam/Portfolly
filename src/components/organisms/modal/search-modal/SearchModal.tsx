@@ -1,15 +1,19 @@
-import { HTMLAttributes, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Modal, SearchBar } from "@/components/molecules";
 import { searchFilter, searchFilterList, renderContent } from "@/components/organisms/modal/search-modal";
-import useStopScrollY from "@/hooks/event/useStopScrollY";
 
 import * as S from "./SearchModal.styled";
 
 export type Filter = 'Trending' | 'AppCategory' | 'UserTags' | 'Search';
 export type Content = 'Trending' | 'List' | 'Search';
 
-export default function SearchModal({...props}: HTMLAttributes<HTMLDivElement>) {
+type Props = {
+	$modalState: boolean;
+	onClose: React.MouseEventHandler<HTMLElement>;
+}
+
+export default function SearchModal({ $modalState, onClose }: Props) {
 	const [filter, setFilter] = useState<Filter>('Trending');
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
 
@@ -17,25 +21,28 @@ export default function SearchModal({...props}: HTMLAttributes<HTMLDivElement>) 
 		setFilter(filter);
 	}
 
-	useStopScrollY();
-
 	useEffect(()=>{
 		isTextEntered ? setFilter('Search') : setFilter('Trending')
 	}, [isTextEntered])
 
 	return(
-		<Modal $type='search' {...props}>
+		<Modal $type='search' $modalState={$modalState} onClose={onClose}>
 			<S.Content>
 				<S.SearchSection>
-					<SearchBar isClicked={true} onInputChange={setIsTextEntered}/>
+					<SearchBar isClicked onInputChange={setIsTextEntered} />
 				</S.SearchSection>
 
 				<S.ContentSection>
 					{ !isTextEntered &&
 						<S.FilterGroup>
-							{searchFilterList.map((filter)=>{
+							{searchFilterList.map((filter: Filter, index: number)=>{
 								return (
-									<S.Option color='white' size='large' shape='square' onClick={()=>changeFilter(filter)}>
+									<S.Option
+										key={index}
+										color='white'
+										size='large'
+										onClick={()=>changeFilter(filter)}
+									>
 										{searchFilter[filter].icon}
 										{searchFilter[filter].name}
 									</S.Option>
