@@ -112,7 +112,7 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 
 					<S.Box>
 						<Text size='label'>관련 포트폴리오</Text>
-							<Profile type='portfolio' user={commission.portfolio}/>
+							<Profile type='portfolio' portfolio={commission.portfolio}/>
 					</S.Box>
 
 					<S.Box>

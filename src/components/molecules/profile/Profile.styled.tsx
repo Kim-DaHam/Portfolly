@@ -1,15 +1,16 @@
 import styled, { css } from "styled-components";
 
+import * as mixins from '@/styles/mixins';
+
 import { Profile } from "./Profile";
 
-import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div<{$type: Profile}>`
 	width: 100%;
 	height: fit-content;
 
 	display: flex;
-	justify-content: ${(props) => props.$type === 'message' && 'center'};
+	justify-content: ${(props) => props.$type === 'message-room' && 'center'};
 	align-items: ${(props) => props.$type === 'portfolio-detail' && 'center'};
 	gap: 0.5rem;
 	flex-shrink: 1;
@@ -31,6 +32,14 @@ export const SpanBox = styled.div`
 
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+
+	& > span:first-child {
+		cursor: pointer;
+	}
+
+	& > span:first-child:hover {
+		text-decoration: underline;
 	}
 `;
 

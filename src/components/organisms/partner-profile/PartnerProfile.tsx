@@ -31,7 +31,7 @@ export default function PartnerProfile({ message }: Props) {
 
 	return(
 		<S.Wrapper>
-			<Profile type='message' user={message.partner} />
+			<Profile type='message-room' user={message.partner} />
 
 			<S.ActivityBox>
 				<S.Box>

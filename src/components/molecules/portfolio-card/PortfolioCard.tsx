@@ -37,7 +37,7 @@ export default function PortfolioCard({ portfolio, onClick }: Props) {
 			<PortfolioSlider section={currentSection} portfolio={portfolio}/>
 
 			<S.ProfileBox>
-				<Profile type='portfolio-card' user={{...portfolio, ...portfolio.user}}/>
+				<Profile type='portfolio-card' portfolio={portfolio} user={portfolio.user}/>
 
 				<S.ButtonGroup className='button-group' ref={buttonGroupRef}>
 					<ToggleButton type='bookmark' isToggled={portfolio.isBookmarked} portfolioId={portfolio.id}/>

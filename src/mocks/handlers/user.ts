@@ -60,7 +60,6 @@ export const userHandlers= [
 		const reviewList: any[] = [];
 
 		commissions.map((commission: any) => {
-
 			const isMyCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
 
 			if(isMyCommission) {
