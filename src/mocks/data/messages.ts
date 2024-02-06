@@ -190,20 +190,7 @@ export const messageRooms = [
 		lastMessage: '마지막 메세지입니다',
 		timestamp: Date.now(),
 		messages: [
-			{
-				id: 1,
-				userId: 100,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 2,
-				userId: 2,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: false,
-			},
+
 		]
 	},
 

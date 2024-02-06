@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import * as S from '@/components/organisms/message-room-list/MessageRoomList.styled';
 
-import { MessageRoomItem, Selector } from "@/components";
+import { Text, MessageRoomItem, Selector } from "@/components";
 
 type Props = {
 	messageRooms: any;
@@ -53,9 +53,11 @@ export default function MessageRoomList({ messageRooms }: Props) {
 						})}
 					</>
 					:
-					<S.Box>
-						메세지 0건
-					</S.Box>
+					<S.Notification>
+						<Text size='label' color='lightgray'>
+							메세지 0건
+						</Text>
+					</S.Notification>
 				}
 			</S.MessageRoomBox>
 

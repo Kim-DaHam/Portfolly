@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.main`
 	width: 80%;
-	height: 40rem;
+	height: 45rem;
 
 	${mixins.flexRow}
 
@@ -28,4 +28,11 @@ export const MessageSection = styled.section`
 export const NotificationBox = styled.div`
 	${mixins.fullWidthHeight}
 	${mixins.flexCenter}
+	${mixins.flexColumn}
+	background-color: #f5f6fa;
+	gap: 0.5rem;
+
+	& span {
+		text-align: center;
+	}
 `;

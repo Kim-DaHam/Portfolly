@@ -18,7 +18,8 @@ export default function PartnerProfile({ message }: Props) {
 
 	const { authority } = useSelector(userState);
 	const { isModalOpen, handleModal} = useModal();
-	const messageQuery = queryClient.getQueryData(['message', `${message.clientId}`]) as any;
+
+	const messageQuery = queryClient.getQueryData(['message', `${message.partner.id}`]) as any;
 
 	const initialCommission = {
 		id: undefined,
@@ -45,21 +46,35 @@ export default function PartnerProfile({ message }: Props) {
 			</S.ActivityBox>
 
 			<Text size='label'>전문가 서비스</Text>
-			<Profile type='portfolio' user={message.portfolio} />
+			<Profile type='portfolio' portfolio={message.portfolio} />
 
 			{ !message.commission && authority === 'expert' &&
-				<Button color='black' size='full' onClick={handleModal}>의뢰 폼 전송</Button>
+				<>
+					<Button color='black' size='full' onClick={handleModal}>
+						의뢰 폼 작성
+					</Button>
+
+					<CommissionModal
+					editMode
+					commission={initialCommission}
+					handleModal={handleModal}
+					$modalState={isModalOpen}
+					/>
+				</>
 			}
 
 			{ message.commission &&
-				<Button color='gray' size='full' onClick={handleModal}>의뢰 폼 확인</Button>
+				<Button color='gray' size='full' onClick={handleModal}>
+					의뢰 폼 확인
+				</Button>
 			}
 
-			{ isModalOpen && !message.commission && authority === 'expert' &&
-				<CommissionModal commission={initialCommission} handleModal={handleModal} editMode />
-			}
-			{ isModalOpen && message.commission &&
-				<CommissionModal commission={messageQuery.commission} handleModal={handleModal} />
+			{ messageQuery && message.commission &&
+				<CommissionModal
+					commission={messageQuery.commission}
+					handleModal={handleModal}
+					$modalState={isModalOpen}
+				/>
 			}
 		</S.Wrapper>
 	)

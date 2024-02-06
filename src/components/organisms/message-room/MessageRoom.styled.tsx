@@ -18,11 +18,13 @@ export const TitleBox = styled.div`
 	align-items: center;
 	flex: none;
 
-	padding: 0 2.2rem 0 0.7rem;
-
+	padding: 0 2.2rem 0 1.5rem;
 	border-bottom: 1px solid #e8e9f0;
-
 	background-color: white;
+
+	& svg {
+		cursor: pointer;
+	}
 `;
 
 export const InputBox = styled.div`
@@ -33,17 +35,21 @@ export const InputBox = styled.div`
 	padding: 1rem 0.8rem 1rem 0.8rem;
 	border-top: 1px solid #e8e9f0;
 
-	background-color: lemonchiffon;
+	& button {
+		align-self: flex-end;
+	}
 `;
 
 export const TextArea = styled.textarea`
 	width: 100%;
 	height: 3rem;
-
-	resize: none;
+	padding: 0.5rem 1.2rem;
+	border-radius: 1rem;
+	border: 1px solid #e8e9f0;
 `;
 
 export const FileInput = styled.div`
+	height: fit-content;
 	${mixins.flexRow}
 	gap: 0.5rem;
 `;
@@ -56,14 +62,15 @@ export const Label = styled.label`
 	height: fit-content;
 
 	${mixins.flexRow}
+	gap: 0.2rem;
 	align-items: center;
 
+	font-family: 'NotoSansTTFMedium';
 	cursor: pointer;
 	color: gray;
 `;
 
 export const Box = styled.div`
-	height: 100%;
 	${mixins.flexRow}
 	flex-basis: 1;
 	justify-content: space-between;

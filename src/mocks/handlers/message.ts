@@ -23,18 +23,20 @@ export const messageHandlers= [
 				// 메세지 목록 데이터를 만든다.
 				const partner = users.find((user) => user.id === room[PARTNER_ID]) as User;
 
-				messageRoomList.push({
-					id: room.id,
-					lastMessage: room.lastMessage,
-					timestamp: room.timestamp,
-					commissionStatus: room.commissionStatus,
-					isRead: room.messages[room.messages.length -1].isRead ? true : false,
-					partner: {
-						id: partner?.id,
-						nickname: partner?.nickname,
-						profileImage: partner?.profileImage,
-					}
-				});
+				if(room.messages.length > 0) {
+					messageRoomList.push({
+						id: room.id,
+						lastMessage: room.lastMessage,
+						timestamp: room.timestamp,
+						commissionStatus: room.commissionStatus,
+						isRead: room.messages[room.messages.length -1].isRead ? true : false,
+						partner: {
+							id: partner?.id,
+							nickname: partner?.nickname,
+							profileImage: partner?.profileImage,
+						}
+					});
+				}
 
 				// '/messages' 경로로 들어와 partnerId가 존재하지 않을 경우 가장 첫 번째 messageRoom 정보를 받는다.
 				if(Object.keys(message).length === 0 || Number(partnerId) === partner?.id) {
@@ -64,7 +66,16 @@ export const messageHandlers= [
 								profileImage: expert?.profileImage,
 							}
 						},
-						commission: commission || null,
+						commission: commission ? {
+							...commission,
+							expert: {
+								id: expert?.id,
+								nickname: expert?.nickname,
+								name: expert?.name,
+								phone: expert?.phone,
+								profileImage: expert?.profileImage,
+							}
+						} : null,
 						messages: recentMessages,
 					});
 				}

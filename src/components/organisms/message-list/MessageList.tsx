@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { UseFormGetValues, UseFormSetValue } from 'react-hook-form';
 
-import { FileModal, Message } from '@/components';
 import * as S from '@/components/organisms/message-list/MessageList.styled';
-import { SetState } from '@/types';
+
+import type { SetState } from '@/types';
+
+import { Text, FileModal, Message } from '@/components';
 
 type Props = {
 	message: any;
@@ -26,11 +28,21 @@ export default function MessageList({ message, getValues, setValue, isFileModalO
 			{ message.messages.length > 0 ?
 				<>
 				{ message.messages.map((item: any) => {
-					return <Message message={item} key={item.id} partnerProfileImage={message.partner.profileImage}/>
+					return (
+						<Message
+							message={item}
+							key={item.id}
+							partnerProfileImage={message.partner.profileImage}
+						/>
+					)
 				})}
 				</>
 				:
-				<> 아직 메세지가 없어요.</>
+				<S.Notification>
+					<Text size='label' color='lightgray'>
+						아직 메세지가 없어요.
+					</Text>
+				</S.Notification>
 			}
 			</>
 

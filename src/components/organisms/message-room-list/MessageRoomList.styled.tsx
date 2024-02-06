@@ -34,3 +34,10 @@ export const MessageRoomBox = styled.div`
 export const Box = styled.div`
 	${mixins.flexCenter}
 `;
+
+export const Notification = styled.div`
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;

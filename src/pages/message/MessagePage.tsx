@@ -6,7 +6,7 @@ import * as S from '@/pages/message/MessagePage.styled';
 
 import { useMessageRoomQuery } from "@/utils";
 
-import { MessageRoom, MessageRoomList } from '@/components';
+import { MessageRoom, MessageRoomList, Text } from '@/components';
 
 export default function MessagePage() {
 	const urlParams = new URL(window.location.href).searchParams;
@@ -23,18 +23,27 @@ export default function MessagePage() {
 		}
 	}, [message]);
 
+	console.log(message)
+
+	if(!message) return null;
+
 	return(
 		<S.Wrapper>
 			<S.Content>
-				{ message &&
-					<MessageRoomList messageRooms={message.messageRooms}/>
-				}
+				<MessageRoomList messageRooms={message?.messageRooms}/>
 
-				{ message && message.messageRooms.length > 0 ?
+				{ message?.messageRooms.length > 0 ?
 					<MessageRoom message={message} />
 					:
 					<S.NotificationBox>
-						여러분의 전문가와 대화를 시작하세요!
+						<Text size='label'>
+							아직 메세지가 없어요.
+						</Text>
+						<Text size='bodyMedium' color='gray'>
+							Portfolly에서 원하는 전문가와 대화할 수 있어요.
+							<br/>
+							지금 바로 시작해보세요!
+						</Text>
 					</S.NotificationBox>
 				}
 			</S.Content>
