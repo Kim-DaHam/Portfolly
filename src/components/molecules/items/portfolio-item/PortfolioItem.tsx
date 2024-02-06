@@ -22,7 +22,7 @@ export default function PortfolioItem({portfolio}: Props) {
 
 			<S.Box>
 				<Link to={`/portfolios/${portfolio.id}`}>
-					<Text size='bodyMedium'>
+					<Text size='label'>
 						{portfolio.title}
 					</Text>
 				</Link>

@@ -75,7 +75,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					shape='circle'
 				/>
 				<S.SpanBox onClick={()=>navigate(`/portfolios/${portfolio?.id}`)}>
-					<Text size='bodyMedium'>{portfolio?.title}</Text>
+					<Text size='label'>{portfolio?.title}</Text>
 					<Text size='bodySmall' color='gray'>{user?.nickname}</Text>
 				</S.SpanBox>
 			</S.PortfolioCardProfileWrapper>

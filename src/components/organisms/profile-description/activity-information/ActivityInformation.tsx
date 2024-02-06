@@ -11,7 +11,6 @@ export default function ActivityInformation({ auth, activity }: Props) {
 
 	return(
 		<S.Wrapper>
-			<Text size='bodyMedium'>활동 정보</Text>
 			<S.Box>
 				<S.Group>
 					<Text size='label'>총 작업 수</Text>

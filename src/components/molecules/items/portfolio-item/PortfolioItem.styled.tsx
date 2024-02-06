@@ -14,6 +14,10 @@ export const Wrapper = styled.div`
 	& > a {
 		border-radius: 1rem;
 		background-color: #f5f5f5;
+		transition: box-shadow 0.2s ease;
+		&:hover {
+			box-shadow: 0 0 1rem 0.1rem #e0e0e0;
+		}
 	}
 
 	&:hover {

@@ -7,9 +7,9 @@ export const Wrapper = styled.div`
 	${mixins.flexColumn}
 	gap: 1rem;
 
-	padding: 1rem;
-
-	background-color: lightsteelblue;
+	padding: 1.5rem 2rem;
+	border-radius: 1rem;
+	border: 2px solid #f5f5f5;
 `;
 
 export const Box = styled.div`
