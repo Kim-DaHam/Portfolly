@@ -33,13 +33,13 @@ export default function MainPage(){
 
 				<CategorySlider/>
 
-				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
-					<S.PortfolioSection>
+				<S.PortfolioSection>
+					<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
 						<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
 							<PortfolioList category={currentCategory} />
 						</Suspense>
-					</S.PortfolioSection>
-				</ApiErrorBoundary>
+					</ApiErrorBoundary>
+				</S.PortfolioSection>
 			</S.Content>
 		</S.Wrapper>
 	)
