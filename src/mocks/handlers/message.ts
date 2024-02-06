@@ -55,6 +55,7 @@ export const messageHandlers= [
 							...partner?.activity,
 						},
 						portfolio: {
+							id: portfolio?.id,
 							title: portfolio?.title,
 							summary: portfolio?.summary,
 							thumbnailUrl: portfolio?.images[0],
@@ -68,6 +69,12 @@ export const messageHandlers= [
 						},
 						commission: commission ? {
 							...commission,
+							portfolio: {
+								id: portfolio?.id,
+								title: portfolio?.title,
+								summary: portfolio?.summary,
+								thumbnailUrl: portfolio?.images[0],
+							},
 							expert: {
 								id: expert?.id,
 								nickname: expert?.nickname,

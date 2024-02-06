@@ -30,6 +30,8 @@ export default function PartnerProfile({ message }: Props) {
 		expert: message.portfolio.expert,
 	};
 
+	console.log(message)
+
 	return(
 		<S.Wrapper>
 			<Profile type='message-room' user={message.partner} />
