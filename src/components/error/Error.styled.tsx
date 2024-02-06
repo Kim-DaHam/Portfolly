@@ -1,8 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Wrapper = styled.main`
-	width: 100vw;
-	height: 100vh;
+export const Wrapper = styled.main<{type: 'page' | 'component'}>`
+	${props => props.type === 'page' ?
+		css`
+			width: 100vw;
+			height: 100vh;
+		`
+		:
+		css`
+			width: 100%;
+			height: 100%;
+		`
+	}
 
 	display: flex;
 	flex-direction: column;

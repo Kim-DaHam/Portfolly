@@ -10,6 +10,7 @@ export default function GlobalErrorFallback({ error, resetErrorBoundary }: Fallb
 
 	return(
 		<Error
+			type='page'
 			message={message}
 			reset={resetErrorBoundary}
 		/>
