@@ -32,7 +32,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					size='3.5rem'
 					src={user?.profileImage}
 					alt='user profile'
-					shape='foursquare'
+					shape='circle'
 					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				/>
 				<S.SpanBox onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}>
@@ -45,7 +45,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 				<Image
 					size='3.5rem'
 					src={portfolio?.thumbnailUrl}
-					alt='user profile' shape='foursquare'
+					alt='user profile'
 					onClick={()=>navigate(`/portfolios/${portfolio?.id}`)}
 				/>
 				<S.SpanBox>

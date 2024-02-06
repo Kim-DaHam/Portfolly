@@ -30,9 +30,19 @@ export const SpanBox = styled.div`
 `;
 
 export const UserProfileWrapper = styled(Wrapper)`
+	& img {
+		aspect-ratio: 1/1;
+		cursor: pointer;
+		border-radius: 0;
+	}
 `;
 
 export const PortfolioProfileWrapper = styled(Wrapper)`
+	& img {
+		aspect-ratio: 1/1;
+		cursor: pointer;
+		border-radius: 0;
+	}
 `;
 
 export const PortfolioCardProfileWrapper = styled(Wrapper)`
