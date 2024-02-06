@@ -26,7 +26,11 @@ export const renderHeaderMenuPopper = (user: any, popOut: ()=>void, logout: ()=>
 						<Text size='bodyMedium'>북마크</Text>
 					</Link>
 
-					<Link to={`/profile/${user.id}`} onClick={popOut}>
+					<Link
+						to={`/profile/${user.id}`}
+						state={{prevUrl: location.href}}
+						onClick={popOut}
+					>
 						<UserIcon size={20}/>
 						<Text size='bodyMedium'>내 정보</Text>
 					</Link>

@@ -33,9 +33,9 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					src={user?.profileImage}
 					alt='user profile'
 					shape='foursquare'
-					onClick={()=>navigate(`/profile/${user?.id}`)}
+					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				/>
-				<S.SpanBox onClick={()=>navigate(`/profile/${user?.id}`)}>
+				<S.SpanBox onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}>
 					<Text size='bodySmall' color='gray'>{user?.nickname}</Text>
 				</S.SpanBox>
 			</S.UserProfileWrapper>
@@ -87,12 +87,12 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					src={user?.profileImage}
 					alt='user profile'
 					shape='foursquare'
-					onClick={()=>navigate(`/profiles/${user?.id}`)}
+					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				/>
 				<Text
 					cursor
 					size='titleSmall'
-					onClick={()=>navigate(`/profiles/${user?.id}`)}
+					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				>
 					{user?.nickname}
 				</Text>

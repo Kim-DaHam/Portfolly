@@ -49,6 +49,10 @@ export const ColumnProfileWrapper = styled.div`
 	${mixins.flexColumn}
 	justify-content: center;
 	gap: 1rem;
+
+	& img {
+		cursor: pointer;
+	}
 `;
 
 export const MyPageProfileWrapper = styled.div`
