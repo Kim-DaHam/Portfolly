@@ -12,4 +12,5 @@ export * from '@/utils/path';
 export * from '@/utils/wheelHandler';
 export * from '@/utils/toast';
 export * from '@/utils/transform';
+export * from '@/utils/error';
 export { GlobalErrorFallback, ApiErrorFallback };
