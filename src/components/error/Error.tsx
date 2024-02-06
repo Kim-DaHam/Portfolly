@@ -1,8 +1,8 @@
 import { FiRotateCw as RetryIcon } from "react-icons/fi";
 
-import * as S from "@/pages/error/Error.styled";
+import * as S from "@/components/error/Error.styled";
 
-import { Button, Text } from "@/components";
+import { Text } from "@/components";
 
 type Props = {
 	reset: (...args: any[]) => void;
@@ -12,10 +12,10 @@ type Props = {
 	};
 }
 
-function Error({ reset, message }: Props) {
+export default function Error({ reset, message }: Props) {
 	return(
 		<S.Wrapper>
-			<Text size='headingMedium'>
+			<Text size='title'>
 				{message.title}
 			</Text>
 			<Text size='bodyLarge' color='lightgray'>
@@ -23,11 +23,8 @@ function Error({ reset, message }: Props) {
 			</Text>
 			<RetryIcon
 				size={30}
-				color='lightgray'
 				onClick={reset}
 			/>
 		</S.Wrapper>
 	)
 }
-
-export default Error;
