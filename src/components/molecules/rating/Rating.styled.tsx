@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
+	width: fit-content;
 	display: flex;
   align-items: center;
   gap: 8px;
@@ -24,7 +25,6 @@ export const Content = styled.fieldset<{$readonly: boolean}>`
 			`;
 		}
 	}}
-
 `;
 
 export const Input = styled.input`
