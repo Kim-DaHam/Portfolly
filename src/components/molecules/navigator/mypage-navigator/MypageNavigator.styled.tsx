@@ -7,9 +7,7 @@ export const Wrapper = styled.section`
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
-
-	padding: 0 3rem;
-	margin-bottom: 3rem;
+	margin-bottom: 1.5rem;
 `;
 
 export const Tab = styled.div<{$active: boolean}>`

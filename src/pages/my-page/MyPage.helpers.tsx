@@ -1,6 +1,8 @@
-import { Introduce, Management, PortfolioList, ReviewList } from "@/components";
 import { Navigation } from "@/pages/my-page/MyPage";
-import { IComponentFactory } from "@/types";
+
+import type { IComponentFactory } from "@/types";
+
+import { Introduce, Management, PortfolioList, ReviewList } from "@/components";
 
 export const renderDescription = (user: any, navigation: Navigation)=>{
 	const ComponentFactory: IComponentFactory = {

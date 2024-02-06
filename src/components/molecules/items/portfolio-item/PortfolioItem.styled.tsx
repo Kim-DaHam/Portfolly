@@ -9,16 +9,22 @@ export const Wrapper = styled.div`
 	gap: 1rem;
 
 	position: relative;
-
 	cursor: pointer;
 
-	background-color: red;
+	& > a {
+		border-radius: 1rem;
+		background-color: #f5f5f5;
+	}
+
+	&:hover {
+		& span:first-child {
+			text-decoration: underline;
+		}
+	}
 `;
 
 export const Box = styled.div`
 	width: 100%;
-
 	${mixins.flexColumn}
-
-	background-color: lightgreen;
+	padding: 0 0.5rem;
 `;

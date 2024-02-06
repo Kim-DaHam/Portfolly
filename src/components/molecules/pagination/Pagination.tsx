@@ -76,18 +76,26 @@ export default function Pagination({handlePage, count, pageShow}: Props) {
 	return(
 		<S.Wrapper>
 			{ startPage > 1 &&
-				<LeftArrowIcon size={20} onClick={handlePrevSkip}/>
+				<LeftArrowIcon
+					size={20}
+					onClick={handlePrevSkip}
+				/>
 			}
 			{	new Array(pages).fill(0).map((_, index: number) => {
 				if(index < PAGE_NUM)
-					return <S.Page
-									$active={currentPage === startPage + index && true}
-									onClick={() => handlePagination(startPage+index)}
-									key={index}>{startPage + index}
-								</S.Page>;
+					return (
+						<S.Page
+							$active={currentPage === startPage + index && true}
+							onClick={() => handlePagination(startPage+index)}
+							key={index}>{startPage + index}
+						</S.Page>
+					);
 			})}
 			{ endPage < pages &&
-				<RightArrowIcon size={20} onClick={handleNextSkip}/>
+				<RightArrowIcon
+					size={20}
+					onClick={handleNextSkip}
+				/>
 			}
 		</S.Wrapper>
 	)

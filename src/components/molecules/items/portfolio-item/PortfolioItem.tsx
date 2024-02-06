@@ -22,9 +22,13 @@ export default function PortfolioItem({portfolio}: Props) {
 
 			<S.Box>
 				<Link to={`/portfolios/${portfolio.id}`}>
-					<Text size='bodyMedium'>{portfolio.title}</Text>
+					<Text size='bodyMedium'>
+						{portfolio.title}
+					</Text>
 				</Link>
-				<Text size='bodySmall'>{portfolio.summary}</Text>
+				<Text size='bodySmall' color='gray'>
+					{portfolio.summary}
+				</Text>
 			</S.Box>
 		</S.Wrapper>
 	)
