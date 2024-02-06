@@ -94,7 +94,9 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 							<S.TitleInput {...register('title', {
 								required: '의뢰 제목을 입력하세요.',
 								validate: v.validateTitle,
-							})} />
+								})}
+								placeholder='제목을 입력하세요'
+							/>
 							:
 							<Text size='titleSmall'>
 								{updatedCommission.details.title}
@@ -179,22 +181,32 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 						<S.Box>
 							<Text size='label'>리뷰</Text>
 							<Rating readonly score={commission.review.rating} />
-							<Text size='bodyMedium'>{commission.review.content}</Text>
+							<Text size='bodyMedium'>
+								{commission.review.content}
+							</Text>
 						</S.Box>
 					}
 				</S.Form>
 
 				<S.ButtonGroup>
 					{ authority === 'expert' && !isEditMode && commission.details.status !== '구매 확정' &&
-						<Button color='black' size='medium' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
+						<Button color='black' size='medium' onClick={() => setIsEditMode(prev=>!prev)}>
+							의뢰 수정
+						</Button>
 					}
 					{ authority === 'client' && commission.details.status !== '구매 확정' &&
-						<Button color='black' size='medium'>주문 취소</Button>
+						<Button color='black' size='medium'>
+							주문 취소
+						</Button>
 					}
 					{ isEditMode ?
-						<Button color='black' size='medium' onClick={handleSubmit(onSubmit)}>저장하기</Button>
+						<Button color='black' size='medium' onClick={handleSubmit(onSubmit)}>
+							저장하기
+						</Button>
 						:
-						<Button color='gray' size='medium' onClick={handleModal}>닫기</Button>
+						<Button color='gray' size='medium' onClick={handleModal}>
+							닫기
+						</Button>
 					}
 				</S.ButtonGroup>
 			</S.Content>

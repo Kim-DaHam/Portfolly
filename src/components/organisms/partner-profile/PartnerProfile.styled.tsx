@@ -4,13 +4,12 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
 	width: 18rem;
-	height: inherit;
 
 	${mixins.flexColumn}
 	flex: none;
-	gap: 1rem;
+	gap: 1.5rem;
 
-	padding: 1rem;
+	padding: 2rem 1.5rem;
 
 	background-color: white;
 `;
@@ -22,8 +21,8 @@ export const ActivityBox = styled.div`
 	gap: 0.5rem;
 
 	padding: 1rem;
-
-	background-color: lightgray;
+	border-radius: 1rem;
+	border: 1px solid #f0f0f0;
 `;
 
 export const Box = styled.div`

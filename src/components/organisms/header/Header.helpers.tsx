@@ -5,7 +5,7 @@ import * as S from "@/components/molecules/popper/Popper.styled";
 
 import { Text } from '@/components';
 
-const PAGE_SHOW_SEARCH_BAR = ['main', 'profile', 'contact', 'portfolios'];
+const PAGE_SHOW_SEARCH_BAR = ['main', 'profile', 'contact', 'portfolios', 'messages'];
 const PAGE_SHOW_SECTION_MENU = ['main'];
 
 export const checkIsShowSearchBar = (pathname: string) => {

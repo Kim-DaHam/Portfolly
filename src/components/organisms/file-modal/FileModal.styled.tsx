@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
 	padding: 1rem;
 
-	background-color: #ffffffac;
+	background-color: #eeeeeee2;
 
 	& > svg {
 		float: right;

@@ -20,18 +20,31 @@ export default function Message({ message, partnerProfileImage }: Props) {
 		<S.Wrapper $isOwned={isOwned}>
 			{ isOwned ?
 				<>
-					<Text size='label' color='lightgray'>{toLocalTimeString(new Date(message.createdAt))}</Text>
+					<Text size='bodySmall' color='lightgray'>
+						{toLocalTimeString(new Date(message.createdAt))}
+					</Text>
 					<S.Content $isOwned={isOwned}>
-						{message.message}
+						<Text size='bodySmall'>
+							{message.message}
+						</Text>
 					</S.Content>
 				</>
 				:
 				<>
-					<Image src={partnerProfileImage} alt='프로필 이미지' size='3rem' shape='circle'/>
+					<Image
+						src={partnerProfileImage}
+						alt='프로필 이미지'
+						size='3rem'
+						shape='circle'
+					/>
 					<S.Content $isOwned={isOwned}>
-						{message.message}
+						<Text size='bodySmall' color='white'>
+							{message.message}
+						</Text>
 					</S.Content>
-					<Text size='label' color='lightgray'>{toLocalTimeString(new Date(message.createdAt))}</Text>
+					<Text size='bodySmall' color='lightgray'>
+						{toLocalTimeString(new Date(message.createdAt))}
+					</Text>
 				</>
 			}
 		</S.Wrapper>

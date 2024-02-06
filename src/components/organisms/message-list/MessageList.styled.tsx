@@ -9,5 +9,11 @@ export const Wrapper = styled.div`
 
 	position: relative;
 	overflow-y: scroll;
-	background-color: pink;
+`;
+
+export const Notification = styled.div`
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;

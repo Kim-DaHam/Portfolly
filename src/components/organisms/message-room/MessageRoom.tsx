@@ -64,7 +64,7 @@ export default function MessageRoom({ message }: Props) {
 	return (
 		<S.Wrapper>
 			<S.TitleBox>
-				<Text size='bodyMedium'>{message.partner.nickname}</Text>
+				<Text size='label'>{message.partner.nickname}</Text>
 				<ExitIcon size={24} onClick={() => setIsExitModalOpen(prev=>!prev)}/>
 			</S.TitleBox>
 
@@ -94,20 +94,19 @@ export default function MessageRoom({ message }: Props) {
 							파일 첨부
 						</S.Label>
 					</S.FileInput>
-
-					<Button color='gray' onClick={handleSubmit(onSubmit)}>
-						전송
-					</Button>
 				</S.Box>
+
+				<Button color='gray' onClick={handleSubmit(onSubmit)}>
+					전송
+				</Button>
 			</S.InputBox>
 
-			{ isExitModalOpen &&
-				<AlertModal
-					type='messageRoom'
-					onClick={exitMessageRoom}
-					handleModal={() => setIsExitModalOpen(prev=>!prev)}
-				/>
-			}
+			<AlertModal
+				type='messageRoom'
+				onConfirm={exitMessageRoom}
+				handleModal={() => setIsExitModalOpen(prev=>!prev)}
+				$modalState={isExitModalOpen}
+			/>
 		</S.Wrapper>
 	)
 }

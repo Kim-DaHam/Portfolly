@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { MessageRoomItem, Selector } from "@/components";
 import * as S from '@/components/organisms/message-room-list/MessageRoomList.styled';
+
+import { Text, MessageRoomItem, Selector } from "@/components";
 
 type Props = {
 	messageRooms: any;
@@ -36,7 +37,12 @@ export default function MessageRoomList({ messageRooms }: Props) {
 	return (
 		<S.Wrapper>
 			<S.SearchBox>
-				<Selector type='messageStatus' placeholder='전체' setSelectorValue={setMessageFilter} size='7rem' />
+				<Selector
+					type='messageStatus'
+					placeholder='전체'
+					handleSelectorValue={setMessageFilter}
+					size='7rem'
+				/>
 			</S.SearchBox>
 
 			<S.MessageRoomBox>
@@ -47,9 +53,11 @@ export default function MessageRoomList({ messageRooms }: Props) {
 						})}
 					</>
 					:
-					<S.Box>
-						메세지 0건
-					</S.Box>
+					<S.Notification>
+						<Text size='label' color='lightgray'>
+							메세지 0건
+						</Text>
+					</S.Notification>
 				}
 			</S.MessageRoomBox>
 

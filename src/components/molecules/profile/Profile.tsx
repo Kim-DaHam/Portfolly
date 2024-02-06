@@ -116,7 +116,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 				</S.SpanBox>
 			</S.MyPageProfileWrapper>
 		),
-		'message': (
+		'message-room': (
 			<S.ColumnProfileWrapper>
 				<Image
 					size='3.5rem'
