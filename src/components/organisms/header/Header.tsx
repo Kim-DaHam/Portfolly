@@ -46,9 +46,11 @@ export default function Header() {
 
 			{ user.isLogin ?
 				<S.ButtonGroup>
-					<Button color='black' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>
-						Upload
-					</Button>
+					{ user.authority === 'expert' &&
+						<Button color='black' onClick={()=>navigate(ROUTE_PATH.PORTFOLIO_EDIT)}>
+							Upload
+						</Button>
+					}
 					<Button color='transparent' shape='round' onClick={popUp} className='profile-menu'>
 						<Image src={user.profileImage!} size='1.999rem' shape='circle' />
 						<MenuIcon size={15} />
