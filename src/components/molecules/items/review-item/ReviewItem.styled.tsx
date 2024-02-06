@@ -6,8 +6,6 @@ export const Wrapper = styled.div`
 	width: 100%;
 	${mixins.flexColumn}
 	gap: 1rem;
-
-	background-color: beige;
 `;
 
 export const ProfileBox = styled.div`
@@ -17,21 +15,26 @@ export const ProfileBox = styled.div`
 	display: flex;
 	gap: 1rem;
 
-	background-color: brown;
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid #f5f5f5;
+
+	& img:last-child {
+		align-self: flex-end;
+		cursor: pointer;
+	}
 `;
 
 export const ContentBox = styled.div`
 	${mixins.fullWidthHeight}
 
 	flex-basis: 1;
-
-	padding-left: 1rem;
-
-	background-color: #b3d2ee;
+	padding-left: 0.5rem;
 `;
 
 export const Box = styled.div`
+	width: 100%;
 	${mixins.flexColumn}
 	justify-content: center;
-	gap: 0.5rem;
+	flex-basis: 1;
+	gap: 0.1rem;
 `;

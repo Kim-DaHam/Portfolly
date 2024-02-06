@@ -1,7 +1,6 @@
 import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
-import { sizes } from '@/styles/text';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
@@ -12,6 +11,7 @@ export const Wrapper = styled.div`
 
 	& > svg {
 		float: left;
+		cursor: pointer;
 	}
 `;
 

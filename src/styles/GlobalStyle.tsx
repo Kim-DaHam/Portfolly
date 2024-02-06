@@ -38,6 +38,8 @@ const GlobalStyle = createGlobalStyle`
 	input, textarea {
 		border: none;
 		resize: none;
+		font-family: 'NotoSansTTFMedium';
+		font-size: 0.9rem;
 
 		&:focus {
 			outline: none;

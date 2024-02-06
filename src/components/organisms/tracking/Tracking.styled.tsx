@@ -7,7 +7,8 @@ export const Wrapper = styled.div`
 
 	padding: 1rem 2rem 1rem 2rem;
 
-	background-color: gray;
+	border-radius: 0.75rem;
+	background-color: #fafafc;
 `;
 
 export const Content = styled.div`
@@ -15,7 +16,7 @@ export const Content = styled.div`
 	height: 8rem;
 
 	${mixins.flexCenter}
-	gap: 1.5rem;
+	gap: 2rem;
 `;
 
 export const Box = styled.div`
@@ -26,8 +27,10 @@ export const Box = styled.div`
 	align-items: end;
 	gap: 1rem;
 
-	padding: 1rem;
+	padding: 1rem 1.5rem;
 
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 14px rgba(48,52,65,0.08);
 	background-color: white;
 `;
 
@@ -36,8 +39,6 @@ export const Group = styled.div`
 
 	display: flex;
 	justify-content: space-between;
-
-	background-color: salmon;
 `;
 
 export const LabelGroup = styled(Group)`

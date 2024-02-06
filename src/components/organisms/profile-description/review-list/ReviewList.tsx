@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { Pagination, ReviewItem } from "@/components";
 import * as S from "@/components/organisms/profile-description/review-list/ReviewList.styled";
+
+import { Pagination, ReviewItem } from "@/components";
 
 type Props = {
 	reviews: any[];

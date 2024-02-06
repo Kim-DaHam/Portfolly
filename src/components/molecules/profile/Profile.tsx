@@ -18,30 +18,30 @@ export default function Profile({type, user, portfolio}: Props) {
 	const navigate = useNavigate();
 
 	return(
-		<S.Wrapper $type={type}>
+		<>
 			{renderProfile(type, navigate, user, portfolio)}
-		</S.Wrapper>
+		</>
 	)
 }
 
 const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any) => {
 	const ComponentFactory:IComponentFactory = {
 		'user': (
-			<>
+			<S.UserProfileWrapper>
 				<Image
 					size='3.5rem'
 					src={user?.profileImage}
 					alt='user profile'
 					shape='foursquare'
-					onClick={()=>navigate(`/profile/${user?.id}`)}
+					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				/>
-				<S.SpanBox onClick={()=>navigate(`/profile/${user?.id}`)}>
+				<S.SpanBox onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}>
 					<Text size='bodySmall' color='gray'>{user?.nickname}</Text>
 				</S.SpanBox>
-			</>
+			</S.UserProfileWrapper>
 		),
 		'portfolio': (
-			<>
+			<S.PortfolioProfileWrapper>
 				<Image
 					size='3.5rem'
 					src={portfolio?.thumbnailUrl}
@@ -50,6 +50,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 				/>
 				<S.SpanBox>
 					<Text
+						cursor
 						size='bodySmall'
 						color='gray'
 						onClick={()=>navigate(`/portfolios/${portfolio?.id}`)}
@@ -63,10 +64,10 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 						{portfolio?.summary}
 					</Text>
 				</S.SpanBox>
-			</>
+			</S.PortfolioProfileWrapper>
 		),
     'portfolio-card': (
-			<>
+			<S.PortfolioCardProfileWrapper>
 				<Image
 					size='2.6rem'
 					src={user?.profileImage}
@@ -74,10 +75,10 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					shape='circle'
 				/>
 				<S.SpanBox onClick={()=>navigate(`/portfolios/${portfolio?.id}`)}>
-					<Text size='bodyMedium'>{portfolio?.title}</Text>
+					<Text size='label'>{portfolio?.title}</Text>
 					<Text size='bodySmall' color='gray'>{user?.nickname}</Text>
 				</S.SpanBox>
-			</>
+			</S.PortfolioCardProfileWrapper>
 		),
 		'portfolio-detail': (
 			<S.ColumnProfileWrapper>
@@ -86,34 +87,34 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					src={user?.profileImage}
 					alt='user profile'
 					shape='foursquare'
-					onClick={()=>navigate(`/profiles/${user?.id}`)}
+					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				/>
 				<Text
 					cursor
 					size='titleSmall'
-					onClick={()=>navigate(`/profiles/${user?.id}`)}
+					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				>
 					{user?.nickname}
 				</Text>
 			</S.ColumnProfileWrapper>
 		),
 		'my-page': (
-			<>
+			<S.MyPageProfileWrapper>
 				<Image
-					size='150px'
+					size='9rem'
 					src={user?.profileImage}
 					alt='user-profile'
 					shape='foursquare'
 				/>
-				<S.Box>
+				<S.SpanBox>
 					<Text size='title'>
 						{user?.nickname}
 					</Text>
 					{ user?.authority === 'expert' &&
 						<Rating readonly score={user?.activity.score}/>
 					}
-				</S.Box>
-			</>
+				</S.SpanBox>
+			</S.MyPageProfileWrapper>
 		),
 		'message': (
 			<S.ColumnProfileWrapper>

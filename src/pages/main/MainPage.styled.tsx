@@ -4,6 +4,7 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
+	padding-top: 7rem;
 `;
 
 export const Content = styled.main`

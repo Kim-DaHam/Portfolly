@@ -2,18 +2,16 @@ import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
 	${mixins.fullScreen}
 	${mixins.flexColumn}
-`;
+	padding: 7rem;
 
-export const Content = styled.main`
-	${mixins.fullScreen}
-	${mixins.flexColumn}
+	gap: 1.5rem;
 
-	padding: 3rem 10rem 2rem 10rem;
-
-	background-color: salmon;
+	& > svg { // <LeftArrowIcon>
+		cursor: pointer;
+	}
 `;
 
 export const ProfileSection = styled.section`
@@ -22,10 +20,6 @@ export const ProfileSection = styled.section`
 
 	${mixins.flexColumn}
 	gap: 1rem;
-
-	padding: 2rem 3rem 2rem 3rem;
-
-	background-color: violet;
 `;
 
 export const ContentSection = styled.section`
@@ -33,8 +27,7 @@ export const ContentSection = styled.section`
 	min-height: 30rem;
 
 	display: flex;
-
-	background-color: lightgreen;
+	gap: 4rem;
 `;
 
 export const Description = styled.div`
@@ -42,14 +35,10 @@ export const Description = styled.div`
 	height: auto;
 
 	flex-basis: 1;
-
-	padding: 3rem 2rem 3rem 2rem;
-
-	background-color: yellow;
 `;
 
 export const Aside = styled.aside`
-	width: 24rem;
+	width: 28rem;
 	height: 100%;
 
 	padding: 1rem;
@@ -63,6 +52,11 @@ export const Box = styled.div`
 `;
 
 export const ButtonBox = styled.div`
- ${mixins.flexRow}
- justify-content: right;
+	${mixins.flexRow}
+	justify-content: right;
+`;
+
+export const Divider = styled.div`
+	border-bottom: 2px solid #f5f5f5;
+	padding: 0.3rem;
 `;

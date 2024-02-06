@@ -1,24 +1,19 @@
 import styled from "styled-components";
 
-import { Profile } from "@/components/molecules/profile/Profile";
 import * as mixins from '@/styles/mixins';
 
-export const Wrapper = styled.div<{$type: Profile}>`
+export const Wrapper = styled.div`
 	width: 100%;
 	min-width: 0;
 
 	display: flex;
-	flex-basis: 1;
 	gap: 0.75rem;
-
-	& img {
-		cursor: pointer;
-	}
 `;
 
 export const SpanBox = styled.div`
 	width: 100%;
 	min-width: 0;
+	height: 100%;
 
 	${mixins.flexColumn}
 	justify-content: space-around;
@@ -32,20 +27,18 @@ export const SpanBox = styled.div`
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
+`;
 
-	& > span:first-child {
-		cursor: pointer;
-	}
+export const UserProfileWrapper = styled(Wrapper)`
+`;
 
+export const PortfolioProfileWrapper = styled(Wrapper)`
+`;
+
+export const PortfolioCardProfileWrapper = styled(Wrapper)`
 	& > span:first-child:hover {
 		text-decoration: underline;
 	}
-`;
-
-export const Box = styled.div`
-	${mixins.flexColumn}
-	gap: 1rem;
-	padding-top: 1rem;
 `;
 
 export const ColumnProfileWrapper = styled.div`
@@ -56,4 +49,18 @@ export const ColumnProfileWrapper = styled.div`
 	${mixins.flexColumn}
 	justify-content: center;
 	gap: 1rem;
+
+	& img {
+		cursor: pointer;
+	}
+`;
+
+export const MyPageProfileWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+
+	& > div {
+		gap: 1rem;
+	}
 `;

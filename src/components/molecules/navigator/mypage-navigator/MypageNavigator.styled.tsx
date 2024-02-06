@@ -1,26 +1,38 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.section`
 	width: 100%;
-	height: 5rem;
+	height: 3rem;
 
 	display: flex;
 	align-items: center;
-	gap: 1.2rem;
-
-	padding: 1rem 2rem 0 2rem;
-
-	background-color: skyblue;
+	gap: 1.5rem;
+	margin-bottom: 1.5rem;
 `;
 
-export const Tab = styled.div`
+export const Tab = styled.div<{$active: boolean}>`
 	height: 100%;
 
 	display: flex;
 	align-items: center;
 
 	cursor: pointer;
-
 	font-size: 1.1rem;
-	border-bottom: 3px solid black;
+
+	& a {
+		color: #9ca0b5;
+		transition: color 0.1s ease;
+		&:hover {
+			color: black;
+		}
+	}
+
+	${props => props.$active &&
+		css`
+			border-bottom: 2px solid black;
+			& a {
+				color: black;
+			}
+		`
+	}
 `;

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 
-import { Pagination, PortfolioItem } from "@/components";
 import * as S from "@/components/organisms/profile-description/portfolio-list/PortfolioList.styled";
+
+import { Pagination, PortfolioItem } from "@/components";
 
 type Props = {
 	portfolios: any[];
 }
 
-const PAGE_SHOW = 12;
+const PER_PAGE_SHOW = 12;
 
 export default function PortfolioList({portfolios}: Props) {
 	const [page, setPage] = useState(1);
@@ -22,7 +23,7 @@ export default function PortfolioList({portfolios}: Props) {
 		<S.Wrapper>
 			<S.GridBox>
 				{ portfolios.map((portfolio: any, index: number) => {
-					const isRangeOfPage = index >= (page - 1) * PAGE_SHOW && index < page * PAGE_SHOW;
+					const isRangeOfPage = index >= (page - 1) * PER_PAGE_SHOW && index < page * PER_PAGE_SHOW;
 
 					if(isRangeOfPage) {
 						return <PortfolioItem portfolio={portfolio} key={portfolio.id} />
@@ -30,7 +31,11 @@ export default function PortfolioList({portfolios}: Props) {
 				})}
 			</S.GridBox>
 
-			<Pagination handlePage={setPage} count={portfolios.length} pageShow={PAGE_SHOW}/>
+			<Pagination
+				handlePage={setPage}
+				count={portfolios.length}
+				pageShow={PER_PAGE_SHOW}
+			/>
 		</S.Wrapper>
 	)
 }

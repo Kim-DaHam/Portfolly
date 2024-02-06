@@ -8,8 +8,6 @@ export const Wrapper = styled.div`
 	${mixins.flexCenter}
 	${mixins.flexColumn}
 	gap: 3rem;
-
-	background-color: lightpink;
 `;
 
 export const GridBox = styled.div`
@@ -17,5 +15,5 @@ export const GridBox = styled.div`
 
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 1.5rem;
+	gap: 2.5rem;
 `;

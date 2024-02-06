@@ -5,8 +5,6 @@ import * as mixins from '@/styles/mixins';
 export const Wrapper = styled.div`
 	${mixins.fullWidthHeight}
 	${mixins.flexColumn}
-
-	background-color: lightpink;
 `;
 
 export const Notice = styled.div`
@@ -15,19 +13,14 @@ export const Notice = styled.div`
 	justify-content: right;
 	align-items: center;
 
-	padding-right: 2rem;
-
-	background-color: lightgreen;
+	padding-top: 0.5rem;
+	padding-right: 0.5rem;
 `
 
 export const SearchFilterSection = styled.div`
 	height: fit-content;
-
-	padding: 0.5rem 1rem 0.5rem 1rem;
-
-	margin-top: 1.5rem;
-
-	background-color: violet;
+	padding: 1.5rem 1rem;
+	border-bottom: 2px solid #f5f5f5;
 `;
 
 export const Form = styled.form`
@@ -39,11 +32,22 @@ export const Form = styled.form`
 
 export const DateSelector = styled.div`
 	flex: none;
-	background-color: lime;
+	& input {
+		transition: background-color 0.2s ease;
+		&:hover{
+			background-color: #f5f5f5;
+		}
+	}
 `;
 
 export const Input = styled.input`
-
+	height: 2.75rem;
+	padding: 0 1rem;
+	font-family: 'NotoSansTTFMedium';
+	border: 1px solid #f0f0f0;
+	border-radius: 9999px;
+  background-color: white;
+	font-size: 1rem;
 `;
 
 export const ContentSection = styled.div`
@@ -53,11 +57,12 @@ export const ContentSection = styled.div`
 	padding: 1rem;
 	margin-top: 1rem;
 
-	background-color: skyblue;
+	border-radius: 1rem;
+	background-color: #f0f0f0;
 `;
 
 export const List = styled.ul`
 	${mixins.fullWidthHeight}
 	${mixins.flexColumn}
-	gap: 0.5rem;
+	gap: 0.8rem;
 `;

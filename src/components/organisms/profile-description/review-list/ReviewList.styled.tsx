@@ -13,7 +13,5 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
 	${mixins.fullWidthHeight}
 	${mixins.flexColumn}
-	gap: 2rem;
-
-	background-color: lightpink;
+	gap: 3rem;
 `;
