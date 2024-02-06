@@ -27,8 +27,8 @@ export default function CommissionItem({ commission, index }: Props) {
 	};
 
 	return (
-		<S.Wrapper onClick={handleModal}>
-			<S.Content>
+		<S.Wrapper>
+			<S.Content onClick={handleModal}>
 				<Text size='bodySmall'>{index}</Text>
 				<S.Box>
 					<Text size='bodyMedium'>{commission.details.title}</Text>

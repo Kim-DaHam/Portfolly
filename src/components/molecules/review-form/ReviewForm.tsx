@@ -27,7 +27,6 @@ const defaultValues: FormValues = {
 };
 
 export default function ReviewForm({ handleReviewOpen, commission }: Props) {
-
 	const dispatch = useDispatch();
 	const { register, handleSubmit, setValue, formState: { errors, isSubmitting }} = useForm<FormValues>({
 		mode: 'onSubmit',

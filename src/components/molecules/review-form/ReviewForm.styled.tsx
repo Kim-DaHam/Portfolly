@@ -19,10 +19,11 @@ export const Form = styled.form`
 `;
 
 export const TextArea = styled.textarea`
-	width:75%;
+	width: 100%;
 	height: 5rem;
-
-	resize: none;
+	padding: 0.5rem 1.2rem;
+	border: 1px solid #e9e8e8;
+	border-radius: 1rem;
 `;
 
 export const ButtonBox = styled.div`
