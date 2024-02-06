@@ -18,6 +18,7 @@ type Props = {
 	commission: any;
 	handleModal: MouseEventHandler<HTMLElement>;
 	editMode?: boolean;
+	$modalState: boolean;
 };
 
 export type FormValues = {
@@ -34,7 +35,7 @@ const defaultValues: FormValues = {
 	cost: 0,
 };
 
-export default function RequestModal({ commission, handleModal, editMode }: Props) {
+export default function RequestModal({ commission, handleModal, editMode, $modalState }: Props) {
 	const [updatedCommission, setUpdatedCommission] = useState(commission);
 	const [isEditMode, setIsEditMode] = useState(editMode);
 
@@ -60,7 +61,6 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 
 		await commissionMutation.mutate(changedValues, {
 			onSuccess: (response) => {
-				console.log('onSuccess')
 				setIsEditMode(prev=>!prev);
 				setUpdatedCommission(response);
 			},
@@ -85,7 +85,7 @@ export default function RequestModal({ commission, handleModal, editMode }: Prop
 	}, [isSubmitting]);
 
 	return(
-		<Modal $type='form'>
+		<Modal $type='form' $modalState={$modalState}>
 			<Fragment>
 
 			<S.ButtonBox onClick={handleModal}>

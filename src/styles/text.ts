@@ -33,6 +33,7 @@ const bodyLarge = css`
 `;
 
 const bodyMedium = css`
+	font-family: 'NotoSansTTFSemiBold';
 	font-size: 1rem;
 	line-height: 1.5rem;
 	letter-spacing: -.008em;
@@ -40,6 +41,7 @@ const bodyMedium = css`
 `;
 
 const bodySmall = css`
+	font-family: 'NotoSansTTFMedium';
 	font-size: 0.875rem;
 	line-height: 1.25rem;
 	letter-spacing: -.024em;

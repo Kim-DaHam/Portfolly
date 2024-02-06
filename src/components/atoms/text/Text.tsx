@@ -19,7 +19,8 @@ export default function Text({children, ...props}: Props) {
 }
 
 const TextStyles = styled.span<Props>`
-	${mixins.alignCenter}
+	${mixins.flexCenter}
+	justify-content: start;
 	${props => props.size ? sizes[props.size] : ''}
 	${props => props.color ? colors[props.color] : colors['black']}
 	cursor: ${props => props.cursor ? 'pointer' : ''};

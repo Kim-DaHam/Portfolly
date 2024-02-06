@@ -63,17 +63,17 @@ export const Wrapper = styled.div<{$type: Modal, $modalState: boolean}>`
 `;
 
 export const ModalBox = styled.div<{$type: Modal, $modalState: boolean}>`
-	${(props) => (types[props.$type])};
+	${props => (types[props.$type])};
 
 	${mixins.flexColumn}
 
 	padding: 0.75rem 1.25rem 0.75rem 1.25rem;
 
 	border-radius: 1.5rem;
-	box-shadow: 0 0 1rem 0.1rem #e7e7e7;
+	box-shadow: ${props => props.$type === 'alert' && '0 0 1rem 0.1rem #e7e7e7'};
 	background-color: white;
 
-	${(props) => props.$modalState ?
+	${props => props.$modalState ?
 		css`animation: ${popUp} 0.1s ease-in 0s 1 normal forwards;`
 		:
 		css`animation: ${popOut} 0.1s ease-out 0s 1 normal forwards;`

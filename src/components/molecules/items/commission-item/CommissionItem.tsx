@@ -27,27 +27,31 @@ export default function CommissionItem({ commission, index }: Props) {
 	};
 
 	return (
-		<S.Wrapper>
-			<S.Content onClick={handleModal}>
+		<S.Wrapper onClick={handleModal}>
+			<S.Content>
 				<Text size='bodySmall'>{index}</Text>
 				<S.Box>
 					<Text size='bodyMedium'>{commission.details.title}</Text>
 					<Text size='bodySmall'>{commission.client.nickname}</Text>
 					<Text size='bodySmall'>{toLocalDateString(new Date(commission.createdAt))}</Text>
 				</S.Box>
+
 				{ authority === 'expert' && commission.review &&
 					<Button color='gray' onClick={handleReviewButton}>
 						{isReviewOpen ? '리뷰 닫기' : '리뷰 확인'}
 					</Button>
 				}
+
 				{ !isReviewOpen && authority === 'client' && !commission.review &&
 					<Button color='gray' onClick={handleReviewButton}>리뷰 작성</Button>
 				}
 			</S.Content>
 
-			{ isModalOpen &&
-				<CommissionModal commission={commission} handleModal={handleModal} />
-			}
+			<CommissionModal
+				commission={commission}
+				handleModal={handleModal}
+				$modalState={isModalOpen}
+			/>
 
 			{ isReviewOpen && authority === 'expert' &&
 				<S.ReviewBox>

@@ -58,8 +58,13 @@ export default function Management({ commissions }: Props) {
 			<Tracking commissions={commissions}/>
 
 			<S.Notice>
-				<QuestionIcon />
-				<Text size='bodySmall'>구매 과정 및 주문 상태 안내</Text>
+				<QuestionIcon color='#989898' />
+				<Text
+					size='bodySmall'
+					color='lightgray'
+				>
+					구매 과정 및 주문 상태 안내
+				</Text>
 			</S.Notice>
 
 			<S.SearchFilterSection>
@@ -78,9 +83,9 @@ export default function Management({ commissions }: Props) {
 					/>
 
 					<S.DateSelector>
-						<input type='date' {...register('startDate')} />
+						<S.Input type='date' {...register('startDate')} />
 						ㅤ-ㅤ
-						<input type='date' {...register('endDate')} />
+						<S.Input type='date' {...register('endDate')} />
 					</S.DateSelector>
 
 					<Selector
@@ -92,7 +97,9 @@ export default function Management({ commissions }: Props) {
 
 					<S.Input {...register('searchKeyword')} />
 
-					<Button color="white" shape="square" type='submit' size='fit'>검색</Button>
+					<Button color="gray" type='submit'>
+						검색
+					</Button>
 				</S.Form>
 			</S.SearchFilterSection>
 

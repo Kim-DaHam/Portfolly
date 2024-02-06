@@ -28,7 +28,7 @@ export const SelectorBox = styled.div<{$isSelectorOpen: boolean}>`
 
 	border: 1px solid #f0f0f0;
 	border-radius: 9999px;
-  background-color: transparent;
+  background-color: white;
 	transition: all 0.2s;
 
 	&:hover {
