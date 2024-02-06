@@ -1,4 +1,6 @@
+import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { Suspense, lazy } from "react";
+import { ErrorBoundary as ApiErrorBoundary } from "react-error-boundary";
 import { useSelector } from "react-redux";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
@@ -9,13 +11,15 @@ import * as S from "./MainPage.styled";
 import { useDispatchSectionParameter } from "@/hooks";
 import { getFilterQueryString } from "@/utils";
 
-import { Text, CategorySlider, PortfolioListSkeleton } from "@/components";
+import { Text, CategorySlider, PortfolioListSkeleton, ApiErrorFallback } from "@/components";
 
 const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioItemList'));
 
 export default function MainPage(){
 	const currentSection = useSelector(section);
 	const currentCategory = getFilterQueryString().filterValue;
+
+	const { reset } = useQueryErrorResetBoundary();
 
 	useDispatchSectionParameter();
 
@@ -29,11 +33,13 @@ export default function MainPage(){
 
 				<CategorySlider/>
 
-				<S.PortfolioSection>
-					<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
-						<PortfolioList category={currentCategory} />
-					</Suspense>
-				</S.PortfolioSection>
+				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
+					<S.PortfolioSection>
+						<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
+							<PortfolioList category={currentCategory} />
+						</Suspense>
+					</S.PortfolioSection>
+				</ApiErrorBoundary>
 			</S.Content>
 		</S.Wrapper>
 	)

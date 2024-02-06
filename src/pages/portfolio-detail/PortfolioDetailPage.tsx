@@ -52,14 +52,16 @@ export default function PortfolioDetail(){
 				size={20}
 				onClick={()=>navigate(-1)}
 			/>
+
+
 			<S.Content>
 				<S.PortfolioSection>
 					<S.HtmlContent>
-						<div
+						<Text size='bodyMedium'
 							dangerouslySetInnerHTML = {{
 							__html: sanitize(setElementInlineStyle(portfolio.content)),
 						}}>
-					</div>
+					</Text>
 					</S.HtmlContent>
 				</S.PortfolioSection>
 
@@ -103,10 +105,10 @@ export default function PortfolioDetail(){
 
 							{ hasAuthority &&
 								<S.ButtonGroup>
-									<Text size='label' color='lightgray' onClick={handleEditButton} cursor>
+									<Text size='bodyMedium' color='lightgray' onClick={handleEditButton} cursor>
 										수정하기
 									</Text>
-									<Text size='label' color='lightgray' onClick={handleModal} cursor>
+									<Text size='bodyMedium' color='lightgray' onClick={handleModal} cursor>
 										삭제하기
 									</Text>
 								</S.ButtonGroup>
@@ -122,7 +124,9 @@ export default function PortfolioDetail(){
 
 						<Text size='label'>요약</Text>
 						<S.SummaryBox>
-							{portfolio.summary}
+							<Text size='bodyMedium' >
+								{portfolio.summary}
+							</Text>
 						</S.SummaryBox>
 
 						<Text

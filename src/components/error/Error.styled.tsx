@@ -10,6 +10,7 @@ export const Wrapper = styled.main<{type: 'page' | 'component'}>`
 		css`
 			width: 100%;
 			height: 100%;
+			padding: 4rem;
 		`
 	}
 
