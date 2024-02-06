@@ -21,7 +21,7 @@ export const renderHeaderMenuPopper = (user: any, popOut: ()=>void, logout: ()=>
 		return (
 			<>
 				<S.Group>
-					<Link to={`/profile/${user.id}?tab=bookmarks`} onClick={popOut}>
+					<Link to={`/profile/${user.id}/bookmarks?page=1`} onClick={popOut}>
 						<BookmarkIcon size={20}/>
 						<Text size='bodyMedium'>북마크</Text>
 					</Link>
