@@ -9,14 +9,13 @@ export const Wrapper = styled.a<{$isClicked: boolean}>`
 	gap: 0.7rem;
 
 	padding: 0 0.8rem 0 0.8rem;
-
 	cursor: pointer;
-
-	background-color: ${(props) => props.$isClicked ? 'lightgray' : 'white'};
-	border-bottom: 1px solid lightgray;
+	background-color: ${(props) => props.$isClicked ? '#f0f0f0' : 'white'};
+	border-bottom: 1px solid #e8e9f0;
+	transition: background-color 0.1s ease;
 
 	&:hover {
-		background-color: lightgray;
+		background-color: #f0f0f0;
 	}
 `;
 
@@ -25,8 +24,6 @@ export const Box = styled.div`
 	flex-direction: column;
 	flex-basis: 1;
 	gap: 0.5rem;
-
-	background-color: lemonchiffon;
 `;
 
 export const LabelBox = styled.div`

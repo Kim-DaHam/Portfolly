@@ -5,8 +5,6 @@ import * as mixins from '@/styles/mixins';
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
 	${mixins.flexCenter}
-
-	background-color: yellow;
 `;
 
 export const Content = styled.main`
@@ -15,7 +13,9 @@ export const Content = styled.main`
 
 	${mixins.flexRow}
 
-	background-color: green;
+	border-radius: 1rem;
+	border: 1px solid #e8e9f0;
+	overflow: hidden;
 `;
 
 export const MessageSection = styled.section`

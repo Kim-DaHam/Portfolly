@@ -20,7 +20,7 @@ export const TitleBox = styled.div`
 
 	padding: 0 2.2rem 0 0.7rem;
 
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid #e8e9f0;
 
 	background-color: white;
 `;
@@ -31,7 +31,7 @@ export const InputBox = styled.div`
 	gap: 0.5rem;
 
 	padding: 1rem 0.8rem 1rem 0.8rem;
-	border-top: 1px solid gray;
+	border-top: 1px solid #e8e9f0;
 
 	background-color: lemonchiffon;
 `;

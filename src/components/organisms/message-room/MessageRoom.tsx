@@ -101,13 +101,12 @@ export default function MessageRoom({ message }: Props) {
 				</S.Box>
 			</S.InputBox>
 
-			{ isExitModalOpen &&
-				<AlertModal
-					type='messageRoom'
-					onClick={exitMessageRoom}
-					handleModal={() => setIsExitModalOpen(prev=>!prev)}
-				/>
-			}
+			<AlertModal
+				type='messageRoom'
+				onConfirm={exitMessageRoom}
+				handleModal={() => setIsExitModalOpen(prev=>!prev)}
+				$modalState={isExitModalOpen}
+			/>
 		</S.Wrapper>
 	)
 }

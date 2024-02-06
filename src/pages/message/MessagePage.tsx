@@ -2,9 +2,11 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { MessageRoom, MessageRoomList } from '@/components';
 import * as S from '@/pages/message/MessagePage.styled';
+
 import { useMessageRoomQuery } from "@/utils";
+
+import { MessageRoom, MessageRoomList } from '@/components';
 
 export default function MessagePage() {
 	const urlParams = new URL(window.location.href).searchParams;

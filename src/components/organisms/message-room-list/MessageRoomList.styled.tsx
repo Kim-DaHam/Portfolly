@@ -4,7 +4,6 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.aside`
 	width: 19rem;
-
 	${mixins.flexColumn}
 	flex: none;
 `;
@@ -17,8 +16,8 @@ export const SearchBox = styled.div`
 
 	padding: 0 0.7rem 0 0.7rem;
 
-	border-right: 1px solid gray;
-	border-bottom: 1px solid gray;
+	border-right: 1px solid #e8e9f0;
+	border-bottom: 1px solid #e8e9f0;
 	background-color: white;
 `;
 
@@ -29,7 +28,7 @@ export const MessageRoomBox = styled.div`
 
 	overflow-y: scroll;
 
-	background-color: gray;
+	background-color: #f5f6fa;
 `;
 
 export const Box = styled.div`
