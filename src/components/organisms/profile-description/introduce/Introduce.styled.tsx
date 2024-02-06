@@ -5,7 +5,7 @@ import * as mixins from '@/styles/mixins';
 export const Wrapper = styled.div`
 	${mixins.fullWidthHeight}
 	${mixins.flexColumn}
-	gap: 2rem;
+	gap: 2.5rem;
 `;
 
 export const Box = styled.div`
@@ -15,8 +15,9 @@ export const Box = styled.div`
 	& ul {
 		padding-left: 2rem;
 	}
-
-	background-color: lightpink;
+	& span:last-child, & div:last-child, & li {
+		font-family: 'NotoSansTTFMedium';
+	}
 `;
 
 export const TextBox = styled.div`
