@@ -42,7 +42,6 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 	const dispatch = useDispatch();
 
 	const { authority } = useSelector(userState);
-
 	const { register, reset, handleSubmit, formState: { isSubmitting, errors, dirtyFields } } = useForm<FormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
@@ -86,25 +85,31 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 
 	return(
 		<Modal $type='form' $modalState={$modalState}>
-			<Fragment>
-
-			<S.ButtonBox onClick={handleModal}>
-				<XIcon size={28}/>
-			</S.ButtonBox>
-
 			<S.Content>
+				<XIcon size={28} onClick={handleModal} />
+
 				<S.Form>
 					<S.Box>
 						{ isEditMode ?
-							<S.TextInput {...register('title', {
+							<S.TitleInput {...register('title', {
 								required: '의뢰 제목을 입력하세요.',
 								validate: v.validateTitle,
 							})} />
 							:
-							<Text size='titleSmall'>{updatedCommission.details.title}</Text>
+							<Text size='titleSmall'>
+								{updatedCommission.details.title}
+							</Text>
 						}
-						<Text size='bodySmall'>{updatedCommission.createdAt}</Text>
-						{updatedCommission.details && <Text size='bodySmall'>{updatedCommission.details.status}</Text>}
+
+						<Text size='bodySmall'>
+							{updatedCommission.createdAt}
+						</Text>
+
+						{ updatedCommission.details &&
+							<Text size='bodySmall'>
+								{updatedCommission.details.status}
+							</Text>
+						}
 					</S.Box>
 
 					<S.Box>
@@ -116,10 +121,15 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 						<Text size='label'>전문가 정보</Text>
 						<S.Box>
 							<Profile type='user' user={commission.expert}/>
+							<br/>
 							<Text size='label'>이름</Text>
-							<Text size='bodyMedium'>{commission.expert.name}</Text>
+							<Text size='bodyMedium'>
+								{commission.expert.name}
+							</Text>
 							<Text size='label'>연락처</Text>
-							<Text size='bodyMedium'>{commission.expert.phone}</Text>
+							<Text size='bodyMedium'>
+								{commission.expert.phone}
+							</Text>
 						</S.Box>
 					</S.Box>
 
@@ -131,19 +141,24 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 								validate: v.validateContent,
 							})} />
 							:
-							<Text size='bodyMedium'>{updatedCommission.details.content}</Text>
+							<Text size='bodyMedium'>
+								{updatedCommission.details.content}
+							</Text>
 						}
 					</S.Box>
 
 					<S.Box>
 						<Text size='label'>마감 기한</Text>
+
 						{ isEditMode ?
-							<input type='date' {...register('deadline', {
+							<S.Input type='date' {...register('deadline', {
 								required: '마감 기한을 입력하세요.',
 								validate: v.validateDeadline,
 							})} />
 							:
-							<Text size='bodyMedium'>{updatedCommission.details.deadline}</Text>
+							<Text size='bodyMedium'>
+								{updatedCommission.details.deadline}
+							</Text>
 						}
 					</S.Box>
 
@@ -154,7 +169,9 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 								required: '비용을 입력하세요.',
 							})} />
 							:
-							<Text size='bodyMedium'>{updatedCommission.details.cost}</Text>
+							<Text size='bodyMedium'>
+								{updatedCommission.details.cost}
+							</Text>
 						}
 					</S.Box>
 
@@ -166,22 +183,21 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 						</S.Box>
 					}
 				</S.Form>
-			</S.Content>
 
-			<S.ButtonGroup>
-				{ authority === 'expert' && !isEditMode &&
-					<Button color='black' size='medium' shape='square' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
-				}
-				{ authority === 'client' && commission.details.state !== '구매 확정' &&
-					<Button color='black' size='medium' shape='square'>주문 취소</Button>
-				}
-				{ isEditMode ?
-					<Button color='black' size='medium' shape='square' onClick={handleSubmit(onSubmit)}>저장하기</Button>
-					:
-					<Button color='black' size='medium' shape='square' onClick={handleModal}>닫기</Button>
-				}
-			</S.ButtonGroup>
-			</Fragment>
+				<S.ButtonGroup>
+					{ authority === 'expert' && !isEditMode && commission.details.status !== '구매 확정' &&
+						<Button color='black' size='medium' onClick={() => setIsEditMode(prev=>!prev)}>의뢰 수정</Button>
+					}
+					{ authority === 'client' && commission.details.state !== '구매 확정' &&
+						<Button color='black' size='medium'>주문 취소</Button>
+					}
+					{ isEditMode ?
+						<Button color='black' size='medium' onClick={handleSubmit(onSubmit)}>저장하기</Button>
+						:
+						<Button color='gray' size='medium' onClick={handleModal}>닫기</Button>
+					}
+				</S.ButtonGroup>
+			</S.Content>
 		</Modal>
 	)
 }
