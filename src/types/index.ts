@@ -16,3 +16,7 @@ export * from '@/types/slider';
 export * from '@/types/toast';
 export * from '@/types/commission';
 export * from '@/types/style';
+
+export type * from '@/types/api-data/message';
+// export type * from '@/types/api-data/portfolio';
+// export type * from '@/types/api-data/user';
