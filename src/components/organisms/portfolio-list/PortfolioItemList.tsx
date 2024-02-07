@@ -74,7 +74,7 @@ export default function PortfolioItemList({category}: Props) {
 
 	return (
 		<S.GridBox>
-			{ portfolios && portfolios.length > 0 ?
+			{ portfolios.length > 0 ?
 				portfolios.map((portfolio: Portfolio, index: number)=>{
 					if(index < count) {
 						return(

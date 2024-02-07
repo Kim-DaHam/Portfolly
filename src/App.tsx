@@ -1,6 +1,7 @@
 import {
   QueryClient,
   QueryClientProvider,
+	useQueryErrorResetBoundary,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import {
@@ -14,6 +15,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import IntroPage from '@/pages/intro/IntroPage';
 import LogInPage from '@/pages/log-in/LogInPage';
 import MainPage from '@/pages/main/MainPage';
+import MainLayout from '@/pages/main-layout/MainLayout';
 import MessagePage from '@/pages/message/MessagePage';
 import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetailPage from '@/pages/portfolio-detail/PortfolioDetailPage';
@@ -21,16 +23,18 @@ import PortfolioEditPage from '@/pages/portfolio-edit/PortfolioEditPage';
 import { store } from '@/redux/store';
 import { ROUTE_PATH } from '@/utils/path';
 
-import MainLayout from './pages/main-layout/MainLayout';
+import { GlobalErrorFallback , ToastContainer } from '@/components';
 
-import { GlobalErrorFallback } from '@/utils';
-
-import { ToastContainer } from '@/components';
 import '@/styles/GlobalFonts.css';
 
 export default function App() {
+	const { reset } = useQueryErrorResetBoundary();
+
   return (
-		<GlobalErrorBoundary FallbackComponent={GlobalErrorFallback}>
+		<GlobalErrorBoundary
+			FallbackComponent={GlobalErrorFallback}
+			onReset={reset}
+		>
 			<Provider store={store}>
 				<PersistGate loading={null} persistor={persistor}>
 					<QueryClientProvider client={queryClient}>
