@@ -38,7 +38,7 @@ export default function Preview({section, portfolios}: Props){
 						return (
 							<PortfolioSlider
 								section={section}
-								portfolio={portfolios[docKey]}
+								portfolio={{id: docKey, ...portfolios[docKey]}}
 								key={docKey}
 							/>
 						)
@@ -50,9 +50,9 @@ export default function Preview({section, portfolios}: Props){
 				}
 			</S.PreviewBox>
 
-			<S.ViewMoreButton color='white' onClick={navigateMain}>
+			<S.MoreButton color='white' onClick={navigateMain}>
 				More
-			</S.ViewMoreButton>
+			</S.MoreButton>
 		</S.Wrapper>
 	)
 }

@@ -38,15 +38,19 @@ export const PreviewBox = styled.div<{$column: number}>`
 	overflow: hidden;
 `;
 
-export const ViewMoreButton = styled(ButtonStyle)`
+export const MoreButton = styled(ButtonStyle)`
 	width: 5rem;
 	height: 3.5rem;
 
 	font-size: large;
 
 	position: absolute;
-	z-index: 200;
+	z-index: 999;
 	right: 3rem;
 
 	box-shadow : 0 0 1rem 1rem white;
+
+	&:hover {
+		background-color: white;
+	}
 `;
