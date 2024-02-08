@@ -62,4 +62,7 @@ export type Message = {
 	msg: string,
 	createdAt: Date,
 	isRead: boolean,
-}
+	messageStatus: MessageStatus;
+};
+
+export type MessageStatus = '안 읽음' | '거래 중';
