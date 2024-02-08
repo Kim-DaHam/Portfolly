@@ -5,9 +5,9 @@ import { Section } from '@/types';
 
 import { ButtonStyle } from '@/components';
 
-export const Wrapper = styled.div<{$section: Section}>`
+export const Wrapper = styled.div<{$section: Section, $isMoreThanOnePage: boolean}>`
 	width: 100%;
-	aspect-ratio: ${(props) => ratios[props.$section]};
+	aspect-ratio: ${props => ratios[props.$section]};
 
 	position: relative;
 	overflow: hidden;
@@ -19,7 +19,7 @@ export const Wrapper = styled.div<{$section: Section}>`
 
 	&:hover {
 		& .slick-dots, & button {
-			opacity: 100;
+			opacity: ${props => props.$isMoreThanOnePage ? 100 : 0};
 		}
 		background-color: #e4e4e4;
 	}
@@ -97,11 +97,11 @@ export const ArrowBox = styled.div`
 `;
 
 export const PrevArrow = styled(ButtonStyle)<{$showPrevArrow: boolean}>`
-	visibility: ${(props) => props.$showPrevArrow ? 'visible' : 'hidden'};
+	visibility: ${props => props.$showPrevArrow ? 'visible' : 'hidden'};
 `;
 
 export const NextArrow = styled(ButtonStyle)<{$showNextArrow: boolean}>`
-	visibility: ${(props) => props.$showNextArrow ? 'visible' : 'hidden'};
+	visibility: ${props => props.$showNextArrow ? 'visible' : 'hidden'};
 `;
 
 export const Video = styled.iframe`

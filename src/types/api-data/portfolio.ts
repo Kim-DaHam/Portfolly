@@ -13,6 +13,7 @@ export type Portfolio = {
 		nickname: string,
 		profileImage: string,
 	},
+	id?: string;
 	title: string,
 	content: string,
 	summary: string,
