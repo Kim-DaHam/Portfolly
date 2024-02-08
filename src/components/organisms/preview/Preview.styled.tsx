@@ -30,6 +30,7 @@ export const PreviewBox = styled.div<{$column: number}>`
 	grid-template-columns: repeat(${(props)=>props.$column}, 1fr);
 	column-gap: 3rem;
 
+	justify-content: center;
 	align-items: center;
 	flex-basis: 65%;
 	gap: 2rem;
