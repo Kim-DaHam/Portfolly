@@ -41,7 +41,10 @@ export default function IntroPage(){
 					return(
 						<div key={index}>
 							<S.Divider/>
-							<Preview section={section} portfolios={topPortfolioLists[section]}/>
+							<Preview
+								section={section}
+								portfolios={topPortfolioLists[section]}
+							/>
 						</div>
 					)
 			})}

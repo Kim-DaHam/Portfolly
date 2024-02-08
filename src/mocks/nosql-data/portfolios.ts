@@ -1,6 +1,9 @@
-export const portfolios = {
+import { Portfolios } from "@/types";
+
+export const portfolios: Portfolios = {
 	portfolio1: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -10,17 +13,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: 'test summary',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2', 'tag3'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2', 'tag3'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p1c1: {
 				client: {
 					name: '김강철',
@@ -28,19 +27,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p1c2: {
@@ -50,19 +49,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p1c3: {
@@ -72,25 +71,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio2: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -99,18 +99,14 @@ export const portfolios = {
 		},
 		title: 'test title',
 		content: 'test content',
-		summary: '',
-		createdAt: '2024-05-06',
+		summary: 'test summary',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p2c1: {
 				client: {
 					name: '김강철',
@@ -118,19 +114,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p2c2: {
@@ -140,19 +136,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p2c3: {
@@ -162,25 +158,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio3: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -190,17 +187,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p3c1: {
 				client: {
 					name: '김강철',
@@ -208,19 +201,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p3c2: {
@@ -230,19 +223,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p3c3: {
@@ -252,25 +245,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio4: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -280,17 +274,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p4c1: {
 				client: {
 					name: '김강철',
@@ -298,19 +288,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p4c2: {
@@ -320,19 +310,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p4c3: {
@@ -342,25 +332,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio5: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -370,17 +361,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p5c1: {
 				client: {
 					name: '김강철',
@@ -388,19 +375,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p5c2: {
@@ -410,19 +397,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p5c3: {
@@ -432,25 +419,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio6: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -460,17 +448,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p6c1: {
 				client: {
 					name: '김강철',
@@ -478,19 +462,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p6c2: {
@@ -500,19 +484,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p6c3: {
@@ -522,25 +506,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio7: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -550,17 +535,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p7c1: {
 				client: {
 					name: '김강철',
@@ -568,19 +549,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p7c2: {
@@ -590,19 +571,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p7c3: {
@@ -612,25 +593,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio8: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -640,17 +622,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p8c1: {
 				client: {
 					name: '김강철',
@@ -658,19 +636,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p8c2: {
@@ -680,19 +658,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p8c3: {
@@ -702,25 +680,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio9: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -730,17 +709,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p9c1: {
 				client: {
 					name: '김강철',
@@ -748,19 +723,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p9c2: {
@@ -770,19 +745,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p9c3: {
@@ -792,25 +767,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio10: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -820,17 +796,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p10c1: {
 				client: {
 					name: '김강철',
@@ -838,19 +810,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p10c2: {
@@ -860,19 +832,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p10c3: {
@@ -882,25 +854,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio11: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -910,17 +883,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p11c1: {
 				client: {
 					name: '김강철',
@@ -928,19 +897,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p11c2: {
@@ -950,19 +919,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p11c3: {
@@ -972,25 +941,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio12: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1000,17 +970,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p12c1: {
 				client: {
 					name: '김강철',
@@ -1018,19 +984,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p12c2: {
@@ -1040,19 +1006,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p12c3: {
@@ -1062,25 +1028,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio13: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1090,17 +1057,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p13c1: {
 				client: {
 					name: '김강철',
@@ -1108,19 +1071,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p13c2: {
@@ -1130,19 +1093,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p13c3: {
@@ -1152,25 +1115,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio14: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1180,17 +1144,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p14c1: {
 				client: {
 					name: '김강철',
@@ -1198,19 +1158,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p14c2: {
@@ -1220,19 +1180,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p14c3: {
@@ -1242,25 +1202,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio15: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1270,17 +1231,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p15c1: {
 				client: {
 					name: '김강철',
@@ -1288,19 +1245,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p15c2: {
@@ -1310,19 +1267,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p15c3: {
@@ -1332,25 +1289,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio16: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1360,17 +1318,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p16c1: {
 				client: {
 					name: '김강철',
@@ -1378,19 +1332,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p16c2: {
@@ -1400,19 +1354,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p16c3: {
@@ -1422,25 +1376,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio17: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1450,17 +1405,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p17c1: {
 				client: {
 					name: '김강철',
@@ -1468,19 +1419,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p17c2: {
@@ -1490,19 +1441,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p17c3: {
@@ -1512,25 +1463,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio18: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1540,17 +1492,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p18c1: {
 				client: {
 					name: '김강철',
@@ -1558,19 +1506,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p18c2: {
@@ -1580,19 +1528,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p18c3: {
@@ -1602,25 +1550,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio19: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1630,17 +1579,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p19c1: {
 				client: {
 					name: '김강철',
@@ -1648,19 +1593,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p19c2: {
@@ -1670,19 +1615,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p19c3: {
@@ -1692,25 +1637,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio20: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1720,17 +1666,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p20c1: {
 				client: {
 					name: '김강철',
@@ -1738,19 +1680,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p20c2: {
@@ -1760,19 +1702,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p20c3: {
@@ -1782,25 +1724,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio21: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1810,17 +1753,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p21c1: {
 				client: {
 					name: '김강철',
@@ -1828,19 +1767,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p21c2: {
@@ -1850,19 +1789,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p21c3: {
@@ -1872,25 +1811,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio22: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1900,17 +1840,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p22c1: {
 				client: {
 					name: '김강철',
@@ -1918,19 +1854,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p22c2: {
@@ -1940,19 +1876,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p22c3: {
@@ -1962,25 +1898,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio23: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -1990,17 +1927,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p23c1: {
 				client: {
 					name: '김강철',
@@ -2008,19 +1941,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p23c2: {
@@ -2030,19 +1963,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p23c3: {
@@ -2052,25 +1985,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio24: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -2080,17 +2014,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p24c1: {
 				client: {
 					name: '김강철',
@@ -2098,19 +2028,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p24c2: {
@@ -2120,19 +2050,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p24c3: {
@@ -2142,25 +2072,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio25: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -2170,17 +2101,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p25c1: {
 				client: {
 					name: '김강철',
@@ -2188,19 +2115,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p25c2: {
@@ -2210,19 +2137,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p25c3: {
@@ -2232,25 +2159,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio26: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -2260,17 +2188,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p26c1: {
 				client: {
 					name: '김강철',
@@ -2278,19 +2202,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p26c2: {
@@ -2300,19 +2224,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p26c3: {
@@ -2322,25 +2246,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio27: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -2350,17 +2275,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p27c1: {
 				client: {
 					name: '김강철',
@@ -2368,19 +2289,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p27c2: {
@@ -2390,19 +2311,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p27c3: {
@@ -2412,25 +2333,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio28: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -2440,17 +2362,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p28c1: {
 				client: {
 					name: '김강철',
@@ -2458,19 +2376,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p28c2: {
@@ -2480,19 +2398,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p28c3: {
@@ -2502,25 +2420,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio29: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -2530,17 +2449,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p29c1: {
 				client: {
 					name: '김강철',
@@ -2548,19 +2463,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p29c2: {
@@ -2570,19 +2485,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p29c3: {
@@ -2592,25 +2507,26 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
 	portfolio30: {
 		user: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -2620,17 +2536,13 @@ export const portfolios = {
 		title: 'test title',
 		content: 'test content',
 		summary: '',
-		createdAt: '2024-05-06',
+		createdAt: new Date('2024-05-06'),
 		section: 'Android/iOS',
 		category: '금융',
-		tag: ['tag1', 'tag2'],
-		images: [
-			'',
-			'',
-			'',
-		],
+		tags: ['tag1', 'tag2'],
+		images: [],
 		likes: 5,
-		commission: {
+		commissions: {
 			p30c1: {
 				client: {
 					name: '김강철',
@@ -2638,19 +2550,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p30c2: {
@@ -2660,19 +2572,19 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 			p30c3: {
@@ -2682,21 +2594,21 @@ export const portfolios = {
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-					review: {
-						score: 50,
-						content: 'review test',
-					}
 				},
-				createdAt: '2024-05-06',
-				endedAt: '',
+				review: {
+					score: 50,
+					content: 'review test',
+				},
+				createdAt: new Date('2024-05-06'),
+				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
 					status: '진행 중',
-					deadline: '2024-05-26',
+					deadline: new Date('2024-05-26'),
 				},
 			},
 		},
 	},
-};
+}

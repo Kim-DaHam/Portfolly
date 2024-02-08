@@ -25,7 +25,7 @@ export default function PortfolioSlider({section, portfolio}: Props){
 	const sliderRef = useRef(null);
 
 	const THUMBNAIL_PAGE = section === 'Video' ? 1 : 3;
-	const sectionName = toUrlParameter(section);
+	const sectionClassName = toUrlParameter(section);
 
 	const {
 		handlePrev,
@@ -40,8 +40,12 @@ export default function PortfolioSlider({section, portfolio}: Props){
 	}, []);
 
 	return(
-		<S.Wrapper $section={section} onClick={() => navigate(`/portfolios/${portfolio.id}`)}>
-			<S.Content className={`${sectionName}-slider-box`}>
+		<S.Wrapper
+			$section={section}
+			$isMoreThanOnePage={portfolio.images.length > 0}
+			onClick={() => navigate(`/portfolios/${portfolio.id}`)}
+		>
+			<S.Content className={`${sectionClassName}-slider-box`}>
 				<S.ArrowBox onClick={eventStopPropagation}>
 					<S.PrevArrow
 						color='gray'
@@ -60,8 +64,9 @@ export default function PortfolioSlider({section, portfolio}: Props){
 				</S.ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
-					{portfolio?.images.map((url, index)=>{
-						if(index < 3) {
+					{portfolio.images.length > 0 &&
+						portfolio.images.map((url, index)=>{
+							if(index > 3) return;
 							return (
 								<S.SliderItem key={index}>
 									{ section !== 'Video' ?
@@ -70,8 +75,7 @@ export default function PortfolioSlider({section, portfolio}: Props){
 										<S.Video src={url} />
 									}
 								</S.SliderItem>
-							)
-						}
+							);
 					})}
 				</Slider>
 			</S.Content>

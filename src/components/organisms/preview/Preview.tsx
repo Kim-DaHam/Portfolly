@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { sectionIntroduction as introduction} from '@/assets/data/phrase';
 import * as S from "@/components/organisms/preview/Preview.styled";
 
-import type { Portfolio, Section } from "@/types";
+import type { Portfolios, Section } from "@/types";
 
 import { toUrlParameter } from "@/utils";
 
@@ -11,24 +11,19 @@ import { Text, PortfolioSlider } from "@/components";
 
 type Props = {
 	section: Section,
-	portfolios: Portfolio[],
+	portfolios: Portfolios,
 };
 
-export const previewRowColumns = {
-	'Android/iOS': 3,
-	'Web': 2,
-	'Illustration': 2,
-	'Photo': 2,
-	'Video': 2,
-}
-
 export default function Preview({section, portfolios}: Props){
+	const portfoliosDocKeys = Object.keys(portfolios);
+	const previewRowColumns = portfoliosDocKeys.length;
+
 	const navigate = useNavigate();
 
-	const navigateMain = ()=>{
-		const sectionParameter = toUrlParameter(section);
-		navigate(`/main/${sectionParameter}`)
-	}
+	const navigateMain = () => {
+		const sectionParams = toUrlParameter(section);
+		navigate(`/main/${sectionParams}`)
+	};
 
 	return(
 		<S.Wrapper>
@@ -37,15 +32,27 @@ export default function Preview({section, portfolios}: Props){
 				<Text size='bodyLarge'>{introduction[section]}</Text>
 			</S.TextBox>
 
-			<S.PreviewBox $column={previewRowColumns[section]}>
-				{portfolios.map((portfolio, index: number) => {
-					return <PortfolioSlider section={section} portfolio={portfolio} key={index} />
-				})}
+			<S.PreviewBox $column={previewRowColumns}>
+				{portfoliosDocKeys.length > 0 ?
+					portfoliosDocKeys.map((docKey: string) => {
+						return (
+							<PortfolioSlider
+								section={section}
+								portfolio={{id: docKey, ...portfolios[docKey]}}
+								key={docKey}
+							/>
+						)
+					})
+					:
+					<Text size='bodyLarge' color='gray'>
+						여러분이 Portfolly의 첫번째 {section} 포트폴리오가 되어주세요!
+					</Text>
+				}
 			</S.PreviewBox>
 
-			<S.ViewMoreButton color='white' onClick={navigateMain}>
+			<S.MoreButton color='white' onClick={navigateMain}>
 				More
-			</S.ViewMoreButton>
+			</S.MoreButton>
 		</S.Wrapper>
 	)
 }
