@@ -1,4 +1,4 @@
-import { Commission } from "@/types/api-data/commission";
+import { Commissions } from "@/types/api-data/commission";
 
 export type Portfolios = {
 	[key in string]: Portfolio;
@@ -6,6 +6,7 @@ export type Portfolios = {
 
 export type Portfolio = {
 	user: {
+		id: string;
 		name: string,
 		email: string,
 		phone: string,
@@ -15,17 +16,15 @@ export type Portfolio = {
 	title: string,
 	content: string,
 	summary: string,
-	createdAt: string,
+	createdAt: Date,
 	section: Section,
 	category: string,
-	tag: string[],
+	tags: string[],
 	images: string[],
 	likes: number,
-	commission: Commission,
+	commissions: Commissions | null,
+	isBookmarked?: boolean,
+	isLiked?: boolean,
 };
 
 export type Section = 'Android/iOS' | 'Web' | 'Illustration' | 'Photo' | 'Video';
-
-export type Commissions = {
-	[key in string]: Commissions;
-};

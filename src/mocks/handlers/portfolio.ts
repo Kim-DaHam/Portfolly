@@ -1,22 +1,11 @@
 import { HttpResponse, http } from 'msw';
 
-import { FormValues } from '@/hooks/portfolio/usePortfolioForm';
+import { PortfolioFormValues } from '@/hooks/portfolio/usePortfolioForm';
+import { portfolios } from '@/mocks/nosql-data/portfolios';
 
-import { LOGIN_ID } from '.';
-import { portfolios } from '../data/portfolios';
-import { users } from '../data/users';
+import type { Portfolio, Section, Portfolios } from '@/types';
 
-import type { User, Portfolio, Section } from '@/types';
-
-import { getCategory, getCategoryId, getIsBookmarked, getIsLiked, getSection, getTagId, getTags, getUserData } from '@/utils';
-
-const sectionIdMap = new Map([
-	['Android/iOS', 1],
-	['Web', 2],
-	['Illustration', 3],
-	['Photo', 4],
-	['Video', 5],
-]);
+import { generateRandomString } from '@/utils';
 
 export const PortfolioHandlers= [
 	http.get(`/portfolios`, ({request}) => {
@@ -24,193 +13,146 @@ export const PortfolioHandlers= [
 
 		const section = url.searchParams.get('section') as Section;
 		const category = url.searchParams.get('category') as string;
-		const sectionId = sectionIdMap.get(section);
-		const categoryId = getCategoryId(category) || false;
-
-		// const tag = url.searchParams.get('tag');
-		// const user = url.searchParams.get('user');
+		const tag = url.searchParams.get('tag') as string;
+		const username = url.searchParams.get('username') as string;
 
 		const page = Number(url.searchParams.get('page')) as number;
 		const isRangeOfPage = (index: number, page: number) => index >= (page - 1) * 100 && index < page * 100;
 
-		const filteredPortfolios: any[] = [];
+		const filteredPortfolios: Portfolios = {};
 
-		portfolios.map((portfolio: Portfolio, index: number) => {
-			const sameSectionId = portfolio.sectionId === sectionId;
-			const sameCategoryId = !categoryId ? true : portfolio.categoryId === categoryId;
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
 
-			if( sameSectionId && sameCategoryId && isRangeOfPage(index, page)) {
-				const user = getUserData(portfolio.userId) as User;
-				const bookmarks = users.find((user) => user.id === LOGIN_ID)!.bookmarks as number[];
-				const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
+		portfolioDocKeys.map((docKey: string, index: number) => {
+			const IsSameSection = portfolios[docKey].section === section;
+			const IsSameCategory = category ? portfolios[docKey].category === category : true;
+			const hasTag = !tag && portfolios[docKey].tags.indexOf(tag) !== -1;
+			const hasUsername = !username && portfolios[docKey].user.name === username;
 
-				const portfolioData = {
-					id: portfolio.id,
-					title: portfolio.title,
-					category: category,
-					summary: portfolio.summary,
-					likes: portfolio.likes,
-					images: portfolio.images,
-					isBookmarked: isBookmarked,
-					user: {
-						id: user.id,
-						nickname: user.nickname,
-						profileImage: user.profileImage,
-					},
+			if(IsSameSection && IsSameCategory && isRangeOfPage(index, page)) {
+				// const bookmarks = users.find((user) => user.id === LOGIN_ID)!.bookmarks as number[];
+				// const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
+
+				const portfolio: Portfolio = {
+					...portfolios[docKey],
+					isBookmarked: true,
 				};
 
-				filteredPortfolios.push(portfolioData);
+				filteredPortfolios[docKey] = portfolio;
+				return;
+			}
+
+			if(IsSameSection && hasTag && isRangeOfPage(index, page)){
+				filteredPortfolios[docKey] = portfolios[docKey];
+				return;
+			}
+
+			if(IsSameSection && hasUsername && isRangeOfPage(index, page)){
+				filteredPortfolios[docKey] = portfolios[docKey];
+				return;
 			}
 		});
-
-		// if(tag){
-		// 	filteredPortfolios.map((portfolio)=>{
-		// 		if(tagId[tag] === portfolio.categoryId){
-		// 			filteredPortfolios.push(portfolio);
-		// 		}
-		// 	})
-		// }
-
-		// if(user){
-		// 	filteredPortfolios.map((portfolio)=>{
-		// 		if(userId[user] === portfolio.categoryId){
-		// 			filteredPortfolios.push(portfolio);
-		// 		}
-		// 	})
-		// }
 
 		return HttpResponse.json(filteredPortfolios, { status: 200 });
 	}),
 
 	http.get('/top-portfolios', ()=>{
-		let count = 0;
-
-		const topPortfolios: {[key in Section]: Portfolio[]} = {
-			'Android/iOS': [],
-			'Web': [],
-			'Illustration': [],
-			'Photo': [],
-			'Video': [],
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
+		const topPortfolios: {[key in Section]: Portfolios} = {
+			'Android/iOS': {},
+			'Web': {},
+			'Illustration': {},
+			'Photo': {},
+			'Video': {},
 		};
 
-		for(let i=0; i < portfolios.length; i++){
-			if(portfolios[i].sectionId === 1 && topPortfolios['Android/iOS'].length < 3) {
-				topPortfolios['Android/iOS'].push(portfolios[i]);
-				count++;
+		portfolioDocKeys.map((docKey: string) => {
+			if(portfolios[docKey].section === 'Android/iOS' &&
+				Object.keys(topPortfolios['Android/iOS']).length < 3) {
+					Object.assign(topPortfolios['Android/iOS'][docKey] = portfolios[docKey]);
+					return;
 			}
-			if(portfolios[i].sectionId === 2 && topPortfolios['Web'].length < 2) {
-				topPortfolios['Web'].push(portfolios[i]);
-				count++;
+			if(portfolios[docKey].section === 'Web' &&
+				Object.keys(topPortfolios['Web']).length < 2) {
+					Object.assign(topPortfolios['Web'][docKey] = portfolios[docKey]);
+					return;
 			}
-			if(portfolios[i].sectionId === 3 && topPortfolios['Illustration'].length < 2) {
-				topPortfolios['Illustration'].push(portfolios[i]);
-				count++;
+			if(portfolios[docKey].section === 'Illustration' &&
+				Object.keys(topPortfolios['Illustration']).length < 2) {
+					Object.assign(topPortfolios['Illustration'][docKey] = portfolios[docKey]);
+					return;
 			}
-			if(portfolios[i].sectionId === 4 && topPortfolios['Photo'].length < 2) {
-				topPortfolios['Photo'].push(portfolios[i]);
-				count++;
+			if(portfolios[docKey].section === 'Photo' &&
+				Object.keys(topPortfolios['Illustration']).length < 2) {
+					Object.assign(topPortfolios['Photo'][docKey] = portfolios[docKey]);
+					return;
 			}
-			if(portfolios[i].sectionId === 5 && topPortfolios['Video'].length < 2) {
-				topPortfolios['Video'].push(portfolios[i]);
-				count++;
+			if(portfolios[docKey].section === 'Video' &&
+				Object.keys(topPortfolios['Video']).length < 2) {
+					Object.assign(topPortfolios['Video'][docKey] = portfolios[docKey]);
+					return;
 			}
-			if(count === 11) break;
-		}
+		});
 
 		return HttpResponse.json(topPortfolios, { status: 200 });
 	}),
 
 	http.get('/portfolios/detail', ({request}) => {
 		const url = new URL(request.url);
-
 		const portfolioId = url.searchParams.get('id') as string;
-		const portfolio = portfolios.find((portfolio) => {
-			return portfolio.id === Number(portfolioId);
-		});
 
-		const otherPortfolios: any[] = [];
+		// const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
+		// const isLiked = getIsLiked(portfolio!.id, likes);
 
-		portfolios.map((p: Portfolio, index: number) => {
-			if(index < 9){
-				if(p.userId === portfolio!.userId) {
-					otherPortfolios.push(p);
-				}
+		const portfolio: Portfolio = portfolios[portfolioId];
+
+		const portfolioDocKeys: string[] = Object(portfolios).keys();
+		const otherPortfolios: Portfolios = {};
+
+		portfolioDocKeys.map((docKey: string) => {
+			if(portfolios[docKey].user.id === portfolio.user.id &&
+					Object.keys(otherPortfolios).length < 9){
+				Object.assign(otherPortfolios, portfolios[docKey])
 			}
 		});
 
-		const user = getUserData(portfolio!.userId);
-		const section = getSection(portfolio!.sectionId);
-		const category = getCategory(portfolio!.categoryId);
-		const tags = getTags(portfolio!.tagId);
+		Object.assign(portfolio, {
+			isBookmarked: true,
+			isLiked: true,
+			otherPortfolios: otherPortfolios,
+		});
 
-		const likes = users.find((user) => user.id === LOGIN_ID)!.likes as number[];
-		const bookmarks = users.find((user) => user.id === LOGIN_ID)!.bookmarks as number[];
-		const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
-		const isLiked = getIsLiked(portfolio!.id, likes);
-
-		const responseData = {
-			id: portfolio!.id,
-			title: portfolio!.title,
-			section: section,
-			category: category,
-			content: portfolio!.content,
-			summary: portfolio!.summary,
-			tags,
-			likes: portfolio!.likes,
-			images: portfolio!.images,
-			user,
-			otherPortfolios,
-			isBookmarked: isBookmarked,
-			isLiked: isLiked,
-		};
-
-		return HttpResponse.json(responseData, { status: 200 });
+		return HttpResponse.json(portfolio, { status: 200 });
 	}),
 
 	http.delete('/portfolios', ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
 
-		const user = users.find((user) => {
-			return user.id === LOGIN_ID;
-		});
-
-		user?.portfolios?.map((portfolio, index) => {
-      if (portfolio === Number(portfolioId)) {
-				user?.portfolios?.splice(index, 1);
-			}
-    });
-
-		portfolios.map((portfolio, index) => {
-			if(portfolio.id === Number(portfolioId)) {
-				portfolios.splice(index, 1);
-			}
-		});
+		delete portfolios[portfolioId];
 
 		return HttpResponse.json(null, { status: 200 });
 	}),
 
 	http.post(`/portfolios`, async ({request}) => {
-		const newPortfolio = await request.json() as FormValues;
-		const portfolioId = portfolios.length + 1;
-		const sectionId = sectionIdMap.get(newPortfolio.section) as number;
-		const categoryId = getCategoryId(newPortfolio.category) as number;
-		const tagId = getTagId(newPortfolio.tags, sectionId, portfolioId) as number[];
+		const portfolioForm = await request.json() as PortfolioFormValues;
+		const portfolioId = generateRandomString(20);
+		const user = {
+			id: 'expert1',
+			name: 'John',
+			email: 'john@example.com',
+			phone: '010-1234-1234',
+			nickname: 'John Lennon',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+		};
 
-		portfolios.push({
-			id: portfolioId,
-			userId: 1,
-			title: newPortfolio.title,
-			content: newPortfolio.content,
-			summary: newPortfolio.summary,
-			createdAt: Date.now(),
-			modifiedAt: Date.now(),
-			sectionId: sectionId,
-			categoryId: categoryId,
-			tagId: tagId,
+		portfolios[portfolioId] = {
+			user: user,
+			createdAt: new Date(Date.now()),
 			likes: 0,
-			images: [],
-		});
+			...portfolioForm,
+			commissions: null,
+		};
 
 		return HttpResponse.json({id: portfolioId}, { status: 200 });
 	}),
@@ -218,25 +160,14 @@ export const PortfolioHandlers= [
 	http.patch(`/portfolios`, async ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
-		const changedPortfolio = await request.json() as any;
-		const sectionId = sectionIdMap.get(changedPortfolio.section) as number;
+		const portfolioForm = await request.json() as any;
 
-		if(changedPortfolio.tags) {
-			const tagId = getTagId(changedPortfolio.tags, sectionId, Number(portfolioId)) as number[];
-			delete changedPortfolio.tags;
-			changedPortfolio.tagId = tagId;
-		}
-
-		portfolios.map((portfolio) => {
-			if(portfolio.id === Number(portfolioId)){
-				Object.assign(portfolio, changedPortfolio);
-			}
-		});
+		Object.assign(portfolios[portfolioId], portfolioForm);
 
 		return HttpResponse.json({id: portfolioId}, { status: 200 });
 	}),
 
-	http.post(`/picture`, async ({request}) => {
+	http.post(`/picture`, async () => {
 		const imageUrl = [
 			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F2XzQc%2FbtsCoF6oqiQ%2FfTLqaY7HBAdFUn22D1UVP0%2Fimg.jpg',
 			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1xq4y%2FbtsCq8zX6lA%2FHsyxk6Y2YttIhEV3cmWP30%2Fimg.jpg',
