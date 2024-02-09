@@ -76,6 +76,7 @@ export const TitleInput = styled.input`
 	height: 4rem;
 	border: 0;
 	font-size: 1.5rem;
+	font-weight: 600;
 	&:focus {
 		outline: none;
 	}
