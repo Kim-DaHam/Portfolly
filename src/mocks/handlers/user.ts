@@ -1,137 +1,109 @@
 import { HttpResponse, http } from 'msw';
 
-import { LOGIN_ID } from '.';
-import { commissions } from '../data/commissions';
-import { portfolios } from '../data/portfolios';
-import { users } from '../data/users';
-
-import { getSection } from '@/utils';
+import { LOGIN_ID } from '@/mocks/handlers';
+import { portfolios } from '@/mocks/nosql-data/portfolios';
+import { users } from '@/mocks/nosql-data/users';
+import { Commission, Portfolio, User } from '@/types';
 
 export const userHandlers= [
 	http.get('/users', ({request}) => {
 		const url = new URL(request.url);
 		const userId = url.searchParams.get('id') as string;
-		const isMyProfile = userId === String(LOGIN_ID);
+		const isMyProfile = userId === LOGIN_ID;
 
-		const user = users.find((user) => {
-			return user.id === Number(userId);
-		});
-
-		if(!isMyProfile) {
-			delete user?.name;
-			delete user?.phone;
-			delete user?.likes;
-		}
-
-		const portfolioList: any[] = [];
-
-		portfolios.map((portfolio) => {
-			const isUsersPortfolio = user!.portfolios!.indexOf(portfolio.id) > -1;
-			if(isUsersPortfolio) {
-				const portfolioData = {
-					id: portfolio.id,
-					title: portfolio.title,
-					summary: portfolio.summary,
-					image: portfolio.images[0],
-				};
-				portfolioList.push(portfolioData);
-			}
-		});
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
+		const user: User = users[userId];
 
 		const bookmarkList: any[] = [];
 
-		if(userId === String(LOGIN_ID)) {
-			portfolios.map((portfolio) => {
-				const isBookmarked = user!.bookmarks!.indexOf(portfolio.id) > -1;
-
-				if(isBookmarked) {
-					const portfolioData = {
-						id: portfolio.id,
-						title: portfolio.title,
-						summary: portfolio.summary,
-						image: portfolio.images[0],
-					};
-					bookmarkList.push(portfolioData);
-				}
+		if(isMyProfile) {
+			const bookmarkDocKeys: string[] = Object.keys(user.bookmarks!) || [];
+			bookmarkDocKeys.map((docKey: string) => {
+				const bookmark = user.bookmarks![docKey];
+				bookmarkList.push({
+					id: docKey,
+					...bookmark,
+				})
 			});
 		}
 
-		const commissionList: any[] = [];
+		// 사용자 포트폴리오, 리뷰, 커미션 목록을 생성한다.
+		const portfolioList: any[] = [];
+		const commissionsList: any[] = [];
 		const reviewList: any[] = [];
 
-		commissions.map((commission: any) => {
-			const isMyCommission = user!.activity.commissions!.indexOf(commission.id) > -1;
+		portfolioDocKeys.map((docKey: string) => {
+			const portfolio = portfolios[docKey] as Portfolio;
+			const isUserPortfolio = portfolio.user.id === userId;
+			const commissionDocKeys: string[] = Object.keys(portfolio.commissions!) || [];
 
-			if(isMyCommission) {
-				const portfolio = portfolios.find((portfolio) => portfolio.id === commission.portfolioId);
-				const section = getSection(portfolio!.sectionId);
+			if(isUserPortfolio) {
+				portfolioList.push({
+					id: docKey,
+					...portfolio,
+				});
 
-				commission.portfolio = {
-					id: portfolio?.id,
-					section: section,
-					title: portfolio?.title,
-					summary: portfolio?.summary,
-					thumbnailUrl: portfolio?.images[0],
-				};
+				commissionDocKeys.map((commissionDocKeys: string) => {
+					const commission = portfolio.commissions![commissionDocKeys] as Commission;
+					const review = commission.review;
+					const client = commission.client;
 
-				if(commission.review) {
-					const user = users.find((user) => user.id === commission.clientId);
-
-					commission.review.portfolio = commission.portfolio;
-					commission.review.user = {
-						id: user?.id,
-						nickname: user?.nickname,
-						profileImage: user?.profileImage,
-					};
-
-					reviewList.push(commission.review);
-				}
-
-				if(isMyProfile) {
-					if(user!.authority === 'client') {
-						const expert = users.find((user) => user.id === commission.expertId);
-						commission.expert = {
-							id: expert?.id,
-							nickname: expert?.nickname,
-							name: expert?.name,
-							phone: expert?.phone,
-							profileImage: expert?.profileImage,
-						};
-					}
-					if(user!.authority === 'expert') {
-						const client = users.find((user) => user.id === commission.clientId);
-						commission.client = {
-							id: client?.id,
-							nickname: client?.nickname,
-							profileImage: client?.profileImage,
-						};
-					}
-					commission[user!.authority] = {
-						id: user?.id,
-						nickname: user?.nickname,
-						name: user?.name,
-						phone: user?.phone,
-						profileImage: user?.profileImage,
-					}
-				}
-
-				if(!isMyProfile) {
-					delete commission.details;
-				}
-
-				commissionList.push(commission);
+					commissionsList.push({
+						...commission,
+						id: commissionDocKeys,
+						expert: portfolio.user,
+						review: {
+							user: {
+								nickname: client.nickname,
+								profileImage: client.profileImage,
+							},
+							portfolio: {
+								id: docKey,
+								thumbnailUrl: portfolio.images[0],
+							},
+							...commission.review,
+						},
+						portfolio: {
+							id: docKey,
+							section: portfolio.section,
+							title: portfolio.title,
+							summary: portfolio.summary,
+							thumbnailUrl: portfolio.images[0],
+						}
+					});
+					review && reviewList.push({
+						id: commissionDocKeys+'review',
+						user: {
+							nickname: client.nickname,
+							profileImage: client.profileImage,
+						},
+						portfolio: {
+							id: docKey,
+							thumbnailUrl: portfolio.images[0],
+						},
+						...review,
+					})
+				})
 			}
 		});
-		user!.activity.commissions = commissionList;
+
+		if(!isMyProfile) {
+			delete user.name;
+			delete user.phone;
+			delete user.likes;
+		}
 
 		const responseData = {
 			...user,
-			reviews: reviewList,
-			portfolios: portfolioList,
-			bookmarks: bookmarkList || [],
+			portfolioList: portfolioList,
+			commissionList: commissionsList,
+			reviewList: reviewList,
+			bookmarkList: isMyProfile ? bookmarkList : [],
 		};
 
-		return HttpResponse.json(responseData, { status: 200 });
+		console.log(responseData);
+
+		return HttpResponse.json(responseData, { status: 404 });
 	}),
 
 ];

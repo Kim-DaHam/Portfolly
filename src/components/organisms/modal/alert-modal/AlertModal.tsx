@@ -65,13 +65,15 @@ export default function AlertModal({type, $modalState, handleModal, onConfirm}: 
 					>
 						{activeButton[type]}
 					</Button>
-					<Button
-						color='transparent'
-						size='medium'
-						onClick={handleModal}
-					>
-						취소
-					</Button>
+					{ type !== 'error' &&
+						<Button
+							color='transparent'
+							size='medium'
+							onClick={handleModal}
+						>
+							취소
+						</Button>
+					}
 				</ButtonGroup>
 			</Content>
 		</Modal>

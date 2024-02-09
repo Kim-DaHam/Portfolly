@@ -1,9 +1,13 @@
 import * as S from "@/components/organisms/profile-description/introduce/Introduce.styled";
 
+import type { Authority, UserProfile } from "@/types";
+
 import { Text, Tag } from "@/components";
 
 type Props = {
-	user: any;
+	user: UserProfile & {
+		authority: Authority,
+	};
 };
 
 export default function Introduce({user}: Props) {
@@ -26,7 +30,7 @@ export default function Introduce({user}: Props) {
 				<S.Box>
 					<Text size='bodyMedium'>경력사항</Text>
 					<ul>
-						{ user.careers.map((career: string, index: number) => {
+						{ user.careers?.map((career: string, index: number) => {
 							return <li key={index}>{career}</li>
 						})}
 					</ul>
@@ -40,7 +44,7 @@ export default function Introduce({user}: Props) {
 				<S.Box>
 					<Text size='bodyMedium'>전문분야 및 상세분야</Text>
 					<S.TagBox>
-						{ user.fields.map((field: string, index: number) => {
+						{ user.fields?.map((field: string, index: number) => {
 							return <Tag key={index} value={field} readOnly/>
 						})}
 					</S.TagBox>
@@ -49,7 +53,7 @@ export default function Introduce({user}: Props) {
 				<S.Box>
 					<Text size='bodyMedium'>보유 기술</Text>
 					<S.TagBox>
-						{ user.stacks.map((stack: string, index: number) => {
+						{ user.stacks?.map((stack: string, index: number) => {
 							return <Tag key={index} value={stack} readOnly/>
 						})}
 					</S.TagBox>

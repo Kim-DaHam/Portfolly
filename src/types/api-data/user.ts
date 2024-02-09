@@ -5,15 +5,15 @@ export type Users = {
 };
 
 export type User = {
-	name: string,
+	name?: string,
 	email: string,
-	phone: string,
+	phone?: string,
 	nickname: string,
 	profileImage: string,
 	authority: Authority,
 	profile: UserProfile,
-	bookmarks: any,
-	likes: string[],
+	bookmarks?: Bookmarks,
+	likes?: string[],
 };
 
 export type UserProfile = {
@@ -25,4 +25,14 @@ export type UserProfile = {
 	stacks?: string[],
 	score?: number,
 	contactTime: string,
+};
+
+export type Bookmarks = {
+	[key in string]: Bookmark;
+};
+
+export type Bookmark = {
+	title: string,
+	summary: string,
+	thumbnailUrl: string,
 };

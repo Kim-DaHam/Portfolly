@@ -1,16 +1,16 @@
-import { Profile } from "@/components/molecules/profile/Profile";
 import { Wrapper, SpanBox } from "@/components/molecules/profile/Profile.styled";
 import * as S from "@/components/skeletons/profile/ProfileSkeleton.styled";
 
+import type { Profile } from "@/components/molecules/profile/Profile";
 import type { IComponentFactory } from "@/types";
 
 type Props = {
 	type: Profile;
 }
 
-export default function ProfileSkeleton({type}: Props) {
+export default function ProfileSkeleton({ type }: Props) {
 	return(
-		<Wrapper $type={type}>
+		<Wrapper>
 			{renderProfileSkeleton(type)}
 		</Wrapper>
 	)

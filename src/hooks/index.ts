@@ -6,6 +6,7 @@ import useSearch from "@/hooks/component/useSearch";
 import useSelector from "@/hooks/component/useSelector";
 import useHtmlContent from '@/hooks/editor/useHtmlContent';
 import useImageHandler from "@/hooks/editor/useImageHandler";
+import usePageErrorAlert from "@/hooks/error/usePageErrorAlert";
 import useIntersectionObserver from "@/hooks/event/useIntersectionObserver";
 import usePreventGoBack from "@/hooks/event/usePreventGoBack";
 import usePreventRefresh from "@/hooks/event/usePreventRefresh";
@@ -30,4 +31,5 @@ export {
 	useImageHandler,
 	usePortfolioForm,
 	useHtmlContent,
+	usePageErrorAlert,
 };

@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
 
 	display: flex;
 	gap: 0.75rem;
+
+	& > div:first-child {
+		background-color: #f3f3f3;
+	}
 `;
 
 export const SpanBox = styled.div`
@@ -32,8 +36,8 @@ export const SpanBox = styled.div`
 export const UserProfileWrapper = styled(Wrapper)`
 	& img {
 		aspect-ratio: 1/1;
-		cursor: pointer;
 		border-radius: 0;
+		cursor: pointer;
 	}
 `;
 
@@ -65,7 +69,7 @@ export const ColumnProfileWrapper = styled.div`
 	}
 `;
 
-export const MyPageProfileWrapper = styled.div`
+export const MyPageProfileWrapper = styled(Wrapper)`
 	display: flex;
 	align-items: center;
 	gap: 2rem;

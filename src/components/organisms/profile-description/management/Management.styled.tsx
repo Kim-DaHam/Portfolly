@@ -65,4 +65,5 @@ export const List = styled.ul`
 	${mixins.fullWidthHeight}
 	${mixins.flexColumn}
 	gap: 0.8rem;
+	overflow-y: scroll;
 `;

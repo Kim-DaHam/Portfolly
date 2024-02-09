@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 
 import * as S from "@/components/organisms/profile-description/review-list/ReviewList.styled";
 
+import type { Review } from "@/types";
+
 import { Pagination, ReviewItem } from "@/components";
 
 type Props = {
-	reviews: any[];
+	reviews: Review[];
 };
 
 const PAGE_SHOW = 10;
@@ -26,12 +28,21 @@ export default function ReviewList({ reviews }: Props) {
 					const isRangeOfPage = index >= (page - 1) * PAGE_SHOW && index < page * PAGE_SHOW;
 
 					if(isRangeOfPage) {
-						return <ReviewItem review={review} key={index}/>;
+						return (
+						<ReviewItem
+							review={review}
+							key={review.id}
+						/>
+						);
 					}
 				})}
 			</S.Content>
 
-			<Pagination handlePage={setPage} count={reviews.length} pageShow={PAGE_SHOW} />
+			<Pagination
+				handlePage={setPage}
+				count={reviews.length}
+				pageShow={PAGE_SHOW}
+			/>
 		</S.Wrapper>
 	)
 }

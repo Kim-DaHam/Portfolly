@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 	padding: 1.5rem 2rem;
 	border-radius: 1rem;
 	border: 2px solid #f5f5f5;
+	background-color: #f3f3f3;
 `;
 
 export const Box = styled.div`

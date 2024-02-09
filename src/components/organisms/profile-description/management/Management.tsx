@@ -2,16 +2,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
+import { isIncludedKeyword } from "@/components/organisms/profile-description/management/Management.helpers";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
 
-import { isIncludedKeyword } from "./Management.helpers";
+import type { Commission } from "@/types";
 
-import { useModal } from "@/hooks";
-
-import { Text, Selector , Button, CommissionModal, Tracking, CommissionItem } from "@/components";
+import { Text, Selector , Button, Tracking, CommissionItem } from "@/components";
 
 type Props = {
-	commissions: any;
+	commissions: Commission[];
 };
 
 export type FormValues = {
@@ -44,7 +43,7 @@ export default function Management({ commissions }: Props) {
 		const filteredCommissions = commissions.filter((commission: any) => {
 			return (
 				(data.commissionType === '전체 상품' || commission.portfolio.section === data.commissionType) &&
-				(data.commissionStatus === '전체 상태' || commission.details.state === data.commissionStatus) &&
+				(data.commissionStatus === '전체 상태' || commission.details.status === data.commissionStatus) &&
 				(data.startDate === null || new Date(commission.createdAt) <= new Date(data.endDate!)) &&
 				(data.endDate === null || new Date(commission.endedAt) >= new Date(data.startDate!)) &&
 				(data.searchKeyword === '' || isIncludedKeyword(data.searchFilter, commission, data.searchKeyword))

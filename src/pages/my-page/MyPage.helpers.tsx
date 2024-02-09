@@ -10,16 +10,16 @@ export const renderDescription = (user: any, navigation: Navigation)=>{
 			<Introduce user={{authority: user.authority, ...user.profile}}/>
 		),
 		portfolios: (
-			<PortfolioList portfolios={user.portfolios}/>
+			<PortfolioList portfolios={user.portfolioList}/>
 		),
 		reviews: (
-			<ReviewList reviews={user.reviews}/>
+			<ReviewList reviews={user.reviewList}/>
 		),
 		management: (
-			<Management commissions={user.activity.commissions}/>
+			<Management commissions={user.commissionList}/>
 		),
 		bookmarks: (
-			<PortfolioList portfolios={user.bookmarks}/>
+			<PortfolioList portfolios={user.bookmarkList}/>
 		),
 	}
 

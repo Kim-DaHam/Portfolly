@@ -18,6 +18,10 @@ export const ProfileBox = styled.div`
 	padding-bottom: 0.5rem;
 	border-bottom: 2px solid #f5f5f5;
 
+	& img {
+		background-color: #f3f3f3;
+	}
+
 	& img:last-child {
 		align-self: flex-end;
 		cursor: pointer;
