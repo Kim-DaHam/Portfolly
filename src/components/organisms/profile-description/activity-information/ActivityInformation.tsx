@@ -14,19 +14,19 @@ export default function ActivityInformation({ auth, activity }: Props) {
 			<S.Box>
 				<S.Group>
 					<Text size='label'>총 작업 수</Text>
-					<Text size='bodyMedium'>{activity.commissions.length}</Text>
+					<Text size='bodyMedium'>{activity?.commissions.length}</Text>
 				</S.Group>
 
 				{ auth === 'expert' &&
 					<S.Group>
 						<Text size='label'>만족도</Text>
-						<Text size='bodyMedium'>{activity.score}%</Text>
+						<Text size='bodyMedium'>{activity?.score}%</Text>
 					</S.Group>
 				}
 
 				<S.Group>
 					<Text size='label'>연락 가능 시간</Text>
-					<Text size='bodyMedium'>{activity.contactTime}</Text>
+					<Text size='bodyMedium'>{activity?.contactTime}</Text>
 				</S.Group>
 			</S.Box>
 		</S.Wrapper>

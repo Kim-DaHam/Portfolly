@@ -17,5 +17,6 @@ export const useUserQuery = (id: string) => {
 		queryFn: getUsers,
 		staleTime: Infinity,
 		gcTime: Infinity,
+		throwOnError: false,
 	});
 };

@@ -111,7 +111,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 						{user?.nickname}
 					</Text>
 					{ user?.authority === 'expert' &&
-						<Rating readonly score={user?.activity.score}/>
+						<Rating readonly score={user?.profile.score}/>
 					}
 				</S.SpanBox>
 			</S.MyPageProfileWrapper>

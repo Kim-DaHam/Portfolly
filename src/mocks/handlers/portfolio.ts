@@ -39,7 +39,7 @@ export const PortfolioHandlers= [
 					...portfolios[docKey],
 					id: docKey,
 					isBookmarked: users['client1'].bookmarks[docKey] ? true : false,
-					isLiked: users['client1'].likes.indexOf(docKey) !== -1 ? true : false,
+					isLiked: users['client1'].likes?.indexOf(docKey) !== -1 ? true : false,
 				};
 
 				filteredPortfolios.push(portfolio);
@@ -124,7 +124,7 @@ export const PortfolioHandlers= [
 
 		Object.assign(portfolio, {
 			isBookmarked: users[LOGIN_ID].bookmarks[portfolioId] ? true : false,
-			isLiked: users[LOGIN_ID].likes.indexOf(portfolioId) !== -1 ? true : false,
+			isLiked: users[LOGIN_ID].likes?.indexOf(portfolioId) !== -1 ? true : false,
 			otherPortfolios: otherPortfolios,
 		});
 
