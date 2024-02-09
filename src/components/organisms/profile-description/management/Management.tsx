@@ -43,7 +43,7 @@ export default function Management({ commissions }: Props) {
 		const filteredCommissions = commissions.filter((commission: any) => {
 			return (
 				(data.commissionType === '전체 상품' || commission.portfolio.section === data.commissionType) &&
-				(data.commissionStatus === '전체 상태' || commission.details.state === data.commissionStatus) &&
+				(data.commissionStatus === '전체 상태' || commission.details.status === data.commissionStatus) &&
 				(data.startDate === null || new Date(commission.createdAt) <= new Date(data.endDate!)) &&
 				(data.endDate === null || new Date(commission.endedAt) >= new Date(data.startDate!)) &&
 				(data.searchKeyword === '' || isIncludedKeyword(data.searchFilter, commission, data.searchKeyword))

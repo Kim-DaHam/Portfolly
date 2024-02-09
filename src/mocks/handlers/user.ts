@@ -63,6 +63,13 @@ export const userHandlers= [
 							},
 							...commission.review,
 						},
+						portfolio: {
+							id: docKey,
+							section: portfolio.section,
+							title: portfolio.title,
+							summary: portfolio.summary,
+							thumbnailUrl: portfolio.images[0],
+						}
 					});
 					review && reviewList.push({
 						id: commissionDocKeys+'review',

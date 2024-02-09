@@ -45,7 +45,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 				<Image
 					size='3.5rem'
 					src={portfolio?.thumbnailUrl}
-					alt='user profile'
+					alt='portfolio thumbnail'
 					onClick={()=>navigate(`/portfolios/${portfolio?.id}`)}
 				/>
 				<S.SpanBox>
