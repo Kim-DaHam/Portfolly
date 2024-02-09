@@ -1,3 +1,4 @@
+import AlertContainer from "@/components/molecules/alert-container/AlertContainer";
 import QuillEditor from "@/components/molecules/editor/QuillEditor";
 import CommissionItem from "@/components/molecules/items/commission-item/CommissionItem";
 import MessageRoomItem from "@/components/molecules/items/messageRoom-item/MessageRoomItem";
@@ -34,4 +35,5 @@ export {
 	MessageRoomItem,
 	ReviewForm,
 	Message,
+	AlertContainer,
 };

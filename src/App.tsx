@@ -23,7 +23,7 @@ import PortfolioEditPage from '@/pages/portfolio-edit/PortfolioEditPage';
 import { store } from '@/redux/store';
 import { ROUTE_PATH } from '@/utils/path';
 
-import { GlobalErrorFallback , ToastContainer } from '@/components';
+import { GlobalErrorFallback, AlertContainer, ToastContainer } from '@/components';
 
 import '@/styles/GlobalFonts.css';
 
@@ -53,6 +53,7 @@ export default function App() {
 							</Routes>
 						</BrowserRouter>
 						<ToastContainer />
+						<AlertContainer />
 						<ReactQueryDevtools initialIsOpen={false} />
 					</QueryClientProvider>
 				</PersistGate>
