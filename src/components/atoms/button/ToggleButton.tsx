@@ -61,7 +61,6 @@ export default function ToggleButton({type, portfolioId, isToggled, currentLikes
 
 	const handleToggleButton = () => {
 		toggleButtonMutation.mutate();
-		console.log(type, isToggled)
 		if(isToggled) {
 			setColor('white');
 			return;
