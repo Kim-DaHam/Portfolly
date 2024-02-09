@@ -1,19 +1,21 @@
-import { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { alertState } from "@/redux/alertSlice";
+import { alertState, deleteAlert } from "@/redux/alertSlice";
 
 import { useModal } from "@/hooks";
 
 import { AlertModal } from "@/components";
 
 export default function AlertContainer() {
+	const dispatch = useDispatch();
 	const { isModalOpen, handleModal } = useModal();
 	const alert = useSelector(alertState);
 
 	const onConfirm = () => {
 		alert?.onConfirm();
 		handleModal();
+		dispatch(deleteAlert);
 	};
 
 	useEffect(() => {

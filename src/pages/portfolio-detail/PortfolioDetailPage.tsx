@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FiChevronRight as ChevronRightIcon , FiArrowLeft as LeftArrowIcon } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { setAlert } from "@/redux/alertSlice";
 import { userState } from "@/redux/loginSlice";
 import { section } from "@/redux/sectionSlice";
 
@@ -10,19 +11,19 @@ import * as S from "./PortfolioDetailPage.styled";
 
 import type { Portfolio } from "@/types";
 
-import { useModal, useHtmlContent } from "@/hooks";
+import { useHtmlContent } from "@/hooks";
 import { usePortfolioDeleteQuery, usePortfolioDetailQuery, toUrlParameter } from "@/utils";
 
-import { Text, Image, Button, ToggleButton, Tag, Profile, AlertModal } from "@/components";
+import { Text, Image, Button, ToggleButton, Tag, Profile } from "@/components";
 
 export default function PortfolioDetail(){
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const user = useSelector(userState);
 	const portfolioId = useParams().portfolio_id as string;
 	const currentSection = useSelector(section);
 
-	const { isModalOpen, handleModal } = useModal();
 	const { sanitize, setElementInlineStyle } = useHtmlContent();
 	const { data: portfolio, isError } = usePortfolioDetailQuery(portfolioId);
 
@@ -32,16 +33,26 @@ export default function PortfolioDetail(){
 		navigate(`/portfolios/edit?id=${portfolio?.id}`, {state: portfolio});
 	};
 
+	const handleDeleteButton = () => {
+		dispatch(setAlert({
+			type: 'delete',
+			onConfirm: deletePortfolio,
+		}))
+	}
+
 	const deletePortfolio = async () => {
 		await deletePorfolioMutation.mutate();
 		navigate(`/main/${toUrlParameter(currentSection)}`);
 	};
 
-
-	if(isError) {
-		confirm('페이지를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.') &&
-			navigate(-1);
-	}
+	useEffect(() => {
+		if(isError) {
+			dispatch(setAlert({
+				type: 'error',
+				onConfirm: () => navigate(-1),
+			}))
+		}
+	}, [isError]);
 
 	return(
 		<S.Wrapper>
@@ -103,7 +114,7 @@ export default function PortfolioDetail(){
 								<Text size='bodyMedium' color='lightgray' onClick={handleEditButton} cursor>
 									수정하기
 								</Text>
-								<Text size='bodyMedium' color='lightgray' onClick={handleModal} cursor>
+								<Text size='bodyMedium' color='lightgray' onClick={handleDeleteButton} cursor>
 									삭제하기
 								</Text>
 							</S.ButtonGroup>
@@ -154,15 +165,6 @@ export default function PortfolioDetail(){
 					</S.InformationBox>
 				</S.Aside>
 			</S.Content>
-
-			{ isModalOpen &&
-				<AlertModal
-					type='delete'
-					onConfirm={deletePortfolio}
-					handleModal={handleModal}
-					$modalState={isModalOpen}
-				/>
-			}
 		</S.Wrapper>
 	)
 }

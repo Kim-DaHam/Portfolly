@@ -19,15 +19,15 @@ export const alertSlice = createSlice({
   name: 'alert',
   initialState,
   reducers: {
-    setModal: (state, action) => {
+    setAlert: (state, action) => {
 			state.modal = action.payload;
 		},
-    deleteModal: (state) => {
+    deleteAlert: (state) => {
 			state.modal = null;
 		},
   },
 });
 
-export const { setModal, deleteModal } = alertSlice.actions;
+export const { setAlert, deleteAlert } = alertSlice.actions;
 export const alertState = (state: RootState) => state.alert.modal;
 export default alertSlice;
