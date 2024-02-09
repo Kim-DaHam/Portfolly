@@ -3,6 +3,8 @@ import { HttpResponse, http } from 'msw';
 import { PortfolioFormValues } from '@/hooks/portfolio/usePortfolioForm';
 import { portfolios } from '@/mocks/nosql-data/portfolios';
 
+import { users } from '../nosql-data/users';
+
 import type { Portfolio, Section, Portfolios } from '@/types';
 
 import { PAGE_PER_DATA, generateRandomString } from '@/utils';
@@ -38,7 +40,8 @@ export const PortfolioHandlers= [
 				const portfolio: Portfolio = {
 					...portfolios[docKey],
 					id: docKey,
-					isBookmarked: true,
+					isBookmarked: users['client1'].bookmarks[docKey] ? true : false,
+					isLiked: users['client1'].likes[docKey] ? true : false,
 				};
 
 				filteredPortfolios.push(portfolio);

@@ -1,4 +1,6 @@
-export type Authority = 'export' | 'client';
+import type { Portfolio, Portfolios } from "@/types";
+
+export type Authority = 'expert' | 'client';
 
 export type Users = {
 	[key in string] : User;
@@ -12,6 +14,8 @@ export type User = {
 	profileImage: string,
 	authority: Authority,
 	profile: UserProfile,
+	bookmarks?: any,
+	likes?: any,
 };
 
 export type UserProfile = {
@@ -22,5 +26,5 @@ export type UserProfile = {
 	fields?: string[],
 	stacks?: string[],
 	score?: number,
-	contactTime: string[],
+	contactTime: string,
 };
