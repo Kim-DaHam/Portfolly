@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function useIntersectionObserver(onIntersect: ()=>void) {
+export default function useIntersectionObserver(onIntersect: ()=>void) {
 	const [observationTarget, setObservationTarget] = useState<HTMLElement | null>(null);
 
 	const observer = useRef(
@@ -28,5 +28,3 @@ function useIntersectionObserver(onIntersect: ()=>void) {
 
 	return setObservationTarget;
 }
-
-export default useIntersectionObserver;
