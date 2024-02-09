@@ -3,11 +3,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { Toggle } from '@/components/atoms/button/ToggleButton';
-import { Section } from '@/types';
+
+import type { Section } from '@/types';
 
 import { fetch, toUrlParameter } from "@/utils";
 
-const PORTFOLIOS_PER_PAGE = 100;
+export const PAGE_PER_DATA = 10;
 
 const portfolioKeys = {
   all: ['portfolios'] as const,
@@ -17,19 +18,24 @@ const portfolioKeys = {
   detail: (id: string) => [...portfolioKeys.details(), id] as const,
 }
 
-export const usePortfoliosQuery = (section: Section, filter: {filterKey: string, filterValue: string}) => {
-	const filterParameter = toUrlParameter(filter.filterValue);
+export const usePortfoliosQuery = (section: Section, filter: { filterKey: string, filterValue: string }) => {
+	const filterSearchString = toUrlParameter(filter.filterValue);
 
-	const getPortfolios = ({pageParam}: {pageParam: number}) => fetch(`/portfolios?page=${pageParam}&section=${section}&${filter.filterKey}=${filterParameter}`, 'GET');
+	const getPortfolios = ({ pageParam }: { pageParam: number }) => {
+		return fetch(`/portfolios?page=${pageParam}&section=${section}&${filter.filterKey}=${filterSearchString}`, 'GET');
+	};
 
 	return useSuspenseInfiniteQuery({
-		queryKey: portfolioKeys.list(section, {type: filter.filterKey, value: filter.filterValue}),
+		queryKey: portfolioKeys.list(section, {
+			type: filter.filterKey,
+			value: filter.filterValue
+		}),
 		queryFn: getPortfolios,
-		select: data => data.pages[0],
+		select: data => data.pages.flat(),
 		initialPageParam: 1,
-		getNextPageParam: (lastPage, allPages) => {
-			const nextPage = allPages.length + 1;
-			return lastPage.length < PORTFOLIOS_PER_PAGE ? undefined :nextPage;
+		getNextPageParam: (lastPage: any, allPages: any) => {
+			const nextPageNum = allPages.length + 1;
+			return lastPage?.length < PAGE_PER_DATA ? null : nextPageNum;
 		},
 		staleTime: Infinity,
 		gcTime: Infinity,

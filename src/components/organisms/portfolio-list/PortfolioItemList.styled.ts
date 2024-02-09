@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+`;
+
 export const GridBox = styled.div`
 	width: 100%;
 	height: 100%;
@@ -18,4 +21,10 @@ export const Notification = styled.div`
 	align-items: center;
 
 	padding-top: 5rem;
+`;
+
+export const ObserveDiv = styled.div`
+	width: 100%;
+	height: 1px;
+	margin-top: 9rem;
 `;
