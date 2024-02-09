@@ -12,7 +12,7 @@ export type User = {
 	profileImage: string,
 	authority: Authority,
 	profile: UserProfile,
-	bookmarks?: any,
+	bookmarks?: Bookmarks,
 	likes?: string[],
 };
 
@@ -25,4 +25,14 @@ export type UserProfile = {
 	stacks?: string[],
 	score?: number,
 	contactTime: string,
+};
+
+export type Bookmarks = {
+	[key in string]: Bookmark;
+};
+
+export type Bookmark = {
+	title: string,
+	summary: string,
+	thumbnailUrl: string,
 };

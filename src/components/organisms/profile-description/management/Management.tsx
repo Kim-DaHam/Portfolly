@@ -2,16 +2,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
+import { isIncludedKeyword } from "@/components/organisms/profile-description/management/Management.helpers";
 import * as S from "@/components/organisms/profile-description/management/Management.styled";
 
-import { isIncludedKeyword } from "./Management.helpers";
+import type { Commission } from "@/types";
 
-import { useModal } from "@/hooks";
-
-import { Text, Selector , Button, CommissionModal, Tracking, CommissionItem } from "@/components";
+import { Text, Selector , Button, Tracking, CommissionItem } from "@/components";
 
 type Props = {
-	commissions: any;
+	commissions: Commission[];
 };
 
 export type FormValues = {

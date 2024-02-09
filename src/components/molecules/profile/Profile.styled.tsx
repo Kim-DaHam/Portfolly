@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
 
 	display: flex;
 	gap: 0.75rem;
+
+	& img {
+		background-color: #f3f3f3;
+	}
 `;
 
 export const SpanBox = styled.div`

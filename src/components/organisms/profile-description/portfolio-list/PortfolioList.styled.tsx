@@ -17,3 +17,9 @@ export const GridBox = styled.div`
 	grid-template-columns: repeat(4, 1fr);
 	gap: 2.5rem;
 `;
+
+export const Notification = styled.div`
+	width: 100%;
+	height: 100%;
+	${mixins.flexCenter}
+`;

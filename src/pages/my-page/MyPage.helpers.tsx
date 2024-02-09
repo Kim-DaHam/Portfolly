@@ -19,7 +19,7 @@ export const renderDescription = (user: any, navigation: Navigation)=>{
 			<Management commissions={user.commissionList}/>
 		),
 		bookmarks: (
-			<PortfolioList portfolios={user.bookmarks}/>
+			<PortfolioList portfolios={user.bookmarkList}/>
 		),
 	}
 

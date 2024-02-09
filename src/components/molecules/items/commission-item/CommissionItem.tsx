@@ -2,9 +2,9 @@ import React, { HTMLAttributes, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import * as S from '@/components/molecules/items/commission-item/CommissionItem.styled';
-import { userState } from '@/redux/loginSlice';
 
 import { useModal } from '@/hooks';
+import { userState } from '@/redux';
 import { eventStopPropagation, toLocalDateString } from '@/utils';
 
 import { Button, CommissionModal, ReviewForm, ReviewItem, Text } from '@/components';

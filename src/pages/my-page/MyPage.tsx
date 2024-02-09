@@ -64,8 +64,9 @@ function MyPage(){
 
 				<S.Aside>
 					<ActivityInformation
-						activity={user?.activity}
+						activity={user?.profile}
 						auth={user?.authority}
+						commissionCount={user?.commissionList.length}
 					/>
 				</S.Aside>
 			</S.ContentSection>
