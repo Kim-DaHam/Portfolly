@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from './store';
+import { RootState } from '@/redux/store';
 
-import { Toast } from '@/types';
+import type { Toast } from '@/types';
 
 type InitialState = {
 	toasts: Toast[],

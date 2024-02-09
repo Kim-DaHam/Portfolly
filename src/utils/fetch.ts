@@ -1,7 +1,8 @@
 import axios, { AxiosHeaders } from 'axios';
-import type { AxiosRequestHeaders, AxiosRequestConfig } from 'axios';
 
 import { API_BASE_URL } from '@/app-config';
+
+import type { AxiosRequestHeaders, AxiosRequestConfig } from 'axios';
 
 type Method = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
