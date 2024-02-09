@@ -70,7 +70,7 @@ export default function AlertModal({type, $modalState, handleModal, onConfirm}: 
 						size='medium'
 						onClick={handleModal}
 					>
-						취소하기
+						취소
 					</Button>
 				</ButtonGroup>
 			</Content>
