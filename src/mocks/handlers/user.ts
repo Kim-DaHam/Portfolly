@@ -103,7 +103,7 @@ export const userHandlers= [
 
 		console.log(responseData);
 
-		return HttpResponse.json(responseData, { status: 200 });
+		return HttpResponse.json(responseData, { status: 404 });
 	}),
 
 ];

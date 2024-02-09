@@ -10,7 +10,7 @@ import { usePageErrorAlert } from "@/hooks";
 import { userState } from "@/redux";
 import { useUserQuery } from "@/utils";
 
-import { ActivityInformation, MyPageNavigator, Profile } from "@/components";
+import { ActivityInformation, MyPageNavigator, Profile, ProfileSkeleton } from "@/components";
 
 export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
 
