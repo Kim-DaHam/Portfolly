@@ -154,6 +154,19 @@ export const PortfolioHandlers= [
 			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 		};
 
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
+		const otherPortfolios: Portfolio[] = [];
+
+		portfolioDocKeys.map((docKey: string) => {
+			if(portfolios[docKey].user.id === user.id &&
+				otherPortfolios.length < 9){
+					otherPortfolios.push({
+						id: docKey,
+						...portfolios[docKey]
+					});
+			}
+		});
+
 		portfolios[portfolioId] = {
 			user: user,
 			createdAt: new Date(Date.now()),
@@ -164,7 +177,8 @@ export const PortfolioHandlers= [
 
 		const response = {
 			id: portfolioId,
-			...portfolios[portfolioId]
+			...portfolios[portfolioId],
+			otherPortfolios: otherPortfolios,
 		};
 
 		return HttpResponse.json(response, { status: 200 });
