@@ -1,4 +1,6 @@
-export const users = {
+import { Users } from "@/types";
+
+export const users: Users = {
 	expert1: {
 		name: 'John',
 		email: 'john@example.com',
@@ -16,6 +18,8 @@ export const users = {
 			score: 90,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert2: {
 		name: 'Paul',
@@ -34,6 +38,8 @@ export const users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert3: {
 		name: 'George',
@@ -52,6 +58,8 @@ export const users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert4: {
 		name: 'Ringo',
@@ -70,6 +78,8 @@ export const users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert5: {
 		name: 'Freddie',
@@ -88,8 +98,10 @@ export const users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
-	client6: {
+	client1: {
 		name: '김강철',
 		email: 'steel@example.com',
 		phone: '010-1234-1234',
@@ -101,8 +113,21 @@ export const users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {
+			portfolio1: {
+				title: 'test title',
+				summary: 'test summary',
+				thumbnailUrl: '',
+			},
+			portfolio2: {
+				title: 'test title',
+				summary: 'test summary',
+				thumbnailUrl: '',
+			},
+		},
+		likes: [],
 	},
-	client7: {
+	client2: {
 		name: '김우주',
 		email: 'universe@example.com',
 		phone: '010-1234-1234',
@@ -114,8 +139,10 @@ export const users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
-	client8: {
+	client3: {
 		name: '스폰지밥',
 		email: 'underthesea@example.com',
 		phone: '010-1234-1234',
@@ -127,8 +154,10 @@ export const users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
-	client9: {
+	client4: {
 		name: '징징이',
 		email: 'squeed@example.com',
 		phone: '010-1234-1234',
@@ -140,8 +169,10 @@ export const users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
-	client10: {
+	client5: {
 		name: '집게사장',
 		email: 'crab@example.com',
 		phone: '010-1234-1234',
@@ -153,5 +184,7 @@ export const users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 };

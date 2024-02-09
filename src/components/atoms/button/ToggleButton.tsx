@@ -2,7 +2,8 @@ import { useState } from "react";
 import { FiBookmark as BookmarkIcon, FiHeart as LikeIcon } from "react-icons/fi";
 
 import { Text, Button } from "@/components/atoms/index";
-import { IComponentFactory } from "@/types";
+
+import type { IComponentFactory } from "@/types";
 
 import { useToggleButtonQuery } from "@/utils";
 
@@ -10,7 +11,7 @@ export type Toggle = 'bookmark' | 'like';
 
 type Props = {
 	type: Toggle;
-	portfolioId: number;
+	portfolioId: string;
 	isToggled: boolean;
 	currentLikes?: number;
 };
@@ -20,7 +21,12 @@ const buttonColor: {[key in Toggle]: string} = {
 	bookmark: '#ffeb54',
 };
 
-const renderToggleButton = (type: Toggle, color: string, currentLikes: number, handleToggleButton: ()=>void) => {
+const renderToggleButton = (
+	type: Toggle,
+	color: string,
+	currentLikes: number,
+	handleToggleButton: ()=>void
+) => {
 	const ComponentFactory: IComponentFactory = {
 		bookmark: (
 			<Button color='black' onClick={handleToggleButton}>
@@ -57,11 +63,10 @@ export default function ToggleButton({type, portfolioId, isToggled, currentLikes
 		toggleButtonMutation.mutate();
 		if(isToggled) {
 			setColor('white');
+			return;
 		}
-		if(!isToggled) {
-			setColor(buttonColor[type]);
-		}
-	}
+		setColor(buttonColor[type]);
+	};
 
 	return(
 		<>

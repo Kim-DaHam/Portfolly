@@ -1,3 +1,7 @@
+export type Commissions = {
+	[key in string]: Commission;
+}
+
 export type Commission = {
 	client: {
 		name: string,
@@ -6,9 +10,9 @@ export type Commission = {
 		nickname: string,
 		profileImage: string,
 	},
-	review: Review,
+	review: Review | null,
 	createdAt: Date,
-	endedAt: Date,
+	endedAt: Date | null,
 	details: CommissionDetail,
 };
 

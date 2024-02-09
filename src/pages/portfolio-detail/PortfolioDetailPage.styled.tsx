@@ -23,12 +23,12 @@ export const Content = styled.main`
 `;
 
 export const PortfolioSection = styled.section`
-	${mixins.fullWidthHeight}
-
+	width: 100%;
+	height: inherit;
 	flex-basis: 1;
 	padding: 2.5rem 1rem;
-
-	border-top: 2px solid #f5f5f5;
+	border-radius: 1rem;
+	background-color: #f3f3f3;
 `;
 
 export const HtmlContent = styled.div`
@@ -47,7 +47,6 @@ export const Aside = styled.aside`
 
 export const FlexColumnBox = styled.div`
 	${mixins.flexColumn}
-	padding: 2.4rem 0.5rem 2rem 0.5rem;
 	border-radius: 1.5rem;
 	gap: 1rem;
 `;
@@ -56,20 +55,25 @@ export const ProfileBox = styled(FlexColumnBox)`
 	${mixins.flexCenter}
 	gap: 1.8rem;
 	border: 1px solid #efefef;
+	padding: 2.4rem 0.5rem 2rem 0.5rem;
+`;
+
+export const TitleBox = styled(FlexColumnBox)`
+	padding: 1rem;
+	gap: 0.5rem;
+	background-color: #f3f3f3;
+	border: 1rem;
+	margin-top: 1rem;
+
+	& > span {
+		font-weight: 600;
+	}
 `;
 
 export const InformationBox = styled(FlexColumnBox)`
 	${mixins.flexColumn}
+	padding: 2.4rem 0.5rem 2rem 0.5rem;
 	gap: 1.5rem;
-`;
-
-export const TitleBox = styled(FlexColumnBox)`
-	padding: 0;
-	gap: 0.5rem;
-
-	& span {
-		font-weight: 600;
-	}
 `;
 
 export const ButtonGroup = styled.div`
@@ -105,6 +109,7 @@ export const GridItem = styled.div`
 
 	border-radius: 0.6rem;
 	cursor: pointer;
+	background-color: #f3f3f3;
 
 	& img {
 		width: 100%;

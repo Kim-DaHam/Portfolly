@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setToast, toasts } from "@/redux/toastSlice";
-import { Section } from "@/types";
+import { toasts } from "@/redux/toastSlice";
+
+import type { Section } from "@/types";
+
 import { usePortfolioPostQuery, checkMultipleErrors, addValidationErrorToast } from "@/utils";
 
-export type FormValues = {
+export type PortfolioFormValues = {
 	title: string;
 	content: string;
 	section: Section;
@@ -16,7 +18,7 @@ export type FormValues = {
 	images: string[];
 };
 
-const defaultValues: FormValues = {
+const defaultValues: PortfolioFormValues = {
 	title: '',
 	content: '',
 	section: 'Android/iOS',
@@ -47,12 +49,12 @@ export default function usePortfolioForm({portfolio} : Props) {
 			errors,
 			isSubmitting
 		}
-	} = useForm<FormValues>({
+	} = useForm<PortfolioFormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
 	});
 
-	const onSubmit = (form: FormValues) => {
+	const onSubmit = (form: PortfolioFormValues) => {
 		const isEditMode = portfolio ? true: false;
 
 		if(isEditMode) {

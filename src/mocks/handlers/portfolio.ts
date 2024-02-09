@@ -1,7 +1,9 @@
 import { HttpResponse, http } from 'msw';
 
 import { PortfolioFormValues } from '@/hooks/portfolio/usePortfolioForm';
+import { LOGIN_ID } from '@/mocks/handlers';
 import { portfolios } from '@/mocks/nosql-data/portfolios';
+import { users } from '@/mocks/nosql-data/users';
 
 import type { Portfolio, Section, Portfolios } from '@/types';
 
@@ -33,12 +35,11 @@ export const PortfolioHandlers= [
 			const hasUsername = !username && portfolios[docKey].user.name === username;
 
 			if(isSameSection && isSameCategory && isRangeOfPage(index, page)) {
-				// const bookmarks = users.find((user) => user.id === LOGIN_ID)!.bookmarks as number[];
-				// const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
 				const portfolio: Portfolio = {
 					...portfolios[docKey],
 					id: docKey,
-					isBookmarked: true,
+					isBookmarked: users['client1'].bookmarks[docKey] ? true : false,
+					isLiked: users['client1'].likes.indexOf(docKey) !== -1 ? true : false,
 				};
 
 				filteredPortfolios.push(portfolio);
@@ -101,34 +102,36 @@ export const PortfolioHandlers= [
 		return HttpResponse.json(topPortfolios, { status: 200 });
 	}),
 
+	// 특정 portfolio detail 데이터를 불러온다.
 	http.get('/portfolios/detail', ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
 
-		// const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
-		// const isLiked = getIsLiked(portfolio!.id, likes);
-
 		const portfolio: Portfolio = portfolios[portfolioId];
 
-		const portfolioDocKeys: string[] = Object(portfolios).keys();
-		const otherPortfolios: Portfolios = {};
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
+		const otherPortfolios: Portfolio[] = [];
 
 		portfolioDocKeys.map((docKey: string) => {
 			if(portfolios[docKey].user.id === portfolio.user.id &&
-					Object.keys(otherPortfolios).length < 9){
-				Object.assign(otherPortfolios, portfolios[docKey])
+				otherPortfolios.length < 9){
+					otherPortfolios.push({
+						id: docKey,
+						...portfolios[docKey]
+					});
 			}
 		});
 
 		Object.assign(portfolio, {
-			isBookmarked: true,
-			isLiked: true,
+			isBookmarked: users[LOGIN_ID].bookmarks[portfolioId] ? true : false,
+			isLiked: users[LOGIN_ID].likes.indexOf(portfolioId) !== -1 ? true : false,
 			otherPortfolios: otherPortfolios,
 		});
 
 		return HttpResponse.json(portfolio, { status: 200 });
 	}),
 
+	// 포트폴리오 삭제
 	http.delete('/portfolios', ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
@@ -138,6 +141,7 @@ export const PortfolioHandlers= [
 		return HttpResponse.json(null, { status: 200 });
 	}),
 
+	// 포트폴리오 작성
 	http.post(`/portfolios`, async ({request}) => {
 		const portfolioForm = await request.json() as PortfolioFormValues;
 		const portfolioId = generateRandomString(20);
@@ -161,6 +165,7 @@ export const PortfolioHandlers= [
 		return HttpResponse.json({id: portfolioId}, { status: 200 });
 	}),
 
+	// 포트폴리오 수정
 	http.patch(`/portfolios`, async ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;

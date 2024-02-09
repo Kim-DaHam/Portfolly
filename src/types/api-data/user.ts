@@ -1,4 +1,4 @@
-export type Authority = 'export' | 'client';
+export type Authority = 'expert' | 'client';
 
 export type Users = {
 	[key in string] : User;
@@ -12,6 +12,8 @@ export type User = {
 	profileImage: string,
 	authority: Authority,
 	profile: UserProfile,
+	bookmarks: any,
+	likes: string[],
 };
 
 export type UserProfile = {
@@ -22,5 +24,5 @@ export type UserProfile = {
 	fields?: string[],
 	stacks?: string[],
 	score?: number,
-	contactTime: string[],
+	contactTime: string,
 };
