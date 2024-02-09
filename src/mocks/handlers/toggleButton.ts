@@ -1,50 +1,48 @@
 import { HttpResponse, http } from 'msw';
 
-import { portfolios } from '../data/portfolios';
-import { users } from '../data/users';
+import { LOGIN_ID } from '@/mocks/handlers';
+import { portfolios } from '@/mocks/nosql-data/portfolios';
+import { users } from '@/mocks/nosql-data/users';
 
 export const toggleButtonHandlers= [
 	http.post('/like', ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
-		const userId = 100;
+		const wasLiked = users[LOGIN_ID].likes?.indexOf(portfolioId) !== -1;
 
-		portfolios.forEach((portfolio) => {
-			if(portfolio.id === Number(portfolioId)) {
-				if(portfolio.isLiked) --portfolio.likes;
-				if(!portfolio.isLiked) ++portfolio.likes;
-				portfolio.isLiked = !portfolio.isLiked;
-			}
-		});
+		const portfolio = portfolios[portfolioId];
 
-		users.forEach((user:any) => {
-			if(user.id === userId) {
-				const index = user.likes?.indexOf(Number(portfolioId));
-				user.likes?.splice(index, 1);
-			}
-		});
+		if(wasLiked) {
+			portfolio.likes -= 1;
+			const index = users[LOGIN_ID].likes?.indexOf(portfolioId) as number;
+			users[LOGIN_ID].likes?.splice(index, 1);
+			return HttpResponse.json({isLiked: false}, { status: 200 });
+		}
 
-		return HttpResponse.json(null, { status: 200 });
+		portfolio.likes += 1;
+		users[LOGIN_ID].likes?.push(portfolioId);
+
+		return HttpResponse.json({isLiked: true}, { status: 200 });
 	}),
 
 	http.post('/bookmark', ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
-		const userId = 100;
+		const wasBookmarked = users[LOGIN_ID].bookmarks[portfolioId];
+		const portfolio = portfolios[portfolioId];
 
-		portfolios.forEach((portfolio) => {
-			if(portfolio.id === Number(portfolioId)) {
-				portfolio.isBookmarked = !portfolio.isBookmarked;
-			}
-		});
+		if(wasBookmarked) {
+			delete users[LOGIN_ID].bookmarks[portfolioId];
+			return HttpResponse.json({isBookmarked: false}, { status: 200 });
+		}
 
-		users.forEach((user) => {
-			if(user.id === userId) {
-				const index = user.bookmarks?.indexOf(Number(portfolioId));
-				user.bookmarks?.splice(index, 1);
-			}
-		});
+		users[LOGIN_ID].bookmarks[portfolioId] = {
+			id: portfolioId,
+			title: portfolio.title,
+			summary: portfolio.summary,
+			thumbnailUrl: portfolio.images[0],
+		}
 
-		return HttpResponse.json(null, { status: 200 });
+		return HttpResponse.json({isBookmarked: true}, { status: 200 });
 	}),
 ];

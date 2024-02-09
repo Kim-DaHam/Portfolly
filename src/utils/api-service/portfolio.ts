@@ -1,11 +1,13 @@
 import { useMutation, useQuery, useQueryClient, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Toggle } from '@/components/atoms/button/ToggleButton';
 
 import type { Section } from '@/types';
 
+import { setToast } from '@/redux';
 import { fetch, toUrlParameter } from "@/utils";
 
 export const PAGE_PER_DATA = 10;
@@ -18,6 +20,7 @@ const portfolioKeys = {
   detail: (id: string) => [...portfolioKeys.details(), id] as const,
 }
 
+// 포트폴리오 목록 불러오기
 export const usePortfoliosQuery = (section: Section, filter: { filterKey: string, filterValue: string }) => {
 	const filterSearchString = toUrlParameter(filter.filterValue);
 
@@ -42,6 +45,8 @@ export const usePortfoliosQuery = (section: Section, filter: { filterKey: string
 	});
 };
 
+
+// 분야별 top3 포트폴리오 불러오기
 export const useTopPortfoliosQuery = () => {
 	const getTopPortfolios = () => fetch('/top-portfolios', 'GET');
 
@@ -53,6 +58,7 @@ export const useTopPortfoliosQuery = () => {
 	});
 };
 
+// 포트폴리오 상세보기 데이터 불러오기
 export const usePortfolioDetailQuery = (id: string) => {
 	const getPortfolio = () => fetch(`/portfolios/detail?id=${id}`, 'GET');
 
@@ -65,6 +71,7 @@ export const usePortfolioDetailQuery = (id: string) => {
 	});
 };
 
+// 포트폴리오 삭제
 export const usePortfolioDeleteQuery = (id: string) => {
 	const queryClient = useQueryClient();
 	const deletePortfolio = () => fetch(`/portfolios?id=${id}`, 'DELETE');
@@ -78,35 +85,74 @@ export const usePortfolioDeleteQuery = (id: string) => {
 	});
 };
 
-export const useToggleButtonQuery = (id: number, type: Toggle) => {
+// 좋아요, 북마크 버튼
+export const useToggleButtonQuery = (id: string, type: Toggle) => {
 	const queryClient = useQueryClient();
+	const queryKey = ['portfolios', 'detail', id];
+	const dispatch = useDispatch();
 
 	const handleToggleButton = () => fetch(`/${type}?id=${id}`, 'POST');
 
 	return useMutation({
 		mutationFn: handleToggleButton,
 		onMutate: async () => {
-			const queryKey = ['portfolios', 'detail', String(id)];
-			const prevData: any = queryClient.getQueryData(queryKey);
+			const prevPortfolio: any = queryClient.getQueryData(queryKey);
 
 			await queryClient.cancelQueries({queryKey: queryKey});
 
 			queryClient.setQueryData(queryKey, ()=>{
-				if(type === 'bookmark')
-					return {...prevData, isBookmarked: !prevData.isBookmarked};
+				if(type === 'bookmark'){
+					return {
+						...prevPortfolio,
+						isBookmarked: !prevPortfolio.isBookmarked,
+					};
+				}
 				if(type === 'like'){
-					if(prevData.isLiked)
-						return {...prevData, isLiked: !prevData.isLiked, likes: --prevData.likes};
-					return {...prevData, isLiked: !prevData.isLiked, likes: ++prevData.likes};
+					if(prevPortfolio.isLiked){
+						return {
+							...prevPortfolio,
+							isLiked: !prevPortfolio.isLiked,
+							likes: --prevPortfolio.likes,
+						};
+					}
+					return {
+						...prevPortfolio,
+						isLiked: !prevPortfolio.isLiked,
+						likes: ++prevPortfolio.likes,
+					};
 				}
 			});
 
-			return () => queryClient.setQueryData(queryKey, prevData);
-		}
+			return () => queryClient.setQueryData(queryKey, prevPortfolio);
+		},
+		onSuccess: (response: any) => {
+			const portfolio = queryClient.getQueryData(queryKey) as any;
+
+			queryClient.setQueryData(queryKey, () => {
+				if(type === 'bookmark'){
+					return {
+						...portfolio,
+						isBookmarked: response.isBookmarked,
+					}
+				}
+				return {
+					...portfolio,
+					isLiked: response.isLiked,
+				};
+			});
+		},
+		onError: () => {
+			if(type === 'bookmark') {
+				dispatch(setToast({id: 0, type:'error', message: '북마크 등록을 실패했습니다.'}));
+			}
+			if(type === 'like') {
+				dispatch(setToast({id: 0, type:'error', message: '좋아요 등록을 실패했습니다.'}));
+			}
+		},
 	})
 };
 
-export const usePortfolioPostQuery = (id?: number) => {
+export const usePortfolioPostQuery = (id?: string) => {
 	const queryClient = useQueryClient();
 	const postPortfolio = (body: any) => fetch(`/portfolios`, 'POST', body);
 	const updatePortfolio = (body: any) => fetch(`/portfolios?id=${id}`, 'PATCH', body);

@@ -65,7 +65,7 @@ export const TitleBox = styled(FlexColumnBox)`
 	border: 1rem;
 	margin-top: 1rem;
 
-	& span {
+	& > span {
 		font-weight: 600;
 	}
 `;

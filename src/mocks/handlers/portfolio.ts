@@ -1,9 +1,9 @@
 import { HttpResponse, http } from 'msw';
 
 import { PortfolioFormValues } from '@/hooks/portfolio/usePortfolioForm';
+import { LOGIN_ID } from '@/mocks/handlers';
 import { portfolios } from '@/mocks/nosql-data/portfolios';
-
-import { users } from '../nosql-data/users';
+import { users } from '@/mocks/nosql-data/users';
 
 import type { Portfolio, Section, Portfolios } from '@/types';
 
@@ -39,7 +39,7 @@ export const PortfolioHandlers= [
 					...portfolios[docKey],
 					id: docKey,
 					isBookmarked: users['client1'].bookmarks[docKey] ? true : false,
-					isLiked: users['client1'].likes[docKey] ? true : false,
+					isLiked: users['client1'].likes.indexOf(docKey) !== -1 ? true : false,
 				};
 
 				filteredPortfolios.push(portfolio);
@@ -123,12 +123,12 @@ export const PortfolioHandlers= [
 		});
 
 		Object.assign(portfolio, {
-			isBookmarked: users['client1'].bookmarks[portfolioId] ? true : false,
-			isLiked: users['client1'].likes[portfolioId] ? true : false,
+			isBookmarked: users[LOGIN_ID].bookmarks[portfolioId] ? true : false,
+			isLiked: users[LOGIN_ID].likes.indexOf(portfolioId) !== -1 ? true : false,
 			otherPortfolios: otherPortfolios,
 		});
 
-		return HttpResponse.json(portfolio, { status: 404 });
+		return HttpResponse.json(portfolio, { status: 200 });
 	}),
 
 	// 포트폴리오 삭제

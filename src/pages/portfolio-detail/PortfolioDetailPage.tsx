@@ -95,23 +95,33 @@ export default function PortfolioDetail(){
 						<S.ButtonGroup>
 							<ToggleButton
 								type='like'
-								portfolioId={portfolio?.id}
+								portfolioId={portfolioId}
 								isToggled={portfolio?.isLiked}
 								currentLikes={portfolio?.likes}
 							/>
 							<ToggleButton
 								type='bookmark'
-								portfolioId={portfolio?.id}
+								portfolioId={portfolioId}
 								isToggled={portfolio?.isBookmarked}
 							/>
 						</S.ButtonGroup>
 
 						{ user?.id === portfolio?.user?.id &&
 							<S.ButtonGroup>
-								<Text size='bodyMedium' color='lightgray' onClick={handleEditButton} cursor>
+								<Text
+									size='bodyMedium'
+									color='lightgray'
+									onClick={handleEditButton}
+									cursor
+								>
 									수정하기
 								</Text>
-								<Text size='bodyMedium' color='lightgray' onClick={handleDeleteButton} cursor>
+								<Text
+									size='bodyMedium'
+									color='lightgray'
+									onClick={handleDeleteButton}
+									cursor
+								>
 									삭제하기
 								</Text>
 							</S.ButtonGroup>

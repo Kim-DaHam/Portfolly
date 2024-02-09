@@ -18,6 +18,8 @@ export const users: Users = {
 			score: 90,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert2: {
 		name: 'Paul',
@@ -36,6 +38,8 @@ export const users: Users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert3: {
 		name: 'George',
@@ -54,6 +58,8 @@ export const users: Users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert4: {
 		name: 'Ringo',
@@ -72,6 +78,8 @@ export const users: Users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	expert5: {
 		name: 'Freddie',
@@ -90,6 +98,8 @@ export const users: Users = {
 			score: 100,
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	client1: {
 		name: '김강철',
@@ -115,18 +125,7 @@ export const users: Users = {
 				thumbnailUrl: '',
 			},
 		},
-		likes: {
-			portfolio1: {
-				title: 'test title',
-				summary: 'test summary',
-				thumbnailUrl: '',
-			},
-			portfolio2: {
-				title: 'test title',
-				summary: 'test summary',
-				thumbnailUrl: '',
-			},
-		},
+		likes: [],
 	},
 	client2: {
 		name: '김우주',
@@ -140,6 +139,8 @@ export const users: Users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	client3: {
 		name: '스폰지밥',
@@ -153,6 +154,8 @@ export const users: Users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	client4: {
 		name: '징징이',
@@ -166,6 +169,8 @@ export const users: Users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 	client5: {
 		name: '집게사장',
@@ -179,5 +184,7 @@ export const users: Users = {
 			location: '대구',
 			contactTime: '언제나 가능',
 		},
+		bookmarks: {},
+		likes: [],
 	},
 };
