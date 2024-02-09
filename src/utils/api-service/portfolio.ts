@@ -61,6 +61,7 @@ export const usePortfolioDetailQuery = (id: string) => {
 		queryFn: getPortfolio,
 		staleTime: Infinity,
 		gcTime: Infinity,
+		throwOnError: false,
 	});
 };
 
