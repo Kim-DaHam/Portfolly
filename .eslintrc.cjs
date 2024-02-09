@@ -30,6 +30,10 @@ module.exports = {
             "pattern": "@/utils",
             "group": "unknown",
           },
+					{
+            "pattern": "@/redux",
+            "group": "unknown",
+          },
           {
             "pattern": "@/pages",
             "group": "unknown",

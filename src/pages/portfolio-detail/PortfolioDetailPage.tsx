@@ -3,15 +3,12 @@ import { FiChevronRight as ChevronRightIcon , FiArrowLeft as LeftArrowIcon } fro
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { setAlert } from "@/redux/alertSlice";
-import { userState } from "@/redux/loginSlice";
-import { section } from "@/redux/sectionSlice";
-
-import * as S from "./PortfolioDetailPage.styled";
+import * as S from "@/pages/portfolio-detail/PortfolioDetailPage.styled";
 
 import type { Portfolio } from "@/types";
 
 import { useHtmlContent } from "@/hooks";
+import { setAlert, userState, section } from "@/redux";
 import { usePortfolioDeleteQuery, usePortfolioDetailQuery, toUrlParameter } from "@/utils";
 
 import { Text, Image, Button, ToggleButton, Tag, Profile } from "@/components";
