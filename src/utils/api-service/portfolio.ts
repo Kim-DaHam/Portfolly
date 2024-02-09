@@ -1,13 +1,13 @@
 import { useMutation, useQuery, useQueryClient, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Toggle } from '@/components/atoms/button/ToggleButton';
 
 import type { Section } from '@/types';
 
-import { setToast } from '@/redux';
+import { section, setToast } from '@/redux';
 import { fetch, toUrlParameter } from "@/utils";
 
 export const PAGE_PER_DATA = 10;
@@ -73,6 +73,10 @@ export const usePortfolioDetailQuery = (id: string) => {
 
 // 포트폴리오 삭제
 export const usePortfolioDeleteQuery = (id: string) => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const currentSection = useSelector(section);
+
 	const queryClient = useQueryClient();
 	const deletePortfolio = () => fetch(`/portfolios?id=${id}`, 'DELETE');
 
@@ -80,7 +84,11 @@ export const usePortfolioDeleteQuery = (id: string) => {
 		mutationFn: deletePortfolio,
 		onSuccess: () => {
 			queryClient.removeQueries({queryKey: ['portfolios', 'detail', id]})
-			queryClient.invalidateQueries({queryKey: ['portfolios'], refetchType: 'all' });
+			dispatch(setToast({id: 0, type:'success', message: '포트폴리오를 삭제했습니다.'}));
+			navigate(`/main/${toUrlParameter(currentSection)}`);
+		},
+		onError: () => {
+			dispatch(setToast({id: 0, type:'error', message: '삭제를 실패했습니다.'}));
 		},
 	});
 };

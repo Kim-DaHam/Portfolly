@@ -19,7 +19,6 @@ export default function PortfolioDetail(){
 
 	const user = useSelector(userState);
 	const portfolioId = useParams().portfolio_id as string;
-	const currentSection = useSelector(section);
 
 	const { sanitize, setElementInlineStyle } = useHtmlContent();
 	const { data: portfolio, isError } = usePortfolioDetailQuery(portfolioId);
@@ -39,7 +38,6 @@ export default function PortfolioDetail(){
 
 	const deletePortfolio = async () => {
 		await deletePorfolioMutation.mutate();
-		navigate(`/main/${toUrlParameter(currentSection)}`);
 	};
 
 	useEffect(() => {
