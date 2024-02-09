@@ -7,7 +7,7 @@ import * as S from "@/pages/portfolio-detail/PortfolioDetailPage.styled";
 
 import type { Portfolio } from "@/types";
 
-import { useHtmlContent } from "@/hooks";
+import { useHtmlContent, usePageErrorAlert } from "@/hooks";
 import { setAlert, userState, section } from "@/redux";
 import { usePortfolioDeleteQuery, usePortfolioDetailQuery, toUrlParameter } from "@/utils";
 
@@ -19,11 +19,11 @@ export default function PortfolioDetail(){
 
 	const user = useSelector(userState);
 	const portfolioId = useParams().portfolio_id as string;
+	const deletePorfolioMutation = usePortfolioDeleteQuery(portfolioId);
 
 	const { sanitize, setElementInlineStyle } = useHtmlContent();
 	const { data: portfolio, isError } = usePortfolioDetailQuery(portfolioId);
-
-	const deletePorfolioMutation = usePortfolioDeleteQuery(portfolioId);
+	usePageErrorAlert(isError);
 
 	const handleEditButton = () => {
 		navigate(`/portfolios/edit?id=${portfolio?.id}`, {state: portfolio});
@@ -39,15 +39,6 @@ export default function PortfolioDetail(){
 	const deletePortfolio = async () => {
 		await deletePorfolioMutation.mutate();
 	};
-
-	useEffect(() => {
-		if(isError) {
-			dispatch(setAlert({
-				type: 'error',
-				onConfirm: () => navigate(-1),
-			}))
-		}
-	}, [isError]);
 
 	return(
 		<S.Wrapper>
