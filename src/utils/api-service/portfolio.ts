@@ -160,21 +160,33 @@ export const useToggleButtonQuery = (id: string, type: Toggle) => {
 	})
 };
 
+// 포트폴리오 작성/수정
 export const usePortfolioPostQuery = (id?: string) => {
 	const queryClient = useQueryClient();
+	const queryKey = ['portfolios', 'detail', id];
 	const postPortfolio = (body: any) => fetch(`/portfolios`, 'POST', body);
 	const updatePortfolio = (body: any) => fetch(`/portfolios?id=${id}`, 'PATCH', body);
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	return useMutation({
 		mutationFn: id? updatePortfolio : postPortfolio,
-		onSuccess: (data) => {
+		onSuccess: (response) => {
 			if(id) {
-				queryClient.removeQueries({queryKey: ['portfolios', 'detail', id]});
+				queryClient.setQueryData(queryKey, () => {
+					return response;
+				});
 			}
-			queryClient.invalidateQueries({queryKey: ['portfolios'], refetchType: 'all' });
-			navigate(`/portfolios/${data.id}`);
+			queryClient.setQueryData(['portfolios', 'detail', response.id], () => {
+				return response;
+			});
+			// queryClient.invalidateQueries({queryKey: ['portfolios'], refetchType: 'all' });
+			navigate(`/portfolios/${response.id}`);
+			dispatch(setToast({id: 0, type:'success', message: '포트폴리오가 등록되었습니다.'}));
+		},
+		onError: () => {
+			dispatch(setToast({id: 0, type:'success', message: '포트폴리오 등록에 실패했습니다.'}));
 		},
 	});
 };

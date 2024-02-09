@@ -87,7 +87,14 @@ export default function PortfolioEditPage(){
 						})}>
 							<S.TagInput contentEditable onKeyUp={handleTagInput}/>
 							{tags.map((tag: string, index: number) => {
-								return <Tag readOnly={false} value={tag} key={index} handleTag={handleTag}/>
+								return (
+									<Tag
+										readOnly={false}
+										value={tag}
+										key={index}
+										handleTag={handleTag}
+									/>
+								)
 							})}
 						</S.TagBox>
 					</S.Box>
@@ -103,7 +110,13 @@ export default function PortfolioEditPage(){
 						/>
 					</S.Box>
 
-					<Button color='black' size='medium' shape='square' type='submit'>작성하기</Button>
+					<Button
+						color='black'
+						size='medium'
+						type='submit'
+					>
+						작성하기
+					</Button>
 				</S.Form>
 			</S.FormSection>
 		</S.Wrapper>

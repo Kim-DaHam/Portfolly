@@ -9,7 +9,6 @@ export const ImageLayout = styled.div<Props>`
 
 	flex: none;
 	overflow: hidden;
-	background-color: #f3f3f3;
 
 	${(props) => {
 		if(props.shape === 'circle'){

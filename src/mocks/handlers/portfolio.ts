@@ -154,6 +154,19 @@ export const PortfolioHandlers= [
 			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 		};
 
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
+		const otherPortfolios: Portfolio[] = [];
+
+		portfolioDocKeys.map((docKey: string) => {
+			if(portfolios[docKey].user.id === user.id &&
+				otherPortfolios.length < 9){
+					otherPortfolios.push({
+						id: docKey,
+						...portfolios[docKey]
+					});
+			}
+		});
+
 		portfolios[portfolioId] = {
 			user: user,
 			createdAt: new Date(Date.now()),
@@ -162,7 +175,13 @@ export const PortfolioHandlers= [
 			commissions: null,
 		};
 
-		return HttpResponse.json({id: portfolioId}, { status: 200 });
+		const response = {
+			id: portfolioId,
+			...portfolios[portfolioId],
+			otherPortfolios: otherPortfolios,
+		};
+
+		return HttpResponse.json(response, { status: 200 });
 	}),
 
 	// 포트폴리오 수정
@@ -173,9 +192,15 @@ export const PortfolioHandlers= [
 
 		Object.assign(portfolios[portfolioId], portfolioForm);
 
-		return HttpResponse.json({id: portfolioId}, { status: 200 });
+		const response = {
+			id: portfolioId,
+			...portfolios[portfolioId]
+		};
+
+		return HttpResponse.json(response, { status: 200 });
 	}),
 
+	// 이미지 등록
 	http.post(`/picture`, async () => {
 		const imageUrl = [
 			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F2XzQc%2FbtsCoF6oqiQ%2FfTLqaY7HBAdFUn22D1UVP0%2Fimg.jpg',
