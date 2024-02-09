@@ -5,9 +5,10 @@ import { portfolios } from '@/mocks/nosql-data/portfolios';
 
 import type { Portfolio, Section, Portfolios } from '@/types';
 
-import { generateRandomString } from '@/utils';
+import { PAGE_PER_DATA, generateRandomString } from '@/utils';
 
 export const PortfolioHandlers= [
+	// 포트폴리오 목록 데이터를 불러온다.
 	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
 
@@ -17,38 +18,40 @@ export const PortfolioHandlers= [
 		const username = url.searchParams.get('username') as string;
 
 		const page = Number(url.searchParams.get('page')) as number;
-		const isRangeOfPage = (index: number, page: number) => index >= (page - 1) * 100 && index < page * 100;
+		const isRangeOfPage = (index: number, page: number) => {
+			return index >= (page - 1) * PAGE_PER_DATA && index < page * PAGE_PER_DATA;
+		}
 
-		const filteredPortfolios: Portfolios = {};
+		const filteredPortfolios: Portfolio[] = [];
 
 		const portfolioDocKeys: string[] = Object.keys(portfolios);
 
 		portfolioDocKeys.map((docKey: string, index: number) => {
-			const IsSameSection = portfolios[docKey].section === section;
-			const IsSameCategory = category ? portfolios[docKey].category === category : true;
+			const isSameSection = portfolios[docKey].section === section;
+			const isSameCategory = category === '전체' ? true : portfolios[docKey].category === category ;
 			const hasTag = !tag && portfolios[docKey].tags.indexOf(tag) !== -1;
 			const hasUsername = !username && portfolios[docKey].user.name === username;
 
-			if(IsSameSection && IsSameCategory && isRangeOfPage(index, page)) {
+			if(isSameSection && isSameCategory && isRangeOfPage(index, page)) {
 				// const bookmarks = users.find((user) => user.id === LOGIN_ID)!.bookmarks as number[];
 				// const isBookmarked = getIsBookmarked(portfolio!.id, bookmarks);
-
 				const portfolio: Portfolio = {
 					...portfolios[docKey],
+					id: docKey,
 					isBookmarked: true,
 				};
 
-				filteredPortfolios[docKey] = portfolio;
+				filteredPortfolios.push(portfolio);
 				return;
 			}
 
-			if(IsSameSection && hasTag && isRangeOfPage(index, page)){
-				filteredPortfolios[docKey] = portfolios[docKey];
+			if(isSameSection && hasTag && isRangeOfPage(index, page)){
+				filteredPortfolios.push(portfolios[docKey]);
 				return;
 			}
 
-			if(IsSameSection && hasUsername && isRangeOfPage(index, page)){
-				filteredPortfolios[docKey] = portfolios[docKey];
+			if(isSameSection && hasUsername && isRangeOfPage(index, page)){
+				filteredPortfolios.push(portfolios[docKey]);
 				return;
 			}
 		});
@@ -56,6 +59,7 @@ export const PortfolioHandlers= [
 		return HttpResponse.json(filteredPortfolios, { status: 200 });
 	}),
 
+	// 각 분야별 top3 포트폴리오 데이터를 불러온다.
 	http.get('/top-portfolios', ()=>{
 		const portfolioDocKeys: string[] = Object.keys(portfolios);
 		const topPortfolios: {[key in Section]: Portfolios} = {
