@@ -43,7 +43,10 @@ export default function PortfolioSlider({section, portfolio}: Props){
 		<S.Wrapper
 			$section={section}
 			$isMoreThanOnePage={portfolio.images.length > 0}
-			onClick={() => navigate(`/portfolios/${portfolio.id}`)}
+			onClick={() => navigate(
+				`/portfolios/${portfolio.id}`,
+				{state: {prevPathname: 'main'}})
+			}
 		>
 			<S.Content className={`${sectionClassName}-slider-box`}>
 				<S.ArrowBox onClick={eventStopPropagation}>
