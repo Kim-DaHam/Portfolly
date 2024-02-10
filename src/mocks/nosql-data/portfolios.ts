@@ -22,28 +22,27 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p1c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
 					nickname: '강철맨',
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
-				review: {
-					score: 50,
-					content: 'review test',
-				},
+				review: null,
 				createdAt: new Date('2024-05-06'),
 				endedAt: null,
 				details: {
 					title: 'test title',
 					content: 'test content',
 					cost: 50000,
-					status: '구매 확정',
+					status: '진행 중',
 					deadline: new Date('2024-05-26'),
 				},
 			},
 			p1c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -66,6 +65,7 @@ export const portfolios: Portfolios = {
 			},
 			p1c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -109,6 +109,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p2c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -131,6 +132,7 @@ export const portfolios: Portfolios = {
 			},
 			p2c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -153,6 +155,7 @@ export const portfolios: Portfolios = {
 			},
 			p2c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -196,6 +199,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p3c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -218,6 +222,7 @@ export const portfolios: Portfolios = {
 			},
 			p3c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -240,6 +245,7 @@ export const portfolios: Portfolios = {
 			},
 			p3c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -283,6 +289,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p4c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -305,6 +312,7 @@ export const portfolios: Portfolios = {
 			},
 			p4c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -327,6 +335,7 @@ export const portfolios: Portfolios = {
 			},
 			p4c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -370,6 +379,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p5c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -392,6 +402,7 @@ export const portfolios: Portfolios = {
 			},
 			p5c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -414,6 +425,7 @@ export const portfolios: Portfolios = {
 			},
 			p5c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -457,6 +469,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p6c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -479,6 +492,7 @@ export const portfolios: Portfolios = {
 			},
 			p6c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -501,6 +515,7 @@ export const portfolios: Portfolios = {
 			},
 			p6c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -544,6 +559,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p7c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -566,6 +582,7 @@ export const portfolios: Portfolios = {
 			},
 			p7c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -588,6 +605,7 @@ export const portfolios: Portfolios = {
 			},
 			p7c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -631,6 +649,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p8c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -653,6 +672,7 @@ export const portfolios: Portfolios = {
 			},
 			p8c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -675,6 +695,7 @@ export const portfolios: Portfolios = {
 			},
 			p8c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -718,6 +739,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p9c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -740,6 +762,7 @@ export const portfolios: Portfolios = {
 			},
 			p9c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -762,6 +785,7 @@ export const portfolios: Portfolios = {
 			},
 			p9c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -805,6 +829,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p10c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -827,6 +852,7 @@ export const portfolios: Portfolios = {
 			},
 			p10c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -849,6 +875,7 @@ export const portfolios: Portfolios = {
 			},
 			p10c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -892,6 +919,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p11c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -914,6 +942,7 @@ export const portfolios: Portfolios = {
 			},
 			p11c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -936,6 +965,7 @@ export const portfolios: Portfolios = {
 			},
 			p11c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -979,6 +1009,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p12c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1001,6 +1032,7 @@ export const portfolios: Portfolios = {
 			},
 			p12c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1023,6 +1055,7 @@ export const portfolios: Portfolios = {
 			},
 			p12c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1066,6 +1099,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p13c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1088,6 +1122,7 @@ export const portfolios: Portfolios = {
 			},
 			p13c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1110,6 +1145,7 @@ export const portfolios: Portfolios = {
 			},
 			p13c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1153,6 +1189,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p14c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1175,6 +1212,7 @@ export const portfolios: Portfolios = {
 			},
 			p14c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1197,6 +1235,7 @@ export const portfolios: Portfolios = {
 			},
 			p14c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1240,6 +1279,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p15c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1262,6 +1302,7 @@ export const portfolios: Portfolios = {
 			},
 			p15c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1284,6 +1325,7 @@ export const portfolios: Portfolios = {
 			},
 			p15c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1327,6 +1369,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p16c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1349,6 +1392,7 @@ export const portfolios: Portfolios = {
 			},
 			p16c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1371,6 +1415,7 @@ export const portfolios: Portfolios = {
 			},
 			p16c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1414,6 +1459,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p17c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1436,6 +1482,7 @@ export const portfolios: Portfolios = {
 			},
 			p17c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1458,6 +1505,7 @@ export const portfolios: Portfolios = {
 			},
 			p17c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1501,6 +1549,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p18c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1523,6 +1572,7 @@ export const portfolios: Portfolios = {
 			},
 			p18c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1545,6 +1595,7 @@ export const portfolios: Portfolios = {
 			},
 			p18c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1588,6 +1639,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p19c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1610,6 +1662,7 @@ export const portfolios: Portfolios = {
 			},
 			p19c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1632,6 +1685,7 @@ export const portfolios: Portfolios = {
 			},
 			p19c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1675,6 +1729,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p20c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1697,6 +1752,7 @@ export const portfolios: Portfolios = {
 			},
 			p20c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1719,6 +1775,7 @@ export const portfolios: Portfolios = {
 			},
 			p20c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1762,6 +1819,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p21c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1784,6 +1842,7 @@ export const portfolios: Portfolios = {
 			},
 			p21c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1806,6 +1865,7 @@ export const portfolios: Portfolios = {
 			},
 			p21c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1849,6 +1909,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p22c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1871,6 +1932,7 @@ export const portfolios: Portfolios = {
 			},
 			p22c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1893,6 +1955,7 @@ export const portfolios: Portfolios = {
 			},
 			p22c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1936,6 +1999,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p23c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1958,6 +2022,7 @@ export const portfolios: Portfolios = {
 			},
 			p23c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -1980,6 +2045,7 @@ export const portfolios: Portfolios = {
 			},
 			p23c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2023,6 +2089,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p24c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2045,6 +2112,7 @@ export const portfolios: Portfolios = {
 			},
 			p24c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2067,6 +2135,7 @@ export const portfolios: Portfolios = {
 			},
 			p24c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2110,6 +2179,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p25c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2132,6 +2202,7 @@ export const portfolios: Portfolios = {
 			},
 			p25c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2154,6 +2225,7 @@ export const portfolios: Portfolios = {
 			},
 			p25c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2197,6 +2269,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p26c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2219,6 +2292,7 @@ export const portfolios: Portfolios = {
 			},
 			p26c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2241,6 +2315,7 @@ export const portfolios: Portfolios = {
 			},
 			p26c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2284,6 +2359,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p27c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2306,6 +2382,7 @@ export const portfolios: Portfolios = {
 			},
 			p27c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2328,6 +2405,7 @@ export const portfolios: Portfolios = {
 			},
 			p27c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2371,6 +2449,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p28c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2393,6 +2472,7 @@ export const portfolios: Portfolios = {
 			},
 			p28c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2415,6 +2495,7 @@ export const portfolios: Portfolios = {
 			},
 			p28c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2458,6 +2539,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p29c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2480,6 +2562,7 @@ export const portfolios: Portfolios = {
 			},
 			p29c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2502,6 +2585,7 @@ export const portfolios: Portfolios = {
 			},
 			p29c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2545,6 +2629,7 @@ export const portfolios: Portfolios = {
 		commissions: {
 			p30c1: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2567,6 +2652,7 @@ export const portfolios: Portfolios = {
 			},
 			p30c2: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',
@@ -2589,6 +2675,7 @@ export const portfolios: Portfolios = {
 			},
 			p30c3: {
 				client: {
+					id: 'client1',
 					name: '김강철',
 					email: 'steel@example.com',
 					phone: '010-1234-1234',

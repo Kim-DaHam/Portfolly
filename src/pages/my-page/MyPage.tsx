@@ -28,8 +28,6 @@ function MyPage(){
 	const isMyPage = profileId === userId ? true : false;
 	usePageErrorAlert(isError);
 
-	console.log(user)
-
 	useEffect(() => {
 		const tab = params.tab as Navigation;
 		setNavigation(tab || 'introduce');

@@ -1,21 +1,20 @@
-import { Fragment, MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiX as XIcon } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 
-import { userState } from "@/redux/loginSlice";
-import { usePostCommissionQuery } from "@/utils/api-service/commission";
+import * as v from "@/components/organisms/modal/commission-modal/CommissionModal.constants";
+import * as S from "@/components/organisms/modal/commission-modal/CommissionModal.styled";
 
-import * as v from "./CommissionModal.constants";
-import * as S from "./CommissionModal.styled";
+import type { Commission } from "@/types";
 
-import { addValidationErrorToast } from "@/utils";
+import { userState } from "@/redux";
+import { usePostCommissionQuery , addValidationErrorToast, toLocalDateString } from "@/utils";
 
 import { Text, Button, Modal, Profile, Rating } from "@/components";
 
-
 type Props = {
-	commission: any;
+	commission: Commission;
 	handleModal: MouseEventHandler<HTMLElement>;
 	editMode?: boolean;
 	$modalState: boolean;
@@ -35,19 +34,25 @@ const defaultValues: FormValues = {
 	cost: 0,
 };
 
-export default function RequestModal({ commission, handleModal, editMode, $modalState }: Props) {
-	const [updatedCommission, setUpdatedCommission] = useState(commission);
+export default function CommissionModal({ commission, handleModal, editMode, $modalState }: Props) {
 	const [isEditMode, setIsEditMode] = useState(editMode);
 
 	const dispatch = useDispatch();
 
+	const commissionMutation = usePostCommissionQuery(commission.portfolio!.id!, commission.client.id, commission.id);
 	const { authority } = useSelector(userState);
-	const { register, reset, handleSubmit, formState: { isSubmitting, errors, dirtyFields } } = useForm<FormValues>({
+	const {
+		register,
+		reset,
+		handleSubmit,
+		formState: {
+			isSubmitting,
+			errors,
+			dirtyFields
+		} } = useForm<FormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
 	});
-
-	const commissionMutation = usePostCommissionQuery(commission.id, commission.clientId);
 
 	const onSubmit = async (form: any) => {
 		const copyForm: {[key: string]: any} = {...form};
@@ -59,24 +64,20 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 		});
 
 		await commissionMutation.mutate(changedValues, {
-			onSuccess: (response) => {
+			onSuccess: () => {
 				setIsEditMode(prev=>!prev);
-				setUpdatedCommission(response);
 			},
 		});
 	};
 
 	useEffect(() => {
-		if(commission.details) {
-			reset({
-				title: commission.details.title,
-				content: commission.details.content,
-				deadline: commission.details.deadline,
-				cost: commission.details.cost,
-			});
-			return;
-		}
-		setUpdatedCommission({...commission, details: {...defaultValues}});
+		if(!commission.details) return;
+		reset({
+			title: commission.details.title,
+			content: commission.details.content,
+			deadline: commission.details.deadline,
+			cost: commission.details.cost,
+		});
 	}, []);
 
 	useEffect(() => {
@@ -99,17 +100,17 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 							/>
 							:
 							<Text size='titleSmall'>
-								{updatedCommission.details.title}
+								{commission.details.title}
 							</Text>
 						}
 
 						<Text size='bodySmall'>
-							{updatedCommission.createdAt}
+							{toLocalDateString(commission.createdAt)}
 						</Text>
 
-						{ updatedCommission.details &&
+						{ commission.details &&
 							<Text size='bodySmall'>
-								{updatedCommission.details.status}
+								{commission.details.status}
 							</Text>
 						}
 					</S.Box>
@@ -126,11 +127,11 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 							<br/>
 							<Text size='label'>이름</Text>
 							<Text size='bodyMedium'>
-								{commission.expert.name}
+								{commission.expert?.name}
 							</Text>
 							<Text size='label'>연락처</Text>
 							<Text size='bodyMedium'>
-								{commission.expert.phone}
+								{commission.expert?.phone}
 							</Text>
 						</S.Box>
 					</S.Box>
@@ -144,7 +145,7 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 							})} />
 							:
 							<Text size='bodyMedium'>
-								{updatedCommission.details.content}
+								{commission.details.content}
 							</Text>
 						}
 					</S.Box>
@@ -159,7 +160,7 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 							})} />
 							:
 							<Text size='bodyMedium'>
-								{updatedCommission.details.deadline}
+								{toLocalDateString(commission.details.deadline)}
 							</Text>
 						}
 					</S.Box>
@@ -172,7 +173,7 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 							})} />
 							:
 							<Text size='bodyMedium'>
-								{updatedCommission.details.cost}
+								{commission.details.cost}
 							</Text>
 						}
 					</S.Box>
@@ -180,7 +181,7 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 					{ commission.review &&
 						<S.Box>
 							<Text size='label'>리뷰</Text>
-							<Rating readonly score={commission.review.rating} />
+							<Rating readonly score={commission.review.score} />
 							<Text size='bodyMedium'>
 								{commission.review.content}
 							</Text>
@@ -190,21 +191,36 @@ export default function RequestModal({ commission, handleModal, editMode, $modal
 
 				<S.ButtonGroup>
 					{ authority === 'expert' && !isEditMode && commission.details.status !== '구매 확정' &&
-						<Button color='black' size='medium' onClick={() => setIsEditMode(prev=>!prev)}>
+						<Button
+							color='black'
+							size='medium'
+							onClick={() => setIsEditMode(prev=>!prev)}
+						>
 							의뢰 수정
 						</Button>
 					}
 					{ authority === 'client' && commission.details.status !== '구매 확정' &&
-						<Button color='black' size='medium'>
+						<Button
+							color='black'
+							size='medium'
+						>
 							주문 취소
 						</Button>
 					}
 					{ isEditMode ?
-						<Button color='black' size='medium' onClick={handleSubmit(onSubmit)}>
+						<Button
+							color='black'
+							size='medium'
+							onClick={handleSubmit(onSubmit)}
+						>
 							저장하기
 						</Button>
 						:
-						<Button color='gray' size='medium' onClick={handleModal}>
+						<Button
+							color='gray'
+							size='medium'
+							onClick={handleModal}
+						>
 							닫기
 						</Button>
 					}

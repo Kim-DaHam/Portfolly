@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import * as S from '@/components/molecules/items/commission-item/CommissionItem.styled';
@@ -31,19 +31,33 @@ export default function CommissionItem({ commission, index }: Props) {
 			<S.Content onClick={handleModal}>
 				<Text size='bodySmall'>{index}</Text>
 				<S.Box>
-					<Text size='bodyMedium'>{commission.details.title}</Text>
-					<Text size='bodySmall'>{commission.client.nickname}</Text>
-					<Text size='bodySmall'>{toLocalDateString(new Date(commission.createdAt))}</Text>
+					<Text size='bodyMedium'>
+						{commission.details.title}
+					</Text>
+					<Text size='bodySmall'>
+						{commission.client.nickname}
+					</Text>
+					<Text size='bodySmall'>
+						{toLocalDateString(new Date(commission.createdAt))}
+					</Text>
 				</S.Box>
 
 				{ authority === 'expert' && commission.review &&
-					<Button color='gray' onClick={handleReviewButton}>
+					<Button
+						color='gray'
+						onClick={handleReviewButton}
+					>
 						{isReviewOpen ? '리뷰 닫기' : '리뷰 확인'}
 					</Button>
 				}
 
 				{ !isReviewOpen && authority === 'client' && !commission.review &&
-					<Button color='gray' onClick={handleReviewButton}>리뷰 작성</Button>
+					<Button
+						color='gray'
+						onClick={handleReviewButton}
+					>
+						리뷰 작성
+					</Button>
 				}
 			</S.Content>
 
@@ -60,7 +74,10 @@ export default function CommissionItem({ commission, index }: Props) {
 			}
 
 			{ isReviewOpen && authority === 'client' && !commission.review &&
-				<ReviewForm handleReviewOpen={setIsReviewOpen} commission={commission} />
+				<ReviewForm
+					handleReviewOpen={setIsReviewOpen}
+					commission={commission}
+				/>
 			}
 		</S.Wrapper>
 	)

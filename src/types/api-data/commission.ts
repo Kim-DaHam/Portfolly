@@ -3,12 +3,29 @@ export type Commissions = {
 }
 
 export type Commission = {
+	id?: string,
 	client: {
+		id: string;
 		name: string,
 		email: string,
 		phone: string,
 		nickname: string,
 		profileImage: string,
+	},
+	expert?: {
+		id: string;
+		name: string,
+		email: string,
+		phone: string,
+		nickname: string,
+		profileImage: string,
+	},
+	portfolio?: {
+		id: string,
+		section: string,
+		title: string,
+		summary: string,
+		thumbnailUrl: string,
 	},
 	review: Review | null,
 	createdAt: Date,
@@ -17,6 +34,15 @@ export type Commission = {
 };
 
 export type Review = {
+	id?: string,
+	user?: {
+		nickname: string,
+		profileImage: string,
+	},
+	portfolio?: {
+		id: string,
+		thumbnailUrl: string,
+	},
 	score: number,
 	content: string,
 };

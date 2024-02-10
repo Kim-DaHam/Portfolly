@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillQuestionCircle as QuestionIcon } from "react-icons/ai";
 
@@ -32,7 +32,7 @@ const defaultValues: FormValues = {
 };
 
 export default function Management({ commissions }: Props) {
-	const [commissionList, setCommissionList] = useState(commissions);
+	const [commissionList, setCommissionList] = useState<Commission[]>(commissions);
 
 	const { register, handleSubmit, setValue } = useForm<FormValues>({
 		mode: 'onSubmit',

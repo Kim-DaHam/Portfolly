@@ -28,20 +28,20 @@ export const toggleButtonHandlers= [
 	http.post('/bookmark', ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
-		const wasBookmarked = users[LOGIN_ID].bookmarks[portfolioId];
+		const wasBookmarked = users[LOGIN_ID].bookmarks![portfolioId];
 		const portfolio = portfolios[portfolioId];
 
 		if(wasBookmarked) {
-			delete users[LOGIN_ID].bookmarks[portfolioId];
+			delete users[LOGIN_ID].bookmarks![portfolioId];
 			return HttpResponse.json({isBookmarked: false}, { status: 200 });
 		}
 
-		users[LOGIN_ID].bookmarks[portfolioId] = {
+		users[LOGIN_ID].bookmarks![portfolioId] = {
 			id: portfolioId,
 			title: portfolio.title,
 			summary: portfolio.summary,
 			thumbnailUrl: portfolio.images[0],
-		}
+		};
 
 		return HttpResponse.json({isBookmarked: true}, { status: 200 });
 	}),
