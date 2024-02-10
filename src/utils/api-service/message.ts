@@ -14,7 +14,19 @@ const messageKeys = {
   detail: (id: string) => [...messageKeys.all, id] as const,
 }
 
-// 메세지룸 정보 불러오기
+// 대화방 목록 불러오기
+export const useMessageRoomsQuery = () => {
+	const getMessageRooms = () => fetch(`/messageRooms`, 'GET');
+
+	return useQuery({
+		queryKey: messageKeys.lists('list'),
+		queryFn: getMessageRooms,
+		staleTime: Infinity,
+		gcTime: Infinity,
+	});
+};
+
+// 대화방 불러오기
 export const useMessageRoomQuery = (partnerId: string | null) => {
 	const getMessageRoom = () => fetch(`/messageRoom?partner_id=${partnerId}&page=${1}`, 'GET');
 
@@ -27,13 +39,13 @@ export const useMessageRoomQuery = (partnerId: string | null) => {
 	});
 };
 
-// 메세지룸 삭제하기
+// 대화방 삭제하기
 export const useMessageRoomDeleteMutation = (partnerId: string) => {
 	const queryClient = useQueryClient();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const messageRoom = queryClient.getQueryData(['messageRoom']) as any;
-	const copyMessageRoom = messageRoom && JSON.parse(JSON.stringify(messageRoom));
+	const messageRoomList = queryClient.getQueryData(['messageRoom', 'list']) as any[];
+	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
 
 	const deleteMessageRoom = () => fetch(`/messageRooms?partner_id=${partnerId}`, 'DELETE');
 
@@ -41,13 +53,13 @@ export const useMessageRoomDeleteMutation = (partnerId: string) => {
 		mutationFn: deleteMessageRoom,
 
 		onSuccess: () => {
-			if(messageRoom) {
-				messageRoom.messageRoomList.forEach((room: MessageRoom, index: number) => {
+			if(messageRoomList) {
+				messageRoomList.forEach((room: MessageRoom, index: number) => {
 					if(room.partner!.id !== partnerId) return;
-					copyMessageRoom.messageRoomList.splice(index, 1);
+					copyMessageRoomList.splice(index, 1);
 					return false;
 				});
-				queryClient.setQueryData(['messageRoom'], copyMessageRoom);
+				queryClient.setQueryData(['messageRoom', 'list'], copyMessageRoomList);
 			}
 			queryClient.removeQueries({queryKey: ['messageRoom', `${partnerId}`]});
 			navigate(`/messages`);

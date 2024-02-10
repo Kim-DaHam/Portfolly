@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import * as S from '@/components/organisms/message-room-list/MessageRoomList.styled';
 import { MessageStatus, type MessageRoom } from "@/types";
 
-import { Text, MessageRoomItem, Selector, MessageList } from "@/components";
+import { useMessageRoomsQuery } from "@/utils";
 
-type Props = {
-	messageRoomList: MessageRoom[];
-}
+import { Text, MessageRoomItem, Selector } from "@/components";
 
-export default function MessageRoomList({ messageRoomList }: Props) {
+export default function MessageRoomList() {
 	const [messageFilter, setMessageFilter] = useState<MessageStatus | '전체'>('전체');
 	const [filteredMessageRooms, setFilteredMessageRooms] = useState<MessageRoom[]>([]);
+
+	const { data: messageRoomList } = useMessageRoomsQuery();
 
 	const filterMessageRooms = () => {
 		if(messageFilter === '전체') {
