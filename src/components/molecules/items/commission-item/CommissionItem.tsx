@@ -35,7 +35,11 @@ export default function CommissionItem({ commission, index }: Props) {
 						{commission.details.title}
 					</Text>
 					<Text size='bodySmall'>
-						{commission.client.nickname}
+						{authority === 'expert' ?
+							commission.client.nickname
+							:
+							commission.expert.nickname
+						}
 					</Text>
 					<Text size='bodySmall'>
 						{commission.createdAt}
