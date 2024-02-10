@@ -1,19 +1,21 @@
 import { useEffect } from "react";
 import { FiChevronRight as ChevronRightIcon , FiArrowLeft as LeftArrowIcon } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
+import { SESSION_STORAGE_KEY } from "@/components/organisms/portfolio-list/PortfolioList";
 import * as S from "@/pages/portfolio-detail/PortfolioDetailPage.styled";
 
 import type { Portfolio } from "@/types";
 
 import { useHtmlContent, usePageErrorAlert } from "@/hooks";
-import { setAlert, userState, section } from "@/redux";
+import { setAlert, userState } from "@/redux";
 import { usePortfolioDeleteQuery, usePortfolioDetailQuery, toUrlParameter } from "@/utils";
 
 import { Text, Image, Button, ToggleButton, Tag, Profile } from "@/components";
 
 export default function PortfolioDetail(){
+	const location = useLocation();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -24,6 +26,15 @@ export default function PortfolioDetail(){
 	const { sanitize, setElementInlineStyle } = useHtmlContent();
 	const { data: portfolio, isError } = usePortfolioDetailQuery(portfolioId);
 	usePageErrorAlert(isError);
+
+	const handleGoBackButton = () => {
+		if(location.state?.prevPathname === 'main') {
+			navigate(-1);
+			return;
+		}
+		sessionStorage.removeItem(SESSION_STORAGE_KEY);
+		return navigate(`/main/${toUrlParameter(portfolio?.section)}`);
+	};
 
 	const handleEditButton = () => {
 		navigate(`/portfolios/edit?id=${portfolio?.id}`, {state: portfolio});
@@ -40,11 +51,15 @@ export default function PortfolioDetail(){
 		await deletePorfolioMutation.mutate();
 	};
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return(
 		<S.Wrapper>
 			<LeftArrowIcon
 				size={20}
-				onClick={()=>navigate(-1)}
+				onClick={handleGoBackButton}
 			/>
 
 			<S.Content>

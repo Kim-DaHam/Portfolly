@@ -15,7 +15,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: any;
 }
 
-export default function PortfolioCard({ portfolio }: Props) {
+export default function PortfolioCard({ portfolio, ...props }: Props) {
 	const buttonGroupRef = useRef(null);
 	const currentSection = useSelector(section);
 
@@ -32,8 +32,11 @@ export default function PortfolioCard({ portfolio }: Props) {
 	}, [isPopUp])
 
 	return (
-		<S.Wrapper>
-			<PortfolioSlider section={currentSection} portfolio={portfolio}/>
+		<S.Wrapper {...props}>
+			<PortfolioSlider
+				section={currentSection}
+				portfolio={portfolio}
+			/>
 
 			<S.ProfileBox>
 				<Profile type='portfolio-card' portfolio={portfolio} user={portfolio.user}/>
