@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { Toggle } from '@/components/atoms/button/ToggleButton';
 
-import type { Section } from '@/types';
+import type { Portfolio, Section } from '@/types';
 
 import { section, setToast } from '@/redux';
-import { fetch, toUrlParameter } from "@/utils";
+import { fetch, getFilterQueryString, toUrlParameter } from "@/utils";
 
 export const PAGE_PER_DATA = 10;
 
@@ -94,68 +94,86 @@ export const usePortfolioDeleteQuery = (id: string) => {
 };
 
 // 좋아요, 북마크 버튼
-export const useToggleButtonQuery = (id: string, type: Toggle) => {
-	const queryClient = useQueryClient();
-	const queryKey = ['portfolios', 'detail', id];
+export const useToggleButtonQuery = (portfolioId: string, type: Toggle) => {
 	const dispatch = useDispatch();
+	const queryClient = useQueryClient();
+	const currentSection = useSelector(section);
+	const currentCategory = getFilterQueryString();
 
-	const handleToggleButton = () => fetch(`/${type}?id=${id}`, 'POST');
+	const portfolioDetailQueryKey = ['portfolios', 'detail', portfolioId];
+	const portfolioAllQueryKey = [
+		'portfolios',
+		currentSection,
+		{filters: {
+			type:"category",
+			value:currentCategory.filterValue,
+		}}];
+
+	const prevPortfolioAll = queryClient.getQueryData(portfolioAllQueryKey) as any;
+	const prevPortfolio = queryClient.getQueryData(portfolioDetailQueryKey) as Portfolio | undefined;
+
+	const portfolioList = prevPortfolioAll &&
+		JSON.parse(JSON.stringify(prevPortfolioAll)) as any;
+
+	const portfolio = prevPortfolio &&
+		JSON.parse(JSON.stringify(prevPortfolio)) as Portfolio;
+
+	const handleToggleButton = () => fetch(`/${type}?id=${portfolioId}`, 'POST');
 
 	return useMutation({
 		mutationFn: handleToggleButton,
 		onMutate: async () => {
-			const prevPortfolio: any = queryClient.getQueryData(queryKey);
+			// 메인 페이지에서의 북마크 등록인 경우
+			if(prevPortfolioAll && type === 'bookmark') {
+				await queryClient.cancelQueries({queryKey: portfolioAllQueryKey});
 
-			await queryClient.cancelQueries({queryKey: queryKey});
+				portfolioList.pages.flat().forEach((portfolio: Portfolio) => {
+					if(portfolio.id !== portfolioId) return;
+					portfolio.isBookmarked = !portfolio.isBookmarked;
+					return false;
+				})
 
-			queryClient.setQueryData(queryKey, ()=>{
+				queryClient.setQueryData(portfolioAllQueryKey, portfolioList);
+			}
+
+			// 포트폴리오 디테일 페이지에서의 북마크/좋아요 등록인 경우
+			if(prevPortfolio) {
+				await queryClient.cancelQueries({queryKey: portfolioDetailQueryKey});
+
 				if(type === 'bookmark'){
-					return {
-						...prevPortfolio,
-						isBookmarked: !prevPortfolio.isBookmarked,
-					};
+					portfolio!.isBookmarked = !prevPortfolio.isBookmarked;
 				}
 				if(type === 'like'){
+					portfolio!.isLiked = !prevPortfolio.isLiked;
 					if(prevPortfolio.isLiked){
-						return {
-							...prevPortfolio,
-							isLiked: !prevPortfolio.isLiked,
-							likes: --prevPortfolio.likes,
-						};
+						portfolio!.likes = prevPortfolio.likes - 1;
 					}
-					return {
-						...prevPortfolio,
-						isLiked: !prevPortfolio.isLiked,
-						likes: ++prevPortfolio.likes,
-					};
+					else portfolio!.likes = prevPortfolio.likes + 1;
 				}
-			});
 
-			return () => queryClient.setQueryData(queryKey, prevPortfolio);
+				queryClient.setQueryData(portfolioDetailQueryKey, portfolio);
+			}
 		},
-		onSuccess: (response: any) => {
-			const portfolio = queryClient.getQueryData(queryKey) as any;
-
-			queryClient.setQueryData(queryKey, () => {
-				if(type === 'bookmark'){
-					return {
-						...portfolio,
-						isBookmarked: response.isBookmarked,
-					}
-				}
-				return {
-					...portfolio,
-					isLiked: response.isLiked,
-				};
-			});
+		onSuccess: () => {
+			if(prevPortfolioAll && type === 'bookmark') {
+				return queryClient.setQueryData(portfolioAllQueryKey, portfolioList);
+			}
+			return queryClient.setQueryData(portfolioDetailQueryKey, portfolio);
 		},
 		onError: () => {
+			if(prevPortfolioAll) {
+				queryClient.setQueryData(portfolioAllQueryKey, prevPortfolioAll);
+			}
+			if(prevPortfolio) {
+				queryClient.setQueryData(portfolioDetailQueryKey, prevPortfolio);
+			}
 			if(type === 'bookmark') {
 				dispatch(setToast({id: 0, type:'error', message: '북마크 등록을 실패했습니다.'}));
 			}
 			if(type === 'like') {
 				dispatch(setToast({id: 0, type:'error', message: '좋아요 등록을 실패했습니다.'}));
 			}
+			return;
 		},
 	})
 };
@@ -163,7 +181,7 @@ export const useToggleButtonQuery = (id: string, type: Toggle) => {
 // 포트폴리오 작성/수정
 export const usePortfolioPostQuery = (id?: string) => {
 	const queryClient = useQueryClient();
-	const queryKey = ['portfolios', 'detail', id];
+	const portfolioDetailQueryKey = ['portfolios', 'detail', id];
 	const postPortfolio = (body: any) => fetch(`/portfolios`, 'POST', body);
 	const updatePortfolio = (body: any) => fetch(`/portfolios?id=${id}`, 'PATCH', body);
 
@@ -174,14 +192,10 @@ export const usePortfolioPostQuery = (id?: string) => {
 		mutationFn: id? updatePortfolio : postPortfolio,
 		onSuccess: (response) => {
 			if(id) {
-				queryClient.setQueryData(queryKey, () => {
-					return response;
-				});
+				queryClient.setQueryData(portfolioDetailQueryKey, response);
 			}
-			queryClient.setQueryData(['portfolios', 'detail', response.id], () => {
-				return response;
-			});
-			// queryClient.invalidateQueries({queryKey: ['portfolios'], refetchType: 'all' });
+			queryClient.setQueryData(['portfolios', 'detail', response.id], response);
+			// queryClient.invalidateQueries({portfolioDetailQueryKey: ['portfolios'], refetchType: 'all' });
 			navigate(`/portfolios/${response.id}`);
 			dispatch(setToast({id: 0, type:'success', message: '포트폴리오가 등록되었습니다.'}));
 		},

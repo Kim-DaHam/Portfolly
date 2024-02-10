@@ -8,7 +8,7 @@ import AlertModal from '@/components/organisms/modal/alert-modal/AlertModal';
 import CommissionModal from '@/components/organisms/modal/commission-modal/CommissionModal';
 import SearchModal from '@/components/organisms/modal/search-modal/SearchModal';
 import PartnerProfile from '@/components/organisms/partner-profile/PartnerProfile';
-import PortfolioItemList from '@/components/organisms/portfolio-list/PortfolioItemList';
+import PortfolioCardList from '@/components/organisms/portfolio-list/PortfolioList';
 import Preview from '@/components/organisms/preview/Preview';
 import ActivityInformation from '@/components/organisms/profile-description/activity-information/ActivityInformation';
 import Introduce from '@/components/organisms/profile-description/introduce/Introduce';
@@ -26,7 +26,7 @@ export {
 	AlertModal,
 	CommissionModal,
 	SearchModal,
-	PortfolioItemList,
+	PortfolioCardList,
 	Preview,
 	Introduce,
 	Management,

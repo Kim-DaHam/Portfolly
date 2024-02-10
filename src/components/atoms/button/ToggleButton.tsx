@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiBookmark as BookmarkIcon, FiHeart as LikeIcon } from "react-icons/fi";
 
 import { Text, Button } from "@/components/atoms/index";
@@ -54,19 +54,21 @@ const renderToggleButton = (
 	return ComponentFactory[type];
 };
 
-export default function ToggleButton({type, portfolioId, isToggled, currentLikes=0}: Props) {
-	const [color, setColor] = useState(isToggled ? buttonColor[type] : 'white');
+export default function ToggleButton({ type, portfolioId, isToggled, currentLikes=0 }: Props) {
+	const [color, setColor] = useState('white');
 
 	const toggleButtonMutation = useToggleButtonQuery(portfolioId, type);
 
 	const handleToggleButton = () => {
 		toggleButtonMutation.mutate();
-		if(isToggled) {
-			setColor('white');
-			return;
+	};
+
+	useEffect(() => {
+		if(!isToggled) {
+			return setColor('white');
 		}
 		setColor(buttonColor[type]);
-	};
+	}, [isToggled]);
 
 	return(
 		<>
