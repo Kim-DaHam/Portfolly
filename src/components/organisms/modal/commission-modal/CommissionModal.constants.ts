@@ -7,6 +7,8 @@ export const validateContent = {
 	content: (value: string) => (value.length < 1) ? '커미션 내용을 입력하세요.' : true,
 };
 
-export const validateDeadline = {
-	min: (value: Date) => (value > new Date()) ? '마감일을 최소 하루 이상 설정하세요.' : true,
+export const validateDeadline = (createdAt: string) => {
+	return ({
+		min: (value: string) => (new Date(value) < new Date(createdAt)) ? '마감일을 최소 하루 이상 설정하세요.' : true,
+	});
 };

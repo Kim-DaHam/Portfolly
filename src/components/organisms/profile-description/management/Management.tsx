@@ -52,6 +52,10 @@ export default function Management({ commissions }: Props) {
 		setCommissionList(filteredCommissions);
 	};
 
+	useEffect(() => {
+		setCommissionList(commissions);
+	}, [commissions]);
+
 	return(
 		<S.Wrapper>
 			<Tracking commissions={commissions}/>

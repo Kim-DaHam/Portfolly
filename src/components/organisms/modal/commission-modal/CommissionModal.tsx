@@ -8,14 +8,14 @@ import * as S from "@/components/organisms/modal/commission-modal/CommissionModa
 
 import type { Commission } from "@/types";
 
-import { userState } from "@/redux";
+import { setAlert, userState } from "@/redux";
 import { usePostCommissionQuery , addValidationErrorToast, toLocalDateString } from "@/utils";
 
 import { Text, Button, Modal, Profile, Rating } from "@/components";
 
 type Props = {
 	commission: Commission;
-	handleModal: MouseEventHandler<HTMLElement>;
+	handleModal: ()=>void;
 	editMode?: boolean;
 	$modalState: boolean;
 };
@@ -23,14 +23,14 @@ type Props = {
 export type FormValues = {
 	title: string;
 	content: string;
-	deadline: Date;
+	deadline: string;
 	cost: number;
 };
 
 const defaultValues: FormValues = {
 	title: '',
 	content: '',
-	deadline: new Date(),
+	deadline: toLocalDateString(Date.now()),
 	cost: 0,
 };
 
@@ -39,7 +39,11 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 
 	const dispatch = useDispatch();
 
-	const commissionMutation = usePostCommissionQuery(commission.portfolio!.id!, commission.client.id, commission.id);
+	const commissionMutation = usePostCommissionQuery(
+		commission.portfolio!.id!,
+		commission.client.id,
+		commission.id
+	);
 	const { authority } = useSelector(userState);
 	const {
 		register,
@@ -53,6 +57,17 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
 	});
+
+	const closeModal = () => {
+		if(isEditMode) {
+			dispatch(setAlert({type: 'cancel', onConfirm: () => {
+				handleModal();
+				setIsEditMode(false);
+			}}))
+			return;
+		}
+		handleModal();
+	};
 
 	const onSubmit = async (form: any) => {
 		const copyForm: {[key: string]: any} = {...form};
@@ -87,7 +102,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 	return(
 		<Modal $type='form' $modalState={$modalState}>
 			<S.Content>
-				<XIcon size={28} onClick={handleModal} />
+				<XIcon size={28} onClick={closeModal} />
 
 				<S.Form>
 					<S.Box>
@@ -105,7 +120,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 						}
 
 						<Text size='bodySmall'>
-							{toLocalDateString(commission.createdAt)}
+							{commission.createdAt}
 						</Text>
 
 						{ commission.details &&
@@ -156,11 +171,11 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 						{ isEditMode ?
 							<S.Input type='date' {...register('deadline', {
 								required: '마감 기한을 입력하세요.',
-								validate: v.validateDeadline,
+								validate: v.validateDeadline(commission.createdAt),
 							})} />
 							:
 							<Text size='bodyMedium'>
-								{toLocalDateString(commission.details.deadline)}
+								{commission.details.deadline}
 							</Text>
 						}
 					</S.Box>

@@ -17,7 +17,7 @@ export type Portfolio = {
 	title: string,
 	content: string,
 	summary: string,
-	createdAt: Date,
+	createdAt: string,
 	section: Section,
 	category: string,
 	tags: string[],

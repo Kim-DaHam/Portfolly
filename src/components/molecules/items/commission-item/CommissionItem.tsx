@@ -38,7 +38,7 @@ export default function CommissionItem({ commission, index }: Props) {
 						{commission.client.nickname}
 					</Text>
 					<Text size='bodySmall'>
-						{toLocalDateString(new Date(commission.createdAt))}
+						{commission.createdAt}
 					</Text>
 				</S.Box>
 

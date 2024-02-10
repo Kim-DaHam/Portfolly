@@ -5,7 +5,7 @@ import { portfolios } from '@/mocks/nosql-data/portfolios';
 import { users } from '@/mocks/nosql-data/users';
 import { Commission, Portfolio, User } from '@/types';
 
-import { generateRandomString } from '@/utils';
+import { generateRandomString, toLocalDateString } from '@/utils';
 
 export const commissionHandlers= [
 	// 커미션 폼 작성 핸들러
@@ -44,7 +44,7 @@ export const commissionHandlers= [
 				nickname: portfolio.user.nickname,
 				profileImage: portfolio.user.profileImage,
 			},
-			createdAt: new Date(Date.now()),
+			createdAt: toLocalDateString(Date.now()),
 			endedAt: null,
 			details: {
 				cost: 0,
