@@ -1,88 +1,97 @@
 import { HttpResponse, http } from 'msw';
 
-import { LOGIN_ID } from '.';
-import { commissions } from '../data/commissions';
-import { portfolios } from '../data/portfolios';
-import { users } from '../data/users';
+import { LOGIN_ID } from '@/mocks/handlers';
+import { portfolios } from '@/mocks/nosql-data/portfolios';
+import { users } from '@/mocks/nosql-data/users';
+import { Commission, Portfolio, User } from '@/types';
+
+import { generateRandomString, toLocalDateString } from '@/utils';
 
 export const commissionHandlers= [
+	// 커미션 폼 작성 핸들러
 	http.post(`/commissions`, async ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('portfolio_id') as string;
 		const clientId = url.searchParams.get('client_id') as string;
+		const portfolio = portfolios[portfolioId] as Portfolio;
+		const client = users[clientId] as User;
 
-		const commission = await request.json() as any;
-		const commissionId = commissions.length + 1;
-		const expert = users.find((user) => user.id === LOGIN_ID);
-		const portfolio = portfolios.find((portfolio) => portfolio.id === Number(portfolioId));
+		const commissionForm = await request.json() as any;
+		const commissionId = generateRandomString(20);
 
-		const newCommission = {
+		const newCommission: Commission = {
 			id: commissionId,
-			portfolioId: Number(portfolioId),
 			portfolio: {
-				id: Number(portfolioId),
-				title: portfolio?.title,
-				summary: portfolio?.summary,
-				thumbnailUrl: portfolio?.images[0],
+				id: portfolioId,
+				section: portfolio.section,
+				title: portfolio.title,
+				summary: portfolio.summary,
+				thumbnailUrl: portfolio.images[0],
 			},
-			expertId: LOGIN_ID,
+			client: {
+				id: clientId,
+				name: client.name!,
+				email: client.email,
+				phone: client.phone!,
+				nickname: client.nickname,
+				profileImage: client.profileImage,
+			},
 			expert: {
 				id: LOGIN_ID,
-				nickname: expert?.nickname,
-				name: expert?.name,
-				phone: expert?.phone,
-				profileImage: expert?.profileImage,
+				email: portfolio.user.email,
+				name: portfolio.user.name,
+				phone: portfolio.user.phone,
+				nickname: portfolio.user.nickname,
+				profileImage: portfolio.user.profileImage,
 			},
-			clientId: Number(clientId),
-			createdAt: `${Date.now()}`,
-			endedAt: '',
+			createdAt: toLocalDateString(Date.now()),
+			endedAt: null,
 			details: {
 				cost: 0,
 				status: '진행 중',
-				...commission,
+				...commissionForm,
 			},
 			review: null,
 		};
 
-		commissions.push(newCommission);
+		portfolio.commissions![commissionId] = newCommission;
 
-		return HttpResponse.json(newCommission, { status: 200 });
+		return HttpResponse.json(portfolio, { status: 200 });
 	}),
 
+	// 커미션 폼 수정
 	http.patch(`/commissions`, async ({request}) => {
 		const url = new URL(request.url);
-		const commissionId = url.searchParams.get('id') as string;
-		const commissionData = await request.json() as any;
-		const response: any = {};
+		const portfolioId = url.searchParams.get('portfolio_id') as string;
+		const commissionId = url.searchParams.get('commission_id') as string;
 
-		commissions.map((commission: any) => {
-			if(commission.id === Number(commissionId)){
-				Object.assign(commission.details, commissionData);
-				Object.assign(response, commission);
-			}
-		});
+		const commissionForm = await request.json() as any;
+		const portfolio = portfolios[portfolioId] as Portfolio;
+		const commission = portfolio.commissions![commissionId] as Commission;
 
-		return HttpResponse.json(response, { status: 200 });
+		Object.assign(commission.details, commissionForm);
+
+		return HttpResponse.json(commission, { status: 200 });
 	}),
 
-	http.post(`/reviews`, async ({request}) => {
-		const url = new URL(request.url);
-		const commissionId = url.searchParams.get('id') as string;
-		const reviewData = await request.json() as any;
-		const response: any = {};
+	// http.post(`/reviews`, async ({request}) => {
+	// 	const url = new URL(request.url);
+	// 	const commissionId = url.searchParams.get('id') as string;
+	// 	const reviewData = await request.json() as any;
+	// 	const response: any = {};
 
-		const commission = commissions.find((commission: any) => {
-			return commission.id === Number(commissionId);
-		});
+	// 	const commission = commissions.find((commission: any) => {
+	// 		return commission.id === Number(commissionId);
+	// 	});
 
-		Object.assign(response, {
-			createdAt: Date.now(),
-			...reviewData,
-		});
+	// 	Object.assign(response, {
+	// 		createdAt: Date.now(),
+	// 		...reviewData,
+	// 	});
 
-		commission!.review = response;
+	// 	commission!.review = response;
 
-		return HttpResponse.json(response, { status: 200 });
-	})
+	// 	return HttpResponse.json(response, { status: 200 });
+	// })
 
 ];

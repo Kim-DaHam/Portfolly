@@ -52,7 +52,7 @@ export const userHandlers= [
 						...commission,
 						id: commissionDocKeys,
 						expert: portfolio.user,
-						review: {
+						review: review ? {
 							user: {
 								nickname: client.nickname,
 								profileImage: client.profileImage,
@@ -62,7 +62,7 @@ export const userHandlers= [
 								thumbnailUrl: portfolio.images[0],
 							},
 							...commission.review,
-						},
+						} : null,
 						portfolio: {
 							id: docKey,
 							section: portfolio.section,
@@ -103,7 +103,7 @@ export const userHandlers= [
 
 		console.log(responseData);
 
-		return HttpResponse.json(responseData, { status: 404 });
+		return HttpResponse.json(responseData, { status: 200 });
 	}),
 
 ];

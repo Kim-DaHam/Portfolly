@@ -35,14 +35,14 @@ export type MessageRoom = {
 	},
 	commission: {
 		id: string,
-		createdAt: Date,
-		endedAt: Date,
+		createdAt: string,
+		endedAt: string,
 		details: {
 			title: string,
 			content: string,
 			cost: number,
 			status: CommissionStatus,
-			deadline: Date
+			deadline: string
 		},
 		review: {
 			score: number,
@@ -60,7 +60,7 @@ export type Message = {
 		profileImage: string,
 	},
 	msg: string,
-	createdAt: Date,
+	createdAt: string,
 	isRead: boolean,
 	messageStatus: MessageStatus;
 };

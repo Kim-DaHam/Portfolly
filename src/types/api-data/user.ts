@@ -32,6 +32,7 @@ export type Bookmarks = {
 };
 
 export type Bookmark = {
+	id?: string;
 	title: string,
 	summary: string,
 	thumbnailUrl: string,
