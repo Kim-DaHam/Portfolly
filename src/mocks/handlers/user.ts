@@ -15,6 +15,9 @@ export const userHandlers= [
 		const user: User = users[userId];
 
 		const bookmarkList: any[] = [];
+		const portfolioList: any[] = [];
+		const commissionsList: any[] = [];
+		const reviewList: any[] = [];
 
 		if(isMyProfile) {
 			const bookmarkDocKeys: string[] = Object.keys(user.bookmarks!) || [];
@@ -27,30 +30,26 @@ export const userHandlers= [
 			});
 		}
 
-		// 사용자 포트폴리오, 리뷰, 커미션 목록을 생성한다.
-		const portfolioList: any[] = [];
-		const commissionsList: any[] = [];
-		const reviewList: any[] = [];
-
 		portfolioDocKeys.map((docKey: string) => {
 			const portfolio = portfolios[docKey] as Portfolio;
 			const isUserPortfolio = portfolio.user.id === userId;
 			const commissionDocKeys: string[] = Object.keys(portfolio.commissions!) || [];
 
+			// 전문가 계정 + 본인의 포트폴리오인 경우
 			if(isUserPortfolio) {
 				portfolioList.push({
 					id: docKey,
 					...portfolio,
 				});
 
-				commissionDocKeys.map((commissionDocKeys: string) => {
-					const commission = portfolio.commissions![commissionDocKeys] as Commission;
+				commissionDocKeys.forEach((commissionDocKey: string) => {
+					const commission = portfolio.commissions![commissionDocKey] as Commission;
 					const review = commission.review;
 					const client = commission.client;
 
 					commissionsList.push({
 						...commission,
-						id: commissionDocKeys,
+						id: commissionDocKey,
 						expert: portfolio.user,
 						review: review ? {
 							user: {
@@ -69,10 +68,10 @@ export const userHandlers= [
 							title: portfolio.title,
 							summary: portfolio.summary,
 							thumbnailUrl: portfolio.images[0],
-						}
+						},
 					});
 					review && reviewList.push({
-						id: commissionDocKeys+'review',
+						id: commissionDocKey+'review',
 						user: {
 							nickname: client.nickname,
 							profileImage: client.profileImage,
@@ -84,7 +83,43 @@ export const userHandlers= [
 						...review,
 					})
 				})
+
+				return;
 			}
+
+			// 클라이언트 계정인 경우
+			commissionDocKeys.forEach((commissionDocKey: string) => {
+				const commission = portfolio.commissions![commissionDocKey] as Commission;
+				const review = commission.review;
+				const client = commission.client;
+
+				if(commission.client.id === LOGIN_ID) {
+					commissionsList.push({
+						...commission,
+						id: commissionDocKey,
+						expert: portfolio.user,
+						review: review ? {
+							user: {
+								nickname: client.nickname,
+								profileImage: client.profileImage,
+							},
+							portfolio: {
+								id: docKey,
+								thumbnailUrl: portfolio.images[0],
+							},
+							...commission.review,
+						} : null,
+						portfolio: {
+							id: docKey,
+							section: portfolio.section,
+							title: portfolio.title,
+							summary: portfolio.summary,
+							thumbnailUrl: portfolio.images[0],
+						},
+					});
+				}
+			})
+			return;
 		});
 
 		if(!isMyProfile) {

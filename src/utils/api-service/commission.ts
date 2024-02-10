@@ -1,13 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { userState } from "@/redux/loginSlice";
-import { Commission, Portfolio, User } from "@/types";
+import { Commission, Portfolio, Review, User } from "@/types";
 
+import { setToast } from "@/redux";
 import { fetch } from '@/utils'
 
 // 커미션 폼 작성
 export const usePostCommissionQuery = (portfolioId: string, clientId?: string, commissionId?: string) => {
+	const dispatch = useDispatch();
 	const queryClient = useQueryClient();
 	const postUrl = `/commissions?portfolio_id=${portfolioId}&client_id=${clientId}`;
 	const patchUrl = `/commissions?commission_id=${commissionId}&portfolio_id=${portfolioId}`;
@@ -44,6 +46,7 @@ export const usePostCommissionQuery = (portfolioId: string, clientId?: string, c
 					commissionList: commissionList,
 					portfolioList: portfolioList,
 				});
+
 				return;
 			}
 
@@ -53,29 +56,52 @@ export const usePostCommissionQuery = (portfolioId: string, clientId?: string, c
 				return message;
 			});
 
+			dispatch(setToast({id: 0, type: 'success', message: '커미션이 수정되었습니다.'}));
 			return response;
+		},
+		onError: () => {
+			dispatch(setToast({id: 0, type: 'error', message: '수정을 실패했습니다.'}));
+			return;
 		},
 	});
 };
 
-export const useReviewPostQuery = (id: number) => {
+// 리뷰 작성
+export const useReviewPostQuery = (commissionId: string, portfolioId: string) => {
+	const dispatch = useDispatch();
 	const queryClient = useQueryClient();
 	const { id: userId } = useSelector(userState);
 	const user = queryClient.getQueryData(['user', `${userId}`]) as any;
+	const commissionList = JSON.parse(JSON.stringify(user.commissionList));
 
-	const postReview = (body: any) => fetch(`/reviews?id=${id}`, 'POST', body)
+	const postReview = (body: any) => fetch(`/reviews?
+		commission_id=${commissionId}&
+		portfolio_id=${portfolioId}`,
+		'POST',
+		body
+	)
 
 	return useMutation({
 		mutationFn: postReview,
-		onSuccess: (response: any) => {
-			queryClient.setQueryData(['user', `${userId}`], () => {
-				const commission = user.activity.commissions.find((commission: any) => {
-					return commission.id === id;
-				});
+		onSuccess: (response: Review) => {
+			commissionList.forEach((commission: Commission, index: number) => {
+				if(commission.id !== commissionId) return;
+				commissionList[index].review = response;
+				return false;
+			})
 
-				commission.review = response;
+			queryClient.setQueryData(['user', `${userId}`], {
+				...user,
+				commissionList: commissionList,
 			});
+
+			dispatch(setToast({id: 0, type: 'success', message: '리뷰를 등록했습니다.'}));
+
 			return;
-		}
+		},
+		onError: () => {
+			dispatch(setToast({id: 0, type: 'error', message: '리뷰 등록에 실패했습니다.'}));
+			return;
+		},
 	})
 };
