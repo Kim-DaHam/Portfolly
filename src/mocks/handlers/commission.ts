@@ -3,7 +3,7 @@ import { HttpResponse, http } from 'msw';
 import { LOGIN_ID } from '@/mocks/handlers';
 import { portfolios } from '@/mocks/nosql-data/portfolios';
 import { users } from '@/mocks/nosql-data/users';
-import { Commission, Portfolio, User } from '@/types';
+import { Commission, Portfolio, Review, User } from '@/types';
 
 import { generateRandomString, toLocalDateString } from '@/utils';
 
@@ -74,24 +74,34 @@ export const commissionHandlers= [
 		return HttpResponse.json(commission, { status: 200 });
 	}),
 
-	// http.post(`/reviews`, async ({request}) => {
-	// 	const url = new URL(request.url);
-	// 	const commissionId = url.searchParams.get('id') as string;
-	// 	const reviewData = await request.json() as any;
-	// 	const response: any = {};
+	// 리뷰 작성
+	http.post(`/reviews`, async ({request}) => {
+		const url = new URL(request.url);
+		const commissionId = url.searchParams.get('commission_id') as string;
+		const portfolioId = url.searchParams.get('portfolio_id') as string;
 
-	// 	const commission = commissions.find((commission: any) => {
-	// 		return commission.id === Number(commissionId);
-	// 	});
+		const portfolio = portfolios[portfolioId] as Portfolio;
+		const commission = portfolio.commissions![commissionId] as Commission;
+		const reviewForm = await request.json() as any;
 
-	// 	Object.assign(response, {
-	// 		createdAt: Date.now(),
-	// 		...reviewData,
-	// 	});
+		commission.review = {
+			createdAt: toLocalDateString(Date.now()),
+			...reviewForm,
+		};
 
-	// 	commission!.review = response;
+		const review: Review = JSON.parse(JSON.stringify(commission.review!));
+		Object.assign(review, {
+			user: {
+        nickname: commission.client.nickname,
+        profileImage: commission.client.profileImage,
+			},
+			portfolio: {
+				id: portfolioId,
+				thumbnailUrl: portfolio.images[0],
+			},
+		})
 
-	// 	return HttpResponse.json(response, { status: 200 });
-	// })
+		return HttpResponse.json(review, { status: 200 });
+	})
 
 ];

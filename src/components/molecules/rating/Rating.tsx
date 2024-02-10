@@ -13,10 +13,10 @@ type Props = {
 };
 
 function Rating({ readonly=false, setValue=()=>'', score=0 }: Props) {
-	const [rating, setRating] = useState(score/20);
+	const [rating, setRating] = useState(score / 20);
 
 	const handleRating = (value: number) => {
-		setValue('rating', value*20);
+		setValue('score', value * 20);
 		setRating(value);
 	};
 

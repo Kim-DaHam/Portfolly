@@ -40,8 +40,6 @@ export default function MyPage(){
 		setPrevUrl(route);
 	}, []);
 
-	console.log(user)
-
 	return(
 		<S.Wrapper>
 			<LeftArrowIcon
