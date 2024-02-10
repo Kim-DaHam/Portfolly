@@ -4,7 +4,7 @@ import { PortfolioHandlers } from "./portfolio";
 import { toggleButtonHandlers } from "./toggleButton";
 import { userHandlers } from "./user";
 
-export const LOGIN_ID = 'expert1';
+export const LOGIN_ID = 'client1';
 export const AUTHORITY: string = 'client';
 export const PARTNER_ID = AUTHORITY === 'expert' ? 'clientId' : 'expertId';
 export const MY_ID = AUTHORITY + 'Id';
