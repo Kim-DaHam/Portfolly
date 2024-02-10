@@ -7,12 +7,14 @@ import { useDispatch } from "react-redux";
 import * as S from '@/components/organisms/message-room/MessageRoom.styled';
 import { setToast } from "@/redux/toastSlice";
 
+import type { Authority, MessageRoom } from "@/types";
+
 import { useMessageRoomDeleteMutation } from "@/utils";
 
 import { Text, AlertModal, PartnerProfile, MessageList, Button } from '@/components';
 
 type Props = {
-	message: any;
+	messageRoom: MessageRoom;
 }
 
 export type FormValues = {
@@ -27,13 +29,13 @@ const defaultValues: FormValues = {
 	memo: '',
 };
 
-export default function MessageRoom({ message }: Props) {
+export default function MessageRoom({ messageRoom }: Props) {
 	const [isFileModalOpen, setIsFileModalOpen] = useState(false);
 	const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
 	const dispatch = useDispatch();
 
-	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(message.partner.id);
+	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(messageRoom.partner!.id);
 
 	const { register, handleSubmit, setValue, getValues } = useForm<FormValues>({
 		mode: 'onSubmit',
@@ -64,23 +66,26 @@ export default function MessageRoom({ message }: Props) {
 	return (
 		<S.Wrapper>
 			<S.TitleBox>
-				<Text size='label'>{message.partner.nickname}</Text>
+				<Text size='label'>{messageRoom.partner?.nickname}</Text>
 				<ExitIcon size={24} onClick={() => setIsExitModalOpen(prev=>!prev)}/>
 			</S.TitleBox>
 
 			<S.Box>
 				<MessageList
-					message={message}
+					messageList={messageRoom.messages!}
 					setValue={setValue}
 					getValues={getValues}
 					isFileModalOpen={isFileModalOpen}
 					handleFileModal={setIsFileModalOpen}
 				/>
-				<PartnerProfile message={message} />
+				<PartnerProfile
+					messageRoom={messageRoom}
+				/>
 			</S.Box>
 
 			<S.InputBox>
 				<S.TextArea
+					placeholder='메세지를 입력하세요.'
 					{...register('message', {
 						required: '메시지를 입력하세요',
 					})}

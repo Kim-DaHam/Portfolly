@@ -1,39 +1,28 @@
-import { useQueryClient } from "@tanstack/react-query";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import * as S from '@/pages/message/MessagePage.styled';
 
+import { usePageErrorAlert } from "@/hooks";
 import { useMessageRoomQuery } from "@/utils";
 
 import { MessageRoom, MessageRoomList, Text } from '@/components';
 
 export default function MessagePage() {
 	const urlParams = new URL(window.location.href).searchParams;
-	const partnerId = urlParams.get('partner_id') || '';
+	const partnerId = urlParams.get('partner_id');
 
-	const navigate = useNavigate();
-	const queryClient = useQueryClient();
-	const { data: message } = useMessageRoomQuery(partnerId);
+	const { data: messageRoom, isError } = useMessageRoomQuery(partnerId);
+	usePageErrorAlert(isError);
 
-	useEffect(() => {
-		if(message && message.messageRooms.length > 0 && !partnerId) {
-			navigate(`/messages?partner_id=${message.partner.id}`);
-			queryClient.removeQueries({queryKey: ['messages']});
-		}
-	}, [message]);
-
-	console.log(message)
-
-	if(!message) return null;
+	console.log(messageRoom)
 
 	return(
 		<S.Wrapper>
 			<S.Content>
-				<MessageRoomList messageRooms={message?.messageRooms}/>
+				<MessageRoomList messageRoomList={messageRoom?.messageRoomList}/>
 
-				{ message?.messageRooms.length > 0 ?
-					<MessageRoom message={message} />
+				{ messageRoom?.messageRoom ?
+					<MessageRoom
+						messageRoom={messageRoom.messageRoom}
+					/>
 					:
 					<S.NotificationBox>
 						<Text size='label'>

@@ -72,7 +72,7 @@ export const messageRooms: MessageRooms = {
 	},
 	room2: {
 		expert: {
-			id: 'expert1',
+			id: 'expert2',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -139,7 +139,7 @@ export const messageRooms: MessageRooms = {
 	},
 	room3: {
 		expert: {
-			id: 'expert1',
+			id: 'expert3',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -206,7 +206,7 @@ export const messageRooms: MessageRooms = {
 	},
 	room4: {
 		expert: {
-			id: 'expert1',
+			id: 'expert4',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -273,7 +273,7 @@ export const messageRooms: MessageRooms = {
 	},
 	room5: {
 		expert: {
-			id: 'expert1',
+			id: 'expert5',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',

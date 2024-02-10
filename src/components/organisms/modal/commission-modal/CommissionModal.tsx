@@ -115,7 +115,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							/>
 							:
 							<Text size='titleSmall'>
-								{commission.details.title}
+								{commission.details?.title}
 							</Text>
 						}
 
@@ -160,7 +160,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							})} />
 							:
 							<Text size='bodyMedium'>
-								{commission.details.content}
+								{commission.details?.content}
 							</Text>
 						}
 					</S.Box>
@@ -175,7 +175,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							})} />
 							:
 							<Text size='bodyMedium'>
-								{commission.details.deadline}
+								{commission.details?.deadline}
 							</Text>
 						}
 					</S.Box>
@@ -188,7 +188,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							})} />
 							:
 							<Text size='bodyMedium'>
-								{commission.details.cost}
+								{commission.details?.cost}
 							</Text>
 						}
 					</S.Box>
@@ -205,7 +205,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 				</S.Form>
 
 				<S.ButtonGroup>
-					{ authority === 'expert' && !isEditMode && commission.details.status !== '구매 확정' &&
+					{ authority === 'expert' && !isEditMode && commission.details?.status !== '구매 확정' &&
 						<Button
 							color='black'
 							size='medium'
@@ -214,7 +214,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							의뢰 수정
 						</Button>
 					}
-					{ authority === 'client' && commission.details.status !== '구매 확정' &&
+					{ authority === 'client' && commission.details?.status !== '구매 확정' &&
 						<Button
 							color='black'
 							size='medium'

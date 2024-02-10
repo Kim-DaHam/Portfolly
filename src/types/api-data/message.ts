@@ -4,15 +4,20 @@ export type MessageRooms = {
 	[key in string]: MessageRoom;
 };
 
-export type MessageRoom = Partner & {
-	id?:string;
-	portfolio: {
+export type Messages = {
+	[key in string] : Message;
+};
+
+export type MessageRoom = Partners & {
+	id?:string,
+	partner?: Partner,
+	portfolio?: {
 		id: string,
 		title: string,
 		summary: string,
 		thumbnailUrl: string,
 	},
-	commission: {
+	commission?: {
 		id: string,
 		createdAt: string,
 		endedAt: string,
@@ -22,30 +27,30 @@ export type MessageRoom = Partner & {
 			cost: number,
 			status: CommissionStatus,
 			deadline: string
-		} | null,
+		},
 		review: {
 			score: number,
 			content: string,
 		},
 	},
-	messages: {
-		[key in string] : Message;
-	},
+	messages?: Messages,
+};
+
+export type Partners = {
+	[key in Authority]?: Partner
 };
 
 export type Partner = {
-	[key in Authority]: {
-		id: string,
-		name: string,
-		email: string,
-		phone: string,
-		nickname: string,
-		profileImage: string,
-		profile: {
-			score?: number,
-			contactTime: string,
-		},
-	};
+	id: string,
+	name: string,
+	email: string,
+	phone: string,
+	nickname: string,
+	profileImage: string,
+	profile: {
+		score?: number,
+		contactTime: string,
+	},
 };
 
 export type Message = {

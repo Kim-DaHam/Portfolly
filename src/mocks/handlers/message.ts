@@ -1,15 +1,13 @@
 import { HttpResponse, http } from 'msw';
 
 import { messageRooms } from '@/mocks/nosql-data/messages';
-import { portfolios } from '@/mocks/nosql-data/portfolios';
-import { users } from '@/mocks/nosql-data/users';
 
 import { AUTHORITY, LOGIN_ID, MY_ID, PARTNER_AUTHORITY } from '.';
 
 import type { MessageRoom } from '@/types';
 
 export const messageHandlers= [
-	http.get('/messageRooms', ({request}) => {
+	http.get('/messageRoom', ({request}) => {
 		const url = new URL(request.url);
 		const partnerId = url.searchParams.get('partner_id') as string;
 
@@ -20,26 +18,29 @@ export const messageHandlers= [
 
 		messageRoomsDocKeys.forEach((docKey: any) => {
 			const room = messageRooms[docKey];
-			const isMyMessageRoom = room[AUTHORITY].id === LOGIN_ID;
-			const messageRoomKeys: string[] = Object.keys(messageRoom);
+			const isMyMessageRoom = room[AUTHORITY]?.id === LOGIN_ID;
 
 			// 메세지룸 목록을 만든다.
 			if(isMyMessageRoom) {
 				messageRoomList.push({
 					id: docKey,
-					...room,
+					partner: room[PARTNER_AUTHORITY],
+					commission: room.commission,
 				});
 
 				// '/messages' 경로로 들어와 partnerId가 존재하지 않을 경우 가장 첫 번째 messageRoom 정보를 제공한다.
-				if(messageRoomKeys.length === 0 || partnerId === room[PARTNER_AUTHORITY].id) {
-					Object.assign(messageRoom, room);
+				if(partnerId === room[PARTNER_AUTHORITY]?.id) {
+					Object.assign(messageRoom, {
+						partner: room[PARTNER_AUTHORITY],
+						...room,
+					});
 				}
 			}
 		});
 
 		const responseData = {
-			messageRooms: messageRoomList,
-			messageRoom: messageRoom,
+			messageRoomList: messageRoomList,
+			messageRoom: Object.keys(messageRoom).length > 0 ? messageRoom : null,
 		};
 
 		return HttpResponse.json(responseData, { status: 200 });
@@ -54,10 +55,10 @@ export const messageHandlers= [
 
 		messageRoomsDocKeys.forEach((docKey: string) => {
 			const room = messageRooms[docKey];
-      if (room[PARTNER_AUTHORITY].id !== partnerId && room[AUTHORITY].id !== LOGIN_ID)
-				return;
-			delete messageRooms[docKey];
-			return false;
+      if (room[PARTNER_AUTHORITY]?.id === partnerId && room[AUTHORITY]?.id === LOGIN_ID){
+				delete messageRooms[docKey];
+				return false;
+			}
     });
 
 		return HttpResponse.json(null, { status: 200 });

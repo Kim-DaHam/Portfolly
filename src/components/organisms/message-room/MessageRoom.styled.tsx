@@ -5,7 +5,6 @@ import * as mixins from '@/styles/mixins';
 export const Wrapper = styled.section`
 	${mixins.fullWidthHeight}
 	${mixins.flexColumn}
-	flex-basis: 1;
 
 	overflow: hidden;
 `;
@@ -42,7 +41,8 @@ export const InputBox = styled.div`
 
 export const TextArea = styled.textarea`
 	width: 100%;
-	height: 3rem;
+	height: fit-content;
+	flex: none;
 	padding: 0.5rem 1.2rem;
 	border-radius: 1rem;
 	border: 1px solid #e8e9f0;
@@ -71,6 +71,7 @@ export const Label = styled.label`
 `;
 
 export const Box = styled.div`
+	height: 100%;
 	${mixins.flexRow}
 	flex-basis: 1;
 	justify-content: space-between;
