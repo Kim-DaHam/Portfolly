@@ -55,7 +55,10 @@ export default function CommissionItem({ commission, index }: Props) {
 					</Button>
 				}
 
-				{ !isReviewOpen && authority === 'client' && !commission.review &&
+				{ !isReviewOpen &&
+					authority === 'client' &&
+					!commission.review &&
+					commission.details.status === '구매 확정' &&
 					<Button
 						color='gray'
 						onClick={handleReviewButton}
@@ -77,7 +80,9 @@ export default function CommissionItem({ commission, index }: Props) {
 				</S.ReviewBox>
 			}
 
-			{ isReviewOpen && authority === 'client' && !commission.review &&
+			{ isReviewOpen &&
+				authority === 'client' &&
+				!commission.review &&
 				<ReviewForm
 					handleReviewOpen={setIsReviewOpen}
 					commission={commission}
