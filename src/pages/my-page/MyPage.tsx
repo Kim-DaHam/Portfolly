@@ -10,11 +10,11 @@ import { usePageErrorAlert } from "@/hooks";
 import { userState } from "@/redux";
 import { useUserQuery } from "@/utils";
 
-import { ActivityInformation, MyPageNavigator, Profile, ProfileSkeleton } from "@/components";
+import { ActivityInformation, MyPageNavigator, Profile } from "@/components";
 
 export type Navigation = 'introduce' | 'portfolios' | 'review' | 'management' | 'bookmarks';
 
-function MyPage(){
+export default function MyPage(){
 	const [navigation , setNavigation] = useState<Navigation>('introduce');
 	const [prevUrl, setPrevUrl] = useState<string | null>(null);
 
@@ -71,5 +71,3 @@ function MyPage(){
 		</S.Wrapper>
 	)
 }
-
-export default MyPage;

@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
 import { userState } from "@/redux/loginSlice";
-import { Commission, Portfolio, User } from "@/types";
+import { Commission, Portfolio } from "@/types";
 
 import { fetch } from '@/utils'
 

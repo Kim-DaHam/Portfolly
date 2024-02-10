@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiX as XIcon } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
