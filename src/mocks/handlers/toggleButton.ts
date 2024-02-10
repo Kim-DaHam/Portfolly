@@ -16,13 +16,14 @@ export const toggleButtonHandlers= [
 			portfolio.likes -= 1;
 			const index = users[LOGIN_ID].likes?.indexOf(portfolioId) as number;
 			users[LOGIN_ID].likes?.splice(index, 1);
-			return HttpResponse.json({isLiked: false}, { status: 200 });
+
+			return HttpResponse.json(null, { status: 200 });
 		}
 
 		portfolio.likes += 1;
 		users[LOGIN_ID].likes?.push(portfolioId);
 
-		return HttpResponse.json({isLiked: true}, { status: 200 });
+		return HttpResponse.json(null, { status: 200 });
 	}),
 
 	http.post('/bookmark', ({request}) => {
@@ -33,7 +34,8 @@ export const toggleButtonHandlers= [
 
 		if(wasBookmarked) {
 			delete users[LOGIN_ID].bookmarks![portfolioId];
-			return HttpResponse.json({isBookmarked: false}, { status: 200 });
+
+			return HttpResponse.json(null, { status: 200 });
 		}
 
 		users[LOGIN_ID].bookmarks![portfolioId] = {
@@ -43,6 +45,6 @@ export const toggleButtonHandlers= [
 			thumbnailUrl: portfolio.images[0],
 		};
 
-		return HttpResponse.json({isBookmarked: true}, { status: 200 });
+		return HttpResponse.json(null, { status: 200 });
 	}),
 ];

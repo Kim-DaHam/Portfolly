@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import * as S from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
+import * as S from "@/components/organisms/portfolio-list/PortfolioList.styled";
 import { section } from "@/redux/sectionSlice";
 
 import type { Portfolio } from "@/types";
@@ -19,7 +19,7 @@ const ITEMS_PER_SHOW = 6;
 
 export const SESSION_STORAGE_KEY = "lastClickedPortfolio";
 
-export default function PortfolioItemList({ category }: Props) {
+export default function PortfolioList({ category }: Props) {
 	const [showsNum, setShowsNum] = useState<number>(ITEMS_PER_SHOW);
 
 	const currentSection = useSelector(section);

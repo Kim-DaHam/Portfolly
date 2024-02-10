@@ -13,7 +13,7 @@ import { getFilterQueryString } from "@/utils";
 
 import { Text, CategorySlider, PortfolioListSkeleton, ApiErrorFallback } from "@/components";
 
-const PortfolioList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioItemList'));
+const PortfolioCardList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioList'));
 
 export default function MainPage(){
 	const currentSection = useSelector(section);
@@ -36,7 +36,7 @@ export default function MainPage(){
 				<S.PortfolioSection>
 					<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
 						<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
-							<PortfolioList category={currentCategory} />
+							<PortfolioCardList category={currentCategory} />
 						</Suspense>
 					</ApiErrorBoundary>
 				</S.PortfolioSection>

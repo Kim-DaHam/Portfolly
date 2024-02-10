@@ -23,6 +23,7 @@ export type Portfolio = {
 	tags: string[],
 	images: string[],
 	likes: number,
+	otherPortfolios?: Portfolio[],
 	commissions: Commissions | null,
 	isBookmarked?: boolean,
 	isLiked?: boolean,

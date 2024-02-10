@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Profile } from "@/components/molecules/profile/Profile";
-import { GridBox } from "@/components/organisms/portfolio-list/PortfolioItemList.styled";
+import { GridBox } from "@/components/organisms/portfolio-list/PortfolioList.styled";
 import * as mixins from '@/styles/mixins';
 
 import { PortfolioCardSkeleton, ProfileSkeleton } from "@/components";
