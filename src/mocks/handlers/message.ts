@@ -1,110 +1,63 @@
 import { HttpResponse, http } from 'msw';
 
-import { LOGIN_ID, MY_ID, PARTNER_ID } from '.';
-import { commissions } from '../data/commissions';
-import { messageRooms } from '../data/messages';
-import { portfolios } from '../data/portfolios';
-import { users } from '../data/users';
+import { messageRooms } from '@/mocks/nosql-data/messages';
+import { portfolios } from '@/mocks/nosql-data/portfolios';
+import { users } from '@/mocks/nosql-data/users';
 
-import type { User } from '@/types';
+import { AUTHORITY, LOGIN_ID, MY_ID, PARTNER_AUTHORITY } from '.';
+
+import type { MessageRoom } from '@/types';
 
 export const messageHandlers= [
 	http.get('/messageRooms', ({request}) => {
 		const url = new URL(request.url);
 		const partnerId = url.searchParams.get('partner_id') as string;
 
-		const messageRoomList: any[] = [];
-		const message: any = {};
+		const messageRoomsDocKeys: string[] = Object.keys(messageRooms);
 
-		messageRooms.map((room: any) => {
-			const isMyMessageRoom = room.clientId === LOGIN_ID || room.expertId === LOGIN_ID;
+		const messageRoomList: MessageRoom[] = [];
+		const messageRoom: any & MessageRoom = {};
 
+		messageRoomsDocKeys.forEach((docKey: any) => {
+			const room = messageRooms[docKey];
+			const isMyMessageRoom = room[AUTHORITY].id === LOGIN_ID;
+			const messageRoomKeys: string[] = Object.keys(messageRoom);
+
+			// 메세지룸 목록을 만든다.
 			if(isMyMessageRoom) {
-				// 메세지 목록 데이터를 만든다.
-				const partner = users.find((user) => user.id === room[PARTNER_ID]) as User;
+				messageRoomList.push({
+					id: docKey,
+					...room,
+				});
 
-				if(room.messages.length > 0) {
-					messageRoomList.push({
-						id: room.id,
-						lastMessage: room.lastMessage,
-						timestamp: room.timestamp,
-						commissionStatus: room.commissionStatus,
-						isRead: room.messages[room.messages.length -1].isRead ? true : false,
-						partner: {
-							id: partner?.id,
-							nickname: partner?.nickname,
-							profileImage: partner?.profileImage,
-						}
-					});
-				}
-
-				// '/messages' 경로로 들어와 partnerId가 존재하지 않을 경우 가장 첫 번째 messageRoom 정보를 받는다.
-				if(Object.keys(message).length === 0 || Number(partnerId) === partner?.id) {
-					const recentMessages = room.messages.filter((_: any ,index: number) => index < 50);
-
-					const commission = commissions.find((commission) => commission.id === room.commissionId);
-					const portfolio = portfolios.find((portfolio) => portfolio.id === room.portfolioId);
-					const expert = users.find((user) => user.id === portfolio?.userId);
-
-					Object.assign(message, {
-						...room,
-						partner: {
-							id: partner.id,
-							nickname: partner?.nickname,
-							profileImage: partner?.profileImage,
-							...partner?.activity,
-						},
-						portfolio: {
-							id: portfolio?.id,
-							title: portfolio?.title,
-							summary: portfolio?.summary,
-							thumbnailUrl: portfolio?.images[0],
-							expert: {
-								id: expert?.id,
-								nickname: expert?.nickname,
-								name: expert?.name,
-								phone: expert?.phone,
-								profileImage: expert?.profileImage,
-							}
-						},
-						commission: commission ? {
-							...commission,
-							portfolio: {
-								id: portfolio?.id,
-								title: portfolio?.title,
-								summary: portfolio?.summary,
-								thumbnailUrl: portfolio?.images[0],
-							},
-							expert: {
-								id: expert?.id,
-								nickname: expert?.nickname,
-								name: expert?.name,
-								phone: expert?.phone,
-								profileImage: expert?.profileImage,
-							}
-						} : null,
-						messages: recentMessages,
-					});
+				// '/messages' 경로로 들어와 partnerId가 존재하지 않을 경우 가장 첫 번째 messageRoom 정보를 제공한다.
+				if(messageRoomKeys.length === 0 || partnerId === room[PARTNER_AUTHORITY].id) {
+					Object.assign(messageRoom, room);
 				}
 			}
 		});
 
 		const responseData = {
 			messageRooms: messageRoomList,
-			...message,
+			messageRoom: messageRoom,
 		};
 
 		return HttpResponse.json(responseData, { status: 200 });
 	}),
 
+	// 메세지룸 삭제
 	http.delete(`/messageRooms`, ({request}) => {
 		const url = new URL(request.url);
 		const partnerId = url.searchParams.get('partner_id') as string;
 
-		messageRooms.map((room: any, index: number) => {
-      if (room[PARTNER_ID] === Number(partnerId) && room[MY_ID] === LOGIN_ID) {
-				messageRooms.splice(index, 1);
-			}
+		const messageRoomsDocKeys = Object.keys(messageRooms);
+
+		messageRoomsDocKeys.forEach((docKey: string) => {
+			const room = messageRooms[docKey];
+      if (room[PARTNER_AUTHORITY].id !== partnerId && room[AUTHORITY].id !== LOGIN_ID)
+				return;
+			delete messageRooms[docKey];
+			return false;
     });
 
 		return HttpResponse.json(null, { status: 200 });

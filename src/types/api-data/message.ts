@@ -1,32 +1,11 @@
-import { CommissionStatus } from "..";
+import type { Authority, CommissionStatus } from "@/types";
 
 export type MessageRooms = {
 	[key in string]: MessageRoom;
 };
 
-export type MessageRoom = {
-	name: string,
-	expert: {
-		name: string,
-		email: string,
-		phone: string,
-		nickname: string,
-		profileImage: string,
-		profile: {
-			score: number,
-			contactTime: string,
-		},
-	},
-	client: {
-		name: string,
-		email: string,
-		phone: string,
-		nickname: string,
-		profileImage: string,
-		profile: {
-			contactTime: string,
-		},
-	},
+export type MessageRoom = Partner & {
+	id?:string;
 	portfolio: {
 		id: string,
 		title: string,
@@ -43,7 +22,7 @@ export type MessageRoom = {
 			cost: number,
 			status: CommissionStatus,
 			deadline: string
-		},
+		} | null,
 		review: {
 			score: number,
 			content: string,
@@ -54,6 +33,21 @@ export type MessageRoom = {
 	},
 };
 
+export type Partner = {
+	[key in Authority]: {
+		id: string,
+		name: string,
+		email: string,
+		phone: string,
+		nickname: string,
+		profileImage: string,
+		profile: {
+			score?: number,
+			contactTime: string,
+		},
+	};
+};
+
 export type Message = {
 	from: {
 		nickname: string,
@@ -62,7 +56,6 @@ export type Message = {
 	msg: string,
 	createdAt: string,
 	isRead: boolean,
-	messageStatus: MessageStatus;
 };
 
 export type MessageStatus = '안 읽음' | '거래 중';

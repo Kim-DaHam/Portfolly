@@ -1,7 +1,11 @@
-const messageRooms = {
+import { MessageRooms } from "@/types";
+
+import { toLocalDateString } from "@/utils";
+
+export const messageRooms: MessageRooms = {
 	room1: {
-		name: 'Room 1',
 		expert: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -13,6 +17,7 @@ const messageRooms = {
 			},
 		},
 		client: {
+			id: 'client1',
 			name: '김강철',
 			email: 'steel@example.com',
 			phone: '010-1234-1234',
@@ -51,7 +56,7 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -60,14 +65,14 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello!',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: false,
 			}
 		}
 	},
 	room2: {
-		name: 'Room 1',
 		expert: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -79,6 +84,7 @@ const messageRooms = {
 			},
 		},
 		client: {
+			id: 'client1',
 			name: '김강철',
 			email: 'steel@example.com',
 			phone: '010-1234-1234',
@@ -117,7 +123,7 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -126,14 +132,14 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello!',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: false,
 			}
 		}
 	},
 	room3: {
-		name: 'Room 1',
 		expert: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -145,6 +151,7 @@ const messageRooms = {
 			},
 		},
 		client: {
+			id: 'client1',
 			name: '김강철',
 			email: 'steel@example.com',
 			phone: '010-1234-1234',
@@ -183,7 +190,7 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -192,14 +199,14 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello!',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: false,
 			}
 		}
 	},
 	room4: {
-		name: 'Room 1',
 		expert: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -211,6 +218,7 @@ const messageRooms = {
 			},
 		},
 		client: {
+			id: 'client1',
 			name: '김강철',
 			email: 'steel@example.com',
 			phone: '010-1234-1234',
@@ -249,7 +257,7 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -258,14 +266,14 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello!',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: false,
 			}
 		}
 	},
 	room5: {
-		name: 'Room 1',
 		expert: {
+			id: 'expert1',
 			name: 'John',
 			email: 'john@example.com',
 			phone: '010-1234-1234',
@@ -277,6 +285,7 @@ const messageRooms = {
 			},
 		},
 		client: {
+			id: 'client1',
 			name: '김강철',
 			email: 'steel@example.com',
 			phone: '010-1234-1234',
@@ -315,7 +324,7 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -324,7 +333,7 @@ const messageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				msg: 'hello!',
-				createdAt: Date.now(),
+				createdAt: toLocalDateString(Date.now()),
 				isRead: false,
 			}
 		}
