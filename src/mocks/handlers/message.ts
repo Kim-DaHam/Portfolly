@@ -38,12 +38,14 @@ export const messageHandlers= [
 		const url = new URL(request.url);
 		const roomId = url.searchParams.get('room_id') as string;
 
-		const messageRoom = JSON.parse(JSON.stringify(messageRooms[roomId]));
+		const messageRoom = roomId !== 'null' ? JSON.parse(JSON.stringify(messageRooms[roomId])) : null;
 
-		Object.assign(messageRoom, {
-			partner: messageRoom[PARTNER_AUTHORITY],
-			...messageRoom,
-		})
+		if(messageRoom) {
+			Object.assign(messageRoom, {
+				partner: messageRoom[PARTNER_AUTHORITY],
+				...messageRoom,
+			})
+		}
 
 		return HttpResponse.json(messageRoom, { status: 200 });
 	}),
