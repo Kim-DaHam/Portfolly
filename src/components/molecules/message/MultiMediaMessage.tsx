@@ -17,26 +17,17 @@ export default function MultiMediaMessage({ files }: Props) {
 	return (
 		<S.Wrapper $fileType={fileType}>
 			{ files?.map((file: File, index: number) => {
-				if(isAllImageType && files.length > 1) {
+				if(isAllImageType) {
 					return (
 						<Image
 							key={index}
 							src={file.url}
 							alt={file.name}
-							size='100%'
-							shape='foursquare'
+							size={files.length > 1 ? '100%' : '18.5rem'}
+							shape={files.length > 1 ? 'foursquare' : 'square'}
+							onClick={()=>window.open(file.url)}
 						/>
 					);
-				}
-				if(isAllImageType && files.length === 1) {
-					return (
-						<Image
-							key={index}
-							src={file.url}
-							alt={file.name}
-							size='18.5rem'
-						/>
-					)
 				}
 				return (
 					<S.FileItem key={index}>
