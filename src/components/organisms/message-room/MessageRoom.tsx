@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEventHandler, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiPaperclip as ClipIcon } from "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
@@ -20,13 +20,11 @@ type Props = {
 export type FormValues = {
 	files: File[];
 	message: string;
-	memo: string;
 };
 
 const defaultValues: FormValues = {
 	files: [],
 	message: '',
-	memo: '',
 };
 
 export default function MessageRoom({ messageRoom }: Props) {
@@ -59,8 +57,14 @@ export default function MessageRoom({ messageRoom }: Props) {
 		fileInput.value = '';
 	};
 
-	const onSubmit = () => {
+	const handleEnterKey = (event: React.KeyboardEvent) => {
+		if (event.key == 'Enter') {
+			handleSubmit(onSubmit)();
+		}
+	};
 
+	const onSubmit = (form: FormValues) => {
+		console.log(form)
 	};
 
 	return (
@@ -84,8 +88,9 @@ export default function MessageRoom({ messageRoom }: Props) {
 			</S.Box>
 
 			<S.InputBox>
-				<S.TextArea
+				<S.TextInput
 					placeholder='메세지를 입력하세요.'
+					onKeyPress={handleEnterKey}
 					{...register('message', {
 						required: '메시지를 입력하세요',
 					})}
