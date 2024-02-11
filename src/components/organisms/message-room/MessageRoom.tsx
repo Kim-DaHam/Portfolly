@@ -1,14 +1,15 @@
-import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiPaperclip as ClipIcon } from "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 
 import * as S from '@/components/organisms/message-room/MessageRoom.styled';
-import { setToast } from "@/redux/toastSlice";
 
 import type { MessageRoom } from "@/types";
 
+import { useMultiFileHandler } from "@/hooks";
+import { setToast } from "@/redux";
 import { useMessageRoomDeleteMutation, useMessageSendMutation } from "@/utils";
 
 import { Text, AlertModal, PartnerProfile, MessageList, Button } from '@/components';
@@ -18,7 +19,7 @@ type Props = {
 }
 
 export type MessageFormValues = {
-	files: string[];
+	files: File[];
 	message: string;
 };
 
@@ -31,18 +32,18 @@ export default function MessageRoom({ messageRoom }: Props) {
 	const [isFileModalOpen, setIsFileModalOpen] = useState(false);
 	const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
-	const dispatch = useDispatch();
-
 	const urlParams = new URL(window.location.href).searchParams;
 	const roomId = urlParams.get('room_id') as string;
-
-	const sendMessageMutation = useMessageSendMutation(roomId);
-	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(roomId);
 
 	const { register, handleSubmit, setValue, getValues } = useForm<MessageFormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
-});
+	});
+
+	const dispatch = useDispatch();
+	const { multiFileHandler } = useMultiFileHandler(setValue);
+	const sendMessageMutation = useMessageSendMutation(roomId);
+	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(roomId);
 
 	const exitMessageRoom = () => {
 		deleteMessageRoomMutation.mutate();
@@ -53,12 +54,13 @@ export default function MessageRoom({ messageRoom }: Props) {
 		const fileInput = event.target as HTMLInputElement;
 		const uploadedFiles = Array.from(fileInput.files!);
 
-		if(fileInput.files!.length > 10) {
-			dispatch(setToast({id: 1, type: 'error', message: '파일은 최대 10개까지 첨부 가능합니다.'}));
+		if(uploadedFiles!.length > 10) {
+			dispatch(setToast({id: 0, type: 'error', message: '파일은 최대 10개까지 첨부 가능합니다.'}));
+			uploadedFiles.splice(10);
 		}
-		setIsFileModalOpen(prev=>!prev);
-		// setValue('files', uploadedFiles);
-		fileInput.value = '';
+
+		setValue('files', uploadedFiles);
+		setIsFileModalOpen(prev => !prev);
 	};
 
 	const handleEnterKey = (event: React.KeyboardEvent) => {
