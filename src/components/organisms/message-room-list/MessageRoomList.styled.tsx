@@ -28,6 +28,7 @@ export const MessageRoomBox = styled.div`
 	${mixins.flexColumn}
 
 	overflow-y: scroll;
+	overflow-x: hidden;
 
 	background-color: #f5f6fa;
 `;

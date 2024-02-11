@@ -30,6 +30,16 @@ export const LabelBox = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+	& span:last-child {
+		flex: none;
+	}
+	& span:first-child {
+		display: block;
+
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 `;
 
 export const MessageBox = styled.div`
