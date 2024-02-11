@@ -5,17 +5,18 @@ import { userState } from '@/redux/loginSlice';
 
 import { toLocalTimeString } from '@/utils';
 
-import { Image, Text } from '@/components';
+import { Image, MultiMediaMessage, Text } from '@/components';
 
 type Props = {
 	message: any;
 	partnerProfileImage: string;
-}
+};
 
 export default function Message({ message, partnerProfileImage }: Props) {
 	const { id: userId } = useSelector(userState);
 	const isOwned = message.from.id === userId ? true : false;
-	const isLongMessage = message.message.length > 21;
+	const isLongMessage = message.message.length > 21 || message.files?.length > 0;
+	const isOnlyText = message.files ? false : true;
 
 	return (
 		<S.Wrapper
@@ -31,9 +32,13 @@ export default function Message({ message, partnerProfileImage }: Props) {
 						$isOwned={isOwned}
 						$isLongMessage={isLongMessage}
 					>
-						<Text size='bodySmall'>
-							{message.message}
-						</Text>
+						{	isOnlyText ?
+							<Text size='bodySmall'>
+								{message.message}
+							</Text>
+						:
+							<MultiMediaMessage files={message.files} />
+						}
 					</S.Content>
 				</>
 				:
@@ -48,9 +53,13 @@ export default function Message({ message, partnerProfileImage }: Props) {
 						$isOwned={isOwned}
 						$isLongMessage={isLongMessage}
 					>
-						<Text size='bodySmall' color='white'>
-							{message.message}
-						</Text>
+						{	isOnlyText ?
+							<Text size='bodySmall' color='white'>
+								{message.message}
+							</Text>
+						:
+							<MultiMediaMessage files={message.files} />
+						}
 					</S.Content>
 					<Text size='bodySmall' color='lightgray'>
 						{toLocalTimeString(message.createdAt)}

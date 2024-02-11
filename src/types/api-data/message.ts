@@ -68,6 +68,7 @@ export type Message = {
 };
 
 export type File = {
+	type: string,
 	name: string,
 	url: string,
 };

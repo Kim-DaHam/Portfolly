@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Wrapper = styled.div<{$isOwned: boolean, $isLongMessage: boolean}>`
 	width: 100%;
