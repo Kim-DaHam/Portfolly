@@ -1,9 +1,9 @@
 import { HttpResponse, http } from 'msw';
 
 import { PortfolioFormValues } from '@/hooks/portfolio/usePortfolioForm';
-import { LOGIN_ID } from '@/mocks/handlers';
 import { portfolios } from '@/mocks/data/portfolios';
 import { users } from '@/mocks/data/users';
+import { LOGIN_ID } from '@/mocks/handlers';
 
 import type { Portfolio, Section, Portfolios } from '@/types';
 
@@ -13,7 +13,6 @@ export const PortfolioHandlers= [
 	// 포트폴리오 목록 데이터를 불러온다.
 	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
-
 		const section = url.searchParams.get('section') as Section;
 		const category = url.searchParams.get('category') as string;
 		const tag = url.searchParams.get('tag') as string;
