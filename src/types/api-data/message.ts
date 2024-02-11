@@ -55,10 +55,11 @@ export type Partner = {
 
 export type Message = {
 	from: {
+		id: string,
 		nickname: string,
 		profileImage: string,
 	},
-	msg: string,
+	message: string,
 	createdAt: string,
 	isRead: boolean,
 };

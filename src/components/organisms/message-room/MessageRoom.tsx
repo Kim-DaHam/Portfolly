@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import * as S from '@/components/organisms/message-room/MessageRoom.styled';
 import { setToast } from "@/redux/toastSlice";
 
-import type { Authority, MessageRoom } from "@/types";
+import type { MessageRoom } from "@/types";
 
 import { useMessageRoomDeleteMutation } from "@/utils";
 

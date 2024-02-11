@@ -71,7 +71,7 @@ export const Label = styled.label`
 `;
 
 export const Box = styled.div`
-	height: 100%;
+	${mixins.fullWidthHeight}
 	${mixins.flexRow}
 	flex-basis: 1;
 	justify-content: space-between;

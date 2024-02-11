@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-	min-width: 100%;
-	width: fit-content;
+	width: 100%;
 	height: fit-content;
 
 	position: sticky;
