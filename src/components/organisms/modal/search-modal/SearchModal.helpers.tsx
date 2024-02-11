@@ -2,22 +2,30 @@
 import { Content } from "@/components/organisms/modal/search-modal";
 import { IComponentFactory } from "@/types";
 
-export const renderContent = (type: Content) => {
+import { Text } from "@/components";
+
+export const renderContent = (type: Content, searchResults: any) => {
 	const ComponentFactory: IComponentFactory = {
 		Trending: (
 			<>
-				Trending
+				<Text size='label' color='gray'>
+					Trending
+				</Text>
+
 			</>
 		),
 		List: (
 			<>
-				List
+				<Text size='label' color='gray'>
+					List
+				</Text>
+
 			</>
 		),
 		Search: (
-			<>
+			<Text size='label' color='gray'>
 				Search
-			</>
+			</Text>
 		)
 	}
 

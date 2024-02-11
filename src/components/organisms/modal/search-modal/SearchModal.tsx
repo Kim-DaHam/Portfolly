@@ -14,19 +14,23 @@ type Props = {
 }
 
 export default function SearchModal({ $modalState, onClose }: Props) {
-	const [filter, setFilter] = useState<Filter>('Trending');
+	const [currentFilter, setCurrentFilter] = useState<Filter>('Trending');
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
 
 	const changeFilter = (filter: Filter)=>{
-		setFilter(filter);
+		setCurrentFilter(filter);
 	}
 
 	useEffect(()=>{
-		isTextEntered ? setFilter('Search') : setFilter('Trending')
+		isTextEntered ? setCurrentFilter('Search') : setCurrentFilter('Trending')
 	}, [isTextEntered])
 
 	return(
-		<Modal $type='search' $modalState={$modalState} onClose={onClose}>
+		<Modal
+			$type='search'
+			$modalState={$modalState}
+			onClose={onClose}
+		>
 			<S.Content>
 				<S.SearchSection>
 					<SearchBar isClicked onInputChange={setIsTextEntered} />
@@ -42,8 +46,8 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 										color='white'
 										size='large'
 										onClick={()=>changeFilter(filter)}
+										$isClicked={filter === currentFilter}
 									>
-										{searchFilter[filter].icon}
 										{searchFilter[filter].name}
 									</S.Option>
 								)
@@ -52,7 +56,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 					}
 
 					<S.ContentBox>
-						{renderContent(searchFilter[filter].contentType)}
+						{renderContent(searchFilter[currentFilter].contentType, '')}
 					</S.ContentBox>
 				</S.ContentSection>
 			</S.Content>
