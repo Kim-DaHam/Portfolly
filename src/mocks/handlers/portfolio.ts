@@ -2,8 +2,8 @@ import { HttpResponse, http } from 'msw';
 
 import { PortfolioFormValues } from '@/hooks/portfolio/usePortfolioForm';
 import { LOGIN_ID } from '@/mocks/handlers';
-import { portfolios } from '@/mocks/nosql-data/portfolios';
-import { users } from '@/mocks/nosql-data/users';
+import { portfolios } from '@/mocks/data/portfolios';
+import { users } from '@/mocks/data/users';
 
 import type { Portfolio, Section, Portfolios } from '@/types';
 
