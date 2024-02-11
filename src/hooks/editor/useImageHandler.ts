@@ -10,7 +10,6 @@ type Props = {
 };
 
 export default function useImageHandler({setValue, getValues}: Props) {
-	const queryClient = useQueryClient();
 	const imageMutation = useImageQuery();
 
   const imageUrlHandler = (editor: any) => {

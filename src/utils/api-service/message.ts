@@ -90,6 +90,7 @@ export const useMessageSendMutation = (roomId: string) => {
 
 		onSuccess: (response) => {
 			copyMessageRoom.messages[response.id] = response.message;
+			copyMessageRoom.lastMessage = response.message;
 			queryClient.setQueryData(['messageRoom', roomId], copyMessageRoom);
 
 			copyMessageRoomList.forEach((room: MessageRoom) => {
