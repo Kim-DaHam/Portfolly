@@ -79,7 +79,9 @@ export const useMessageSendMutation = (roomId: string) => {
 	const queryClient = useQueryClient();
 	const dispatch = useDispatch();
 	const messageRoom = queryClient.getQueryData(['messageRoom', roomId]) as any[];
+	const messageRoomList = queryClient.getQueryData(['messageRoom', 'list']) as any[];
 	const copyMessageRoom = messageRoom && JSON.parse(JSON.stringify(messageRoom));
+	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
 
 	const sendMessage = (body: any) => fetch(`/message?room_id=${roomId}`, 'POST', body);
 
@@ -89,6 +91,15 @@ export const useMessageSendMutation = (roomId: string) => {
 		onSuccess: (response) => {
 			copyMessageRoom.messages[response.id] = response.message;
 			queryClient.setQueryData(['messageRoom', roomId], copyMessageRoom);
+
+			copyMessageRoomList.forEach((room: MessageRoom) => {
+				if(room.id !== roomId) return;
+				room.lastMessage = {
+					id: response.id,
+					...response.message,
+				};
+			});
+			queryClient.setQueryData(['messageRoom', 'list'], copyMessageRoomList);
 		},
 
 		onError: () => {

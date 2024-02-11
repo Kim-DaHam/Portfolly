@@ -34,6 +34,7 @@ export type MessageRoom = Partners & {
 		},
 	},
 	messages?: Messages,
+	lastMessage?: Message,
 };
 
 export type Partners = {
@@ -54,6 +55,7 @@ export type Partner = {
 };
 
 export type Message = {
+	id?: string,
 	from: {
 		id: string,
 		nickname: string,

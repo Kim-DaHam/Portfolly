@@ -25,6 +25,7 @@ export const messageHandlers= [
 					id: docKey,
 					partner: room[PARTNER_AUTHORITY],
 					commission: room.commission,
+					lastMessage: room.lastMessage,
 				});
 			}
 		});

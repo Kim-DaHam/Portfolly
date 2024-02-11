@@ -170,7 +170,18 @@ export const messageRooms: MessageRooms = {
 				createdAt: toLocalDateString(Date.now()),
 				isRead: false,
 			},
-		}
+		},
+		lastMessage: {
+			id: 'message12',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: toLocalDateString(Date.now()),
+			isRead: false,
+		},
 	},
 	room2: {
 		expert: {

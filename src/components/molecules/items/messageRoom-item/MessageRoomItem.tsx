@@ -33,13 +33,13 @@ export default function MessageRoomItem({ messageRoom }: Props) {
 				<S.LabelBox>
 					<Text size='label'>{messageRoom.partner!.nickname}</Text>
 					<Text size='label' color='gray'>
-
+						{messageRoom.lastMessage?.createdAt}
 					</Text>
 				</S.LabelBox>
 
 				<S.MessageBox>
 					<Text size='bodyMedium'>
-
+						{messageRoom.lastMessage?.message}
 					</Text>
 				</S.MessageBox>
 			</S.Box>
