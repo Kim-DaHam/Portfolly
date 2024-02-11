@@ -10,7 +10,7 @@ type Props = React.HTMLAttributes<HTMLSpanElement> & {
 	color?: FontColor;
 }
 
-export default function Text({children, ...props}: Props) {
+export default function Text({cursor=false, children, ...props}: Props) {
 	return (
 		<TextStyles {...props}>
 			{children}
