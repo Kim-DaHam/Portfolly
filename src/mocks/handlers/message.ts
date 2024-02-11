@@ -1,6 +1,5 @@
 import { HttpResponse, http } from 'msw';
 
-import { MessageFormValues } from '@/components/organisms/message-room/MessageRoom';
 import { messageRooms } from '@/mocks/nosql-data/messages';
 
 import { AUTHORITY, LOGIN_ID, PARTNER_AUTHORITY } from '.';
@@ -65,8 +64,20 @@ export const messageHandlers= [
 		const url = new URL(request.url);
 		const roomId = url.searchParams.get('room_id') as string;
 		const room = messageRooms[roomId] as MessageRoom;
-		const messageForm = await request.json() as MessageFormValues;
+		const messageForm = await request.json() as any;
 		const messageId = generateRandomString(20);
+
+		const files: any[] = [];
+
+		if(messageForm.files.length > 0) {
+			messageForm.files.forEach((file: File) => {
+				files.push({
+					type: file.type,
+					name: file.name,
+					url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				})
+			});
+		}
 
 		const message: Message = {
 			from: {
@@ -76,7 +87,8 @@ export const messageHandlers= [
 			},
 			isRead: false,
 			createdAt: new Date(Date.now()),
-			...messageForm,
+			files: files.length > 0 ? files : undefined,
+			message: files.length > 0 ? messageForm.files[0].name : messageForm.message,
 		}
 
 		room.messages![messageId] = message;

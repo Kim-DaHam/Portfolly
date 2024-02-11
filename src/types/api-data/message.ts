@@ -61,10 +61,16 @@ export type Message = {
 		nickname: string,
 		profileImage: string,
 	},
-	files?: string[],
+	files?: File[],
 	message: string,
 	createdAt: Date,
 	isRead: boolean,
+};
+
+export type File = {
+	type: string,
+	name: string,
+	url: string,
 };
 
 export type MessageStatus = '안 읽음' | '거래 중';

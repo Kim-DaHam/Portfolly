@@ -16,7 +16,7 @@ type Props = {
 
 export default function FileModal({ handleFileModal, setValue, getValues }: Props) {
 	const [files, setFiles] = useState<File[]>(getValues('files'));
-	const [isAllImageType] = useState<boolean>(files.every((file: File) => file.type.includes('image')));
+	const isAllImageType = files.every((file: File) => file.type.includes('image'));
 
 	const handleFile = (fileItem: File) => {
 		const updatedFiles = files.filter((file: File) => {
@@ -49,8 +49,16 @@ export default function FileModal({ handleFileModal, setValue, getValues }: Prop
 					if(isAllImageType) {
 						return (
 							<S.ImageBox key={index}>
-								<Image src='' alt='첨부 이미지' size='3.5rem' />
-								<XIcon size={16} color='gray' onClick={()=>handleFile(file)} />
+								<Image
+									src={URL.createObjectURL(file)}
+									alt={file.name}
+									size='3.5rem'
+								/>
+								<XIcon
+									size={16}
+									color='gray'
+									onClick={()=>handleFile(file)}
+								/>
 							</S.ImageBox>
 						)
 					}
@@ -58,8 +66,14 @@ export default function FileModal({ handleFileModal, setValue, getValues }: Prop
 					return (
 						<S.FileItem>
 							<ClipIcon size={16} color='gray' />
-							<Text size='label'>{file.name}</Text>
-							<XIcon size={16} color='gray' onClick={()=>handleFile(file)} />
+							<Text size='label'>
+								{file.name}
+							</Text>
+							<XIcon
+								size={16}
+								color='gray'
+								onClick={()=>handleFile(file)}
+							/>
 						</S.FileItem>
 					)
 			})}

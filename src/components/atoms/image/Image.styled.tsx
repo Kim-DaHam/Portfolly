@@ -5,7 +5,6 @@ import { Props } from "@/components/atoms/image/Image";
 export const ImageLayout = styled.div<Props>`
 	width: ${(props) => props.size};
 	aspect-ratio: ${(props) => props.shape !== 'square' ? '1/1' : ''};
-	border-radius: ${(props) => props.shape === 'foursquare' ? '1rem' : ''};
 
 	flex: none;
 	overflow: hidden;

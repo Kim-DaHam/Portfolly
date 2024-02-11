@@ -16,8 +16,6 @@ export default function MessagePage() {
 	const { data: messageRoom, isError } = useMessageRoomQuery(roomId);
 	usePageErrorAlert(isError);
 
-	console.log(messageRoom)
-
 	return(
 		<S.Wrapper>
 			<S.Content>

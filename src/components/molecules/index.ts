@@ -5,6 +5,7 @@ import MessageRoomItem from "@/components/molecules/items/messageRoom-item/Messa
 import PortfolioItem from "@/components/molecules/items/portfolio-item/PortfolioItem";
 import ReviewItem from "@/components/molecules/items/review-item/ReviewItem";
 import Message from "@/components/molecules/message/Message";
+import MultiMediaMessage from "@/components/molecules/message/MultiMediaMessage";
 import Modal from "@/components/molecules/modal/Modal";
 import MyPageNavigator from "@/components/molecules/navigator/mypage-navigator/MypageNavigator";
 import SectionNavigator from "@/components/molecules/navigator/section-navigator/SectionNavigator";
@@ -36,4 +37,5 @@ export {
 	ReviewForm,
 	Message,
 	AlertContainer,
+	MultiMediaMessage,
 };
