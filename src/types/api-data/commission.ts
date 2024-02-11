@@ -11,6 +11,7 @@ export type Commission = {
 		phone: string,
 		nickname: string,
 		profileImage: string,
+		profile?: any,
 	},
 	expert?: {
 		id: string;
@@ -19,10 +20,11 @@ export type Commission = {
 		phone: string,
 		nickname: string,
 		profileImage: string,
+		profile?: any,
 	},
 	portfolio?: {
 		id: string,
-		section: string,
+		section?: string,
 		title: string,
 		summary: string,
 		thumbnailUrl: string,
@@ -30,7 +32,7 @@ export type Commission = {
 	review: Review | null,
 	createdAt: string,
 	endedAt: string | null,
-	details: CommissionDetail,
+	details?: CommissionDetail,
 };
 
 export type Review = {

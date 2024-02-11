@@ -14,7 +14,7 @@ type Props = {
 
 export default function Message({ message, partnerProfileImage }: Props) {
 	const { id: userId } = useSelector(userState);
-	const isOwned = message.userId === userId ? true : false;
+	const isOwned = message.from.id === userId ? true : false;
 
 	return (
 		<S.Wrapper $isOwned={isOwned}>

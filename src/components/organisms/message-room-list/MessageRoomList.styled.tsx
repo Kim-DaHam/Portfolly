@@ -4,6 +4,7 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.aside`
 	width: 19rem;
+	height: 100%;
 	${mixins.flexColumn}
 	flex: none;
 `;

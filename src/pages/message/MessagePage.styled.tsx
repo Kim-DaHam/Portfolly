@@ -19,10 +19,10 @@ export const Content = styled.main`
 `;
 
 export const MessageSection = styled.section`
-	width: 100%;
-
-	${mixins.flexColumn}
-	flex-basis: 1;
+	width: fit-content;
+	flex: none;
+	flex-shrink: 0;
+	background-color: #f5f6fa;
 `;
 
 export const NotificationBox = styled.div`
