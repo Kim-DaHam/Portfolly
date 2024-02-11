@@ -59,6 +59,7 @@ export type Message = {
 		nickname: string,
 		profileImage: string,
 	},
+	files?: string[],
 	message: string,
 	createdAt: string,
 	isRead: boolean,

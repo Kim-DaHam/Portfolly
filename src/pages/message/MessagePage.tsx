@@ -10,10 +10,10 @@ import { ApiErrorFallback, MessageRoom, MessageRoomList, Text } from '@/componen
 
 export default function MessagePage() {
 	const urlParams = new URL(window.location.href).searchParams;
-	const partnerId = urlParams.get('partner_id');
+	const roomId = urlParams.get('room_id');
 
 	const { reset } = useQueryErrorResetBoundary();
-	const { data: messageRoom, isError } = useMessageRoomQuery(partnerId);
+	const { data: messageRoom, isError } = useMessageRoomQuery(roomId);
 	usePageErrorAlert(isError);
 
 	console.log(messageRoom)

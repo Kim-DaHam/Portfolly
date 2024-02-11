@@ -14,11 +14,11 @@ export default function MessageRoomItem({ messageRoom }: Props) {
 	const navigate = useNavigate();
 
 	const searchParams = new URL(window.location.href).searchParams;
-	const partnerId = searchParams.get('partner_id') as string;
-	const isClicked = partnerId === messageRoom.partner!.id;
+	const roomId = searchParams.get('room_id') as string;
+	const isClicked = roomId === messageRoom.id;
 
 	return (
-		<S.Wrapper onClick={() => navigate(`/messages?partner_id=${messageRoom.partner!.id}`)} $isClicked={isClicked}>
+		<S.Wrapper onClick={() => navigate(`/messages?room_id=${messageRoom.id}`)} $isClicked={isClicked}>
 			<Image
 				src={messageRoom.partner!.profileImage}
 				alt='사용자 프로필'

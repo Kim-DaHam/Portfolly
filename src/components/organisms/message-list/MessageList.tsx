@@ -18,11 +18,6 @@ type Props = {
 export default function MessageList({ messageList={}, getValues, setValue, isFileModalOpen, handleFileModal }: Props) {
 	const messageKeys = Object.keys(messageList);
 
-	useEffect(() => {
-		const messageBox = document.querySelector('#message-box') as HTMLElement;
-		messageBox.scrollTop = messageBox.scrollHeight;
-	}, []);
-
 	return (
 		<S.Wrapper id='message-box'>
 			<S.Content>
