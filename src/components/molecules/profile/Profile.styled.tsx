@@ -36,7 +36,6 @@ export const SpanBox = styled.div`
 export const UserProfileWrapper = styled(Wrapper)`
 	& img {
 		aspect-ratio: 1/1;
-		border-radius: 0;
 		cursor: pointer;
 	}
 `;
@@ -45,11 +44,14 @@ export const PortfolioProfileWrapper = styled(Wrapper)`
 	& img {
 		aspect-ratio: 1/1;
 		cursor: pointer;
-		border-radius: 0;
 	}
 `;
 
 export const PortfolioCardProfileWrapper = styled(Wrapper)`
+	& img {
+		border-radius: 1rem;
+	}
+
 	& > span:first-child:hover {
 		text-decoration: underline;
 	}
@@ -66,6 +68,7 @@ export const ColumnProfileWrapper = styled.div`
 
 	& img {
 		cursor: pointer;
+		border-radius: 1rem;
 	}
 `;
 
