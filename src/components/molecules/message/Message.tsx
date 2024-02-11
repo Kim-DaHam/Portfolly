@@ -15,15 +15,22 @@ type Props = {
 export default function Message({ message, partnerProfileImage }: Props) {
 	const { id: userId } = useSelector(userState);
 	const isOwned = message.from.id === userId ? true : false;
+	const isLongMessage = message.message.length > 21;
 
 	return (
-		<S.Wrapper $isOwned={isOwned}>
+		<S.Wrapper
+			$isOwned={isOwned}
+			$isLongMessage={isLongMessage}
+		>
 			{ isOwned ?
 				<>
 					<Text size='bodySmall' color='lightgray'>
 						{toLocalTimeString(new Date(message.createdAt))}
 					</Text>
-					<S.Content $isOwned={isOwned}>
+					<S.Content
+						$isOwned={isOwned}
+						$isLongMessage={isLongMessage}
+					>
 						<Text size='bodySmall'>
 							{message.message}
 						</Text>
@@ -37,7 +44,10 @@ export default function Message({ message, partnerProfileImage }: Props) {
 						size='3rem'
 						shape='circle'
 					/>
-					<S.Content $isOwned={isOwned}>
+					<S.Content
+						$isOwned={isOwned}
+						$isLongMessage={isLongMessage}
+					>
 						<Text size='bodySmall' color='white'>
 							{message.message}
 						</Text>

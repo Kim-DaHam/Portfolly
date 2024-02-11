@@ -18,7 +18,10 @@ export default function MessageRoomItem({ messageRoom }: Props) {
 	const isClicked = roomId === messageRoom.id;
 
 	return (
-		<S.Wrapper onClick={() => navigate(`/messages?room_id=${messageRoom.id}`)} $isClicked={isClicked}>
+		<S.Wrapper
+			onClick={() => navigate(`/messages?room_id=${messageRoom.id}`)}
+			$isClicked={isClicked}
+		>
 			<Image
 				src={messageRoom.partner!.profileImage}
 				alt='사용자 프로필'
