@@ -7,7 +7,7 @@ import { users } from '@/mocks/nosql-data/users';
 
 import type { Portfolio, Section, Portfolios } from '@/types';
 
-import { PAGE_PER_DATA, generateRandomString } from '@/utils';
+import { PAGE_PER_DATA, generateRandomString, toLocalDateString } from '@/utils';
 
 export const PortfolioHandlers= [
 	// 포트폴리오 목록 데이터를 불러온다.
@@ -169,7 +169,7 @@ export const PortfolioHandlers= [
 
 		portfolios[portfolioId] = {
 			user: user,
-			createdAt: new Date(Date.now()),
+			createdAt: toLocalDateString(Date.now()),
 			likes: 0,
 			...portfolioForm,
 			commissions: null,

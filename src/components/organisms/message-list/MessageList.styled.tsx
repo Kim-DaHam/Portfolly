@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 	min-height: 100%;
 	position: relative;
 	overflow-y: scroll;
+	overflow-x: hidden;
 `;
 
 export const Content = styled.div`

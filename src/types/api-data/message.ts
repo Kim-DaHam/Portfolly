@@ -34,6 +34,7 @@ export type MessageRoom = Partners & {
 		},
 	},
 	messages?: Messages,
+	lastMessage?: Message,
 };
 
 export type Partners = {
@@ -54,13 +55,15 @@ export type Partner = {
 };
 
 export type Message = {
+	id?: string,
 	from: {
 		id: string,
 		nickname: string,
 		profileImage: string,
 	},
+	files?: string[],
 	message: string,
-	createdAt: string,
+	createdAt: Date,
 	isRead: boolean,
 };
 

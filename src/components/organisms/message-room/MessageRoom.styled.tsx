@@ -39,7 +39,7 @@ export const InputBox = styled.div`
 	}
 `;
 
-export const TextArea = styled.textarea`
+export const TextInput = styled.input`
 	width: 100%;
 	height: fit-content;
 	flex: none;

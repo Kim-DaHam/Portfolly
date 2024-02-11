@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiPaperclip as ClipIcon } from "react-icons/fi";
 import { RxExit as ExitIcon } from "react-icons/rx";
@@ -9,7 +9,7 @@ import { setToast } from "@/redux/toastSlice";
 
 import type { MessageRoom } from "@/types";
 
-import { useMessageRoomDeleteMutation } from "@/utils";
+import { useMessageRoomDeleteMutation, useMessageSendMutation } from "@/utils";
 
 import { Text, AlertModal, PartnerProfile, MessageList, Button } from '@/components';
 
@@ -17,16 +17,14 @@ type Props = {
 	messageRoom: MessageRoom;
 }
 
-export type FormValues = {
-	files: File[];
+export type MessageFormValues = {
+	files: string[];
 	message: string;
-	memo: string;
 };
 
-const defaultValues: FormValues = {
+const defaultValues: MessageFormValues = {
 	files: [],
 	message: '',
-	memo: '',
 };
 
 export default function MessageRoom({ messageRoom }: Props) {
@@ -35,9 +33,13 @@ export default function MessageRoom({ messageRoom }: Props) {
 
 	const dispatch = useDispatch();
 
-	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(messageRoom.partner!.id);
+	const urlParams = new URL(window.location.href).searchParams;
+	const roomId = urlParams.get('room_id') as string;
 
-	const { register, handleSubmit, setValue, getValues } = useForm<FormValues>({
+	const sendMessageMutation = useMessageSendMutation(roomId);
+	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(roomId);
+
+	const { register, handleSubmit, setValue, getValues } = useForm<MessageFormValues>({
 		mode: 'onSubmit',
 		defaultValues: defaultValues,
 });
@@ -55,13 +57,26 @@ export default function MessageRoom({ messageRoom }: Props) {
 			dispatch(setToast({id: 1, type: 'error', message: '파일은 최대 10개까지 첨부 가능합니다.'}));
 		}
 		setIsFileModalOpen(prev=>!prev);
-		setValue('files', uploadedFiles);
+		// setValue('files', uploadedFiles);
 		fileInput.value = '';
 	};
 
-	const onSubmit = () => {
-
+	const handleEnterKey = (event: React.KeyboardEvent) => {
+		if (event.key == 'Enter') {
+			handleSubmit(onSubmit)();
+		}
 	};
+
+	const onSubmit = (form: MessageFormValues) => {
+		console.log(form)
+		sendMessageMutation.mutate(form);
+		setValue('message', '');
+	};
+
+	useEffect(() => {
+		const messageBox = document.querySelector('#message-box') as HTMLElement;
+		messageBox.scrollTop = messageBox.scrollHeight;
+	}, [messageRoom]);
 
 	return (
 		<S.Wrapper>
@@ -84,8 +99,9 @@ export default function MessageRoom({ messageRoom }: Props) {
 			</S.Box>
 
 			<S.InputBox>
-				<S.TextArea
+				<S.TextInput
 					placeholder='메세지를 입력하세요.'
+					onKeyPress={handleEnterKey}
 					{...register('message', {
 						required: '메시지를 입력하세요',
 					})}
