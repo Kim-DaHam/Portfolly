@@ -15,6 +15,7 @@ import Introduce from '@/components/organisms/profile-description/introduce/Intr
 import Management from '@/components/organisms/profile-description/management/Management';
 import PortfolioList from '@/components/organisms/profile-description/portfolio-list/PortfolioList';
 import ReviewList from '@/components/organisms/profile-description/review-list/ReviewList';
+import SearchItemList from '@/components/organisms/search-item-list/SearchItemList';
 import CategorySlider from '@/components/organisms/slider/category-slider/CategorySlider';
 import PortfolioSlider from '@/components/organisms/slider/portfolio-slider/PortfolioSlider';
 import Tracking from '@/components/organisms/tracking/Tracking';
@@ -40,4 +41,5 @@ export {
 	FileModal,
 	PartnerProfile,
 	MessageList,
+	SearchItemList,
 };
