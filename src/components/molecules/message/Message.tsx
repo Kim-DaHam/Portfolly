@@ -25,7 +25,7 @@ export default function Message({ message, partnerProfileImage }: Props) {
 			{ isOwned ?
 				<>
 					<Text size='bodySmall' color='lightgray'>
-						{toLocalTimeString(new Date(message.createdAt))}
+						{toLocalTimeString(message.createdAt)}
 					</Text>
 					<S.Content
 						$isOwned={isOwned}
@@ -53,7 +53,7 @@ export default function Message({ message, partnerProfileImage }: Props) {
 						</Text>
 					</S.Content>
 					<Text size='bodySmall' color='lightgray'>
-						{toLocalTimeString(new Date(message.createdAt))}
+						{toLocalTimeString(message.createdAt)}
 					</Text>
 				</>
 			}

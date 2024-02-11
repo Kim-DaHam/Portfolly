@@ -63,7 +63,7 @@ export type Message = {
 	},
 	files?: string[],
 	message: string,
-	createdAt: string,
+	createdAt: Date,
 	isRead: boolean,
 };
 

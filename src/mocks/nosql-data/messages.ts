@@ -57,7 +57,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -67,7 +67,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
 			message3: {
@@ -77,7 +77,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message4: {
@@ -87,7 +87,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
 			message5: {
@@ -97,7 +97,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message6: {
@@ -107,7 +107,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
 			message7: {
@@ -117,7 +117,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message8: {
@@ -127,7 +127,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
 			message9: {
@@ -137,7 +137,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message10: {
@@ -147,7 +147,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
 			message11: {
@@ -157,7 +157,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message12: {
@@ -167,7 +167,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
 		},
@@ -179,7 +179,7 @@ export const messageRooms: MessageRooms = {
 				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 			},
 			message: 'hello!',
-			createdAt: toLocalDateString(Date.now()),
+			createdAt: new Date(Date.now()),
 			isRead: false,
 		},
 	},
@@ -237,7 +237,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -247,10 +247,21 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
-		}
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
 	},
 	room3: {
 		expert: {
@@ -306,7 +317,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -316,10 +327,21 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			}
-		}
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
 	},
 	room4: {
 		expert: {
@@ -375,7 +397,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -385,10 +407,21 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			}
-		}
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
 	},
 	room5: {
 		expert: {
@@ -444,7 +477,7 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
 			message2: {
@@ -454,9 +487,20 @@ export const messageRooms: MessageRooms = {
 					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 				},
 				message: 'hello!',
-				createdAt: toLocalDateString(Date.now()),
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			}
-		}
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
 	},
 }

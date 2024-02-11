@@ -6,7 +6,7 @@ const leftPad = (value: number) => {
 	return `0${value}`;
 };
 
-export const toLocalDateString = (date: string | number) => {
+export const toLocalDateString = (date: string | number | Date) => {
 	const dateObj = new Date(date);
 	const year = dateObj.getFullYear();
 	const month = dateObj.getMonth() + 1;
@@ -15,7 +15,7 @@ export const toLocalDateString = (date: string | number) => {
 	return `${year}-${leftPad(month)}-${leftPad(day)}`;
 };
 
-export const toLocalTimeString = (date: Date) => {
+export const toLocalTimeString = (date: string | number | Date) => {
 	const dateObj = new Date(date);
 	const time = dateObj.getHours() > 12 ? '오후' : '오전';
 	const hour = dateObj.getHours() > 12 ? dateObj.getHours() - 12 : dateObj.getHours();

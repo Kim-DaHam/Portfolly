@@ -4,6 +4,8 @@ import * as S from '@/components/molecules/items/messageRoom-item/MessageRoomIte
 
 import type { MessageRoom } from '@/types';
 
+import { toLocalDateString } from '@/utils';
+
 import { Image, Text } from '@/components';
 
 type Props = {
@@ -31,9 +33,11 @@ export default function MessageRoomItem({ messageRoom }: Props) {
 
 			<S.Box>
 				<S.LabelBox>
-					<Text size='label'>{messageRoom.partner!.nickname}</Text>
+					<Text size='label'>
+						{messageRoom.partner!.nickname}
+					</Text>
 					<Text size='label' color='gray'>
-						{messageRoom.lastMessage?.createdAt}
+						{toLocalDateString(messageRoom.lastMessage?.createdAt || '')}
 					</Text>
 				</S.LabelBox>
 

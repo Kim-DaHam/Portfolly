@@ -3,11 +3,11 @@ import { HttpResponse, http } from 'msw';
 import { MessageFormValues } from '@/components/organisms/message-room/MessageRoom';
 import { messageRooms } from '@/mocks/nosql-data/messages';
 
-import { AUTHORITY, LOGIN_ID, MY_ID, PARTNER_AUTHORITY } from '.';
+import { AUTHORITY, LOGIN_ID, PARTNER_AUTHORITY } from '.';
 
 import type { Message, MessageRoom } from '@/types';
 
-import { generateRandomString, toLocalDateString } from '@/utils';
+import { generateRandomString } from '@/utils';
 
 export const messageHandlers= [
 	// 대화방 목록 가져오기
@@ -73,7 +73,7 @@ export const messageHandlers= [
 				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 			},
 			isRead: false,
-			createdAt: toLocalDateString(Date.now()),
+			createdAt: new Date(Date.now()),
 			...messageForm,
 		}
 
