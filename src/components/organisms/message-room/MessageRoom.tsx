@@ -8,7 +8,6 @@ import * as S from '@/components/organisms/message-room/MessageRoom.styled';
 
 import type { MessageRoom } from "@/types";
 
-import { useMultiFileHandler } from "@/hooks";
 import { setToast } from "@/redux";
 import { useMessageRoomDeleteMutation, useMessageSendMutation } from "@/utils";
 
@@ -41,7 +40,6 @@ export default function MessageRoom({ messageRoom }: Props) {
 	});
 
 	const dispatch = useDispatch();
-	const { multiFileHandler } = useMultiFileHandler(setValue);
 	const sendMessageMutation = useMessageSendMutation(roomId);
 	const deleteMessageRoomMutation = useMessageRoomDeleteMutation(roomId);
 
@@ -70,9 +68,13 @@ export default function MessageRoom({ messageRoom }: Props) {
 	};
 
 	const onSubmit = (form: MessageFormValues) => {
-		console.log(form)
-		sendMessageMutation.mutate(form);
-		setValue('message', '');
+		sendMessageMutation.mutate(form, {
+			onSuccess: () => {
+				setValue('files', []);
+				setValue('message', '');
+				setIsFileModalOpen(false);
+			},
+		});
 	};
 
 	useEffect(() => {
@@ -105,7 +107,7 @@ export default function MessageRoom({ messageRoom }: Props) {
 					placeholder='메세지를 입력하세요.'
 					onKeyPress={handleEnterKey}
 					{...register('message', {
-						required: '메시지를 입력하세요',
+						validate: () => getValues('files').length > 0 ? true : false,
 					})}
 				/>
 
