@@ -1,33 +1,32 @@
 
-import { Content } from "@/components/organisms/modal/search-modal";
 import { IComponentFactory } from "@/types";
 
-import { Text } from "@/components";
+import type { Filter } from "@/components/organisms/modal/search-modal/SearchModal";
 
-export const renderContent = (type: Content, searchResults: any) => {
+import { SearchItemList, Text } from "@/components";
+
+export const renderContent = (filter: Filter) => {
 	const ComponentFactory: IComponentFactory = {
-		Trending: (
+		'App Category': (
 			<>
 				<Text size='label' color='gray'>
-					Trending
+					Categories
 				</Text>
-
+				<SearchItemList type='filter' />
 			</>
 		),
-		List: (
+		'Tags': (
 			<>
 				<Text size='label' color='gray'>
-					List
+					Tags
 				</Text>
-
+				<SearchItemList type='filter' />
 			</>
 		),
-		Search: (
-			<Text size='label' color='gray'>
-				Search
-			</Text>
-		)
+		'Search': (
+			<SearchItemList type='keyword' />
+		),
 	}
 
-	return ComponentFactory[type];
+	return ComponentFactory[filter];
 };

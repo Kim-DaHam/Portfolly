@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { Modal, SearchBar } from "@/components/molecules";
-import { searchFilter, searchFilterList, renderContent } from "@/components/organisms/modal/search-modal";
+import { renderContent } from "@/components/organisms/modal/search-modal/SearchModal.helpers";
+import * as S from "@/components/organisms/modal/search-modal/SearchModal.styled";
 
-import * as S from "./SearchModal.styled";
+import { Modal, SearchBar } from "@/components";
 
-export type Filter = 'Trending' | 'AppCategory' | 'UserTags' | 'Search';
-export type Content = 'Trending' | 'List' | 'Search';
+export type Filter = 'App Category' | 'Tags' | 'Search';
+
+export const searchFilters: Filter[] = ['App Category', 'Tags'];
 
 type Props = {
 	$modalState: boolean;
@@ -14,7 +15,7 @@ type Props = {
 }
 
 export default function SearchModal({ $modalState, onClose }: Props) {
-	const [currentFilter, setCurrentFilter] = useState<Filter>('Trending');
+	const [currentFilter, setCurrentFilter] = useState<Filter>('App Category');
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
 
 	const changeFilter = (filter: Filter)=>{
@@ -22,7 +23,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 	}
 
 	useEffect(()=>{
-		isTextEntered ? setCurrentFilter('Search') : setCurrentFilter('Trending')
+		isTextEntered ? setCurrentFilter('Search') : setCurrentFilter('App Category')
 	}, [isTextEntered])
 
 	return(
@@ -39,7 +40,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 				<S.ContentSection>
 					{ !isTextEntered &&
 						<S.FilterGroup>
-							{searchFilterList.map((filter: Filter, index: number)=>{
+							{searchFilters.map((filter: Filter, index: number)=>{
 								return (
 									<S.Option
 										key={index}
@@ -48,7 +49,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 										onClick={()=>changeFilter(filter)}
 										$isClicked={filter === currentFilter}
 									>
-										{searchFilter[filter].name}
+										{filter}
 									</S.Option>
 								)
 							})}
@@ -56,7 +57,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 					}
 
 					<S.ContentBox>
-						{renderContent(searchFilter[currentFilter].contentType, '')}
+						{renderContent(currentFilter)}
 					</S.ContentBox>
 				</S.ContentSection>
 			</S.Content>
