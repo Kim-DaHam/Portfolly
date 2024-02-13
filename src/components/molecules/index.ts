@@ -4,6 +4,7 @@ import CommissionItem from "@/components/molecules/items/commission-item/Commiss
 import MessageRoomItem from "@/components/molecules/items/messageRoom-item/MessageRoomItem";
 import PortfolioItem from "@/components/molecules/items/portfolio-item/PortfolioItem";
 import ReviewItem from "@/components/molecules/items/review-item/ReviewItem";
+import SearchItem from "@/components/molecules/items/search-item/SearchItem";
 import Message from "@/components/molecules/message/Message";
 import MultiMediaMessage from "@/components/molecules/message/MultiMediaMessage";
 import Modal from "@/components/molecules/modal/Modal";
@@ -38,4 +39,5 @@ export {
 	Message,
 	AlertContainer,
 	MultiMediaMessage,
+	SearchItem,
 };
