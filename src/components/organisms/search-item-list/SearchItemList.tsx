@@ -9,7 +9,9 @@ type Props = {
 export default function SearchItemList({ type }: Props) {
 	return (
 		<S.Wrapper>
-			<SearchItem type='keyword' />
+			<SearchItem type={type} />
+			<SearchItem type={type} />
+			<SearchItem type={type} />
 		</S.Wrapper>
 	)
 }
