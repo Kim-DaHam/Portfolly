@@ -10,8 +10,6 @@ export default function SearchItemList({ type }: Props) {
 	return (
 		<S.Wrapper>
 			<SearchItem type={type} />
-			<SearchItem type={type} />
-			<SearchItem type={type} />
 		</S.Wrapper>
 	)
 }

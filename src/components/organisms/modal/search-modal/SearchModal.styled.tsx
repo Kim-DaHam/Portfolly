@@ -4,22 +4,22 @@ import { ButtonStyle } from '@/components/atoms/index';
 
 export const Content = styled.div`
 	height: 100%;
+
 	display: flex;
 	flex-direction: column;
 `;
 
 export const SearchSection = styled.section`
 	width: 100%;
+	height: 100%;
 `;
 
 export const ContentSection = styled.section`
 	width: 100%;
-	height: 100%;
+	height: 90%;
 
 	display: flex;
-	flex-basis: 1;
 	gap: 1rem;
-	padding-top: 1rem;
 `;
 
 export const FilterGroup = styled.aside`
