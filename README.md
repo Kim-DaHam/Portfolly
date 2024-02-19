@@ -85,9 +85,12 @@
 
 → react-query 낙관적 업데이트로 미리 화면을 바꾼 뒤, 요청 결과에 따라 다시 출력하는 사용자 중점 UI 구현.
 
-* **부족한 에러 처리 **
+* **부족한 에러 처리**
 
-→ react-error-boundary로 GlobalErrorBoundary와 ApiErrorBoundary를 분리한 뒤 컴포넌트 단위로 에러 메시지 및 재요청 버튼 추가.
+→ react-error-boundary로 GlobalErrorBoundary와 ApiErrorBoundary를 분리
+→ GlobalErrorBoundary는 네트워크 에러, 서비스 점검 등 페이지 전체를 막는 에러 관리.
+→ ApiErrorBoundary는 비동기 데이터를 불러오는 컴포넌트 바깥을 감싼 뒤 불러오지 못한 특정 부분에만 에러 메세지 출력.
+→ api 에러 발생 시 컴포넌트 단위로 에러 메시지 및 재요청 버튼 추가.
 → 페이지 전체를 불러오지 못 할 정도의 데이터 통신 에러의 경우 스켈레톤 UI로 페이지 형태는 보여주되, 경고 모달을 띄워 뒤로가게 만듦.
 
 * **클라이언트 의뢰 문의 기능 구현하지 못한 문제**
