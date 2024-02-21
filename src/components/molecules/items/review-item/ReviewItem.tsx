@@ -30,6 +30,7 @@ export default function ReviewItem({ review }: Props) {
 					src={review.portfolio.thumbnailUrl}
 					alt='portfolio-image'
 					size='3.5rem'
+					shape='foursquare'
 					onClick={() => navigate(`/portfolios/${review.portfolio.id}`)}
 				/>
 			</S.ProfileBox>
