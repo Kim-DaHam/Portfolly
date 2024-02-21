@@ -27,13 +27,13 @@ export const PortfolioHandlers= [
 
 		const portfolioDocKeys: string[] = Object.keys(portfolios);
 
-		portfolioDocKeys.map((docKey: string, index: number) => {
+		portfolioDocKeys.map((docKey: string) => {
 			const isSameSection = portfolios[docKey].section === section;
 			const isSameCategory = category === '전체' ? true : portfolios[docKey].category === category ;
 			const hasTag = !tag && portfolios[docKey].tags.indexOf(tag) !== -1;
 			const hasUsername = !username && portfolios[docKey].user.name === username;
 
-			if(isSameSection && isSameCategory && isRangeOfPage(index, page)) {
+			if(isSameSection && isSameCategory && isRangeOfPage(filteredPortfolios.length, page)) {
 				const portfolio: Portfolio = {
 					...portfolios[docKey],
 					id: docKey,
@@ -45,12 +45,12 @@ export const PortfolioHandlers= [
 				return;
 			}
 
-			if(isSameSection && hasTag && isRangeOfPage(index, page)){
+			if(isSameSection && hasTag && isRangeOfPage(filteredPortfolios.length, page)){
 				filteredPortfolios.push(portfolios[docKey]);
 				return;
 			}
 
-			if(isSameSection && hasUsername && isRangeOfPage(index, page)){
+			if(isSameSection && hasUsername && isRangeOfPage(filteredPortfolios.length, page)){
 				filteredPortfolios.push(portfolios[docKey]);
 				return;
 			}
