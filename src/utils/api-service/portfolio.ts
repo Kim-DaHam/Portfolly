@@ -10,7 +10,7 @@ import type { Portfolio, Section } from '@/types';
 import { section, setToast } from '@/redux';
 import { fetch, getFilterQueryString, toUrlParameter } from "@/utils";
 
-export const PAGE_PER_DATA = 10;
+export const PAGE_PER_DATA = 100;
 
 const portfolioKeys = {
   all: ['portfolios'] as const,
