@@ -30,10 +30,10 @@ export default function SearchItem({ type, content }: Props) {
 			{ type === 'keyword' &&
 				<S.FlexBox>
 					<Text size='bodyMedium'>
-						keyword
+						{content.title}
 					</Text>
 					<Text size='label'>
-						summary
+						{content.summary}
 					</Text>
 				</S.FlexBox>
 			}

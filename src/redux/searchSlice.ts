@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
 type InitialState = {
-	keyword: string,
+	searchKeyword: string,
 }
 
 const initialState: InitialState = {
-	keyword: '',
+	searchKeyword: '',
 };
 
 
@@ -16,12 +16,12 @@ export const searchSlice = createSlice({
 	initialState,
 	reducers: {
 		setKeyword: (state, action) => {
-			state.keyword = action.payload;
+			state.searchKeyword = action.payload;
 		},
 	},
 });
 
-export const keyword = (state: RootState) => state.search.keyword;
+export const searchKeyword = (state: RootState) => state.search.searchKeyword;
 export const { setKeyword } = searchSlice.actions;
 
 export default searchSlice;

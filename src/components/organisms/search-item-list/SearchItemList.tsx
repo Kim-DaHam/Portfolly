@@ -1,9 +1,11 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
 
 import { categories } from '@/assets/data/fields';
 import * as S from '@/components/organisms/search-item-list/SearchItemList.styled';
+import { Portfolio } from '@/types';
 
-import { section } from '@/redux';
+import { searchKeyword, section } from '@/redux';
 import { usePortfoliosCountQuery } from '@/utils';
 
 import { SearchItem } from '@/components';
@@ -17,8 +19,11 @@ type Props = {
 export default function SearchItemList({ type }: Props) {
 
 	const currentSection = useSelector(section);
+	const queryClient = useQueryClient();
 
+	const keyword = useSelector(searchKeyword);
 	const { data } = usePortfoliosCountQuery(currentSection);
+	const portfolios: any = queryClient.getQueriesData({ queryKey: ['portfolios', currentSection], type: 'all' })[0][1];
 
 	if(!data) return null;
 
@@ -48,9 +53,18 @@ export default function SearchItemList({ type }: Props) {
 					)
 				})
 			}
-			{/* { type === 'keyword' &&
-				<SearchItem type={type} />
-			} */}
+			{ type === 'keyword' &&
+				portfolios?.pages.flat().map((portfolio: Portfolio) => {
+					if(!portfolio.title.includes(keyword)) return;
+					const content = {
+						title: portfolio.title,
+						summary: portfolio.summary,
+					};
+					return (
+						<SearchItem type={type} content={content}/>
+					)
+				})
+			}
 		</S.Wrapper>
 	)
 }

@@ -52,8 +52,6 @@ export const ContentBox = styled.div`
 	flex-basis: 1;
 	gap: 1.2rem;
 
-	overflow-y: scroll;
-
 	& span:first-child {
 		font-weight: 600;
 	}
