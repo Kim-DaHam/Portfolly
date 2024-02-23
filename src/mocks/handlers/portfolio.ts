@@ -1,5 +1,6 @@
 import { HttpResponse, http } from 'msw';
 
+import { categories } from '@/assets/data/fields';
 import { PortfolioFormValues } from '@/hooks/portfolio/usePortfolioForm';
 import { portfolios } from '@/mocks/data/portfolios';
 import { users } from '@/mocks/data/users';
@@ -10,7 +11,7 @@ import type { Portfolio, Section, Portfolios } from '@/types';
 import { PAGE_PER_DATA, generateRandomString, toLocalDateString } from '@/utils';
 
 export const PortfolioHandlers= [
-	// 포트폴리오 목록 데이터를 불러온다.
+	// 포트폴리오 목록 데이터를 가져온다.
 	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
 		const section = url.searchParams.get('section') as Section;
@@ -23,17 +24,18 @@ export const PortfolioHandlers= [
 			return index >= (page - 1) * PAGE_PER_DATA && index < page * PAGE_PER_DATA;
 		}
 
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
 		const filteredPortfolios: Portfolio[] = [];
 
-		const portfolioDocKeys: string[] = Object.keys(portfolios);
-
-		portfolioDocKeys.map((docKey: string) => {
+		portfolioDocKeys.forEach((docKey: string) => {
 			const isSameSection = portfolios[docKey].section === section;
 			const isSameCategory = category === '전체' ? true : portfolios[docKey].category === category ;
 			const hasTag = !tag && portfolios[docKey].tags.indexOf(tag) !== -1;
 			const hasUsername = !username && portfolios[docKey].user.name === username;
 
-			if(isSameSection && isSameCategory && isRangeOfPage(filteredPortfolios.length, page)) {
+			if(!isRangeOfPage(filteredPortfolios.length, page)) return;
+
+			if(isSameSection && isSameCategory) {
 				const portfolio: Portfolio = {
 					...portfolios[docKey],
 					id: docKey,
@@ -45,12 +47,12 @@ export const PortfolioHandlers= [
 				return;
 			}
 
-			if(isSameSection && hasTag && isRangeOfPage(filteredPortfolios.length, page)){
+			if(isSameSection && hasTag){
 				filteredPortfolios.push(portfolios[docKey]);
 				return;
 			}
 
-			if(isSameSection && hasUsername && isRangeOfPage(filteredPortfolios.length, page)){
+			if(isSameSection && hasUsername){
 				filteredPortfolios.push(portfolios[docKey]);
 				return;
 			}
@@ -59,7 +61,7 @@ export const PortfolioHandlers= [
 		return HttpResponse.json(filteredPortfolios, { status: 200 });
 	}),
 
-	// 각 분야별 top3 포트폴리오 데이터를 불러온다.
+	// 각 분야별 top3 포트폴리오 데이터를 가져온다.
 	http.get('/top-portfolios', ()=>{
 		const portfolioDocKeys: string[] = Object.keys(portfolios);
 		const topPortfolios: {[key in Section]: Portfolios} = {
@@ -70,7 +72,7 @@ export const PortfolioHandlers= [
 			'Video': {},
 		};
 
-		portfolioDocKeys.map((docKey: string) => {
+		portfolioDocKeys.forEach((docKey: string) => {
 			if(portfolios[docKey].section === 'Android/iOS' &&
 				Object.keys(topPortfolios['Android/iOS']).length < 3) {
 					Object.assign(topPortfolios['Android/iOS'][docKey] = portfolios[docKey]);
@@ -101,7 +103,41 @@ export const PortfolioHandlers= [
 		return HttpResponse.json(topPortfolios, { status: 200 });
 	}),
 
-	// 특정 portfolio detail 데이터를 불러온다.
+	// 카테고리 별 포트폴리오 개수를 가져온다.
+	http.get(`/portfolios/count`, ({request}) => {
+		const url = new URL(request.url);
+		const section = url.searchParams.get('section') as Section;
+
+		const portfolioDocKeys: string[] = Object.keys(portfolios);
+		const categoriesPerCount: {[key in string]: number} = {};
+		const tagsPerCount: {[key in string]: number} = {};
+
+		categories[section].forEach((category: string) => {
+			categoriesPerCount[category] = 0;
+		});
+
+		portfolioDocKeys.forEach((docKey: string) => {
+			const portfolio = portfolios[docKey];
+			const isSameSection = portfolios[docKey].section === section;
+
+			if(isSameSection) {
+				categoriesPerCount[portfolio.category] += 1;
+
+				portfolio.tags.forEach((tag: string) => {
+					tagsPerCount[tag] = tagsPerCount[tag] ? tagsPerCount[tag] + 1 : 1;
+				});
+			}
+		});
+
+		const response = {
+			categoriesPerCount: categoriesPerCount,
+			tagsPerCount: tagsPerCount,
+		};
+
+		return HttpResponse.json(response, { status: 200 });
+	}),
+
+	// portfolio detail 데이터를 가져온다.
 	http.get('/portfolios/detail', ({request}) => {
 		const url = new URL(request.url);
 		const portfolioId = url.searchParams.get('id') as string;
@@ -111,7 +147,7 @@ export const PortfolioHandlers= [
 		const portfolioDocKeys: string[] = Object.keys(portfolios);
 		const otherPortfolios: Portfolio[] = [];
 
-		portfolioDocKeys.map((docKey: string) => {
+		portfolioDocKeys.forEach((docKey: string) => {
 			if(portfolios[docKey].user.id === portfolio.user.id &&
 				otherPortfolios.length < 9){
 					otherPortfolios.push({

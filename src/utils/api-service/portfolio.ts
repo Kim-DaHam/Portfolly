@@ -20,7 +20,7 @@ const portfolioKeys = {
   detail: (id: string) => [...portfolioKeys.details(), id] as const,
 }
 
-// 포트폴리오 목록 불러오기
+// 포트폴리오 목록 가져오기
 export const usePortfoliosQuery = (section: Section, filter: { filterKey: string, filterValue: string }) => {
 	const filterSearchString = toUrlParameter(filter.filterValue);
 
@@ -46,9 +46,21 @@ export const usePortfoliosQuery = (section: Section, filter: { filterKey: string
 };
 
 
-// 분야별 top3 포트폴리오 불러오기
+// 분야별 top3 포트폴리오 가져오기
 export const useTopPortfoliosQuery = () => {
 	const getTopPortfolios = () => fetch('/top-portfolios', 'GET');
+
+	return useQuery({
+		queryKey: portfolioKeys.lists('count'),
+		queryFn: getTopPortfolios,
+		staleTime: Infinity,
+		gcTime: Infinity,
+	});
+};
+
+// 카테고리, 태그별 개수 가져오기
+export const usePortfoliosCountQuery = (section: Section) => {
+	const getTopPortfolios = () => fetch(`/portfolios/count?section=${section}`, 'GET');
 
 	return useQuery({
 		queryKey: portfolioKeys.lists('top'),
@@ -58,7 +70,7 @@ export const useTopPortfoliosQuery = () => {
 	});
 };
 
-// 포트폴리오 상세보기 데이터 불러오기
+// 포트폴리오 상세보기 데이터 가져오기
 export const usePortfolioDetailQuery = (id: string) => {
 	const getPortfolio = () => fetch(`/portfolios/detail?id=${id}`, 'GET');
 
