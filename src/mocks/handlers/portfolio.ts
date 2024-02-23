@@ -109,11 +109,11 @@ export const PortfolioHandlers= [
 		const section = url.searchParams.get('section') as Section;
 
 		const portfolioDocKeys: string[] = Object.keys(portfolios);
-		const categoriesPerCount: {[key in string]: number} = {};
-		const tagsPerCount: {[key in string]: number} = {};
+		const categoryPerCount: {[key in string]: number} = {};
+		const tagPerCount: {[key in string]: number} = {};
 
 		categories[section].forEach((category: string) => {
-			categoriesPerCount[category] = 0;
+			categoryPerCount[category] = 0;
 		});
 
 		portfolioDocKeys.forEach((docKey: string) => {
@@ -121,17 +121,17 @@ export const PortfolioHandlers= [
 			const isSameSection = portfolios[docKey].section === section;
 
 			if(isSameSection) {
-				categoriesPerCount[portfolio.category] += 1;
+				categoryPerCount[portfolio.category] += 1;
 
 				portfolio.tags.forEach((tag: string) => {
-					tagsPerCount[tag] = tagsPerCount[tag] ? tagsPerCount[tag] + 1 : 1;
+					tagPerCount[tag] = tagPerCount[tag] ? tagPerCount[tag] + 1 : 1;
 				});
 			}
 		});
 
 		const response = {
-			categoriesPerCount: categoriesPerCount,
-			tagsPerCount: tagsPerCount,
+			categoryPerCount: categoryPerCount,
+			tagPerCount: tagPerCount,
 		};
 
 		return HttpResponse.json(response, { status: 200 });

@@ -1,3 +1,4 @@
+import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 import { renderContent } from "@/components/organisms/modal/search-modal/SearchModal.helpers";
@@ -17,6 +18,8 @@ type Props = {
 export default function SearchModal({ $modalState, onClose }: Props) {
 	const [currentFilter, setCurrentFilter] = useState<Filter>('App Category');
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
+
+	const { reset } = useQueryErrorResetBoundary();
 
 	const changeFilter = (filter: Filter)=>{
 		setCurrentFilter(filter);
@@ -57,7 +60,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 					}
 
 					<S.ContentBox>
-						{renderContent(currentFilter)}
+						{renderContent(currentFilter, reset)}
 					</S.ContentBox>
 				</S.ContentSection>
 			</S.Content>

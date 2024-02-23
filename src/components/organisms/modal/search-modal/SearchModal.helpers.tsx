@@ -1,18 +1,22 @@
 
+import { ErrorBoundary as ApiErrorBoundary } from "react-error-boundary";
+
 import { IComponentFactory } from "@/types";
 
 import type { Filter } from "@/components/organisms/modal/search-modal/SearchModal";
 
-import { SearchItemList, Text } from "@/components";
+import { ApiErrorFallback, SearchItemList, Text } from "@/components";
 
-export const renderContent = (filter: Filter) => {
+export const renderContent = (filter: Filter, reset: ()=>void) => {
 	const ComponentFactory: IComponentFactory = {
 		'App Category': (
 			<>
 				<Text size='label' color='gray'>
 					Categories
 				</Text>
-				<SearchItemList type='filter' />
+				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
+					<SearchItemList type='category' />
+				</ApiErrorBoundary>
 			</>
 		),
 		'Tags': (
@@ -20,11 +24,15 @@ export const renderContent = (filter: Filter) => {
 				<Text size='label' color='gray'>
 					Tags
 				</Text>
-				<SearchItemList type='filter' />
+				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
+					<SearchItemList type='tag' />
+				</ApiErrorBoundary>
 			</>
 		),
 		'Search': (
-			<SearchItemList type='keyword' />
+			<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
+					<SearchItemList type='keyword' />
+				</ApiErrorBoundary>
 		),
 	}
 

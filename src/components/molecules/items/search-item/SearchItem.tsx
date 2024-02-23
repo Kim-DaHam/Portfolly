@@ -1,21 +1,28 @@
 import * as S from '@/components/molecules/items/search-item/SearchItem.styled';
 
+import type { TSearchItem } from '@/components/organisms/search-item-list/SearchItemList';
+
 import { Text } from '@/components';
 
 type Props = {
-	type: 'filter' | 'keyword';
+	type: TSearchItem;
+	content: {
+		title: string,
+		summary?: string,
+		count?: number,
+	}
 };
 
-export default function SearchItem({ type }: Props) {
+export default function SearchItem({ type, content }: Props) {
 	return(
 		<S.Wrapper type={type}>
-			{ type === 'filter' &&
+			{ (type === 'category' || type === 'tag') &&
 				<>
 					<Text size='bodyMedium'>
-						category
+						{content.title}
 					</Text>
 					<Text size='label'>
-						0
+						{content.count}
 					</Text>
 				</>
 			}

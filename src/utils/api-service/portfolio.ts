@@ -51,7 +51,7 @@ export const useTopPortfoliosQuery = () => {
 	const getTopPortfolios = () => fetch('/top-portfolios', 'GET');
 
 	return useQuery({
-		queryKey: portfolioKeys.lists('count'),
+		queryKey: portfolioKeys.lists('top'),
 		queryFn: getTopPortfolios,
 		staleTime: Infinity,
 		gcTime: Infinity,
@@ -63,7 +63,7 @@ export const usePortfoliosCountQuery = (section: Section) => {
 	const getTopPortfolios = () => fetch(`/portfolios/count?section=${section}`, 'GET');
 
 	return useQuery({
-		queryKey: portfolioKeys.lists('top'),
+		queryKey: portfolioKeys.lists('count'),
 		queryFn: getTopPortfolios,
 		staleTime: Infinity,
 		gcTime: Infinity,
