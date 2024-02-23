@@ -1,8 +1,10 @@
+import { FiPlus as PlusIcon} from "react-icons/fi";
+
 import * as S from '@/components/molecules/items/search-item/SearchItem.styled';
 
 import type { TSearchItem } from '@/components/organisms/search-item-list/SearchItemList';
 
-import { Text } from '@/components';
+import { Image, Text } from '@/components';
 
 type Props = {
 	type: TSearchItem;
@@ -10,6 +12,7 @@ type Props = {
 		title: string,
 		summary?: string,
 		count?: number,
+		thumbnail?: string,
 	}
 };
 
@@ -28,14 +31,28 @@ export default function SearchItem({ type, content }: Props) {
 			}
 
 			{ type === 'keyword' &&
-				<S.FlexBox>
-					<Text size='bodyMedium'>
-						{content.title}
-					</Text>
-					<Text size='label'>
-						{content.summary}
-					</Text>
-				</S.FlexBox>
+				<>
+					{	content.thumbnail ?
+						<Image
+							src={content.thumbnail!}
+							alt='portfolio-thumbnail'
+							size='2.5rem'
+							shape='foursquare'
+						/>
+						:
+						<S.IconBox>
+							<PlusIcon size={18} />
+						</S.IconBox>
+					}
+					<S.TextBox>
+						<Text size='bodyMedium'>
+							{content.title}
+						</Text>
+						<Text size='label'>
+							{content.summary}
+						</Text>
+					</S.TextBox>
+				</>
 			}
 		</S.Wrapper>
 	)

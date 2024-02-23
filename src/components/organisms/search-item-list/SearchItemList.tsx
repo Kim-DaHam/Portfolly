@@ -54,16 +54,28 @@ export default function SearchItemList({ type }: Props) {
 				})
 			}
 			{ type === 'keyword' &&
-				portfolios?.pages.flat().map((portfolio: Portfolio) => {
-					if(!portfolio.title.includes(keyword)) return;
-					const content = {
-						title: portfolio.title,
-						summary: portfolio.summary,
-					};
-					return (
-						<SearchItem type={type} content={content}/>
-					)
-				})
+				<>
+					{portfolios?.pages.flat().map((portfolio: Portfolio) => {
+						if(!portfolio.title.includes(keyword)) return;
+						const content = {
+							title: portfolio.title,
+							summary: portfolio.summary,
+							thumbnail: portfolio.images[0],
+						};
+						return (
+							<SearchItem type={type} content={content} />
+						)
+					})}
+					<SearchItem
+						type={type}
+						content={
+							{
+								title: `"${keyword}"`,
+								summary: `"${keyword}"를 포함한 더 많은 결과 보기`,
+							}
+						}
+					/>
+				</>
 			}
 		</S.Wrapper>
 	)
