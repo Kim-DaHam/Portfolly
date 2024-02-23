@@ -7,6 +7,8 @@ import loginSlice from '@/redux/loginSlice';
 import sectionSlice from '@/redux/sectionSlice';
 import toastSlice from '@/redux/toastSlice';
 
+import searchSlice from './searchSlice';
+
 const authPersistConfig = {
 	key: 'user',
 	storage,
@@ -24,6 +26,7 @@ const rootReducer = combineReducers({
 	section: persistReducer(sectionPersistConfig, sectionSlice.reducer),
 	toast: toastSlice.reducer,
 	alert: alertSlice.reducer,
+	search: searchSlice.reducer,
 });
 
 export const store = configureStore({
