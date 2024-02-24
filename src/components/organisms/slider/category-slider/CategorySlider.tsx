@@ -48,7 +48,7 @@ export default function CategorySlider() {
 	};
 
 	const getCurrentCategory = () => {
-		const category = getFilterQueryString().filterValue;
+		const category = getFilterQueryString()['appCategory'];
 		setCurrentCategory(category);
 	}
 

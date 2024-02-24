@@ -36,10 +36,10 @@ export default function SearchItemList({ type, onClose }: Props) {
 			navigate(`/main/${sectionParameter}?filter=appCategory.${filterParameter}`);
 		}
 		if(type === 'tag') {
-			navigate(`/main/${sectionParameter}?filter=tag.${filterParameter}`);
+			navigate(`/search/${sectionParameter}?filter=tag.${filterParameter}`);
 		}
 		if(type === 'keyword') {
-			navigate(`/main/${sectionParameter}?filter=keywordSearch.${filterParameter}`);
+			navigate(`/search/${sectionParameter}?filter=keyword.${filterParameter}`);
 		}
 	};
 

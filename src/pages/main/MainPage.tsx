@@ -4,9 +4,9 @@ import { ErrorBoundary as ApiErrorBoundary } from "react-error-boundary";
 import { useSelector } from "react-redux";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
+import * as S from "@/pages/main/MainPage.styled";
 import { section } from "@/redux/sectionSlice";
 
-import * as S from "./MainPage.styled";
 
 import { useDispatchSectionParameter } from "@/hooks";
 import { getFilterQueryString } from "@/utils";
@@ -17,7 +17,7 @@ const PortfolioCardList = lazy(() => import('@/components/organisms/portfolio-li
 
 export default function MainPage(){
 	const currentSection = useSelector(section);
-	const currentCategory = getFilterQueryString().filterValue;
+	const currentCategory = getFilterQueryString()['appCategory'];
 
 	const { reset } = useQueryErrorResetBoundary();
 

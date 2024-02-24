@@ -20,6 +20,7 @@ import MessagePage from '@/pages/message/MessagePage';
 import MyPage from '@/pages/my-page/MyPage';
 import PortfolioDetailPage from '@/pages/portfolio-detail/PortfolioDetailPage';
 import PortfolioEditPage from '@/pages/portfolio-edit/PortfolioEditPage';
+import SearchPage from '@/pages/search/SearchPage';
 import { store } from '@/redux/store';
 import { ROUTE_PATH } from '@/utils/path';
 
@@ -43,6 +44,7 @@ export default function App() {
 							<Route element={<MainLayout />}>
 								<Route path={ROUTE_PATH.INTRO} element={<IntroPage/>} />
 								<Route path={ROUTE_PATH.MAIN} element={<MainPage/>} />
+								<Route path={ROUTE_PATH.SEARCH} element={<SearchPage/>} />
 								<Route path={ROUTE_PATH.MY_PAGE} element={<MyPage/>} />
 								<Route path={ROUTE_PATH.MY_PAGE_TAB} element={<MyPage/>} />
 								<Route path={ROUTE_PATH.PORTFOLIO_DETAIL} element={<PortfolioDetailPage/>} />
