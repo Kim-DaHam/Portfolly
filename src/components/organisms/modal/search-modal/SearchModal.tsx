@@ -12,7 +12,7 @@ export const searchFilters: Filter[] = ['App Category', 'Tags'];
 
 type Props = {
 	$modalState: boolean;
-	onClose: React.MouseEventHandler<HTMLElement>;
+	onClose: () => void;
 }
 
 export default function SearchModal({ $modalState, onClose }: Props) {
@@ -60,7 +60,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 					}
 
 					<S.ContentBox>
-						{renderContent(currentFilter, reset)}
+						{renderContent(currentFilter, reset, onClose)}
 					</S.ContentBox>
 				</S.ContentSection>
 			</S.Content>

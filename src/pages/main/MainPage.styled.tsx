@@ -22,7 +22,7 @@ export const TitleSection = styled.section`
 	gap: 2rem;
 	align-items: end;
 
-	padding: 1rem 0 1rem 0;
+	padding: 1rem 0 1.5rem 0;
 
 	& span {
 		font-weight: 600;

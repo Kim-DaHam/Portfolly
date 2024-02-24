@@ -7,7 +7,7 @@ import type { Filter } from "@/components/organisms/modal/search-modal/SearchMod
 
 import { ApiErrorFallback, SearchItemList, Text } from "@/components";
 
-export const renderContent = (filter: Filter, reset: ()=>void) => {
+export const renderContent = (filter: Filter, reset: ()=>void, onClose: ()=>void) => {
 	const ComponentFactory: IComponentFactory = {
 		'App Category': (
 			<>
@@ -15,7 +15,7 @@ export const renderContent = (filter: Filter, reset: ()=>void) => {
 					Categories
 				</Text>
 				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
-					<SearchItemList type='category' />
+					<SearchItemList type='category' onClose={onClose} />
 				</ApiErrorBoundary>
 			</>
 		),
@@ -25,13 +25,13 @@ export const renderContent = (filter: Filter, reset: ()=>void) => {
 					Tags
 				</Text>
 				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
-					<SearchItemList type='tag' />
+					<SearchItemList type='tag' onClose={onClose} />
 				</ApiErrorBoundary>
 			</>
 		),
 		'Search': (
 			<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
-					<SearchItemList type='keyword' />
+					<SearchItemList type='keyword' onClose={onClose} />
 				</ApiErrorBoundary>
 		),
 	}

@@ -2,13 +2,13 @@ import styled, { css } from "styled-components";
 
 import type { TSearchItem } from "@/components/organisms/search-item-list/SearchItemList";
 
-export const Wrapper = styled.div<{type: TSearchItem}>`
+export const Wrapper = styled.div<{$type: TSearchItem}>`
 	width: 100%;
 	height: 3rem;
 
 	cursor: pointer;
 
-	${props => props.type === 'keyword' &&
+	${props => props.$type === 'keyword' &&
 		css`
 			height: 3.5rem;
 			display: flex;
@@ -20,7 +20,7 @@ export const Wrapper = styled.div<{type: TSearchItem}>`
 		`
 	}
 
-	${props => (props.type === 'category' || props.type === 'tag') &&
+	${props => (props.$type === 'category' || props.$type === 'tag') &&
 		css`
 			display: flex;
 			justify-content: space-between;
