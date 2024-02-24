@@ -4,21 +4,21 @@ import type { FontColor, FontSize } from "@/types";
 import type { RuleSet } from "styled-components";
 
 /** Sizes */
-const headingMedium = css`
+const headingLarge = css`
 	font-size: 3.5rem;
 	line-height: 4rem;
 	letter-spacing: -.024em;
 	font-weight: 600;
 `;
 
-const title = css`
+const headingMedium = css`
 	font-size: 2.75rem;
 	line-height: 3rem;
 	letter-spacing: -.024em;
 	font-weight: 600;
 `;
 
-const titleSmall = css`
+const headingSmall = css`
 	font-size: 1.5rem;
 	line-height: 2rem;
 	letter-spacing: -.008em;
@@ -72,5 +72,5 @@ const white = css`
 	color: white;
 `;
 
-export const sizes: {[key in FontSize]: RuleSet<object>} = { headingMedium, title, titleSmall, bodyLarge, bodyMedium, bodySmall, label };
+export const sizes: {[key in FontSize]: RuleSet<object>} = { headingLarge, headingMedium, headingSmall, bodyLarge, bodyMedium, bodySmall, label };
 export const colors: {[key in FontColor]: RuleSet<object>} = { black, gray, lightgray, white };
