@@ -33,8 +33,9 @@ function usePopup() {
 		}
 	}
 
-	const popUp = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const popUp = (event:React.MouseEvent<HTMLButtonElement, MouseEvent> | MouseEvent) => {
 		const menuButton = event.currentTarget as HTMLElement;
+
 		setCoordinate(prev => ({
 			...prev,
 			right: getCoordinates(menuButton).right,

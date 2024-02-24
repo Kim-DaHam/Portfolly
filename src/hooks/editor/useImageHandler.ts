@@ -16,10 +16,9 @@ export default function useImageHandler({setValue, getValues}: Props) {
     const range = editor.getSelection();
     const url = prompt('');
 
-    if (url) {
-      editor.insertEmbed(range.index, 'image', url);
-      editor.setSelection(range.index + 1);
-    }
+    if (!url) return;
+		editor.insertEmbed(range.index, 'image', url);
+		editor.setSelection(range.index + 1);
   };
 
   const imageHandler = useCallback((editor: any) => {

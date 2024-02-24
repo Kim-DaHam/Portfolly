@@ -1,12 +1,10 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-
-import { toasts } from "@/redux/toastSlice";
+import { useDispatch, } from "react-redux";
 
 import type { Section } from "@/types";
 
-import { usePortfolioPostQuery, checkMultipleErrors, addValidationErrorToast } from "@/utils";
+import { usePortfolioPostQuery, addValidationErrorToast } from "@/utils";
 
 export type PortfolioFormValues = {
 	title: string;
@@ -16,6 +14,7 @@ export type PortfolioFormValues = {
 	tags: string[];
 	summary: string;
 	images: string[];
+	videos: string[];
 };
 
 const defaultValues: PortfolioFormValues = {
@@ -26,6 +25,7 @@ const defaultValues: PortfolioFormValues = {
 	tags: [],
 	summary: '',
 	images: [],
+	videos: [],
 };
 
 type Props = {
@@ -34,7 +34,6 @@ type Props = {
 
 export default function usePortfolioForm({portfolio} : Props) {
 	const dispatch = useDispatch();
-	const currentErrors = useSelector(toasts);
 
 	const portfolioMutation = usePortfolioPostQuery(portfolio ? portfolio.id : undefined);
 
@@ -69,6 +68,7 @@ export default function usePortfolioForm({portfolio} : Props) {
 
 			return portfolioMutation.mutate(changedValues);
 		}
+
 		return portfolioMutation.mutate(form);
 	};
 
