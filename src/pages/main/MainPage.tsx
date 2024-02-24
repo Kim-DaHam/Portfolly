@@ -31,7 +31,7 @@ export default function MainPage(){
 					<Text size='bodyLarge'>{mainPageSectionSummary[currentSection]}</Text>
 				</S.TitleSection>
 
-				<CategorySlider/>
+				<CategorySlider />
 
 				<S.PortfolioSection>
 					<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
