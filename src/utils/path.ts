@@ -3,6 +3,7 @@ import { ISectionFactory } from "@/types";
 export const ROUTE_PATH = {
 	INTRO: '/',
 	MAIN: '/main/:section',
+	SEARCH: '/search/:section',
 	LOGIN: '/login',
 	MY_PAGE: '/profile/:id',
 	MY_PAGE_TAB: '/profile/:id/:tab',
@@ -26,14 +27,21 @@ export const toUrlParameter = (string: string) => {
 export const getFilterQueryString = () => {
 	const url = new URL(window.location.href);
 	const queryString = url.searchParams as URLSearchParams;
-	const filter = queryString.get('filter') as string;
+	const filterQueryString = queryString.get('filter') as string;
+	const filters = filterQueryString?.split('_');
+	const filterList: any = {};
 
-	if(filter) {
+	if(!filterQueryString) {
+		filterList['appCategory'] = '전체';
+		return filterList;
+	}
+
+	filters.forEach((filter: any) => {
 		const filterType = filter.split('.')[0];
 		const filterValue = filter.split('.')[1];
 
-		return { filterType, filterValue };
-	}
+		filterList[filterType] = filterValue;
+	});
 
-	return { filterType: 'appCategory', filterValue: '전체' };
+	return filterList;
 };

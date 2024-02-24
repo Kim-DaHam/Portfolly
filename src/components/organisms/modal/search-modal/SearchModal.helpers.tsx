@@ -1,25 +1,40 @@
 
-import { Content } from "@/components/organisms/modal/search-modal";
+import { ErrorBoundary as ApiErrorBoundary } from "react-error-boundary";
+
 import { IComponentFactory } from "@/types";
 
-export const renderContent = (type: Content) => {
+import type { Filter } from "@/components/organisms/modal/search-modal/SearchModal";
+
+import { ApiErrorFallback, SearchItemList, Text } from "@/components";
+
+export const renderContent = (filter: Filter, reset: ()=>void, onClose: ()=>void) => {
 	const ComponentFactory: IComponentFactory = {
-		Trending: (
+		'App Category': (
 			<>
-				Trending
+				<Text size='label' color='gray'>
+					Categories
+				</Text>
+				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
+					<SearchItemList type='category' onClose={onClose} />
+				</ApiErrorBoundary>
 			</>
 		),
-		List: (
+		'Tags': (
 			<>
-				List
+				<Text size='label' color='gray'>
+					Tags
+				</Text>
+				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
+					<SearchItemList type='tag' onClose={onClose} />
+				</ApiErrorBoundary>
 			</>
 		),
-		Search: (
-			<>
-				Search
-			</>
-		)
+		'Search': (
+			<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
+					<SearchItemList type='keyword' onClose={onClose} />
+				</ApiErrorBoundary>
+		),
 	}
 
-	return ComponentFactory[type];
+	return ComponentFactory[filter];
 };

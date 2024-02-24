@@ -4,9 +4,9 @@ import { ErrorBoundary as ApiErrorBoundary } from "react-error-boundary";
 import { useSelector } from "react-redux";
 
 import { mainPageSectionSummary } from '@/assets/data/phrase';
+import * as S from "@/pages/main/MainPage.styled";
 import { section } from "@/redux/sectionSlice";
 
-import * as S from "./MainPage.styled";
 
 import { useDispatchSectionParameter } from "@/hooks";
 import { getFilterQueryString } from "@/utils";
@@ -17,7 +17,7 @@ const PortfolioCardList = lazy(() => import('@/components/organisms/portfolio-li
 
 export default function MainPage(){
 	const currentSection = useSelector(section);
-	const currentCategory = getFilterQueryString().filterValue;
+	const filter = getFilterQueryString();
 
 	const { reset } = useQueryErrorResetBoundary();
 
@@ -31,12 +31,12 @@ export default function MainPage(){
 					<Text size='bodyLarge'>{mainPageSectionSummary[currentSection]}</Text>
 				</S.TitleSection>
 
-				<CategorySlider/>
+				<CategorySlider />
 
 				<S.PortfolioSection>
 					<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
 						<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
-							<PortfolioCardList category={currentCategory} />
+							<PortfolioCardList filter={filter} />
 						</Suspense>
 					</ApiErrorBoundary>
 				</S.PortfolioSection>

@@ -1,32 +1,40 @@
+import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-import { Modal, SearchBar } from "@/components/molecules";
-import { searchFilter, searchFilterList, renderContent } from "@/components/organisms/modal/search-modal";
+import { renderContent } from "@/components/organisms/modal/search-modal/SearchModal.helpers";
+import * as S from "@/components/organisms/modal/search-modal/SearchModal.styled";
 
-import * as S from "./SearchModal.styled";
+import { Modal, SearchBar } from "@/components";
 
-export type Filter = 'Trending' | 'AppCategory' | 'UserTags' | 'Search';
-export type Content = 'Trending' | 'List' | 'Search';
+export type Filter = 'App Category' | 'Tags' | 'Search';
+
+export const searchFilters: Filter[] = ['App Category', 'Tags'];
 
 type Props = {
 	$modalState: boolean;
-	onClose: React.MouseEventHandler<HTMLElement>;
+	onClose: () => void;
 }
 
 export default function SearchModal({ $modalState, onClose }: Props) {
-	const [filter, setFilter] = useState<Filter>('Trending');
+	const [currentFilter, setCurrentFilter] = useState<Filter>('App Category');
 	const [isTextEntered, setIsTextEntered] = useState<boolean>(false);
 
+	const { reset } = useQueryErrorResetBoundary();
+
 	const changeFilter = (filter: Filter)=>{
-		setFilter(filter);
+		setCurrentFilter(filter);
 	}
 
 	useEffect(()=>{
-		isTextEntered ? setFilter('Search') : setFilter('Trending')
+		isTextEntered ? setCurrentFilter('Search') : setCurrentFilter('App Category')
 	}, [isTextEntered])
 
 	return(
-		<Modal $type='search' $modalState={$modalState} onClose={onClose}>
+		<Modal
+			$type='search'
+			$modalState={$modalState}
+			onClose={onClose}
+		>
 			<S.Content>
 				<S.SearchSection>
 					<SearchBar isClicked onInputChange={setIsTextEntered} />
@@ -35,16 +43,16 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 				<S.ContentSection>
 					{ !isTextEntered &&
 						<S.FilterGroup>
-							{searchFilterList.map((filter: Filter, index: number)=>{
+							{searchFilters.map((filter: Filter, index: number)=>{
 								return (
 									<S.Option
 										key={index}
 										color='white'
 										size='large'
 										onClick={()=>changeFilter(filter)}
+										$isClicked={filter === currentFilter}
 									>
-										{searchFilter[filter].icon}
-										{searchFilter[filter].name}
+										{filter}
 									</S.Option>
 								)
 							})}
@@ -52,7 +60,7 @@ export default function SearchModal({ $modalState, onClose }: Props) {
 					}
 
 					<S.ContentBox>
-						{renderContent(searchFilter[filter].contentType)}
+						{renderContent(currentFilter, reset, onClose)}
 					</S.ContentBox>
 				</S.ContentSection>
 			</S.Content>

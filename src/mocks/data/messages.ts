@@ -1,222 +1,564 @@
-// NoSQL Database
+import { MessageRooms } from "@/types";
 
-// 채팅방 별 메세지 데이터
-export const messageRooms = [
-	{
-		id: 1,
-		expertId: 1,
-		clientId: 100,
-		portfolioId: 1,
-		commissionId: null,
-		lastMessage: '마지막 메세지입니다dddddddd',
-		timestamp: Date.now(),
-		messages: [
-			{
-				id: 1,
-				userId: 100,
-				createdAt: Date.now(),
-				message: '안녕하세요 문의 드립니다.',
-				isRead: true,
-			},
-			{
-				id: 2,
-				userId: 1,
-				createdAt: Date.now()+1,
-				message: '안녕하세요 반갑습니다',
-				isRead: true,
-			},
-			{
-				id: 3,
-				userId: 1,
-				createdAt: Date.now()+2,
-				message: '어떤 작업이 궁금하신가요?',
-				isRead: true,
-			},
-			{
-				id: 4,
-				userId: 100,
-				createdAt: Date.now(),
-				message: '이게 궁금합니다.',
-				isRead: true,
-			},
-			{
-				id: 5,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 6,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 7,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 8,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 9,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},{
-				id: 10,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 11,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 12,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 13,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 14,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 15,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 16,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 17,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 18,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 19,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 20,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 21,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 22,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 23,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-			{
-				id: 24,
-				userId: 1,
-				createdAt: Date.now(),
-				message: 'test',
-				isRead: true,
-			},
-		],
-	},
+import { toLocalDateString } from "@/utils";
 
-	{
-		id: 2,
-		expertId: 2,
-		clientId: 100,
-		portfolioId: 2,
-		commissionId: 5,
-		lastMessage: '마지막 메세지입니다',
-		timestamp: Date.now(),
-		messages: [
-
-		]
-	},
-
-	{
-		id: 3,
-		expertId: 3,
-		clientId: 100,
-		portfolioId: 3,
-		commissionId: 6,
-		lastMessage: '마지막 메세지입니다',
-		timestamp: Date.now(),
-		messages: [
-			{
-				id: 1,
-				userId: 100,
-				createdAt: Date.now(),
-				message: 'test',
+export const messageRooms: MessageRooms = {
+	room1: {
+		expert: {
+			id: 'expert1',
+			name: 'John',
+			email: 'john@example.com',
+			phone: '010-1234-1234',
+			nickname: 'John Lennon',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				score: 90,
+				contactTime: '언제나 가능',
+			},
+		},
+		client: {
+			id: 'client1',
+			name: '김강철',
+			email: 'steel@example.com',
+			phone: '010-1234-1234',
+			nickname: '강철맨',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				contactTime: '언제나 가능',
+			},
+		},
+		portfolio: {
+			id: 'portfolio1',
+			title: 'test title',
+			summary: 'test summary',
+			thumbnailUrl: '',
+		},
+		commission: {
+			id: 'p1c1',
+			createdAt: '2024-05-06',
+			endedAt: '',
+			details: {
+				title: 'test title',
+				content: 'test content',
+				cost: 50000,
+				status: '진행 중',
+				deadline: '2024-05-26',
+			},
+			review: {
+				score: 50,
+				content: 'review test',
+			},
+		},
+		messages: {
+			message1: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				files: [
+					{
+						type: 'image',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+					{
+						type: 'image',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+					{
+						type: 'image',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+					{
+						type: 'image',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+					{
+						type: 'image',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+				],
+				message: 'hello',
+				createdAt: new Date(Date.now()),
 				isRead: true,
 			},
-			{
-				id: 2,
-				userId: 3,
-				createdAt: Date.now(),
-				message: 'test',
+			message2: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				files: [
+					{
+						type: 'image',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+				],
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
 				isRead: false,
 			},
-		]
+			message3: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				files: [
+					{
+						type: 'text',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+				],
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message4: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				files: [
+					{
+						type: 'text',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+					{
+						type: 'text',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+					{
+						type: 'text',
+						name: 'image',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					},
+				],
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			},
+			message5: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message6: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			},
+			message7: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message8: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			},
+			message9: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message10: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			},
+			message11: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message12: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			},
+		},
+		lastMessage: {
+			id: 'message12',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
 	},
-];
+	room2: {
+		expert: {
+			id: 'expert2',
+			name: 'John',
+			email: 'john@example.com',
+			phone: '010-1234-1234',
+			nickname: 'John Lennon',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				score: 90,
+				contactTime: '언제나 가능',
+			},
+		},
+		client: {
+			id: 'client1',
+			name: '김강철',
+			email: 'steel@example.com',
+			phone: '010-1234-1234',
+			nickname: '강철맨',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				contactTime: '언제나 가능',
+			},
+		},
+		portfolio: {
+			id: 'portfolio1',
+			title: 'test title',
+			summary: 'test summary',
+			thumbnailUrl: '',
+		},
+		commission: {
+			id: 'p1c1',
+			createdAt: '2024-05-06',
+			endedAt: '',
+			details: {
+				title: 'test title',
+				content: 'test content',
+				cost: 50000,
+				status: '진행 중',
+				deadline: '2024-05-26',
+			},
+			review: {
+				score: 50,
+				content: 'review test',
+			},
+		},
+		messages: {
+			message1: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message2: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			},
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
+	},
+	room3: {
+		expert: {
+			id: 'expert3',
+			name: 'John',
+			email: 'john@example.com',
+			phone: '010-1234-1234',
+			nickname: 'John Lennon',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				score: 90,
+				contactTime: '언제나 가능',
+			},
+		},
+		client: {
+			id: 'client1',
+			name: '김강철',
+			email: 'steel@example.com',
+			phone: '010-1234-1234',
+			nickname: '강철맨',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				contactTime: '언제나 가능',
+			},
+		},
+		portfolio: {
+			id: 'portfolio1',
+			title: 'test title',
+			summary: 'test summary',
+			thumbnailUrl: '',
+		},
+		commission: {
+			id: 'p1c1',
+			createdAt: '2024-05-06',
+			endedAt: '',
+			details: {
+				title: 'test title',
+				content: 'test content',
+				cost: 50000,
+				status: '진행 중',
+				deadline: '2024-05-26',
+			},
+			review: {
+				score: 50,
+				content: 'review test',
+			},
+		},
+		messages: {
+			message1: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message2: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			}
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
+	},
+	room4: {
+		expert: {
+			id: 'expert4',
+			name: 'John',
+			email: 'john@example.com',
+			phone: '010-1234-1234',
+			nickname: 'John Lennon',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				score: 90,
+				contactTime: '언제나 가능',
+			},
+		},
+		client: {
+			id: 'client1',
+			name: '김강철',
+			email: 'steel@example.com',
+			phone: '010-1234-1234',
+			nickname: '강철맨',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				contactTime: '언제나 가능',
+			},
+		},
+		portfolio: {
+			id: 'portfolio1',
+			title: 'test title',
+			summary: 'test summary',
+			thumbnailUrl: '',
+		},
+		commission: {
+			id: 'p1c1',
+			createdAt: '2024-05-06',
+			endedAt: '',
+			details: {
+				title: 'test title',
+				content: 'test content',
+				cost: 50000,
+				status: '진행 중',
+				deadline: '2024-05-26',
+			},
+			review: {
+				score: 50,
+				content: 'review test',
+			},
+		},
+		messages: {
+			message1: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message2: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			}
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
+	},
+	room5: {
+		expert: {
+			id: 'expert5',
+			name: 'John',
+			email: 'john@example.com',
+			phone: '010-1234-1234',
+			nickname: 'John Lennon',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				score: 90,
+				contactTime: '언제나 가능',
+			},
+		},
+		client: {
+			id: 'client1',
+			name: '김강철',
+			email: 'steel@example.com',
+			phone: '010-1234-1234',
+			nickname: '강철맨',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			profile: {
+				contactTime: '언제나 가능',
+			},
+		},
+		portfolio: {
+			id: 'portfolio1',
+			title: 'test title',
+			summary: 'test summary',
+			thumbnailUrl: '',
+		},
+		commission: {
+			id: 'p1c1',
+			createdAt: '2024-05-06',
+			endedAt: '',
+			details: {
+				title: 'test title',
+				content: 'test content',
+				cost: 50000,
+				status: '진행 중',
+				deadline: '2024-05-26',
+			},
+			review: {
+				score: 50,
+				content: 'review test',
+			},
+		},
+		messages: {
+			message1: {
+				from: {
+					id: 'expert1',
+					nickname: 'John',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello',
+				createdAt: new Date(Date.now()),
+				isRead: true,
+			},
+			message2: {
+				from: {
+					id: 'client1',
+					nickname: 'Paul',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				},
+				message: 'hello!',
+				createdAt: new Date(Date.now()),
+				isRead: false,
+			}
+		},
+		lastMessage: {
+			id: 'message2',
+			from: {
+				id: 'client1',
+				nickname: 'Paul',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			},
+			message: 'hello!',
+			createdAt: new Date(Date.now()),
+			isRead: false,
+		},
+	},
+}

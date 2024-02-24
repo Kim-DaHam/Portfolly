@@ -48,18 +48,21 @@ export default function CategorySlider() {
 	};
 
 	const getCurrentCategory = () => {
-		const category = getFilterQueryString().filterValue;
+		const category = getFilterQueryString()['appCategory'];
 		setCurrentCategory(category);
 	}
 
 	useEffect(()=>{
 		setSlider(sliderRef.current!);
 		setCategoryBox(categoryBoxRef.current!);
-		getCurrentCategory();
 
 		window.addEventListener("popstate", getCurrentCategory);
     return () => window.removeEventListener("popstate", getCurrentCategory);
 	}, [currentSection]);
+
+	useEffect(() => {
+		getCurrentCategory();
+	})
 
  return(
 	<S.Wrapper>

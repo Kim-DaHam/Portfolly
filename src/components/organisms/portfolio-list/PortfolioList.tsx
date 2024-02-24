@@ -14,12 +14,12 @@ import { PortfolioCard, Text } from "@/components";
 export const SESSION_STORAGE_KEY = 'lastClickedPortfolio';
 
 type Props = {
-	category: string;
+	filter: {[key in string]: string};
 };
 
 const ITEMS_PER_SHOW = 6;
 
-export default function PortfolioList({ category }: Props) {
+export default function PortfolioList({ filter }: Props) {
 	const [showsNum, setShowsNum] = useState<number>(ITEMS_PER_SHOW);
 
 	const currentSection = useSelector(section);
@@ -30,16 +30,23 @@ export default function PortfolioList({ category }: Props) {
 		hasNextPage,
 	} = usePortfoliosQuery(
 		currentSection,
-		{
-			filterKey: 'category',
-			filterValue: category,
-		}
-	);
+		filter,
+		);
+
+	const hasNextPerShows = portfolios.length > showsNum || hasNextPage;
 
 	const loadNextPage = () => {
-		if(hasNextPage) {
+		const isLastPortfoliosLessThanPerShow = (portfolios.length - showsNum) < ITEMS_PER_SHOW;
+
+		if(showsNum === portfolios.length && hasNextPage) {
 			fetchNextPage();
+			return;
 		}
+		if(isLastPortfoliosLessThanPerShow) {
+			setShowsNum(prev => prev + (portfolios.length - showsNum));
+			return;
+		}
+		setShowsNum(prev => prev + ITEMS_PER_SHOW);
 	};
 
 	const setObservationTarget = useIntersectionObserver(loadNextPage);
@@ -67,35 +74,20 @@ export default function PortfolioList({ category }: Props) {
 		return () => sessionStorage.removeItem(SESSION_STORAGE_KEY);
 	}, []);
 
-	useEffect(() => {
-		const isLastPortfoliosLessThanPerShow = portfolios.length - showsNum < ITEMS_PER_SHOW;
-
-		if(!hasNextPage && showsNum < portfolios.length) {
-			setShowsNum(portfolios.length);
-		}
-
-		if(isLastPortfoliosLessThanPerShow) {
-			setShowsNum(prev => prev + (portfolios.length - showsNum));
-			return;
-		}
-
-		setShowsNum(prev => prev + ITEMS_PER_SHOW);
-	}, [portfolios, hasNextPage]);
-
 	return (
 		<S.Wrapper>
 			<S.GridBox>
 				{ portfolios?.length > 0 ?
 					portfolios.map((portfolio: Portfolio, index: number)=>{
-						if(index < showsNum) {
-							return(
-								<PortfolioCard
-									key={portfolio.id}
-									portfolio={portfolio}
-									onClick={() => saveScrollAndPage(++index)}
-								/>
-							)
-					}})
+						if(index >= showsNum) return;
+						return(
+							<PortfolioCard
+								key={portfolio.id}
+								portfolio={portfolio}
+								onClick={() => saveScrollAndPage(++index)}
+							/>
+						)
+					})
 					:
 					<S.Notification>
 						<Text size='bodyLarge' color='lightgray'>
@@ -105,7 +97,7 @@ export default function PortfolioList({ category }: Props) {
 				}
 			</S.GridBox>
 
-			{ hasNextPage &&
+			{ hasNextPerShows &&
 				<S.ObserveDiv ref={setObservationTarget}></S.ObserveDiv>
 			}
 		</S.Wrapper>

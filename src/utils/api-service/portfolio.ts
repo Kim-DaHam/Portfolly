@@ -10,7 +10,7 @@ import type { Portfolio, Section } from '@/types';
 import { section, setToast } from '@/redux';
 import { fetch, getFilterQueryString, toUrlParameter } from "@/utils";
 
-export const PAGE_PER_DATA = 10;
+export const PAGE_PER_DATA = 100;
 
 const portfolioKeys = {
   all: ['portfolios'] as const,
@@ -20,19 +20,25 @@ const portfolioKeys = {
   detail: (id: string) => [...portfolioKeys.details(), id] as const,
 }
 
-// 포트폴리오 목록 불러오기
-export const usePortfoliosQuery = (section: Section, filter: { filterKey: string, filterValue: string }) => {
-	const filterSearchString = toUrlParameter(filter.filterValue);
+// 포트폴리오 목록 가져오기
+export const usePortfoliosQuery = (section: Section, filter: {[key in string]: string}) => {
+	let filterQueryString = ``;
+
+	Object.keys(filter).forEach((filterType: string) => {
+		filterQueryString += `${filterType}=${toUrlParameter(filter[filterType])}&`;
+	});
+
+	if(!filter['appCategory']) {
+		filterQueryString += `appCategory=전체&`;
+	}
+	filterQueryString = filterQueryString.slice(0, -1);
 
 	const getPortfolios = ({ pageParam }: { pageParam: number }) => {
-		return fetch(`/portfolios?page=${pageParam}&section=${section}&${filter.filterKey}=${filterSearchString}`, 'GET');
+		return fetch(`/portfolios?page=${pageParam}&section=${section}&${filterQueryString}`, 'GET');
 	};
 
 	return useSuspenseInfiniteQuery({
-		queryKey: portfolioKeys.list(section, {
-			type: filter.filterKey,
-			value: filter.filterValue
-		}),
+		queryKey: portfolioKeys.list(section, filter),
 		queryFn: getPortfolios,
 		select: data => data.pages.flat(),
 		initialPageParam: 1,
@@ -46,7 +52,7 @@ export const usePortfoliosQuery = (section: Section, filter: { filterKey: string
 };
 
 
-// 분야별 top3 포트폴리오 불러오기
+// 분야별 top3 포트폴리오 가져오기
 export const useTopPortfoliosQuery = () => {
 	const getTopPortfolios = () => fetch('/top-portfolios', 'GET');
 
@@ -58,7 +64,19 @@ export const useTopPortfoliosQuery = () => {
 	});
 };
 
-// 포트폴리오 상세보기 데이터 불러오기
+// 카테고리, 태그별 개수 가져오기
+export const usePortfoliosCountQuery = (section: Section) => {
+	const getTopPortfolios = () => fetch(`/portfolios/count?section=${section}`, 'GET');
+
+	return useQuery({
+		queryKey: portfolioKeys.lists('count'),
+		queryFn: getTopPortfolios,
+		staleTime: Infinity,
+		gcTime: Infinity,
+	});
+};
+
+// 포트폴리오 상세보기 데이터 가져오기
 export const usePortfolioDetailQuery = (id: string) => {
 	const getPortfolio = () => fetch(`/portfolios/detail?id=${id}`, 'GET');
 

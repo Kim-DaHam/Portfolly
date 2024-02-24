@@ -23,11 +23,12 @@ export const SearchBox = styled.div`
 `;
 
 export const MessageRoomBox = styled.div`
+	width: 100%;
 	height: 100%;
 
 	${mixins.flexColumn}
 
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
 
 	background-color: #f5f6fa;

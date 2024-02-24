@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { RootState } from './store';
 
-import { Section } from '@/types/portfolio';
+import type { Section } from '@/types';
 
 type InitialState = {
 	section: Section,

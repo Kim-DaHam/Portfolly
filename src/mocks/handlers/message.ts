@@ -1,6 +1,6 @@
 import { HttpResponse, http } from 'msw';
 
-import { messageRooms } from '@/mocks/nosql-data/messages';
+import { messageRooms } from '@/mocks/data/messages';
 
 import { AUTHORITY, LOGIN_ID, PARTNER_AUTHORITY } from '.';
 
