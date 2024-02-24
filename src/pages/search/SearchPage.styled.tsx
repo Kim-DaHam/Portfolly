@@ -4,9 +4,8 @@ import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
-	${mixins.flexCenter}
 	${mixins.flexColumn}
-
+	align-items: center;
 	padding-top: 7rem;
 `;
 
@@ -22,6 +21,10 @@ export const TitleSection = styled.section`
 	& span {
 		font-weight: 600;
 	}
+
+	& button {
+		border-radius: 9999px;
+	}
 `;
 
 export const PortfolioSection = styled.section`
@@ -33,39 +36,4 @@ export const Box = styled.div`
 	${mixins.flexRow}
 	align-items: center;
 	gap: 1rem;
-`;
-
-export const Input = styled.input`
-	height: 2.75rem;
-	padding: 0 1rem;
-	font-family: 'NotoSansTTFMedium';
-	border: 1px solid #f0f0f0;
-	border-radius: 9999px;
-  background-color: white;
-	font-size: 1rem;
-`;
-
-export const FilterItem = styled.div`
-	height: 2.75rem;
-	${mixins.flexCenter}
-
-	color: white;
-	border-radius: 50%;
-	background-color: black;
-
-	&:hover {
-		& > svg {
-			visibility: visible;
-		}
-	}
-`;
-
-export const Icon = styled.div`
-		padding: 0.5rem;
-		border-radius: 50%;
-		background-color: white;
-
-		& > svg {
-		visibility: hidden;
-	}
 `;
