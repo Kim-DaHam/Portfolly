@@ -15,9 +15,9 @@ export const PortfolioHandlers= [
 	http.get(`/portfolios`, ({request}) => {
 		const url = new URL(request.url);
 		const section = url.searchParams.get('section') as Section;
-		const category = url.searchParams.get('category') as string;
+		const category = url.searchParams.get('appCategory') as string;
 		const tag = url.searchParams.get('tag') as string;
-		const username = url.searchParams.get('username') as string;
+		const keyword = url.searchParams.get('keyword') as string;
 
 		const page = Number(url.searchParams.get('page')) as number;
 		const isRangeOfPage = (index: number, page: number) => {
@@ -30,12 +30,13 @@ export const PortfolioHandlers= [
 		portfolioDocKeys.forEach((docKey: string) => {
 			const isSameSection = portfolios[docKey].section === section;
 			const isSameCategory = category === '전체' ? true : portfolios[docKey].category === category ;
-			const hasTag = !tag && portfolios[docKey].tags.indexOf(tag) !== -1;
-			const hasUsername = !username && portfolios[docKey].user.name === username;
+			const hasSameTag = tag ? portfolios[docKey].tags.indexOf(tag) !== -1 : true;
+			const hasSameKeyword = keyword ? portfolios[docKey].title.includes(keyword) : true;
 
+			if(!isSameSection) return;
 			if(!isRangeOfPage(filteredPortfolios.length, page)) return;
 
-			if(isSameSection && isSameCategory) {
+			if(isSameCategory && hasSameTag && hasSameKeyword) {
 				const portfolio: Portfolio = {
 					...portfolios[docKey],
 					id: docKey,
@@ -44,17 +45,6 @@ export const PortfolioHandlers= [
 				};
 
 				filteredPortfolios.push(portfolio);
-				return;
-			}
-
-			if(isSameSection && hasTag){
-				filteredPortfolios.push(portfolios[docKey]);
-				return;
-			}
-
-			if(isSameSection && hasUsername){
-				filteredPortfolios.push(portfolios[docKey]);
-				return;
 			}
 		});
 

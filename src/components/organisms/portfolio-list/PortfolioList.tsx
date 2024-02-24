@@ -14,12 +14,12 @@ import { PortfolioCard, Text } from "@/components";
 export const SESSION_STORAGE_KEY = 'lastClickedPortfolio';
 
 type Props = {
-	category: string;
+	filter: {[key in string]: string};
 };
 
 const ITEMS_PER_SHOW = 6;
 
-export default function PortfolioList({ category }: Props) {
+export default function PortfolioList({ filter }: Props) {
 	const [showsNum, setShowsNum] = useState<number>(ITEMS_PER_SHOW);
 
 	const currentSection = useSelector(section);
@@ -30,10 +30,7 @@ export default function PortfolioList({ category }: Props) {
 		hasNextPage,
 	} = usePortfoliosQuery(
 		currentSection,
-		{
-			filterKey: 'category',
-			filterValue: category,
-		}
+		filter,
 		);
 
 	const hasNextPerShows = portfolios.length > showsNum || hasNextPage;

@@ -193,7 +193,7 @@ export const portfolios: Portfolios = {
 		createdAt: '2024-05-06',
 		section: 'Android/iOS',
 		category: '금융',
-		tags: ['tag1', 'tag2'],
+		tags: ['tag4'],
 		images: ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FboIpE3%2FbtsEXqeYBQ9%2FJS8YrokTloNXJB1hOvrsI0%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0Jjlv%2FbtsEWNuFAMt%2FAtLOxwISkGSh3uXkhg9Vv1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkT4eD%2FbtsE0IFbskj%2FsKtPj4DJlE3K30FTg69NAk%2Fimg.png'],
 		likes: 5,
 		commissions: {

@@ -1,7 +1,6 @@
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import { ErrorBoundary as ApiErrorBoundary } from "react-error-boundary";
-import { useForm } from "react-hook-form";
 import { FiArrowLeft as LeftArrowIcon } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,14 +15,16 @@ import { Text, PortfolioListSkeleton, ApiErrorFallback, SearchFilterBar } from "
 
 const PortfolioCardList = lazy(() => import('@/components/organisms/portfolio-list/PortfolioList'));
 
-export default function SearchPage(){
+export default function SearchPage() {
+	const [reRendering, setReRendering] = useState(false);
+
 	const navigate = useNavigate();
 	const currentSection = useSelector(section);
 
 	const sectionParameter = toUrlParameter(currentSection);
-	const filterList = getFilterQueryString();
-	const mainFilterType = Object.keys(filterList)[0];
-	const mainFilter = filterList[mainFilterType];
+	const filter = getFilterQueryString();
+	const mainFilterType = Object.keys(filter)[0];
+	const mainFilter = filter[mainFilterType];
 
 	const { reset } = useQueryErrorResetBoundary();
 
@@ -46,13 +47,13 @@ export default function SearchPage(){
 					Search "{mainFilter}"
 				</Text>
 
-				<SearchFilterBar filterList={filterList}/>
+				<SearchFilterBar filter={filter} handleRendering={setReRendering}/>
 			</S.TitleSection>
 
 			<S.PortfolioSection>
 				<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
 					<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
-						<PortfolioCardList category={filterList['appCategory'] || '전체'} />
+						<PortfolioCardList filter={filter} />
 					</Suspense>
 				</ApiErrorBoundary>
 			</S.PortfolioSection>

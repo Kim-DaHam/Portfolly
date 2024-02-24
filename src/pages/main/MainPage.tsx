@@ -17,7 +17,7 @@ const PortfolioCardList = lazy(() => import('@/components/organisms/portfolio-li
 
 export default function MainPage(){
 	const currentSection = useSelector(section);
-	const currentCategory = getFilterQueryString()['appCategory'];
+	const filter = getFilterQueryString();
 
 	const { reset } = useQueryErrorResetBoundary();
 
@@ -36,7 +36,7 @@ export default function MainPage(){
 				<S.PortfolioSection>
 					<ApiErrorBoundary FallbackComponent={ApiErrorFallback} onReset={reset}>
 						<Suspense fallback={<PortfolioListSkeleton type='portfolio-card' />}>
-							<PortfolioCardList category={currentCategory} />
+							<PortfolioCardList filter={filter} />
 						</Suspense>
 					</ApiErrorBoundary>
 				</S.PortfolioSection>
