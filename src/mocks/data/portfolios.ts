@@ -18,6 +18,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2', 'tag3'],
 		images: ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrHQt8%2FbtsEWgw3bua%2FfXBbZeGz7pTRc5OM0n5Jdk%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdIMWbv%2FbtsEV62jTwz%2F8NHHKxzKvr1c3ZNNqxEoo0%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdpXxB2%2FbtsEYMIyfhk%2FBmXO9Dc3srOihTUf8Pamxk%2Fimg.png'],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p1c1: {
@@ -105,6 +106,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpcGPn%2FbtsEZa3whAr%2FLMVnGlpS6Yo4VGLUkIAqY1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCyC9b%2FbtsEXscLuv5%2FxBZqPDWSxDehsG6cKqMin1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGC5Jf%2FbtsE3ntU62h%2FCxPl3DUP4SgyfeuLkayBk0%2Fimg.png'],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p2c1: {
@@ -195,6 +197,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag4'],
 		images: ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FboIpE3%2FbtsEXqeYBQ9%2FJS8YrokTloNXJB1hOvrsI0%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0Jjlv%2FbtsEWNuFAMt%2FAtLOxwISkGSh3uXkhg9Vv1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkT4eD%2FbtsE0IFbskj%2FsKtPj4DJlE3K30FTg69NAk%2Fimg.png'],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p3c1: {
@@ -285,6 +288,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbOQMkF%2FbtsEXsX6TZT%2FCSymXtBDmKCnegRcuvW6Z1%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FsVubS%2FbtsE0gIV4uB%2FoUslnVCjMk5yHtqDYgKIjK%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbWFzAS%2FbtsEXtW0x0E%2Fn0OfUW9JbTqlGE95x6XKv0%2Fimg.png'],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p4c1: {
@@ -375,6 +379,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F3Cjtu%2FbtsE0hVm4Rs%2FRPeeX1Fgnvqk1v0ZPVNcK0%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlVP0n%2FbtsEYP6nPit%2F7vnkgAJtuUmeFlb3LGdank%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcNTCPW%2FbtsEZUlI4lx%2FgSidbNMuBqqd0Lr0npUpT0%2Fimg.png'],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p5c1: {
@@ -465,6 +470,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FG5DlO%2FbtsE0HfciCs%2FEtXAgcWAnaKKnz2rn1K4HK%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbzvmjI%2FbtsEXqF1wQT%2FDGq03eemEUY3CltebhbkcK%2Fimg.png', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcFmnV7%2FbtsE2AtlDEz%2FHsLaoWPNgd7llOKx1jEbkk%2Fimg.png'],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p6c1: {
@@ -555,6 +561,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p7c1: {
@@ -645,6 +652,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p8c1: {
@@ -735,6 +743,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p9c1: {
@@ -825,6 +834,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p10c1: {
@@ -915,6 +925,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p11c1: {
@@ -1005,6 +1016,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p12c1: {
@@ -1095,6 +1107,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p13c1: {
@@ -1185,6 +1198,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p14c1: {
@@ -1275,6 +1289,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p15c1: {
@@ -1365,6 +1380,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p16c1: {
@@ -1455,6 +1471,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p17c1: {
@@ -1545,6 +1562,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p18c1: {
@@ -1635,6 +1653,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p19c1: {
@@ -1725,6 +1744,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p20c1: {
@@ -1815,6 +1835,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p21c1: {
@@ -1905,6 +1926,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p22c1: {
@@ -1995,6 +2017,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p23c1: {
@@ -2085,6 +2108,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p24c1: {
@@ -2175,6 +2199,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p25c1: {
@@ -2265,6 +2290,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p26c1: {
@@ -2355,6 +2381,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p27c1: {
@@ -2445,6 +2472,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p28c1: {
@@ -2535,6 +2563,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p29c1: {
@@ -2625,6 +2654,7 @@ export const portfolios: Portfolios = {
 		category: '금융',
 		tags: ['tag1', 'tag2'],
 		images: [],
+		videos: [],
 		likes: 5,
 		commissions: {
 			p30c1: {

@@ -22,6 +22,7 @@ export type Portfolio = {
 	category: string,
 	tags: string[],
 	images: string[],
+	videos: string[],
 	likes: number,
 	otherPortfolios?: Portfolio[],
 	commissions: Commissions | null,

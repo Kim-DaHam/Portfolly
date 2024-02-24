@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { FiArrowRight as RightArrowIcon, FiArrowLeft as LeftArrowIcon } from "react-icons/fi";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
@@ -67,19 +68,18 @@ export default function PortfolioSlider({section, portfolio}: Props){
 				</S.ArrowBox>
 
 				<Slider {...sliderSettings} ref={sliderRef}>
-					{portfolio.images.length > 0 &&
+					{ section !== 'Video' && portfolio.images.length > 0 &&
 						portfolio.images.map((url, index)=>{
 							if(index > 3) return;
 							return (
 								<S.SliderItem key={index}>
-									{ section !== 'Video' ?
 										<Image src={url} size='100%' alt='slider image' />
-										:
-										<S.Video src={url} />
-									}
 								</S.SliderItem>
 							);
 					})}
+					{ section === 'Video' &&
+						<S.Video src={portfolio.videos[0]} />
+					}
 				</Slider>
 			</S.Content>
 		</S.Wrapper>
