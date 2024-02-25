@@ -4,6 +4,7 @@ import { HEADER_HEIGHT } from '@/components/organisms/header/Header.styled';
 import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.main`
+	min-width: 1000px;
 	width: 100%;
 	height: 100vh;
 	${mixins.flexCenter}

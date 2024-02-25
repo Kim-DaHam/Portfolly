@@ -5,6 +5,8 @@ import * as mixins from '@/styles/mixins';
 export const Wrapper = styled.main`
 	${mixins.fullScreen}
 	${mixins.flexColumn}
+	min-width: 1500px;
+
 	padding: 7rem;
 
 	gap: 1.5rem;

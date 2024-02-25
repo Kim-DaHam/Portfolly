@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.main`
+	min-width: 1000px;
 	width: 80%;
 	height: 45rem;
 
