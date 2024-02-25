@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
+import theme from '@/styles/theme';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
@@ -20,6 +21,10 @@ export const Content = styled.main`
 	gap: 2rem;
 
 	margin-top: 1rem;
+
+	@media ${theme.device.tablet} {
+		${mixins.flexColumn}
+	}
 `;
 
 export const PortfolioSection = styled.section`
@@ -43,6 +48,10 @@ export const Aside = styled.aside`
 	flex: none;
 
 	padding-bottom: 5rem;
+
+	@media ${theme.device.tablet} {
+		width: 100%;
+	}
 `;
 
 export const FlexColumnBox = styled.div`

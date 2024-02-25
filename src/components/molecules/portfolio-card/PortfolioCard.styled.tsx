@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+import { ratios } from "@/styles/portfolio";
+import theme from "@/styles/theme";
+
+import type { Section } from "@/types";
+
 export const Wrapper = styled.div`
 	width: 100%;
 	height: 100%;
@@ -22,6 +27,14 @@ export const Wrapper = styled.div`
 			text-decoration: underline;
 		}
 	}
+
+	@media ${theme.mainPageSize.app5th} {
+		&:hover {
+			& .button-group {
+				display: none;
+			}
+		}
+	};
 `;
 
 export const ProfileBox = styled.div`

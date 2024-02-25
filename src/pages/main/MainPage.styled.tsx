@@ -1,17 +1,14 @@
 import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
+import { sizes } from '@/styles/text';
+import theme from '@/styles/theme';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
 	${mixins.fullScreen}
-	padding-top: 7rem;
-`;
-
-export const Content = styled.main`
-	width: 100%;
-
 	${mixins.flexCenter}
 	${mixins.flexColumn}
+	padding-top: 7rem;
 `;
 
 export const TitleSection = styled.section`
@@ -27,6 +24,12 @@ export const TitleSection = styled.section`
 	& span {
 		font-weight: 600;
 	}
+
+	@media ${theme.mainPageSize.app5th} {
+		& > span:first-child {
+			${sizes['headingSmall']};
+		}
+	};
 `;
 
 export const PortfolioSection = styled.section`

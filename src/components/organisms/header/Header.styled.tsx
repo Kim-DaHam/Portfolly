@@ -1,6 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import theme from '@/styles/theme';
 
 export const HEADER_HEIGHT = '4.498rem';
+
+const wrapperMediaQuery = css`
+	@media ${theme.mainPageSize.app4th} {
+		padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+	};
+	@media ${theme.mainPageSize.app5th} {
+		padding: 0.3rem 1rem 0.3rem 1rem;
+	};
+`;
 
 export const Wrapper = styled.header`
 	width: 100vw;
@@ -19,6 +30,8 @@ export const Wrapper = styled.header`
 	padding: 0.3rem 4rem 0.3rem 4rem;
 
 	background-color: white;
+
+	${wrapperMediaQuery}
 `;
 
 export const ButtonGroup = styled.nav`

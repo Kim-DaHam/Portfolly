@@ -11,7 +11,7 @@ import { section } from "@/redux/sectionSlice";
 import { usePopup } from "@/hooks";
 import { setToast } from "@/redux";
 
-import { Button, ToggleButton, Popper, PortfolioSlider, Profile } from "@/components";
+import { Image, Button, ToggleButton, Popper, PortfolioSlider, Profile } from "@/components";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
 	portfolio: any;
@@ -50,13 +50,17 @@ export default function PortfolioCard({ portfolio, ...props }: Props) {
 
 	return (
 		<S.Wrapper {...props}>
-			<PortfolioSlider
-				section={currentSection}
-				portfolio={portfolio}
-			/>
+				<PortfolioSlider
+					section={currentSection}
+					portfolio={portfolio}
+				/>
 
 			<S.ProfileBox>
-				<Profile type='portfolio-card' portfolio={portfolio} user={portfolio.user}/>
+				<Profile
+					type='portfolio-card'
+					portfolio={portfolio}
+					user={portfolio.user}
+				/>
 
 				<S.ButtonGroup className='button-group' ref={buttonGroupRef}>
 					<ToggleButton
@@ -70,7 +74,11 @@ export default function PortfolioCard({ portfolio, ...props }: Props) {
 					</Button>
 				</S.ButtonGroup>
 
-				<Popper coordinate={coordinate} popOut={popOut} $popperState={isPopUp}>
+				<Popper
+					$popperState={isPopUp}
+					coordinate={coordinate}
+					popOut={popOut}
+				>
 					<Group>
 						<Link to='' onClick={handleCopy}>
 							URL 복사하기

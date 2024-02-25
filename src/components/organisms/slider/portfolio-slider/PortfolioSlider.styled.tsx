@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 import { ratios } from '@/styles/portfolio';
-import { Section } from '@/types';
+import theme from '@/styles/theme';
+
+import type { Section } from '@/types';
 
 import { ButtonStyle } from '@/components';
 
@@ -32,6 +34,10 @@ export const Wrapper = styled.div<{$section: Section, $isMoreThanOnePage: boolea
 		div {
 			height: 100%;
 		}
+
+		@media ${theme.mainPageSize.app5th} {
+			border-radius: 1.5rem;
+		};
 	}
 
 	& .slick-dots {
@@ -48,6 +54,17 @@ export const Wrapper = styled.div<{$section: Section, $isMoreThanOnePage: boolea
 	& .slick-dots button {
 		pointer-events: none;
 	}
+
+	@media ${theme.mainPageSize.app5th} {
+		border-radius: 1.5rem;
+		border: 1px solid #f5f5f5;
+
+		&:hover {
+			& .slick-dots, & button {
+				opacity: 0;
+			}
+		}
+	};
 `;
 
 export const Content = styled.div`
@@ -55,6 +72,10 @@ export const Content = styled.div`
 	height: 100%;
 	position: relative;
 	padding: 1.4em 1.5em 1.4em 1.5em;
+
+	@media ${theme.mainPageSize.app5th} {
+		padding: 0;
+	};
 `;
 
 export const SliderItem = styled.div`

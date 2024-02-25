@@ -92,7 +92,7 @@ export default function PortfolioDetail(){
 						<Text size='bodyMedium' color='gray'>
 							{portfolio?.section} {'〉'} {portfolio?.category}
 						</Text>
-						<Text size='titleSmall'>
+						<Text size='bodyLarge'>
 							{portfolio?.title}
 						</Text>
 
