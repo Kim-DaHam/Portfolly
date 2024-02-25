@@ -18,30 +18,28 @@ export default function LogIn(){
 
 	return(
 		<S.Wrapper>
-			<S.LoginSection>
-				<Image src={Logo} size='2.8rem' />
-				<Text size='title'>Welcome</Text>
+			<Image
+				src={Logo}
+				size='2.5rem'
+				onClick={() => navigate(`/main/android-ios`)}
+			/>
+			<Text size='headingMedium'>Welcome</Text>
 
-				<S.ButtonGroup>
-					<S.Box>
-						<Text size='label'>서비스를 의뢰하고 싶다면</Text>
-						<Button size='full' color='transparent' onClick={() => loginByTrial('client')}>
-							의뢰인으로 가입
-						</Button>
-					</S.Box>
+			<S.ButtonGroup>
+				<S.Box>
+					<Text size='label'>서비스를 의뢰하고 싶다면</Text>
+					<Button size='full' color='transparent' onClick={() => loginByTrial('client')}>
+						의뢰인으로 가입
+					</Button>
+				</S.Box>
 
-					<S.Box>
-						<Text size='label'>전문성을 판매하고 싶다면</Text>
-						<Button size='full' color='transparent' onClick={() => loginByTrial('expert')}>
-							전문가로 가입
-						</Button>
-					</S.Box>
-				</S.ButtonGroup>
-			</S.LoginSection>
-
-			<S.ImageSection>
-
-			</S.ImageSection>
+				<S.Box>
+					<Text size='label'>전문성을 판매하고 싶다면</Text>
+					<Button size='full' color='transparent' onClick={() => loginByTrial('expert')}>
+						전문가로 가입
+					</Button>
+				</S.Box>
+			</S.ButtonGroup>
 		</S.Wrapper>
 	)
 }

@@ -3,28 +3,16 @@ import styled from "styled-components";
 import * as mixins from '@/styles/mixins';
 
 export const Wrapper = styled.main`
-	width: 100%;
-	height: 100vh;
-
-	display: flex;
-
-	padding: 0;
-`;
-
-export const LoginSection = styled.section`
-	width: 50%;
-	height: 100%;
-
+	${mixins.fullScreen}
 	${mixins.flexCenter}
 	${mixins.flexColumn}
 	gap: 2rem;
-`;
 
-export const ImageSection = styled.section`
-	width: 50%;
-	height: 100%;
+	padding: 0;
 
-	background-color: black;
+	& img {
+		cursor: pointer;
+	}
 `;
 
 export const ButtonGroup = styled.div`
