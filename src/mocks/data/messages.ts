@@ -1,7 +1,5 @@
 import { MessageRooms } from "@/types";
 
-import { toLocalDateString } from "@/utils";
-
 export const messageRooms: MessageRooms = {
 	room1: {
 		expert: {
@@ -244,10 +242,10 @@ export const messageRooms: MessageRooms = {
 	room2: {
 		expert: {
 			id: 'expert2',
-			name: 'John',
-			email: 'john@example.com',
+			name: 'Paul',
+			email: 'paul@example.com',
 			phone: '010-1234-1234',
-			nickname: 'John Lennon',
+			nickname: 'Paul McCartney',
 			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 			profile: {
 				score: 90,
@@ -324,10 +322,10 @@ export const messageRooms: MessageRooms = {
 	room3: {
 		expert: {
 			id: 'expert3',
-			name: 'John',
-			email: 'john@example.com',
+			name: 'George',
+			email: 'george@example.com',
 			phone: '010-1234-1234',
-			nickname: 'John Lennon',
+			nickname: 'George Harrison',
 			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 			profile: {
 				score: 90,
@@ -404,10 +402,10 @@ export const messageRooms: MessageRooms = {
 	room4: {
 		expert: {
 			id: 'expert4',
-			name: 'John',
-			email: 'john@example.com',
+			name: 'Ringo',
+			email: 'ringo@example.com',
 			phone: '010-1234-1234',
-			nickname: 'John Lennon',
+			nickname: 'Ringo Starr',
 			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 			profile: {
 				score: 90,
@@ -484,10 +482,10 @@ export const messageRooms: MessageRooms = {
 	room5: {
 		expert: {
 			id: 'expert5',
-			name: 'John',
-			email: 'john@example.com',
+			name: 'Freddie',
+			email: 'freddie@example.com',
 			phone: '010-1234-1234',
-			nickname: 'John Lennon',
+			nickname: 'Freddie Mercury',
 			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 			profile: {
 				score: 90,

@@ -3,8 +3,10 @@ import { HttpResponse, http } from 'msw';
 import { messageRooms } from '@/mocks/data/messages';
 
 import { AUTHORITY, LOGIN_ID, PARTNER_AUTHORITY } from '.';
+import { portfolios } from '../data/portfolios';
+import { users } from '../data/users';
 
-import type { Message, MessageRoom } from '@/types';
+import type { Message, MessageRoom, Portfolio, User } from '@/types';
 
 import { generateRandomString } from '@/utils';
 
@@ -47,6 +49,57 @@ export const messageHandlers= [
 		}
 
 		return HttpResponse.json(messageRoom, { status: 200 });
+	}),
+
+	// 대화방 생성
+	http.post(`/messageRooms`, ({request}) => {
+		const url = new URL(request.url);
+		const partnerId = url.searchParams.get('partner_id') as string;
+		const portfolioId = url.searchParams.get('portfolio_id') as string;
+		const roomId = generateRandomString(20);
+
+		const client: User = users[LOGIN_ID];
+		const partner: User = users[partnerId];
+		const portfolio: Portfolio = portfolios[portfolioId];
+
+		const newMessageRoom: MessageRoom = {
+			expert: {
+				id: portfolio.user.id,
+				name: partner.name!,
+				email: partner!.email,
+				phone: partner.phone!,
+				nickname: partner!.nickname,
+				profileImage: partner!.profileImage,
+				profile: {
+					score: partner.profile.score,
+					contactTime: partner.profile.contactTime,
+				},
+			},
+			client: {
+				id: LOGIN_ID,
+				name: client.name!,
+				email: client!.email,
+				phone: client.phone!,
+				nickname: client!.nickname,
+				profileImage: client!.profileImage,
+				profile: {
+					contactTime: client.profile.contactTime,
+				},
+			},
+			portfolio: {
+				id: portfolioId,
+				title: portfolio.title,
+				summary: portfolio.summary,
+				thumbnailUrl: portfolio.images[0],
+			},
+			commission: undefined,
+			messages: undefined,
+			lastMessage: undefined,
+		};
+
+		messageRooms[roomId] = newMessageRoom;
+
+		return HttpResponse.json({...newMessageRoom, id: roomId}, { status: 200 });
 	}),
 
 	// 메세지룸 삭제

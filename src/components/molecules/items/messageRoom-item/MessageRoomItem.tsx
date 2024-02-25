@@ -37,7 +37,11 @@ export default function MessageRoomItem({ messageRoom }: Props) {
 						{messageRoom.partner!.nickname}
 					</Text>
 					<Text size='label' color='gray'>
-						{toLocalDateString(messageRoom.lastMessage?.createdAt || '')}
+						{ messageRoom.lastMessage ?
+							toLocalDateString(messageRoom.lastMessage?.createdAt)
+							:
+							''
+						}
 					</Text>
 				</S.LabelBox>
 
