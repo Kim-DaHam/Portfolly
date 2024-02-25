@@ -10,7 +10,7 @@ export const validateContent = (getValues: UseFormGetValues<any>) => {
 		content: () => (getValues('content').length < 1) ? '포트폴리오 내용을 입력하세요.' : true,
 		images: () => {
 			if(getValues('section') === 'Video') {
-				return (getValues('images').length < 1) ? '비디오를 1개 이상 첨부하세요.' : true;
+				return (getValues('videos').length < 1) ? '비디오를 1개 이상 첨부하세요.' : true;
 			}
 
 			return (getValues('images').length < 1) ? '포트폴리오 이미지를 1개 이상 첨부하세요.' : true;

@@ -166,7 +166,7 @@ export const PortfolioHandlers= [
 		return HttpResponse.json(null, { status: 200 });
 	}),
 
-	// 포트폴리오 작성
+	// 포트폴리오 등록
 	http.post(`/portfolios`, async ({request}) => {
 		const portfolioForm = await request.json() as PortfolioFormValues;
 		const portfolioId = generateRandomString(20);

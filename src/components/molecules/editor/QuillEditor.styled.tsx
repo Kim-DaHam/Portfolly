@@ -44,3 +44,24 @@ export const EditorContainer = styled.div`
 		height: calc(100vh - ${HEADER_HEIGHT});
   }
 `;
+
+export const Form = styled.div`
+	height: fit-content;
+
+	display: flex;
+	gap: 0.5rem;
+	padding: 0.5rem;
+`;
+
+export const Input = styled.input`
+	width: 10rem;
+	height: 2.75rem;
+
+	padding: 0 1rem;
+	font-family: 'NotoSansTTFMedium';
+	border: 1px solid #f0f0f0;
+	border-radius: 9999px;
+  background-color: white;
+	font-size: 1rem;
+	flex-basis: 1;
+`;
