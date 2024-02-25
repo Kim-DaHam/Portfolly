@@ -76,7 +76,7 @@ export default function PortfolioList({ filter }: Props) {
 
 	return (
 		<S.Wrapper>
-			<S.GridBox>
+			<S.GridBox section={currentSection}>
 				{ portfolios?.length > 0 ?
 					portfolios.map((portfolio: Portfolio, index: number)=>{
 						if(index >= showsNum) return;
