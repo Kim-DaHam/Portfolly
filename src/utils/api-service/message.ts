@@ -26,6 +26,41 @@ export const useMessageRoomsQuery = () => {
 	});
 };
 
+// 대화방 생성하기
+export const useMessageRoomMutation = (partnerId: string, portfolioId: string) => {
+	const queryClient = useQueryClient();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const messageRoomList = queryClient.getQueryData(['messageRoom', 'list']) as any[];
+	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
+
+	const createMessageRoom = () => fetch(`/messageRooms?partner_id=${partnerId}&portfolio_id=${portfolioId}`, 'POST');
+
+	return useMutation({
+		mutationFn: createMessageRoom,
+
+		onSuccess: (response) => {
+			if(messageRoomList) {
+				copyMessageRoomList.push({
+					id: response.id,
+					partner: response.expert,
+					commission: response.commission,
+					lastMessage: response.lastMessage,
+				});
+				queryClient.setQueryData(['messageRoom', 'list'], copyMessageRoomList);
+			}
+			queryClient.setQueryData(['messageRoom', response.id], response);
+			navigate(`/messages?room_id=${response.id}`);
+			return;
+		},
+
+		onError: () => {
+			dispatch(setToast({id: 0, type: 'error', message: '요청을 실패했습니다.'}));
+			return;
+		},
+	});
+};
+
 // 대화방 불러오기
 export const useMessageRoomQuery = (roomId: string | null) => {
 	const getMessageRoom = () => fetch(`/messageRoom?room_id=${roomId}&page=${1}`, 'GET');

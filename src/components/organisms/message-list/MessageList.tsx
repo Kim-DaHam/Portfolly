@@ -20,27 +20,25 @@ export default function MessageList({ messageList={}, getValues, setValue, isFil
 
 	return (
 		<S.Wrapper id='message-box'>
-			<S.Content>
-				{ messageKeys.length > 0 ?
-					<>
-					{ messageKeys.map((docKey: string) => {
-						return (
-							<Message
-								key={docKey}
-								message={messageList[docKey]}
-								partnerProfileImage={messageList[docKey].from.profileImage}
-							/>
-						)
-					})}
-					</>
-					:
-					<S.Notification>
-						<Text size='label' color='lightgray'>
-							아직 메세지가 없어요.
-						</Text>
-					</S.Notification>
-				}
-			</S.Content>
+			{ messageKeys.length > 0 ?
+				<S.Content>
+						{ messageKeys.map((docKey: string) => {
+							return (
+								<Message
+									key={docKey}
+									message={messageList[docKey]}
+									partnerProfileImage={messageList[docKey].from.profileImage}
+								/>
+							)
+						})}
+				</S.Content>
+			:
+				<S.Notification>
+					<Text size='label' color='lightgray'>
+						아직 메세지가 없어요.
+					</Text>
+				</S.Notification>
+			}
 
 			{ isFileModalOpen &&
 				<FileModal

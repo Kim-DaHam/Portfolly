@@ -79,10 +79,7 @@ export default function PortfolioDetail(){
 						<Button
 							color='black'
 							size='medium'
-							onClick={() => navigate(`/messages?
-							partner_id=${portfolio?.user.id}&
-							related_portfolio_id=${portfolio?.id}&
-							page=${1}&type=`)}
+							onClick={() => navigate(`/messages?partner_id=${portfolio?.user.id}&portfolio_id=${portfolioId}`)}
 						>
 							문의하기
 						</Button>
