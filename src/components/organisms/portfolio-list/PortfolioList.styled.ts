@@ -47,13 +47,13 @@ const getGridBoxMediaQuery = (section: Section) => {
 export const Wrapper = styled.div`
 `;
 
-export const GridBox = styled.div<{section: Section}>`
+export const GridBox = styled.div<{$section: Section}>`
 	width: 100%;
 	height: 100%;
 
 	display: grid;
 	grid-template-columns: ${props =>
-		props.section === 'Android/iOS' ?
+		props.$section === 'Android/iOS' ?
 			'repeat(7, 1fr)'
 		:
 			'repeat(5, 1fr)'
@@ -61,7 +61,7 @@ export const GridBox = styled.div<{section: Section}>`
 	justify-content: space-between;
 	gap: 1.7rem;
 
-	${props => getGridBoxMediaQuery(props.section)}
+	${props => getGridBoxMediaQuery(props.$section)}
 `;
 
 export const Notification = styled.div`
