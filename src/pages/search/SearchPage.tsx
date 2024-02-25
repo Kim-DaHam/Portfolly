@@ -44,7 +44,7 @@ export default function SearchPage() {
 				</S.Box>
 
 				<Text size='headingMedium'>
-					Search "{mainFilter}"
+					"{mainFilter}"에 대한 결과
 				</Text>
 
 				<SearchFilterBar filter={filter} handleRendering={setReRendering}/>

@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
 import * as mixins from '@/styles/mixins';
+import { sizes } from '@/styles/text';
+import theme from '@/styles/theme';
 
 export const Wrapper = styled.div`
 	${mixins.fullScreen}
@@ -25,6 +27,12 @@ export const TitleSection = styled.section`
 	& button {
 		border-radius: 9999px;
 	}
+
+	@media ${theme.mainPageSize.app5th} {
+		& > span {
+			${sizes['headingSmall']};
+		}
+	};
 `;
 
 export const PortfolioSection = styled.section`
