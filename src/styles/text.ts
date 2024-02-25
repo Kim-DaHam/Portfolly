@@ -19,9 +19,9 @@ const headingMedium = css`
 `;
 
 const headingSmall = css`
-	font-size: 1.5rem;
-	line-height: 2rem;
-	letter-spacing: -.008em;
+	font-size: 2.25rem;
+	line-height: 2.5rem;
+	letter-spacing: -.016em;
 	font-weight: 600;
 `;
 
