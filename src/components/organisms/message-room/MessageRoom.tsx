@@ -62,12 +62,13 @@ export default function MessageRoom({ messageRoom }: Props) {
 	};
 
 	const handleEnterKey = (event: React.KeyboardEvent) => {
-		if (event.key == 'Enter') {
-			handleSubmit(onSubmit)();
-		}
+		if(event.key !== 'Enter') return;
+		handleSubmit(onSubmit)();
+		return;
 	};
 
 	const onSubmit = (form: MessageFormValues) => {
+		console.log('in')
 		sendMessageMutation.mutate(form, {
 			onSuccess: () => {
 				setValue('files', []);
@@ -107,7 +108,7 @@ export default function MessageRoom({ messageRoom }: Props) {
 					placeholder='메세지를 입력하세요.'
 					onKeyPress={handleEnterKey}
 					{...register('message', {
-						validate: () => getValues('files').length > 0 ? true : false,
+						validate: () => getValues('message').length > 0 ? true : false,
 					})}
 				/>
 
