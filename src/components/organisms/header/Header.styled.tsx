@@ -43,6 +43,13 @@ export const ButtonGroup = styled.nav`
 	& .profile-menu {
 		padding: 0 0.875rem 0 0.375rem;
 	}
+
+	@media ${theme.mainPageSize.app5th} {
+		& button:first-child {
+			min-width: 1px;
+			flex-shrink: 1;
+		}
+	}
 `
 
 export const Logo = styled.a`
