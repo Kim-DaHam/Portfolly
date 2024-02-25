@@ -114,7 +114,7 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 								placeholder='제목을 입력하세요'
 							/>
 							:
-							<Text size='titleSmall'>
+							<Text size='headingSmall'>
 								{commission.details?.title}
 							</Text>
 						}
@@ -214,14 +214,14 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							의뢰 수정
 						</Button>
 					}
-					{ authority === 'client' && commission.details?.status !== '구매 확정' &&
+					{/* { authority === 'client' && commission.details?.status !== '구매 확정' &&
 						<Button
 							color='black'
 							size='medium'
 						>
 							주문 취소
 						</Button>
-					}
+					} */}
 					{ isEditMode ?
 						<Button
 							color='black'
