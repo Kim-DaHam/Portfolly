@@ -4,11 +4,11 @@ export const messageRooms: MessageRooms = {
 	room1: {
 		expert: {
 			id: 'expert1',
-			name: 'John',
-			email: 'john@example.com',
+			name: '존 레논',
+			email: 'expert1@example.com',
 			phone: '010-1234-1234',
-			nickname: 'John Lennon',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '전문가 1',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 			profile: {
 				score: 90,
 				contactTime: '언제나 가능',
@@ -16,19 +16,19 @@ export const messageRooms: MessageRooms = {
 		},
 		client: {
 			id: 'client1',
-			name: '김강철',
-			email: 'steel@example.com',
+			name: '김의뢰1',
+			email: 'client1@example.com',
 			phone: '010-1234-1234',
-			nickname: '강철맨',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '의뢰인 1',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 			profile: {
 				contactTime: '언제나 가능',
 			},
 		},
 		portfolio: {
 			id: 'portfolio1',
-			title: 'test title',
-			summary: 'test summary',
+			title: '전문가 1의 금융 앱 포트폴리오',
+			summary: '앱 포트폴리오 1',
 			thumbnailUrl: '',
 		},
 		commission: {
@@ -36,8 +36,8 @@ export const messageRooms: MessageRooms = {
 			createdAt: '2024-05-06',
 			endedAt: '',
 			details: {
-				title: 'test title',
-				content: 'test content',
+				title: '의뢰인 1과의 커미션',
+				content: '의뢰인 1과의 앱 커미션',
 				cost: 50000,
 				status: '진행 중',
 				deadline: '2024-05-26',
@@ -51,34 +51,34 @@ export const messageRooms: MessageRooms = {
 			message1: {
 				from: {
 					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '전문가 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				files: [
 					{
 						type: 'image',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 					{
 						type: 'image',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 					{
 						type: 'image',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 					{
 						type: 'image',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 					{
 						type: 'image',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 				],
 				message: 'hello',
@@ -88,14 +88,14 @@ export const messageRooms: MessageRooms = {
 			message2: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 				},
 				files: [
 					{
 						type: 'image',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 				],
 				message: 'hello!',
@@ -105,14 +105,14 @@ export const messageRooms: MessageRooms = {
 			message3: {
 				from: {
 					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '전문가 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				files: [
 					{
 						type: 'text',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 				],
 				message: 'hello',
@@ -122,24 +122,24 @@ export const messageRooms: MessageRooms = {
 			message4: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 				},
 				files: [
 					{
 						type: 'text',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 					{
 						type: 'text',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 					{
 						type: 'text',
 						name: 'image',
-						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+						url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 					},
 				],
 				message: 'hello!',
@@ -149,8 +149,8 @@ export const messageRooms: MessageRooms = {
 			message5: {
 				from: {
 					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '전문가 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -159,8 +159,8 @@ export const messageRooms: MessageRooms = {
 			message6: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -169,8 +169,8 @@ export const messageRooms: MessageRooms = {
 			message7: {
 				from: {
 					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '전문가 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -179,8 +179,8 @@ export const messageRooms: MessageRooms = {
 			message8: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -189,8 +189,8 @@ export const messageRooms: MessageRooms = {
 			message9: {
 				from: {
 					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '전문가 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -199,8 +199,8 @@ export const messageRooms: MessageRooms = {
 			message10: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -209,8 +209,8 @@ export const messageRooms: MessageRooms = {
 			message11: {
 				from: {
 					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '전문가 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -219,8 +219,8 @@ export const messageRooms: MessageRooms = {
 			message12: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -231,8 +231,8 @@ export const messageRooms: MessageRooms = {
 			id: 'message12',
 			from: {
 				id: 'client1',
-				nickname: 'Paul',
-				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				nickname: '의뢰인 1',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 			},
 			message: 'hello!',
 			createdAt: new Date(Date.now()),
@@ -242,11 +242,11 @@ export const messageRooms: MessageRooms = {
 	room2: {
 		expert: {
 			id: 'expert2',
-			name: 'Paul',
-			email: 'paul@example.com',
+			name: '폴 매카트니',
+			email: 'expert2@example.com',
 			phone: '010-1234-1234',
-			nickname: 'Paul McCartney',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '전문가 2',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBr5YL%2FbtsFjJYBngF%2F07xL1kdIED7piDK87orbLk%2Fimg.jpg',
 			profile: {
 				score: 90,
 				contactTime: '언제나 가능',
@@ -254,43 +254,28 @@ export const messageRooms: MessageRooms = {
 		},
 		client: {
 			id: 'client1',
-			name: '김강철',
-			email: 'steel@example.com',
+			name: '김의뢰1',
+			email: 'client1@example.com',
 			phone: '010-1234-1234',
-			nickname: '강철맨',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '의뢰인 1',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 			profile: {
 				contactTime: '언제나 가능',
 			},
 		},
 		portfolio: {
 			id: 'portfolio1',
-			title: 'test title',
-			summary: 'test summary',
+			title: '앱 포트폴리오 2',
+			summary: '전문가 2의 금융 웹 포트폴리오',
 			thumbnailUrl: '',
 		},
-		commission: {
-			id: 'p1c1',
-			createdAt: '2024-05-06',
-			endedAt: '',
-			details: {
-				title: 'test title',
-				content: 'test content',
-				cost: 50000,
-				status: '진행 중',
-				deadline: '2024-05-26',
-			},
-			review: {
-				score: 50,
-				content: 'review test',
-			},
-		},
+		commission: null,
 		messages: {
 			message1: {
 				from: {
-					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					id: 'expert2',
+					nickname: '전문가 2',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBr5YL%2FbtsFjJYBngF%2F07xL1kdIED7piDK87orbLk%2Fimg.jpg',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -299,8 +284,8 @@ export const messageRooms: MessageRooms = {
 			message2: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -311,8 +296,8 @@ export const messageRooms: MessageRooms = {
 			id: 'message2',
 			from: {
 				id: 'client1',
-				nickname: 'Paul',
-				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				nickname: '의뢰인 1',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 			},
 			message: 'hello!',
 			createdAt: new Date(Date.now()),
@@ -322,11 +307,11 @@ export const messageRooms: MessageRooms = {
 	room3: {
 		expert: {
 			id: 'expert3',
-			name: 'George',
-			email: 'george@example.com',
+			name: '조지 해리슨',
+			email: 'expert3@example.com',
 			phone: '010-1234-1234',
-			nickname: 'George Harrison',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '전문가 3',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbOVHGe%2FbtsFfXxfMO0%2Ftrn1Afi90BAxyIg1Wp7dpK%2Fimg.webp',
 			profile: {
 				score: 90,
 				contactTime: '언제나 가능',
@@ -334,43 +319,28 @@ export const messageRooms: MessageRooms = {
 		},
 		client: {
 			id: 'client1',
-			name: '김강철',
-			email: 'steel@example.com',
+			name: '김의뢰1',
+			email: 'client1@example.com',
 			phone: '010-1234-1234',
-			nickname: '강철맨',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '의뢰인 1',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 			profile: {
 				contactTime: '언제나 가능',
 			},
 		},
 		portfolio: {
-			id: 'portfolio1',
-			title: 'test title',
-			summary: 'test summary',
+			id: 'portfolio3',
+			title: '일러스트 포트폴리오 1',
+			summary: '출판 일러스트 포트폴리오 입니다.',
 			thumbnailUrl: '',
 		},
-		commission: {
-			id: 'p1c1',
-			createdAt: '2024-05-06',
-			endedAt: '',
-			details: {
-				title: 'test title',
-				content: 'test content',
-				cost: 50000,
-				status: '진행 중',
-				deadline: '2024-05-26',
-			},
-			review: {
-				score: 50,
-				content: 'review test',
-			},
-		},
+		commission: null,
 		messages: {
 			message1: {
 				from: {
-					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					id: 'expert3',
+					nickname: '전문가 3',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbOVHGe%2FbtsFfXxfMO0%2Ftrn1Afi90BAxyIg1Wp7dpK%2Fimg.webp',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -379,8 +349,8 @@ export const messageRooms: MessageRooms = {
 			message2: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -391,8 +361,8 @@ export const messageRooms: MessageRooms = {
 			id: 'message2',
 			from: {
 				id: 'client1',
-				nickname: 'Paul',
-				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				nickname: '의뢰인 1',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 			},
 			message: 'hello!',
 			createdAt: new Date(Date.now()),
@@ -402,11 +372,11 @@ export const messageRooms: MessageRooms = {
 	room4: {
 		expert: {
 			id: 'expert4',
-			name: 'Ringo',
-			email: 'ringo@example.com',
+			name: '링고 스타',
+			email: 'expert4@example.com',
 			phone: '010-1234-1234',
-			nickname: 'Ringo Starr',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '전문가 4',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb90Gda%2FbtsFgQ5uxiQ%2FzLKxrP3uXzm4Lz5bJtck01%2Fimg.png',
 			profile: {
 				score: 90,
 				contactTime: '언제나 가능',
@@ -414,43 +384,28 @@ export const messageRooms: MessageRooms = {
 		},
 		client: {
 			id: 'client1',
-			name: '김강철',
-			email: 'steel@example.com',
+			name: '김의뢰1',
+			email: 'client1@example.com',
 			phone: '010-1234-1234',
-			nickname: '강철맨',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '의뢰인 1',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 			profile: {
 				contactTime: '언제나 가능',
 			},
 		},
 		portfolio: {
-			id: 'portfolio1',
-			title: 'test title',
-			summary: 'test summary',
+			id: 'portfolio4',
+			title: '사진 포트폴리오 1',
+			summary: '사진 포트폴리오 1입니다.',
 			thumbnailUrl: '',
 		},
-		commission: {
-			id: 'p1c1',
-			createdAt: '2024-05-06',
-			endedAt: '',
-			details: {
-				title: 'test title',
-				content: 'test content',
-				cost: 50000,
-				status: '진행 중',
-				deadline: '2024-05-26',
-			},
-			review: {
-				score: 50,
-				content: 'review test',
-			},
-		},
+		commission: null,
 		messages: {
 			message1: {
 				from: {
-					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					id: 'expert4',
+					nickname: '전문가 4',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb90Gda%2FbtsFgQ5uxiQ%2FzLKxrP3uXzm4Lz5bJtck01%2Fimg.png',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -459,8 +414,8 @@ export const messageRooms: MessageRooms = {
 			message2: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -471,8 +426,8 @@ export const messageRooms: MessageRooms = {
 			id: 'message2',
 			from: {
 				id: 'client1',
-				nickname: 'Paul',
-				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				nickname: '의뢰인 1',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 			},
 			message: 'hello!',
 			createdAt: new Date(Date.now()),
@@ -482,11 +437,11 @@ export const messageRooms: MessageRooms = {
 	room5: {
 		expert: {
 			id: 'expert5',
-			name: 'Freddie',
-			email: 'freddie@example.com',
+			name: '프레디 머큐리',
+			email: 'expert5@example.com',
 			phone: '010-1234-1234',
-			nickname: 'Freddie Mercury',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '전문가 5',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FKI3fH%2FbtsFmgnPdb8%2FY5u2ykbM5MajK1UMuot0wK%2Fimg.jpg',
 			profile: {
 				score: 90,
 				contactTime: '언제나 가능',
@@ -494,43 +449,28 @@ export const messageRooms: MessageRooms = {
 		},
 		client: {
 			id: 'client1',
-			name: '김강철',
-			email: 'steel@example.com',
+			name: '김의뢰1',
+			email: 'client1@example.com',
 			phone: '010-1234-1234',
-			nickname: '강철맨',
-			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+			nickname: '의뢰인 1',
+			profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg',
 			profile: {
 				contactTime: '언제나 가능',
 			},
 		},
 		portfolio: {
-			id: 'portfolio1',
-			title: 'test title',
-			summary: 'test summary',
+			id: 'portfolio5',
+			title: '비디오 포트폴리오 1',
+			summary: '자연 비디오 포트폴리오 입니다.',
 			thumbnailUrl: '',
 		},
-		commission: {
-			id: 'p1c1',
-			createdAt: '2024-05-06',
-			endedAt: '',
-			details: {
-				title: 'test title',
-				content: 'test content',
-				cost: 50000,
-				status: '진행 중',
-				deadline: '2024-05-26',
-			},
-			review: {
-				score: 50,
-				content: 'review test',
-			},
-		},
+		commission: null,
 		messages: {
 			message1: {
 				from: {
 					id: 'expert1',
-					nickname: 'John',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '전문가 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FKI3fH%2FbtsFmgnPdb8%2FY5u2ykbM5MajK1UMuot0wK%2Fimg.jpg',
 				},
 				message: 'hello',
 				createdAt: new Date(Date.now()),
@@ -539,8 +479,8 @@ export const messageRooms: MessageRooms = {
 			message2: {
 				from: {
 					id: 'client1',
-					nickname: 'Paul',
-					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+					nickname: '의뢰인 1',
+					profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 				},
 				message: 'hello!',
 				createdAt: new Date(Date.now()),
@@ -551,8 +491,8 @@ export const messageRooms: MessageRooms = {
 			id: 'message2',
 			from: {
 				id: 'client1',
-				nickname: 'Paul',
-				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
+				nickname: '의뢰인 1',
+				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg',
 			},
 			message: 'hello!',
 			createdAt: new Date(Date.now()),
