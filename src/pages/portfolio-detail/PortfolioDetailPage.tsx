@@ -162,12 +162,16 @@ export default function PortfolioDetail(){
 										key={portfolio?.id}
 										onClick={() => navigate(`/portfolios/${portfolio?.id}`)}
 									>
-										<Image
-											size='100%'
-											src={portfolio?.images[0]}
-											alt='portfolio thumbnail'
-											shape='foursquare'
-										/>
+										{ portfolio.section === 'Video' ?
+											<S.Video src={portfolio?.videos[0]} />
+											:
+											<Image
+												size='100%'
+												src={portfolio?.images[0]}
+												alt='portfolio thumbnail'
+												shape='foursquare'
+											/>
+										}
 									</S.GridItem>
 								)
 							})}

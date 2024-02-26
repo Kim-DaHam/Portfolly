@@ -235,7 +235,7 @@ export const portfolios: Portfolios = {
 		category: '자연',
 		tags: ['tag1', 'tag2'],
 		images: [],
-		videos: ['https://youtu.be/tCXGJQYZ9JA?si=e4g6UR1M3LIsS5tk'],
+		videos: ['https://www.youtube.com/embed/tCXGJQYZ9JA?si=rzjFgwG59U5PWJKp'],
 		likes: 5,
 		commissions: {
 			p5c1: {
@@ -470,7 +470,7 @@ export const portfolios: Portfolios = {
 		category: '음악',
 		tags: ['tag1', 'tag2'],
 		images: [],
-		videos: ['https://youtu.be/UvaXfbsOvoU?si=uvbVVB3rtvJataN6'],
+		videos: ['https://www.youtube.com/embed/UvaXfbsOvoU?si=uvbVVB3rtvJataN6'],
 		likes: 5,
 		commissions: {
 			p10c1: {
@@ -709,7 +709,7 @@ export const portfolios: Portfolios = {
 		category: '영화',
 		tags: ['tag1', 'tag2'],
 		images: [],
-		videos: ['https://youtu.be/gBp5mNMamzw?si=vQYt6LSIGy44cUym'],
+		videos: ['https://www.youtube.com/embed/gBp5mNMamzw?si=vQYt6LSIGy44cUym'],
 		likes: 5,
 		commissions: {
 			p15c1: {
@@ -949,7 +949,7 @@ export const portfolios: Portfolios = {
 		category: '다큐멘터리',
 		tags: ['tag1', 'tag2'],
 		images: [],
-		videos: ['https://youtu.be/NCtzkaL2t_Y?si=DMSfVcLF0r_TbtWx'],
+		videos: ['https://www.youtube.com/embed/NCtzkaL2t_Y?si=DMSfVcLF0r_TbtWx'],
 		likes: 5,
 		commissions: {
 			p20c1: {
@@ -1186,7 +1186,7 @@ export const portfolios: Portfolios = {
 		category: '요리',
 		tags: ['tag1', 'tag2'],
 		images: [],
-		videos: ['https://youtu.be/YBcdt6DsLQA?list=RDgBp5mNMamzw'],
+		videos: ['https://www.youtube.com/embed/YBcdt6DsLQA?si=3tx79msgUlV6aJXu'],
 		likes: 5,
 		commissions: {
 			p25c1: {
@@ -1427,7 +1427,7 @@ export const portfolios: Portfolios = {
 		category: '일상',
 		tags: ['tag1', 'tag2'],
 		images: [],
-		videos: ['https://youtu.be/SHAqAO7w8M8?list=RDgBp5mNMamzw'],
+		videos: ['https://www.youtube.com/embed/SHAqAO7w8M8?si=nF03P3rjB27msBPC'],
 		likes: 5,
 		commissions: {
 			p30c1: {
