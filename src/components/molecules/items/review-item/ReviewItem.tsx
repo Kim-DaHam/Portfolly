@@ -23,7 +23,7 @@ export default function ReviewItem({ review }: Props) {
 
 				<S.Box>
 					<Text size='bodyMedium'>{review.user.nickname}</Text>
-					<Rating readonly />
+					<Rating score={review.score} readonly />
 				</S.Box>
 
 				<Image
