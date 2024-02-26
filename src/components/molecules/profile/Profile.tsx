@@ -91,7 +91,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 				/>
 				<Text
 					cursor
-					size='titleSmall'
+					size='bodyLarge'
 					onClick={()=>navigate(`/profile/${user?.id}`, {state: {prevUrl: location.href}})}
 				>
 					{user?.nickname}
@@ -107,7 +107,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					shape='foursquare'
 				/>
 				<S.SpanBox>
-					<Text size='title'>
+					<Text size='headingSmall'>
 						{user?.nickname}
 					</Text>
 					{ user?.authority === 'expert' &&
@@ -124,7 +124,7 @@ const renderProfile = (type: Profile, navigate: any, user?: any, portfolio?: any
 					alt='user-profile'
 					shape='circle'
 				/>
-				<Text size='titleSmall'>
+				<Text size='bodyLarge'>
 					{user?.nickname}
 				</Text>
 			</S.ColumnProfileWrapper>

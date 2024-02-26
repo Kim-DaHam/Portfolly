@@ -80,4 +80,8 @@ export const MyPageProfileWrapper = styled(Wrapper)`
 	& > div {
 		gap: 1rem;
 	}
+
+	& img {
+		border-radius: 1rem;
+	}
 `;
