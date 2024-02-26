@@ -64,7 +64,10 @@ export default function PortfolioList({ filter }: Props) {
 
 		const { anchorPosition, clickedPortfolioIndex } = JSON.parse(getStorage);
 
-		setShowsNum(clickedPortfolioIndex);
+		if(clickedPortfolioIndex < ITEMS_PER_SHOW) {
+			setShowsNum(clickedPortfolioIndex + 5);
+		}
+		else setShowsNum(clickedPortfolioIndex);
 
 		setTimeout(() => {
       window.scrollTo({
