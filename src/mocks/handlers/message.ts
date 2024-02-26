@@ -92,14 +92,20 @@ export const messageHandlers= [
 				summary: portfolio.summary,
 				thumbnailUrl: portfolio.images[0],
 			},
-			commission: undefined,
-			messages: undefined,
-			lastMessage: undefined,
+			commission: null,
+			messages: null,
+			lastMessage: null,
 		};
 
 		messageRooms[roomId] = newMessageRoom;
 
-		return HttpResponse.json({...newMessageRoom, id: roomId}, { status: 200 });
+		const response = {
+			...newMessageRoom,
+			partner: newMessageRoom[PARTNER_AUTHORITY],
+			id: roomId
+		};
+
+		return HttpResponse.json(response, { status: 200 });
 	}),
 
 	// 메세지룸 삭제

@@ -1,10 +1,9 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
 import * as S from "@/components/organisms/partner-profile/PartnerProfile.styled";
 import { userState } from "@/redux/loginSlice";
 
-import type { Authority, Commission, MessageRoom } from "@/types";
+import type { Commission, MessageRoom } from "@/types";
 
 import { useModal } from "@/hooks";
 import { toLocalDateString } from "@/utils";

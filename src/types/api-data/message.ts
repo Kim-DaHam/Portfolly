@@ -33,7 +33,7 @@ export type MessageRoom = Partners & {
 			content: string,
 		},
 	} | null,
-	messages: Messages | null,
+	messages?: Messages | null,
 	lastMessage: Message | null,
 };
 

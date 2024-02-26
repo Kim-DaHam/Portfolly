@@ -16,11 +16,11 @@ type Props = {
 };
 
 export default function MessageList({ messageList={}, getValues, setValue, isFileModalOpen, handleFileModal }: Props) {
-	const messageKeys = Object.keys(messageList);
+	const messageKeys = messageList && Object.keys(messageList);
 
 	return (
 		<S.Wrapper id='message-box'>
-			{ messageKeys.length > 0 ?
+			{ messageList ?
 				<S.Content>
 						{ messageKeys.map((docKey: string) => {
 							return (
