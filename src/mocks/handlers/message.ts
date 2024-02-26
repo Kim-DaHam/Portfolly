@@ -46,6 +46,7 @@ export const messageHandlers= [
 				partner: messageRoom[PARTNER_AUTHORITY],
 				...messageRoom,
 			})
+			messageRoom.portfolio.thumbnailUrl = portfolios[messageRoom.portfolio.id].images[0];
 		}
 
 		return HttpResponse.json(messageRoom, { status: 200 });
@@ -90,7 +91,6 @@ export const messageHandlers= [
 				id: portfolioId,
 				title: portfolio.title,
 				summary: portfolio.summary,
-				thumbnailUrl: portfolio.images[0],
 			},
 			commission: null,
 			messages: null,

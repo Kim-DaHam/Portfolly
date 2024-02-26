@@ -15,7 +15,6 @@ export type MessageRoom = Partners & {
 		id: string,
 		title: string,
 		summary: string,
-		thumbnailUrl: string,
 	},
 	commission: {
 		id: string,

@@ -29,7 +29,6 @@ export const messageRooms: MessageRooms = {
 			id: 'portfolio1',
 			title: '전문가 1의 금융 앱 포트폴리오',
 			summary: '앱 포트폴리오 1',
-			thumbnailUrl: '',
 		},
 		commission: {
 			id: 'p1c1',
@@ -267,7 +266,6 @@ export const messageRooms: MessageRooms = {
 			id: 'portfolio1',
 			title: '앱 포트폴리오 2',
 			summary: '전문가 2의 금융 웹 포트폴리오',
-			thumbnailUrl: '',
 		},
 		commission: null,
 		messages: {
@@ -332,7 +330,6 @@ export const messageRooms: MessageRooms = {
 			id: 'portfolio3',
 			title: '일러스트 포트폴리오 1',
 			summary: '출판 일러스트 포트폴리오 입니다.',
-			thumbnailUrl: '',
 		},
 		commission: null,
 		messages: {
@@ -397,7 +394,6 @@ export const messageRooms: MessageRooms = {
 			id: 'portfolio4',
 			title: '사진 포트폴리오 1',
 			summary: '사진 포트폴리오 1입니다.',
-			thumbnailUrl: '',
 		},
 		commission: null,
 		messages: {
@@ -462,7 +458,6 @@ export const messageRooms: MessageRooms = {
 			id: 'portfolio5',
 			title: '비디오 포트폴리오 1',
 			summary: '자연 비디오 포트폴리오 입니다.',
-			thumbnailUrl: '',
 		},
 		commission: null,
 		messages: {
