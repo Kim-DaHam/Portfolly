@@ -116,15 +116,14 @@ export const useToggleButtonQuery = (portfolioId: string, type: Toggle) => {
 	const dispatch = useDispatch();
 	const queryClient = useQueryClient();
 	const currentSection = useSelector(section);
-	const currentCategory = getFilterQueryString();
+	const filter = getFilterQueryString();
 
 	const portfolioDetailQueryKey = ['portfolios', 'detail', portfolioId];
 	const portfolioAllQueryKey = [
 		'portfolios',
 		currentSection,
 		{filters: {
-			type:"category",
-			value:currentCategory.filterValue,
+			appCategory: filter.appCategory,
 		}}];
 
 	const prevPortfolioAll = queryClient.getQueryData(portfolioAllQueryKey) as any;
