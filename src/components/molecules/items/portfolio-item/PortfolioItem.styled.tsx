@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 
 	& > a {
 		border-radius: 1rem;
+		overflow: hidden;
 		background-color: #f5f5f5;
 		transition: box-shadow 0.2s ease;
 		&:hover {
