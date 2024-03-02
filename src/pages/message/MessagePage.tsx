@@ -26,7 +26,7 @@ export default function MessagePage() {
 	const messageRoomMutation = useMessageRoomMutation(partnerId, portfolioId);
 
 	useEffect(() => {
-		if(roomId) return;
+		if(roomId || !partnerId) return;
 		const messageRoomList: TMessageRoom[] = queryClient.getQueryData(["messageRoom","list"])!;
 		const room = messageRoomList?.find((room: TMessageRoom) => room.partner!.id === partnerId);
 

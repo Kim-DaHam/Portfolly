@@ -1,4 +1,4 @@
-import { KeyboardEventHandler, MouseEventHandler, useState } from "react";
+import { KeyboardEventHandler, useState } from "react";
 import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
 
 type Props = {
@@ -11,22 +11,22 @@ export default function useTagInput({getValues, setValue}: Props) {
 
 	const handleTagInput: KeyboardEventHandler<HTMLDivElement> = (event) => {
 		const input = event.target as HTMLDivElement;
-		const keyword = input.textContent as string;
+		const keyword = input.textContent?.replace(/ /g, '') as string;
 
-		if (event.keyCode == 13 && keyword) {
-			const tags = getValues('tags');
-			const isDuplication = tags.indexOf(keyword) > 0 ? true : false;
+		if(event.keyCode !== 13 && keyword) return;
 
-			if(isDuplication){
-				input.textContent = null;
-				return;
-			}
+		const tags = getValues('tags');
+		const isDuplication = tags.indexOf(keyword) > 0 ? true : false;
 
-			tags.push(input.textContent!);
-			setValue('tags', tags, { shouldDirty: true });
-			setTags(tags);
+		if(isDuplication){
 			input.textContent = null;
-    }
+			return;
+		}
+
+		tags.push(keyword!);
+		setValue('tags', tags, { shouldDirty: true });
+		setTags(tags);
+		input.textContent = null;
 	};
 
 	const handleTag = (event: React.MouseEvent) => {

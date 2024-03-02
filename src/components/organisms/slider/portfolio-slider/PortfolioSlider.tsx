@@ -70,7 +70,7 @@ export default function PortfolioSlider({section, portfolio}: Props){
 				<Slider {...sliderSettings} ref={sliderRef}>
 					{ section !== 'Video' && portfolio.images.length > 0 &&
 						portfolio.images.map((url, index)=>{
-							if(index > 3) return;
+							if(index > 2) return;
 							return (
 								<S.SliderItem key={index}>
 										<Image src={url} size='100%' alt='slider image' />

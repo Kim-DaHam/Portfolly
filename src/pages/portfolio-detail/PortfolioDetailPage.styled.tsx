@@ -114,6 +114,7 @@ export const GridBox = styled.div`
 `;
 
 export const GridItem = styled.div`
+	aspect-ratio: 1 / 1;
 	overflow: hidden;
 
 	border-radius: 0.6rem;
@@ -124,4 +125,11 @@ export const GridItem = styled.div`
 		width: 100%;
 		height: 100%;
 	}
+`;
+
+export const Video = styled.iframe`
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
 `;

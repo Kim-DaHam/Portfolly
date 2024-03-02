@@ -46,6 +46,7 @@ export const messageHandlers= [
 				partner: messageRoom[PARTNER_AUTHORITY],
 				...messageRoom,
 			})
+			messageRoom.portfolio.thumbnailUrl = portfolios[messageRoom.portfolio.id].images[0];
 		}
 
 		return HttpResponse.json(messageRoom, { status: 200 });
@@ -90,16 +91,21 @@ export const messageHandlers= [
 				id: portfolioId,
 				title: portfolio.title,
 				summary: portfolio.summary,
-				thumbnailUrl: portfolio.images[0],
 			},
-			commission: undefined,
-			messages: undefined,
-			lastMessage: undefined,
+			commission: null,
+			messages: null,
+			lastMessage: null,
 		};
 
 		messageRooms[roomId] = newMessageRoom;
 
-		return HttpResponse.json({...newMessageRoom, id: roomId}, { status: 200 });
+		const response = {
+			...newMessageRoom,
+			partner: newMessageRoom[PARTNER_AUTHORITY],
+			id: roomId
+		};
+
+		return HttpResponse.json(response, { status: 200 });
 	}),
 
 	// 메세지룸 삭제

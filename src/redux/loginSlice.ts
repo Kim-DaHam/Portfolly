@@ -24,7 +24,10 @@ export const loginSlice = createSlice({
 			state.authority = action.payload;
 			state.isLogin = true;
 			state.id = action.payload === 'expert' ? 'expert1' : 'client1';
-			state.profileImage = 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FL1CyJ%2FbtsEliBIlFI%2FyxkummQTr4hNMBMceXTSJ0%2Fimg.png';
+			state.profileImage = action.payload === 'expert' ?
+				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvXGcm%2FbtsFjKC92MK%2FCDKTPVlYpVXR1swuTrlWiK%2Fimg.jpg'
+			:
+				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F82NGq%2FbtsCsv2n9fS%2Fb9VYv7jz81krLrKgSW1K40%2Fimg.jpg';
 		},
 		logout: (state) => {
 			state.authority = null;

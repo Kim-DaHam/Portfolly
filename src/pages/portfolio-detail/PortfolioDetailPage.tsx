@@ -76,13 +76,15 @@ export default function PortfolioDetail(){
 				<S.Aside>
 					<S.ProfileBox>
 						<Profile type='portfolio-detail' user={portfolio?.user} />
-						<Button
-							color='black'
-							size='medium'
-							onClick={() => navigate(`/messages?partner_id=${portfolio?.user.id}&portfolio_id=${portfolioId}`)}
-						>
-							문의하기
-						</Button>
+						{ user.authority === 'client' &&
+							<Button
+								color='black'
+								size='medium'
+								onClick={() => navigate(`/messages?partner_id=${portfolio?.user.id}&portfolio_id=${portfolioId}`)}
+							>
+								문의하기
+							</Button>
+						}
 					</S.ProfileBox>
 
 					<S.TitleBox>
@@ -160,12 +162,16 @@ export default function PortfolioDetail(){
 										key={portfolio?.id}
 										onClick={() => navigate(`/portfolios/${portfolio?.id}`)}
 									>
-										<Image
-											size='100%'
-											src={portfolio?.images[0]}
-											alt='portfolio thumbnail'
-											shape='foursquare'
-										/>
+										{ portfolio.section === 'Video' ?
+											<S.Video src={portfolio?.videos[0]} />
+											:
+											<Image
+												size='100%'
+												src={portfolio?.images[0]}
+												alt='portfolio thumbnail'
+												shape='foursquare'
+											/>
+										}
 									</S.GridItem>
 								)
 							})}

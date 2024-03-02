@@ -6,8 +6,8 @@ import theme from '@/styles/theme';
 
 export const Wrapper = styled.main`
 	${mixins.fullScreen}
-	${mixins.flexCenter}
 	${mixins.flexColumn}
+	align-items: center;
 	padding-top: 7rem;
 `;
 

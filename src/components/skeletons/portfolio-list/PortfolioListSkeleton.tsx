@@ -17,7 +17,7 @@ export default function PortfolioListSkeleton({ type }: Props) {
 	const currentSection = useSelector(section);
 
 	return(
-		<GridBox section={currentSection}>
+		<GridBox $section={currentSection}>
 			{ new Array(12).fill(1).map((_, index: number)=>{
 				return(
 					<GridItem key={index}>

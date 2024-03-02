@@ -15,9 +15,8 @@ export type MessageRoom = Partners & {
 		id: string,
 		title: string,
 		summary: string,
-		thumbnailUrl: string,
 	},
-	commission?: {
+	commission: {
 		id: string,
 		createdAt: string,
 		endedAt: string,
@@ -32,9 +31,9 @@ export type MessageRoom = Partners & {
 			score: number,
 			content: string,
 		},
-	},
-	messages?: Messages,
-	lastMessage?: Message,
+	} | null,
+	messages?: Messages | null,
+	lastMessage: Message | null,
 };
 
 export type Partners = {

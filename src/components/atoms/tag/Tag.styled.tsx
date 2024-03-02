@@ -8,31 +8,32 @@ export const Wrapper = styled.div<{readOnly: boolean}>`
 	display: flex;
 	align-items: center;
 	flex: none;
+	gap: 0.5rem;
 
 	padding: 1rem;
 	border-radius: 9999px;
   background-color: #f3f3f3;
 	transition: all 0.2s;
-	cursor: ${(props)=>props.readOnly ? 'pointer' : ''};
+	cursor: ${props => props.readOnly ? '' : 'pointer'};
 
 	&:hover{
-		background-color: #d7d7d7;
-		& div{
-			visibility: visible;
-		}
-		& div svg{
-			visibility: visible;
-		}
+		background-color: ${props => !props.readOnly && '#d7d7d7'};
 	}
 `;
 
 export const Icon = styled.div`
-	position: absolute;
-	z-index: 200;
-	right: 0.8rem;
-	visibility: hidden;
-	& svg {
-		visibility: hidden;
-		cursor: pointer;
+	width: 1rem;
+	height: 1rem;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: white;
+
+	& > svg {
+		width: 0.7rem;
+		color: black;
 	}
 `;

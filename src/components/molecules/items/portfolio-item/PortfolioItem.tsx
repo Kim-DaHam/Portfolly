@@ -13,7 +13,7 @@ export default function PortfolioItem({portfolio}: Props) {
 		<S.Wrapper>
 			<Link to={`/portfolios/${portfolio.id}`}>
 				<Image
-					src={portfolio.image}
+					src={portfolio.thumbnailUrl}
 					alt={portfolio.title}
 					size='100%'
 					shape='foursquare'
