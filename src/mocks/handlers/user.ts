@@ -1,8 +1,8 @@
 import { HttpResponse, http } from 'msw';
 
-import { LOGIN_ID } from '@/mocks/handlers';
 import { portfolios } from '@/mocks/data/portfolios';
 import { users } from '@/mocks/data/users';
+import { LOGIN_ID } from '@/mocks/handlers';
 import { Commission, Portfolio, User } from '@/types';
 
 export const userHandlers= [
@@ -39,7 +39,9 @@ export const userHandlers= [
 			if(isUserPortfolio) {
 				portfolioList.push({
 					id: docKey,
+					thumbnailUrl: portfolio.images[0],
 					...portfolio,
+					images: [],
 				});
 
 				commissionDocKeys.forEach((commissionDocKey: string) => {
