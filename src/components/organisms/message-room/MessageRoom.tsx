@@ -81,6 +81,7 @@ export default function MessageRoom({ messageRoom }: Props) {
 	useEffect(() => {
 		const messageBox = document.querySelector('#message-box') as HTMLElement;
 		messageBox.scrollTop = messageBox.scrollHeight;
+		setIsFileModalOpen(false);
 	}, [messageRoom]);
 
 	return (
