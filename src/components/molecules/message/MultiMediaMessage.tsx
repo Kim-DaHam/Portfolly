@@ -7,7 +7,7 @@ import type { File } from '@/types';
 import { Image, Text } from '@/components';
 
 type Props = {
-	files: File[];
+	files: File[] | null;
 };
 
 export default function MultiMediaMessage({ files }: Props) {

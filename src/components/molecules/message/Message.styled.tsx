@@ -1,14 +1,23 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const ownMessageStyle = css`
+	flex-direction: row-reverse;
+	justify-content: end;
+
+	& > div:first-child {
+		display: none;
+	}
+`;
 
 export const Wrapper = styled.div<{$isOwned: boolean, $isLongMessage: boolean}>`
 	width: 100%;
 
 	display: flex;
 	align-items: ${props => props.$isLongMessage ? 'end' : 'center'};
-	justify-content: ${(props) => props.$isOwned ? 'end' : 'start'};
-
 	padding: 0.4rem 1rem 0.4rem 1rem;
 	gap: 0.4rem;
+
+	${props => props.$isOwned && ownMessageStyle}
 `;
 
 export const Content = styled.div<{$isOwned: boolean, $isLongMessage: boolean}>`
