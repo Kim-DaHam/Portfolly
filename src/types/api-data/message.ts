@@ -60,8 +60,8 @@ export type Message = {
 		nickname: string,
 		profileImage: string,
 	},
-	files?: File[],
-	message: string,
+	files: File[] | null,
+	content: string,
 	createdAt: Date,
 	isRead: boolean,
 };

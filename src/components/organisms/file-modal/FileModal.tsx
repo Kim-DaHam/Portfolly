@@ -64,7 +64,7 @@ export default function FileModal({ handleFileModal, setValue, getValues }: Prop
 					}
 
 					return (
-						<S.FileItem>
+						<S.FileItem key={index}>
 							<ClipIcon size={16} color='gray' />
 							<Text size='label'>
 								{file.name}

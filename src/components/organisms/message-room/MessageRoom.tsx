@@ -18,12 +18,12 @@ type Props = {
 }
 
 export type MessageFormValues = {
-	files: File[];
+	files: File[] | null;
 	message: string;
 };
 
 const defaultValues: MessageFormValues = {
-	files: [],
+	files: null,
 	message: '',
 };
 
@@ -68,10 +68,20 @@ export default function MessageRoom({ messageRoom }: Props) {
 	};
 
 	const onSubmit = (form: MessageFormValues) => {
-		console.log('in')
-		sendMessageMutation.mutate(form, {
+		const formData = new FormData();
+
+		formData.append(
+			'message',
+			new Blob([JSON.stringify(form.message)], { type: 'application/json' })
+		);
+
+		form.files?.forEach((file: File) => {
+			formData.append('files', file);
+		});
+
+		sendMessageMutation.mutate(formData, {
 			onSuccess: () => {
-				setValue('files', []);
+				setValue('files', null);
 				setValue('message', '');
 				setIsFileModalOpen(false);
 			},

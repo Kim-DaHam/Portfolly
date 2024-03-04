@@ -123,31 +123,21 @@ export const messageHandlers= [
 		const url = new URL(request.url);
 		const roomId = url.searchParams.get('room_id') as string;
 		const room = messageRooms[roomId] as MessageRoom;
-		const messageForm = await request.json() as any;
 		const messageId = generateRandomString(20);
-
-		const files: any[] = [];
-
-		if(messageForm.files.length > 0) {
-			messageForm.files.forEach((file: File) => {
-				files.push({
-					type: file.type,
-					name: file.name,
-					url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
-				})
-			});
-		}
+		const messageForm = await request.formData() as any;
+    const files = messageForm.get('files');
+		const content = messageForm.get('message');
 
 		const message: Message = {
 			from: {
 				id: LOGIN_ID,
-				nickname: '김강철',
+				nickname: '의뢰인1',
 				profileImage: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnyjLl%2FbtsCr9rPmP3%2FW1k5kiFh3yLpkK6K1fkPJK%2Fimg.webp',
 			},
 			isRead: false,
 			createdAt: new Date(Date.now()),
-			files: files.length > 0 ? files : undefined,
-			message: files.length > 0 ? messageForm.files[0].name : messageForm.message,
+			files:  files,
+			content: content,
 		}
 
 		room.messages![messageId] = message;

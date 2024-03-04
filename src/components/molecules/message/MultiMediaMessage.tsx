@@ -12,7 +12,7 @@ type Props = {
 
 export default function MultiMediaMessage({ files }: Props) {
 	const isAllImageType = files?.every((file: File) => file.type.includes('image'));
-	const fileType = isAllImageType ? 'image' : 'file';
+	const fileType = isAllImageType ? 'image' : 'text';
 
 	return (
 		<S.Wrapper $fileType={fileType}>

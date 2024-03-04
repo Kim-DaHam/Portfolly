@@ -118,14 +118,14 @@ export const useMessageSendMutation = (roomId: string) => {
 	const copyMessageRoom = messageRoom && JSON.parse(JSON.stringify(messageRoom));
 	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
 
-	const sendMessage = (body: any) => fetch(`/message?room_id=${roomId}`, 'POST', body);
+	const sendMessage = (body: any) => fetch(`/message?room_id=${roomId}`, 'POST', body, 'formData');
 
 	return useMutation({
 		mutationFn: sendMessage,
 
 		onSuccess: (response) => {
 			copyMessageRoom.messages[response.id] = response.message;
-			copyMessageRoom.lastMessage = response.message;
+			copyMessageRoom.lastMessage = response.message.content;
 			queryClient.setQueryData(['messageRoom', roomId], copyMessageRoom);
 
 			copyMessageRoomList.forEach((room: MessageRoom) => {
