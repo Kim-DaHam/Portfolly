@@ -69,6 +69,19 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 		handleModal();
 	};
 
+	const handleCommissionStatus = (type: string) => {
+		switch(type) {
+			case 'argument':
+			break;
+			case 'cancel':
+			break;
+			case 'reopen':
+			break;
+			case 'clear':
+			break;
+		}
+	};
+
 	const onSubmit = async (form: any) => {
 		const copyForm: {[key: string]: any} = {...form};
 		const changedKeys = Object.keys(dirtyFields);
@@ -214,14 +227,15 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							의뢰 수정
 						</Button>
 					}
-					{/* { authority === 'client' && commission.details?.status !== '구매 확정' &&
+					{ authority === 'client' && commission.details?.status !== '구매 확정' &&
 						<Button
 							color='black'
 							size='medium'
+							onClick={() => handleCommissionStatus('argument')}
 						>
 							주문 취소
 						</Button>
-					} */}
+					}
 					{ isEditMode ?
 						<Button
 							color='black'
