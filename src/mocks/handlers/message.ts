@@ -127,7 +127,7 @@ export const messageHandlers= [
 		const messageForm = await request.formData() as any;
     const files = messageForm.get('files');
 		const content = messageForm.get('message');
-
+		console.log(content)
 		const message: Message = {
 			from: {
 				id: LOGIN_ID,

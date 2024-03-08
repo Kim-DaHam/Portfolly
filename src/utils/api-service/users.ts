@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { fetch } from "@/utils";
+import { callApi } from "@/utils";
 
 const userKeys = {
   all: ['users'] as const,
@@ -10,7 +10,7 @@ const userKeys = {
 }
 
 export const useUserQuery = (id: string) => {
-	const getUsers = () => fetch(`/users?id=${id}`, 'GET');
+	const getUsers = () => callApi(`/users?id=${id}`, 'GET');
 
 	return useQuery({
 		queryKey: userKeys.detail(id),

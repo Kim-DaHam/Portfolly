@@ -6,7 +6,7 @@ import type { AxiosRequestHeaders, AxiosRequestConfig } from 'axios';
 
 type Method = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
-export async function fetch(api: string, method: Method, body?: object, contentType?: string) {
+export async function callApi(api: string, method: Method, body?: object, contentType?: string) {
 	// redux에서 토큰 가져오기
   // const accessToken = localStorage.getItem(ACCESS_TOKEN);
 

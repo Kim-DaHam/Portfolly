@@ -70,10 +70,7 @@ export default function MessageRoom({ messageRoom }: Props) {
 	const onSubmit = (form: MessageFormValues) => {
 		const formData = new FormData();
 
-		formData.append(
-			'message',
-			new Blob([JSON.stringify(form.message)], { type: 'application/json' })
-		);
+		formData.append('message',form.message);
 
 		form.files?.forEach((file: File) => {
 			formData.append('files', file);
