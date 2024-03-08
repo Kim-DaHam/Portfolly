@@ -118,19 +118,19 @@ export const useMessageSendMutation = (roomId: string) => {
 	const copyMessageRoom = messageRoom && JSON.parse(JSON.stringify(messageRoom));
 	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
 
-	// const sendMessage = (body: any) => callApi(`/message?room_id=${roomId}`, 'POST', body, 'formData');
-
-	const sendMessage = (body: any) => {
-		return fetch('/message', {
+	const sendMessage = async (body: any) => {
+		const response = await fetch(`/message?room_id=${roomId}`, {
 			method: 'POST',
 			body: body,
 		});
+		return response.json();
 	};
 
 	return useMutation({
 		mutationFn: sendMessage,
 
 		onSuccess: (response: any) => {
+			console.log(response)
 			copyMessageRoom.messages[response.id] = response.message;
 			copyMessageRoom.lastMessage = response.message.content;
 			queryClient.setQueryData(['messageRoom', roomId], copyMessageRoom);

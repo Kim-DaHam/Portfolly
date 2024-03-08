@@ -127,7 +127,9 @@ export const messageHandlers= [
 		const messageForm = await request.formData() as any;
     const files = messageForm.get('files');
 		const content = messageForm.get('message');
-		console.log(content)
+
+		const fileList = files.length > 1 ? files : [files];
+
 		const message: Message = {
 			from: {
 				id: LOGIN_ID,
@@ -136,7 +138,12 @@ export const messageHandlers= [
 			},
 			isRead: false,
 			createdAt: new Date(Date.now()),
-			files:  files,
+			files: fileList.map((file: File) => {
+				return {
+					name: file.name,
+					type: file.type,
+				}
+			}),
 			content: content,
 		}
 
