@@ -116,7 +116,7 @@ export default function MessageRoom({ messageRoom }: Props) {
 					placeholder='메세지를 입력하세요.'
 					onKeyPress={handleEnterKey}
 					{...register('message', {
-						validate: () => getValues('message').length > 0 ? true : false,
+						validate: () => getValues('message').length > 0 || getValues('files') ? true : false,
 					})}
 				/>
 
