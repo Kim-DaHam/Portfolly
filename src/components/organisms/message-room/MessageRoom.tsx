@@ -70,10 +70,10 @@ export default function MessageRoom({ messageRoom }: Props) {
 	const onSubmit = (form: MessageFormValues) => {
 		const formData = new FormData();
 
-		formData.append('message',form.message);
+		formData.append('message', form.message);
 
 		form.files?.forEach((file: File) => {
-			formData.append('files', file);
+			formData.append('files', file, file.name);
 		});
 
 		sendMessageMutation.mutate(formData, {

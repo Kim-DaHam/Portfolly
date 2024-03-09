@@ -11,7 +11,6 @@ type Props = {
 };
 
 export default function MultiMediaMessage({ files }: Props) {
-	// console.log(files)
 	const isAllImageType = files?.every((file: File) => file.type.includes('image'));
 	const fileType = isAllImageType ? 'image' : 'text';
 

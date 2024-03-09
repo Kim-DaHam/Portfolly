@@ -125,10 +125,8 @@ export const messageHandlers= [
 		const room = messageRooms[roomId] as MessageRoom;
 		const messageId = generateRandomString(20);
 		const messageForm = await request.formData() as any;
-    const files = messageForm.get('files');
+    const files = messageForm.getAll('files');
 		const content = messageForm.get('message');
-
-		const fileList = files.length > 1 ? files : [files];
 
 		const message: Message = {
 			from: {
@@ -138,7 +136,7 @@ export const messageHandlers= [
 			},
 			isRead: false,
 			createdAt: new Date(Date.now()),
-			files: fileList.map((file: File) => {
+			files: files.map((file: File) => {
 				return {
 					name: file.name,
 					type: file.type,
