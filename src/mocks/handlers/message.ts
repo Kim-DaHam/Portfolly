@@ -136,12 +136,12 @@ export const messageHandlers= [
 			},
 			isRead: false,
 			createdAt: new Date(Date.now()),
-			files: files.map((file: File) => {
+			files: files.length > 0 ? files.map((file: File) => {
 				return {
 					name: file.name,
 					type: file.type,
 				}
-			}),
+			}) : null,
 			content: content,
 		}
 
