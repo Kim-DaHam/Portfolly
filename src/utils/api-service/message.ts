@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import type { MessageRoom } from "@/types";
 
 import { setToast } from "@/redux";
-import { fetch } from "@/utils";
+import { callApi } from "@/utils";
 
 const messageKeys = {
   all: ['messageRoom'] as const,
@@ -16,7 +16,7 @@ const messageKeys = {
 
 // 대화방 목록 불러오기
 export const useMessageRoomsQuery = () => {
-	const getMessageRooms = () => fetch(`/messageRooms`, 'GET');
+	const getMessageRooms = () => callApi(`/messageRooms`, 'GET');
 
 	return useQuery({
 		queryKey: messageKeys.lists('list'),
@@ -34,7 +34,7 @@ export const useMessageRoomMutation = (partnerId: string, portfolioId: string) =
 	const messageRoomList = queryClient.getQueryData(['messageRoom', 'list']) as any[];
 	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
 
-	const createMessageRoom = () => fetch(`/messageRooms?partner_id=${partnerId}&portfolio_id=${portfolioId}`, 'POST');
+	const createMessageRoom = () => callApi(`/messageRooms?partner_id=${partnerId}&portfolio_id=${portfolioId}`, 'POST');
 
 	return useMutation({
 		mutationFn: createMessageRoom,
@@ -63,7 +63,7 @@ export const useMessageRoomMutation = (partnerId: string, portfolioId: string) =
 
 // 대화방 불러오기
 export const useMessageRoomQuery = (roomId: string | null) => {
-	const getMessageRoom = () => fetch(`/messageRoom?room_id=${roomId}&page=${1}`, 'GET');
+	const getMessageRoom = () => callApi(`/messageRoom?room_id=${roomId}&page=${1}`, 'GET');
 
 	return useQuery({
 		queryKey: roomId ? messageKeys.detail(roomId) : messageKeys.all,
@@ -82,7 +82,7 @@ export const useMessageRoomDeleteMutation = (roomId: string) => {
 	const messageRoomList = queryClient.getQueryData(['messageRoom', 'list']) as any[];
 	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
 
-	const deleteMessageRoom = () => fetch(`/messageRooms?room_id=${roomId}`, 'DELETE');
+	const deleteMessageRoom = () => callApi(`/messageRooms?room_id=${roomId}`, 'DELETE');
 
 	return useMutation({
 		mutationFn: deleteMessageRoom,
@@ -118,14 +118,21 @@ export const useMessageSendMutation = (roomId: string) => {
 	const copyMessageRoom = messageRoom && JSON.parse(JSON.stringify(messageRoom));
 	const copyMessageRoomList = messageRoomList && JSON.parse(JSON.stringify(messageRoomList));
 
-	const sendMessage = (body: any) => fetch(`/message?room_id=${roomId}`, 'POST', body);
+	const sendMessage = async (body: any) => {
+		const response = await fetch(`/message?room_id=${roomId}`, {
+			method: 'POST',
+			body: body,
+		});
+		return response.json();
+	};
 
 	return useMutation({
 		mutationFn: sendMessage,
 
-		onSuccess: (response) => {
+		onSuccess: (response: any) => {
+			console.log(response)
 			copyMessageRoom.messages[response.id] = response.message;
-			copyMessageRoom.lastMessage = response.message;
+			copyMessageRoom.lastMessage = response.message.content;
 			queryClient.setQueryData(['messageRoom', roomId], copyMessageRoom);
 
 			copyMessageRoomList.forEach((room: MessageRoom) => {

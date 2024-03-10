@@ -47,7 +47,7 @@ export default function MessageRoomItem({ messageRoom }: Props) {
 
 				<S.MessageBox>
 					<Text size='bodyMedium'>
-						{messageRoom.lastMessage?.message}
+						{messageRoom.lastMessage?.content}
 					</Text>
 				</S.MessageBox>
 			</S.Box>

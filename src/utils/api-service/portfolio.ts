@@ -8,7 +8,7 @@ import { Toggle } from '@/components/atoms/button/ToggleButton';
 import type { Portfolio, Section } from '@/types';
 
 import { section, setToast } from '@/redux';
-import { fetch, getFilterQueryString, toUrlParameter } from "@/utils";
+import { callApi, getFilterQueryString, toUrlParameter } from "@/utils";
 
 export const PAGE_PER_DATA = 100;
 
@@ -34,7 +34,7 @@ export const usePortfoliosQuery = (section: Section, filter: {[key in string]: s
 	filterQueryString = filterQueryString.slice(0, -1);
 
 	const getPortfolios = ({ pageParam }: { pageParam: number }) => {
-		return fetch(`/portfolios?page=${pageParam}&section=${section}&${filterQueryString}`, 'GET');
+		return callApi(`/portfolios?page=${pageParam}&section=${section}&${filterQueryString}`, 'GET');
 	};
 
 	return useSuspenseInfiniteQuery({
@@ -54,7 +54,7 @@ export const usePortfoliosQuery = (section: Section, filter: {[key in string]: s
 
 // 분야별 top3 포트폴리오 가져오기
 export const useTopPortfoliosQuery = () => {
-	const getTopPortfolios = () => fetch('/top-portfolios', 'GET');
+	const getTopPortfolios = () => callApi('/top-portfolios', 'GET');
 
 	return useQuery({
 		queryKey: portfolioKeys.lists('top'),
@@ -66,7 +66,7 @@ export const useTopPortfoliosQuery = () => {
 
 // 카테고리, 태그별 개수 가져오기
 export const usePortfoliosCountQuery = (section: Section) => {
-	const getTopPortfolios = () => fetch(`/portfolios/count?section=${section}`, 'GET');
+	const getTopPortfolios = () => callApi(`/portfolios/count?section=${section}`, 'GET');
 
 	return useQuery({
 		queryKey: portfolioKeys.lists('count'),
@@ -78,7 +78,7 @@ export const usePortfoliosCountQuery = (section: Section) => {
 
 // 포트폴리오 상세보기 데이터 가져오기
 export const usePortfolioDetailQuery = (id: string) => {
-	const getPortfolio = () => fetch(`/portfolios/detail?id=${id}`, 'GET');
+	const getPortfolio = () => callApi(`/portfolios/detail?id=${id}`, 'GET');
 
 	return useQuery({
 		queryKey: portfolioKeys.detail(id),
@@ -96,7 +96,7 @@ export const usePortfolioDeleteQuery = (id: string) => {
 	const currentSection = useSelector(section);
 
 	const queryClient = useQueryClient();
-	const deletePortfolio = () => fetch(`/portfolios?id=${id}`, 'DELETE');
+	const deletePortfolio = () => callApi(`/portfolios?id=${id}`, 'DELETE');
 
 	return useMutation({
 		mutationFn: deletePortfolio,
@@ -135,7 +135,7 @@ export const useToggleButtonQuery = (portfolioId: string, type: Toggle) => {
 	const portfolio = prevPortfolio &&
 		JSON.parse(JSON.stringify(prevPortfolio)) as Portfolio;
 
-	const handleToggleButton = () => fetch(`/${type}?id=${portfolioId}`, 'POST');
+	const handleToggleButton = () => callApi(`/${type}?id=${portfolioId}`, 'POST');
 
 	return useMutation({
 		mutationFn: handleToggleButton,
@@ -199,8 +199,8 @@ export const useToggleButtonQuery = (portfolioId: string, type: Toggle) => {
 export const usePortfolioPostQuery = (id?: string) => {
 	const queryClient = useQueryClient();
 	const portfolioDetailQueryKey = ['portfolios', 'detail', id];
-	const postPortfolio = (body: any) => fetch(`/portfolios`, 'POST', body);
-	const updatePortfolio = (body: any) => fetch(`/portfolios?id=${id}`, 'PATCH', body);
+	const postPortfolio = (body: any) => callApi(`/portfolios`, 'POST', body);
+	const updatePortfolio = (body: any) => callApi(`/portfolios?id=${id}`, 'PATCH', body);
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -212,7 +212,7 @@ export const usePortfolioPostQuery = (id?: string) => {
 				queryClient.setQueryData(portfolioDetailQueryKey, response);
 			}
 			queryClient.setQueryData(['portfolios', 'detail', response.id], response);
-			// queryClient.invalidateQueries({portfolioDetailQueryKey: ['portfolios'], refetchType: 'all' });
+			// queryClient.invalidateQueries({portfolioDetailQueryKey: ['portfolios'], recallApiType: 'all' });
 			navigate(`/portfolios/${response.id}`);
 			dispatch(setToast({id: 0, type:'success', message: '포트폴리오가 등록되었습니다.'}));
 		},

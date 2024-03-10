@@ -2,10 +2,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userState } from "@/redux/loginSlice";
-import { Commission, Portfolio, Review, User } from "@/types";
+import { Commission, Portfolio, Review } from "@/types";
 
 import { setToast } from "@/redux";
-import { fetch } from '@/utils'
+import { callApi } from '@/utils'
 
 // 커미션 폼 작성
 export const usePostCommissionQuery = (portfolioId: string, clientId?: string, commissionId?: string) => {
@@ -18,8 +18,8 @@ export const usePostCommissionQuery = (portfolioId: string, clientId?: string, c
 	const user = queryClient.getQueryData(['user', `${userId}`]) as any;
 	const message = queryClient.getQueryData(['message', `${clientId}`]) as any;
 
-	const addCommission = (body: any) => fetch(postUrl, 'POST', body);
-	const updateCommission = (body: any) => fetch(patchUrl, 'PATCH', body);
+	const addCommission = (body: any) => callApi(postUrl, 'POST', body);
+	const updateCommission = (body: any) => callApi(patchUrl, 'PATCH', body);
 
 	return useMutation({
 		mutationFn: commissionId? updateCommission : addCommission,
@@ -74,7 +74,7 @@ export const useReviewPostQuery = (commissionId: string, portfolioId: string) =>
 	const user = queryClient.getQueryData(['user', `${userId}`]) as any;
 	const commissionList = JSON.parse(JSON.stringify(user.commissionList));
 
-	const postReview = (body: any) => fetch(`/reviews?
+	const postReview = (body: any) => callApi(`/reviews?
 		commission_id=${commissionId}&
 		portfolio_id=${portfolioId}`,
 		'POST',

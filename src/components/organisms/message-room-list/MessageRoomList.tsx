@@ -24,8 +24,8 @@ export default function MessageRoomList() {
 			setFilteredMessageRooms(filteredRooms);
 		}
 		if(messageFilter === '거래 중') {
-			const filteredRooms = messageRoomList.filter((message: any) => {
-				return message.commissionStatus !== '구매 확정' && message.commissionStatus !== null;
+			const filteredRooms = messageRoomList.filter((room: any) => {
+				return room.commission && room.commission.details.status !== '구매 확정';
 			})
 			setFilteredMessageRooms(filteredRooms);
 		}

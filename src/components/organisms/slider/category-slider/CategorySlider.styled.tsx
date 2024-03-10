@@ -32,11 +32,11 @@ export const CategoryBox = styled.div`
 `;
 
 export const Slider = styled.ul`
-	width: 10000px;
+	width: fit-content;
 	height: 100%;
 
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	gap: 0.5rem;
 
 	position: absolute;

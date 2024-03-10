@@ -18,12 +18,12 @@ type Props = {
 }
 
 export type MessageFormValues = {
-	files: File[];
+	files: File[] | null;
 	message: string;
 };
 
 const defaultValues: MessageFormValues = {
-	files: [],
+	files: null,
 	message: '',
 };
 
@@ -68,10 +68,17 @@ export default function MessageRoom({ messageRoom }: Props) {
 	};
 
 	const onSubmit = (form: MessageFormValues) => {
-		console.log('in')
-		sendMessageMutation.mutate(form, {
+		const formData = new FormData();
+
+		formData.append('message', form.message);
+
+		form.files?.forEach((file: File) => {
+			formData.append('files', file, file.name);
+		});
+
+		sendMessageMutation.mutate(formData, {
 			onSuccess: () => {
-				setValue('files', []);
+				setValue('files', null);
 				setValue('message', '');
 				setIsFileModalOpen(false);
 			},
@@ -81,6 +88,7 @@ export default function MessageRoom({ messageRoom }: Props) {
 	useEffect(() => {
 		const messageBox = document.querySelector('#message-box') as HTMLElement;
 		messageBox.scrollTop = messageBox.scrollHeight;
+		setIsFileModalOpen(false);
 	}, [messageRoom]);
 
 	return (
@@ -108,7 +116,7 @@ export default function MessageRoom({ messageRoom }: Props) {
 					placeholder='메세지를 입력하세요.'
 					onKeyPress={handleEnterKey}
 					{...register('message', {
-						validate: () => getValues('message').length > 0 ? true : false,
+						validate: () => getValues('message').length > 0 || getValues('files') ? true : false,
 					})}
 				/>
 

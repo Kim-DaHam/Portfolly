@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { UseFormGetValues, UseFormSetValue } from 'react-hook-form';
 
 import * as S from '@/components/organisms/message-list/MessageList.styled';

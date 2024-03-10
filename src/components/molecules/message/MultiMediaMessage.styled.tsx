@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div<{$fileType: 'image' | 'file'}>`
+export const Wrapper = styled.div<{$fileType: 'image' | 'text'}>`
 	${props => props.$fileType === 'image' ?
 		css`
 			display: grid;

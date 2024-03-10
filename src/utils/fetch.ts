@@ -6,7 +6,7 @@ import type { AxiosRequestHeaders, AxiosRequestConfig } from 'axios';
 
 type Method = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
-export async function fetch(api: string, method: Method, body?: object) {
+export async function callApi(api: string, method: Method, body?: object, contentType?: string) {
 	// redux에서 토큰 가져오기
   // const accessToken = localStorage.getItem(ACCESS_TOKEN);
 
@@ -21,9 +21,13 @@ export async function fetch(api: string, method: Method, body?: object) {
     url: API_BASE_URL + api,
   };
 
-  if (body) {
+  if(body) {
     options.data = JSON.stringify(body);
   }
+
+	if(contentType === 'formData') {
+		headers['Content-Type'] = 'multipart/form-data';
+	}
 
 	const response = await axios(options);
 

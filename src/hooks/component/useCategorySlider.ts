@@ -56,8 +56,7 @@ export default function useCategorySlider(section: Section) {
 	const expandSliderToFitCategoryBox = () => {
 		if(!slider) return;
 
-		const lastSlideItem = document.querySelector('.last-category') as HTMLElement;
-		const endOfSlide = lastSlideItem.getBoundingClientRect().right;
+		const endOfSlide = slider!.getBoundingClientRect().right;
 		const endOfCategoryBox = categoryBox!.getBoundingClientRect().right;
 
 		const haveToExpand = sliderLeft < 0 && endOfSlide < endOfCategoryBox;
@@ -85,11 +84,10 @@ export default function useCategorySlider(section: Section) {
 		if(!slider) return;
 
 		const lastSlideItem = document.querySelector('.last-category') as HTMLElement;
-
-		const startOfSlide = slider!.getBoundingClientRect().left;
 		const endOfSlide = lastSlideItem.getBoundingClientRect().right;
+		const startOfSlide = slider!.getBoundingClientRect().left;
 		const sliderWidth = endOfSlide - startOfSlide;
-		const categoryBoxWidth = categoryBox!.getBoundingClientRect().width + 30;
+		const categoryBoxWidth = categoryBox!.offsetWidth;
 
 		if(sliderLeft >= 0) {
 			setShowPrevArrow(false);
