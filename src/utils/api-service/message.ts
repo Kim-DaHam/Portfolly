@@ -130,9 +130,8 @@ export const useMessageSendMutation = (roomId: string) => {
 		mutationFn: sendMessage,
 
 		onSuccess: (response: any) => {
-			console.log(response)
 			copyMessageRoom.messages[response.id] = response.message;
-			copyMessageRoom.lastMessage = response.message.content;
+			copyMessageRoom.lastMessage = response.message;
 			queryClient.setQueryData(['messageRoom', roomId], copyMessageRoom);
 
 			copyMessageRoomList.forEach((room: MessageRoom) => {
@@ -140,6 +139,8 @@ export const useMessageSendMutation = (roomId: string) => {
 				room.lastMessage = {
 					id: response.id,
 					...response.message,
+					content: response.message.content.length > 0 ?
+						response.message.content : response.message.files[0].name,
 				};
 			});
 			queryClient.setQueryData(['messageRoom', 'list'], copyMessageRoomList);
