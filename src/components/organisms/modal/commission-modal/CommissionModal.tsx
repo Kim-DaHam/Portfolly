@@ -8,7 +8,7 @@ import * as S from "@/components/organisms/modal/commission-modal/CommissionModa
 
 import type { Commission } from "@/types";
 
-import { setAlert, userState } from "@/redux";
+import { setAlert, setToast, userState } from "@/redux";
 import { usePostCommissionQuery , addValidationErrorToast, toLocalDateString } from "@/utils";
 
 import { Text, Button, Modal, Profile, Rating } from "@/components";
@@ -38,13 +38,14 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 	const [isEditMode, setIsEditMode] = useState(editMode);
 
 	const dispatch = useDispatch();
+	const { authority } = useSelector(userState);
 
 	const commissionMutation = usePostCommissionQuery(
 		commission.portfolio!.id!,
 		commission.client.id,
 		commission.id
 	);
-	const { authority } = useSelector(userState);
+
 	const {
 		register,
 		reset,
@@ -72,12 +73,31 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 	const handleCommissionStatus = (type: string) => {
 		switch(type) {
 			case 'argument':
+				commissionMutation.mutate({
+					status: '분쟁 조정 중'
+				}, {
+					onSuccess: () => {
+						dispatch(setToast({id: 0, type: 'success', message: '분쟁 상태로 변경되었습니다.'}));
+					},
+				});
 			break;
 			case 'cancel':
+				commissionMutation.mutate({
+					status: '주문 취소'
+				}, {
+					onSuccess: () => {
+						dispatch(setToast({id: 0, type: 'success', message: '주문 취소 상태로 변경되었습니다.'}));
+					},
+				});
 			break;
 			case 'reopen':
-			break;
-			case 'clear':
+				commissionMutation.mutate({
+					status: '분쟁 해결'
+				}, {
+					onSuccess: () => {
+						dispatch(setToast({id: 0, type: 'success', message: '진행 중 상태로 변경되었습니다.'}));
+					},
+				});
 			break;
 		}
 	};
@@ -227,13 +247,22 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							의뢰 수정
 						</Button>
 					}
-					{ authority === 'client' && commission.details?.status !== '구매 확정' &&
+					{ authority === 'client' && commission.details?.status === '진행 중' &&
 						<Button
 							color='black'
 							size='medium'
 							onClick={() => handleCommissionStatus('argument')}
 						>
 							주문 취소
+						</Button>
+					}
+					{ authority === 'client' && commission.details?.status === '분쟁 조정 중' &&
+						<Button
+							color='black'
+							size='medium'
+							onClick={() => handleCommissionStatus('argument')}
+						>
+							분쟁 종료
 						</Button>
 					}
 					{ isEditMode ?
