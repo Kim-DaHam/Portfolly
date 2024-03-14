@@ -265,6 +265,15 @@ export default function CommissionModal({ commission, handleModal, editMode, $mo
 							분쟁 종료
 						</Button>
 					}
+					{ authority === 'expert' && commission.details?.status === '분쟁 조정 중' &&
+						<Button
+							color='black'
+							size='medium'
+							onClick={() => handleCommissionStatus('cancle')}
+						>
+							주문 취소
+						</Button>
+					}
 					{ isEditMode ?
 						<Button
 							color='black'
