@@ -1,8 +1,8 @@
 import { HttpResponse, http } from 'msw';
 
-import { LOGIN_ID } from '@/mocks/handlers';
 import { portfolios } from '@/mocks/data/portfolios';
 import { users } from '@/mocks/data/users';
+import { LOGIN_ID } from '@/mocks/handlers';
 import { Commission, Portfolio, Review, User } from '@/types';
 
 import { generateRandomString, toLocalDateString } from '@/utils';
@@ -69,7 +69,7 @@ export const commissionHandlers= [
 		const portfolio = portfolios[portfolioId] as Portfolio;
 		const commission = portfolio.commissions![commissionId] as Commission;
 
-		Object.assign(commission.details, commissionForm);
+		Object.assign(commission.details!, commissionForm);
 
 		return HttpResponse.json(commission, { status: 200 });
 	}),

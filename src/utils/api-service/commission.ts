@@ -60,7 +60,7 @@ export const usePostCommissionQuery = (portfolioId: string, clientId?: string, c
 			return response;
 		},
 		onError: () => {
-			dispatch(setToast({id: 0, type: 'error', message: '수정을 실패했습니다.'}));
+			dispatch(setToast({id: 0, type: 'error', message: '요청을 실패했습니다.'}));
 			return;
 		},
 	});
